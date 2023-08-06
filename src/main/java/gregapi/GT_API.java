@@ -201,6 +201,9 @@ public class GT_API extends Abstract_Mod {
 		Items.cake.setMaxStackSize(64);
 		Items.wooden_door.setMaxStackSize(8);
 		Items.iron_door.setMaxStackSize(8);
+		Items.written_book.setMaxStackSize(64);
+		Items.writable_book.setMaxStackSize(64);
+		Items.enchanted_book.setMaxStackSize(64);
 		
 		// Fixing some Adventure Mode things.
 		Blocks.bed.setHarvestLevel("axe", 0);
