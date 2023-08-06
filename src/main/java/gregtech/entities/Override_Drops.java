@@ -514,6 +514,11 @@ public class Override_Drops {
 			for (int i = 0; i < 4; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
 				aDrops.add(ST.entity(aDead, IL.Hoof_Horse.get(1)));
 			}
+		} else if (aClass.equalsIgnoreCase("EntitySquirrel") || aClass.equalsIgnoreCase("EntityTFSquirrel")) {
+			tReplaceIron = T;
+			int tAmount = 1+RNGSUS.nextInt(3);
+			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting + 1);
+			while (tAmount-->0) aDrops.add(ST.entity(aDead, RNGSUS.nextBoolean()?IL.Food_Hazelnut.get(1):IL.Food_Peanut.get(1)));
 		} else if (aClass.equalsIgnoreCase("EntityTFQuestRam")) {
 			tReplaceIron = T;
 			int tAmount = 24+RNGSUS.nextInt(8);
