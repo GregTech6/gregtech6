@@ -558,6 +558,13 @@ public class Override_Drops {
 			if (RNGSUS.nextInt(100) <= 10 + aLooting) {
 				aDrops.add(ST.entity(aDead, MD.EtFu, "rabbit_foot", 1, 0));
 			}
+			if (RNGSUS.nextInt(100) <= 10 + aLooting) {
+				aDrops.add(ST.entity(aDead, IL.Food_Carrot.get(1)));
+			}
+		} else if (aClass.equalsIgnoreCase("EntityRabbit")) {
+			if (RNGSUS.nextInt(100) <= 10 + aLooting) {
+				aDrops.add(ST.entity(aDead, IL.Food_Carrot.get(1)));
+			}
 		} else if (aClass.equalsIgnoreCase("EntityWarg") || aClass.equalsIgnoreCase("EntityHellhound") || aClass.equalsIgnoreCase("MoCEntityWWolf") || aClass.equalsIgnoreCase("EntityTFMistWolf") || aClass.equalsIgnoreCase("EntityTFWinterWolf")) {
 			tReplaceIron = T;
 			int tAmount = 1+RNGSUS.nextInt(4);
