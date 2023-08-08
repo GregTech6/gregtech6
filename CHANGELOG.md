@@ -27,6 +27,7 @@ Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even
 [FIXED] Crucible Crossings did not always work all that well when multiple Faucets and Molds tried to pour at the same time.
 [FIXED] Glass Bottle of Holy Water was not able to cure Zombies at all whatsoever, even with the Weakness Potion Effect.
 [CHANGED] Twilight Bunnies now drop the same Stuff Et Futurum Rabbits do, or Harvestcrafts Rabbit Meat.
+[CHANGED] Enchanted Books are now stackable but BEWARE that vanilla Anvils will eat the entire Stack you insert so dont keep it stacked in its UI.
 [ADDED] Tusks, Hoofs, Horns and Antlers as Drops for various Mobs. Primarily as a way to make Glue early on.
 
 

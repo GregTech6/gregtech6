@@ -640,6 +640,23 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@SubscribeEvent
 	public void onPlayerTickEvent(PlayerTickEvent aEvent) {
 		if (!aEvent.player.isDead && aEvent.phase == Phase.END) {
+			
+		////if (aEvent.player.worldObj.provider instanceof WorldProviderTwilightForest) {
+		////    Object tChunkProvider = ((WorldProviderTwilightForest)aEvent.player.worldObj.provider).getChunkProvider();
+		////    if (tChunkProvider != null) {
+		////        DEB.println("TRYING TO REMOVE SPAMMED TWILIGHT STRUCTURES");
+		////        Iterator<Map.Entry<Long, Object>> titerator = ((MapGenTFMajorFeature)UT.Reflection.getFieldContent(tChunkProvider, "majorFeatureGenerator")).structureMap.entrySet().iterator();
+		////        while (titerator.hasNext()) {
+		////            Map.Entry<Long, Object> tEntry = titerator.next();
+		////            ChunkCoordIntPair tCoords = new ChunkCoordIntPair((int)((tEntry.getKey()) & 4294967295L), (int)((tEntry.getKey() >> 32) & 4294967295L));
+		////            if (Math.abs(tCoords.chunkXPos) > 666 || Math.abs(tCoords.chunkZPos) > 666) {
+		////                DEB.println("REMOVED A SUPERFLUOUS STRUCTURE AT: " + tCoords.chunkXPos*16 + "; " + tCoords.chunkZPos*16);
+		////                titerator.remove();
+		////            }
+		////        }
+		////    }
+		////}
+			
 			for (Object tPotion : aEvent.player.getActivePotionEffects()) {
 				if (tPotion instanceof PotionEffect && ((PotionEffect)tPotion).getDuration() <= 0) {
 					aEvent.player.removePotionEffect(((PotionEffect)tPotion).getPotionID());

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,25 +19,14 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistration;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
-import gregapi.data.BI;
-import gregapi.data.CS.SFX;
-import gregapi.data.CS.ToolsGT;
-import gregapi.data.LH;
+import gregapi.data.*;
 import gregapi.data.LH.Chat;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
@@ -62,6 +51,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -126,6 +119,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 				ItemStack[] tOutputItems = tRecipe.getOutputs();
 				for (int i = 0; i < tOutputItems.length; i++) if (ST.valid(tOutputItems[i]) && !UT.Inventories.addStackToPlayerInventory(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, aPlayerInventory, tOutputItems[i], F)) ST.place(worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5, tOutputItems[i]);
 				removeAllDroppableNullStacks();
+				if (aPlayer instanceof EntityPlayer) ((EntityPlayer)aPlayer).addExhaustion(tRecipe.getAbsoluteTotalPower() / 2500.0F);
 				// You lose more Durability if you are Fatiqued, but you lose less if you work with Haste.
 				long tDurability = UT.Entities.getDurabilityUse(aPlayer, Math.max(10000, UT.Code.divup(Math.max(1, tRecipe.getAbsoluteTotalPower()), 4)));
 				mDurability -= tDurability;

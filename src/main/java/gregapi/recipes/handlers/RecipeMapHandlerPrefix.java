@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregapi.recipes.handlers;
 
-import static gregapi.data.CS.*;
-
 import gregapi.code.ICondition;
 import gregapi.data.FL;
 import gregapi.data.OP;
@@ -36,6 +34,8 @@ import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -223,6 +223,6 @@ public class RecipeMapHandlerPrefix extends RecipeMapHandler {
 	}
 	
 	public long getCosts(OreDictMaterial aMaterial) {
-		return UT.Code.units(mUnitsInputted, U, mMultiplier+mMultiplier*aMaterial.mToolQuality, T);
+		return UT.Code.units(Math.max(mUnitsInputted, mUnitsOutputted), U, mMultiplier+mMultiplier*aMaterial.mToolQuality, T);
 	}
 }
