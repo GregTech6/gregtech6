@@ -21,7 +21,6 @@ package gregtech.worldgen;
 
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ItemStackContainer;
-import gregapi.data.CS.*;
 import gregapi.data.IL;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -68,12 +67,12 @@ public class WorldgenBushes extends WorldgenOnSurface {
 		int tStage = aRandom.nextInt(4);
 		ItemStack tBerry = UT.Code.select(new NoiseGenerator(aWorld).get(aX/2, 300, aZ/2, BushesGT.MAP.size()), new ItemStackContainer(IL.Food_Candleberry.get(1)), BushesGT.MAP.keySet().toArray(ZL_ISC)).toStack();
 		
-		tRegistry.mBlock.placeBlock(aWorld, aX, aY+1, aZ, SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_UNDEFINED, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
-		if (WD.easyRep(aWorld, aX+1, aY+1, aZ  )) tRegistry.mBlock.placeBlock(aWorld, aX+1, aY+1, aZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
-		if (WD.easyRep(aWorld, aX-1, aY+1, aZ  )) tRegistry.mBlock.placeBlock(aWorld, aX-1, aY+1, aZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
-		if (WD.easyRep(aWorld, aX  , aY+1, aZ+1)) tRegistry.mBlock.placeBlock(aWorld, aX  , aY+1, aZ+1, SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
-		if (WD.easyRep(aWorld, aX  , aY+1, aZ-1)) tRegistry.mBlock.placeBlock(aWorld, aX  , aY+1, aZ-1, SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
-		if (WD.easyRep(aWorld, aX  , aY+2, aZ  )) tRegistry.mBlock.placeBlock(aWorld, aX  , aY+2, aZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_Y_NEG, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
+		;                                         tRegistry.mBlock.placeBlock(aWorld, aX  , aY+1, aZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_UNDEFINED, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
+		if (WD.easyRep(aWorld, aX+1, aY+1, aZ  )) tRegistry.mBlock.placeBlock(aWorld, aX+1, aY+1, aZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_X_NEG    , NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
+		if (WD.easyRep(aWorld, aX-1, aY+1, aZ  )) tRegistry.mBlock.placeBlock(aWorld, aX-1, aY+1, aZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_X_POS    , NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
+		if (WD.easyRep(aWorld, aX  , aY+1, aZ+1)) tRegistry.mBlock.placeBlock(aWorld, aX  , aY+1, aZ+1, SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_Z_NEG    , NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
+		if (WD.easyRep(aWorld, aX  , aY+1, aZ-1)) tRegistry.mBlock.placeBlock(aWorld, aX  , aY+1, aZ-1, SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_Z_POS    , NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
+		if (WD.easyRep(aWorld, aX  , aY+2, aZ  )) tRegistry.mBlock.placeBlock(aWorld, aX  , aY+2, aZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_Y_NEG    , NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
 		return T;
 	}
 }
