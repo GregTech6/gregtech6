@@ -95,8 +95,8 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		for (int i = 0, j = (mTreasureID == 13                                           ?  8 :                          10); i < j; i++) rReturn &= addToInventory(aInventory, mTreasure.getCommonItem  (RNGSUS));
 		for (int i = 0, j = (mTreasureID == 13                                           ? 27 :                           6); i < j; i++) rReturn &= addToInventory(aInventory, mTreasure.getUncommonItem(RNGSUS));
 		for (int i = 0, j = (mTreasureID == 13 || mTreasureID == 21 || mTreasureID == 22 ?  1 : mTreasureID == 10 ?  4 :  2); i < j; i++) rReturn &= addToInventory(aInventory, mTreasure.getRareItem    (RNGSUS));
-		// Some Extra Loot from a fitting Vanilla Category in order to make most Modded Items available in TF, if you can't find the few Vanilla Dungeons.
-		if (UT.Code.stringValid(mVanillacategory)) for (int i = 0, j = 5+RNGSUS.nextInt(10); i < j; i++) rReturn &= addToInventory(aInventory, ChestGenHooks.getOneItem(mVanillacategory, RNGSUS));
+		// Some Extra Loot from a fitting Vanilla Category in order to make most Modded Items available in TF if you can't find the few Vanilla Dungeons.
+		if (UT.Code.stringValid(mVanillacategory)) for (int i = 0, j = 9+RNGSUS.nextInt(10); i < j; i++) rReturn &= addToInventory(aInventory, ChestGenHooks.getOneItem(mVanillacategory, RNGSUS));
 		return rReturn;
 	}
 	

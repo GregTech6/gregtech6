@@ -463,7 +463,9 @@ public class Override_Drops {
 			}
 		} else if (aClass.equalsIgnoreCase("EntityTFWraith")) {
 			tReplaceIron = T;
-			if (RNGSUS.nextInt(10) == 0) aDrops.add(ST.entity(aDead, OP.dust.mat(MT.Ectoplasm, 1)));
+			int tAmount = RNGSUS.nextInt(3);
+			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting+1);
+			while (tAmount-->0) aDrops.add(ST.entity(aDead, OP.dust.mat(MT.Ectoplasm, 1)));
 		} else if (aClass.equalsIgnoreCase("EntityTFMinoshroom")) {
 			tReplaceIron = F;
 			for (int i = 0; i < 4; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
