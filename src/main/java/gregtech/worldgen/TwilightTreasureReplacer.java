@@ -41,6 +41,8 @@ import static gregapi.data.CS.*;
  */
 public class TwilightTreasureReplacer extends TFTreasure {
 	public static final HashMap<String, TwilightTreasureReplacer> TWILIGHT_TREASURE = new HashMap<>();
+	/** needed simply because Hill 3 has way too many Chests and Hill 2 exclusively has the Peacock Fan. So I'm downgrading Hill 3 a little. */
+	public static TwilightTreasureReplacer HILLS_2;
 	
 	public final TFTreasure mTreasure;
 	public final String mCategory;
@@ -58,10 +60,12 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		mTreasure = aTreasure;
 		TWILIGHT_TREASURE.put(mCategory, this);
 		ST.LOOT_TABLES.add(mCategory);
+		if (aIndex == 2) HILLS_2 = this;
 	}
 	
 	@Override public boolean generate(World aWorld, Random aRandom, int aX, int aY, int aZ) {return generate(aWorld, aRandom, aX, aY, aZ, Blocks.chest);}
 	@Override public boolean generate(World aWorld, Random aRandom, int aX, int aY, int aZ, Block aChest) {
+		if (mTreasureID == 3 && RNGSUS.nextBoolean()) return HILLS_2.generate(aWorld, aRandom, aX, aY, aZ, aChest);
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		if (tRegistry == null) return super.generate(aWorld, aRandom, aX, aY, aZ, aChest);
 		// face towards Air if possible.
