@@ -23,6 +23,7 @@ import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.IL;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
@@ -63,8 +64,18 @@ public class TwilightTreasureReplacer extends TFTreasure {
 	@Override public boolean generate(World aWorld, Random aRandom, int aX, int aY, int aZ, Block aChest) {
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		if (tRegistry == null) return super.generate(aWorld, aRandom, aX, aY, aZ, aChest);
-		tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, mChestID, UT.NBT.make(NBT_FACING, ALL_SIDES_HORIZONTAL[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL.length)], NBT_TRAPPED, T, "gt.dungeonloot", mCategory), F, T);
-		return T;
+		// face towards Air if possible.
+		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) {
+			if (WD.air(aWorld, aX+OFFX[tSide], aY, aZ+OFFZ[tSide]))
+			return tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, mChestID, UT.NBT.make(NBT_FACING, tSide, NBT_TRAPPED, T, "gt.dungeonloot", mCategory), F, T);
+		}
+		// face away from Wall then.
+		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) {
+			if (WD.opq(aWorld, aX+OFFX[tSide], aY, aZ+OFFZ[tSide], T, T))
+			return tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, mChestID, UT.NBT.make(NBT_FACING, OPOS[tSide], NBT_TRAPPED, T, "gt.dungeonloot", mCategory), F, T);
+		}
+		// well, random it is!
+		return tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, mChestID, UT.NBT.make(NBT_FACING, ALL_SIDES_HORIZONTAL[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL.length)], NBT_TRAPPED, T, "gt.dungeonloot", mCategory), F, T);
 	}
 	
 	public static boolean generate(IInventory aInventory, String aCategory) {
