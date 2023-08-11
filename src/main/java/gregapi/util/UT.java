@@ -3108,7 +3108,7 @@ public class UT {
 			return aEntity instanceof EntityCreeper || UT.Reflection.getLowercaseClass(aEntity).contains("ghast");
 		}
 		public static boolean isExplosiveCreature(Entity aEntity) {
-			return isGhastCreature(aEntity) || isCreeperCreature(aEntity);
+			return isGhastCreature(aEntity) || isCreeperCreature(aEntity) || UT.Reflection.getLowercaseClass(aEntity).contains("firebeetle");
 		}
 		public static boolean isWereCreature(EntityLivingBase aEntity) {
 			if (aEntity instanceof EntityPlayer) {

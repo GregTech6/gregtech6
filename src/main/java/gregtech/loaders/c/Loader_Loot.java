@@ -63,28 +63,28 @@ public class Loader_Loot implements Runnable {
 		ST.LOOT_TABLES.add(ChestGenHooks.BONUS_CHEST             );
 		
 		if (MD.TF.mLoaded) {
-			TFTreasure.hill1             = TwilightTreasureReplacer.create(TFTreasure.hill1            ,  1, "hill1"            ,   509);
-			TFTreasure.hill2             = TwilightTreasureReplacer.create(TFTreasure.hill2            ,  2, "hill2"            ,   558);
-			TFTreasure.hill3             = TwilightTreasureReplacer.create(TFTreasure.hill3            ,  3, "hill3"            ,    58);
-			TFTreasure.hedgemaze         = TwilightTreasureReplacer.create(TFTreasure.hedgemaze        ,  4, "hedgemaze"        ,   516);
-			TFTreasure.labyrinth_room    = TwilightTreasureReplacer.create(TFTreasure.labyrinth_room   ,  5, "labyrinth_room"   ,     8);
-			TFTreasure.labyrinth_deadend = TwilightTreasureReplacer.create(TFTreasure.labyrinth_deadend,  6, "labyrinth_deadend",   508);
-			TFTreasure.tower_room        = TwilightTreasureReplacer.create(TFTreasure.tower_room       ,  7, "tower_room"       ,     2);
-			TFTreasure.tower_library     = TwilightTreasureReplacer.create(TFTreasure.tower_library    ,  8, "tower_library"    ,   502);
-			TFTreasure.basement          = TwilightTreasureReplacer.create(TFTreasure.basement         ,  9, "basement"         ,     9);
-			TFTreasure.labyrinth_vault   = TwilightTreasureReplacer.create(TFTreasure.labyrinth_vault  , 10, "labyrinth_vault"  ,    16);
-			TFTreasure.darktower_cache   = TwilightTreasureReplacer.create(TFTreasure.darktower_cache  , 11, "darktower_cache"  ,   525);
-			TFTreasure.darktower_key     = TwilightTreasureReplacer.create(TFTreasure.darktower_key    , 12, "darktower_key"    ,    25);
-			TFTreasure.darktower_boss    = TwilightTreasureReplacer.create(TFTreasure.darktower_boss   , 13, "darktower_boss"   ,    59);
-			TFTreasure.tree_cache        = TwilightTreasureReplacer.create(TFTreasure.tree_cache       , 14, "tree_cache"       ,   508);
-			TFTreasure.stronghold_cache  = TwilightTreasureReplacer.create(TFTreasure.stronghold_cache , 15, "stronghold_cache" ,   510);
-			TFTreasure.stronghold_room   = TwilightTreasureReplacer.create(TFTreasure.stronghold_room  , 16, "stronghold_room"  ,    10);
-			TFTreasure.stronghold_boss   = TwilightTreasureReplacer.create(TFTreasure.stronghold_boss  , 17, "stronghold_boss"  ,   559);
-			TFTreasure.aurora_cache      = TwilightTreasureReplacer.create(TFTreasure.aurora_cache     , 18, "aurora_cache"     ,   513);
-			TFTreasure.aurora_room       = TwilightTreasureReplacer.create(TFTreasure.aurora_room      , 19, "aurora_room"      ,    13);
-		////TFTreasure.aurora_boss       = TwilightTreasureReplacer.create(TFTreasure.aurora_boss      , 20, "aurora_boss"      , 32745);// This one is actually empty and unused.
-			TFTreasure.troll_garden      = TwilightTreasureReplacer.create(TFTreasure.troll_garden     , 21, "troll_garden"     ,   524);
-			TFTreasure.troll_vault       = TwilightTreasureReplacer.create(TFTreasure.troll_vault      , 22, "troll_vault"      ,    24);
+			TFTreasure.hill1             = TwilightTreasureReplacer.create(TFTreasure.hill1            ,  1, "hill1"            , ChestGenHooks.MINESHAFT_CORRIDOR      ,   509);
+			TFTreasure.hill2             = TwilightTreasureReplacer.create(TFTreasure.hill2            ,  2, "hill2"            , ChestGenHooks.MINESHAFT_CORRIDOR      ,   558);
+			TFTreasure.hill3             = TwilightTreasureReplacer.create(TFTreasure.hill3            ,  3, "hill3"            , ChestGenHooks.MINESHAFT_CORRIDOR      ,    58);
+			TFTreasure.hedgemaze         = TwilightTreasureReplacer.create(TFTreasure.hedgemaze        ,  4, "hedgemaze"        , ChestGenHooks.BONUS_CHEST             ,   516);
+			TFTreasure.labyrinth_room    = TwilightTreasureReplacer.create(TFTreasure.labyrinth_room   ,  5, "labyrinth_room"   , ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,     8);
+			TFTreasure.labyrinth_deadend = TwilightTreasureReplacer.create(TFTreasure.labyrinth_deadend,  6, "labyrinth_deadend", ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   508);
+			TFTreasure.tower_room        = TwilightTreasureReplacer.create(TFTreasure.tower_room       ,  7, "tower_room"       , ChestGenHooks.PYRAMID_DESERT_CHEST    ,     2);
+			TFTreasure.tower_library     = TwilightTreasureReplacer.create(TFTreasure.tower_library    ,  8, "tower_library"    , ChestGenHooks.STRONGHOLD_LIBRARY      ,   502);
+			TFTreasure.basement          = TwilightTreasureReplacer.create(TFTreasure.basement         ,  9, "basement"         , ChestGenHooks.STRONGHOLD_CROSSING     ,     9);
+			TFTreasure.labyrinth_vault   = TwilightTreasureReplacer.create(TFTreasure.labyrinth_vault  , 10, "labyrinth_vault"  , ChestGenHooks.VILLAGE_BLACKSMITH      ,    16);
+			TFTreasure.darktower_cache   = TwilightTreasureReplacer.create(TFTreasure.darktower_cache  , 11, "darktower_cache"  , ChestGenHooks.STRONGHOLD_CORRIDOR     ,   525);
+			TFTreasure.darktower_key     = TwilightTreasureReplacer.create(TFTreasure.darktower_key    , 12, "darktower_key"    , ChestGenHooks.DUNGEON_CHEST           ,    25);
+			TFTreasure.darktower_boss    = TwilightTreasureReplacer.create(TFTreasure.darktower_boss   , 13, "darktower_boss"   , ChestGenHooks.PYRAMID_JUNGLE_DISPENSER,    59);
+			TFTreasure.tree_cache        = TwilightTreasureReplacer.create(TFTreasure.tree_cache       , 14, "tree_cache"       , ChestGenHooks.PYRAMID_JUNGLE_DISPENSER,   508);
+			TFTreasure.stronghold_cache  = TwilightTreasureReplacer.create(TFTreasure.stronghold_cache , 15, "stronghold_cache" , ChestGenHooks.STRONGHOLD_CORRIDOR     ,   510);
+			TFTreasure.stronghold_room   = TwilightTreasureReplacer.create(TFTreasure.stronghold_room  , 16, "stronghold_room"  , ChestGenHooks.DUNGEON_CHEST           ,    10);
+			TFTreasure.stronghold_boss   = TwilightTreasureReplacer.create(TFTreasure.stronghold_boss  , 17, "stronghold_boss"  , ChestGenHooks.VILLAGE_BLACKSMITH      ,   559);
+			TFTreasure.aurora_cache      = TwilightTreasureReplacer.create(TFTreasure.aurora_cache     , 18, "aurora_cache"     , ChestGenHooks.DUNGEON_CHEST           ,   513);
+			TFTreasure.aurora_room       = TwilightTreasureReplacer.create(TFTreasure.aurora_room      , 19, "aurora_room"      , ChestGenHooks.DUNGEON_CHEST           ,    13);
+		////TFTreasure.aurora_boss       = TwilightTreasureReplacer.create(TFTreasure.aurora_boss      , 20, "aurora_boss"      , ChestGenHooks.DUNGEON_CHEST           , 32745);// This one is actually empty and unused.
+			TFTreasure.troll_garden      = TwilightTreasureReplacer.create(TFTreasure.troll_garden     , 21, "troll_garden"     , ChestGenHooks.DUNGEON_CHEST           ,   524);
+			TFTreasure.troll_vault       = TwilightTreasureReplacer.create(TFTreasure.troll_vault      , 22, "troll_vault"      , ChestGenHooks.VILLAGE_BLACKSMITH      ,    24);
 		}
 		
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   2, 8,16, IL.Bottle_Purple_Drink.get(1));

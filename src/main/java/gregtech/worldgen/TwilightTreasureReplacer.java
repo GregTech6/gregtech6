@@ -29,6 +29,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ChestGenHooks;
 import twilightforest.TFTreasure;
 
 import java.util.HashMap;
@@ -45,16 +46,17 @@ public class TwilightTreasureReplacer extends TFTreasure {
 	public static TwilightTreasureReplacer HILLS_2;
 	
 	public final TFTreasure mTreasure;
-	public final String mCategory;
+	public final String mCategory, mVanillacategory;
+	/** remember 32745 is the normal Loot Chest. */
 	public final short mChestID;
+	/** Twilight Forest Treasure Table Index */
 	public final int mTreasureID;
 	
-	public static TFTreasure create(TFTreasure aTreasure, int aIndex, String aCategory) {return new TwilightTreasureReplacer(aTreasure, aIndex, aCategory);}
-	public static TFTreasure create(TFTreasure aTreasure, int aIndex, String aCategory, long aChestID) {return new TwilightTreasureReplacer(aTreasure, aIndex, aCategory, aChestID);}
-	public TwilightTreasureReplacer(TFTreasure aTreasure, int aIndex, String aCategory) {this(aTreasure, aIndex, aCategory, (short)32745);}
-	public TwilightTreasureReplacer(TFTreasure aTreasure, int aIndex, String aCategory, long aChestID) {
+	public static TFTreasure create(TFTreasure aTreasure, int aIndex, String aCategory, String aVanillacategory, long aChestID) {return new TwilightTreasureReplacer(aTreasure, aIndex, aCategory, aVanillacategory, aChestID);}
+	public TwilightTreasureReplacer(TFTreasure aTreasure, int aIndex, String aCategory, String aVanillacategory, long aChestID) {
 		super(aIndex);
 		mCategory = "twilightforest:"+aCategory;
+		mVanillacategory = aVanillacategory;
 		mChestID = (short)aChestID;
 		mTreasureID = aIndex;
 		mTreasure = aTreasure;
@@ -89,9 +91,12 @@ public class TwilightTreasureReplacer extends TFTreasure {
 	
 	public boolean generate(IInventory aInventory) {
 		boolean rReturn = T;
+		// About twice as much Loot as normal TF because the Loot is quite lackluster compared to the time investment otherwise.
 		for (int i = 0, j = (mTreasureID == 13                                           ?  8 :                          10); i < j; i++) rReturn &= addToInventory(aInventory, mTreasure.getCommonItem  (RNGSUS));
 		for (int i = 0, j = (mTreasureID == 13                                           ? 27 :                           6); i < j; i++) rReturn &= addToInventory(aInventory, mTreasure.getUncommonItem(RNGSUS));
 		for (int i = 0, j = (mTreasureID == 13 || mTreasureID == 21 || mTreasureID == 22 ?  1 : mTreasureID == 10 ?  4 :  2); i < j; i++) rReturn &= addToInventory(aInventory, mTreasure.getRareItem    (RNGSUS));
+		// Some Extra Loot from a fitting Vanilla Category in order to make most Modded Items available in TF, if you can't find the few Vanilla Dungeons.
+		if (UT.Code.stringValid(mVanillacategory)) for (int i = 0, j = 5+RNGSUS.nextInt(10); i < j; i++) rReturn &= addToInventory(aInventory, ChestGenHooks.getOneItem(mVanillacategory, RNGSUS));
 		return rReturn;
 	}
 	
