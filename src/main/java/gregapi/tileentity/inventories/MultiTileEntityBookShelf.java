@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -46,8 +46,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.WeightedRandomChestContent;
-import net.minecraftforge.common.ChestGenHooks;
 
 import java.util.List;
 
@@ -104,38 +102,40 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	
 	protected void generateDungeonLoot() {
 		if (isServerSide()) {
-			if (UT.Code.stringValid(mDungeonLootNameFront)) try {
+			if (UT.Code.stringValid(mDungeonLootNameFront)) {
 				DummyInventory tDummyInventory = new DummyInventory(14);
-				WeightedRandomChestContent.generateChestContents(RNGSUS, ChestGenHooks.getItems(mDungeonLootNameFront, RNGSUS), tDummyInventory, ChestGenHooks.getCount(mDungeonLootNameFront, RNGSUS));
-				for (ItemStack tStack : tDummyInventory.mInventory) {
-					int tSlot = rng(14);
-					if (!slotHas(tSlot)) {
-						if (BooksGT.BOOK_REGISTER.containsKey(tStack, T)) {
-							slot(tSlot, ST.amount(1, tStack));
-						} else {
-							slot(tSlot, rng(4)!=0?ST.make(Items.book, 1, 0):ST.make(MD.LOSTBOOKS, "randomBook", 1, 0, Items.book));
+				if (ST.generateLoot(RNGSUS, mDungeonLootNameFront, tDummyInventory)) {
+					for (ItemStack tStack : tDummyInventory.mInventory) {
+						int tSlot = rng(14);
+						if (!slotHas(tSlot)) {
+							if (BooksGT.BOOK_REGISTER.containsKey(tStack, T)) {
+								slot(tSlot, ST.amount(1, tStack));
+							} else {
+								slot(tSlot, rng(4)!=0?ST.make(Items.book, 1, 0):ST.make(MD.LOSTBOOKS, "randomBook", 1, 0, Items.book));
+							}
 						}
 					}
+					mDungeonLootNameFront = "";
+					updateInventory();
 				}
-				mDungeonLootNameFront = "";
-				updateInventory();
-			} catch(Throwable e) {e.printStackTrace(ERR);}
-			if (UT.Code.stringValid(mDungeonLootNameBack)) try {
+			}
+			if (UT.Code.stringValid(mDungeonLootNameBack)) {
 				DummyInventory tDummyInventory = new DummyInventory(14);
-				WeightedRandomChestContent.generateChestContents(RNGSUS, ChestGenHooks.getItems(mDungeonLootNameBack, RNGSUS), tDummyInventory, ChestGenHooks.getCount(mDungeonLootNameBack, RNGSUS));
-				for (ItemStack tStack : tDummyInventory.mInventory) {
-					int tSlot = 14+rng(14);
-					if (!slotHas(tSlot)) {
-						if (BooksGT.BOOK_REGISTER.containsKey(tStack, T)) {
-							slot(tSlot, ST.amount(1, tStack));
-						} else {
-							slot(tSlot, rng(4)!=0?ST.make(Items.book, 1, 0):ST.make(MD.LOSTBOOKS, "randomBook", 1, 0, Items.book));
+				if (ST.generateLoot(RNGSUS, mDungeonLootNameBack, tDummyInventory)) {
+					for (ItemStack tStack : tDummyInventory.mInventory) {
+						int tSlot = 14+rng(14);
+						if (!slotHas(tSlot)) {
+							if (BooksGT.BOOK_REGISTER.containsKey(tStack, T)) {
+								slot(tSlot, ST.amount(1, tStack));
+							} else {
+								slot(tSlot, rng(4)!=0?ST.make(Items.book, 1, 0):ST.make(MD.LOSTBOOKS, "randomBook", 1, 0, Items.book));
+							}
 						}
 					}
+					mDungeonLootNameBack = "";
+					updateInventory();
 				}
-				mDungeonLootNameBack = "";
-				updateInventory();
-			} catch(Throwable e) {e.printStackTrace(ERR);}
+			}
 		}
 	}
 	

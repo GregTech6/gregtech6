@@ -35,6 +35,7 @@ import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.delegate.ITileEntityCanDelegate;
+import gregtech.worldgen.TwilightTreasureReplacer;
 import ic2.api.item.IC2Items;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -51,15 +52,14 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.IFluidContainerItem;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 import static gregapi.data.CS.*;
 
@@ -67,7 +67,7 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class ST {
-	public static boolean TE_PIPES = F, BC_PIPES = F;
+	public static boolean TE_PIPES = F, BC_PIPES = F, TF_TREASURE = F;
 	
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	public static void checkAvailabilities() {
@@ -78,6 +78,10 @@ public class ST {
 		try {
 			buildcraft.api.transport.IInjectable.class.getCanonicalName();
 			BC_PIPES = T;
+		} catch(Throwable e) {/**/}
+		try {
+			twilightforest.TFTreasure.class.getCanonicalName();
+			TF_TREASURE = T;
 		} catch(Throwable e) {/**/}
 	}
 	
@@ -978,6 +982,22 @@ public class ST {
 	}
 	public static void hide(ItemStack aStack) {
 		if (aStack != null) try {codechicken.nei.api.API.hideItem(aStack);} catch(Throwable e) {/**/}
+	}
+	
+	public static final List<String> LOOT_TABLES = new ArrayList<>();
+	
+	public static boolean generateLoot(Random aRandom, String aLoot, IInventory aInventory) {
+		try {
+			if (aLoot.startsWith("twilightforest:")) {
+				if (!TF_TREASURE) return F;
+				TwilightTreasureReplacer.generate(aInventory, aLoot);
+				return T;
+			} else {
+				WeightedRandomChestContent.generateChestContents(aRandom, ChestGenHooks.getItems(aLoot, aRandom), aInventory, ChestGenHooks.getCount(aLoot, aRandom));
+				return T;
+			}
+		} catch(Throwable e) {e.printStackTrace(ERR);}
+		return F;
 	}
 	
 	/** Loads an ItemStack properly. */
