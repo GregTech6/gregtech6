@@ -324,7 +324,7 @@ public class MT {
 		OreDictMaterial rMaterial = create(aID, aNameOreDict, aSets, aR, aG, aB, aA, aRandomData, G_STONE, ANY.Stone, STONE, BRITTLE, MORTAR, FURNACE, EXTRUDER, EXTRUDER_SIMPLE);
 		String tStone = "stone"+rMaterial.mNameInternal;
 		OreDictManager.INSTANCE.addAutoBlackListing(tStone);
-		OreDictManager.INSTANCE.setAutomaticItemData(tStone, new OreDictItemData(rMaterial, U*9));
+		OreDictManager.INSTANCE.setAutomaticItemData(tStone, new OreDictItemData(rMaterial, "stoneNetherbrick".equalsIgnoreCase(tStone) ? U*4 : U*9));
 		return rMaterial;
 	}
 	

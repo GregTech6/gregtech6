@@ -540,14 +540,25 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.smash(ST.make(Blocks.glass_pane           , 1, W), OM.dust(MT.Glass, U));
 		RM.smash(ST.make(Blocks.stained_glass_pane   , 1, W), OM.dust(MT.Glass, U));
 		
-		RM.Hammer .addRecipe1(T, 16,  16, ST.make(Blocks.brick_block      , 1, W), ST.make(Items.brick, 3, 0));
-		RM.Hammer .addRecipe1(T, 16,  16, ST.make(Blocks.double_stone_slab, 1, 4), ST.make(Items.brick, 3, 0));
-		RM.Hammer .addRecipe1(T, 16,  16, ST.make(Blocks.brick_stairs     , 1, W), ST.make(Items.brick, 5, 0));
-		RM.Hammer .addRecipe1(T, 16,  16, ST.make(Blocks.stone_slab       , 1, 4), ST.make(Items.brick, 1, 0));
-		RM.Crusher.addRecipe1(T, 16,  64, new long[] {10000, 9000, 8000, 7000}, ST.make(Blocks.brick_block      , 1, W), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
-		RM.Crusher.addRecipe1(T, 16,  64, new long[] {10000, 9000, 8000, 7000}, ST.make(Blocks.double_stone_slab, 1, 4), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
-		RM.Crusher.addRecipe1(T, 16,  64, new long[] {10000, 9000, 8000, 7000}, ST.make(Blocks.brick_stairs     , 1, W), ST.make(Items.brick, 2, 0), ST.make(Items.brick, 2, 0), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
-		RM.Crusher.addRecipe1(T, 16,  32, new long[] {10000, 8000            }, ST.make(Blocks.stone_slab       , 1, 4), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
+		RM.Hammer .addRecipe1(T, 16,  16, ST.make(Blocks.brick_block        , 1, W), ST.make(Items.brick, 3, 0));
+		RM.Hammer .addRecipe1(T, 16,  16, ST.make(Blocks.double_stone_slab  , 1, 4), ST.make(Items.brick, 3, 0));
+		RM.Hammer .addRecipe1(T, 16,  16, ST.make(Blocks.brick_stairs       , 1, W), ST.make(Items.brick, 2, 0));
+		RM.Hammer .addRecipe1(T, 16,  16, ST.make(Blocks.stone_slab         , 1, 4), ST.make(Items.brick, 1, 0));
+		RM.Crusher.addRecipe1(T, 16,  64, new long[] {10000, 9000, 8000, 7000}, ST.make(Blocks.brick_block        , 1, W), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
+		RM.Crusher.addRecipe1(T, 16,  64, new long[] {10000, 9000, 8000, 7000}, ST.make(Blocks.double_stone_slab  , 1, 4), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
+		RM.Crusher.addRecipe1(T, 16,  64, new long[] {10000, 9000, 8000      }, ST.make(Blocks.brick_stairs       , 1, W), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
+		RM.Crusher.addRecipe1(T, 16,  32, new long[] {10000, 8000            }, ST.make(Blocks.stone_slab         , 1, 4), ST.make(Items.brick, 1, 0), ST.make(Items.brick, 1, 0));
+		
+		RM.Hammer .addRecipe1(T, 16,  16, ST.make(Blocks.nether_brick       , 1, W), ST.make(Items.netherbrick, 3, 0));
+		RM.Hammer .addRecipe1(T, 16,  16, ST.make(Blocks.double_stone_slab  , 1, 6), ST.make(Items.netherbrick, 3, 0));
+		RM.Hammer .addRecipe1(T, 16,  16, ST.make(Blocks.nether_brick_stairs, 1, W), ST.make(Items.netherbrick, 2, 0));
+		RM.Hammer .addRecipe1(T, 16,  16, ST.make(Blocks.nether_brick_fence , 1, W), ST.make(Items.netherbrick, 2, 0));
+		RM.Hammer .addRecipe1(T, 16,  16, ST.make(Blocks.stone_slab         , 1, 6), ST.make(Items.netherbrick, 1, 0));
+		RM.Crusher.addRecipe1(T, 16,  64, new long[] {10000, 9000, 8000, 7000}, ST.make(Blocks.nether_brick       , 1, W), ST.make(Items.netherbrick, 1, 0), ST.make(Items.netherbrick, 1, 0), ST.make(Items.netherbrick, 1, 0), ST.make(Items.netherbrick, 1, 0));
+		RM.Crusher.addRecipe1(T, 16,  64, new long[] {10000, 9000, 8000, 7000}, ST.make(Blocks.double_stone_slab  , 1, 6), ST.make(Items.netherbrick, 1, 0), ST.make(Items.netherbrick, 1, 0), ST.make(Items.netherbrick, 1, 0), ST.make(Items.netherbrick, 1, 0));
+		RM.Crusher.addRecipe1(T, 16,  64, new long[] {10000, 9000, 8000      }, ST.make(Blocks.nether_brick_stairs, 1, W), ST.make(Items.netherbrick, 1, 0), ST.make(Items.netherbrick, 1, 0), ST.make(Items.netherbrick, 1, 0));
+		RM.Crusher.addRecipe1(T, 16,  64, new long[] {10000, 9000, 8000      }, ST.make(Blocks.nether_brick_fence , 1, W), ST.make(Items.netherbrick, 1, 0), ST.make(Items.netherbrick, 1, 0), ST.make(Items.netherbrick, 1, 0));
+		RM.Crusher.addRecipe1(T, 16,  32, new long[] {10000, 8000            }, ST.make(Blocks.stone_slab         , 1, 6), ST.make(Items.netherbrick, 1, 0), ST.make(Items.netherbrick, 1, 0));
 		
 		RM.glowstone(ST.make(Blocks.glowstone, 1, 0), MT.Glowstone);
 		
@@ -932,8 +943,13 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		
 		RM.unbox(IL.Plank.get(3), ST.make(Blocks.bookshelf, 1, W), ST.make(Items.book, 3, 0));
 		
-		RM.pack(ST.make(Items.brick, 4, W), ST.make(Blocks.brick_block, 1, 0));
-		RM.pack(ST.make(Items.netherbrick, 4, W), ST.make(Blocks.nether_brick, 1, 0));
+		RM.pack(ST.make(Items.brick      , 2, W), ST.make(Blocks.stone_slab         , 1, 4));
+		RM.pack(ST.make(Items.brick      , 3, W), ST.make(Blocks.brick_stairs       , 1, 0));
+		RM.pack(ST.make(Items.brick      , 4, W), ST.make(Blocks.brick_block        , 1, 0));
+		
+		RM.pack(ST.make(Items.netherbrick, 2, W), ST.make(Blocks.stone_slab         , 1, 6));
+		RM.pack(ST.make(Items.netherbrick, 3, W), ST.make(Blocks.nether_brick_stairs, 1, 0));
+		RM.pack(ST.make(Items.netherbrick, 4, W), ST.make(Blocks.nether_brick       , 1, 0));
 		
 		RM.generify(plantGtFiber.mat(MT.Black    , 1), ST.make(Items.string, 1, 0));
 		RM.generify(plantGtFiber.mat(MT.Red      , 1), ST.make(Items.string, 1, 0));
