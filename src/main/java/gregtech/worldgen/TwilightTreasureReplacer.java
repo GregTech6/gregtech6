@@ -77,14 +77,37 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		if (mTreasureID == 3 && RNGSUS.nextBoolean()) return HILLS_2.generate(aWorld, aRandom, aX, aY, aZ, aChest);
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		if (tRegistry == null) return super.generate(aWorld, aRandom, aX, aY, aZ, aChest);
+		// Narrow down facing direction of the Chest if it is a double chest.
+		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) {
+			Block tBlock = WD.block(aWorld, aX, aY, aZ, tSide);
+			if (tBlock == Blocks.chest || tBlock == Blocks.trapped_chest) {
+				// replace adjacent vanilla Chests with Firefly Jars. Should help with the Maze Vault randomly exploding from Mob spawns.
+				WD.set(aWorld, aX+OFFX[tSide], aY, aZ+OFFZ[tSide], IL.TF_Firefly_Jar.block(), 0, 3);
+				// face away from close Wall.
+				for (byte tFace : (SIDES_AXIS_Z[tSide] ? ALL_SIDES_X : ALL_SIDES_Z)) if (WD.opq(aWorld, aX+OFFX[tFace]  , aY, aZ+OFFZ[tFace]  , T, T)) {
+					return tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, mChestID, UT.NBT.make(NBT_FACING, OPOS[tFace], NBT_TRAPPED, T, "gt.dungeonloot", mCategory), F, T);
+				}
+				// face away from further Wall then.
+				for (byte tFace : (SIDES_AXIS_Z[tSide] ? ALL_SIDES_X : ALL_SIDES_Z)) if (WD.opq(aWorld, aX+OFFX[tFace]*2, aY, aZ+OFFZ[tFace]*2, T, T)) {
+					return tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, mChestID, UT.NBT.make(NBT_FACING, OPOS[tFace], NBT_TRAPPED, T, "gt.dungeonloot", mCategory), F, T);
+				}
+				// guess there is no close enough Walls.
+				return tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, mChestID, UT.NBT.make(NBT_FACING, (SIDES_AXIS_Z[tSide] ? ALL_SIDES_X : ALL_SIDES_Z)[RNGSUS.nextInt(2)], NBT_TRAPPED, T, "gt.dungeonloot", mCategory), F, T);
+			}
+		}
 		// face towards Air if possible.
 		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) {
-			if (WD.air(aWorld, aX+OFFX[tSide], aY, aZ+OFFZ[tSide]))
+			if (WD.air(aWorld, aX+OFFX[tSide]  , aY, aZ+OFFZ[tSide]  ))
 			return tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, mChestID, UT.NBT.make(NBT_FACING, tSide, NBT_TRAPPED, T, "gt.dungeonloot", mCategory), F, T);
 		}
-		// face away from Wall then.
+		// face away from close Wall.
 		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) {
-			if (WD.opq(aWorld, aX+OFFX[tSide], aY, aZ+OFFZ[tSide], T, T))
+			if (WD.opq(aWorld, aX+OFFX[tSide]  , aY, aZ+OFFZ[tSide]  , T, T))
+			return tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, mChestID, UT.NBT.make(NBT_FACING, OPOS[tSide], NBT_TRAPPED, T, "gt.dungeonloot", mCategory), F, T);
+		}
+		// face away from further Wall then.
+		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) {
+			if (WD.opq(aWorld, aX+OFFX[tSide]*2, aY, aZ+OFFZ[tSide]*2, T, T))
 			return tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, mChestID, UT.NBT.make(NBT_FACING, OPOS[tSide], NBT_TRAPPED, T, "gt.dungeonloot", mCategory), F, T);
 		}
 		// well, random it is!

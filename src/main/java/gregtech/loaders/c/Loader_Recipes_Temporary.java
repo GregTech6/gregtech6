@@ -48,7 +48,8 @@ public class Loader_Recipes_Temporary implements Runnable {
 		ItemStack tStack = null;
 		
 		// TODO: Graphite Electrodes are made from petroleum coke after it is mixed with coal tar pitch. They are then extruded and shaped, baked to carbonize the binder (pitch) and finally graphitized by heating it to temperatures approaching 3273K.
-		RM.Extruder.addRecipe2(T, 512, 512, OP.dust.mat(MT.Graphite, 1), IL.Shape_Extruder_Rod.get(0), OP.stick.mat(MT.Graphite, 1));
+		RM.Extruder.addRecipe2(T, 512, 512, OP.dust.mat(MT.Graphite, 1), IL.Shape_Extruder_Rod     .get(0), OP.stick    .mat(MT.Graphite, 1));
+		RM.Extruder.addRecipe2(T, 512, 512, OP.dust.mat(MT.Graphite, 2), IL.Shape_Extruder_Rod_Long.get(0), OP.stickLong.mat(MT.Graphite, 1));
 		
 		
 		// TODO: I will keep this antiquated shit for now.
