@@ -30,6 +30,7 @@ Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even
 [CHANGED] Twilight Forest Loot Chests are replaced with GregTech ones. Also they will contain a few fitting Items from all the Vanilla Loot Tables (you know, the ones other Mods tend to add Stuff to).
 [CHANGED] Twilight Bunnies now drop the same Stuff Et Futurum Rabbits do, or Harvestcrafts Rabbit Meat.
 [CHANGED] Enchanted Books are now stackable but BEWARE that vanilla Anvils will eat the entire Stack you insert so dont keep it stacked in its UI.
+[CHANGED] Scythe cannot mine Lily Pads and similar anymore.
 [ADDED] Villagers can now be lured with vanillas Emerald Items, similar to how Wheat works with Cows.
 [ADDED] Tusks, Hoofs, Horns and Antlers as Drops for various Mobs. Primarily as a way to make Glue early on.
 
