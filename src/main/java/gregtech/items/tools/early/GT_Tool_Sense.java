@@ -59,8 +59,8 @@ public class GT_Tool_Sense extends ToolStats {
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		if (aBlock instanceof BlockBaseLilyPad || aBlock instanceof BlockLilyPad) return F;
-		if (MD.BoP.mLoaded && aBlock instanceof BlockBOPLilypad) return F;
-		if (MD.TF.mLoaded && (aBlock instanceof BlockTFHugeLilyPad || aBlock instanceof BlockTFHugeWaterLily)) return F;
+		if (MD.BoP.mLoaded &&  aBlock instanceof BlockBOPLilypad) return F;
+		if (MD.TF .mLoaded && (aBlock instanceof BlockTFHugeLilyPad || aBlock instanceof BlockTFHugeWaterLily)) return F;
 		String tTool = aBlock.getHarvestTool(aMetaData);
 		return (tTool != null && (tTool.equalsIgnoreCase(TOOL_sense) || tTool.equalsIgnoreCase(TOOL_scythe))) || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.vine || IL.TF_Mazehedge.equal(aBlock) || IL.NeLi_Wart_Block_Crimson.equal(aBlock);
 	}

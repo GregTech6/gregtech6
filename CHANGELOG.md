@@ -26,6 +26,7 @@ Things like Barrels inside of Inventories are not hit by this until you place th
 Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even spawn Thaumcraft Flux Goo/Gas if it is installed.
 [FIXED] Crucible Crossings did not always work all that well when multiple Faucets and Molds tried to pour at the same time.
 [FIXED] Glass Bottle of Holy Water was not able to cure Zombies at all whatsoever, even with the Weakness Potion Effect.
+[CHANGED] Added a Maximum Range to Nuclear Radiation of 200 for a running Reactor and 500 for an exploding one.
 [CHANGED] The Magnetic Separator can now also deal with Fluids. unsure if I am gonna use that for anything though.
 [CHANGED] Twilight Forest Loot Chests are replaced with GregTech ones. Also they will contain a few fitting Items from all the Vanilla Loot Tables (you know, the ones other Mods tend to add Stuff to).
 [CHANGED] Twilight Bunnies now drop the same Stuff Et Futurum Rabbits do, or Harvestcrafts Rabbit Meat.
