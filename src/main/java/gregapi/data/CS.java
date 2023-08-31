@@ -1649,6 +1649,8 @@ public class CS {
 		RailAluminiumDetector, RailMagnaliumDetector, RailBronzeDetector, RailStainlessSteelDetector, RailSteelDetector, RailTitaniumDetector, RailTungstenDetector, RailTungstenSteelDetector, RailTungstenCarbideDetector, RailAdamantiumDetector,
 		RailRoad;
 		
+		/** EFR Deepslate Redstone Ore Blocks. */
+		public static Block EtFu_Deepslate_Redstone_Ore, EtFu_Deepslate_Lit_Redstone_Ore;
 		/** GT6 Stone Type. */
 		public static BlockBase GraniteBlack, GraniteRed, Basalt, Marble, Limestone, Granite, Diorite, Andesite, Komatiite, SchistGreen, SchistBlue, Kimberlite, Quartzite, PrismarineLight, PrismarineDark, Slate, Shale;
 		/** Contains all GT6 Stone Types. */

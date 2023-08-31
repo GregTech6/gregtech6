@@ -19,6 +19,7 @@
 
 package gregapi.load;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.data.*;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
@@ -692,7 +693,8 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "arcaniumOre"                    , null));
 		
 		
-		
+		BlocksGT.EtFu_Deepslate_Redstone_Ore     = GameRegistry.findBlock(MD.EtFu.mID, "deepslate_redstone_ore");
+		BlocksGT.EtFu_Deepslate_Lit_Redstone_Ore = GameRegistry.findBlock(MD.EtFu.mID, "deepslate_lit_redstone_ore");
 		
 		
 		MT.H2O.mTextureDust   = MT.Steam.mTextureDust   = MT.FreshWater.mTextureDust   = MT.DistWater.mTextureDust   = MT.Ice.mTextureDust   = MT.Snow.mTextureDust   = MT.Snow.mTextureSolid = BlockTextureCopied.get(Blocks.snow);
