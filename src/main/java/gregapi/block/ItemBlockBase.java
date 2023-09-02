@@ -84,11 +84,15 @@ public class ItemBlockBase extends ItemBlock implements IBlock, IItemGT {
 				}
 			}
 		}
-		if (mPlaceable.useGravity(aMeta)) aList.add(LH.Chat.ORANGE + LH.get(LH.TOOLTIP_GRAVITY));
-		if (mPlaceable.doesPistonPush(aMeta)) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_PISTONPUSHABLE));
-		if (mPlaceable.getFlammability(aMeta) > 0) aList.add(LH.Chat.RED + LH.get(LH.TOOLTIP_FLAMMABLE));
+		if (mPlaceable.useGravity(aMeta))
+			aList.add(LH.Chat.ORANGE + LH.get(LH.TOOLTIP_GRAVITY));
+		if (mPlaceable.doesPistonPush(aMeta))
+			aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_PISTONPUSHABLE));
+		if (mPlaceable.isFlammable(aMeta) || mPlaceable.isFireSource(aMeta) || mPlaceable.getFlammability(aMeta) > 0)
+			aList.add(LH.Chat.RED + LH.get(LH.TOOLTIP_FLAMMABLE));
 		float tResistance = mPlaceable.getExplosionResistance(aMeta);
 		if (tResistance >= 4) aList.add(LH.getToolTipBlastResistance(field_150939_a, tResistance));
+		
 		aList.add(LH.getToolTipHarvest(field_150939_a.getMaterial(), field_150939_a.getHarvestTool(aMeta), field_150939_a.getHarvestLevel(aMeta)));
 		while (aList.remove(null));
 	}

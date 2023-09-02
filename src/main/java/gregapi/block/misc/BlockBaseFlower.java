@@ -19,16 +19,10 @@
 
 package gregapi.block.misc;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-
 import cpw.mods.fml.common.Optional;
 import gregapi.block.IBlockBase;
 import gregapi.block.ItemBlockBase;
 import gregapi.compat.galacticraft.IBlockSealable;
-import gregapi.data.CS.ModIDs;
 import gregapi.data.MD;
 import gregapi.render.IIconContainer;
 import gregapi.util.ST;
@@ -55,6 +49,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import java.util.List;
+import java.util.Random;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -119,6 +118,8 @@ public abstract class BlockBaseFlower extends BlockFlower implements IBlockBase,
 	@Override public boolean canSilkHarvest(byte aMeta) {return T;}
 	@Override public boolean canCreatureSpawn(byte aMeta) {return F;}
 	@Override public boolean isSealable(byte aMeta, byte aSide) {return F;}
+	@Override public boolean isFlammable(byte aMeta) {return getFlammability(aMeta) > 0;}
+	@Override public boolean isFireSource(byte aMeta) {return F;}
 	@Override public int getFlammability(byte aMeta) {return 0;}
 	@Override public int getFireSpreadSpeed(byte aMeta) {return 0;}
 	@Override public int getItemStackLimit(ItemStack aStack) {return 64;}

@@ -668,8 +668,9 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	@Override public void onBlockAdded2(World aWorld, int aX, int aY, int aZ) {if (MOSSY[WD.meta(aWorld, aX, aY, aZ)] && WD.burning(aWorld, aX, aY, aZ)) aWorld.scheduleBlockUpdate(aX, aY, aZ, this, tickRate(aWorld));}
 	@Override public int tickRate(World aWorld) {return 100;}
 	@Override public boolean canCreatureSpawn(byte aMeta) {return mBlock == this && SPAWNABLE[aMeta];}
-	@Override public boolean isFlammable(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return MOSSY[WD.meta(aWorld, aX, aY, aZ)];}
+	@Override public boolean isFireSource(byte aMeta) {return MOSSY[aMeta];}
+	@Override public boolean isFlammable(byte aMeta) {return MOSSY[aMeta];}
+	@Override public int getFlammability(byte aMeta) {return 0;}
 	@Override public int getFireSpreadSpeed(byte aMeta) {return MOSSY[aMeta]?3000:0;}
-	@Override public boolean isFireSource(World aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return MOSSY[WD.meta(aWorld, aX, aY, aZ)];}
 	@Override public boolean isReplaceableOreGen(World aWorld, int aX, int aY, int aZ, Block aTarget) {return (aTarget == this || (aY <= 6 && aTarget == Blocks.stone)) && WD.meta(aWorld, aX, aY, aZ) == STONE;}
 }

@@ -19,11 +19,6 @@
 
 package gregapi.block;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-
 import gregapi.data.LH;
 import gregapi.data.OP;
 import gregapi.util.ST;
@@ -49,6 +44,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import java.util.List;
+import java.util.Random;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -89,8 +89,8 @@ public abstract class BlockBase extends Block implements IBlockBase {
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}
 	@Override public boolean canSustainPlant(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide, IPlantable aPlant) {return F;}
 	@Override public boolean canCreatureSpawn(EnumCreatureType type, IBlockAccess aWorld, int aX, int aY, int aZ) {byte aMeta = WD.meta(aWorld, aX, aY, aZ); return canCreatureSpawn(aMeta) && isSideSolid(aMeta, SIDE_TOP);}
-	@Override public boolean isFireSource(World aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return F;}
-	@Override public boolean isFlammable(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return getFlammability(aWorld, aX, aY, aZ, aSide) > 0;}
+	@Override public boolean isFireSource(World aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return isFireSource(WD.meta(aWorld, aX, aY, aZ));}
+	@Override public boolean isFlammable(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return isFlammable(WD.meta(aWorld, aX, aY, aZ));}
 	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return getFlammability(WD.meta(aWorld, aX, aY, aZ));}
 	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aSide) {return getFireSpreadSpeed(WD.meta(aWorld, aX, aY, aZ));}
 	@Override public float getExplosionResistance(Entity aEntity, World aWorld, int aX, int aY, int aZ, double eX, double eY, double eZ) {return getExplosionResistance(WD.meta(aWorld, aX, aY, aZ));}
@@ -109,6 +109,8 @@ public abstract class BlockBase extends Block implements IBlockBase {
 	@Override public boolean canSilkHarvest(byte aMeta) {return T;}
 	@Override public boolean canCreatureSpawn(byte aMeta) {return F;}
 	@Override public boolean isSealable(byte aMeta, byte aSide) {return isSideSolid(aMeta, aSide);}
+	@Override public boolean isFireSource(byte aMeta) {return F;}
+	@Override public boolean isFlammable(byte aMeta) {return getFlammability(aMeta) > 0;}
 	@Override public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {/**/}
 	@Override public float getExplosionResistance(byte aMeta) {return 10.0F;}
 	@Override public int getFlammability(byte aMeta) {return 0;}
