@@ -43,6 +43,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.remove(ST.make(Items.reeds, 1, 0));
 		CR.remove(ST.make(Items.reeds, 1, 0), ST.make(Items.reeds, 1, 0), ST.make(Items.reeds, 1, 0));
 		CR.remove(ST.make(Blocks.cobblestone, 1, 0), ST.make(Items.quartz, 1, 0), NI, ST.make(Items.quartz, 1, 0), ST.make(Blocks.cobblestone, 1, 0));
+		CR.remove(ST.make(Blocks.glass, 1, 0), NI, ST.make(Blocks.glass, 1, 0), NI, ST.make(Blocks.glass, 1, 0));
 		CR.remove(ST.make(Items.blaze_rod, 1, 0));
 		CR.remove(ST.make(Items.bone, 1, 0));
 		
@@ -53,6 +54,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_NCC, "XXX", "XFX", "XXX", 'X', cobblestone                , 'F', OD.craftingFirestarter);
 		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_NCC, "XXX", "XFX", "XXX", 'X', stone.dat(MT.STONES.Basalt), 'F', OD.craftingFirestarter);
 		CR.shaped(ST.make(Blocks.furnace, 1, 0), DEF_NCC, "XXX", "XFX", "XXX", 'X', rockGt.dat(ANY.Stone)      , 'F', OD.craftingFirestarter);
+		
+		CR.shaped(ST.make(Items.glass_bottle, 3, 0), DEF_NCC, "G G", " G ", 'G', OD.glassColorless);
 		
 		CR.delate(ST.make(Blocks.enchanting_table, 1, 0));
 		CR.delate(ST.make(Blocks.ender_chest, 1, 0));

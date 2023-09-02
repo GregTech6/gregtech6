@@ -50,7 +50,7 @@ public class Loader_Recipes_Hints implements Runnable {
 		, IL.Bottle_Empty.getWithName(1, "Rightclick the Crucible with an Empty Bottle")
 		, IL.TC_Shimmerleaf.getWithName(1, "Or just throw a Shimmerleaf into it")
 		, ST.make(aRegistry.getItem(1199), "Heat up the Crucible using a Burning Box")
-		, ST.make(Blocks.redstone_ore, 1, 0, "Using a Club to mine Vanilla Redstone Ore gives Cinnabar")
+		, ST.make(Blocks.redstone_ore, 1, 0, "Use a Club to mine Vanilla or Deepslate Redstone Ore for Cinnabar")
 		), ST.array(IL.Bottle_Mercury.get(1), ST.make(OP.ingot.mat(MT.Hg, 1), "Pouring this into Molds only works with additional Cooling!"), ST.make(OP.nugget.mat(MT.Hg, 1), "Pouring this into Molds only works with additional Cooling!")), null, ZL_LONG, FL.array(MT.Hg.liquid(1, T)), FL.array(MT.Hg.liquid(1, T)), 0, 0, 0);
 		
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(
@@ -99,14 +99,52 @@ public class Loader_Recipes_Hints implements Runnable {
 		), ST.array(ST.make(Items.potionitem, 1, 0, "Ahh, bottled Tap Water!")), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(
-		  ST.make(OP.dust           .mat(MT.Endstone, 1), "Endstone can be centrifuged for Helium")
-		, ST.make(OP.dust           .mat(MT.Monazite, 1), "Monazite can be smelted for Helium")
-		, ST.make(OP.crushedPurified.mat(MT.Biotite , 1), "Biotite can be dried for Argon")
-		, ST.make(Blocks.end_stone                , 1, 0, "Some Overworld Dungeons have Endstone too!")
-		, ST.make(aRegistry              .getItem(17111), "Cryo Distillation Towers also produce Noble Gasses")
-		, ST.make(aRegistry              .getItem(17198), "Worst case, just let the Fusion Reactor make it!")
-		), ST.array(ST.make(OP.bouleGt.mat(MT.Si, 1), "Noble Gas is used for Crystallizing Boules"), ST.make(OP.plateGem.mat(MT.Si, 1), "Then cut into Plates"), ST.make(OP.plateGemTiny.mat(MT.Si, 1), "And cut in tinier Plates for Circuits"), ST.make(OP.bouleGt.mat(MT.RedstoneAlloy, 1), "Noble Gas is used for Crystallizing Boules"), ST.make(OP.plateGem.mat(MT.RedstoneAlloy, 1), "Then cut into Plates"), ST.make(OP.plateGemTiny.mat(MT.RedstoneAlloy, 1), "And cut in tinier Plates for Circuits")), null, ZL_LONG, ZL_FS, FL.array(FL.Helium.make(1), FL.Neon.make(1), FL.Argon.make(1)), 0, 0, 0);
+		  ST.make(OP.dust           .mat(MT.Endstone     , 1), "Endstone can be centrifuged for Helium")
+		, ST.make(OP.dust           .mat(MT.Monazite     , 1), "Monazite can be smelted for Helium")
+		, ST.make(OP.crushedPurified.mat(MT.Biotite      , 1), "Biotite can be dried for Argon")
+		, ST.make(Blocks.end_stone                     , 1, 0, "Some Overworld Dungeons have Endstone too!")
+		, ST.make(aRegistry                   .getItem(17111), "Cryo Distillation Towers also produce Noble Gasses")
+		, ST.make(aRegistry                   .getItem(17198), "Worst case, just let the Fusion Reactor make it!")
+		), ST.array(
+		  ST.make(OP.bouleGt        .mat(MT.Si           , 1), "Noble Gas is used for Crystallizing Boules")
+		, ST.make(OP.plateGem       .mat(MT.Si           , 1), "Then cut into Plates")
+		, ST.make(OP.plateGemTiny   .mat(MT.Si           , 1), "And cut in tinier Plates for Circuits")
+		, ST.make(OP.bouleGt        .mat(MT.RedstoneAlloy, 1), "Noble Gas is used for Crystallizing Boules")
+		, ST.make(OP.plateGem       .mat(MT.RedstoneAlloy, 1), "Then cut into Plates")
+		, ST.make(OP.plateGemTiny   .mat(MT.RedstoneAlloy, 1), "And cut in tinier Plates for Circuits")
+		), null, ZL_LONG, ZL_FS, FL.array(FL.Helium.make(1), FL.Neon.make(1), FL.Argon.make(1)), 0, 0, 0);
 		
+		RM.DidYouKnow.addFakeRecipe(F, ST.array(
+		  ST.make(OP.blockDust.mat(MT.OREMATS.Magnetite          , 1), "Black Sand can be found at Rivers")
+		, ST.make(OP.blockDust.mat(MT.OREMATS.BasalticMineralSand, 1), "Black Sand can be found at Rivers")
+		, ST.make(OP.blockDust.mat(MT.OREMATS.GraniticMineralSand, 1), "Black Sand can be found at Rivers")
+		,         OP.blockDust.mat(MT.OREMATS.Cassiterite        , 1)
+		,         OP.blockDust.mat(MT.OREMATS.GarnetSand         , 1)
+		,         OP.blockDust.mat(MT.OREMATS.GlauconiteSand     , 1)
+		), ST.array(
+		  ST.make(OP.dust     .mat(MT.OREMATS.Magnetite          , 9), "Remember Dust Blocks can be crafted into 9 Dust")
+		, ST.make(OP.dust     .mat(MT.OREMATS.BasalticMineralSand, 9), "Remember Dust Blocks can be crafted into 9 Dust")
+		, ST.make(OP.dust     .mat(MT.OREMATS.GraniticMineralSand, 9), "Remember Dust Blocks can be crafted into 9 Dust")
+		, ST.make(OP.dust     .mat(MT.OREMATS.Cassiterite        , 9), "Remember Dust Blocks can be crafted into 9 Dust")
+		, ST.make(OP.dust     .mat(MT.OREMATS.GarnetSand         , 9), "Remember Dust Blocks can be crafted into 9 Dust")
+		, ST.make(OP.dust     .mat(MT.OREMATS.GlauconiteSand     , 9), "Remember Dust Blocks can be crafted into 9 Dust")
+		), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
+		
+		RM.DidYouKnow.addFakeRecipe(F, ST.array(
+		  ST.make(OP.blockDust.mat(MT.Sand                       , 1), "Sand can be found near Water or in Deserts")
+		, ST.make(OP.blockDust.mat(MT.RedSand                    , 1), "Red Sand can be found in Mesa Biomes")
+		, ST.make(OP.blockDust.mat(MT.SoulSand                   , 1), "Soulsand can be found in the Nether")
+		, ST.make(OP.blockDust.mat(MT.Stone                      , 1), "Gravel can be found pretty much anywhere")
+		,         OP.blockDust.mat(MT.Glass                      , 1)
+		,         OP.blockDust.mat(MT.OREMATS.QuartzSand         , 1)
+		), ST.array(
+		  ST.make(OP.dust     .mat(MT.Sand                       , 9), "Remember Dust Blocks can be crafted into 9 Dust")
+		, ST.make(OP.dust     .mat(MT.RedSand                    , 9), "Remember Dust Blocks can be crafted into 9 Dust")
+		, ST.make(OP.dust     .mat(MT.SoulSand                   , 9), "Remember Dust Blocks can be crafted into 9 Dust")
+		, ST.make(OP.dust     .mat(MT.Stone                      , 9), "Remember Dust Blocks can be crafted into 9 Dust")
+		, ST.make(OP.dust     .mat(MT.Glass                      , 9), "Remember Dust Blocks can be crafted into 9 Dust")
+		, ST.make(OP.dust     .mat(MT.OREMATS.QuartzSand         , 9), "Remember Dust Blocks can be crafted into 9 Dust")
+		), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		
 		// Tree Stuff
 		

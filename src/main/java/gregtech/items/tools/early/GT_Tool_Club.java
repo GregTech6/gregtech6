@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -101,9 +101,9 @@ public class GT_Tool_Club extends GT_Tool_HardHammer {
 			aDrops.add(OP.rockGt.mat(((BlockStones)aBlock).mMaterial, 1+RNGSUS.nextInt(((BlockStones)aBlock).mOctantcount/2)));
 			return 0;
 		}
-		if (OM.is("oreRedstone", ST.make(aBlock, 1, aMetaData))) {
+		if (aBlock == Blocks.redstone_ore || aBlock == Blocks.lit_redstone_ore || aBlock == BlocksGT.EtFu_Deepslate_Redstone_Ore  || aBlock == BlocksGT.EtFu_Deepslate_Lit_Redstone_Ore || OM.is("oreRedstone", ST.make(aBlock, 1, aMetaData))) {
 			aDrops.clear();
-			aDrops.add(OP.dust.mat(MT.OREMATS.Cinnabar, 1));
+			aDrops.add(OP.gemChipped.mat(MT.OREMATS.Cinnabar, 1+RNGSUS.nextInt(4)));
 			return 0;
 		}
 		return super.convertBlockDrops(aDrops, aStack, aPlayer, aBlock, aAvailableDurability, aX, aY, aZ, aMetaData, aFortune, aSilkTouch, aEvent);
