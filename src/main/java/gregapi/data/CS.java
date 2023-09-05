@@ -1949,6 +1949,7 @@ public class CS {
 		, BAUBLES           = "Baubles"
 		
 		, TC                = "Thaumcraft"
+		, TCTE              = "ThaumcraftExtras"//TODO Mod ID might be wrong!
 		, TCFM              = "ForbiddenMagic"
 		, TECHNOM           = "technom"
 		, BOTA              = "Botania"

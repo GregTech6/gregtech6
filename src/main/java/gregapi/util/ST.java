@@ -991,9 +991,17 @@ public class ST {
 			if (aLoot.startsWith("twilightforest:")) {
 				if (!TF_TREASURE) return F;
 				TwilightTreasureReplacer.generate(aInventory, aLoot);
+				if (IL.TC_Gold_Coin.exists()) for (int i = 0, j = aInventory.getSizeInventory(); i < j; i++) {
+					ItemStack tStack = aInventory.getStackInSlot(i);
+					if (ST.item(tStack) == Items.gold_nugget) ST.set(tStack, IL.TC_Gold_Coin.get(1), F, T);
+				}
 				return T;
 			} else {
 				WeightedRandomChestContent.generateChestContents(aRandom, ChestGenHooks.getItems(aLoot, aRandom), aInventory, ChestGenHooks.getCount(aLoot, aRandom));
+				if (IL.TC_Gold_Coin.exists()) for (int i = 0, j = aInventory.getSizeInventory(); i < j; i++) {
+					ItemStack tStack = aInventory.getStackInSlot(i);
+					if (ST.item(tStack) == Items.gold_nugget) ST.set(tStack, IL.TC_Gold_Coin.get(1), F, T);
+				}
 				return T;
 			}
 		} catch(Throwable e) {e.printStackTrace(ERR);}
