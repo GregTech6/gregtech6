@@ -406,6 +406,8 @@ public class TD {
 		public static final TagData VALUABLE                                = TagData.createTagData("PROPERTIES.VALUABLE", "Valuable");
 		/** If this Material is some kind of Magical */
 		public static final TagData MAGICAL                                 = TagData.createTagData("PROPERTIES.MAGICAL", "Magical");
+		/** If this Material is some kind of Thaumcraft Warp inducing */
+		public static final TagData WARPING                                 = TagData.createTagData("PROPERTIES.WARPING", "Warping");
 		/** If this Material is useable in the Betweenlands */
 		public static final TagData BETWEENLANDS                            = TagData.createTagData("PROPERTIES.BETWEENLANDS", "Betweenlands");
 		/** If this Material can break Twilight Mazes */
@@ -464,9 +466,9 @@ public class TD {
 		public static final TagData DONT_SHOW_THIS_COMPONENT                = TagData.createTagData("PROPERTIES.DONT_SHOW_THIS_COMPONENT", "Not shown as Component");
 		
 		/** Contains all known Property Tags. */
-		public static final List<TagData> ALL                               = new ArrayListNoNulls<>(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, COAL, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, BETWEENLANDS, LIGHTING, BRITTLE, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF, EXPLODES_IN_NONVANILLA_CRAFTING_GRID, HAS_COLOR, AUTO_BLACKLIST, AUTO_MATERIAL, INVALID_MATERIAL, IGNORE_IN_COLOR_LOG, UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT));
+		public static final List<TagData> ALL                               = new ArrayListNoNulls<>(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, COAL, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, WARPING, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, MAGNETIC_ACTIVE, MAGNETIC_PASSIVE, BETWEENLANDS, MAZEBREAKER, LIGHTING, BRITTLE, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF, EXPLODES_IN_NONVANILLA_CRAFTING_GRID, HAS_COLOR, AUTO_BLACKLIST, AUTO_MATERIAL, INVALID_MATERIAL, IGNORE_IN_COLOR_LOG, UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT));
 		/** Contains all relevant Property Tags. */
-		public static final List<TagData> ALL_RELEVANTS                     = new ArrayListNoNulls<>(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, COAL, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, BETWEENLANDS, BRITTLE, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF, EXPLODES_IN_NONVANILLA_CRAFTING_GRID));
+		public static final List<TagData> ALL_RELEVANTS                     = new ArrayListNoNulls<>(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, COAL, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, WARPING, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, MAGNETIC_ACTIVE, MAGNETIC_PASSIVE, BETWEENLANDS, MAZEBREAKER, BRITTLE, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF, EXPLODES_IN_NONVANILLA_CRAFTING_GRID));
 	}
 	
 	/** Describing the kind of binding the Compound Material is having */
