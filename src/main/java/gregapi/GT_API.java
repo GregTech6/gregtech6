@@ -417,6 +417,7 @@ public class GT_API extends Abstract_Mod {
 			MT.FierySteel.setLocal("Fury Style");
 			MT.Thaumium.setLocal("Thaumanominum");
 			MT.DarkThaumium.setLocal("Dank Thaumanominum");
+			MT.VoidMetal.setLocal("Warranty Void Metal");
 			MT.Coal.setLocal("Cool");
 			MT.Charcoal.setLocal("Charred Cole");
 			MT.Lapis.setLocal("Le Piss");
@@ -454,6 +455,7 @@ public class GT_API extends Abstract_Mod {
 			MT.Bronze.setLocal("Tinkerers Alloy");
 			MT.ArsenicCopper.setLocal("Arsenine Alloy");
 			MT.ArsenicBronze.setLocal("Arsenine Tinkerers Alloy");
+			MT.BismuthBronze.setLocal("Biffmiff Tinkerers Alloy");
 			MT.BlackBronze.setLocal("Afro Tinkerers Alloy"); // the original Joke got cancelled, but since I got a big ball of Hair on my head as of the time of writing this (thanks pandemic), it is perfectly acceptable.
 			MT.Constantan.setLocal("Cupronickel");
 			MT.Ge.setLocal("Platosmium");
