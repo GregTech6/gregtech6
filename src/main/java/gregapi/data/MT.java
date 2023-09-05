@@ -2451,7 +2451,7 @@ public class MT {
 			OREMATS.Cinnabar        .put(MD.TC, COMMON_ORE);
 			
 			
-			DarkThaumium            .put(MD.TCFM).visDefault();
+			DarkThaumium            .put(MD.TCFM).visDefault(); // TODO Mod alignment might be wrong TC Addon
 			
 			
 			Livingwood              .put(MD.BOTA).visDefault();

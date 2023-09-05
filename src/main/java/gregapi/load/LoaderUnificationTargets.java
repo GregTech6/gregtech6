@@ -584,6 +584,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.InfusedOrder           , MD.TC, "ItemShard"         ,  4);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.InfusedEntropy         , MD.TC, "ItemShard"         ,  5);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.InfusedBalance         , MD.TC, "ItemShard"         ,  6);
+		OreDictManager.INSTANCE.setTarget(OP.ring           , MT.Au                     , MD.TC, "ItemBaubleBlanks"  ,  1);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Hg                     , MD.TC, "ItemNugget"        ,  5);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Thaumium               , MD.TC, "ItemNugget"        ,  6);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.VoidMetal              , MD.TC, "ItemNugget"        ,  7);
@@ -926,7 +927,7 @@ public class LoaderUnificationTargets implements Runnable {
 //      OreDictManager.INSTANCE.setTarget(OP.dust           , MT.UraniumEnriched        , MD.ReC, "reactorcraft_item_raw", 1);
 //      OreDictManager.INSTANCE.setTarget(OP.dust           , MT.UraniumDepleted        , MD.ReC, "reactorcraft_item_raw", 2);
 //      OreDictManager.INSTANCE.setTarget(OP.dust           , MT.AmmoniumChloride       , MD.ReC, "reactorcraft_item_raw", 3); // registered as dustAmmonium
-//      OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Quicklime              , MD.ReC, "reactorcraft_item_raw", 4);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Quicklime              , MD.ReC, "reactorcraft_item_raw", 4);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.CaCO3                  , MD.ReC, "reactorcraft_item_raw", 5);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.OREMATS.Magnetite      , MD.ReC, "reactorcraft_item_raw", 6);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Th                     , MD.ReC, "reactorcraft_item_raw", 7);

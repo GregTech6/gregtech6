@@ -913,6 +913,8 @@ public class LoaderItemList implements Runnable {
 		IL.TC_Block_Flesh                       .set(ST.make(MD.TC, "blockTaint"                            , 1, 2), new OreDictItemData(MT.MeatRotten, 18*U, MT.Bone, U));
 		IL.TC_Block_Air                         .set(ST.make(MD.TC, "blockAiry"                             , 1, 0));
 		IL.TC_Phial                             .set(ST.make(MD.TC, "ItemEssence"                           , 1, 0), new OreDictItemData(ANY.Clay, U4, MT.Glass, 3*U4), CR.DELATE);
+		IL.TC_Gold_Ring                         .set(ST.make(MD.TC, "ItemBaubleBlanks"                      , 1, 1), OP.ring.dat(MT.Au), CR.DELATE);
+		IL.TC_Gold_Coin                         .set(ST.make(MD.TC, "ItemResource"                          , 1,18), new OreDictItemData(MT.Au, U9));
 		IL.TC_Knowledge_Fragment                .set(ST.make(MD.TC, "ItemResource"                          , 1, 9), new OreDictItemData(MT.Paper, U9), "paperResearchFragment");
 		IL.TC_Thaumonomicon                     .set(ST.make(MD.TC, "ItemThaumonomicon"                     , 1, 0), new OreDictItemData(MT.Paper, 9*U));
 		IL.TC_Crimson_Rites                     .set(ST.make(MD.TC, "ItemEldritchObject"                    , 1, 1), new OreDictItemData(MT.Paper, 9*U));
@@ -923,6 +925,7 @@ public class LoaderItemList implements Runnable {
 		
 		if (IL.TC_Bucket_Death.exists()) IL.TC_Bucket_Death.item().setContainerItem(Items.bucket);
 		if (IL.TC_Bucket_Pure .exists()) IL.TC_Bucket_Pure .item().setContainerItem(Items.bucket);
+		if (IL.TC_Gold_Ring   .exists()) IL.TC_Gold_Ring   .item().setMaxStackSize(64);
 		
 		
 		IL.TF_LiveRoot                          .set(ST.make(MD.TF, "item.liveRoot"                         , 1, 0), new OreDictItemData(MT.LiveRoot, U));
