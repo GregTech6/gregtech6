@@ -30,15 +30,15 @@ import net.minecraft.item.ItemStack;
 /**
  * @author Gregorius Techneticies
  */
-public class PrefixItemRing extends PrefixItemBauble {
-	public PrefixItemRing(ModData aMod, String aNameInternal, OreDictPrefix aPrefix) {
+public class PrefixItemChain extends PrefixItemBauble {
+	public PrefixItemChain(ModData aMod, String aNameInternal, OreDictPrefix aPrefix) {
 		this(aMod.mID, aMod.mID, aNameInternal, aPrefix, OreDictMaterial.MATERIAL_ARRAY);
 	}
 	
-	public PrefixItemRing(String aModIDOwner, String aModIDTextures, String aNameInternal, OreDictPrefix aPrefix, OreDictMaterial... aMaterialList) {
+	public PrefixItemChain(String aModIDOwner, String aModIDTextures, String aNameInternal, OreDictPrefix aPrefix, OreDictMaterial... aMaterialList) {
 		super(aModIDOwner, aModIDTextures, aNameInternal, aPrefix, aMaterialList);
 	}
 	
 	@Optional.Method(modid = ModIDs.BAUBLES)
-	@Override public BaubleType getBaubleType(ItemStack aStack) {return BaubleType.RING;}
+	@Override public BaubleType getBaubleType(ItemStack aStack) {return BaubleType.AMULET;}
 }
