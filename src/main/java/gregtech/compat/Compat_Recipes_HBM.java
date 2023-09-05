@@ -40,11 +40,11 @@ public class Compat_Recipes_HBM extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing HBM Recipes.");
 		CR.delate(MD.HBM, "item.apple_lead", "item.apple_schrabidium", "item.apple_euphemium");
 		
+		CR.shapeless(OP.ingot.mat(MT.Hg, 1), new Object[] {IL.HBM_Mercury_Drop, IL.HBM_Mercury_Drop, IL.HBM_Mercury_Drop, IL.HBM_Mercury_Drop, IL.HBM_Mercury_Drop, IL.HBM_Mercury_Drop, IL.HBM_Mercury_Drop, IL.HBM_Mercury_Drop});
 		CR.shapeless(IL.HBM_Mercury_Drop.get(8), CR.DEF_NCC, new Object[] {IL.Bottle_Mercury});
-		RM.generify(IL.HBM_Bottle_Mercury.get(1), IL.Bottle_Mercury.get(1));
-		RM.generify(IL.Bottle_Mercury.get(1), IL.HBM_Bottle_Mercury.get(1));
-		RM.packunpack(OP.round.mat(MT.Pb, 6), ST.make(MD.HBM, "item.pellet_buckshot", 1, 0));
+		RM.genericycle(IL.HBM_Bottle_Mercury.get(1), IL.Bottle_Mercury.get(1));
 		
+		RM.packunpack(OP.round.mat(MT.Pb, 6), ST.make(MD.HBM, "item.pellet_buckshot", 1, 0));
 		
 		RM.Crusher.addRecipe1(F, 16, 512, ST.make(MD.HBM, "tile.ore_nether_coal", 1, 0), ST.make(MD.HBM, "item.coal_infernal", 1, 0), ST.make(MD.HBM, "item.coal_infernal", 1, 0), ST.make(MD.HBM, "item.coal_infernal", 1, 0), OP.dust.mat(MT.Netherrack, 1), OP.dust.mat(MT.Netherrack, 1));
 		
