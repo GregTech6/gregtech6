@@ -730,7 +730,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.MeteoflameRedSteel     , NF                                ,   0,   1, NF, MT.MeteoricRedSteel     , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.MeteoflameSteel        , NF                                ,   0,   1, NF, MT.MeteoricSteel        , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.FlamascusSteel         , NF                                ,   0,   1, NF, MT.DamascusSteel        , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.WroughtIron, MT.MeteoricIron, MT.IronMagnetic, MT.Meteorite, MT.IronCompressed, MT.IronCast, MT.Thaumium, MT.Enori})
+		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.WroughtIron, MT.MeteoricIron, MT.IronMagnetic, MT.Meteorite, MT.IronCompressed, MT.IronCast, MT.Thaumium, MT.Enori, MT.Manasteel})
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Fe                   , NI, T, tConditionP));
 		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.MeteoricSteel, MT.SteelMagnetic, MT.Knightmetal, MT.FierySteel})
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Steel                , NI, T, tConditionP));

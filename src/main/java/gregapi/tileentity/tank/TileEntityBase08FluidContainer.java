@@ -53,6 +53,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fluids.IFluidContainerItem;
+import net.minecraftforge.fluids.IFluidHandler;
 import squeek.applecore.api.food.FoodValues;
 import thaumcraft.common.tiles.TileCrucible;
 
@@ -259,7 +260,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 				}} catch(Throwable e) {/**/}
 				
 				try {if (tTileEntity instanceof TileCrucible) {
-					if (FL.water(mFluid) && FL.nonzero(aItem.drain(aStack, (int)FL.fill((TileCrucible)tTileEntity, SIDE_TOP, FL.Water.make(mFluid.amount), T), T))) {
+					if (FL.water(mFluid) && FL.nonzero(aItem.drain(aStack, (int)FL.fill((IFluidHandler)tTileEntity, SIDE_TOP, FL.Water.make(mFluid.amount), T), T))) {
 						UT.Sounds.send(aWorld, SFX.MC_LIQUID_WATER, 1.0F, 1.0F, aX, aY, aZ);
 					}
 					return T;

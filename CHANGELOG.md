@@ -36,6 +36,7 @@ Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even
 [CHANGED] Scythe cannot mine Lily Pads and similar anymore.
 [ADDED] Villagers can now be lured with vanillas Emerald Items, similar to how Wheat works with Cows.
 [ADDED] Tusks, Hoofs, Horns and Antlers as Drops for various Mobs. Primarily as a way to make Glue early on.
+[ADDED] Rainbowood Fluid Barrel which is roughly on par with the Ironwood Barrel.
 
 
 //=== Version Number Jump due to changes to the Magic Resistance of Pipes and Tanks. ===//
