@@ -14,7 +14,10 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.00: (Not released yet)
-[NOTE] There has been a hackable exploit going around in the modded minecraft landscape that is called PipeBleed. GregTech was never affected by this but I still deem it important that you look into your Mods to see if it is fixed in your Modpack. This shit is just as bad as the log4shell exploit.
+[NOTE]
+There has been a hackable exploit going around in the modded minecraft landscape that is called PipeBleed.
+GregTech was never affected by this but I still deem it important that you look into your Mods to see if it is fixed in your Modpack. This shit is just as bad as the log4shell exploit.
+This Mod is supposed to fix the Issue in all afflicted other Mods: https://github.com/dogboy21/serializationisbad/releases
 [IMPORTANT]
 There is a going to be new Fluid Property that makes it more difficult to pipe and store Magical Fluids! Many Containers will no longer be able to hold Magical Fluids, with few exceptions.
 Palladium, TaHfC and Tungsten based Alloys will be able to store Magical Fluids
@@ -34,6 +37,7 @@ Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even
 [CHANGED] Twilight Bunnies now drop the same Stuff Et Futurum Rabbits do, or Harvestcrafts Rabbit Meat.
 [CHANGED] Enchanted Books are now stackable but BEWARE that vanilla Anvils will eat the entire Stack you insert so dont keep it stacked in its UI.
 [CHANGED] Scythe cannot mine Lily Pads and similar anymore.
+[ADDED] Opening GT6 Loot Chests will now give XP.
 [ADDED] Villagers can now be lured with vanillas Emerald Items, similar to how Wheat works with Cows.
 [ADDED] Tusks, Hoofs, Horns and Antlers as Drops for various Mobs. Primarily as a way to make Glue early on.
 [ADDED] Rainbowood Fluid Barrel which is roughly on par with the Ironwood Barrel.

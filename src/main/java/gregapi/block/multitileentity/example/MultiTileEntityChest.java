@@ -52,6 +52,7 @@ import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
@@ -202,7 +203,14 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	@Override public boolean renderBlock(Block aBlock, RenderBlocks aRenderer, IBlockAccess aWorld, int aX, int aY, int aZ) {return T;}
 	
 	protected void generateDungeonLoot() {
-		if (isServerSide() && UT.Code.stringValid(mDungeonLootName) && ST.generateLoot(RNGSUS, mDungeonLootName, this)) mDungeonLootName = "";
+		if (isServerSide() && UT.Code.stringValid(mDungeonLootName) && ST.generateLoot(RNGSUS, mDungeonLootName, this)) {
+			worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.4, yCoord+1.25, zCoord+0.4, 5+RNGSUS.nextInt(5)+RNGSUS.nextInt(5)));
+			worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.4, yCoord+1.25, zCoord+0.6, 5+RNGSUS.nextInt(5)+RNGSUS.nextInt(5)));
+			worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+1.35, zCoord+0.5, 5+RNGSUS.nextInt(5)+RNGSUS.nextInt(5)));
+			worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.6, yCoord+1.25, zCoord+0.4, 5+RNGSUS.nextInt(5)+RNGSUS.nextInt(5)));
+			worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.6, yCoord+1.25, zCoord+0.6, 5+RNGSUS.nextInt(5)+RNGSUS.nextInt(5)));
+			mDungeonLootName = "";
+		}
 	}
 	
 	@Override
