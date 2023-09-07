@@ -58,11 +58,11 @@ public class Compat_Recipes_Thaumcraft extends CompatMods {
 		CR.shaped(IL.TC_Phial.get(4), CR.DEF_NCC, " C ", "G G", " G ", 'C', OD.itemClay, 'G', OD.glassColorless);
 		
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(
-		  ST.make(MD.TC, "WandCap", 2, 0, "Craft two Iron Wand Caps onto a Stick")
-		, ST.make(Items.stick, 1, W, "Craft two Iron Wand Caps onto a Stick")
+		  ST.make(ST.make(MD.TC, "WandCasting", 1, 0), "Click a Bookshelf with a Wand")
+		, ST.make(Blocks.bookshelf, 1, 0, "Click a Bookshelf with a Wand")
 		, NI
-		, ST.make(MD.TC, "WandCasting", 1, 0, "Click a Bookshelf with a Wand")
-		, ST.make(Blocks.bookshelf, 1, W, "Click a Bookshelf with a Wand")
+		, ST.make(ST.make(MD.TC, "WandCap", 2, 0), "Craft two Iron Wand Caps onto a Stick")
+		, ST.make(Items.stick, 1, 0, "Craft two Iron Wand Caps onto a Stick")
 		, NI
 		), ST.array(IL.TC_Thaumonomicon.get(1)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		
