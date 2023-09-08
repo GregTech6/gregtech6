@@ -75,18 +75,18 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		if (aIndex == 4) {
 			// Harvestcraft Stuff.
 			if (MD.HaC.mLoaded) {ItemStack
-			tStack = ST.make(MD.HaC, "tropicalgarden", 1, 0); if (ST.valid(tStack)) useless.add(tStack);
-			tStack = ST.make(MD.HaC, "watergarden"   , 1, 0); if (ST.valid(tStack)) useless.add(tStack);
-			tStack = ST.make(MD.HaC, "herbgarden"    , 1, 0); if (ST.valid(tStack)) useless.add(tStack);
-			tStack = ST.make(MD.HaC, "grassgarden"   , 1, 0); if (ST.valid(tStack)) useless.add(tStack);
-			tStack = ST.make(MD.HaC, "textilegarden" , 1, 0); if (ST.valid(tStack)) useless.add(tStack);
-			tStack = ST.make(MD.HaC, "groundgarden"  , 1, 0); if (ST.valid(tStack)) useless.add(tStack);
-			tStack = ST.make(MD.HaC, "berrygarden"   , 1, 0); if (ST.valid(tStack)) useless.add(tStack);
-			tStack = ST.make(MD.HaC, "mushroomgarden", 1, 0); if (ST.valid(tStack)) useless.add(tStack);
-			tStack = ST.make(MD.HaC, "leafygarden"   , 1, 0); if (ST.valid(tStack)) useless.add(tStack);
-			tStack = ST.make(MD.HaC, "desertgarden"  , 1, 0); if (ST.valid(tStack)) useless.add(tStack);
-			tStack = ST.make(MD.HaC, "stalkgarden"   , 1, 0); if (ST.valid(tStack)) useless.add(tStack);
-			tStack = ST.make(MD.HaC, "gourdgarden"   , 1, 0); if (ST.valid(tStack)) useless.add(tStack);
+			tStack = ST.make(MD.HaC, "tropicalgarden", 4, 0); if (ST.valid(tStack)) useless.add(tStack);
+			tStack = ST.make(MD.HaC, "watergarden"   , 4, 0); if (ST.valid(tStack)) useless.add(tStack);
+			tStack = ST.make(MD.HaC, "herbgarden"    , 4, 0); if (ST.valid(tStack)) useless.add(tStack);
+			tStack = ST.make(MD.HaC, "grassgarden"   , 4, 0); if (ST.valid(tStack)) useless.add(tStack);
+			tStack = ST.make(MD.HaC, "textilegarden" , 4, 0); if (ST.valid(tStack)) useless.add(tStack);
+			tStack = ST.make(MD.HaC, "groundgarden"  , 4, 0); if (ST.valid(tStack)) useless.add(tStack);
+			tStack = ST.make(MD.HaC, "berrygarden"   , 4, 0); if (ST.valid(tStack)) useless.add(tStack);
+			tStack = ST.make(MD.HaC, "mushroomgarden", 4, 0); if (ST.valid(tStack)) useless.add(tStack);
+			tStack = ST.make(MD.HaC, "leafygarden"   , 4, 0); if (ST.valid(tStack)) useless.add(tStack);
+			tStack = ST.make(MD.HaC, "desertgarden"  , 4, 0); if (ST.valid(tStack)) useless.add(tStack);
+			tStack = ST.make(MD.HaC, "stalkgarden"   , 4, 0); if (ST.valid(tStack)) useless.add(tStack);
+			tStack = ST.make(MD.HaC, "gourdgarden"   , 4, 0); if (ST.valid(tStack)) useless.add(tStack);
 			}
 			// Seeds for Stuff.
 			uncommon.add(IL.Dye_Cocoa.get(4));
@@ -147,33 +147,33 @@ public class TwilightTreasureReplacer extends TFTreasure {
 			useless .clear();
 			// Dimension Stuff that is nowhere else to be found.
 			useless .add(Items.nether_wart, 12);
-			useless .add(Items.quartz, 24);
+			useless .add(Items.quartz, 48);
 			useless .add(Blocks.soul_sand, 24);
 			useless .add(aIndex == 11 ? Blocks.end_stone : Blocks.netherrack, 36);
 			if (IL.EtFu_Magmatic_Netherrack.exists())
 			useless .add(IL.EtFu_Magmatic_Netherrack.get(24));
 			// The only practical way to get Ink.
-			useless .add(IL.Dye_SquidInk.get(24));
+			useless .add(IL.Dye_SquidInk.get(36));
 		}
 		
 		// Dark Tower Key Chest
 		if (aIndex == 12) {
 			// AE essentials just in case.
 			if (MD.AE.mLoaded) {
-			useless .add(OP.gem.mat(MT.CertusQuartz, 24));
+			useless .add(OP.gem.mat(MT.CertusQuartz, 48));
 			useless .add(OP.gem.mat(MT.ChargedCertusQuartz, 8));
-			useless .add(OP.rockGt.mat(MT.STONES.SkyStone, 16));
+			useless .add(OP.rockGt.mat(MT.STONES.SkyStone, 48));
 			}
 			// Enderpearls are a bitch to get in Twilight Forest.
-			useless .add(Items.ender_pearl, 8);
+			useless .add(Items.ender_pearl, 4);
 		}
 		
 		// Troll Gardens
 		if (aIndex == 21) {
 			// Enderpearls are a bitch to get in Twilight Forest.
-			useless .add(Items.ender_pearl, 8);
+			useless .add(Items.ender_pearl, 16);
 			// Dimension Stuff that is nowhere else to be found.
-			useless .add(Blocks.end_stone, 36);
+			useless .add(Blocks.end_stone, 64);
 			if (IL.EtFu_Chorus_Fruit.exists())
 			useless .add(IL.EtFu_Chorus_Fruit.get(24));
 			if (IL.EtFu_Chorus_Flower.exists())
@@ -184,11 +184,11 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		if (aIndex == 22) {
 			// Dimension Stuff that is nowhere else to be found.
 			if (IL.EtFu_Dragon_Breath.exists())
-			useless .add(IL.EtFu_Dragon_Breath.get(24));
+			useless .add(IL.EtFu_Dragon_Breath.get(36));
 			useless .add(IL.Ancient_Debris.get(1, OP.crushed.mat(MT.AncientDebris, 2)));
 			common  .add(IL.Ancient_Debris.get(2, OP.crushed.mat(MT.AncientDebris, 4)));
 			uncommon.add(IL.Ancient_Debris.get(4, OP.crushed.mat(MT.AncientDebris, 8)));
-			uncommon.add(ST.make(Items.skull, 1, 1));
+			uncommon.add(ST.make(Items.skull, 2, 1));
 		}
 		
 		TWILIGHT_TREASURE.put(mCategory, this);

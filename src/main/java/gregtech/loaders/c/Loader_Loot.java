@@ -76,7 +76,7 @@ public class Loader_Loot implements Runnable {
 			TFTreasure.darktower_cache   = TwilightTreasureReplacer.create(TFTreasure.darktower_cache  , 11, "darktower_cache"  , ChestGenHooks.STRONGHOLD_CORRIDOR     ,   525);
 			TFTreasure.darktower_key     = TwilightTreasureReplacer.create(TFTreasure.darktower_key    , 12, "darktower_key"    , ChestGenHooks.DUNGEON_CHEST           ,    25);
 			TFTreasure.darktower_boss    = TwilightTreasureReplacer.create(TFTreasure.darktower_boss   , 13, "darktower_boss"   , ChestGenHooks.PYRAMID_JUNGLE_DISPENSER,    59);
-			TFTreasure.tree_cache        = TwilightTreasureReplacer.create(TFTreasure.tree_cache       , 14, "tree_cache"       , ChestGenHooks.PYRAMID_JUNGLE_DISPENSER,   508);
+			TFTreasure.tree_cache        = TwilightTreasureReplacer.create(TFTreasure.tree_cache       , 14, "tree_cache"       , ChestGenHooks.BONUS_CHEST             ,   508);
 			TFTreasure.stronghold_cache  = TwilightTreasureReplacer.create(TFTreasure.stronghold_cache , 15, "stronghold_cache" , ChestGenHooks.STRONGHOLD_CORRIDOR     ,   510);
 			TFTreasure.stronghold_room   = TwilightTreasureReplacer.create(TFTreasure.stronghold_room  , 16, "stronghold_room"  , ChestGenHooks.DUNGEON_CHEST           ,    10);
 			TFTreasure.stronghold_boss   = TwilightTreasureReplacer.create(TFTreasure.stronghold_boss  , 17, "stronghold_boss"  , ChestGenHooks.VILLAGE_BLACKSMITH      ,   559);
@@ -417,7 +417,7 @@ public class Loader_Loot implements Runnable {
 			return F;
 		}
 		if (ConfigsGT.WORLDGEN.get("loot." + aType, aLoot, T)) {
-			ChestGenHooks.addItem(aType, new WeightedRandomChestContent(ST.copy(aLoot), aMin, aMax, aChance));
+			ChestGenHooks.addItem(aType, new WeightedRandomChestContent(ST.copy(aLoot), Math.min(aMin, aLoot.getMaxStackSize()), Math.min(aMax, aLoot.getMaxStackSize()), aChance));
 		}
 		return T;
 	}
