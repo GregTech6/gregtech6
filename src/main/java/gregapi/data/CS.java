@@ -900,6 +900,7 @@ public class CS {
 	, DIM_END = 1
 	, DIM_ENVM = -2
 	, DIM_A97 = -6 // Collides with Aether by default
+	, DIM_ELDRITCH = -42
 	, DIM_CW2_AquaCavern = -32
 	, DIM_CW2_Caveland = -33
 	, DIM_CW2_Cavenia = -34

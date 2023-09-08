@@ -248,27 +248,28 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				if (tImplosion > 0 && UT.Entities.isExplosiveCreature(aEntity) && !EntityCreeper.class.isInstance(aEntity)) tMagicDamage += 1.5F * tImplosion;
 				
 				if (tDamage + tMagicDamage > 0) {
+					boolean tRealHit = (!aEntity.worldObj.isRemote || aEntity.hurtResistantTime <= 0);
 					boolean tCriticalHit = aPlayer.fallDistance > 0 && !aPlayer.onGround && !aPlayer.isOnLadder() && !aPlayer.isInWater() && !aPlayer.isPotionActive(Potion.blindness) && aPlayer.ridingEntity == null && aEntity instanceof EntityLivingBase;
 					if (tCriticalHit && tDamage > 0) tDamage *= 1.5;
 					float tFullDamage = (tDamage+tMagicDamage) * TFC_DAMAGE_MULTIPLIER;
-					// Avoiding the Betweenlands Damage Cap in a fair way. Only Betweenlands Materials will avoid it. And maybe some super Lategame Items.
+					DamageSource tSource = tStats.getDamageSource(aPlayer, aEntity);
+					// Avoiding the Betweenlands Damage Cap in a fair way.
+					// Only Betweenlands Materials will avoid it. And maybe some super Lategame Materials.
 					if (MD.BTL.mLoaded && aEntity.getClass().getName().startsWith("thebetweenlands") && getPrimaryMaterial(aStack).contains(TD.Properties.BETWEENLANDS)) {
 						float tDamageToDeal = tFullDamage;
-						DamageSource tSource = tStats.getDamageSource(aPlayer, aEntity);
-						
 						while (tDamageToDeal > 0 && aEntity.attackEntityFrom(tSource, Math.min(tDamageToDeal, 12) / 0.3F)) {
 							tDamageToDeal -= 12;
 							if (tDamageToDeal > 0) aEntity.hurtResistantTime = 0;
 						}
-						if (tDamageToDeal < tFullDamage) {
-							tStats.afterDealingDamage(tDamage, tMagicDamage, tFireAspect, tCriticalHit, aEntity, aStack, aPlayer);
-							doDamage(aStack, tStats.getToolDamagePerEntityAttack(), aPlayer, F);
-						}
+						if (tDamageToDeal < tFullDamage) tRealHit &= T;
 					} else {
-						if (aEntity.attackEntityFrom(tStats.getDamageSource(aPlayer, aEntity), tFullDamage)) {
-							tStats.afterDealingDamage(tDamage, tMagicDamage, tFireAspect, tCriticalHit, aEntity, aStack, aPlayer);
-							doDamage(aStack, tStats.getToolDamagePerEntityAttack(), aPlayer, F);
-						}
+						if (aEntity.attackEntityFrom(tSource, tFullDamage)) tRealHit &= T;
+					}
+					// Only damage the Tool and perform its Specials, when you actually do hit the thing.
+					// So Serverside always, and Clientside only if the Mob isn't in its invulnerability Frames.
+					if (tRealHit) {
+						tStats.afterDealingDamage(tDamage, tMagicDamage, tFireAspect, tCriticalHit, aEntity, aStack, aPlayer);
+						doDamage(aStack, tStats.getToolDamagePerEntityAttack(), aPlayer, F);
 					}
 				}
 			}
