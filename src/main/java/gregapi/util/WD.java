@@ -133,7 +133,7 @@ public class WD {
 			if (MD.TC.mLoaded && tTileEntity instanceof INode) return F;
 		}
 		Block tBlock = aWorld.getBlock(aX, aY, aZ);
-		if (tBlock instanceof BlockTrapDoor || tBlock instanceof BlockDoor) return F;
+		if (tBlock instanceof BlockTrapDoor || tBlock instanceof BlockDoor || tBlock instanceof BlockLadder) return F;
 		AxisAlignedBB tBoundingBox = tBlock.getCollisionBoundingBoxFromPool(aWorld, aX, aY, aZ);
 		if (tBoundingBox == null) return F;
 		switch(aSide) {
