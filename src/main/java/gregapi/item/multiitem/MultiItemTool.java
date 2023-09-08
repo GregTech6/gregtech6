@@ -261,9 +261,9 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 							tDamageToDeal -= 12;
 							if (tDamageToDeal > 0) aEntity.hurtResistantTime = 0;
 						}
-						if (tDamageToDeal < tFullDamage) tRealHit &= T;
+						tRealHit &= (tDamageToDeal < tFullDamage);
 					} else {
-						if (aEntity.attackEntityFrom(tSource, tFullDamage)) tRealHit &= T;
+						tRealHit &= aEntity.attackEntityFrom(tSource, tFullDamage);
 					}
 					// Only damage the Tool and perform its Specials, when you actually do hit the thing.
 					// So Serverside always, and Clientside only if the Mob isn't in its invulnerability Frames.
