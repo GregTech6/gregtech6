@@ -58,6 +58,8 @@ public class TwilightTreasureReplacer extends TFTreasure {
 	public final short mChestID;
 	/** Twilight Forest Treasure Table Index */
 	public final int mTreasureID;
+	/** Amount of each Category to drop */
+	public int mRare = 2, mUncommon = 6, mCommon = 10;
 	
 	public static TFTreasure create(TFTreasure aTreasure, int aIndex, String aCategory, String aVanillacategory, long aChestID) {return new TwilightTreasureReplacer(aTreasure, aIndex, aCategory, aVanillacategory, aChestID);}
 	public TwilightTreasureReplacer(TFTreasure aTreasure, int aIndex, String aCategory, String aVanillacategory, long aChestID) {
@@ -74,7 +76,7 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		ultrarare        = (TFTreasureTable)UT.Reflection.getFieldContent(mTreasure, "ultrarare", T, T);
 		
 		// Hedge Maze
-		if (aIndex == 4) {
+		if (aIndex ==  4) {
 			// Harvestcraft Gardens
 			if (MD.HaC.mLoaded) {ItemStack
 			tStack = ST.make(MD.HaC, "tropicalgarden", 4, 0); if (ST.valid(tStack)) useless.add(tStack);
@@ -98,10 +100,76 @@ public class TwilightTreasureReplacer extends TFTreasure {
 			uncommon .add(IL.GaSu_Beet_Seeds.get(4));
 			if (IL.BoP_Turnip_Seeds.exists())
 			uncommon .add(IL.BoP_Turnip_Seeds.get(4));
+			// Some other things.
+			uncommon .add(IL.Resin.get(24));
+			uncommon .add(IL.Food_Cinnamon.get(12));
+		}
+		
+		// Basic Chests of the Lich Tower need to contain some otherwise insanely hard to obtain Items.
+		if (aIndex ==  7) {
+			// Clear the normal Junk List.
+			useless  .clear();
+			// Dimension Stuff that is nowhere else to be found.
+			useless  .add(Items.nether_wart, 12);
+			useless  .add(Items.quartz, 48);
+			useless  .add(Blocks.soul_sand, 24);
+			useless  .add(Blocks.netherrack, 36);
+			if (IL.EtFu_Magmatic_Netherrack.exists())
+			useless  .add(IL.EtFu_Magmatic_Netherrack.get(24));
+		}
+		
+		// Library Chests of the Lich Tower need to contain some otherwise insanely hard to obtain Items.
+		if (aIndex ==  8) {
+			// Clear the normal Junk List.
+			useless  .clear();
+			// The only practical way to get vanilla Ink.
+			useless  .add(IL.Dye_SquidInk.get(36));
+			useless  .add(IL.Bottle_Ink.get(16));
+			useless  .add(Items.feather, 8);
+			useless  .add(IL.Porcelain_Cup.get(4));
+			useless  .add(IL.Food_Pickle.get(8));
+			// Add a Death Compass to the Ultra Rares, even though it is super easy to get.
+			ultrarare.add(IL.Compass_Death.get(1));
+		}
+		
+		// Labyrinth Vault
+		if (aIndex == 10) {
+			mRare     =  4;
+		}
+		
+		// Basic Chests of the Dark Tower need to contain some otherwise insanely hard to obtain Items.
+		if (aIndex == 11) {
+			// Clear the normal Junk List.
+			useless  .clear();
+			// Dimension Stuff that is nowhere else to be found.
+			useless  .add(Items.quartz, 48);
+			useless  .add(Blocks.end_stone, 36);
+			if (IL.EtFu_Magmatic_Netherrack.exists())
+			useless  .add(IL.EtFu_Magmatic_Netherrack.get(24));
+		}
+		
+		// Dark Tower Key Chest
+		if (aIndex == 12) {
+			// AE essentials just in case.
+			if (MD.AE.mLoaded) {
+			useless  .add(OP.gem.mat(MT.CertusQuartz, 48));
+			useless  .add(OP.gem.mat(MT.ChargedCertusQuartz, 8));
+			useless  .add(OP.rockGt.mat(MT.STONES.SkyStone, 48));
+			}
+			// Enderpearls are a bitch to get in Twilight Forest.
+			useless  .add(Items.ender_pearl, 4);
+		}
+		
+		// Urghast Loot
+		if (aIndex == 13) {
+			mCommon   =  8;
+			mUncommon = 27;
+			mRare     =  1;
 		}
 		
 		// Tree Cache
 		if (aIndex == 14) {
+			mRare     =  4;
 			// Thaumcraft Saplings
 			if (IL.TC_Greatwood_Sapling.exists())
 			rare     .add(IL.TC_Greatwood_Sapling.get(4));
@@ -118,35 +186,9 @@ public class TwilightTreasureReplacer extends TFTreasure {
 			}
 		}
 		
-		// Basic Chests of the Lich Tower and the Dark Tower need to contain some otherwise insanely hard to obtain Items.
-		if (aIndex == 7 || aIndex == 11) {
-			// Clear the normal Junk List.
-			useless  .clear();
-			// Dimension Stuff that is nowhere else to be found.
-			useless  .add(Items.nether_wart, 12);
-			useless  .add(Items.quartz, 48);
-			useless  .add(Blocks.soul_sand, 24);
-			useless  .add(aIndex == 11 ? Blocks.end_stone : Blocks.netherrack, 36);
-			if (IL.EtFu_Magmatic_Netherrack.exists())
-			useless  .add(IL.EtFu_Magmatic_Netherrack.get(24));
-			// The only practical way to get Ink.
-			useless  .add(IL.Dye_SquidInk.get(36));
-		}
-		
-		// Dark Tower Key Chest
-		if (aIndex == 12) {
-			// AE essentials just in case.
-			if (MD.AE.mLoaded) {
-			useless  .add(OP.gem.mat(MT.CertusQuartz, 48));
-			useless  .add(OP.gem.mat(MT.ChargedCertusQuartz, 8));
-			useless  .add(OP.rockGt.mat(MT.STONES.SkyStone, 48));
-			}
-			// Enderpearls are a bitch to get in Twilight Forest.
-			useless  .add(Items.ender_pearl, 4);
-		}
-		
 		// Troll Gardens
 		if (aIndex == 21) {
+			mRare     =  1;
 			// Enderpearls are a bitch to get in Twilight Forest.
 			useless  .add(Items.ender_pearl, 16);
 			// Dimension Stuff that is nowhere else to be found.
@@ -159,6 +201,7 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		
 		// Troll Vaults
 		if (aIndex == 22) {
+			mRare     =  1;
 			// Dimension Stuff that is nowhere else to be found.
 			if (IL.EtFu_Dragon_Breath.exists())
 			useless  .add(IL.EtFu_Dragon_Breath.get(36));
@@ -223,9 +266,9 @@ public class TwilightTreasureReplacer extends TFTreasure {
 	public boolean generate(IInventory aInventory) {
 		boolean rReturn = T;
 		// About twice as much Loot as normal TF because the Loot is quite lackluster compared to the time investment otherwise.
-		for (int i = 0, j = (mTreasureID == 13 || mTreasureID == 21 || mTreasureID == 22 ?  1 : mTreasureID == 10 || mTreasureID == 14 ?  4 :  2); i < j; i++) rReturn &= addToInventory(aInventory, mTreasure.getRareItem    (RNGSUS));
-		for (int i = 0, j = (mTreasureID == 13                                           ? 27 :                                                6); i < j; i++) rReturn &= addToInventory(aInventory, mTreasure.getUncommonItem(RNGSUS));
-		for (int i = 0, j = (mTreasureID == 13                                           ?  8 :                                               10); i < j; i++) rReturn &= addToInventory(aInventory, mTreasure.getCommonItem  (RNGSUS));
+		for (int i = 0; i < mRare    ; i++) rReturn &= addToInventory(aInventory, mTreasure.getRareItem    (RNGSUS));
+		for (int i = 0; i < mUncommon; i++) rReturn &= addToInventory(aInventory, mTreasure.getUncommonItem(RNGSUS));
+		for (int i = 0; i < mCommon  ; i++) rReturn &= addToInventory(aInventory, mTreasure.getCommonItem  (RNGSUS));
 		// Some Extra Loot from a fitting Vanilla Category in order to make most Modded Loot Items available in TF if you can't find the few Vanilla Dungeons.
 		if (UT.Code.stringValid(mVanillacategory)) for (int i = 0, j = 9+RNGSUS.nextInt(10); i < j; i++) rReturn &= addToInventory(aInventory, ChestGenHooks.getOneItem(mVanillacategory, RNGSUS));
 		return rReturn;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -147,15 +147,15 @@ public class DungeonChunkRoomWorkshop extends DungeonChunkRoomEmpty {
 		//-----
 		
 		aData.set             (11, 1, 14, SIDE_UNKNOWN,  8762, UT.NBT.make(NBT_FACING, ALL_SIDES_HORIZONTAL[aData.next(4)], NBT_INV_LIST, UT.NBT.makeInv(
-		  aData.next1in2() ? IL.Bottle_Mercury   .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
-		, aData.next1in2() ? IL.Bottle_Mercury   .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
-		, aData.next1in2() ? IL.Bottle_Lubricant .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
-		, aData.next1in2() ? IL.Bottle_Mercury   .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
-		, aData.next1in2() ? IL.Bottle_Mercury   .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
-		, aData.next1in2() ? IL.Bottle_Lubricant .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
-		, aData.next1in2() ? IL.Bottle_Glue      .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
-		, aData.next1in2() ? IL.Bottle_Glue      .get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
-		, aData.next1in2() ? IL.Bottle_Holy_Water.get(1+aData.next(4)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(4)) : NI
+		  aData.next3in4() ? IL.Bottle_Mercury     .get(1+aData.next(8)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(8)) : NI
+		, aData.next3in4() ? IL.Bottle_Mercury     .get(1+aData.next(8)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(8)) : NI
+		, aData.next3in4() ? IL.Bottle_Mercury     .get(1+aData.next(8)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(8)) : NI
+		, aData.next3in4() ? IL.Bottle_Glue        .get(1+aData.next(8)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(8)) : NI
+		, aData.next3in4() ? IL.Bottle_Lubricant   .get(1+aData.next(8)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(8)) : NI
+		, aData.next3in4() ? IL.Bottle_Ink         .get(1+aData.next(8)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(8)) : NI
+		, aData.next1in2() ? IL.Bottle_Purple_Drink.get(1+aData.next(8)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(8)) : NI
+		, aData.next1in2() ? IL.Bottle_Holy_Water  .get(1+aData.next(8)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(8)) : NI
+		, aData.next1in2() ? IL.Bottle_Indigo      .get(1+aData.next(8)) : aData.next1in2() ? IL.Bottle_Empty.get(1+aData.next(8)) : NI
 		)), T, T);
 		
 		aData.set             (13, 1, 14, SIDE_UNKNOWN, 32705, null, T, T);
