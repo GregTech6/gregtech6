@@ -127,6 +127,8 @@ public class TwilightTreasureReplacer extends TFTreasure {
 			useless  .add(IL.Food_Pickle.get(8));
 			// Add a Death Compass to the Ultra Rares, even though it is super easy to get.
 			ultrarare.add(IL.Compass_Death.get(1));
+			// A Guide to the Twilight Forest.
+			ultrarare.add(ST.book("Manual_Portal_TF"));
 		}
 		
 		// Labyrinth Vault
