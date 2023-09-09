@@ -223,9 +223,9 @@ public class TwilightTreasureReplacer extends TFTreasure {
 	public boolean generate(IInventory aInventory) {
 		boolean rReturn = T;
 		// About twice as much Loot as normal TF because the Loot is quite lackluster compared to the time investment otherwise.
-		for (int i = 0, j = (mTreasureID == 13 || mTreasureID == 21 || mTreasureID == 22 ?  1 : mTreasureID == 10 ?  4 :  2); i < j; i++) rReturn &= addToInventory(aInventory, mTreasure.getRareItem    (RNGSUS));
-		for (int i = 0, j = (mTreasureID == 13                                           ? 27 :                           6); i < j; i++) rReturn &= addToInventory(aInventory, mTreasure.getUncommonItem(RNGSUS));
-		for (int i = 0, j = (mTreasureID == 13                                           ?  8 :                          10); i < j; i++) rReturn &= addToInventory(aInventory, mTreasure.getCommonItem  (RNGSUS));
+		for (int i = 0, j = (mTreasureID == 13 || mTreasureID == 21 || mTreasureID == 22 ?  1 : mTreasureID == 10 || mTreasureID == 14 ?  4 :  2); i < j; i++) rReturn &= addToInventory(aInventory, mTreasure.getRareItem    (RNGSUS));
+		for (int i = 0, j = (mTreasureID == 13                                           ? 27 :                                                6); i < j; i++) rReturn &= addToInventory(aInventory, mTreasure.getUncommonItem(RNGSUS));
+		for (int i = 0, j = (mTreasureID == 13                                           ?  8 :                                               10); i < j; i++) rReturn &= addToInventory(aInventory, mTreasure.getCommonItem  (RNGSUS));
 		// Some Extra Loot from a fitting Vanilla Category in order to make most Modded Loot Items available in TF if you can't find the few Vanilla Dungeons.
 		if (UT.Code.stringValid(mVanillacategory)) for (int i = 0, j = 9+RNGSUS.nextInt(10); i < j; i++) rReturn &= addToInventory(aInventory, ChestGenHooks.getOneItem(mVanillacategory, RNGSUS));
 		return rReturn;
