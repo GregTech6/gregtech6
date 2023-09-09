@@ -227,21 +227,21 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 						return;
 					}
 					if (tBlock == BlocksGT.River || WD.waterstream(tBlock)) {
-						ItemStack tStack = FL.fill(FL.Water.make(Integer.MAX_VALUE), aStack, F, T, F, T);
+						ItemStack tStack = FL.Water.fill(aStack);
 						if (tStack == null) return;
 						ST.use(aEvent.entityPlayer, aStack);
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, tStack, F);
 						return;
 					}
 					if (tBlock == BlocksGT.Ocean) {
-						ItemStack tStack = FL.fill(FL.Ocean.make(Integer.MAX_VALUE), aStack, F, T, F, T);
+						ItemStack tStack = FL.Ocean.fill(aStack);
 						if (tStack == null) return;
 						ST.use(aEvent.entityPlayer, aStack);
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, tStack, F);
 						return;
 					}
 					if (tBlock == BlocksGT.Swamp) {
-						ItemStack tStack = FL.fill(FL.Dirty_Water.make(Integer.MAX_VALUE), aStack, F, T, F, T);
+						ItemStack tStack = FL.Dirty_Water.fill(aStack);
 						if (tStack == null) return;
 						ST.use(aEvent.entityPlayer, aStack);
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, tStack, F);

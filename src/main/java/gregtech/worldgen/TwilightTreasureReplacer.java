@@ -20,10 +20,7 @@
 package gregtech.worldgen;
 
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
+import gregapi.data.*;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
@@ -126,7 +123,7 @@ public class TwilightTreasureReplacer extends TFTreasure {
 			useless  .add(IL.Dye_SquidInk.get(36));
 			useless  .add(IL.Bottle_Ink.get(16));
 			useless  .add(Items.feather, 8);
-			useless  .add(IL.Porcelain_Cup.get(4));
+			useless  .add(FL.Potion_NightVision_1L.fill(IL.Porcelain_Cup.get(1)));
 			useless  .add(IL.Food_Pickle.get(8));
 			// Add a Death Compass to the Ultra Rares, even though it is super easy to get.
 			ultrarare.add(IL.Compass_Death.get(1));
