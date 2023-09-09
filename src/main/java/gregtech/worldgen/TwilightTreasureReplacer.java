@@ -27,6 +27,8 @@ import gregapi.data.OP;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import gregapi.wooddict.SaplingEntry;
+import gregapi.wooddict.WoodDictionary;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -73,7 +75,7 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		
 		// Hedge Maze
 		if (aIndex == 4) {
-			// Harvestcraft Stuff.
+			// Harvestcraft Gardens
 			if (MD.HaC.mLoaded) {ItemStack
 			tStack = ST.make(MD.HaC, "tropicalgarden", 4, 0); if (ST.valid(tStack)) useless.add(tStack);
 			tStack = ST.make(MD.HaC, "watergarden"   , 4, 0); if (ST.valid(tStack)) useless.add(tStack);
@@ -89,106 +91,81 @@ public class TwilightTreasureReplacer extends TFTreasure {
 			tStack = ST.make(MD.HaC, "gourdgarden"   , 4, 0); if (ST.valid(tStack)) useless.add(tStack);
 			}
 			// Seeds for Stuff.
-			uncommon.add(IL.Dye_Cocoa.get(4));
+			uncommon .add(IL.Dye_Cocoa.get(4));
 			if (IL.EtFu_Beet_Seeds.exists())
-			uncommon.add(IL.EtFu_Beet_Seeds.get(4));
+			uncommon .add(IL.EtFu_Beet_Seeds.get(4));
 			if (IL.GaSu_Beet_Seeds.exists())
-			uncommon.add(IL.GaSu_Beet_Seeds.get(4));
+			uncommon .add(IL.GaSu_Beet_Seeds.get(4));
 			if (IL.BoP_Turnip_Seeds.exists())
-			uncommon.add(IL.BoP_Turnip_Seeds.get(4));
+			uncommon .add(IL.BoP_Turnip_Seeds.get(4));
 		}
 		
 		// Tree Cache
 		if (aIndex == 14) {
-			// Harvestcraft Stuff.
-			if (MD.HaC.mLoaded) {ItemStack
-			tStack = ST.make(MD.HaC, "pamalmondSapling"     , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamappleSapling"      , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamapricotSapling"    , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamavocadoSapling"    , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pambananaSapling"     , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamcashewSapling"     , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamcherrySapling"     , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamchestnutSapling"   , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamcinnamonSapling"   , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamcoconutSapling"    , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamdateSapling"       , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamdragonfruitSapling", 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamdurianSapling"     , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamfigSapling"        , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamgooseberrySapling" , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamgrapefruitSapling" , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamlemonSapling"      , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamlimeSapling"       , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pammangoSapling"      , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pammapleSapling"      , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamnutmegSapling"     , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamoliveSapling"      , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamorangeSapling"     , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pampapayaSapling"     , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pampaperbarkSapling"  , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pampeachSapling"      , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pampearSapling"       , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pampecanSapling"      , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pampeppercornSapling" , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pampersimmonSapling"  , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pampistachioSapling"  , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamplumSapling"       , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pampomegranateSapling", 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamstarfruitSapling"  , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamvanillabeanSapling", 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
-			tStack = ST.make(MD.HaC, "pamwalnutSapling"     , 4, 0); if (ST.valid(tStack)) uncommon.add(tStack);
+			// Thaumcraft Saplings
+			if (IL.TC_Greatwood_Sapling.exists())
+			rare     .add(IL.TC_Greatwood_Sapling.get(4));
+			if (IL.TC_Silverwood_Sapling.exists())
+			ultrarare.add(IL.TC_Silverwood_Sapling.get(1));
+			// All the Variety Saplings.
+			for (SaplingEntry tEntry : WoodDictionary.LIST_SAPLINGS) {
+			if (MD.EBXL.owns(tEntry.mSapling)) {useless .add(ST.validMeta(16, tEntry.mSapling)); continue;}
+			if (MD.EB  .owns(tEntry.mSapling)) {useless .add(ST.validMeta(16, tEntry.mSapling)); continue;}
+			if (MD.BoP .owns(tEntry.mSapling)) {useless .add(ST.validMeta(16, tEntry.mSapling)); continue;}
+			if (MD.HiL .owns(tEntry.mSapling)) {uncommon.add(ST.validMeta( 4, tEntry.mSapling)); continue;}
+			if (MD.HaC .owns(tEntry.mSapling)) {uncommon.add(ST.validMeta( 4, tEntry.mSapling)); continue;}
+			if (MD.MF2 .owns(tEntry.mSapling)) {uncommon.add(ST.validMeta( 4, tEntry.mSapling)); continue;}
 			}
 		}
 		
 		// Basic Chests of the Lich Tower and the Dark Tower need to contain some otherwise insanely hard to obtain Items.
 		if (aIndex == 7 || aIndex == 11) {
 			// Clear the normal Junk List.
-			useless .clear();
+			useless  .clear();
 			// Dimension Stuff that is nowhere else to be found.
-			useless .add(Items.nether_wart, 12);
-			useless .add(Items.quartz, 48);
-			useless .add(Blocks.soul_sand, 24);
-			useless .add(aIndex == 11 ? Blocks.end_stone : Blocks.netherrack, 36);
+			useless  .add(Items.nether_wart, 12);
+			useless  .add(Items.quartz, 48);
+			useless  .add(Blocks.soul_sand, 24);
+			useless  .add(aIndex == 11 ? Blocks.end_stone : Blocks.netherrack, 36);
 			if (IL.EtFu_Magmatic_Netherrack.exists())
-			useless .add(IL.EtFu_Magmatic_Netherrack.get(24));
+			useless  .add(IL.EtFu_Magmatic_Netherrack.get(24));
 			// The only practical way to get Ink.
-			useless .add(IL.Dye_SquidInk.get(36));
+			useless  .add(IL.Dye_SquidInk.get(36));
 		}
 		
 		// Dark Tower Key Chest
 		if (aIndex == 12) {
 			// AE essentials just in case.
 			if (MD.AE.mLoaded) {
-			useless .add(OP.gem.mat(MT.CertusQuartz, 48));
-			useless .add(OP.gem.mat(MT.ChargedCertusQuartz, 8));
-			useless .add(OP.rockGt.mat(MT.STONES.SkyStone, 48));
+			useless  .add(OP.gem.mat(MT.CertusQuartz, 48));
+			useless  .add(OP.gem.mat(MT.ChargedCertusQuartz, 8));
+			useless  .add(OP.rockGt.mat(MT.STONES.SkyStone, 48));
 			}
 			// Enderpearls are a bitch to get in Twilight Forest.
-			useless .add(Items.ender_pearl, 4);
+			useless  .add(Items.ender_pearl, 4);
 		}
 		
 		// Troll Gardens
 		if (aIndex == 21) {
 			// Enderpearls are a bitch to get in Twilight Forest.
-			useless .add(Items.ender_pearl, 16);
+			useless  .add(Items.ender_pearl, 16);
 			// Dimension Stuff that is nowhere else to be found.
-			useless .add(Blocks.end_stone, 64);
+			useless  .add(Blocks.end_stone, 64);
 			if (IL.EtFu_Chorus_Fruit.exists())
-			useless .add(IL.EtFu_Chorus_Fruit.get(24));
+			useless  .add(IL.EtFu_Chorus_Fruit.get(24));
 			if (IL.EtFu_Chorus_Flower.exists())
-			uncommon.add(IL.EtFu_Chorus_Flower.get(8));
+			uncommon .add(IL.EtFu_Chorus_Flower.get(8));
 		}
 		
 		// Troll Vaults
 		if (aIndex == 22) {
 			// Dimension Stuff that is nowhere else to be found.
 			if (IL.EtFu_Dragon_Breath.exists())
-			useless .add(IL.EtFu_Dragon_Breath.get(36));
-			useless .add(IL.Ancient_Debris.get(1, OP.crushed.mat(MT.AncientDebris, 2)));
-			common  .add(IL.Ancient_Debris.get(2, OP.crushed.mat(MT.AncientDebris, 4)));
-			uncommon.add(IL.Ancient_Debris.get(4, OP.crushed.mat(MT.AncientDebris, 8)));
-			uncommon.add(ST.make(Items.skull, 2, 1));
+			useless  .add(IL.EtFu_Dragon_Breath.get(36));
+			useless  .add(IL.Ancient_Debris.get(1, OP.crushed.mat(MT.AncientDebris, 2)));
+			common   .add(IL.Ancient_Debris.get(2, OP.crushed.mat(MT.AncientDebris, 4)));
+			uncommon .add(IL.Ancient_Debris.get(4, OP.crushed.mat(MT.AncientDebris, 8)));
+			uncommon .add(ST.make(Items.skull, 2, 1));
 		}
 		
 		TWILIGHT_TREASURE.put(mCategory, this);
