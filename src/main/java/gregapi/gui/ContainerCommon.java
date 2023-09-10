@@ -490,7 +490,6 @@ public class ContainerCommon extends Container {
 			}
 		}
 		
-		UT.Inventories.checkAchievements(aPlayer, aPlayerInventory.getItemStack());
 		detectAndSendChanges();
 		return rStack;
 	}
@@ -505,7 +504,6 @@ public class ContainerCommon extends Container {
 		// null checks and checks if the item can be stacked (maxStackSize > 1)
 		if (getSlotCount() > 0 && tSlot != null && tSlot.getHasStack() && !(tSlot instanceof Slot_Holo)) {
 			ItemStack tStack = tSlot.getStack();
-			UT.Inventories.checkAchievements(aPlayer, tStack);
 			rStack = ST.copy(tStack);
 			
 			// TileEntity -> Player
@@ -684,7 +682,14 @@ public class ContainerCommon extends Container {
 		try {
 			mTileEntity.closeInventoryGUI();
 			InventoryPlayer tPlayerInventory = aPlayer.inventory;
+			for (ItemStack tStack : tPlayerInventory.mainInventory) {
+				UT.Inventories.checkAchievements(aPlayer, tStack);
+			}
+			for (ItemStack tStack : tPlayerInventory.armorInventory) {
+				UT.Inventories.checkAchievements(aPlayer, tStack);
+			}
 			if (tPlayerInventory.getItemStack() != null) {
+				UT.Inventories.checkAchievements(aPlayer, tPlayerInventory.getItemStack());
 				aPlayer.dropPlayerItemWithRandomChoice(tPlayerInventory.getItemStack(), F);
 				tPlayerInventory.setItemStack(null);
 			}
@@ -694,7 +699,7 @@ public class ContainerCommon extends Container {
 	}
 	
 	@Override
-	public void onCraftMatrixChanged(IInventory par1IInventory) {
+	public void onCraftMatrixChanged(IInventory aInventory) {
 		detectAndSendChanges();
 	}
 	
