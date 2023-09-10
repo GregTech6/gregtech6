@@ -626,7 +626,7 @@ public final class OreDictManager {
 		return ST.valid(tAssociation.mUnificationTarget) && ST.equal(tAssociation.mUnificationTarget, aStackToCheckAgainst, aIgnoreNBT);
 	}
 	
-	public boolean addItemData(ItemStack aStack, OreDictItemData aData) {
+	public boolean addItemData (ItemStack aStack, OreDictItemData aData) {
 		if (ST.invalid(aStack)) return F;
 		if (getItemData_(aStack) == null) return setItemData_(aStack, aData);
 		return F;
@@ -636,7 +636,7 @@ public final class OreDictManager {
 		return F;
 	}
 	
-	public boolean setItemData(ItemStack aStack, OreDictItemData aData) {
+	public boolean setItemData (ItemStack aStack, OreDictItemData aData) {
 		if (ST.invalid(aStack) || aData == null) return F;
 		return setItemData_(aStack, aData);
 	}
@@ -664,14 +664,14 @@ public final class OreDictManager {
 		return T;
 	}
 	
-	public OreDictItemData getItemData(ItemStack aStack) {
-		return getItemData(aStack, F);
+	public OreDictItemData getItemData (ItemStack aStack) {
+		return getItemData (aStack, F);
 	}
 	public OreDictItemData getItemData_(ItemStack aStack) {
 		return getItemData_(aStack, F);
 	}
 	
-	public OreDictItemData getItemData(ItemStack aStack, boolean aAllowOverride) {
+	public OreDictItemData getItemData (ItemStack aStack, boolean aAllowOverride) {
 		if (ST.invalid(aStack)) return null;
 		return getItemData_(aStack, aAllowOverride);
 	}

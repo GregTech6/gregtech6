@@ -27,6 +27,7 @@ Dedicated vanilla Glass Bottles will continue to hold their Magical Fluids.
 Wooden Buckets will still be able to handle Rainbow Tree Sap. The Sap Bag in general is also not affected by this Change.
 Things like Barrels inside of Inventories are not hit by this until you place them down.
 Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even spawn Thaumcraft Flux Goo/Gas if it is installed.
+[FIXED] Accidentially deleting all Furnace Smelting Recipes of HBM's Nuclear Tech Mod.
 [FIXED] Crucible Crossings did not always work all that well when multiple Faucets and Molds tried to pour at the same time.
 [FIXED] Glass Bottle of Holy Water was not able to cure Zombies at all whatsoever, even with the Weakness Potion Effect.
 [FIXED] Mercury Bottle Recipes had some blatant copypasta errors, causing a massive duplication Recipe.

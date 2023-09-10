@@ -515,6 +515,8 @@ public class TD {
 		public static final TagData SMITHABLE                               = TagData.createTagData("PROCESSING.SMITHABLE", "Smithable");
 		/** If this Material can be directly cooked in a regular Furnace */
 		public static final TagData FURNACE                                 = TagData.createTagData("PROCESSING.FURNACE", "Furnace Smeltable");
+		/** If this Material can never be directly cooked in a regular Furnace. It will yield Scraps instead. */
+		public static final TagData NEVER_FURNACE                           = TagData.createTagData("PROCESSING.NEVER_FURNACE", "Never Furnace Smeltable");
 		/** If this Material can be molten in a Crucible (every Material can, this is just for NEI Stuff) */
 		public static final TagData MELTING                                 = TagData.createTagData("PROCESSING.MELTING", "Meltable");
 		/** If this Material can not be molten in a Smelter (the Machine, not the Crucible) */
@@ -534,7 +536,7 @@ public class TD {
 		
 		public static final TagData PULVERIZING_CINNABAR                    = TagData.createTagData("PROCESSING.PULVERIZING_CINNABAR", "Cinnabar Crystal from Pulverisation");
 		
-		public static final List<TagData> ALL_MACHINES                      = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, CRUCIBLE_ALLOY, FURNACE, SMITHABLE, MELTING, MORTAR, COOL2CRYSTAL, FUSION, UUM, ELECTROLYSER, CENTRIFUGE, UNRECYCLABLE, SOLDERING_MATERIAL));
+		public static final List<TagData> ALL_MACHINES                      = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, CRUCIBLE_ALLOY, FURNACE, NEVER_FURNACE, SMITHABLE, MELTING, MORTAR, COOL2CRYSTAL, FUSION, UUM, ELECTROLYSER, CENTRIFUGE, UNRECYCLABLE, SOLDERING_MATERIAL));
 		public static final List<TagData> ALL_ORES                          = new ArrayListNoNulls<>(Arrays.asList(CRYSTALLISABLE, WASHING_FIRESTONE, WASHING_PERSULFATE, WASHING_MERCURY, PULVERIZING_CINNABAR));
 	}
 	

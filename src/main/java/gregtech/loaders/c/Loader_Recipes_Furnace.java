@@ -54,58 +54,79 @@ public class Loader_Recipes_Furnace implements Runnable {
 			Iterator<Entry<ItemStack, ItemStack>> tIterator = tMap.entrySet().iterator();
 			while (tIterator.hasNext()) {
 				Entry<ItemStack, ItemStack> tEntry = tIterator.next();
-				OreDictItemData tData1 = OM.anydata(tEntry.getKey());
-				if (MD.HBM.owns(tEntry.getKey()) || (tData1 != null && tData1.hasValidPrefixMaterialData() && tData1.mMaterial.mMaterial.mID > 0)) {
-					OreDictItemData tData2 = OM.anydata(tEntry.getValue());
+				String tRegName = ST.regName(tEntry.getKey());
+				OreDictItemData tData1 = OM.anydata(tEntry.getKey()), tData2 = OM.anydata(tEntry.getValue());
+				// Unification of the Smelting Result.
+				tEntry.setValue(OM.get(tEntry.getValue()));
+				
+				// Lots of RotaryCraft balance fixes and more Recipe Compat.
+				if (tFurnace && MD.RoC.owns(tRegName, "extracts")) {
 					if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
-						// Just outright remove all Furnace Recipes, that both Input and Output OreDicted Stuff at the same time, we add the proper ones below anyways.
+						ItemStack tDust = OM.dust(tData2.mMaterial.mMaterial.mTargetCrushing.mMaterial, UT.Code.units(tData2.mMaterial.mAmount * tEntry.getValue().stackSize, U, tData2.mMaterial.mMaterial.mTargetCrushing.mAmount, F));
+						if (ST.invalid(tDust) && tDust.stackSize <= 0) tDust = null;
+						
+						if (tDust == null) {
+							// Output the random Items.
+							RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
+							RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
+							continue;
+						}
+						// Making sure that things like Aluminium get a Dust Replacement too.
+						if (tData2.mMaterial.mMaterial.mTargetCrushing.mMaterial != tData2.mMaterial.mMaterial) tEntry.setValue(tDust);
+						
+						// Basic Shredding Recipes.
+						RM.pulverizing(tEntry.getKey(), tDust);
+						RM.Mortar  .addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
+						RM.Shredder.addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
+						
+						if (tData2.mPrefix.contains(TD.Prefix.DUST_BASED)) {
+							RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tDust);
+							continue;
+						}
+						if (tData2.mPrefix.contains(TD.Prefix.INGOT_BASED)) {
+							// Only change the Flake Recipes that output Ingots which do not belong to the Furnace.
+							if (!tData2.mMaterial.mMaterial.contains(TD.Processing.FURNACE)) tEntry.setValue(tDust);
+							RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tDust);
+							continue;
+						}
+						// Output Gems and the other random Items.
+						RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
+						RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
+						continue;
+					}
+					// Output unknown Items.
+					RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
+					RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
+					continue;
+				}
+				
+				if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
+					if (tData1 != null && tData1.hasValidPrefixMaterialData() && tData1.mMaterial.mMaterial.mID > 0) {
+						// Just outright remove all Furnace Recipes, that both Input and Output valid OreDicted Stuff at the same time, we add the proper ones below anyways.
 						tIterator.remove();
 						if (MD.EtFu.mLoaded) try {
 							SmokerRecipes      .smelting().smeltingBlacklist.add(tEntry.getKey());
 							BlastFurnaceRecipes.smelting().smeltingBlacklist.add(tEntry.getKey());
 						} catch(Throwable e) {/**/}
-					} else {
-						// Unification of the Smelting Result.
-						tEntry.setValue(OM.get(tEntry.getValue()));
+						continue;
 					}
-				} else {
-					tEntry.setValue(OM.get(tEntry.getValue()));
-					// Lots of RotaryCraft balance fixes and more Recipe Compat.
-					if (tFurnace && MD.RoC.owns(tEntry.getKey(), "extracts")) {
-						OreDictItemData tData2 = OM.anydata(tEntry.getValue());
-						if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
-							ItemStack tDust = OM.dust(tData2.mMaterial.mMaterial.mTargetCrushing.mMaterial, UT.Code.units(tData2.mMaterial.mAmount * tEntry.getValue().stackSize, U, tData2.mMaterial.mMaterial.mTargetCrushing.mAmount, F));
-							if (ST.invalid(tDust) && tDust.stackSize <= 0) tDust = null;
-							
-							if (tDust == null) {
-								// Output the random Items.
-								RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
-								RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
-							} else {
-								// Just making sure that things like Aluminium get a Dust Replacement too.
-								if (tData2.mMaterial.mMaterial.mTargetCrushing.mMaterial != tData2.mMaterial.mMaterial) tEntry.setValue(tDust);
-								
-								RM.pulverizing(tEntry.getKey(), tDust);
-								RM.Mortar  .addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
-								RM.Shredder.addRecipe1(F, 16,  32, tEntry.getKey(), tDust);
-								
-								if (tData2.mPrefix.contains(TD.Prefix.DUST_BASED)) {
-									RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tDust);
-								} else if (tData2.mPrefix.contains(TD.Prefix.INGOT_BASED)) {
-									// Only change the Flake Recipes that output Ingots which do not belong to the Furnace.
-									if (!tData2.mMaterial.mMaterial.contains(TD.Processing.FURNACE)) tEntry.setValue(tDust);
-									RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tDust);
-								} else {
-									// Output Gems and the other random Items.
-									RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
-									RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
-								}
-							}
-						} else {
-							// Output unknown Items.
-							RM.ic2_extractor(tEntry.getKey(), tEntry.getValue());
-							RM.Sifting.addRecipe1(F, 16, 200, tEntry.getKey(), tEntry.getValue());
-						}
+					if (MD.HBM.owns(tRegName, "powder") || MD.HBM.owns(tRegName, "tile.ore")) {
+						// Older Versions of NTM require this Part.
+						tIterator.remove();
+						if (MD.EtFu.mLoaded) try {
+							SmokerRecipes      .smelting().smeltingBlacklist.add(tEntry.getKey());
+							BlastFurnaceRecipes.smelting().smeltingBlacklist.add(tEntry.getKey());
+						} catch(Throwable e) {/**/}
+						continue;
+					}
+					if (tData2.mMaterial.mMaterial.contains(TD.Processing.NEVER_FURNACE)) {
+						// Unsmelt things that really do not belong in Furnace Recipes.
+						tEntry.setValue(OP.scrapGt.mat(tData2.mMaterial, (tData2.mMaterial.mAmount * tEntry.getValue().stackSize) / OP.scrapGt.mAmount));
+						if (MD.EtFu.mLoaded) try {
+							SmokerRecipes      .smelting().smeltingBlacklist.add(tEntry.getKey());
+							BlastFurnaceRecipes.smelting().smeltingBlacklist.add(tEntry.getKey());
+						} catch(Throwable e) {/**/}
+						continue;
 					}
 				}
 			}

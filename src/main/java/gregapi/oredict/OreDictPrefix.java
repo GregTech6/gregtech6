@@ -444,6 +444,12 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 		return addAspects(TC.stack(aAspect1, aAmount1), TC.stack(aAspect2, aAmount2), TC.stack(aAspect3, aAmount3), TC.stack(aAspect4, aAmount4), TC.stack(aAspect5, aAmount5), TC.stack(aAspect6, aAmount6), TC.stack(aAspect7, aAmount7), TC.stack(aAspect8, aAmount8), TC.stack(aAspect9, aAmount9), TC.stack(aAspect0, aAmount0));
 	}
 	
+	public ItemStack mat(OreDictMaterialStack aMaterial) {
+		return OreDictManager.INSTANCE.getStack(this, aMaterial.mMaterial, NI, aMaterial.mAmount / mAmount);
+	}
+	public ItemStack mat(OreDictMaterialStack aMaterial, long aStackSize) {
+		return OreDictManager.INSTANCE.getStack(this, aMaterial.mMaterial, NI, aStackSize);
+	}
 	public ItemStack mat(OreDictMaterial aMaterial, long aStackSize) {
 		return OreDictManager.INSTANCE.getStack(this, aMaterial, NI, aStackSize);
 	}

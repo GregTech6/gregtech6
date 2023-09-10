@@ -360,6 +360,8 @@ public class Loader_Recipes_Other implements Runnable {
 		CR.remove(dust.mat(MT.Cu         , 1), dust.mat(MT.Sn        , 1));
 		CR.remove(dust.mat(MT.Cu         , 1), dust.mat(MT.Zn        , 1));
 		CR.remove(dust.mat(MT.Cu         , 1), dust.mat(MT.Redstone  , 1));
+		CR.remove(dust.mat(MT.Fe         , 1), dust.mat(MT.Coal      , 1));
+		CR.remove(dust.mat(MT.Fe         , 1), dust.mat(MT.Charcoal  , 1));
 		CR.remove(dust.mat(MT.Fe         , 1), dust.mat(MT.Mn        , 1));
 		CR.remove(dust.mat(MT.Fe         , 1), dust.mat(MT.Bronze    , 1));
 		CR.remove(dust.mat(MT.Au         , 1), dust.mat(MT.Bronze    , 1));
