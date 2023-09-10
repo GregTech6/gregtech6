@@ -2712,7 +2712,7 @@ public class UT {
 		}
 		
 		public static boolean checkAchievements(EntityPlayer aPlayer, ItemStack aStack) {
-			if (aPlayer == null) return F;
+			if (aPlayer == null || aPlayer.worldObj == null || aPlayer.worldObj.isRemote) return F;
 			
 			if (aPlayer.worldObj.provider.dimensionId == DIM_NETHER) {
 				unlockAchievement(aPlayer, AchievementList.portal);

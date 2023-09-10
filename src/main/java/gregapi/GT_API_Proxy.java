@@ -932,11 +932,6 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		Block aBlock = WD.block(aEvent.world, aEvent.x, aEvent.y, aEvent.z);
 		TileEntity aTileEntity = aEvent.world.getTileEntity(aEvent.x, aEvent.y, aEvent.z);
 		
-		// You cant detect properly when you pick things up out of a Chest.
-		if (IL.TF_Trophy_Urghast.equal(aStack, T, T)) {
-			UT.Inventories.checkAchievements(aEvent.entityPlayer, aStack);
-		}
-		
 		if (aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) {
 			// Fixing a Vanilla Dupe Bug with stacked Music Discs and the Jukebox.
 			if (aTileEntity instanceof TileEntityJukebox) {

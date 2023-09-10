@@ -125,10 +125,10 @@ public class TwilightTreasureReplacer extends TFTreasure {
 			useless  .add(Items.feather, 8);
 			useless  .add(FL.Potion_NightVision_1L.fill(IL.Porcelain_Cup.get(1)));
 			useless  .add(IL.Food_Pickle.get(8));
+			// A Guide to the Twilight Forest.
+			rare     .add(ST.book("Manual_Portal_TF"));
 			// Add a Death Compass to the Ultra Rares, even though it is super easy to get.
 			ultrarare.add(IL.Compass_Death.get(1));
-			// A Guide to the Twilight Forest.
-			ultrarare.add(ST.book("Manual_Portal_TF"));
 		}
 		
 		// Labyrinth Vault
@@ -217,7 +217,7 @@ public class TwilightTreasureReplacer extends TFTreasure {
 	
 	@Override public boolean generate(World aWorld, Random aRandom, int aX, int aY, int aZ) {return generate(aWorld, aRandom, aX, aY, aZ, Blocks.chest);}
 	@Override public boolean generate(World aWorld, Random aRandom, int aX, int aY, int aZ, Block aChest) {
-		if (mTreasureID == 3 && RNGSUS.nextBoolean()) return HILLS_2.generate(aWorld, aRandom, aX, aY, aZ, aChest);
+		if (mTreasureID == 3 && RNGSUS.nextInt(3) == 0) return HILLS_2.generate(aWorld, aRandom, aX, aY, aZ, aChest);
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		if (tRegistry == null) return super.generate(aWorld, aRandom, aX, aY, aZ, aChest);
 		// Narrow down facing direction of the Chest if it is a double chest.

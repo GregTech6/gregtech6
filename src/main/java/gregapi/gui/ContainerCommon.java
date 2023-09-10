@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.gui;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.tileentity.ITileEntityInventoryGUI;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -33,6 +29,10 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -489,6 +489,8 @@ public class ContainerCommon extends Container {
 				aPlayerInventory.setItemStack(tTempStack);
 			}
 		}
+		
+		UT.Inventories.checkAchievements(aPlayer, aPlayerInventory.getItemStack());
 		detectAndSendChanges();
 		return rStack;
 	}
@@ -503,6 +505,7 @@ public class ContainerCommon extends Container {
 		// null checks and checks if the item can be stacked (maxStackSize > 1)
 		if (getSlotCount() > 0 && tSlot != null && tSlot.getHasStack() && !(tSlot instanceof Slot_Holo)) {
 			ItemStack tStack = tSlot.getStack();
+			UT.Inventories.checkAchievements(aPlayer, tStack);
 			rStack = ST.copy(tStack);
 			
 			// TileEntity -> Player
