@@ -106,7 +106,7 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 			}
 			if (OD.itemFlint.is_(mRock)) {aChatReturn.add(LH.Chat.GRAY + (APRIL_FOOLS || rng(WOODMANS_BDAY ? 10 : XMAS_IN_JULY ? 100 : 1000)==0?"Flintstones, meet the Flintstones, they're the modern Stone Age family":"It's a Flint")); return 1;}
 			OreDictItemData tData = OM.anydata_(mRock);
-			if (tData != null && tData.nonemptyMaterial() {
+			if (tData != null && tData.nonemptyMaterial()) {
 				if (tData.mMaterial.mMaterial == MT.MeteoricIron || tData.mMaterial.mMaterial == MT.Meteorite) {
 					aChatReturn.add(LH.Chat.ORANGE + "Looks like it fell from the Sky!"); return 1;
 				}
