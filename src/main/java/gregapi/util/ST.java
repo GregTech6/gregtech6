@@ -802,13 +802,13 @@ public class ST {
 	public static boolean ammo(ItemStack aStack) {
 		if (ItemsGT.AMMO_ITEMS.contains(aStack, T)) return T;
 		OreDictItemData tData = OM.anydata(aStack);
-		return tData != null && tData.hasValidPrefixMaterialData() && tData.mMaterial.mMaterial != MT.Empty && tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE);
+		return tData != null && tData.nonemptyData() && tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE);
 	}
 	
 	public static boolean nonautoinsert(ItemStack aStack) {
 		if (ItemsGT.NON_AUTO_INSERT_ITEMS.contains(aStack, T) || torch(aStack)) return T;
 		OreDictItemData tData = OM.anydata(aStack);
-		return tData != null && tData.hasValidPrefixMaterialData() && tData.mMaterial.mMaterial != MT.Empty && tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE);
+		return tData != null && tData.nonemptyData() && tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE);
 	}
 	
 	public static boolean listed(Collection<ItemStack> aList, ItemStack aStack, boolean aTrueIfListEmpty, boolean aInvertFilter) {

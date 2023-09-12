@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -87,7 +87,7 @@ public class RecipeMapHammer extends RecipeMapSpecialSingleInput {
 	@Override
 	public Recipe getRecipeFor(ItemStack aInput) {
 		OreDictItemData aData = OM.anydata(aInput);
-		if (aData == null || !aData.hasValidPrefixMaterialData() || aData.mPrefix == oreBedrock || aData.mMaterial.mMaterial.contains(TD.Atomic.ANTIMATTER) || !aData.mPrefix.contains(TD.Prefix.ORE) || aData.mPrefix.containsAny(TD.Prefix.DUST_ORE, TD.Prefix.IS_CONTAINER)) return null;
+		if (aData == null || !aData.validData() || aData.mPrefix == oreBedrock || aData.mMaterial.mMaterial.contains(TD.Atomic.ANTIMATTER) || !aData.mPrefix.contains(TD.Prefix.ORE) || aData.mPrefix.containsAny(TD.Prefix.DUST_ORE, TD.Prefix.IS_CONTAINER)) return null;
 		OreDictMaterial aCrushedMat = aData.mMaterial.mMaterial.mTargetCrushing.mMaterial;
 		long aCrushedAmount = aData.mMaterial.mMaterial.mTargetCrushing.mAmount, aMultiplier = aData.mMaterial.mMaterial.mOreMultiplier * aData.mMaterial.mMaterial.mOreProcessingMultiplier * (aData.mPrefix.contains(TD.Prefix.DENSE_ORE) ? 2 : 1);
 		

@@ -54,14 +54,14 @@ public class Loader_Recipes_Furnace implements Runnable {
 			Iterator<Entry<ItemStack, ItemStack>> tIterator = tMap.entrySet().iterator();
 			while (tIterator.hasNext()) {
 				Entry<ItemStack, ItemStack> tEntry = tIterator.next();
-				String tRegName = ST.regName(tEntry.getKey());
+				String tReg1 = ST.regName(tEntry.getKey());
 				OreDictItemData tData1 = OM.anydata(tEntry.getKey()), tData2 = OM.anydata(tEntry.getValue());
 				// Unification of the Smelting Result.
 				tEntry.setValue(OM.get(tEntry.getValue()));
 				
 				// Lots of RotaryCraft balance fixes and more Recipe Compat.
-				if (tFurnace && MD.RoC.owns(tRegName, "extracts")) {
-					if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
+				if (tFurnace && MD.RoC.owns(tReg1, "extracts")) {
+					if (tData2 != null && tData2.nonemptyData()) {
 						ItemStack tDust = OM.dust(tData2.mMaterial.mMaterial.mTargetCrushing.mMaterial, UT.Code.units(tData2.mMaterial.mAmount * tEntry.getValue().stackSize, U, tData2.mMaterial.mMaterial.mTargetCrushing.mAmount, F));
 						if (ST.invalid(tDust) && tDust.stackSize <= 0) tDust = null;
 						
@@ -100,8 +100,8 @@ public class Loader_Recipes_Furnace implements Runnable {
 					continue;
 				}
 				
-				if (tData2 != null && tData2.hasValidPrefixMaterialData() && tData2.mMaterial.mMaterial.mID > 0) {
-					if (tData1 != null && tData1.hasValidPrefixMaterialData() && tData1.mMaterial.mMaterial.mID > 0) {
+				if (tData2 != null && tData2.nonemptyData()) {
+					if (tData1 != null && tData1.nonemptyData()) {
 						// Just outright remove all Furnace Recipes, that both Input and Output valid OreDicted Stuff at the same time, we add the proper ones below anyways.
 						tIterator.remove();
 						if (MD.EtFu.mLoaded) try {
@@ -110,7 +110,7 @@ public class Loader_Recipes_Furnace implements Runnable {
 						} catch(Throwable e) {/**/}
 						continue;
 					}
-					if (MD.HBM.owns(tRegName, "powder") || MD.HBM.owns(tRegName, "tile.ore")) {
+					if (MD.HBM.owns(tReg1, "powder") || MD.HBM.owns(tReg1, "tile.ore")) {
 						// Older Versions of NTM require this Part.
 						tIterator.remove();
 						if (MD.EtFu.mLoaded) try {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,11 +19,8 @@
 
 package gregapi.recipes.handlers;
 
-import static gregapi.data.CS.*;
-import static gregapi.data.OP.*;
-
 import gregapi.block.IPrefixBlock;
-import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.*;
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -40,6 +37,9 @@ import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
+import static gregapi.data.CS.*;
+import static gregapi.data.OP.*;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -48,7 +48,7 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 	
 	@Override
 	public boolean addRecipesUsing(RecipeMap aMap, boolean aNEI, ItemStack aInput, OreDictItemData aData) {
-		if (aData == null || !aData.hasValidPrefixMaterialData() || aData.mPrefix == oreBedrock || !aData.mPrefix.contains(TD.Prefix.ORE) || aData.mPrefix.containsAny(TD.Prefix.DUST_ORE, TD.Prefix.IS_CONTAINER) || aData.mMaterial.mMaterial.contains(TD.Atomic.ANTIMATTER) || IL.PFAA_Sands.equal(aInput, T, T)) return F;
+		if (aData == null || !aData.validData() || aData.mPrefix == oreBedrock || !aData.mPrefix.contains(TD.Prefix.ORE) || aData.mPrefix.containsAny(TD.Prefix.DUST_ORE, TD.Prefix.IS_CONTAINER) || aData.mMaterial.mMaterial.contains(TD.Atomic.ANTIMATTER) || IL.PFAA_Sands.equal(aInput, T, T)) return F;
 		OreDictMaterial aCrushedMat = aData.mMaterial.mMaterial.mTargetCrushing.mMaterial;
 		long aCrushedAmount = aData.mMaterial.mMaterial.mTargetCrushing.mAmount, aMultiplier = aData.mMaterial.mMaterial.mOreProcessingMultiplier;
 		
@@ -63,7 +63,7 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 		} else if (aData.mPrefix == blockRaw) {
 				aMultiplier *=  aData.mMaterial.mMaterial.mOreMultiplier * 2; // Multiply by 2, but fill out 4.5 times more Slots
 		} else {
-			    aMultiplier *=  aData.mMaterial.mMaterial.mOreMultiplier;
+				aMultiplier *=  aData.mMaterial.mMaterial.mOreMultiplier;
 		}
 		if (aData.mPrefix == orePoor) {
 			ItemStack tOutput = OP.crushedTiny          .mat(aCrushedMat, UT.Code.bindStack(UT.Code.units(aCrushedAmount, U, 3 * aMultiplier, F)));
@@ -145,7 +145,7 @@ public class RecipeMapHandlerCrushing extends RecipeMapHandler {
 	
 	@Override
 	public boolean addRecipesProducing(RecipeMap aMap, boolean aNEI, ItemStack aStack, OreDictItemData aData) {
-		if (aData != null && aData.hasValidPrefixMaterialData() && (aData.mPrefix == OP.crushed || aData.mPrefix == OP.dust || aData.mPrefix == OP.gem)) {
+		if (aData != null && aData.validData() && (aData.mPrefix == OP.crushed || aData.mPrefix == OP.dust || aData.mPrefix == OP.gem)) {
 			boolean temp = F;
 			for (OreDictMaterial tMaterial : aData.mMaterial.mMaterial.mTargetedCrushing) if (tMaterial.mID > 0 && tMaterial.mTargetCrushing.mMaterial == aData.mMaterial.mMaterial && OP.oreRaw.isGeneratingItem(aData.mMaterial.mMaterial)) {
 				if (BlocksGT.ore       != null) if (addRecipesUsing(aMap, aNEI, ST.make((Block)BlocksGT.ore      , 1, tMaterial.mID), OP.oreVanillastone.dat(tMaterial))) temp = T;

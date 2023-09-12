@@ -651,12 +651,12 @@ public final class OreDictManager {
 		if (!aData.mBlackListed) aData.mBlackListed = isBlacklisted(aStack);
 		if (!aData.mBlocked) aData.mBlocked = (aData.mBlackListed || ST.block(aStack) != NB || FL.getFluid(aStack, T) != null || (aStack.getItem() instanceof IFluidContainerItem && ((IFluidContainerItem)aStack.getItem()).getCapacity(aStack) > 0));
 		sItemStack2DataMap.put(new ItemStackContainer(aStack), aData);
-		if (aData.hasValidMaterialData()) {
+		if (aData.validMaterial()) {
 			long tValidMaterialAmount = aData.mMaterial.mMaterial.contains(TD.Processing.UNRECYCLABLE)?0:aData.mMaterial.mAmount>=0?aData.mMaterial.mAmount:U;
 			for (OreDictMaterialStack tMaterial : aData.mByProducts) tValidMaterialAmount += tMaterial.mMaterial.contains(TD.Processing.UNRECYCLABLE)?0:tMaterial.mAmount>=0?tMaterial.mAmount:U;
 			if (tValidMaterialAmount < U && COMPAT_IC2 != null) COMPAT_IC2.blacklist(aStack);
 		}
-		if (!aData.hasValidPrefixData() || aData.mPrefix.contains(TD.Prefix.RECYCLABLE)) {
+		if (!aData.validPrefix() || aData.mPrefix.contains(TD.Prefix.RECYCLABLE)) {
 			OreDictRecyclingContainer tRegistration = new OreDictRecyclingContainer(aStack, aData);
 			for (IOreDictListenerRecyclable tListener : mRecyclableOreDictListeners) tListener.onRecycleableRegistration(tRegistration);
 			mRecyclableRegistrations.add(tRegistration);
@@ -718,7 +718,7 @@ public final class OreDictManager {
 	}
 	public OreDictItemData getAssociation_(ItemStack aStack, boolean aOverwrite) {
 		OreDictItemData rData = getItemData_(aStack, aOverwrite);
-		return rData != null && rData.hasValidPrefixMaterialData() && rData.mPrefix != OP.ore ? rData : null;
+		return rData != null && rData.validData() && rData.mPrefix != OP.ore ? rData : null;
 	}
 	
 	public static boolean isItemStackInstanceOf(ItemStack aStack, Object aName) {

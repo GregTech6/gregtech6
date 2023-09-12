@@ -416,7 +416,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		if (mLogisticsCache != null) return mLogisticsCache;
 		mLogisticsCache = ST.hashset(slot(1));
 		OreDictItemData tData = OM.data_(slot(1));
-		if (tData != null && tData.hasValidPrefixMaterialData()) {
+		if (tData != null && tData.validData()) {
 			if (tData.mPrefix.contains(TD.Prefix.DUST_BASED)) {
 				for (ItemStack tStack : OreDictManager.getOres(OP.blockDust             , tData.mMaterial, F)) mLogisticsCache.add(tStack);
 				for (ItemStack tStack : OreDictManager.getOres(OP.dust                  , tData.mMaterial, F)) mLogisticsCache.add(tStack);
@@ -568,7 +568,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	public ItemStack getPartialStack() {
 		if (mPartialUnits <= 0) return NI;
 		OreDictItemData mData = OM.anydata(slot(1));
-		if (mData == null || !mData.hasValidPrefixData()) return NI;
+		if (mData == null || !mData.validPrefix()) return NI;
 		
 		if (mData.mPrefix.contains(TD.Prefix.DUST_BASED)) return OM.dust(mData.mMaterial.mMaterial, mPartialUnits);
 		if (mData.mPrefix.contains(TD.Prefix.INGOT_BASED)) return OM.ingot(mData.mMaterial.mMaterial, mPartialUnits);
@@ -604,7 +604,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	
 	public long getUnitAmount(ItemStack aStack) {
 		OreDictItemData mData = OM.anydata_(slot(1)), aData = OM.anydata_(aStack);
-		if (mData != null && aData != null && mData.hasValidPrefixData() && aData.hasValidPrefixData() && mData.mMaterial.mMaterial == aData.mMaterial.mMaterial && mPartialUnits < getUnitAmount(mData.mPrefix)) {
+		if (mData != null && aData != null && mData.validPrefix() && aData.validPrefix() && mData.mMaterial.mMaterial == aData.mMaterial.mMaterial && mPartialUnits < getUnitAmount(mData.mPrefix)) {
 			if (mData.mPrefix.contains(TD.Prefix.DUST_BASED)) {
 				return aData.mPrefix.contains(TD.Prefix.DUST_BASED) ? aData.mPrefix.mAmount : 0;
 			}
@@ -656,7 +656,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		ItemStack tContent = slot(1);
 		if (mPartialUnits > 0 && slotHas(1) && tContent.stackSize < tMaxStorage) {
 			OreDictItemData mData = OM.anydata_(tContent);
-			if (mData != null && mData.hasValidPrefixData()) {
+			if (mData != null && mData.validPrefix()) {
 				long tTargetAmount = getUnitAmount(mData.mPrefix);
 				if (mPartialUnits >= tTargetAmount) {
 					ItemStack tStack = ST.amount(mPartialUnits / tTargetAmount, tContent);

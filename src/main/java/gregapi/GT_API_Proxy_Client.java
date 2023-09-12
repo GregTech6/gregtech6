@@ -289,7 +289,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			OreDictItemData tData = OM.anydata_(aEvent.itemStack);
 			
 			if (!(aItem instanceof ItemFluidDisplay) && SHOW_INTERNAL_NAMES) {
-				if (tData != null && tData.hasValidPrefixMaterialData()) {
+				if (tData != null && tData.validData()) {
 					if (tData.mBlackListed) {
 						if (ST.isGT(aItem))
 						aEvent.toolTip.add(LH.Chat.ORANGE + tData.toString());
@@ -308,7 +308,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			}
 			
 			if (tData != null) {
-				if (tData.hasValidPrefixData()) {
+				if (tData.validPrefix()) {
 					for (IOreDictListenerItem tListener : tData.mPrefix.mListenersItem) {
 						String tToolTip = tListener.getListenerToolTip(tData.mPrefix, tData.mMaterial.mMaterial, aEvent.itemStack);
 						if (tToolTip != null) aEvent.toolTip.add(tToolTip);
@@ -320,7 +320,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					if (IL.TF_Sword_Giant      .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be repaired with Ironwood Ingots on the Anvil"); else
 					if (IL.TF_Lamp_of_Cinders  .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be used as a Lighter for GT6 things and TNT");
 				}
-				if (tData.hasValidMaterialData()) {
+				if (tData.validMaterial()) {
 					boolean tUnburnable = F;
 					for (OreDictMaterialStack tMaterial : tData.getAllMaterialWeights()) {
 						if (tMaterial.mMaterial.contains(TD.Properties.UNBURNABLE)) tUnburnable = T;
@@ -341,7 +341,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 					if (tData.mMaterial.mMaterial == MT.Ge) {
 						aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Osmium", MT.Ge.mNameLocal));
 					}
-					if (tData.hasValidPrefixData()) {
+					if (tData.validPrefix()) {
 						if (tData.mPrefix == OP.dustTiny && ANY.Blaze.mToThis.contains(tData.mMaterial.mMaterial)) {
 							aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll(tData.mMaterial.mMaterial.mNameLocal, OP.dustTiny.mMaterialPre + tData.mMaterial.mMaterial.mNameLocal));
 						}
@@ -464,7 +464,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				} else {
 					aEvent.toolTip.add(LH.Chat.DGRAY + "Enable F3+H Mode for Info about contained Materials.");
 				}
-				if (ST.isGT(aItem) && tData.hasValidPrefixMaterialData()) {
+				if (ST.isGT(aItem) && tData.validData()) {
 					if (tData.mMaterial.mMaterial.mOriginalMod == null) {
 						aEvent.toolTip.add(LH.Chat.BLUE + "Material from an Unknown Mod");
 					} else if (tData.mMaterial.mMaterial.mOriginalMod == MD.MC) {
