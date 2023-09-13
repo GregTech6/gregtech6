@@ -191,6 +191,12 @@ public class Loader_Recipes_Food implements Runnable {
 				if (!Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, DYE_INDEX_Brown);
 			}
 		}});
+		addListener("foodTaffy", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			if (!ST.isGT(aEvent.mStack)) {
+				FoodsGT.put(aEvent.mStack, 0, 0, 0,16, 8);
+				if (!Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, DYE_INDEX_Brown);
+			}
+		}});
 		addListener("foodSaladdressing", "foodQuark", "foodCustard", "foodMayo", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (!ST.isGT(aEvent.mStack) && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, DYE_INDEX_White);
 		}});

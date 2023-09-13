@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,8 +23,11 @@ import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.render.IIconContainer;
+import gregapi.util.UT;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.T;
 
 public class GT_Tool_AxeDouble extends GT_Tool_Axe {
 	@Override
@@ -39,7 +42,7 @@ public class GT_Tool_AxeDouble extends GT_Tool_Axe {
 	
 	@Override
 	public int getHurtResistanceTime(int aOriginalHurtResistance, Entity aEntity) {
-		return aOriginalHurtResistance*2;
+		return UT.Code.bindInt(UT.Code.units(aOriginalHurtResistance, 2, 3, T));
 	}
 	
 	@Override

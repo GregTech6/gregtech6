@@ -301,8 +301,8 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		DamageSource tDamageSource = DamageSources.getCombatDamage("player", tPlayer, DamageSources.getDeathMessage(aPlayer, aTarget, (tData!=null&&tData.validMaterial() ? "[VICTIM] got killed by [KILLER] shooting a Bullet made of " + tData.mMaterial.mMaterial.getLocal() : "[VICTIM] got shot by [KILLER]"))).setProjectile();
 		// Extremely Fast Bullets will penetrate Armor. You need a Rifle with the Power Enchantment for this. A Power 5 Carbine at point-blank could do too though.
 		if (aPower > 25000) tDamageSource.setDamageBypassesArmor();
-		// Smite 3+ Bullets will break one Lich Shield each, in order to make this somewhat beatable in Multiplayer.
-		if (MD.TF.mLoaded && aTarget instanceof EntityTFLich && UT.NBT.getEnchantmentLevel(Enchantment.smite, aBullet) >= 3) tDamageSource.setDamageBypassesArmor();
+		// Smite Bullets will break one Lich Shield each, in order to make this somewhat beatable in Multiplayer.
+		if (MD.TF.mLoaded && aTarget instanceof EntityTFLich && UT.NBT.getEnchantmentLevel(Enchantment.smite, aBullet) > 0) tDamageSource.setDamageBypassesArmor();
 		
 		if (aTarget.attackEntityFrom(tDamageSource, (tDamage + tMagicDamage) * TFC_DAMAGE_MULTIPLIER)) {
 			aTarget.hurtResistantTime = (aTarget instanceof EntityLivingBase ? ((EntityLivingBase)aTarget).maxHurtResistantTime : 20);

@@ -127,9 +127,14 @@ public class Loader_Books implements Runnable {
 		, "Hollow Hills are something you can try once you are all armored up, nab some Chests from one of those. Beware it is full of very deadly and explosive Mobs, so you need to be constantly on the run and hide behind the many Stalagmites."
 		, "Naga Arena¶===================¶This is the first Boss you need to defeat. All you need is 8 solid Blocks, a Bow and a few Stacks of Arrows. Run into the Arena and let the Naga spawn, then immediately pillar up 8 Blocks and attack with the Bow."
 		, "Naga Arena¶===================¶The Naga will almost definitely kill you in Melee Combat so using ranged Weapons is the best way. And those Pillars that are already in the Arena are a good hint that you should get up and out of Melee Range."
-		, "Naga Arena¶===================¶The Naga Trophy you get can be used to produce KU through a Magic Field Absorber."
-		, "Lich Tower¶===================¶..."
-		, "Lich Tower¶===================¶The Lich Trophy you get can be used to produce QU through a Magic Field Absorber."
+		, "Naga Arena¶===================¶The Naga Trophy you get can be used to produce KU through a Magic Field Absorber. Naga Scales can be used to make Chestplates and Leggings, but are worthless otherwise. You are able to get into Lich Towers now."
+		, "Lich Tower¶===================¶In order to enter this place you might need to kill a Naga first and touch its Trophy. The Lich Tower has one big Double Helix Central Staircase with Bridges inbetween that contain typical Dungeon Mob Spawners."
+		, "Lich Tower¶===================¶Those Mob Spawners can be lit up by putting two Firefly Jars or similar Light Sources 1 horizontal Block away from them on opposite ends. These Spawners can create Zombies, Skeletons or various Spiders."
+		, "Lich Tower¶===================¶There will not only be Spawner Mobs but also special Mobs that spawn normally. The special one in this case being a flying Tome, that drops Paper for each hit. Have fun punching it for maximized Paper drops."
+		, "Lich Tower¶===================¶At the Ground Level of the Tower is four Side Buildings, which likely contain quite a bit of Loot Chests, you should try getting into each of those by breaking into the Walls from the Outside."
+		, "Lich Tower¶===================¶The Lich is located at the top of the Staircase, and has FIVE Shields that need to be destroyed before taking Damage. To destroy a Shield you need reflect their Projectiles at them (nearly impossible in Multiplayer!)."
+		, "Lich Tower¶===================¶An alternative Method for destroying a Shield is hitting it with 1.5+ Hearts of any Armor penetrating Damage. For example Smite Bullets, Falling Damage and Splash Potions of Healing (but NOT Regeneration!)."
+		, "Lich Tower¶===================¶The Lich Trophy you get can be used to produce QU through a Magic Field Absorber. The Scepter you get will either allow you to drain Life or to summon helpful Zombies. They can be reloaded on the crafting Grid."
 		, "Minoshroom Maze¶===================¶..."
 		, "Minoshroom Vault¶===================¶..."
 		, "Hydra Cave¶===================¶..."
@@ -156,7 +161,7 @@ public class Loader_Books implements Runnable {
 		, "List¶===================¶What follows is a List of the Enchantments that I know of and their Effects."
 		, "Sharpness¶===================¶Levels 1 to 5+¶Deals 0.625 Hearts of Extra Damage per Level and works on pretty much everything!"
 		, "Wrecking¶===================¶Levels 1 to 5+¶IDeals 0.75 Hearts of Extra Damage per Level and works on pretty much everything! Can normally only be applied to Railcraft Crowbars."
-		, "Smite¶===================¶Levels 1 to 5+¶Deals 1.25 Hearts of Extra Damage per Level and works on Undead such as: Skeletons, Zombies, Drowned, Husks, Wraiths, Mummies and Liches! Smite 3+ Bullets can even penetrate a Lich Barrier!"
+		, "Smite¶===================¶Levels 1 to 5+¶Deals 1.25 Hearts of Extra Damage per Level and works on Undead such as: Skeletons, Zombies, Drowned, Husks, Wraiths, Mummies and Liches! Smite Bullets can even penetrate a Lich Barrier!"
 		, "Bane of Arthropods¶===================¶Levels 1 to 5+¶Deals 1.25 Hearts of Extra Damage per Level and works on things that have 6 or more Legs, like those pesky Spiders, Mites, Insects or Silverfish!"
 		, "Implosion¶===================¶Levels 1 to 5+¶IDeals 1.5 Hearts of Extra Damage per Level and works on any Creepers! Can normally only be applied to Railcraft Crowbars. It often also hurts other explosive Mobs like Ghasts!"
 		, "Dissolving¶===================¶Levels 1 to 5+¶Inflicts Weakness and Poison to any slimey Creatures it hits!"
@@ -517,7 +522,9 @@ public class Loader_Books implements Runnable {
 		
 		for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_ARRAY) {
 			if (tMat != null && !tMat.mHidden && tMat.contains(TD.Atomic.ELEMENT) && !tMat.contains(TD.Atomic.ANTIMATTER)) {
-				tBook.add(tMat.getLocal()+"¶"+tMat.mProtons+"/"+tMat.mNeutrons+"¶===================¶ID: "+(tMat.mID<0?"NONE":tMat.mID)+"¶Melting: "+tMat.mMeltingPoint+" K¶Boiling: "+tMat.mBoilingPoint+" K¶Plasma: "+tMat.mPlasmaPoint+" K¶===================¶Density:¶"+(tMat.mGramPerCubicCentimeter == 0 ? "???" : tMat.mGramPerCubicCentimeter)+" g/cm3¶"+tMat.getWeight(U)+" kg/unit¶===================¶");
+				tBook.add(tMat.getLocal()+"¶"+tMat.mProtons+"/"+tMat.mNeutrons+"¶===================¶ID: "+(tMat.mID<0?"NONE":tMat.mID)
+				+"¶Melting: "+tMat.mMeltingPoint+" K¶Boiling: "+tMat.mBoilingPoint+" K¶Plasma: "+tMat.mPlasmaPoint
+				+" K¶===================¶Density:¶"+(tMat.mGramPerCubicCentimeter == 0 ? "???" : tMat.mGramPerCubicCentimeter)+" g/cm3¶"+tMat.getWeight(U)+" kg/unit¶===================¶");
 			}
 		}
 		
@@ -681,17 +688,19 @@ public class Loader_Books implements Runnable {
 		
 		//-----
 		
-		for (int i = 1; i < OreDictMaterial.MATERIAL_ARRAY.length; i++) if (OreDictMaterial.MATERIAL_ARRAY[i] != null && OreDictMaterial.MATERIAL_ARRAY[i].mID == i && (!OreDictMaterial.MATERIAL_ARRAY[i].mHidden || OreDictMaterial.MATERIAL_ARRAY[i].mDescription != null)) {
-			ItemStack tStack = UT.Books.addMaterialDictionary(OreDictMaterial.MATERIAL_ARRAY[i]);
-			
-			CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.gem               .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
-			CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.dust              .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
-			CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.ingot             .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
-			CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.plate             .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
-			CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.plateGem          .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
-			CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.crushedCentrifuged.dat(OreDictMaterial.MATERIAL_ARRAY[i]));
-			CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.bucket            .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
-			CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.chemtube          .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
+		for (int i = 1; i < OreDictMaterial.MATERIAL_ARRAY.length; i++) {
+			if (OreDictMaterial.MATERIAL_ARRAY[i] != null && OreDictMaterial.MATERIAL_ARRAY[i].mID == i && (!OreDictMaterial.MATERIAL_ARRAY[i].mHidden || OreDictMaterial.MATERIAL_ARRAY[i].mDescription != null)) {
+				ItemStack tStack = UT.Books.addMaterialDictionary(OreDictMaterial.MATERIAL_ARRAY[i]);
+				
+				CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.gem               .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
+				CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.dust              .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
+				CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.ingot             .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
+				CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.plate             .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
+				CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.plateGem          .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
+				CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.crushedCentrifuged.dat(OreDictMaterial.MATERIAL_ARRAY[i]));
+				CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.bucket            .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
+				CR.shaped(tStack, CR.DEF_NCC, "lX ", "XBX", " X ", 'B', ST.make(Items.writable_book, 1, W), 'X', OP.chemtube          .dat(OreDictMaterial.MATERIAL_ARRAY[i]));
+			}
 		}
 	}
 }
