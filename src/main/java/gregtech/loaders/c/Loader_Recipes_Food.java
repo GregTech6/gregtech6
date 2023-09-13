@@ -179,11 +179,17 @@ public class Loader_Recipes_Food implements Runnable {
 			if (!ST.isGT(aEvent.mStack) && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)(200+DYE_INDEX_Brown));
 		}});
 		addListener("foodSilkentofu", dust.dat(MT.Tofu), "foodFirmtofu", ingot.dat(MT.Tofu), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (!ST.isGT(aEvent.mStack) && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)35);
+			if (!ST.isGT(aEvent.mStack)) {
+				FoodsGT.put(aEvent.mStack, 0, 0, 4, 4, 0);
+				if (!Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, (byte)35);
+			}
 		}});
 		addListener("foodCaramel", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.Mixer            .addRecipe2(T, 16,   16, IL.Food_Ice_Cream.get(1), aEvent.mStack, NF, NF, IL.Food_Ice_Cream_Caramel.get(1));
-			if (!ST.isGT(aEvent.mStack) && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, DYE_INDEX_Brown);
+			RM.Mixer.addRecipe2(T, 16, 16, IL.Food_Ice_Cream.get(1), aEvent.mStack, NF, NF, IL.Food_Ice_Cream_Caramel.get(1));
+			if (!ST.isGT(aEvent.mStack)) {
+				FoodsGT.put(aEvent.mStack, 0, 0, 0,24, 0);
+				if (!Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, DYE_INDEX_Brown);
+			}
 		}});
 		addListener("foodSaladdressing", "foodQuark", "foodCustard", "foodMayo", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (!ST.isGT(aEvent.mStack) && !Sandwiches.INGREDIENTS.containsKey(aEvent.mStack, F)) Sandwiches.INGREDIENTS.put(aEvent.mStack, DYE_INDEX_White);
