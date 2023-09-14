@@ -32,7 +32,7 @@ Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even
 [FIXED] Glass Bottle of Holy Water was not able to cure Zombies at all whatsoever, even with the Weakness Potion Effect.
 [FIXED] Mercury Bottle Recipes had some blatant copypasta errors, causing a massive duplication Recipe.
 [FIXED] GT6 Tools made out of Thaumcrafts Void Metal will now have the appropriate "Warping I" Effect on them.
-[CHANGED] Added a Maximum Range to Nuclear Radiation of 200 for a running Reactor and 500 for an exploding one.
+[CHANGED] Added a Maximum Range to Nuclear Radiation of 200 for a running Reactor and 500 for an "exploding" one. (exploding is currently limited to just deleting its Inventory)
 [CHANGED] The Magnetic Separator can now also deal with Fluids. unsure if I am gonna use that for anything though.
 [CHANGED] Twilight Forest Loot Chests are replaced with GregTech ones and added some more Loot to them.. They will also contain a few fitting Items from all the Vanilla Loot Tables (you know, the ones other Mods tend to add Stuff to). Note: The Tower Keys inside the Full-Metal Loot Chests in the Dark Tower will drop seperately from the Loot, meaning you can harvest the unopened Loot Chest, as you do with all the others, and still get the Key inside of it.
 [CHANGED] Twilight Bunnies now drop the same Stuff Et Futurum Rabbits do, or Harvestcrafts Rabbit Meat.

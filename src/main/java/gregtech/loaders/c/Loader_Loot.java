@@ -297,7 +297,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   3, 1, 4, OP.toolHeadShovel.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.toolHeadShovel.mat(MT.DamascusSteel, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   5, 1, 4, OP.toolHeadPickaxe.mat(MT.ArsenicBronze, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   3, 1, 4, OP.toolHeadPickaxe.mat(MT.Steel, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   3, 1, 4, OP.toolHeadRawPickaxe.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.toolHeadPickaxe.mat(MT.DamascusSteel, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  20, 1, 1, IL.Tool_MatchBox_Full.get(1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Cu));
@@ -394,8 +394,8 @@ public class Loader_Loot implements Runnable {
 		
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,  12, 1, 4, OP.toolHeadSword.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   6, 1, 4, OP.toolHeadSword.mat(MT.DamascusSteel, 1));
-		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,  12, 1, 4, OP.toolHeadAxe.mat(MT.Steel, 1));
-		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   6, 1, 4, OP.toolHeadAxe.mat(MT.DamascusSteel, 1));
+		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,  12, 1, 4, OP.toolHeadAxeDouble.mat(MT.Steel, 1));
+		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   6, 1, 4, OP.toolHeadAxeDouble.mat(MT.DamascusSteel, 1));
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   6,16,48, ST.update(OP.arrowGtWood.mat(MT.DamascusSteel, 1)));
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   6, 8,24, ST.update(OP.arrowGtWood.mat(MT.SterlingSilver, 1)));
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Ag));
