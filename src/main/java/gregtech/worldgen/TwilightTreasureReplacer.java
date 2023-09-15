@@ -131,6 +131,13 @@ public class TwilightTreasureReplacer extends TFTreasure {
 			ultrarare.add(IL.Compass_Death.get(1));
 		}
 		
+		// Basement Cache, 1x1 Well and Dark Tower.
+		if (aIndex ==  8) {
+			mRare     =  3;
+			// A Guide to the Twilight Forest.
+			rare     .add(ST.book("Manual_Portal_TF"));
+		}
+		
 		// Labyrinth Vault
 		if (aIndex == 10) {
 			mRare     =  4;
