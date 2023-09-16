@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -934,18 +934,18 @@ public class LoaderWoodDictionary implements Runnable {
 		// Mariculture Polished Logs and Planks
 		if (MD.MaCu.mLoaded) {
 			new WoodEntry(IL.MaCu_Polished_Logs.get(1), 1, 300, 0, 0, 0, NI, MT.WoodPolished, MT.Bark, OP.stickLong.mat(MT.Wood, 1));
-			new PlankEntry(IL.MaCu_Polished_Planks.get(1), IL.Plank_Slab.get(1, ST.make(Blocks.wooden_slab, 1, 0)), MT.WoodPolished, 125, OP.stick.mat(MT.Wood, 1));
+			new PlankEntry(IL.MaCu_Polished_Planks.get(1), IL.Plank_Slab.get(1, ST.make(Blocks.wooden_slab, 1, 0)), MT.WoodPolished, 125, IL.Stick.get(1));
 		}
 		// Immersive Engineering Treated Wood
 		if (MD.IE.mLoaded) {
-			new PlankEntry(ST.make(MD.IE, "treatedWood", 1, 0), ST.make(MD.IE, "woodenDecoration", 1, 2), ST.make(MD.IE, "woodenStairs" , 1, 0), MT.WoodTreated, 40, OP.stick.mat(MT.Wood, 1));
-			new PlankEntry(ST.make(MD.IE, "treatedWood", 1, 1), ST.make(MD.IE, "woodenDecoration", 1, 2), ST.make(MD.IE, "woodenStairs1", 1, 0), MT.WoodTreated, 41, OP.stick.mat(MT.Wood, 1));
-			new PlankEntry(ST.make(MD.IE, "treatedWood", 1, 2), ST.make(MD.IE, "woodenDecoration", 1, 2), ST.make(MD.IE, "woodenStairs2", 1, 0), MT.WoodTreated, 42, OP.stick.mat(MT.Wood, 1));
+			new PlankEntry(ST.make(MD.IE, "treatedWood", 1, 0), ST.make(MD.IE, "woodenDecoration", 1, 2), ST.make(MD.IE, "woodenStairs" , 1, 0), MT.WoodTreated, 40, IL.Stick.get(1));
+			new PlankEntry(ST.make(MD.IE, "treatedWood", 1, 1), ST.make(MD.IE, "woodenDecoration", 1, 2), ST.make(MD.IE, "woodenStairs1", 1, 0), MT.WoodTreated, 41, IL.Stick.get(1));
+			new PlankEntry(ST.make(MD.IE, "treatedWood", 1, 2), ST.make(MD.IE, "woodenDecoration", 1, 2), ST.make(MD.IE, "woodenStairs2", 1, 0), MT.WoodTreated, 42, IL.Stick.get(1));
 			CR.shaped(ST.make(MD.IE, "treatedWood", 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.IE, "woodenDecoration", 1, 2));
 		}
 		// Railcraft Planks
 		if (MD.RC.mLoaded) {
-			new PlankEntry(ST.make(MD.RC, "cube", 1, 8), MT.WoodTreated, 96);
+			new PlankEntry(ST.make(MD.RC, "cube", 1, 8), MT.WoodTreated, 96, IL.Stick.get(1));
 		}
 	}
 }

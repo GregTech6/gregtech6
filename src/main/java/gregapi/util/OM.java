@@ -164,85 +164,85 @@ public class OM {
 		return new OreDictItemData(tPrefix, tMaterial);
 	}
 	
-	public static OreDictItemData data(ItemStack aStack) {
-		return OreDictManager.INSTANCE.getItemData(aStack, F);
+	public static OreDictItemData data (ItemStack aStack) {
+		return OreDictManager.INSTANCE.getItemData (aStack, F);
 	}
 	public static OreDictItemData data_(ItemStack aStack) {
 		return OreDictManager.INSTANCE.getItemData_(aStack, F);
 	}
 	
-	public static OreDictItemData anydata(ItemStack aStack) {
-		return OreDictManager.INSTANCE.getItemData(aStack, T);
+	public static OreDictItemData anydata (ItemStack aStack) {
+		return OreDictManager.INSTANCE.getItemData (aStack, T);
 	}
 	public static OreDictItemData anydata_(ItemStack aStack) {
 		return OreDictManager.INSTANCE.getItemData_(aStack, T);
 	}
 	
 	public static OreDictItemData data(ItemStack aStack, boolean aAllowOverride) {
-		return OreDictManager.INSTANCE.getItemData(aStack, aAllowOverride);
+		return OreDictManager.INSTANCE.getItemData (aStack, aAllowOverride);
 	}
 	public static OreDictItemData data_(ItemStack aStack, boolean aAllowOverride) {
 		return OreDictManager.INSTANCE.getItemData_(aStack, aAllowOverride);
 	}
 	
-	public static void association(ItemStack aStack, OreDictPrefix aPrefix, OreDictMaterial aMaterial) {
-		OreDictManager.INSTANCE.addAssociation(aPrefix, aMaterial, aStack);
+	public static void association (ItemStack aStack, OreDictPrefix aPrefix, OreDictMaterial aMaterial) {
+		OreDictManager.INSTANCE.addAssociation (aPrefix, aMaterial, aStack);
 	}
 	public static void association_(ItemStack aStack, OreDictPrefix aPrefix, OreDictMaterial aMaterial) {
 		OreDictManager.INSTANCE.addAssociation_(aPrefix, aMaterial, aStack);
 	}
 	
-	public static boolean reg(ItemStack aStack, OreDictPrefix aPrefix, OreDictMaterial aMaterial) {
-		return OreDictManager.INSTANCE.registerOre(aPrefix, aMaterial, aStack);
+	public static boolean reg (ItemStack aStack, OreDictPrefix aPrefix, OreDictMaterial aMaterial) {
+		return OreDictManager.INSTANCE.registerOre (aPrefix, aMaterial, aStack);
 	}
 	public static boolean reg_(ItemStack aStack, OreDictPrefix aPrefix, OreDictMaterial aMaterial) {
 		return OreDictManager.INSTANCE.registerOre_(aPrefix, aMaterial, aStack);
 	}
 	
-	public static boolean reg(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack) {
+	public static boolean reg (OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack) {
 		return OreDictManager.INSTANCE.registerOre(aPrefix, aMaterial, aStack);
 	}
 	public static boolean reg_(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ItemStack aStack) {
 		return OreDictManager.INSTANCE.registerOre_(aPrefix, aMaterial, aStack);
 	}
 	
-	public static boolean reg(ItemStack aStack, Object aName) {
-		return OreDictManager.INSTANCE.registerOre(aName, aStack);
+	public static boolean reg (ItemStack aStack, Object aName) {
+		return OreDictManager.INSTANCE.registerOre (aName, aStack);
 	}
 	public static boolean reg_(ItemStack aStack, Object aName) {
 		return OreDictManager.INSTANCE.registerOre_(aName, aStack);
 	}
 	
-	public static boolean reg(Object aName, ItemStack aStack) {
-		return OreDictManager.INSTANCE.registerOre(aName, aStack);
+	public static boolean reg (Object aName, ItemStack aStack) {
+		return OreDictManager.INSTANCE.registerOre (aName, aStack);
 	}
 	public static boolean reg_(Object aName, ItemStack aStack) {
 		return OreDictManager.INSTANCE.registerOre_(aName, aStack);
 	}
 	
-	public static OreDictItemData association(ItemStack aStack) {
-		return OreDictManager.INSTANCE.getAssociation(aStack, F);
+	public static OreDictItemData association (ItemStack aStack) {
+		return OreDictManager.INSTANCE.getAssociation (aStack, F);
 	}
 	public static OreDictItemData association_(ItemStack aStack) {
 		return OreDictManager.INSTANCE.getAssociation_(aStack, F);
 	}
 	
-	public static OreDictItemData anyassociation(ItemStack aStack) {
-		return OreDictManager.INSTANCE.getAssociation(aStack, T);
+	public static OreDictItemData anyassociation (ItemStack aStack) {
+		return OreDictManager.INSTANCE.getAssociation (aStack, T);
 	}
 	public static OreDictItemData anyassociation_(ItemStack aStack) {
 		return OreDictManager.INSTANCE.getAssociation_(aStack, T);
 	}
 	
-	public static OreDictItemData association(ItemStack aStack, boolean aAllowOverride) {
-		return OreDictManager.INSTANCE.getAssociation(aStack, aAllowOverride);
+	public static OreDictItemData association (ItemStack aStack, boolean aAllowOverride) {
+		return OreDictManager.INSTANCE.getAssociation (aStack, aAllowOverride);
 	}
 	public static OreDictItemData association_(ItemStack aStack, boolean aAllowOverride) {
 		return OreDictManager.INSTANCE.getAssociation_(aStack, aAllowOverride);
 	}
 	
-	public static boolean prefixcontainsmaterialmatches(ItemStack aStack, OreDictMaterial aMaterial, TagData... aTags) {
-		return prefixcontainsmaterialmatches(anydata(aStack), aMaterial, aTags);
+	public static boolean prefixcontainsmaterialmatches (ItemStack aStack, OreDictMaterial aMaterial, TagData... aTags) {
+		return prefixcontainsmaterialmatches(anydata (aStack), aMaterial, aTags);
 	}
 	public static boolean prefixcontainsmaterialmatches_(ItemStack aStack, OreDictMaterial aMaterial, TagData... aTags) {
 		return prefixcontainsmaterialmatches(anydata_(aStack), aMaterial, aTags);
@@ -252,8 +252,8 @@ public class OM {
 		return aData != null && aData.mPrefix != null && aData.mMaterial != null && (aMaterial == null || aData.mMaterial.mMaterial == aMaterial) && aData.mPrefix.containsAll(aTags);
 	}
 	
-	public static boolean prefixcontains(ItemStack aStack, TagData... aTags) {
-		return prefixcontains(anydata(aStack), aTags);
+	public static boolean prefixcontains (ItemStack aStack, TagData... aTags) {
+		return prefixcontains(anydata (aStack), aTags);
 	}
 	public static boolean prefixcontains_(ItemStack aStack, TagData... aTags) {
 		return prefixcontains(anydata_(aStack), aTags);
@@ -266,8 +266,8 @@ public class OM {
 		return aData != null && aData.mPrefix != null && aData.mPrefix.containsAny(aTags);
 	}
 	
-	public static boolean materialcontains(ItemStack aStack, TagData... aTags) {
-		return materialcontains(anydata(aStack), aTags);
+	public static boolean materialcontains (ItemStack aStack, TagData... aTags) {
+		return materialcontains(anydata (aStack), aTags);
 	}
 	public static boolean materialcontains_(ItemStack aStack, TagData... aTags) {
 		return materialcontains(anydata_(aStack), aTags);

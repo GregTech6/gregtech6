@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregapi.item.multiitem.tools;
 
-import java.util.List;
-
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.oredict.OreDictMaterial;
 import net.minecraft.block.Block;
@@ -33,6 +31,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
+
+import java.util.List;
 
 /**
  * @author Gregorius Techneticies
@@ -151,6 +151,11 @@ public interface IToolStats {
 	 * @return If this Tool can be used as Mining Tool i.e. if that is the main purpose. (for enchants)
 	 */
 	public boolean isMiningTool();
+	
+	/**
+	 * @return If this Tools Damage does setDamageBypassesArmor() for its DamageSource.
+	 */
+	public boolean canPenetrate();
 	
 	/**
 	 * aBlock.getHarvestTool(aMetaData) can return the following Values for example.

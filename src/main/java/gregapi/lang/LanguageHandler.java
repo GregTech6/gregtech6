@@ -103,7 +103,7 @@ public class LanguageHandler {
 		if (sLangFile == null) return aEnglish;
 		Property tProperty = sLangFile.get("LanguageFile", aKey, aEnglish);
 		if (tProperty.wasRead() && mWritingEnabled) sLangFile.save();
-		return tProperty.getString();
+		return sUseFile?tProperty.getString():aEnglish;
 	}
 	
 	public static String translate(String aKey) {

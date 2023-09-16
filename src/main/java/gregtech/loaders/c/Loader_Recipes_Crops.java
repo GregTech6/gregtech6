@@ -876,7 +876,7 @@ public class Loader_Recipes_Crops implements Runnable {
 		
 		crop.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			OreDictItemData tData = OM.data(aEvent.mStack);
-			if (tData == null || !tData.hasValidPrefixMaterialData()) {
+			if (tData == null || !tData.validData()) {
 			if (IL.IC2_Plantball.exists()) {
 			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.IC2_Plantball.get(1));
 			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(8, aEvent.mStack), IL.IC2_Plantball.get(1));
@@ -890,7 +890,7 @@ public class Loader_Recipes_Crops implements Runnable {
 		}});
 		flower.addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			OreDictItemData tData = OM.data(aEvent.mStack);
-			if (tData == null || !tData.hasValidPrefixMaterialData()) {
+			if (tData == null || !tData.validData()) {
 			if (IL.IC2_Plantball.exists()) {
 			RM.ic2_compressor(ST.amount( 8, aEvent.mStack), IL.IC2_Plantball.get(1));
 			RM.Compressor   .addRecipe1(T, 16, 16, ST.amount(8, aEvent.mStack), IL.IC2_Plantball.get(1));

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,15 +19,11 @@
 
 package gregtech.tileentity.redstone;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.network.INetworkHandler;
@@ -49,6 +45,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -60,10 +60,10 @@ public class MultiTileEntityButtonAdvanced extends TileEntityBase09FacingSingle 
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
-		mInverted = aNBT.getBoolean(NBT_MODE);
-		mLampMode = aNBT.getBoolean(NBT_MODE+".lamp");
+		mInverted     = aNBT.getBoolean(NBT_MODE);
+		mLampMode     = aNBT.getBoolean(NBT_MODE+".lamp");
 		mGlowInverted = aNBT.getBoolean(NBT_VISUAL);
-		mActive = aNBT.getBoolean(NBT_ACTIVE);
+		mActive       = aNBT.getBoolean(NBT_ACTIVE);
 		if (aNBT.hasKey(NBT_PROGRESS)) mLength = aNBT.getLong(NBT_PROGRESS);
 		if (aNBT.hasKey(NBT_MAXPROGRESS)) mMaxLength = aNBT.getLong(NBT_MAXPROGRESS);
 		if (aNBT.hasKey(NBT_REDSTONE)) mStrength = aNBT.getByte(NBT_REDSTONE);
@@ -78,11 +78,11 @@ public class MultiTileEntityButtonAdvanced extends TileEntityBase09FacingSingle 
 		UT.NBT.setBoolean(aNBT, NBT_MODE+".lamp", mLampMode);
 		UT.NBT.setBoolean(aNBT, NBT_VISUAL, mGlowInverted);
 		UT.NBT.setBoolean(aNBT, NBT_ACTIVE, mActive);
-		UT.NBT.setNumber(aNBT, NBT_PROGRESS, mLength);
+		UT.NBT.setNumber (aNBT, NBT_PROGRESS, mLength);
 		if (mMaxLength != 20) aNBT.setLong(NBT_MAXPROGRESS, mMaxLength);
-		if (mStrength != 15) aNBT.setByte(NBT_REDSTONE, mStrength);
-		if (mType != 0) aNBT.setByte(NBT_TEXTURE+".0", mType);
-		if (mIndex != 0) aNBT.setByte(NBT_TEXTURE+".1", mIndex);
+		if (mStrength  != 15) aNBT.setByte(NBT_REDSTONE, mStrength);
+		if (mType      !=  0) aNBT.setByte(NBT_TEXTURE+".0", mType);
+		if (mIndex     !=  0) aNBT.setByte(NBT_TEXTURE+".1", mIndex);
 	}
 	
 	@Override
@@ -91,9 +91,9 @@ public class MultiTileEntityButtonAdvanced extends TileEntityBase09FacingSingle 
 		UT.NBT.setBoolean(aNBT, NBT_MODE+".lamp", mLampMode);
 		UT.NBT.setBoolean(aNBT, NBT_VISUAL, mGlowInverted);
 		if (mMaxLength != 20) aNBT.setLong(NBT_MAXPROGRESS, mMaxLength);
-		if (mStrength != 15) aNBT.setByte(NBT_REDSTONE, mStrength);
-		if (mType != 0) aNBT.setByte(NBT_TEXTURE+".0", mType);
-		if (mIndex != 0) aNBT.setByte(NBT_TEXTURE+".1", mIndex);
+		if (mStrength  != 15) aNBT.setByte(NBT_REDSTONE, mStrength);
+		if (mType      !=  0) aNBT.setByte(NBT_TEXTURE+".0", mType);
+		if (mIndex     !=  0) aNBT.setByte(NBT_TEXTURE+".1", mIndex);
 		return aNBT;
 	}
 	

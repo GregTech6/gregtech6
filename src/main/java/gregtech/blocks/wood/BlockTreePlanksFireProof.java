@@ -19,14 +19,10 @@
 
 package gregtech.blocks.wood;
 
-import static gregapi.data.CS.*;
-
 import gregapi.block.metatype.BlockBasePlanks;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.block.metatype.ItemBlockMetaType;
-import gregapi.data.ANY;
-import gregapi.data.LH;
-import gregapi.data.OD;
+import gregapi.data.*;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.IIconContainer;
@@ -35,6 +31,8 @@ import gregapi.util.ST;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.world.World;
+
+import static gregapi.data.CS.ALL_SIDES_VALID;
 
 public class BlockTreePlanksFireProof extends BlockBasePlanks {
 	public BlockTreePlanksFireProof(String aName) {
@@ -55,6 +53,8 @@ public class BlockTreePlanksFireProof extends BlockBasePlanks {
 		LH.add(getUnlocalizedName()+".13", "Rotten Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+".14", "Mossy Planks (Fireproof)");
 		LH.add(getUnlocalizedName()+".15", "Frozen Planks (Fireproof)");
+		
+		OM.reg(ST.make(this, 1, 7), OP.plank.dat(MT.WOODS.Rainbowood));
 		
 		for (int i = 0; i < maxMeta(); i++) {
 			if (i != 10) OM.reg(ST.make(this, 1, i), OD.plankWood);

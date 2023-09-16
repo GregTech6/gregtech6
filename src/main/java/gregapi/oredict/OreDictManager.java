@@ -626,7 +626,7 @@ public final class OreDictManager {
 		return ST.valid(tAssociation.mUnificationTarget) && ST.equal(tAssociation.mUnificationTarget, aStackToCheckAgainst, aIgnoreNBT);
 	}
 	
-	public boolean addItemData(ItemStack aStack, OreDictItemData aData) {
+	public boolean addItemData (ItemStack aStack, OreDictItemData aData) {
 		if (ST.invalid(aStack)) return F;
 		if (getItemData_(aStack) == null) return setItemData_(aStack, aData);
 		return F;
@@ -636,7 +636,7 @@ public final class OreDictManager {
 		return F;
 	}
 	
-	public boolean setItemData(ItemStack aStack, OreDictItemData aData) {
+	public boolean setItemData (ItemStack aStack, OreDictItemData aData) {
 		if (ST.invalid(aStack) || aData == null) return F;
 		return setItemData_(aStack, aData);
 	}
@@ -651,12 +651,12 @@ public final class OreDictManager {
 		if (!aData.mBlackListed) aData.mBlackListed = isBlacklisted(aStack);
 		if (!aData.mBlocked) aData.mBlocked = (aData.mBlackListed || ST.block(aStack) != NB || FL.getFluid(aStack, T) != null || (aStack.getItem() instanceof IFluidContainerItem && ((IFluidContainerItem)aStack.getItem()).getCapacity(aStack) > 0));
 		sItemStack2DataMap.put(new ItemStackContainer(aStack), aData);
-		if (aData.hasValidMaterialData()) {
+		if (aData.validMaterial()) {
 			long tValidMaterialAmount = aData.mMaterial.mMaterial.contains(TD.Processing.UNRECYCLABLE)?0:aData.mMaterial.mAmount>=0?aData.mMaterial.mAmount:U;
 			for (OreDictMaterialStack tMaterial : aData.mByProducts) tValidMaterialAmount += tMaterial.mMaterial.contains(TD.Processing.UNRECYCLABLE)?0:tMaterial.mAmount>=0?tMaterial.mAmount:U;
 			if (tValidMaterialAmount < U && COMPAT_IC2 != null) COMPAT_IC2.blacklist(aStack);
 		}
-		if (!aData.hasValidPrefixData() || aData.mPrefix.contains(TD.Prefix.RECYCLABLE)) {
+		if (!aData.validPrefix() || aData.mPrefix.contains(TD.Prefix.RECYCLABLE)) {
 			OreDictRecyclingContainer tRegistration = new OreDictRecyclingContainer(aStack, aData);
 			for (IOreDictListenerRecyclable tListener : mRecyclableOreDictListeners) tListener.onRecycleableRegistration(tRegistration);
 			mRecyclableRegistrations.add(tRegistration);
@@ -664,14 +664,14 @@ public final class OreDictManager {
 		return T;
 	}
 	
-	public OreDictItemData getItemData(ItemStack aStack) {
-		return getItemData(aStack, F);
+	public OreDictItemData getItemData (ItemStack aStack) {
+		return getItemData (aStack, F);
 	}
 	public OreDictItemData getItemData_(ItemStack aStack) {
 		return getItemData_(aStack, F);
 	}
 	
-	public OreDictItemData getItemData(ItemStack aStack, boolean aAllowOverride) {
+	public OreDictItemData getItemData (ItemStack aStack, boolean aAllowOverride) {
 		if (ST.invalid(aStack)) return null;
 		return getItemData_(aStack, aAllowOverride);
 	}
@@ -718,7 +718,7 @@ public final class OreDictManager {
 	}
 	public OreDictItemData getAssociation_(ItemStack aStack, boolean aOverwrite) {
 		OreDictItemData rData = getItemData_(aStack, aOverwrite);
-		return rData != null && rData.hasValidPrefixMaterialData() && rData.mPrefix != OP.ore ? rData : null;
+		return rData != null && rData.validData() && rData.mPrefix != OP.ore ? rData : null;
 	}
 	
 	public static boolean isItemStackInstanceOf(ItemStack aStack, Object aName) {

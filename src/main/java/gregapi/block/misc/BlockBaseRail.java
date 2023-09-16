@@ -129,6 +129,8 @@ public class BlockBaseRail extends BlockRailBase implements IBlockBase, IBlockSe
 	@Override public boolean canSilkHarvest(byte aMeta) {return T;}
 	@Override public boolean canCreatureSpawn(byte aMeta) {return F;}
 	@Override public boolean isSealable(byte aMeta, byte aSide) {return F;}
+	@Override public boolean isFlammable(byte aMeta) {return getFlammability(aMeta) > 0;}
+	@Override public boolean isFireSource(byte aMeta) {return F;}
 	@Override public int getFlammability(byte aMeta) {return 0;}
 	@Override public int getFireSpreadSpeed(byte aMeta) {return 0;}
 	@Override public ItemStack onItemRightClick(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {return aStack;}

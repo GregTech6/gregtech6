@@ -57,7 +57,7 @@ public abstract class MultiTileEntityPlaceable extends TileEntityBase03MultiTile
 		if (ST.valid(mStack)) {
 			mSize = UT.Code.bindStack(ST.size(mStack));
 			OreDictItemData tData = OM.anydata(mStack);
-			if (tData != null && tData.hasValidMaterialData() && tData.mMaterial.mMaterial.mID > 0) mMaterial = tData.mMaterial.mMaterial;
+			if (tData != null && tData.nonemptyMaterial()) mMaterial = tData.mMaterial.mMaterial;
 		}
 		super.readFromNBT2(aNBT);
 	}

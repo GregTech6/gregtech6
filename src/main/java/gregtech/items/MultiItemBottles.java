@@ -338,8 +338,11 @@ public class MultiItemBottles extends MultiItemRandomWithCompat implements IItem
 		addItem(30000, "Medicine"                     , ""                                    , FL.Med_Heal               .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.SANO           , 2), FoodStatFluid.INSTANCE);
 		addItem(30001, "Laxative"                     , ""                                    , FL.Med_Laxative           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.SANO           , 1), TC.stack(TC.FAMES     , 1), FoodStatFluid.INSTANCE);
 		
-		addItem(32000  , "Ink Bottle"           , "Color: " + DYE_NAMES[DYE_INDEX_Black ], DYE_OREDICTS[DYE_INDEX_Black ], TC.stack(TC.VITREUS, 1), TC.stack(TC.SENSUS, 1), FL.make("squidink", L));
-		addItem(32001  , "Bottled Indigo Dye"   , "Color: " + DYE_NAMES[DYE_INDEX_Blue  ], DYE_OREDICTS[DYE_INDEX_Blue  ], TC.stack(TC.VITREUS, 1), TC.stack(TC.SENSUS, 1), FL.make("indigo", L));
+		IL.Bottle_Ink.set(
+		addItem(32000  , "Ink Bottle"           , "Color: " + DYE_NAMES[DYE_INDEX_Black ], DYE_OREDICTS[DYE_INDEX_Black ], TC.stack(TC.VITREUS, 1), TC.stack(TC.SENSUS, 1), FL.make("squidink", L)));
+		
+		IL.Bottle_Indigo.set(
+		addItem(32001  , "Bottled Indigo Dye"   , "Color: " + DYE_NAMES[DYE_INDEX_Blue  ], DYE_OREDICTS[DYE_INDEX_Blue  ], TC.stack(TC.VITREUS, 1), TC.stack(TC.SENSUS, 1), FL.make("indigo", L)));
 		
 		for (byte i = 0; i < 16; i++) {
 		addItem(32100+i, "Bottled Water Dye"    , "Color: " + DYE_NAMES[i               ], DYE_OREDICTS[i               ], TC.stack(TC.VITREUS, 1), TC.stack(TC.SENSUS, 1), DYE_FLUIDS_WATER[i]);
@@ -378,10 +381,11 @@ public class MultiItemBottles extends MultiItemRandomWithCompat implements IItem
 		IL.Bottle_Mercury.set(
 		addItem(32765, "Mercury Bottle", "Also called Quicksilver", new OreDictItemData(MT.Hg, U, MT.Glass, U), OP.bottle.dat(MT.Hg).toString() /* <- yes that toString() is needed! */, OD.itemQuicksilver, MT.Hg.liquid( U, T), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM, 2), FoodStatFluid.INSTANCE));
 		
-		CR.shapeless(last(4), CR.DEF, new Object[] {OD.itemQuicksilver, OP.bottle.dat(MT.Empty)});
-		CR.shapeless(last(3), CR.DEF, new Object[] {OP.chunkGt.dat(MT.Hg), OP.chunkGt.dat(MT.Hg), OP.chunkGt.dat(MT.Hg), OP.chunkGt.dat(MT.Hg), OP.bottle.dat(MT.Empty)});
-		CR.shapeless(last(2), CR.DEF, new Object[] {OP.billet.dat(MT.Hg), OP.nugget.dat(MT.Hg), OP.nugget.dat(MT.Hg), OP.nugget.dat(MT.Hg), OP.bottle.dat(MT.Empty)});
-		CR.shapeless(last(1), CR.DEF, new Object[] {OP.billet.dat(MT.Hg), OP.billet.dat(MT.Hg), OP.billet.dat(MT.Hg), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(last(1), CR.DEF, new Object[] {OD.itemQuicksilver, OP.bottle.dat(MT.Empty)});
+		CR.shapeless(last(1), CR.DEF, new Object[] {OP.chunkGt.dat(MT.Hg), OP.chunkGt.dat(MT.Hg), OP.chunkGt.dat(MT.Hg), OP.chunkGt.dat(MT.Hg), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(last(1), CR.DEF, new Object[] {OP.billet.dat(MT.Hg), OP.nugget.dat(MT.Hg), OP.nugget.dat(MT.Hg), OP.nugget.dat(MT.Hg), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(last(2), CR.DEF, new Object[] {OP.billet.dat(MT.Hg), OP.billet.dat(MT.Hg), OP.billet.dat(MT.Hg), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(last(1), CR.DEF, new Object[] {IL.HBM_Mercury_Drop, IL.HBM_Mercury_Drop, IL.HBM_Mercury_Drop, IL.HBM_Mercury_Drop, IL.HBM_Mercury_Drop, IL.HBM_Mercury_Drop, IL.HBM_Mercury_Drop, IL.HBM_Mercury_Drop, OP.bottle.dat(MT.Empty)});
 		
 		IL.Bottle_Glue.set(
 		addItem(32766, "Glue Bottle", "", OP.bottle.dat(MT.Glue), FL.Glue.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.LIMUS, 2), FoodStatFluid.INSTANCE));

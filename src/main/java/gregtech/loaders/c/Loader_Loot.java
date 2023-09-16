@@ -27,11 +27,13 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregtech.tileentity.placeables.MultiTileEntityCoin;
 import gregtech.worldgen.ChestGenHooksChestReplacer;
+import gregtech.worldgen.TwilightTreasureReplacer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
+import twilightforest.TFTreasure;
 
 import static gregapi.data.CS.*;
 
@@ -49,6 +51,41 @@ public class Loader_Loot implements Runnable {
 		if (!MD.VN4.mLoaded)
 		new ChestGenHooksChestReplacer(ChestGenHooks.VILLAGE_BLACKSMITH  ,    24);
 		
+		ST.LOOT_TABLES.add(ChestGenHooks.DUNGEON_CHEST           );
+		ST.LOOT_TABLES.add(ChestGenHooks.VILLAGE_BLACKSMITH      );
+		ST.LOOT_TABLES.add(ChestGenHooks.MINESHAFT_CORRIDOR      );
+		ST.LOOT_TABLES.add(ChestGenHooks.STRONGHOLD_LIBRARY      );
+		ST.LOOT_TABLES.add(ChestGenHooks.STRONGHOLD_CROSSING     );
+		ST.LOOT_TABLES.add(ChestGenHooks.STRONGHOLD_CORRIDOR     );
+		ST.LOOT_TABLES.add(ChestGenHooks.PYRAMID_DESERT_CHEST    );
+		ST.LOOT_TABLES.add(ChestGenHooks.PYRAMID_JUNGLE_CHEST    );
+		ST.LOOT_TABLES.add(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER);
+		ST.LOOT_TABLES.add(ChestGenHooks.BONUS_CHEST             );
+		
+		if (MD.TF.mLoaded) {
+			TFTreasure.hill1             = TwilightTreasureReplacer.create(TFTreasure.hill1            ,  1, "hill1"            , ChestGenHooks.MINESHAFT_CORRIDOR      ,   509);
+			TFTreasure.hill2             = TwilightTreasureReplacer.create(TFTreasure.hill2            ,  2, "hill2"            , ChestGenHooks.MINESHAFT_CORRIDOR      ,   558);
+			TFTreasure.hill3             = TwilightTreasureReplacer.create(TFTreasure.hill3            ,  3, "hill3"            , ChestGenHooks.MINESHAFT_CORRIDOR      ,    58);
+			TFTreasure.hedgemaze         = TwilightTreasureReplacer.create(TFTreasure.hedgemaze        ,  4, "hedgemaze"        , ChestGenHooks.BONUS_CHEST             ,   516);
+			TFTreasure.labyrinth_room    = TwilightTreasureReplacer.create(TFTreasure.labyrinth_room   ,  5, "labyrinth_room"   , ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,     8);
+			TFTreasure.labyrinth_deadend = TwilightTreasureReplacer.create(TFTreasure.labyrinth_deadend,  6, "labyrinth_deadend", ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   508);
+			TFTreasure.tower_room        = TwilightTreasureReplacer.create(TFTreasure.tower_room       ,  7, "tower_room"       , ChestGenHooks.PYRAMID_DESERT_CHEST    ,     2);
+			TFTreasure.tower_library     = TwilightTreasureReplacer.create(TFTreasure.tower_library    ,  8, "tower_library"    , ChestGenHooks.STRONGHOLD_LIBRARY      ,   502);
+			TFTreasure.basement          = TwilightTreasureReplacer.create(TFTreasure.basement         ,  9, "basement"         , ChestGenHooks.STRONGHOLD_CROSSING     ,     9);
+			TFTreasure.labyrinth_vault   = TwilightTreasureReplacer.create(TFTreasure.labyrinth_vault  , 10, "labyrinth_vault"  , ChestGenHooks.VILLAGE_BLACKSMITH      ,    16);
+			TFTreasure.darktower_cache   = TwilightTreasureReplacer.create(TFTreasure.darktower_cache  , 11, "darktower_cache"  , ChestGenHooks.STRONGHOLD_CORRIDOR     ,   525);
+			TFTreasure.darktower_key     = TwilightTreasureReplacer.create(TFTreasure.darktower_key    , 12, "darktower_key"    , ChestGenHooks.DUNGEON_CHEST           ,    25);
+			TFTreasure.darktower_boss    = TwilightTreasureReplacer.create(TFTreasure.darktower_boss   , 13, "darktower_boss"   , ChestGenHooks.PYRAMID_JUNGLE_DISPENSER,    59);
+			TFTreasure.tree_cache        = TwilightTreasureReplacer.create(TFTreasure.tree_cache       , 14, "tree_cache"       , ChestGenHooks.BONUS_CHEST             ,   508);
+			TFTreasure.stronghold_cache  = TwilightTreasureReplacer.create(TFTreasure.stronghold_cache , 15, "stronghold_cache" , ChestGenHooks.STRONGHOLD_CORRIDOR     ,   510);
+			TFTreasure.stronghold_room   = TwilightTreasureReplacer.create(TFTreasure.stronghold_room  , 16, "stronghold_room"  , ChestGenHooks.DUNGEON_CHEST           ,    10);
+			TFTreasure.stronghold_boss   = TwilightTreasureReplacer.create(TFTreasure.stronghold_boss  , 17, "stronghold_boss"  , ChestGenHooks.VILLAGE_BLACKSMITH      ,   559);
+			TFTreasure.aurora_cache      = TwilightTreasureReplacer.create(TFTreasure.aurora_cache     , 18, "aurora_cache"     , ChestGenHooks.DUNGEON_CHEST           ,   513);
+			TFTreasure.aurora_room       = TwilightTreasureReplacer.create(TFTreasure.aurora_room      , 19, "aurora_room"      , ChestGenHooks.DUNGEON_CHEST           ,    13);
+		////TFTreasure.aurora_boss       = TwilightTreasureReplacer.create(TFTreasure.aurora_boss      , 20, "aurora_boss"      , ChestGenHooks.DUNGEON_CHEST           , 32745);// This one is actually empty and unused.
+			TFTreasure.troll_garden      = TwilightTreasureReplacer.create(TFTreasure.troll_garden     , 21, "troll_garden"     , ChestGenHooks.DUNGEON_CHEST           ,   524);
+			TFTreasure.troll_vault       = TwilightTreasureReplacer.create(TFTreasure.troll_vault      , 22, "troll_vault"      , ChestGenHooks.VILLAGE_BLACKSMITH      ,    24);
+		}
 		
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   2, 8,16, IL.Bottle_Purple_Drink.get(1));
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 8,16, IL.Bottle_Glue.get(1));
@@ -186,9 +223,9 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Nq));
 		
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   4,16,64, OP.rockGt.mat(MT.STONES.SkyStone, 1));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3, 4,16, OP.ingot.mat(MT.Bronze, 1));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3, 4,16, OP.plate.mat(MT.Bronze, 1));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3,16,64, OP.toolHeadArrow.mat(MT.Bronze, 1));
+		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3, 4,16, OP.ingot.mat(MT.ArsenicCopper, 1));
+		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3, 4,16, OP.plate.mat(MT.ArsenicCopper, 1));
+		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3,16,64, OP.toolHeadArrow.mat(MT.ArsenicCopper, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1, 4,16, OP.toolHeadArrow.mat(MT.Ke, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   2, 2, 8, OP.gemFlawless.mat(MT.Amethyst, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   2, 2, 8, OP.gemFlawless.mat(MT.Diamond, 1));
@@ -215,18 +252,24 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 8,16, IL.Bottle_Glue.get(1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 8,16, IL.Bottle_Lubricant.get(1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 2, IL.Pill_Cure_All.get(1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4, 9,36, OP.nugget.mat(MT.Ag, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 9,36, OP.nugget.mat(MT.Pb, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4,18,64, OP.nugget.mat(MT.Cu, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4,18,64, OP.nugget.mat(MT.Sn, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4,18,64, OP.nugget.mat(MT.Zn, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4, 9,36, OP.nugget.mat(MT.Pb, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 9,36, OP.nugget.mat(MT.Steel, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 9,36, OP.nugget.mat(MT.Bronze, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4, 4,16, OP.chunkGt.mat(MT.Ag, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 4,16, OP.chunkGt.mat(MT.Pb, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 9,36, OP.nugget.mat(MT.Ag, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4, 8,32, OP.chunkGt.mat(MT.Cu, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4, 8,32, OP.chunkGt.mat(MT.Sn, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4, 8,32, OP.chunkGt.mat(MT.Zn, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4, 4,16, OP.chunkGt.mat(MT.Pb, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 4,16, OP.chunkGt.mat(MT.Steel, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 4,16, OP.chunkGt.mat(MT.Bronze, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4, 1, 4, OP.ingot.mat(MT.Ag, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.ingot.mat(MT.Pb, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 4,16, OP.chunkGt.mat(MT.Ag, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4, 4,16, OP.ingot.mat(MT.Cu, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4, 4,16, OP.ingot.mat(MT.Sn, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4, 4,16, OP.ingot.mat(MT.Zn, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4, 1, 4, OP.ingot.mat(MT.Pb, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 1, 4, OP.ingot.mat(MT.Steel, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 1, 4, OP.ingot.mat(MT.Bronze, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.ingot.mat(MT.Ag, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4,16,64, ST.make(Blocks.coal_ore    , 1, 0));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4,16,64, ST.make(Blocks.iron_ore    , 1, 0));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 8,32, ST.make(Blocks.gold_ore    , 1, 0));
@@ -250,11 +293,11 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.Goshenite, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.Bixbite, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.Maxixe, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   5, 1, 4, OP.toolHeadShovel.mat(MT.Bronze, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   5, 1, 4, OP.toolHeadShovel.mat(MT.ArsenicBronze, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   3, 1, 4, OP.toolHeadShovel.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.toolHeadShovel.mat(MT.DamascusSteel, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   5, 1, 4, OP.toolHeadPickaxe.mat(MT.Bronze, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   3, 1, 4, OP.toolHeadPickaxe.mat(MT.Steel, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   5, 1, 4, OP.toolHeadPickaxe.mat(MT.ArsenicBronze, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   3, 1, 4, OP.toolHeadRawPickaxe.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.toolHeadPickaxe.mat(MT.DamascusSteel, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  20, 1, 1, IL.Tool_MatchBox_Full.get(1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Cu));
@@ -351,8 +394,8 @@ public class Loader_Loot implements Runnable {
 		
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,  12, 1, 4, OP.toolHeadSword.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   6, 1, 4, OP.toolHeadSword.mat(MT.DamascusSteel, 1));
-		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,  12, 1, 4, OP.toolHeadAxe.mat(MT.Steel, 1));
-		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   6, 1, 4, OP.toolHeadAxe.mat(MT.DamascusSteel, 1));
+		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,  12, 1, 4, OP.toolHeadAxeDouble.mat(MT.Steel, 1));
+		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   6, 1, 4, OP.toolHeadAxeDouble.mat(MT.DamascusSteel, 1));
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   6,16,48, ST.update(OP.arrowGtWood.mat(MT.DamascusSteel, 1)));
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   6, 8,24, ST.update(OP.arrowGtWood.mat(MT.SterlingSilver, 1)));
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Ag));
@@ -374,7 +417,7 @@ public class Loader_Loot implements Runnable {
 			return F;
 		}
 		if (ConfigsGT.WORLDGEN.get("loot." + aType, aLoot, T)) {
-			ChestGenHooks.addItem(aType, new WeightedRandomChestContent(ST.copy(aLoot), aMin, aMax, aChance));
+			ChestGenHooks.addItem(aType, new WeightedRandomChestContent(ST.copy(aLoot), Math.min(aMin, aLoot.getMaxStackSize()), Math.min(aMax, aLoot.getMaxStackSize()), aChance));
 		}
 		return T;
 	}

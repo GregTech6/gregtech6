@@ -76,6 +76,7 @@ public abstract class ToolStats implements IToolStats {
 	@Override public String getBreakingSound()                                              {return SFX.MC_BREAK;}
 	@Override public boolean canCollect()                                                   {return F;}
 	@Override public boolean canBlock()                                                     {return F;}
+	@Override public boolean canPenetrate()                                                 {return F;}
 	@Override public boolean isWrench()                                                     {return F;}
 	@Override public boolean isCrowbar()                                                    {return F;}
 	@Override public boolean isGrafter()                                                    {return F;}

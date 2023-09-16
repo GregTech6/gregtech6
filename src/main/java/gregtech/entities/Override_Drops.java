@@ -463,7 +463,25 @@ public class Override_Drops {
 			}
 		} else if (aClass.equalsIgnoreCase("EntityTFWraith")) {
 			tReplaceIron = T;
-			if (RNGSUS.nextInt(10) == 0) aDrops.add(ST.entity(aDead, OP.dust.mat(MT.Ectoplasm, 1)));
+			int tAmount = RNGSUS.nextInt(3);
+			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting+1);
+			while (tAmount-->0) aDrops.add(ST.entity(aDead, OP.dust.mat(MT.Ectoplasm, 1)));
+		} else if (aClass.equalsIgnoreCase("EntityTFMinoshroom")) {
+			tReplaceIron = F;
+			for (int i = 0; i < 4; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
+				aDrops.add(ST.entity(aDead, IL.Hoof_Cow.get(1)));
+			}
+			for (int i = 0; i < 2; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
+				aDrops.add(ST.entity(aDead, IL.Horn_Cow.get(1)));
+			}
+		} else if (aClass.equalsIgnoreCase("EntityTFMinotaur")) {
+			tReplaceIron = T;
+			for (int i = 0; i < 2; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
+				aDrops.add(ST.entity(aDead, IL.Hoof_Cow.get(1)));
+			}
+			for (int i = 0; i < 2; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
+				aDrops.add(ST.entity(aDead, IL.Horn_Cow.get(1)));
+			}
 		} else if (aClass.equalsIgnoreCase("EntityTFBoar")) {
 			tReplaceIron = T;
 			for (int i = 0; i < 2; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {

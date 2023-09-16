@@ -53,7 +53,9 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fluids.IFluidContainerItem;
+import net.minecraftforge.fluids.IFluidHandler;
 import squeek.applecore.api.food.FoodValues;
+import thaumcraft.common.tiles.TileCrucible;
 
 import java.util.List;
 
@@ -245,12 +247,20 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 				}
 				
 				TileEntity tTileEntity = WD.te(aWorld, aX, aY, aZ, F);
+				
 				try {if (tTileEntity instanceof ICropTile) {
 					int tHydration = ((ICropTile)tTileEntity).getHydrationStorage();
 					int tDrained = Math.min((200-tHydration)/10, mFluid.amount);
 					if (tDrained > 0) {
 						aItem.drain(aStack, tDrained, T);
 						((ICropTile)tTileEntity).setHydrationStorage(tHydration + tDrained*10);
+						UT.Sounds.send(aWorld, SFX.MC_LIQUID_WATER, 1.0F, 1.0F, aX, aY, aZ);
+					}
+					return T;
+				}} catch(Throwable e) {/**/}
+				
+				try {if (tTileEntity instanceof TileCrucible) {
+					if (FL.water(mFluid) && FL.nonzero(aItem.drain(aStack, (int)FL.fill((IFluidHandler)tTileEntity, SIDE_TOP, FL.Water.make(mFluid.amount), T), T))) {
 						UT.Sounds.send(aWorld, SFX.MC_LIQUID_WATER, 1.0F, 1.0F, aX, aY, aZ);
 					}
 					return T;

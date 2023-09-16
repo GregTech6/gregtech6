@@ -88,10 +88,10 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 						tFluid = FL.XP.make(tOutput.stackSize);
 					} else {
 						// Now for OreDictItemData of the Input Item
-						if (tData != null && tData.hasValidPrefixMaterialData()) {
+						if (tData != null && tData.validData()) {
 							if (tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) {
 								tData = OM.anydata_(tOutput);
-								if (tData != null && tData.hasValidPrefixMaterialData()) {
+								if (tData != null && tData.validData()) {
 									// Give XP based on Tool Quality of the Output.
 									long tXP = tOutput.stackSize * (3+tData.mMaterial.mMaterial.mToolQuality);
 									// Valuable Tag is for Gold and certain Gems and happens to double the XP you can get from this.
@@ -116,7 +116,7 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 							// Those RotaryCraft Extracts are all about Ore Processing.
 							if (MD.RoC.owns(aInputs[0], "extracts")) {
 								tData = OM.anydata_(tOutput);
-								if (tData != null && tData.hasValidPrefixMaterialData()) {
+								if (tData != null && tData.validData()) {
 									// Give XP based on Tool Quality of the Output.
 									long tXP = tOutput.stackSize * (3+tData.mMaterial.mMaterial.mToolQuality);
 									// Valuable Tag is for Gold and certain Gems and happens to double the XP you can get from this.

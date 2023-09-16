@@ -563,11 +563,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						
 						OreDictItemData aData = OM.anydata_(rStack);
 						if (aData != null) {
-							if (aData.hasValidPrefixData()) for (IOreDictListenerItem tListener : aData.mPrefix.mListenersItem) {
+							if (aData.validPrefix()) for (IOreDictListenerItem tListener : aData.mPrefix.mListenersItem) {
 								rStack = tListener.onTickWorld(aData.mPrefix, aData.mMaterial.mMaterial, rStack, (EntityItem)aEntity);
 								if (!ST.equal(rStack, aStack) || rStack.stackSize != aStack.stackSize) {tBreak = T; break;}
 							}
-							if (!tBreak && aData.hasValidMaterialData()) for (OreDictMaterialStack tMaterial : aData.getAllMaterialStacks()) {
+							if (!tBreak && aData.validMaterial()) for (OreDictMaterialStack tMaterial : aData.getAllMaterialStacks()) {
 								if (tBreak) break;
 								if (tMaterial.mMaterial.contains(TD.Properties.UNBURNABLE)) tFireProof = T;
 								for (IOreDictListenerItem tListener : tMaterial.mMaterial.mListenersItem) {
@@ -721,15 +721,15 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							}
 							// Data based checks.
 							OreDictItemData tData = OM.anydata_(tStack);
-							if (tData != null && tData.hasValidMaterialData()) {
-								if ((tData.mMaterial.mMaterial == MT.Bedrockium || tData.mMaterial.mMaterial == MT.Neutronium) && (tData.hasValidPrefixData() || tData.mByProducts.length <= 0)) {
+							if (tData != null && tData.validMaterial()) {
+								if ((tData.mMaterial.mMaterial == MT.Bedrockium || tData.mMaterial.mMaterial == MT.Neutronium) && (tData.validPrefix() || tData.mByProducts.length <= 0)) {
 									PotionEffect tEffect = null;
 									UT.Entities.applyPotion(aEvent.player, Potion.moveSlowdown.id, Math.max(140, ((tEffect = aEvent.player.getActivePotionEffect(Potion.moveSlowdown))==null?0:tEffect.getDuration())), 3, F);
 								}
 								if (tData.mMaterial.mMaterial == MT.Craponite) {
 									tCraponite++;
 								}
-								if (tData.mMaterial.mMaterial == MT.Firestone && tData.hasValidPrefixData() && !MD.RC.owns(tStack)) for (int j = (int)UT.Code.divup(tData.mMaterial.mAmount * tStack.stackSize, U); j > 0; j--) {
+								if (tData.mMaterial.mMaterial == MT.Firestone && tData.validPrefix() && !MD.RC.owns(tStack)) for (int j = (int)UT.Code.divup(tData.mMaterial.mAmount * tStack.stackSize, U); j > 0; j--) {
 									WD.fire(aEvent.player.worldObj, UT.Code.roundDown(aEvent.player.posX)-5+RNGSUS.nextInt(11), UT.Code.roundDown(aEvent.player.posY)-5+RNGSUS.nextInt(11), UT.Code.roundDown(aEvent.player.posZ)-5+RNGSUS.nextInt(11), RNGSUS.nextInt(8) != 0);
 								}
 							}
@@ -931,11 +931,6 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		ItemStack aStack = aEvent.entityPlayer.inventory.getCurrentItem();
 		Block aBlock = WD.block(aEvent.world, aEvent.x, aEvent.y, aEvent.z);
 		TileEntity aTileEntity = aEvent.world.getTileEntity(aEvent.x, aEvent.y, aEvent.z);
-		
-		// You cant detect properly when you pick things up out of a Chest.
-		if (IL.TF_Trophy_Urghast.equal(aStack, T, T)) {
-			UT.Inventories.checkAchievements(aEvent.entityPlayer, aStack);
-		}
 		
 		if (aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) {
 			// Fixing a Vanilla Dupe Bug with stacked Music Discs and the Jukebox.
@@ -1182,13 +1177,16 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@SubscribeEvent
 	public void onBlockHarvestingEvent(BlockEvent.HarvestDropsEvent aEvent) {
 		Iterator<ItemStack> aDrops = aEvent.drops.iterator();
-		Block aBlock = (aEvent.block == Blocks.lit_redstone_ore ? Blocks.redstone_ore : aEvent.block);
+		Block aBlock = (aEvent.block == Blocks.lit_redstone_ore ? Blocks.redstone_ore : aEvent.block == Blocks.lit_redstone_lamp ? Blocks.redstone_lamp : aEvent.block == BlocksGT.EtFu_Deepslate_Lit_Redstone_Ore ? BlocksGT.EtFu_Deepslate_Redstone_Ore : aEvent.block);
+		
 		while (aDrops.hasNext()) {
 			ItemStack aDrop = aDrops.next();
 			if (ST.invalid(aDrop) || ItemsGT.ILLEGAL_DROPS.contains(aDrop, T)) {aDrops.remove(); continue;}
 			if (ST.item_(aDrop) == Items.gold_nugget) ST.meta_(aDrop, 0);
 			if (FORCE_GRAVEL_NO_FLINT && aBlock == Blocks.gravel && ST.item_(aDrop) == Items.flint) ST.set(aDrop, ST.make(Blocks.gravel, 1, 0), T, F);
 		}
+		
+		if (aBlock == null) return;
 		
 		if (aBlock == Blocks.dirt && aEvent.blockMetadata == 1) for (int i = 0, j = aEvent.drops.size(); i < j; i++) if (ST.block(aEvent.drops.get(0)) == Blocks.dirt) {
 			aEvent.drops.set(i, ST.make(Blocks.dirt, aEvent.drops.get(i).stackSize, 1));

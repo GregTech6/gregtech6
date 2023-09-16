@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,8 @@
 
 package gregtech.worldgen;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ItemStackContainer;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.BushesGT;
 import gregapi.data.IL;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -42,6 +34,12 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -54,7 +52,7 @@ public class WorldgenBushes extends WorldgenOnSurface {
 	@Override
 	public int canGenerate(World aWorld, Chunk aChunk, int aDimType, int aMinX, int aMinZ, int aMaxX, int aMaxZ, Random aRandom, BiomeGenBase[][] aBiomes, Set<String> aBiomeNames) {
 		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return 0;
-		for (String tName : aBiomeNames) if (BIOMES_PLAINS.contains(tName) || BIOMES_WOODS.contains(tName)) return mAmount;
+		for (String tName : aBiomeNames) if (!BIOMES_FROZEN.contains(tName) && (BIOMES_PLAINS.contains(tName) || BIOMES_WOODS.contains(tName))) return mAmount;
 		return 0;
 	}
 	
@@ -69,12 +67,12 @@ public class WorldgenBushes extends WorldgenOnSurface {
 		int tStage = aRandom.nextInt(4);
 		ItemStack tBerry = UT.Code.select(new NoiseGenerator(aWorld).get(aX/2, 300, aZ/2, BushesGT.MAP.size()), new ItemStackContainer(IL.Food_Candleberry.get(1)), BushesGT.MAP.keySet().toArray(ZL_ISC)).toStack();
 		
-		tRegistry.mBlock.placeBlock(aWorld, aX, aY+1, aZ, SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_UNDEFINED, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
-		if (WD.easyRep(aWorld, aX+1, aY+1, aZ  )) tRegistry.mBlock.placeBlock(aWorld, aX+1, aY+1, aZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
-		if (WD.easyRep(aWorld, aX-1, aY+1, aZ  )) tRegistry.mBlock.placeBlock(aWorld, aX-1, aY+1, aZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
-		if (WD.easyRep(aWorld, aX  , aY+1, aZ+1)) tRegistry.mBlock.placeBlock(aWorld, aX  , aY+1, aZ+1, SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
-		if (WD.easyRep(aWorld, aX  , aY+1, aZ-1)) tRegistry.mBlock.placeBlock(aWorld, aX  , aY+1, aZ-1, SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
-		if (WD.easyRep(aWorld, aX  , aY+2, aZ  )) tRegistry.mBlock.placeBlock(aWorld, aX  , aY+2, aZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_Y_NEG, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
+		;                                         tRegistry.mBlock.placeBlock(aWorld, aX  , aY+1, aZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_UNDEFINED, NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
+		if (WD.easyRep(aWorld, aX+1, aY+1, aZ  )) tRegistry.mBlock.placeBlock(aWorld, aX+1, aY+1, aZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_X_NEG    , NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
+		if (WD.easyRep(aWorld, aX-1, aY+1, aZ  )) tRegistry.mBlock.placeBlock(aWorld, aX-1, aY+1, aZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_X_POS    , NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
+		if (WD.easyRep(aWorld, aX  , aY+1, aZ+1)) tRegistry.mBlock.placeBlock(aWorld, aX  , aY+1, aZ+1, SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_Z_NEG    , NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
+		if (WD.easyRep(aWorld, aX  , aY+1, aZ-1)) tRegistry.mBlock.placeBlock(aWorld, aX  , aY+1, aZ-1, SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_Z_POS    , NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
+		if (WD.easyRep(aWorld, aX  , aY+2, aZ  )) tRegistry.mBlock.placeBlock(aWorld, aX  , aY+2, aZ  , SIDE_UNKNOWN, (short)32759, ST.save(UT.NBT.make(NBT_FACING, SIDE_Y_NEG    , NBT_STATE, tStage), NBT_VALUE, tBerry), T, T);
 		return T;
 	}
 }

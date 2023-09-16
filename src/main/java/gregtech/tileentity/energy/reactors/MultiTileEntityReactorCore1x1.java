@@ -86,6 +86,8 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 			// TODO Raycasting through Lead, Water and similar Blocks.
 			if (tCalc > 0 && SERVER_TIME % 20 == 10) {
 				for (Object tEntity : worldObj.loadedEntityList) if (tEntity instanceof EntityLivingBase) {
+					if (Math.abs(xCoord - ((EntityLivingBase)tEntity).posX) > 200) continue;
+					if (Math.abs(zCoord - ((EntityLivingBase)tEntity).posZ) > 200) continue;
 					int tStrength = UT.Code.bindInt((long)(tCalc - ((EntityLivingBase)tEntity).getDistance(xCoord, yCoord, zCoord)));
 					if (tStrength > 0) UT.Entities.applyRadioactivity((EntityLivingBase)tEntity, (int)UT.Code.divup(tStrength, 10), tStrength);
 				}
@@ -172,6 +174,8 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 					UT.Sounds.send(SFX.MC_EXPLODE, this);
 					tCalc *= 2;
 					for (Object tEntity : worldObj.loadedEntityList) if (tEntity instanceof EntityLivingBase) {
+						if (Math.abs(xCoord - ((EntityLivingBase)tEntity).posX) > 500) continue;
+						if (Math.abs(zCoord - ((EntityLivingBase)tEntity).posZ) > 500) continue;
 						int tStrength = UT.Code.bindInt((long)(tCalc - ((EntityLivingBase)tEntity).getDistance(xCoord, yCoord, zCoord)));
 						if (tStrength > 0) UT.Entities.applyRadioactivity((EntityLivingBase)tEntity, (int)UT.Code.divup(tStrength, 10), tStrength);
 					}
