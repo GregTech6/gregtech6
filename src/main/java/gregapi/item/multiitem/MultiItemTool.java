@@ -253,7 +253,8 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 					if (tCriticalHit && tDamage > 0) tDamage *= 1.5;
 					float tFullDamage = (tDamage+tMagicDamage) * TFC_DAMAGE_MULTIPLIER;
 					DamageSource tSource = tStats.getDamageSource(aPlayer, aEntity);
-					// Avoiding the Betweenlands Damage Cap in a fair way.
+					if (tStats.canPenetrate()) tSource.setDamageBypassesArmor();
+					// Avoiding the Betweenlands Damage Cap of 40 in a fair way.
 					// Only Betweenlands Materials will avoid it. And maybe some super Lategame Materials.
 					if (MD.BTL.mLoaded && aEntity.getClass().getName().startsWith("thebetweenlands") && getPrimaryMaterial(aStack).contains(TD.Properties.BETWEENLANDS)) {
 						float tDamageToDeal = tFullDamage;
@@ -321,6 +322,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				aList.add(LH.Chat.WHITE + "Attack Damage: +" + LH.Chat.BLUE + (tCombat * TFC_DAMAGE_MULTIPLIER) + LH.Chat.RED + " (= " + (TFC_DAMAGE_MULTIPLIER > 1 ? ((tCombat+1)*(TFC_DAMAGE_MULTIPLIER/2.0)) + ")" : ((tCombat+1)/2) + " Hearts)"));
 				aList.add(LH.Chat.WHITE + "Mining Speed: x" + LH.Chat.PINK + tStats.getSpeedMultiplier());
 				if (tStats.canCollect()) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_AUTOCOLLECT));
+				if (tStats.canPenetrate()) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_ARMOR_PENETRATING));
 			} else {
 				aList.add(LH.Chat.WHITE + "Durability: " + LH.Chat.GREEN + UT.Code.makeString(tMaxDamage - tDamage) + " / " + UT.Code.makeString(tMaxDamage));
 				aList.add(LH.Chat.WHITE + tMat1.getLocal() + LH.Chat.YELLOW + " Level: " + (tStats.getBaseQuality() + tMat1.mToolQuality));
@@ -336,6 +338,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				}
 				if (tMat1.contains(TD.Properties.UNBURNABLE) || tMat2.contains(TD.Properties.UNBURNABLE)) aList.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_UNBURNABLE));
 				if (tStats.canCollect() || tMat1.contains(TD.Properties.MAGNETIC_ACTIVE) || tMat2.contains(TD.Properties.MAGNETIC_ACTIVE)) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_AUTOCOLLECT));
+				if (tStats.canPenetrate()) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_ARMOR_PENETRATING));
 			}
 		}
 	}

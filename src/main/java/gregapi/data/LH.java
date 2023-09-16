@@ -199,6 +199,7 @@ public class LH {
 	, TOOLTIP_NEEDS_SHARPENING = "gt.lang.needs.sharpening"
 	, TOOLTIP_SHAPELESS_CRAFT = "gt.lang.has.shapeless"
 	, TOOLTIP_AUTOCOLLECT = "gt.lang.autocollect"
+	, TOOLTIP_ARMOR_PENETRATING = "gt.lang.armorpenetrating"
 	, TOOLTIP_BEACON_PAYMENT = "gt.lang.beacon.payment"
 	, TOOLTIP_SHELFABLE = "gt.lang.shelfable"
 	, TOOLTIP_SANDWICHABLE = "gt.lang.sandwichable"
@@ -579,6 +580,7 @@ public class LH {
 		add(TOOLTIP_NEEDS_SHARPENING                    , "Needs to be sharpened before use");
 		add(TOOLTIP_SHAPELESS_CRAFT                     , "Has Shapeless Recipes with Amounts: ");
 		add(TOOLTIP_AUTOCOLLECT                         , "Can Auto-Collect Items when harvesting Block");
+		add(TOOLTIP_ARMOR_PENETRATING                   , "Can Penetrate Armor");
 		add(TOOLTIP_BEACON_PAYMENT                      , "Can be used as a Beacon Payment");
 		add(TOOLTIP_SHELFABLE                           , "Can be placed inside a GT Bookshelf");
 		add(TOOLTIP_SANDWICHABLE                        , "Is a valid Sandwich Ingredient");

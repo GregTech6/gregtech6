@@ -41,6 +41,7 @@ public class GT_Tool_Pickaxe extends ToolStats {
 	@Override public int getToolDamagePerBlockBreak()                                       {return  25;}
 	@Override public int getToolDamagePerEntityAttack()                                     {return 200;}
 	@Override public float getBaseDamage()                                                  {return 1.5F;}
+	@Override public boolean canPenetrate()                                                 {return T;}
 	@Override public boolean isMiningTool()                                                 {return T;}
 	
 	@Override

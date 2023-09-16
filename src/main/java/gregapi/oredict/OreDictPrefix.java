@@ -210,7 +210,6 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 		if (contains(PREFIX_UNUSED)) return this;
 		if (this != OP.block && this != OP.stone && this != OP.scrapGt) addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {if (!aEvent.mStack.getItem().isDamageable() && aEvent.mStack.getMaxStackSize() > 1 && !ST.isGT_(aEvent.mStack)) aEvent.mStack.getItem().setMaxStackSize(aEvent.mPrefix.mDefaultStackSize);}});
 		
-		Items.glass_bottle      .setMaxStackSize(OP.bottle.mDefaultStackSize);
 		Items.potionitem        .setMaxStackSize(1);
 		
 		Items.record_11         .setMaxStackSize(OP.record.mDefaultStackSize);
