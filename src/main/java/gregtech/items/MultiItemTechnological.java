@@ -656,9 +656,9 @@ public class MultiItemTechnological extends MultiItemRandomWithCompat {
 		
 		CR.shaped(IL.Circuit_Wire_Copper        .get(1), CR.DEF, "WWW", "WxW", "WWW", 'W', OP.wireFine.dat(ANY.Cu));
 		
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Empty.get(1), IL.Circuit_Wire_Copper    .get(1), IL.Circuit_Plate_Copper    .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Empty.get(1), IL.Circuit_Wire_Gold      .get(1), IL.Circuit_Plate_Gold      .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Empty.get(1), IL.Circuit_Wire_Platinum  .get(1), IL.Circuit_Plate_Platinum  .get(1));
+		//RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Empty.get(1), IL.Circuit_Wire_Copper    .get(1), IL.Circuit_Plate_Copper    .get(1));
+		//RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Empty.get(1), IL.Circuit_Wire_Gold      .get(1), IL.Circuit_Plate_Gold      .get(1));
+		//RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Empty.get(1), IL.Circuit_Wire_Platinum  .get(1), IL.Circuit_Plate_Platinum  .get(1));
 
 		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Empty.get(1), IL.Circuit_Wire_Magic     .get(1), IL.Circuit_Plate_Magic     .get(1));
 		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Empty.get(1), IL.Circuit_Wire_Enderium  .get(1), IL.Circuit_Plate_Enderium  .get(1));
