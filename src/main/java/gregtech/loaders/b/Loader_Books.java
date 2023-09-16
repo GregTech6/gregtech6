@@ -166,7 +166,7 @@ public class Loader_Books implements Runnable {
 		, "Dark Tower¶===================¶Blaze Spawners can be spawnblocked by just putting eight Firefly Jars on their exact Y-Level in a Ring one Block away from their Pillar. So two Blocks above ground, barely enough space to walk under the Jars."
 		, "Dark Tower¶===================¶..."
 		, "Dark Tower¶===================¶To fight the Ur-Ghast I recommend using high quality Arrows and an Enchanted Bow. If you have access to the Implosion Enchantment by using things like Gem Arrows, it works great on any type of Ghasts."
-		, "Dark Tower¶===================¶There is a 'special' way to beat the Ur-Ghast using one of the four Ghost Busters References, whenever they have been charged enough by killing the small Ghasts around, and the Ur-Ghast is directly above it."
+		, "Dark Tower¶===================¶There is a 'special' other way to beat the Ur-Ghast using one of the four Ghost Busters References, whenever they have been charged enough by killing the small Ghasts around, and the Ur-Ghast is directly above it."
 		, "Dark Tower¶===================¶The Ur-Ghast Trophy you get can be used to produce LU through a Magic Field Absorber. Make sure you got the Achievement for collecting the Trophy! The Fiery Tears can be used on Steels just like Fiery Blood."
 		, "Yeti Cave¶===================¶... Greg writes this Book as they play Twilight Forest again themselves, and did not complete this part yet."
 		, "Yeti Cave¶===================¶..."

@@ -179,6 +179,7 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 						int tStrength = UT.Code.bindInt((long)(tCalc - ((EntityLivingBase)tEntity).getDistance(xCoord, yCoord, zCoord)));
 						if (tStrength > 0) UT.Entities.applyRadioactivity((EntityLivingBase)tEntity, (int)UT.Code.divup(tStrength, 10), tStrength);
 					}
+					updateClientData();
 				}
 			}
 		}
