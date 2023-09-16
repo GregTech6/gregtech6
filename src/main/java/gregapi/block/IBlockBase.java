@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,12 @@
 
 package gregapi.block;
 
-import java.util.List;
-
 import gregapi.item.IItemGT;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 /**
  * @author Gregorius Techneticies
@@ -39,6 +39,8 @@ public interface IBlockBase extends IBlock, IItemGT {
 	public boolean canSilkHarvest(byte aMeta);
 	public boolean canCreatureSpawn(byte aMeta);
 	public boolean isSealable(byte aMeta, byte aSide);
+	public boolean isFlammable(byte aMeta);
+	public boolean isFireSource(byte aMeta);
 	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H);
 	public float getExplosionResistance(byte aMeta);
 	public int getFlammability(byte aMeta);

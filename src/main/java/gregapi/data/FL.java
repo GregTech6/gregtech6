@@ -620,6 +620,8 @@ public enum FL {
 	public boolean is(String aFluidName) {return mName.equalsIgnoreCase(aFluidName);}
 	public boolean is(Collection<String> aFluidSet) {return aFluidSet.contains(mName);}
 	
+	public ItemStack fill(ItemStack aStack) {return fill(make(Integer.MAX_VALUE), aStack, F, T, T, F);}
+	
 	
 	
 	

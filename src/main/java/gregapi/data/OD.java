@@ -231,6 +231,8 @@ public enum OD {
 	, fishtrapBait
 	, obsidian
 	, cryingObsidian
+	, glass
+	, glassColorless
 	, paneGlass
 	, paneGlassColorless
 	, blockGlass

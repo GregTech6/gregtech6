@@ -106,7 +106,7 @@ public class OreDictItemData {
 		ArrayList<OreDictMaterialStack> aList = new ArrayListNoNulls<>(), rList = new ArrayListNoNulls<>();
 		
 		for (OreDictItemData tData : aData) if (tData != null) {
-			if (tData.hasValidMaterialData() && tData.mMaterial.mAmount > 0) aList.add(tData.mMaterial.clone());
+			if (tData.validMaterial() && tData.mMaterial.mAmount > 0) aList.add(tData.mMaterial.clone());
 			for (OreDictMaterialStack tMaterial : tData.mByProducts) if (tMaterial.mAmount > 0) aList.add(tMaterial.clone());
 		}
 		
@@ -131,22 +131,20 @@ public class OreDictItemData {
 		mByProducts = rList.toArray(ZL_MS);
 	}
 	
-	public boolean hasValidPrefixMaterialData() {
-		return mPrefix != null && mMaterial != null;
-	}
-	
-	public boolean hasValidPrefixData() {
-		return mPrefix != null;
-	}
-	
-	public boolean hasValidMaterialData() {
-		return mMaterial != null;
-	}
+	public boolean fullData        () {return validPrefix() && fullMaterial();}
+	public boolean listedData      () {return validPrefix() && listedMaterial();}
+	public boolean nonemptyData    () {return validPrefix() && nonemptyMaterial();}
+	public boolean validData       () {return validPrefix() && validMaterial();}
+	public boolean fullMaterial    () {return nonemptyMaterial() && mMaterial.mAmount > 0;}
+	public boolean listedMaterial  () {return validMaterial() && mMaterial.mMaterial.mID >= 0;}// If it has a positive ID then it is in the List.
+	public boolean nonemptyMaterial() {return validMaterial() && mMaterial.mMaterial.mID >  0;}// 0 happens to be the "Empty" Material
+	public boolean validMaterial   () {return mMaterial != null;}
+	public boolean validPrefix     () {return mPrefix   != null;}
 	
 	/** Utility Function for getting a List containing both, the Main Material and all the Byproduct Materials. The Amount is in Material Units (U). */
 	public List<OreDictMaterialStack> getAllMaterialStacks() {
 		ArrayListNoNulls<OreDictMaterialStack> rList = new ArrayListNoNulls<>(mByProducts.length + 1);
-		if (hasValidMaterialData()) rList.add(mMaterial);
+		if (validMaterial()) rList.add(mMaterial);
 		rList.addAll(Arrays.asList(mByProducts));
 		return rList;
 	}
@@ -154,8 +152,8 @@ public class OreDictItemData {
 	/** Utility Function for getting a List containing both, the Main Material and all the Byproduct Materials. The Amount is in Material Units (U). */
 	public List<OreDictMaterialStack> getAllMaterialWeights() {
 		ArrayListNoNulls<OreDictMaterialStack> rList = new ArrayListNoNulls<>(mByProducts.length + 1);
-		if (hasValidMaterialData()) {
-			if (hasValidPrefixData()) {
+		if (validMaterial()) {
+			if (validPrefix()) {
 				rList.add(OM.stack(mMaterial.mMaterial, mPrefix.mWeight));
 			} else {
 				rList.add(mMaterial);
@@ -189,4 +187,8 @@ public class OreDictItemData {
 	public OreDictItemData setNotFurnaceFuel() {mFurnaceFuel = F; return this;}
 	
 	@Override public String toString() {return mOreDictName;}
+	
+	@Deprecated public boolean hasValidPrefixMaterialData() {return mPrefix != null && mMaterial != null;}
+	@Deprecated public boolean hasValidPrefixData() {return mPrefix != null;}
+	@Deprecated public boolean hasValidMaterialData() {return mMaterial != null;}
 }

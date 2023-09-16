@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.gui;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.tileentity.ITileEntityInventoryGUI;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -33,6 +29,10 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -489,6 +489,7 @@ public class ContainerCommon extends Container {
 				aPlayerInventory.setItemStack(tTempStack);
 			}
 		}
+		
 		detectAndSendChanges();
 		return rStack;
 	}
@@ -681,7 +682,14 @@ public class ContainerCommon extends Container {
 		try {
 			mTileEntity.closeInventoryGUI();
 			InventoryPlayer tPlayerInventory = aPlayer.inventory;
+			for (ItemStack tStack : tPlayerInventory.mainInventory) {
+				UT.Inventories.checkAchievements(aPlayer, tStack);
+			}
+			for (ItemStack tStack : tPlayerInventory.armorInventory) {
+				UT.Inventories.checkAchievements(aPlayer, tStack);
+			}
 			if (tPlayerInventory.getItemStack() != null) {
+				UT.Inventories.checkAchievements(aPlayer, tPlayerInventory.getItemStack());
 				aPlayer.dropPlayerItemWithRandomChoice(tPlayerInventory.getItemStack(), F);
 				tPlayerInventory.setItemStack(null);
 			}
@@ -691,7 +699,7 @@ public class ContainerCommon extends Container {
 	}
 	
 	@Override
-	public void onCraftMatrixChanged(IInventory par1IInventory) {
+	public void onCraftMatrixChanged(IInventory aInventory) {
 		detectAndSendChanges();
 	}
 	

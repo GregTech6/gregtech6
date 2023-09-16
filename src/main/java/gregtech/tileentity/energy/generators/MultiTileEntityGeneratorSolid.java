@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,11 +18,6 @@
  */
 
 package gregtech.tileentity.energy.generators;
-
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
@@ -46,6 +41,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -118,13 +118,13 @@ public abstract class MultiTileEntityGeneratorSolid extends TileEntityBase09Faci
 								if (addStackToSlot(1, slot(0))) slotKill(0);
 							} else if (ST.invalid(ST.container(tStack, F))) {
 								// 80% of whatever Heat Energy you get from Lava. This is over 10 times the normal Firestone Furnace burn Value.
-								mEnergy += 800 * EU_PER_LAVA;
+								mEnergy += 800L * EU_PER_LAVA;
 								// Prevent using up the Firestone entirely.
 								slotKill(0);
 								mOutput1 = tStack;
 							} else {
 								// 80% of whatever Heat Energy you get from Lava. This is over 10 times the normal Firestone Furnace burn Value.
-								mEnergy += 800 * EU_PER_LAVA;
+								mEnergy += 800L * EU_PER_LAVA;
 								// Continue using the Firestone.
 								slot(0, tStack);
 							}
@@ -135,13 +135,13 @@ public abstract class MultiTileEntityGeneratorSolid extends TileEntityBase09Faci
 								if (addStackToSlot(1, slot(0))) slotKill(0);
 							} else if (ST.invalid(ST.container(tStack, F))) {
 								// Less Power for the broken Firestone, so 60%.
-								mEnergy += 600 * EU_PER_LAVA;
+								mEnergy += 600L * EU_PER_LAVA;
 								// Prevent using up the Firestone entirely.
 								slotKill(0);
 								mOutput1 = tStack;
 							} else {
 								// Less Power for the broken Firestone, so 60%.
-								mEnergy += 600 * EU_PER_LAVA;
+								mEnergy += 600L * EU_PER_LAVA;
 								// Continue using the Firestone.
 								slot(0, tStack);
 								// Cracked Firestones cause Fire to be released way more often.

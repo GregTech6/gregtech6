@@ -248,27 +248,29 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				if (tImplosion > 0 && UT.Entities.isExplosiveCreature(aEntity) && !EntityCreeper.class.isInstance(aEntity)) tMagicDamage += 1.5F * tImplosion;
 				
 				if (tDamage + tMagicDamage > 0) {
+					boolean tRealHit = (!aEntity.worldObj.isRemote || aEntity.hurtResistantTime <= 0);
 					boolean tCriticalHit = aPlayer.fallDistance > 0 && !aPlayer.onGround && !aPlayer.isOnLadder() && !aPlayer.isInWater() && !aPlayer.isPotionActive(Potion.blindness) && aPlayer.ridingEntity == null && aEntity instanceof EntityLivingBase;
 					if (tCriticalHit && tDamage > 0) tDamage *= 1.5;
 					float tFullDamage = (tDamage+tMagicDamage) * TFC_DAMAGE_MULTIPLIER;
-					// Avoiding the Betweenlands Damage Cap in a fair way. Only Betweenlands Materials will avoid it. And maybe some super Lategame Items.
+					DamageSource tSource = tStats.getDamageSource(aPlayer, aEntity);
+					if (tStats.canPenetrate()) tSource.setDamageBypassesArmor();
+					// Avoiding the Betweenlands Damage Cap of 40 in a fair way.
+					// Only Betweenlands Materials will avoid it. And maybe some super Lategame Materials.
 					if (MD.BTL.mLoaded && aEntity.getClass().getName().startsWith("thebetweenlands") && getPrimaryMaterial(aStack).contains(TD.Properties.BETWEENLANDS)) {
 						float tDamageToDeal = tFullDamage;
-						DamageSource tSource = tStats.getDamageSource(aPlayer, aEntity);
-						
 						while (tDamageToDeal > 0 && aEntity.attackEntityFrom(tSource, Math.min(tDamageToDeal, 12) / 0.3F)) {
 							tDamageToDeal -= 12;
 							if (tDamageToDeal > 0) aEntity.hurtResistantTime = 0;
 						}
-						if (tDamageToDeal < tFullDamage) {
-							tStats.afterDealingDamage(tDamage, tMagicDamage, tFireAspect, tCriticalHit, aEntity, aStack, aPlayer);
-							doDamage(aStack, tStats.getToolDamagePerEntityAttack(), aPlayer, F);
-						}
+						tRealHit &= (tDamageToDeal < tFullDamage);
 					} else {
-						if (aEntity.attackEntityFrom(tStats.getDamageSource(aPlayer, aEntity), tFullDamage)) {
-							tStats.afterDealingDamage(tDamage, tMagicDamage, tFireAspect, tCriticalHit, aEntity, aStack, aPlayer);
-							doDamage(aStack, tStats.getToolDamagePerEntityAttack(), aPlayer, F);
-						}
+						tRealHit &= aEntity.attackEntityFrom(tSource, tFullDamage);
+					}
+					// Only damage the Tool and perform its Specials, when you actually do hit the thing.
+					// So Serverside always, and Clientside only if the Mob isn't in its invulnerability Frames.
+					if (tRealHit) {
+						tStats.afterDealingDamage(tDamage, tMagicDamage, tFireAspect, tCriticalHit, aEntity, aStack, aPlayer);
+						doDamage(aStack, tStats.getToolDamagePerEntityAttack(), aPlayer, F);
 					}
 				}
 			}
@@ -320,6 +322,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				aList.add(LH.Chat.WHITE + "Attack Damage: +" + LH.Chat.BLUE + (tCombat * TFC_DAMAGE_MULTIPLIER) + LH.Chat.RED + " (= " + (TFC_DAMAGE_MULTIPLIER > 1 ? ((tCombat+1)*(TFC_DAMAGE_MULTIPLIER/2.0)) + ")" : ((tCombat+1)/2) + " Hearts)"));
 				aList.add(LH.Chat.WHITE + "Mining Speed: x" + LH.Chat.PINK + tStats.getSpeedMultiplier());
 				if (tStats.canCollect()) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_AUTOCOLLECT));
+				if (tStats.canPenetrate()) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_ARMOR_PENETRATING));
 			} else {
 				aList.add(LH.Chat.WHITE + "Durability: " + LH.Chat.GREEN + UT.Code.makeString(tMaxDamage - tDamage) + " / " + UT.Code.makeString(tMaxDamage));
 				aList.add(LH.Chat.WHITE + tMat1.getLocal() + LH.Chat.YELLOW + " Level: " + (tStats.getBaseQuality() + tMat1.mToolQuality));
@@ -335,6 +338,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				}
 				if (tMat1.contains(TD.Properties.UNBURNABLE) || tMat2.contains(TD.Properties.UNBURNABLE)) aList.add(LH.Chat.GREEN + LH.get(LH.TOOLTIP_UNBURNABLE));
 				if (tStats.canCollect() || tMat1.contains(TD.Properties.MAGNETIC_ACTIVE) || tMat2.contains(TD.Properties.MAGNETIC_ACTIVE)) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_AUTOCOLLECT));
+				if (tStats.canPenetrate()) aList.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_ARMOR_PENETRATING));
 			}
 		}
 	}

@@ -78,14 +78,14 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 	
 	@Override
 	public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {
-		return ST.arraylist(mRock == null ? getDefaultRock(1+rng(1+aFortune)) : ST.amount(1+rng(1+aFortune), mRock));
+		return ST.arraylist(getRock(1+rng(1+aFortune)));
 	}
 	
 	@Override
 	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide() && aTool.equals(TOOL_magnifyingglass)) {
 			if (aPlayer instanceof EntityPlayer && aSneaking) {
-				UT.Inventories.addStackToPlayerInventoryOrDrop((EntityPlayer)aPlayer, mRock == null ? getDefaultRock(1) : ST.amount(1, mRock), T, worldObj, xCoord+0.5, yCoord+0.5, zCoord+0.5);
+				UT.Inventories.addStackToPlayerInventoryOrDrop((EntityPlayer)aPlayer, getRock(1), T, worldObj, xCoord+0.5, yCoord+0.5, zCoord+0.5);
 				playCollect();
 				setToAir();
 				return 0;
@@ -106,7 +106,7 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 			}
 			if (OD.itemFlint.is_(mRock)) {aChatReturn.add(LH.Chat.GRAY + (APRIL_FOOLS || rng(WOODMANS_BDAY ? 10 : XMAS_IN_JULY ? 100 : 1000)==0?"Flintstones, meet the Flintstones, they're the modern Stone Age family":"It's a Flint")); return 1;}
 			OreDictItemData tData = OM.anydata_(mRock);
-			if (tData != null && tData.hasValidMaterialData()) {
+			if (tData != null && tData.nonemptyMaterial()) {
 				if (tData.mMaterial.mMaterial == MT.MeteoricIron || tData.mMaterial.mMaterial == MT.Meteorite) {
 					aChatReturn.add(LH.Chat.ORANGE + "Looks like it fell from the Sky!"); return 1;
 				}
@@ -142,7 +142,7 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 	@Override
 	public boolean onBlockActivated2(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isClientSide()) return T;
-		UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, mRock == null ? getDefaultRock(1) : ST.amount(1, mRock), T, worldObj, xCoord+0.5, yCoord+0.5, zCoord+0.5);
+		UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, getRock(1), T, worldObj, xCoord+0.5, yCoord+0.5, zCoord+0.5);
 		playCollect();
 		return setToAir();
 	}
@@ -151,18 +151,21 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 	public void onNeighborBlockChange(World aWorld, Block aBlock) {
 		if (isServerSide()) {
 			if (!worldObj.getBlock(xCoord, yCoord-1, zCoord).isSideSolid(worldObj, xCoord, yCoord-1, zCoord, FORGE_DIR[SIDE_TOP])) {
-				ST.drop(worldObj, getCoords(), mRock == null ? getDefaultRock(1) : ST.amount(1, mRock));
+				ST.drop(worldObj, getCoords(), getRock(1));
 				setToAir();
 				return;
 			}
 			for (byte tSide : ALL_SIDES_HORIZONTAL_UP) if (WD.liquid(getBlockAtSide(tSide))) {
-				ST.drop(worldObj, getCoords(), mRock == null ? getDefaultRock(1) : ST.amount(1, mRock));
+				ST.drop(worldObj, getCoords(), getRock(1));
 				setToAir();
 				return;
 			}
 		}
 	}
 	
+	public ItemStack getRock(int aAmount) {
+		return mRock == null ? getDefaultRock(aAmount) : ST.amount(aAmount, mRock);
+	}
 	public ItemStack getDefaultRock(int aAmount) {
 		// Tell WAILA and the NEI Overlay that this is a normal Rock.
 		if (worldObj == null || isClientSide()) return OP.rockGt.mat(MT.Stone, aAmount);

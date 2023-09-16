@@ -119,7 +119,7 @@ public class ChestGenHooksChestReplacer extends ChestGenHooks {
 			// Erase it again just to fucking make sure!
 			aWorld.setBlock(aX, aY, aZ, NB, 0, 1);
 			// Place the better Loot Chest.
-			tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, mChestID, UT.NBT.make(NBT_FACING, tFacing, "gt.dungeonloot", mCategory), F, T);
+			tRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, mChestID, UT.NBT.make(NBT_FACING, tFacing, NBT_TRAPPED, T, "gt.dungeonloot", mCategory), F, T);
 			// Loot wont need to be generated anymore in that case.
 			return ZL_IS;
 		}

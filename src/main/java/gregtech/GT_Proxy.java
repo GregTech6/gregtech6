@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -55,6 +55,7 @@ import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityOcelot;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Blocks;
@@ -226,21 +227,21 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 						return;
 					}
 					if (tBlock == BlocksGT.River || WD.waterstream(tBlock)) {
-						ItemStack tStack = FL.fill(FL.Water.make(Integer.MAX_VALUE), aStack, F, T, F, T);
+						ItemStack tStack = FL.Water.fill(aStack);
 						if (tStack == null) return;
 						ST.use(aEvent.entityPlayer, aStack);
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, tStack, F);
 						return;
 					}
 					if (tBlock == BlocksGT.Ocean) {
-						ItemStack tStack = FL.fill(FL.Ocean.make(Integer.MAX_VALUE), aStack, F, T, F, T);
+						ItemStack tStack = FL.Ocean.fill(aStack);
 						if (tStack == null) return;
 						ST.use(aEvent.entityPlayer, aStack);
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, tStack, F);
 						return;
 					}
 					if (tBlock == BlocksGT.Swamp) {
-						ItemStack tStack = FL.fill(FL.Dirty_Water.make(Integer.MAX_VALUE), aStack, F, T, F, T);
+						ItemStack tStack = FL.Dirty_Water.fill(aStack);
 						if (tStack == null) return;
 						ST.use(aEvent.entityPlayer, aStack);
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, tStack, F);
@@ -352,6 +353,9 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 			// AI Tasks for Entities
 			EntityAITasks tTasks = ((EntityLiving)aEvent.entity).tasks;
 			if (tTasks != null) {
+				if (aEvent.entity instanceof EntityVillager) {
+					tTasks.addTask(3, new EntityAITempt((EntityCreature)aEvent.entity, 0.6D, Items.emerald, F));
+				}
 				if (aEvent.entity instanceof EntityOcelot) {
 					if (ItemsGT.CANS != null) tTasks.addTask(3, new EntityAITempt((EntityCreature)aEvent.entity, 0.6D, ItemsGT.CANS, T));
 				}

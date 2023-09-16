@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregapi.recipes.handlers;
 
-import static gregapi.data.CS.*;
-
 import gregapi.code.ICondition;
 import gregapi.data.FL;
 import gregapi.oredict.OreDictItemData;
@@ -33,6 +31,8 @@ import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -64,13 +64,13 @@ public class RecipeMapHandlerMaterial extends RecipeMapHandler {
 	public boolean addRecipesUsing(RecipeMap aMap, boolean aNEI, ItemStack aStack, OreDictItemData aData) {
 		if (isDone()) return F;
 		if (ST.equal(aStack, mAdditionalInput)) return aNEI && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
-		return aData != null && aData.hasValidPrefixMaterialData() && aData.mMaterial.mMaterial == mInputMaterial && addRecipeForPrefix(aMap, aData.mPrefix);
+		return aData != null && aData.validData() && aData.mMaterial.mMaterial == mInputMaterial && addRecipeForPrefix(aMap, aData.mPrefix);
 	}
 	
 	@Override
 	public boolean addRecipesProducing(RecipeMap aMap, boolean aNEI, ItemStack aStack, OreDictItemData aData) {
 		if (isDone()) return F;
-		return aData != null && aData.hasValidPrefixMaterialData() && aData.mMaterial.mMaterial == mOutputMaterial && addRecipeForPrefix(aMap, aData.mPrefix);
+		return aData != null && aData.validData() && aData.mMaterial.mMaterial == mOutputMaterial && addRecipeForPrefix(aMap, aData.mPrefix);
 	}
 	
 	@Override

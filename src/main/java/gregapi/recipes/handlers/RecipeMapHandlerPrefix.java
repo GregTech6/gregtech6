@@ -135,14 +135,14 @@ public class RecipeMapHandlerPrefix extends RecipeMapHandler {
 	public boolean addRecipesUsing(RecipeMap aMap, boolean aNEI, ItemStack aStack, OreDictItemData aData) {
 		if (isDone()) return F;
 		if (ST.equal(aStack, mAdditionalInput)) return aNEI && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
-		return aData != null && aData.hasValidMaterialData() && UT.Code.contains(aData.mPrefix, mInputPrefixes) && addRecipeForMaterial(aMap, aData.mMaterial.mMaterial);
+		return aData != null && aData.validData() && UT.Code.contains(aData.mPrefix, mInputPrefixes) && addRecipeForMaterial(aMap, aData.mMaterial.mMaterial);
 	}
 	
 	@Override
 	public boolean addRecipesProducing(RecipeMap aMap, boolean aNEI, ItemStack aStack, OreDictItemData aData) {
 		if (isDone()) return F;
 		if (ST.equal(aStack, mAdditionalOutput)) return aNEI && mAllowToGenerateAllRecipesAtOnce && addAllRecipesInternal(aMap);
-		return aData != null && aData.hasValidMaterialData() && (UT.Code.contains(aData.mPrefix, mOutputPrefixes) || (mOutputPulverizedRemains && aData.mPrefix == OP.dust)) && addRecipeForMaterial(aMap, aData.mMaterial.mMaterial);
+		return aData != null && aData.validData() && (UT.Code.contains(aData.mPrefix, mOutputPrefixes) || (mOutputPulverizedRemains && aData.mPrefix == OP.dust)) && addRecipeForMaterial(aMap, aData.mMaterial.mMaterial);
 	}
 	
 	@Override

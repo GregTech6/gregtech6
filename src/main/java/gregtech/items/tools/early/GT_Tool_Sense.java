@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,7 +19,10 @@
 
 package gregtech.items.tools.early;
 
+import biomesoplenty.common.blocks.BlockBOPLilypad;
+import gregapi.block.misc.BlockBaseLilyPad;
 import gregapi.data.IL;
+import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
@@ -27,11 +30,14 @@ import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.render.IIconContainer;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLilyPad;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
+import twilightforest.block.BlockTFHugeLilyPad;
+import twilightforest.block.BlockTFHugeWaterLily;
 
 import java.util.List;
 
@@ -52,6 +58,9 @@ public class GT_Tool_Sense extends ToolStats {
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
+		if (aBlock instanceof BlockBaseLilyPad || aBlock instanceof BlockLilyPad) return F;
+		if (MD.BoP.mLoaded &&  aBlock instanceof BlockBOPLilypad) return F;
+		if (MD.TF .mLoaded && (aBlock instanceof BlockTFHugeLilyPad || aBlock instanceof BlockTFHugeWaterLily)) return F;
 		String tTool = aBlock.getHarvestTool(aMetaData);
 		return (tTool != null && (tTool.equalsIgnoreCase(TOOL_sense) || tTool.equalsIgnoreCase(TOOL_scythe))) || aBlock.getMaterial() == Material.plants || aBlock.getMaterial() == Material.leaves || aBlock.getMaterial() == Material.vine || IL.TF_Mazehedge.equal(aBlock) || IL.NeLi_Wart_Block_Crimson.equal(aBlock);
 	}
@@ -61,7 +70,11 @@ public class GT_Tool_Sense extends ToolStats {
 		int rConversions = 0;
 		if (sIsHarvestingRightNow.get() == null && aPlayer instanceof EntityPlayerMP) {
 			sIsHarvestingRightNow.set(this);
-			for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) for (int k = -1; k < 2; k++) if (i != 0 || j != 0 || k != 0) if (aStack.getItem().getDigSpeed(aStack, aPlayer.worldObj.getBlock(aX+i, aY+j, aZ+k), aPlayer.worldObj.getBlockMetadata(aX+i, aY+j, aZ+k)) > 0) if (((EntityPlayerMP)aPlayer).theItemInWorldManager.tryHarvestBlock(aX+i, aY+j, aZ+k)) rConversions++;
+			for (int i = -1; i < 2; i++) for (int j = -1; j < 2; j++) for (int k = -1; k < 2; k++) if (i != 0 || j != 0 || k != 0) {
+				if (aStack.getItem().getDigSpeed(aStack, aPlayer.worldObj.getBlock(aX+i, aY+j, aZ+k), aPlayer.worldObj.getBlockMetadata(aX+i, aY+j, aZ+k)) > 0) {
+					if (((EntityPlayerMP)aPlayer).theItemInWorldManager.tryHarvestBlock(aX+i, aY+j, aZ+k)) rConversions++;
+				}
+			}
 			sIsHarvestingRightNow.set(null);
 		}
 		if (!harvestGrass(aDrops, aStack, aPlayer, aBlock, aAvailableDurability, aX, aY, aZ, aMetaData, aFortune, aSilkTouch, aEvent)) {
@@ -87,6 +100,6 @@ public class GT_Tool_Sense extends ToolStats {
 	
 	@Override
 	public String getDeathMessage() {
-		return "[KILLER] has taken the Soul of [VICTIM]";
+		return "[KILLER] has reaped the Soul of [VICTIM]";
 	}
 }

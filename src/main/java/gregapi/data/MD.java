@@ -54,6 +54,7 @@ public class MD {
 	, BAUBLES           = new ModData(ModIDs.BAUBLES            , "Baubles")
 	
 	, TC                = new ModData(ModIDs.TC                 , "Thaumcraft")
+	, TCTE              = new ModData(ModIDs.TCTE               , "Thaumcraft Extras")
 	, TCFM              = new ModData(ModIDs.TCFM               , "Forbidden Magic")
 	, TECHNOM           = new ModData(ModIDs.TECHNOM            , "Technomancy")
 	, BOTA              = new ModData(ModIDs.BOTA               , "Botania")

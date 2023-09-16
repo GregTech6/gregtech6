@@ -494,13 +494,13 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 					if (ST.invalid(tInput2)) return -1;
 					
 					OreDictItemData tData1 = OM.anydata_(tInput1), tData2 = OM.anydata_(tInput2);
-					if (tData1 != null && tData1.hasValidMaterialData()) {
-						if (tData2 == null || !tData2.hasValidMaterialData()) return -1;
+					if (tData1 != null && tData1.validMaterial()) {
+						if (tData2 == null || !tData2.validMaterial()) return -1;
 						tCompare = tData1.mMaterial.mMaterial.mNameInternal.compareTo(tData2.mMaterial.mMaterial.mNameInternal);
 						if (tCompare != 0) return tCompare;
 						tCompare = Long.compare(tData1.mMaterial.mAmount, tData2.mMaterial.mAmount);
 						if (tCompare != 0) return tCompare;
-					} else if (tData2 != null && tData2.hasValidMaterialData()) return 1;
+					} else if (tData2 != null && tData2.validMaterial()) return 1;
 					
 					tCompare = Long.compare(tRecipe1.mDuration, tRecipe2.mDuration);
 					if (tCompare != 0) return tCompare;

@@ -2712,7 +2712,7 @@ public class UT {
 		}
 		
 		public static boolean checkAchievements(EntityPlayer aPlayer, ItemStack aStack) {
-			if (aPlayer == null) return F;
+			if (aPlayer == null || aPlayer.worldObj == null || aPlayer.worldObj.isRemote) return F;
 			
 			if (aPlayer.worldObj.provider.dimensionId == DIM_NETHER) {
 				unlockAchievement(aPlayer, AchievementList.portal);
@@ -3108,7 +3108,7 @@ public class UT {
 			return aEntity instanceof EntityCreeper || UT.Reflection.getLowercaseClass(aEntity).contains("ghast");
 		}
 		public static boolean isExplosiveCreature(Entity aEntity) {
-			return isGhastCreature(aEntity) || isCreeperCreature(aEntity);
+			return isGhastCreature(aEntity) || isCreeperCreature(aEntity) || UT.Reflection.getLowercaseClass(aEntity).contains("firebeetle");
 		}
 		public static boolean isWereCreature(EntityLivingBase aEntity) {
 			if (aEntity instanceof EntityPlayer) {
@@ -3125,7 +3125,7 @@ public class UT {
 		
 		public static float getHeatDamageFromItem(ItemStack aStack) {
 			OreDictItemData tData = OM.anydata(aStack);
-			return tData==null?0:(tData.mPrefix==null?0:tData.mPrefix.mHeatDamage) + (tData.hasValidMaterialData()?tData.mMaterial.mMaterial.mHeatDamage:0);
+			return tData==null?0:(tData.mPrefix==null?0:tData.mPrefix.mHeatDamage) + (tData.validMaterial()?tData.mMaterial.mMaterial.mHeatDamage:0);
 		}
 		
 		public static int getRadioactivityLevel(ItemStack aStack) {
@@ -3133,7 +3133,7 @@ public class UT {
 		}
 		public static int getRadioactivityLevel(ItemStack aStack, OreDictItemData aData) {
 			long rLevel = 0;
-			if (aData != null && aData.hasValidMaterialData()) {
+			if (aData != null && aData.validMaterial()) {
 				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentTools  ) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
 				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentWeapons) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);
 				for (ObjectStack<Enchantment> tEnchantment : aData.mMaterial.mMaterial.mEnchantmentAmmo   ) if (tEnchantment.mObject instanceof Enchantment_Radioactivity) rLevel = Math.max(rLevel, tEnchantment.mAmount);

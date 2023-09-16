@@ -149,11 +149,17 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		
 		RM.Injector.addRecipe1(T, 16, 4096, IL.RC_Firestone_Refined.getWithMeta(1, 5000), FL.Coolant_IC2_Hot.make(20000000), FL.Coolant_IC2  .make(20000000), IL.RC_Firestone_Refined.get(1));
 		RM.Injector.addRecipe1(T, 16, 8192, IL.RC_Firestone_Cracked.getWithMeta(1, 5000), FL.Coolant_IC2_Hot.make(20000000), FL.Coolant_IC2  .make(20000000), IL.RC_Firestone_Cracked.get(1));
+		RM.Injector.addRecipe1(T, 16, 4096, IL.RC_Firestone_Refined.getWithMeta(1, 4999), FL.Coolant_IC2_Hot.make(19996000), FL.Coolant_IC2  .make(19996000), IL.RC_Firestone_Refined.get(1));
+		RM.Injector.addRecipe1(T, 16, 8192, IL.RC_Firestone_Cracked.getWithMeta(1, 4999), FL.Coolant_IC2_Hot.make(19996000), FL.Coolant_IC2  .make(19996000), IL.RC_Firestone_Cracked.get(1));
 		RM.Injector.addRecipe1(T, 16, 2048, IL.RC_Firestone_Refined.getWithMeta(1, 5000), FL.Lava           .make( 5000000), FL.Lava_Pahoehoe.make( 5000000), IL.RC_Firestone_Refined.get(1));
 		RM.Injector.addRecipe1(T, 16, 4096, IL.RC_Firestone_Cracked.getWithMeta(1, 5000), FL.Lava           .make( 5000000), FL.Lava_Pahoehoe.make( 5000000), IL.RC_Firestone_Cracked.get(1));
+		RM.Injector.addRecipe1(T, 16, 2048, IL.RC_Firestone_Refined.getWithMeta(1, 4999), FL.Lava           .make( 4999000), FL.Lava_Pahoehoe.make( 4999000), IL.RC_Firestone_Refined.get(1));
+		RM.Injector.addRecipe1(T, 16, 4096, IL.RC_Firestone_Cracked.getWithMeta(1, 4999), FL.Lava           .make( 4999000), FL.Lava_Pahoehoe.make( 4999000), IL.RC_Firestone_Cracked.get(1));
 		if (FL.Lava_Volcanic.exists()) {
 		RM.Injector.addRecipe1(T, 16,  128, IL.RC_Firestone_Refined.getWithMeta(1, 5000), FL.Lava_Volcanic  .make(  312500), FL.Lava_Pahoehoe.make(  312500), IL.RC_Firestone_Refined.get(1));
 		RM.Injector.addRecipe1(T, 16,  256, IL.RC_Firestone_Cracked.getWithMeta(1, 5000), FL.Lava_Volcanic  .make(  312500), FL.Lava_Pahoehoe.make(  312500), IL.RC_Firestone_Cracked.get(1));
+		RM.Injector.addRecipe1(T, 16,  128, IL.RC_Firestone_Refined.getWithMeta(1, 4999), FL.Lava_Volcanic  .make(  312500), FL.Lava_Pahoehoe.make(  312500), IL.RC_Firestone_Refined.get(1));
+		RM.Injector.addRecipe1(T, 16,  256, IL.RC_Firestone_Cracked.getWithMeta(1, 4999), FL.Lava_Volcanic  .make(  312500), FL.Lava_Pahoehoe.make(  312500), IL.RC_Firestone_Cracked.get(1));
 		}
 		
 		

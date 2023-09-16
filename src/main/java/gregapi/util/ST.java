@@ -35,6 +35,7 @@ import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.delegate.ITileEntityCanDelegate;
+import gregtech.worldgen.TwilightTreasureReplacer;
 import ic2.api.item.IC2Items;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -51,15 +52,14 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.IFluidContainerItem;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 import static gregapi.data.CS.*;
 
@@ -67,7 +67,7 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class ST {
-	public static boolean TE_PIPES = F, BC_PIPES = F;
+	public static boolean TE_PIPES = F, BC_PIPES = F, TF_TREASURE = F;
 	
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	public static void checkAvailabilities() {
@@ -78,6 +78,10 @@ public class ST {
 		try {
 			buildcraft.api.transport.IInjectable.class.getCanonicalName();
 			BC_PIPES = T;
+		} catch(Throwable e) {/**/}
+		try {
+			twilightforest.TFTreasure.class.getCanonicalName();
+			TF_TREASURE = T;
 		} catch(Throwable e) {/**/}
 	}
 	
@@ -798,13 +802,13 @@ public class ST {
 	public static boolean ammo(ItemStack aStack) {
 		if (ItemsGT.AMMO_ITEMS.contains(aStack, T)) return T;
 		OreDictItemData tData = OM.anydata(aStack);
-		return tData != null && tData.hasValidPrefixMaterialData() && tData.mMaterial.mMaterial != MT.Empty && tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE);
+		return tData != null && tData.nonemptyData() && tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE);
 	}
 	
 	public static boolean nonautoinsert(ItemStack aStack) {
 		if (ItemsGT.NON_AUTO_INSERT_ITEMS.contains(aStack, T) || torch(aStack)) return T;
 		OreDictItemData tData = OM.anydata(aStack);
-		return tData != null && tData.hasValidPrefixMaterialData() && tData.mMaterial.mMaterial != MT.Empty && tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE);
+		return tData != null && tData.nonemptyData() && tData.mPrefix.contains(TD.Prefix.AMMO_ALIKE);
 	}
 	
 	public static boolean listed(Collection<ItemStack> aList, ItemStack aStack, boolean aTrueIfListEmpty, boolean aInvertFilter) {
@@ -978,6 +982,32 @@ public class ST {
 	}
 	public static void hide(ItemStack aStack) {
 		if (aStack != null) try {codechicken.nei.api.API.hideItem(aStack);} catch(Throwable e) {/**/}
+	}
+	
+	public static final List<String> LOOT_TABLES = new ArrayList<>();
+	
+	public static boolean generateLoot(Random aRandom, String aLoot, IInventory aInventory) {
+		try {
+			if (aLoot.startsWith("twilightforest:")) {
+				if (!TF_TREASURE) return F;
+				TwilightTreasureReplacer.generate(aInventory, aLoot);
+			} else {
+				WeightedRandomChestContent.generateChestContents(aRandom, ChestGenHooks.getItems(aLoot, aRandom), aInventory, ChestGenHooks.getCount(aLoot, aRandom));
+			}
+			if (IL.TC_Gold_Coin.exists()) for (int i = 0, j = aInventory.getSizeInventory(); i < j; i++) {
+				ItemStack tStack = aInventory.getStackInSlot(i);
+				if (ST.valid(tStack)) {
+					if (ST.item_(tStack) == Items.gold_nugget) {
+						ST.set(tStack, IL.TC_Gold_Coin.get(tStack.stackSize));
+					}
+					if (ST.item_(tStack) == Items.gold_ingot && tStack.stackSize <= 7) {
+						ST.set(tStack, IL.TC_Gold_Coin.get(tStack.stackSize * 9L));
+					}
+				}
+			}
+			return T;
+		} catch(Throwable e) {e.printStackTrace(ERR);}
+		return F;
 	}
 	
 	/** Loads an ItemStack properly. */

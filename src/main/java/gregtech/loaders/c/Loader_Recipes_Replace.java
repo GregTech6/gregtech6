@@ -25,7 +25,6 @@ import gregapi.code.ItemStackContainer;
 import gregapi.code.ItemStackSet;
 import gregapi.config.ConfigCategories;
 import gregapi.data.*;
-import gregapi.data.CS.*;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
@@ -190,7 +189,7 @@ public class Loader_Recipes_Replace implements Runnable {
 						for (Object tContent : ((List)tObject)) if (tContent instanceof ItemStack) {
 							if (tData == null) {
 								tData = OM.anyassociation((ItemStack)tContent);
-								if (tData == null || !tData.hasValidPrefixMaterialData()) {temp = F; break;}
+								if (tData == null || !tData.validData()) {temp = F; break;}
 							} else {
 								OreDictItemData tAssociation = OM.anyassociation((ItemStack)tContent);
 								if (tAssociation == null || tAssociation.mPrefix != tData.mPrefix || tAssociation.mMaterial.mMaterial != tData.mMaterial.mMaterial) {temp = F; break;}

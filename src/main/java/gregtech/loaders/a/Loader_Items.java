@@ -24,6 +24,7 @@ import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.TD;
 import gregapi.item.prefixitem.PrefixItem;
+import gregapi.item.prefixitem.PrefixItemChain;
 import gregapi.item.prefixitem.PrefixItemProjectile;
 import gregapi.item.prefixitem.PrefixItemRing;
 import gregapi.util.ST;
@@ -110,7 +111,7 @@ public class Loader_Items implements Runnable {
 		tItem = new PrefixItem(MD.GT, "gt.meta.bolt"                        , OP.bolt                           );
 		tItem = new PrefixItem(MD.GT, "gt.meta.screw"                       , OP.screw                          );
 		tItem = new PrefixItemRing(MD.GT, "gt.meta.ring"                    , OP.ring                           );
-		tItem = new PrefixItem(MD.GT, "gt.meta.chain"                       , OP.chain                          );
+		tItem = new PrefixItemChain(MD.GT, "gt.meta.chain"                  , OP.chain                          );
 		tItem = new PrefixItem(MD.GT, "gt.meta.foil"                        , OP.foil                           ); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("builder", ST.make(tItem, 1, W));
 		tItem = new PrefixItem(MD.GT, "gt.meta.casingSmall"                 , OP.casingSmall                    );
 		tItem = new PrefixItem(MD.GT, "gt.meta.wireFine"                    , OP.wireFine                       );

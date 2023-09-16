@@ -900,6 +900,7 @@ public class CS {
 	, DIM_END = 1
 	, DIM_ENVM = -2
 	, DIM_A97 = -6 // Collides with Aether by default
+	, DIM_ELDRITCH = -42
 	, DIM_CW2_AquaCavern = -32
 	, DIM_CW2_Caveland = -33
 	, DIM_CW2_Cavenia = -34
@@ -1223,6 +1224,7 @@ public class CS {
 	, NBT_RESISTANCE                = "gt.resistance"               // Float
 	, NBT_FLAMMABILITY              = "gt.flammability"             // Integer
 	, NBT_COOLDOWN                  = "gt.cooldown"                 // Number
+	, NBT_TRAPPED                   = "gt.trapped"                  // Boolean
 	, NBT_REDSTONE                  = "gt.redstone"                 // Byte
 	, NBT_REDSTONE_0                = "gt.redstone.0"               // Byte
 	, NBT_REDSTONE_1                = "gt.redstone.1"               // Byte
@@ -1648,6 +1650,8 @@ public class CS {
 		RailAluminiumDetector, RailMagnaliumDetector, RailBronzeDetector, RailStainlessSteelDetector, RailSteelDetector, RailTitaniumDetector, RailTungstenDetector, RailTungstenSteelDetector, RailTungstenCarbideDetector, RailAdamantiumDetector,
 		RailRoad;
 		
+		/** EFR Deepslate Redstone Ore Blocks. */
+		public static Block EtFu_Deepslate_Redstone_Ore, EtFu_Deepslate_Lit_Redstone_Ore;
 		/** GT6 Stone Type. */
 		public static BlockBase GraniteBlack, GraniteRed, Basalt, Marble, Limestone, Granite, Diorite, Andesite, Komatiite, SchistGreen, SchistBlue, Kimberlite, Quartzite, PrismarineLight, PrismarineDark, Slate, Shale;
 		/** Contains all GT6 Stone Types. */
@@ -1946,6 +1950,7 @@ public class CS {
 		, BAUBLES           = "Baubles"
 		
 		, TC                = "Thaumcraft"
+		, TCTE              = "ThaumcraftExtras"//TODO Mod ID might be wrong!
 		, TCFM              = "ForbiddenMagic"
 		, TECHNOM           = "technom"
 		, BOTA              = "Botania"

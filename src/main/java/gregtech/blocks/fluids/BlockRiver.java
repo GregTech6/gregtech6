@@ -19,10 +19,14 @@
 
 package gregtech.blocks.fluids;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.data.FL;
+import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -97,5 +101,18 @@ public class BlockRiver extends BlockWaterlike {
 		if (!isSourceBlock(aWorld, aX, aY, aZ)) return null;
 		if (aDoDrain) aWorld.setBlockToAir(aX, aY, aZ);
 		return FL.Water.make(1000);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {
+		int rR = 0, rG = 0, rB = 0;
+		for (int tX = -1; tX <= 1; tX++) for (int tZ = -1; tZ <= 1; tZ++) {
+			int tRGB = aWorld.getBiomeGenForCoords(aX+tX, aZ+tZ).getWaterColorMultiplier();
+			rR += UT.Code.getR(tRGB);
+			rG += UT.Code.getG(tRGB);
+			rB += UT.Code.getB(tRGB);
+		}
+		return UT.Code.getRGBInt(rR/9, rG/9, rB/9);
 	}
 }

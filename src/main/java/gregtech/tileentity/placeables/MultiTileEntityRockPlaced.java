@@ -19,17 +19,12 @@
 
 package gregtech.tileentity.placeables;
 
-import gregapi.code.ArrayListNoNulls;
-import gregapi.util.ST;
 import net.minecraft.item.ItemStack;
 
 /**
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityRockPlaced extends gregtech.tileentity.misc.MultiTileEntityRock {
-	@Override public ArrayListNoNulls<ItemStack> getDrops(int aFortune, boolean aSilkTouch) {return ST.arraylist(mRock);}
-	
-	@Override public ItemStack getDefaultRock(int aAmount) {return mRock;}
-	
+	@Override public ItemStack getRock(int aAmount) {return mRock;}
 	@Override public String getTileEntityName() {return "gt.multitileentity.rock.placed";}
 }

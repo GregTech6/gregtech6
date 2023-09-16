@@ -131,9 +131,10 @@ public class MultiItemTechnological extends MultiItemRandomWithCompat {
 		CR.shapeless(IL.Cover_Logistics_Generic_Import        .get(1), new Object[] {IL.Cover_Logistics_Generic_Export        });
 		CR.shapeless(IL.Cover_Logistics_Generic_Storage       .get(1), new Object[] {IL.Cover_Logistics_Generic_Import        });
 		CR.shapeless(IL.Cover_Logistics_Dump                  .get(1), new Object[] {IL.Cover_Logistics_Generic_Storage       });
-		// Reset Filters
+		// Reset Covers
 		CR.shapeless(IL.Cover_Filter_Item                     .get(1), new Object[] {IL.Cover_Filter_Item                     });
 		CR.shapeless(IL.Cover_Filter_Fluid                    .get(1), new Object[] {IL.Cover_Filter_Fluid                    });
+		CR.shapeless(IL.Cover_Retriever_Item                  .get(1), new Object[] {IL.Cover_Retriever_Item                  });
 		
 		
 		
