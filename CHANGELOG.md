@@ -13,7 +13,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.17.00: (Not released yet)
+6.17.00:
 [NOTE]
 There has been a hack going around in the modded minecraft landscape that is often referred to as "PipeBleed".
 GregTech was never affected by this but I still think it is important that you look into your Mods to see if it is fixed in your Modpack, because dozens of big Mods have this Issue. This shit is just as bad as the log4shell exploit.
@@ -45,7 +45,7 @@ Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even
 [ADDED] Rainbowood Fluid Barrel which is roughly on par with the Ironwood Barrel.
 
 
-//=== Version Number Jump due to changes to the Magic Resistance of Pipes and Tanks. ===//
+//=== Version Number Jump due to addition of a Magic Resistance Stat to Pipes and Tanks. ===//
 
 
 6.16.02:
