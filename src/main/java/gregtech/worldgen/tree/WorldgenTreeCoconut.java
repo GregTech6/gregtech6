@@ -48,11 +48,12 @@ public class WorldgenTreeCoconut extends WorldgenOnSurface {
 		if (checkForMajorWorldgen(aWorld, aMinX, aMinZ, aMaxX, aMaxZ)) return 0;
 		boolean temp = F;
 		for (String tName : aBiomeNames) {
-			if (BIOMES_COCONUT.contains(tName)) {temp = T; continue;}
-			if (BIOMES_MOUNTAINS.contains(tName)) return 0;
-			if (BIOMES_FROZEN.contains(tName)) return 0;
-			if (BIOMES_TAIGA.contains(tName)) return 0;
-			if (BIOMES_SWAMP.contains(tName)) return 0;
+			if (BIOMES_COCONUT  .contains(tName)) {temp = T; continue;}
+			if (BIOMES_MOUNTAINS.contains(tName)) return 0;// Too Mountainous
+			if (BIOMES_FROZEN   .contains(tName)) return 0;// Too Cold
+			if (BIOMES_TAIGA    .contains(tName)) return 0;// Too Cold
+			if (BIOMES_SWAMP    .contains(tName)) return 0;// Too Shrek
+			if (BIOMES_WOODS    .contains(tName)) return 0;// Too Forested
 		}
 		return temp ? mAmount : 0;
 	}
