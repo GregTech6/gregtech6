@@ -695,13 +695,6 @@ public class MultiItemTechnological extends MultiItemRandomWithCompat {
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(tMat             , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy, 1)), IL.Circuit_Part_Good         .get(1));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(tMat             , 1), OP.wireFine.mat(MT.RedAlloy, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy, 1)), IL.Circuit_Part_Good         .get(1));
 		}
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Au            , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.Si           , 1)), IL.Circuit_Part_Advanced     .get(1));
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Au            , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.Ge           , 1)), IL.Circuit_Part_Advanced     .get(1));
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Au            , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy, 1)), IL.Circuit_Part_Elite        .get(1));
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Pt            , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.Si           , 1)), IL.Circuit_Part_Master       .get(1));
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Pt            , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.Ge           , 1)), IL.Circuit_Part_Master       .get(1));
-		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Pt            , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy, 1)), IL.Circuit_Part_Ultimate     .get(1));
-		
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Thaumium      , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.Si           , 1)), IL.Circuit_Part_Magic        .get(1));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Thaumium      , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.Ge           , 1)), IL.Circuit_Part_Magic        .get(1));
 		RM.Press.addRecipeX(T, F, F, F, T, 16, 16, ST.array(OP.wireFine.mat(MT.Thaumium      , 1), OP.wireFine.mat(MT.Signalum, 1), OP.plateGemTiny.mat(MT.RedstoneAlloy, 1)), IL.Circuit_Part_Magic        .get(1));
@@ -758,25 +751,7 @@ public class MultiItemTechnological extends MultiItemRandomWithCompat {
 		IL.Circuit_Board_HSLA_Circuit      .set(addItem(tLastID = 30298, "Circuit Board (HSLA Circuit)"     , "Needs to be soldered properly"                   , TC.stack(TC.FABRICO, 1), MD.RoC.mLoaded ? null : TD.Creative.HIDDEN));
 		IL.Circuit_Board_Power_Module      .set(addItem(tLastID = 30299, "Circuit Board (Power Module)"     , "Needs to be soldered properly"                   , TC.stack(TC.FABRICO, 1), MD.RoC.mLoaded ? null : TD.Creative.HIDDEN));
 		
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Copper      .get(1), IL.Circuit_Part_Basic      .get(4), IL.Circuit_Board_Basic         .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Copper      .get(1), IL.Circuit_Part_Good       .get(4), IL.Circuit_Board_Good          .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Copper      .get(1), IL.Circuit_Part_Advanced   .get(4), IL.Circuit_Board_Good          .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Copper      .get(1), IL.Circuit_Part_Elite      .get(4), IL.Circuit_Board_Good          .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Copper      .get(1), IL.Circuit_Part_Master     .get(4), IL.Circuit_Board_Good          .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Copper      .get(1), IL.Circuit_Part_Ultimate   .get(4), IL.Circuit_Board_Good          .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Gold        .get(1), IL.Circuit_Part_Basic      .get(4), IL.Circuit_Board_Basic         .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Gold        .get(1), IL.Circuit_Part_Good       .get(4), IL.Circuit_Board_Good          .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Gold        .get(1), IL.Circuit_Part_Advanced   .get(4), IL.Circuit_Board_Advanced      .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Gold        .get(1), IL.Circuit_Part_Elite      .get(4), IL.Circuit_Board_Elite         .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Gold        .get(1), IL.Circuit_Part_Master     .get(4), IL.Circuit_Board_Elite         .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Gold        .get(1), IL.Circuit_Part_Ultimate   .get(4), IL.Circuit_Board_Elite         .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Platinum    .get(1), IL.Circuit_Part_Basic      .get(4), IL.Circuit_Board_Basic         .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Platinum    .get(1), IL.Circuit_Part_Good       .get(4), IL.Circuit_Board_Good          .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Platinum    .get(1), IL.Circuit_Part_Advanced   .get(4), IL.Circuit_Board_Advanced      .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Platinum    .get(1), IL.Circuit_Part_Elite      .get(4), IL.Circuit_Board_Elite         .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Platinum    .get(1), IL.Circuit_Part_Master     .get(4), IL.Circuit_Board_Master        .get(1));
-		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Platinum    .get(1), IL.Circuit_Part_Ultimate   .get(4), IL.Circuit_Board_Ultimate      .get(1));
-		
+
 		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Magic       .get(1), IL.Circuit_Part_Magic      .get(4), IL.Circuit_Board_Magic         .get(1));
 		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Enderium    .get(1), IL.Circuit_Part_Enderium   .get(4), IL.Circuit_Board_Enderium      .get(1));
 		RM.Press.addRecipe2(T, F, F, F, T, 16, 64, IL.Circuit_Plate_Signalum    .get(1), IL.Circuit_Part_Signalum   .get(4), IL.Circuit_Board_Signalum      .get(1));
