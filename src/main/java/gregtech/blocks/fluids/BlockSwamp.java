@@ -105,10 +105,16 @@ public class BlockSwamp extends BlockWaterlike {
 				} else if (tBlock == Blocks.sand || tBlock == Blocks.dirt || tBlock == Blocks.grass || tBlock == Blocks.mycelium || tBlock == BlocksGT.Grass || tBlock == BlocksGT.Diggables || tBlock == BlocksGT.Sands || tBlock == BlocksGT.oreSand || tBlock == BlocksGT.oreRedSand || tBlock == BlocksGT.oreMud || tBlock == BlocksGT.oreSmallSand || tBlock == BlocksGT.oreSmallRedSand || tBlock == BlocksGT.oreSmallMud || IL.EtFu_Dirt.equal(tBlock)) {
 					tDirt = T;
 				} else if (IL.TF_Mazestone.equal(tBlock)) {
-					// prevent flooding the Mazes.
-					aWorld.setBlock(aX  , aY, aZ  , Blocks.brown_mushroom_block, 5, 3);
-					for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) if (Math.abs(i * j) < 4 && WD.air(aWorld, aX+i, aY, aZ+j)) {
-					aWorld.setBlock(aX+i, aY, aZ+j, Blocks.brown_mushroom_block, 5, 3);
+					// prevent flooding the Twilight Mazes.
+					for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) if (Math.abs(i * j) < 4) {
+						// Plug the holes.
+						if (WD.air     (aWorld, aX+i, aY  , aZ+j)) aWorld.setBlock(aX+i, aY  , aZ+j, Blocks.brown_mushroom_block, 5, 3);
+						if (WD.anywater(aWorld, aX+i, aY  , aZ+j)) aWorld.setBlock(aX+i, aY  , aZ+j, Blocks.brown_mushroom_block, 5, 3);
+						// Soak it all up.
+						if (WD.anywater(aWorld, aX+i, aY+2, aZ+j)) aWorld.setBlock(aX+i, aY+1, aZ+j, NB, 0, 3);
+						if (WD.anywater(aWorld, aX+i, aY+1, aZ+j)) aWorld.setBlock(aX+i, aY+1, aZ+j, NB, 0, 3);
+						if (WD.anywater(aWorld, aX+i, aY-1, aZ+j)) aWorld.setBlock(aX+i, aY-1, aZ+j, NB, 0, 3);
+						if (WD.anywater(aWorld, aX+i, aY-2, aZ+j)) aWorld.setBlock(aX+i, aY-1, aZ+j, NB, 0, 3);
 					}
 					PLACEMENT_ALLOWED = F;
 					return;
