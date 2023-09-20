@@ -106,12 +106,25 @@ public class BlockSwamp extends BlockWaterlike {
 					tDirt = T;
 				} else if (IL.TF_Mazestone.equal(tBlock)) {
 					// prevent flooding the Twilight Mazes.
+					// grow a Mushroom Stem
+					if (WD.air     (aWorld, aX  , aY+1, aZ  )) aWorld.setBlock(aX  , aY+1, aZ  , Blocks.brown_mushroom_block, 10, 3); else
+					if (WD.anywater(aWorld, aX  , aY+1, aZ  )) aWorld.setBlock(aX  , aY+1, aZ  , Blocks.brown_mushroom_block, 10, 3);
+					if (WD.air     (aWorld, aX  , aY+2, aZ  )) aWorld.setBlock(aX  , aY+2, aZ  , Blocks.brown_mushroom_block, 10, 3); else
+					if (WD.anywater(aWorld, aX  , aY+2, aZ  )) aWorld.setBlock(aX  , aY+2, aZ  , Blocks.brown_mushroom_block, 10, 3);
+					if (WD.air     (aWorld, aX  , aY+3, aZ  )) aWorld.setBlock(aX  , aY+3, aZ  , Blocks.brown_mushroom_block, 10, 3); else
+					if (WD.anywater(aWorld, aX  , aY+3, aZ  )) aWorld.setBlock(aX  , aY+3, aZ  , Blocks.brown_mushroom_block, 10, 3);
+					if (WD.air     (aWorld, aX  , aY+4, aZ  )) aWorld.setBlock(aX  , aY+4, aZ  , Blocks.brown_mushroom_block, 10, 3); else
+					if (WD.anywater(aWorld, aX  , aY+4, aZ  )) aWorld.setBlock(aX  , aY+4, aZ  , Blocks.brown_mushroom_block, 10, 3);
 					for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) if (Math.abs(i * j) < 4) {
 						// Plug the holes.
-						if (WD.air     (aWorld, aX+i, aY  , aZ+j)) aWorld.setBlock(aX+i, aY  , aZ+j, Blocks.brown_mushroom_block, 5, 3);
+						if (WD.air     (aWorld, aX+i, aY  , aZ+j)) aWorld.setBlock(aX+i, aY  , aZ+j, Blocks.brown_mushroom_block, 5, 3); else
 						if (WD.anywater(aWorld, aX+i, aY  , aZ+j)) aWorld.setBlock(aX+i, aY  , aZ+j, Blocks.brown_mushroom_block, 5, 3);
+						if (WD.air     (aWorld, aX+i, aY+5, aZ+j)) aWorld.setBlock(aX+i, aY+5, aZ+j, Blocks.brown_mushroom_block, 5, 3); else
+						if (WD.anywater(aWorld, aX+i, aY+5, aZ+j)) aWorld.setBlock(aX+i, aY+5, aZ+j, Blocks.brown_mushroom_block, 5, 3);
 						// Soak it all up.
-						if (WD.anywater(aWorld, aX+i, aY+2, aZ+j)) aWorld.setBlock(aX+i, aY+1, aZ+j, NB, 0, 3);
+						if (WD.anywater(aWorld, aX+i, aY+4, aZ+j)) aWorld.setBlock(aX+i, aY+4, aZ+j, NB, 0, 3);
+						if (WD.anywater(aWorld, aX+i, aY+3, aZ+j)) aWorld.setBlock(aX+i, aY+3, aZ+j, NB, 0, 3);
+						if (WD.anywater(aWorld, aX+i, aY+2, aZ+j)) aWorld.setBlock(aX+i, aY+2, aZ+j, NB, 0, 3);
 						if (WD.anywater(aWorld, aX+i, aY+1, aZ+j)) aWorld.setBlock(aX+i, aY+1, aZ+j, NB, 0, 3);
 						if (WD.anywater(aWorld, aX+i, aY-1, aZ+j)) aWorld.setBlock(aX+i, aY-1, aZ+j, NB, 0, 3);
 						if (WD.anywater(aWorld, aX+i, aY-2, aZ+j)) aWorld.setBlock(aX+i, aY-1, aZ+j, NB, 0, 3);
