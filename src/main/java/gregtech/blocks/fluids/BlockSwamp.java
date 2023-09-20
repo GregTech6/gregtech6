@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -104,6 +104,14 @@ public class BlockSwamp extends BlockWaterlike {
 					if (tMeta == 0) tSwampCounter++;
 				} else if (tBlock == Blocks.sand || tBlock == Blocks.dirt || tBlock == Blocks.grass || tBlock == Blocks.mycelium || tBlock == BlocksGT.Grass || tBlock == BlocksGT.Diggables || tBlock == BlocksGT.Sands || tBlock == BlocksGT.oreSand || tBlock == BlocksGT.oreRedSand || tBlock == BlocksGT.oreMud || tBlock == BlocksGT.oreSmallSand || tBlock == BlocksGT.oreSmallRedSand || tBlock == BlocksGT.oreSmallMud || IL.EtFu_Dirt.equal(tBlock)) {
 					tDirt = T;
+				} else if (IL.TF_Mazestone.equal(tBlock)) {
+					// prevent flooding the Mazes.
+					aWorld.setBlock(aX  , aY, aZ  , Blocks.brown_mushroom_block, 5, 3);
+					for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) if (Math.abs(i * j) < 4 && WD.air(aWorld, aX+i, aY, aZ+j)) {
+					aWorld.setBlock(aX+i, aY, aZ+j, Blocks.brown_mushroom_block, 5, 3);
+					}
+					PLACEMENT_ALLOWED = F;
+					return;
 				}
 			}
 		}
