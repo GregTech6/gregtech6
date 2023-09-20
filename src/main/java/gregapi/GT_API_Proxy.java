@@ -1249,6 +1249,35 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		}
 	}
 	
+	@SubscribeEvent
+	public void onEntitySpawningEvent(EntityJoinWorldEvent aEvent) {
+		if (aEvent.entity instanceof EntityItem && !aEvent.entity.worldObj.isRemote) {
+			ItemStack aStack = ST.update(OM.get(((EntityItem)aEvent.entity).getEntityItem()), aEvent.entity);
+			if (ST.valid(aStack) && aStack.stackSize > 0) {
+				if (ST.meta_(aStack) == W || ST.item_(aStack) == Items.gold_nugget) ST.meta(aStack, 0);
+				if (ST.meta_(aStack) == 0 || ST.item_(aStack) == IL.TF_Mushgloom.item()) ST.meta(aStack, 9);
+				
+				
+				
+				if (((EntityItem)aEvent.entity).lifespan > 1200) {
+					if (ST.item_(aStack) == Items.egg || ST.item_(aStack) == Items.feather || ST.item_(aStack) == Items.apple) {
+						((EntityItem)aEvent.entity).lifespan = 1200;
+					} else {
+						if (((EntityItem)aEvent.entity).lifespan == 6000) {
+							((EntityItem)aEvent.entity).lifespan = ITEM_DESPAWN_TIME;
+						}
+					}
+				}
+				// Result was valid so set the ItemStack.
+				((EntityItem)aEvent.entity).setEntityItemStack(aStack);
+			} else {
+				// Result was invalid therefore kill the Stack.
+				aEvent.entity.setDead();
+				return;
+			}
+		}
+	}
+	
 	public static List<EntityPlayerMP> mNewPlayers = new ArrayListNoNulls<>();
 	
 	@SubscribeEvent
@@ -1351,31 +1380,6 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		}
 		if (GENERATE_STREETS && (UT.Code.inside(-48, 48, aX) || UT.Code.inside(-48, 48, aZ))) {aEvent.setResult(Result.DENY); return;}
 		if (SPAWN_ZONE_MOB_PROTECTION && UT.Code.inside(-144, 144, aX-aWorld.getWorldInfo().getSpawnX()) && UT.Code.inside(-144, 144, aZ-aWorld.getWorldInfo().getSpawnZ()) && WD.opq(aWorld, aX, 0, aZ, F, F)) {aEvent.setResult(Result.DENY); return;}
-	}
-	
-	@SubscribeEvent
-	public void onEntitySpawningEvent(EntityJoinWorldEvent aEvent) {
-		if (aEvent.entity instanceof EntityItem && !aEvent.entity.worldObj.isRemote) {
-			ItemStack aStack = ST.update(OM.get(((EntityItem)aEvent.entity).getEntityItem()), aEvent.entity);
-			if (ST.valid(aStack) && aStack.stackSize > 0) {
-				if (ST.meta_(aStack) == W || ST.item_(aStack) == Items.gold_nugget) ST.meta(aStack, 0);
-				if (((EntityItem)aEvent.entity).lifespan > 1200) {
-					if (ST.item_(aStack) == Items.egg || ST.item_(aStack) == Items.feather || ST.item_(aStack) == Items.apple) {
-						((EntityItem)aEvent.entity).lifespan = 1200;
-					} else {
-						if (((EntityItem)aEvent.entity).lifespan == 6000) {
-							((EntityItem)aEvent.entity).lifespan = ITEM_DESPAWN_TIME;
-						}
-					}
-				}
-				// Result was valid so set the ItemStack.
-				((EntityItem)aEvent.entity).setEntityItemStack(aStack);
-			} else {
-				// Result was invalid therefore kill the Stack.
-				aEvent.entity.setDead();
-				return;
-			}
-		}
 	}
 	
 	@SubscribeEvent

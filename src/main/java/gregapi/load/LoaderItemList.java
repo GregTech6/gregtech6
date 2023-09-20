@@ -947,8 +947,9 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Cube_of_Annihilation              .set(ST.make(MD.TF, "item.cubeOfAnnihilation"               , 1, 0));
 		IL.TF_Pick_Giant                        .set(ST.make(MD.TF, "item.giantPick"                        , 1, 0), new OreDictItemData(MT.Stone, U*1728, MT.WOODS.Oak, U*1024, MT.Bark, U*128).setUseVanillaDamage());
 		IL.TF_Sword_Giant                       .set(ST.make(MD.TF, "item.giantSword"                       , 1, 0), new OreDictItemData(MT.Stone, U*1152, MT.WOODS.Oak, U* 512, MT.Bark, U* 64).setUseVanillaDamage());
-		IL.TF_Fiddlehead                        .set(ST.make(MD.TF, "tile.TFPlant"                          , 1, 8));
+		IL.TF_Mushgloom_Huge                    .set(ST.make(MD.TF, "tile.HugeGloomBlock"                   , 1, 0), new OreDictItemData(MT.Glowstone, U));
 		IL.TF_Mushgloom                         .set(ST.make(MD.TF, "tile.TFPlant"                          , 1, 9), new OreDictItemData(MT.Glowstone, U4), OD.listAllmushroom);
+		IL.TF_Fiddlehead                        .set(ST.make(MD.TF, "tile.TFPlant"                          , 1, 8));
 		IL.TF_Tall_Grass                        .set(ST.make(MD.TF, "tile.TFPlant"                          , 1,10), null, OD.itemGrassTall);
 		IL.TF_Dry_Bush                          .set(ST.make(MD.TF, "tile.TFPlant"                          , 1,11));
 		IL.TF_Roots                             .set(ST.make(MD.TF, "tile.TFRoots"                          , 1, 0), new OreDictItemData(MT.Wood, U*3));
@@ -993,7 +994,13 @@ public class LoaderItemList implements Runnable {
 		IL.TF_Maze_Map_Focus                    .set(ST.make(MD.TF, "item.mazeMapFocus"                     , 1, 0));
 		IL.TF_Ore_Map                           .set(ST.make(MD.TF, "item.oreMap"                           , 1, W), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
 		IL.TF_Ore_Map_Empty                     .set(ST.make(MD.TF, "item.emptyOreMap"                      , 1, W), new OreDictItemData(MT.Paper, U*8), OD.paperMap);
+
 		
+		// Fixing the Drops of this one.
+		BlocksGT.blockToDrop.put(IL.TF_Mushgloom.item(), 0, IL.TF_Mushgloom.get(3));
+		BlocksGT.blockToSilk.put(IL.TF_Mushgloom.item(), 0, IL.TF_Mushgloom_Huge.get(1));
+		BlocksGT.blockToDrop.put(IL.TF_Mushgloom_Huge.getWildcard(1), IL.TF_Mushgloom.get(3));
+		BlocksGT.blockToSilk.put(IL.TF_Mushgloom_Huge.getWildcard(1), IL.TF_Mushgloom_Huge.get(1));
 		// Vanilla Maps are stackable, TF forgot to fix that lol.
 		if (IL.TF_Magic_Map.exists()) IL.TF_Magic_Map.item().setMaxStackSize(64);
 		if (IL.TF_Maze_Map .exists()) IL.TF_Maze_Map .item().setMaxStackSize(64);
