@@ -1194,7 +1194,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		
 		if (IL.TF_Mushgloom_Huge.equal(aBlock)) {
 			aEvent.drops.clear();
-			aEvent.drops.add(aEvent.isSilkTouching ? IL.TF_Mushgloom_Huge.get(1) : IL.TF_Mushgloom.get(1+RNGSUS.nextInt(3)));
+			aEvent.drops.add(aEvent.isSilkTouching ? IL.TF_Mushgloom_Huge.get(1) : IL.TF_Mushgloom.get(UT.Code.bind(1, 4, RNGSUS.nextInt(3) + RNGSUS.nextInt(1+aEvent.fortuneLevel))));
 		}
 		
 		if (aEvent.harvester != null) {
