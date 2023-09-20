@@ -999,8 +999,6 @@ public class LoaderItemList implements Runnable {
 		// Fixing the Drops of this one.
 		BlocksGT.blockToDrop.put(IL.TF_Mushgloom.item(), 0, IL.TF_Mushgloom.get(3));
 		BlocksGT.blockToSilk.put(IL.TF_Mushgloom.item(), 0, IL.TF_Mushgloom_Huge.get(1));
-		BlocksGT.blockToDrop.put(IL.TF_Mushgloom_Huge.getWildcard(1), IL.TF_Mushgloom.get(3));
-		BlocksGT.blockToSilk.put(IL.TF_Mushgloom_Huge.getWildcard(1), IL.TF_Mushgloom_Huge.get(1));
 		// Vanilla Maps are stackable, TF forgot to fix that lol.
 		if (IL.TF_Magic_Map.exists()) IL.TF_Magic_Map.item().setMaxStackSize(64);
 		if (IL.TF_Maze_Map .exists()) IL.TF_Maze_Map .item().setMaxStackSize(64);

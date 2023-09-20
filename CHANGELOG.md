@@ -10,7 +10,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.01: (Not released yet)
-[NOTE] My Minecraft Account is finally dead now (I hope), so do not trust anyone impersonating me or something. Anyways, screw MS for the way they handled Account Migration to the point I did not want to keep my Minecraft Account.
+[NOTE] My Minecraft Account is finally dead now (I hope), so do not trust anyone impersonating Greg or something. Anyways, screw MS for the way they handled Account Migration to the point I did not want to keep my Minecraft Account.
+[CHANGED] Pickaxes now have the same Attack Damage Stats as the Axe, but they give twice the Invulnerability Frames to the opponent.
 
 
 6.17.00:
@@ -38,7 +39,7 @@ Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even
 [CHANGED] Twilight Bunnies now drop the same Stuff Et Futurum Rabbits do, or Harvestcrafts Rabbit Meat.
 [CHANGED] Enchanted Books are now stackable but BEWARE that vanilla Anvils will eat the entire Stack you insert so dont keep it stacked in its UI.
 [CHANGED] Scythe cannot mine Lily Pads and similar anymore.
-[ADDED] GT6 Pickaxes now have the ability to penetrate Armor. They are still not considered Weapons for sake of Enchantments though, and they have crap Damage Stats.
+[ADDED] GT6 Pickaxes now have the ability to penetrate Armor. They are still not considered Weapons for sake of Enchantments though.
 [ADDED] Opening GT6 Loot Chests will now give quite a bit of XP. Remember you can just take unopened Loot Chests home and open them there for safety and less Inventory clutter.
 [ADDED] Villagers can now be lured with vanillas Emerald Items, similar to how Wheat works with Cows.
 [ADDED] Tusks, Hoofs, Horns and Antlers as Drops for various Mobs. Primarily as a way to make Glue early on.

@@ -1192,6 +1192,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			aEvent.drops.set(i, ST.make(Blocks.dirt, aEvent.drops.get(i).stackSize, 1));
 		}
 		
+		if (IL.TF_Mushgloom_Huge.equal(aBlock)) {
+			aEvent.drops.clear();
+			aEvent.drops.add(aEvent.isSilkTouching ? IL.TF_Mushgloom_Huge.get(1) : IL.TF_Mushgloom.get(1+RNGSUS.nextInt(3)));
+		}
+		
 		if (aEvent.harvester != null) {
 			if (FAST_LEAF_DECAY) WD.leafdecay(aEvent.world, aEvent.x, aEvent.y, aEvent.z, aBlock, F, F);
 			ItemStack aTool = aEvent.harvester.getCurrentEquippedItem();
@@ -1256,9 +1261,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			if (ST.valid(aStack) && aStack.stackSize > 0) {
 				if (ST.meta_(aStack) == W || ST.item_(aStack) == Items.gold_nugget) ST.meta(aStack, 0);
 				if (ST.meta_(aStack) == 0 || ST.item_(aStack) == IL.TF_Mushgloom.item()) ST.meta(aStack, 9);
-				
-				
-				
+				// Life Span Stuff
 				if (((EntityItem)aEvent.entity).lifespan > 1200) {
 					if (ST.item_(aStack) == Items.egg || ST.item_(aStack) == Items.feather || ST.item_(aStack) == Items.apple) {
 						((EntityItem)aEvent.entity).lifespan = 1200;
