@@ -77,6 +77,7 @@ import gregapi.random.IHasWorldAndCoords;
 import gregapi.tileentity.*;
 import gregapi.tileentity.inventories.ITileEntityBookShelf;
 import gregapi.util.*;
+import gregapi.wooddict.BeamEntry;
 import gregapi.wooddict.WoodDictionary;
 import gregapi.wooddict.WoodEntry;
 import gregapi.worldgen.GT6WorldGenerator;
@@ -1224,9 +1225,14 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						tTarget = (aEvent.isSilkTouching?BlocksGT.blockToSilk:BlocksGT.blockToDrop).get(tDrop);
 						if (ST.valid(tTarget)) OM.set(ST.set(tDrop, tTarget, F, F));
 					} else {
-						WoodEntry tEntry = WoodDictionary.WOODS.get(tDrop);
-						if (tEntry != null && tEntry.mCharcoalCount > 0) {
-							ST.set(tDrop, OP.gem.mat(MT.Charcoal, tEntry.mCharcoalCount * tDrop.stackSize), T, F);
+						WoodEntry tWoodEntry = WoodDictionary.WOODS.get(tDrop);
+						if (tWoodEntry != null && tWoodEntry.mCharcoalCount > 0) {
+							ST.set(tDrop, OP.gem.mat(MT.Charcoal, tWoodEntry.mCharcoalCount * tDrop.stackSize), T, F);
+						} else {
+							BeamEntry tBeamEntry = WoodDictionary.BEAMS.get(tDrop);
+							if (tBeamEntry != null && tBeamEntry.mCharcoalCount > 0) {
+								ST.set(tDrop, OP.gem.mat(MT.Charcoal, tBeamEntry.mCharcoalCount * tDrop.stackSize), T, F);
+							}
 						}
 					}
 				}
