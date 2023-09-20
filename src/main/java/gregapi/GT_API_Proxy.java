@@ -77,6 +77,8 @@ import gregapi.random.IHasWorldAndCoords;
 import gregapi.tileentity.*;
 import gregapi.tileentity.inventories.ITileEntityBookShelf;
 import gregapi.util.*;
+import gregapi.wooddict.WoodDictionary;
+import gregapi.wooddict.WoodEntry;
 import gregapi.worldgen.GT6WorldGenerator;
 import gregtech.items.behaviors.Behavior_Gun;
 import net.minecraft.block.Block;
@@ -1210,23 +1212,23 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				}
 				
 				for (ItemStack tDrop : aEvent.drops) {
-					OM.set(tDrop);
-					
-					ItemStack
-					tTarget = (aEvent.isSilkTouching?BlocksGT.blockToSilk:BlocksGT.blockToDrop).get(tDrop);
-					if (ST.invalid(tTarget)) continue;
-					OM.set(ST.set(tDrop, tTarget, F, F));
-					
-					if (!tFireAspect) continue;
-					
-					tTarget = RM.get_smelting(tDrop);
-					if (ST.invalid(tTarget)) continue;
-					tDrop.stackSize *= tTarget.stackSize;
-					OM.set(ST.set(tDrop, tTarget, F, T));
-					
-					tTarget = (aEvent.isSilkTouching?BlocksGT.blockToSilk:BlocksGT.blockToDrop).get(tDrop);
-					if (ST.invalid(tTarget)) continue;
-					OM.set(ST.set(tDrop, tTarget, F, F));
+					ItemStack tTarget = (aEvent.isSilkTouching ? BlocksGT.blockToSilk : BlocksGT.blockToDrop).get(tDrop);
+					if (ST.valid(tTarget)) OM.set(ST.set(tDrop, tTarget, F, F)); else OM.set(tDrop);
+				}
+				
+				if (tFireAspect) for (ItemStack tDrop : aEvent.drops) {
+					ItemStack tTarget = RM.get_smelting(tDrop);
+					if (ST.valid(tTarget)) {
+						tDrop.stackSize *= tTarget.stackSize;
+						OM.set(ST.set(tDrop, tTarget, F, T));
+						tTarget = (aEvent.isSilkTouching?BlocksGT.blockToSilk:BlocksGT.blockToDrop).get(tDrop);
+						if (ST.valid(tTarget)) OM.set(ST.set(tDrop, tTarget, F, F));
+					} else {
+						WoodEntry tEntry = WoodDictionary.WOODS.get(tDrop);
+						if (tEntry != null && tEntry.mCharcoalCount > 0) {
+							ST.set(tDrop, OP.gem.mat(MT.Charcoal, tEntry.mCharcoalCount * tDrop.stackSize), T, F);
+						}
+					}
 				}
 				
 				if (tCanCollect && !aEvent.drops.isEmpty()) {
