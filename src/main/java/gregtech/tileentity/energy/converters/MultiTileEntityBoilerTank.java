@@ -136,10 +136,10 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 				}
 			}
 			
-			long tAmount = mTanks[1].amount() - mTanks[1].capacity() / 2;
+			long tAmount = mTanks[1].amount() - mTanks[1].capacity() / 4;
 			
 			// Emit Steam
-			if (tAmount > 0) FL.move(mTanks[1], getAdjacentTank(SIDE_UP), Math.min(tAmount > mTanks[1].capacity() / 4 ? mOutput * 2 : mOutput, tAmount));
+			if (tAmount > 0) FL.move(mTanks[1], getAdjacentTank(SIDE_UP), tAmount<mOutput?tAmount:(mTanks[1].amount()>mTanks[1].capacity/2?(mTanks[1].amount*4>mTanks[1].capacity*3/*75%*/?2*mOutput:(mTanks[1].amount/mTanks[1].capacity)*mOutput):mOutput));
 			
 			// Set Barometer
 			mBarometer = (byte)UT.Code.scale(mTanks[1].amount(), mTanks[1].capacity(), 31, F);
