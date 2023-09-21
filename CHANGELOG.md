@@ -14,6 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Swamp Water should no longer flood Twilight Mazes. Though existing Floods miiiight have some shroomy Side Effects.
 [CHANGED] Pickaxes now have the same Attack Damage Stats as the Axe, but they give twice the Invulnerability Frames to the opponent.
 [CHANGED] Autosmelt on Tools works to make Charcoal again, even if the Charcoal Recipes do not exist in the Furnace.
+[ADDED] Fireleaf which is Steeleaf but converted with Fiery Blood or Fiery Tears. It has Fortune III and Auto-Collect along with some other Stuff.
 
 
 6.17.00:
