@@ -407,6 +407,7 @@ public class GT_API extends Abstract_Mod {
 			MT.TungstenSteel.setLocal("Wolf Style");
 			MT.ShadowSteel.setLocal("Shade Style");
 			MT.Steeleaf.setLocal("Style Leave");
+			MT.Fireleaf.setLocal("Burn Leave");
 			MT.Knightmetal.setLocal("Night Metal");
 			MT.FierySteel.setLocal("Fury Style");
 			MT.Thaumium.setLocal("Thaumanominum");

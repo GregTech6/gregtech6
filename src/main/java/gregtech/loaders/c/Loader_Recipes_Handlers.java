@@ -672,6 +672,8 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Pb                     , MT.Midasium       .liquid(U4, T)  ,   0, 144, NF, MT.Au                   , NI, T, tConditionP));
 		
 		
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Steeleaf               , FL.FieryBlood     .make(   L)     ,   0, 144, NF, MT.Fireleaf             , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Steeleaf               , FL.FieryTears     .make(   L)     ,   0, 144, NF, MT.Fireleaf             , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.MeteoricSteel          , FL.FieryBlood     .make(   L)     ,   0, 144, NF, MT.MeteoflameSteel      , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.MeteoricSteel          , FL.FieryTears     .make(   L)     ,   0, 144, NF, MT.MeteoflameSteel      , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.MeteoricBlackSteel     , FL.FieryBlood     .make(   L)     ,   0, 144, NF, MT.MeteoflameBlackSteel , NI, T, tConditionP));

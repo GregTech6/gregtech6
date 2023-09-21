@@ -1763,9 +1763,10 @@ public class MT {
 	BatteryAlloy            = alloy         ( 8668, "Battery Alloy"         , SET_DULL              , 156, 124, 160     , MORTAR, MOLTEN, FURNACE, EXTRUDER_SIMPLE)                                                                                                 .uumAloy( 0, Pb             , 4*U, Sb               , 1*U)                                                                                                  ,
 	SolderingAlloy          = clloy         ( 8669, "Soldering Alloy"                               , 220, 220, 230     , MORTAR, MOLTEN, BRITTLE, SOLDERING_MATERIAL, SOLDERING_MATERIAL_GOOD, WIRES)                                                              .uumAloy( 0, Sn             , 9*U, Sb               , 1*U)                                                                                                  ,
 	IronWood                = alloymachine  ( 8672, "Ironwood"              , SET_WOOD              , 150, 140, 110     , MAGICAL, WOOD, FURNACE, EXTRUDER_SIMPLE, MORTAR, MAGNETIC_PASSIVE, MOLTEN, "IronWood").qual(2, 6.5, 512, 2)                               .setAloy(18, WroughtIron    , 8*U, LiveRoot         , 9*U, Angmallen        , 2*U)                                                                          .aspects(TC.METALLUM, 2, TC.ARBOR, 1, TC.PRAECANTIO, 1),
-	Steeleaf                = alloymachine  ( 8673, "Steeleaf"              , SET_LEAF              ,  50, 127,  50     , MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, WOOD, MORTAR).qual(2, 8.0, 144, 3).setSmelting(Steel, U4)                                          .setMcfg( 1, Steel             , 1*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.HERBA, 1, TC.PRAECANTIO, 1),
+	Steeleaf                = alloymachine  ( 8673, "Steeleaf"              , SET_LEAF              ,  50, 127,  50     , MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, WOOD, MORTAR).qual(2,  8.0, 144, 3).setSmelting(Steel, U4)                                         .setMcfg( 1, Steel             , 1*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.HERBA, 1, TC.PRAECANTIO, 1),
 	Knightmetal             = alloymachine  ( 8674, "Knightmetal"                                   , 210, 240, 200     , MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN, MORTAR, "KnightMetal").qual(3, 8.0, 512, 3)                                                .setMcfg( 2, Steel             , 2*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.TELUM, 1, TC.PRAECANTIO, 1).heat(Steel.mMeltingPoint+100, Steel.mBoilingPoint+100),
 	FierySteel              = alloymachine  ( 8675, "Fiery Steel"           , SET_FIERY             ,  64,   0,   0     , MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, MOLTEN, WITHER_PROOF, UNBURNABLE, BURNING, GLOWING, "Fiery").qual(3, 9.0, 1024, 4)                 .setMcfg( 1, Steel             , 1*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.IGNIS, 3, TC.PRAECANTIO, 1).heat(Steel.mBoilingPoint-200, Steel.mBoilingPoint+500),
+	Fireleaf                = alloymachine  ( 8698, "Fireleaf"              , SET_LEAF              , 127,  50,  50     , MAGICAL, CENTRIFUGE, MAGNETIC_PASSIVE, WOOD, MORTAR).qual(2, 12.0, 288, 4).setSmelting(FierySteel, U4)                                    .setMcfg( 1, FierySteel        , 1*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.IGNIS, 3, TC.PRAECANTIO, 1, TC.HERBA, 1),
 	MeteoflameSteel         = alloymachine  ( 8693, "Meteoflame Steel"      , SET_FIERY             , 130, 120, 100     , MAGICAL, CENTRIFUGE, MAGNETIC_ACTIVE , MOLTEN, WITHER_PROOF, UNBURNABLE, BURNING, GLOWING).qual(3, 12.0, 1280, 4)                         .setMcfg( 1, MeteoricSteel     , 1*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.IGNIS, 3, TC.PRAECANTIO, 1, TC.MAGNETO, 1, TC.ORDO, 1).heat(MeteoricSteel.mBoilingPoint-200, MeteoricSteel.mBoilingPoint+500),
 	MeteoflameBlackSteel    = alloymachine  ( 8694, "Meteoflame Black Steel", SET_FIERY             ,  85,  85,  85     , MAGICAL, CENTRIFUGE, MAGNETIC_ACTIVE , MOLTEN, WITHER_PROOF, UNBURNABLE, BURNING, GLOWING).qual(3, 12.0, 1280, 4)                         .setMcfg( 1, MeteoricBlackSteel, 1*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.IGNIS, 3, TC.PRAECANTIO, 1, TC.MAGNETO, 1, TC.ORDO, 1, TC.INSTRUMENTUM, 1).heat(MeteoricBlackSteel.mBoilingPoint-200, MeteoricBlackSteel.mBoilingPoint+500),
 	MeteoflameBlueSteel     = alloymachine  ( 8695, "Meteoflame Blue Steel" , SET_FIERY             ,  95,  95, 135     , MAGICAL, CENTRIFUGE, MAGNETIC_ACTIVE , MOLTEN, WITHER_PROOF, UNBURNABLE, BURNING, GLOWING).qual(3, 13.0, 1408, 4)                         .setMcfg( 1, MeteoricBlueSteel , 1*U, Ma            , 1*U)                                                                                                  .aspects(TC.METALLUM, 2, TC.IGNIS, 3, TC.PRAECANTIO, 1, TC.MAGNETO, 1, TC.ORDO, 1, TC.INSTRUMENTUM, 1).heat(MeteoricBlueSteel .mBoilingPoint-200, MeteoricBlueSteel .mBoilingPoint+500),
@@ -2291,6 +2292,7 @@ public class MT {
 			Steeleaf                .put(MD.TF);
 			Knightmetal             .put(MD.TF, MAZEBREAKER).visDefault();
 			FierySteel              .put(MD.TF, MAZEBREAKER).visDefault();
+			Fireleaf                .put(MD.TF, MAZEBREAKER).visDefault(Steeleaf);
 			MeteoflameSteel         .put(MD.TF, MAZEBREAKER).visDefault(FierySteel);
 			MeteoflameBlackSteel    .put(MD.TF, MAZEBREAKER).visDefault(FierySteel);
 			MeteoflameBlueSteel     .put(MD.TF, MAZEBREAKER).visDefault(FierySteel);
@@ -2735,6 +2737,7 @@ public class MT {
 			Skyroot                 .addEnchantmentForTools(Enchantment.fortune, 1).addEnchantmentForWeapons(Enchantment.looting, 1).addEnchantmentForAmmo(Enchantment.looting, 2).addEnchantmentForRanged(Enchantment.infinity, 1).addEnchantmentForFishing(Enchantment.field_151370_z, 1);
 			IronWood                .addEnchantmentForTools(Enchantment.fortune, 1).addEnchantmentForWeapons(Enchantment.looting, 1).addEnchantmentForAmmo(Enchantment.looting, 2).addEnchantmentForRanged(Enchantment.infinity, 1).addEnchantmentForFishing(Enchantment.field_151370_z, 1);
 			Steeleaf                .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2).addEnchantmentForFishing(Enchantment.field_151370_z, 2);
+			Fireleaf                .addEnchantmentForTools(Enchantment.fortune, 3).addEnchantmentForWeapons(Enchantment.looting, 3).addEnchantmentForAmmo(Enchantment.looting, 3).addEnchantmentForRanged(Enchantment.infinity, 3).addEnchantmentForFishing(Enchantment.field_151370_z, 3);
 			Efrine                  .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2).addEnchantmentForFishing(Enchantment.field_151370_z, 2);
 			Soularium               .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2).addEnchantmentForFishing(Enchantment.field_151370_z, 2);
 			Midasium                .addEnchantmentForTools(Enchantment.fortune, 2).addEnchantmentForWeapons(Enchantment.looting, 2).addEnchantmentForAmmo(Enchantment.looting, 4).addEnchantmentForRanged(Enchantment.infinity, 2).addEnchantmentForFishing(Enchantment.field_151370_z, 2);
@@ -2801,6 +2804,7 @@ public class MT {
 			Octine                  .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
 			Kreknorite              .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
 			Firestone               .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
+			Fireleaf                .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
 			FierySteel              .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
 			MeteoflameSteel         .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
 			MeteoflameBlackSteel    .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
@@ -2883,6 +2887,7 @@ public class MT {
 			MeteoricSteel           .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
 			MeteoflameSteel         .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
 			Steeleaf                .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
+			Fireleaf                .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
 			VanadiumSteel           .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
 			StainlessSteel          .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
 			Knightmetal             .addEnchantmentForDamage(Enchantment.sharpness, 3).addEnchantmentForRanged(Enchantment.power, 3);
@@ -2927,6 +2932,7 @@ public class MT {
 			Infinity                .addEnchantmentForArmors(Enchantment.featherFalling,10);
 			
 			Steeleaf                .addEnchantmentForArmors(Enchantment.protection, 2);
+			Fireleaf                .addEnchantmentForArmors(Enchantment.protection, 2);
 			Knightmetal             .addEnchantmentForArmors(Enchantment.protection, 1);
 			Celenegil               .addEnchantmentForArmors(Enchantment.protection, 4);
 			InfusedEarth            .addEnchantmentForArmors(Enchantment.protection, 4);
@@ -3529,7 +3535,7 @@ public class MT {
 			
 			Mauftrium.mHandleMaterial = Elvorium.mHandleMaterial = MuspelheimPower.mHandleMaterial = NiflheimPower.mHandleMaterial = ElvenElementium.mHandleMaterial = ElvenDragonstone.mHandleMaterial = Manasteel.mHandleMaterial = Terrasteel.mHandleMaterial = ManaDiamond.mHandleMaterial = Thaumium.mHandleMaterial = ANY.WoodMagical;
 			GaiaSpirit.mHandleMaterial = ElvenElementium;
-			FierySteel.mHandleMaterial = MeteoflameSteel.mHandleMaterial = MeteoflameBlackSteel.mHandleMaterial = MeteoflameBlueSteel.mHandleMaterial = MeteoflameRedSteel.mHandleMaterial = FlamascusSteel.mHandleMaterial = Firestone.mHandleMaterial = ANY.Blaze;
+			FierySteel.mHandleMaterial = Fireleaf.mHandleMaterial = MeteoflameSteel.mHandleMaterial = MeteoflameBlackSteel.mHandleMaterial = MeteoflameBlueSteel.mHandleMaterial = MeteoflameRedSteel.mHandleMaterial = FlamascusSteel.mHandleMaterial = Firestone.mHandleMaterial = ANY.Blaze;
 			Endium.mHandleMaterial = Endstone;
 			SpectreIron.mHandleMaterial = Obsidian;
 			EnderAmethyst.mHandleMaterial = Meteorite.mHandleMaterial = Kreknorite.mHandleMaterial = Sugilite.mHandleMaterial = ANY.Iron;
