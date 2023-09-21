@@ -141,7 +141,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		CR.shaped(plateTiny          .mat(MT.Wood, 9), CR.DEF_NCC,  "s ",  " P"       , 'P', OD.buttonWood);
 		CR.shaped(ring               .mat(MT.Wood, 4), CR.DEF_NCC,  "P ",  " k"       , 'P', OD.buttonWood);
 		CR.shaped(round              .mat(MT.Wood, 9), CR.DEF_NCC,  "P ",  "fk"       , 'P', OD.buttonWood);
-		CR.shaped(toolHeadHammer     .mat(MT.Wood, 1), CR.DEF_NCC, "PP ", "PPg", "PPv", 'P', OD.buttonWood);
+		CR.shaped(toolHeadHammer     .mat(MT.Wood, 1), CR.DEF_NCC, "PP ", "PP ", "PPv", 'P', OD.buttonWood);
 		CR.shaped(toolHeadRawArrow   .mat(MT.Wood, 4), CR.DEF_NCC,        "  P", "r v", 'P', OD.buttonWood);
 		CR.shaped(toolHeadRawSword   .mat(MT.Wood, 1), CR.DEF_NCC,        " P ", "rPv", 'P', OD.buttonWood);
 		CR.shaped(toolHeadRawPickaxe .mat(MT.Wood, 1), CR.DEF_NCC,        "PPP", "rgv", 'P', OD.buttonWood);
