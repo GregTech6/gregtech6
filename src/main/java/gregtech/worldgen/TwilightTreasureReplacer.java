@@ -224,8 +224,11 @@ public class TwilightTreasureReplacer extends TFTreasure {
 	
 	@Override public boolean generate(World aWorld, Random aRandom, int aX, int aY, int aZ) {return generate(aWorld, aRandom, aX, aY, aZ, Blocks.chest);}
 	@Override public boolean generate(World aWorld, Random aRandom, int aX, int aY, int aZ, Block aChest) {
+		// Give chance for the other Loot Table in Large Hollow Hills.
 		if (mTreasureID == 3 && RNGSUS.nextInt(3) == 0) return HILLS_2.generate(aWorld, aRandom, aX, aY, aZ, aChest);
+		// Check if GT6 Registry exists, which it SHOULD.
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
+		// Okay Fallback to the old way.
 		if (tRegistry == null) return super.generate(aWorld, aRandom, aX, aY, aZ, aChest);
 		// Narrow down facing direction of the Chest if it is a double chest.
 		for (byte tSide : ALL_SIDES_HORIZONTAL_ORDER[RNGSUS.nextInt(ALL_SIDES_HORIZONTAL_ORDER.length)]) {
