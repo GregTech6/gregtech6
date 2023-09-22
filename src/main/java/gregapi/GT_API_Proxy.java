@@ -90,6 +90,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
@@ -534,20 +535,29 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		
 		if (aEvent.entityLiving.onGround) {
 			tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ);
+			// walk over special Blocks.
 			if (tBlock instanceof IBlockOnWalkOver) ((IBlockOnWalkOver)tBlock).onWalkOver(aEvent.entityLiving, aEvent.entityLiving.worldObj, tX, tY, tZ);
-			if (tBlock == Blocks.farmland && aEvent.entityLiving instanceof EntityZombie) {
-				aEvent.entityLiving.worldObj.setBlock(tX, tY, tZ, Blocks.dirt, 0, 3);
-			}
-			
-			// For Area of Effect Block Damage Effects of certain Mobs.
-			if (aEvent.entityLiving.hurtResistantTime > 0) {
-				// Minoshroom surprise charge through Fences!
-				if (MD.TF.mLoaded && aEvent.entityLiving instanceof EntityTFMinoshroom) {
-					for (int iX = tX-3, eX = tX+3; iX <= eX; iX++) for (int iZ = tZ-3, eZ = tZ+3; iZ <= eZ; iZ++) for (int iY = tY, eY = tY+3; iY <= eY; iY++) {
-						if (aEvent.entityLiving.worldObj.getBlock(iX, iY, iZ) == Blocks.fence) {
-							aEvent.entityLiving.worldObj.setBlock(iX, iY, iZ, NB, 0, 3);
-							ST.drop(aEvent.entityLiving.worldObj, iX, iY, iZ, IL.Stick.get(1));
-							UT.Sounds.send(aEvent.entityLiving.worldObj, SFX.MC_DIG_WOOD, 1.0F, 1.0F, iX, iY, iZ);
+			// Only Serverside for this Stuff.
+			if (aEvent.entityLiving.worldObj.isRemote) {
+				// Zombies trample Farmland.
+				if (tBlock == Blocks.farmland && aEvent.entityLiving instanceof EntityZombie) {
+					aEvent.entityLiving.worldObj.setBlock(tX, tY, tZ, Blocks.dirt, 0, 3);
+					UT.Sounds.send(aEvent.entityLiving.worldObj, SFX.MC_DIG_GRAVEL, 1.0F, 1.0F, tX, tY, tZ);
+				}
+				
+				// For Area of Effect Block Damage Effects of certain Mobs.
+				if (aEvent.entityLiving.hurtResistantTime > 0) {
+					// Minoshroom surprise charge through Fences!
+					if (MD.TF.mLoaded && aEvent.entityLiving instanceof EntityTFMinoshroom) {
+						// Once damaged the Minoshroom will not stay bound to its Room!
+						((EntityCreature)aEvent.entityLiving).detachHome();
+						// Minoshroom surprise charge through Fences!
+						for (int iX = tX-3, eX = tX+3; iX <= eX; iX++) for (int iZ = tZ-3, eZ = tZ+3; iZ <= eZ; iZ++) for (int iY = tY+1, eY = tY+3; iY <= eY; iY++) {
+							if (aEvent.entityLiving.worldObj.getBlock(iX, iY, iZ) == Blocks.fence) {
+								aEvent.entityLiving.worldObj.setBlock(iX, iY, iZ, NB, 0, 3);
+								ST.drop(aEvent.entityLiving.worldObj, iX, iY, iZ, IL.Stick.get(1));
+								UT.Sounds.send(aEvent.entityLiving.worldObj, SFX.MC_DIG_WOOD, 1.0F, 1.0F, iX, iY, iZ);
+							}
 						}
 					}
 				}
