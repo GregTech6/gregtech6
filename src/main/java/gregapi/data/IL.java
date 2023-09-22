@@ -132,7 +132,7 @@ public enum IL implements IItemContainer {
 	TC_Bucket_Death, TC_Bucket_Pure,
 	TC_Flux_Goo, TC_Flux_Gas,
 	TF_Roots, TF_Liveroots, TF_Firefly, TF_Firefly_Jar,
-	TF_LiveRoot, TF_Torchberries, TF_NagaScale, TF_BorerEssence, TF_Carminite, TF_Mushgloom, TF_Tall_Grass, TF_Fiddlehead, TF_Dry_Bush,
+	TF_LiveRoot, TF_Torchberries, TF_NagaScale, TF_BorerEssence, TF_Carminite, TF_Mushgloom, TF_Mushgloom_Huge, TF_Tall_Grass, TF_Fiddlehead, TF_Dry_Bush,
 	TF_Vial_FieryBlood, TF_Vial_FieryTears, TF_Transformation_Powder,
 	TF_Hydrachop_Raw, TF_Meef_Raw, TF_Meef_Cooked, TF_Venison_Raw, TF_Venison_Cooked,
 	TF_Log_Oak, TF_Log_Canopy, TF_Log_Mangrove, TF_Log_Darkwood, TF_Log_Time, TF_Log_Trans, TF_Log_Mine, TF_Log_Sorting, TF_Core_Time, TF_Core_Trans, TF_Core_Mine, TF_Core_Sorting, TF_Sapling,

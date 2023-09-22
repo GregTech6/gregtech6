@@ -197,14 +197,7 @@ public class GT_API extends Abstract_Mod {
 		Items.experience_bottle.setContainerItem(Items.glass_bottle);
 		
 		// Fixing Max Stacksizes that don't make sense.
-		Items.bed.setMaxStackSize(64);
-		Items.cake.setMaxStackSize(64);
-		Items.wooden_door.setMaxStackSize(8);
-		Items.iron_door.setMaxStackSize(8);
-		Items.glass_bottle.setMaxStackSize(64);
-		Items.written_book.setMaxStackSize(64);
-		Items.writable_book.setMaxStackSize(64);
-		Items.enchanted_book.setMaxStackSize(64);
+		ST.forceProperMaxStacksizes();
 		
 		// Fixing some Adventure Mode things.
 		Blocks.bed.setHarvestLevel("axe", 0);
@@ -414,6 +407,7 @@ public class GT_API extends Abstract_Mod {
 			MT.TungstenSteel.setLocal("Wolf Style");
 			MT.ShadowSteel.setLocal("Shade Style");
 			MT.Steeleaf.setLocal("Style Leave");
+			MT.Fireleaf.setLocal("Burn Leave");
 			MT.Knightmetal.setLocal("Night Metal");
 			MT.FierySteel.setLocal("Fury Style");
 			MT.Thaumium.setLocal("Thaumanominum");
@@ -801,6 +795,8 @@ public class GT_API extends Abstract_Mod {
 		CoverRegistry.put(ST.make(Items.repeater, 1, 0), new CoverRedstoneRepeater());
 		
 		OreDictPrefix.applyAllStackSizes();
+		
+		ST.forceProperMaxStacksizes();
 		
 //      Doesn't fucking work, the Chisel API is pure garbage...
 //      if (MD.CHSL.mLoaded) {

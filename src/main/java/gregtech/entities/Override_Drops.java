@@ -549,7 +549,6 @@ public class Override_Drops {
 			tReplaceIron = T;
 			if (!MD.EtFu.mLoaded && !MD.GaSu.mLoaded) {
 			int tAmount = RNGSUS.nextInt(3);
-			if (MD.HaC.mLoaded) tAmount--;
 			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting + 1);
 			while (tAmount-->0) aDrops.add(ST.entity(aDead, aBurn?IL.Food_Mutton_Cooked.get(1):IL.Food_Mutton_Raw.get(1)));
 			}
@@ -610,7 +609,6 @@ public class Override_Drops {
 			tReplaceIron = T;
 			if (!MD.EtFu.mLoaded && !MD.GaSu.mLoaded) {
 			int tAmount = RNGSUS.nextInt(3);
-			if (MD.HaC.mLoaded) tAmount--;
 			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting + 1);
 			while (tAmount-->0) aDrops.add(ST.entity(aDead, aBurn?IL.Food_Mutton_Cooked.get(1):IL.Food_Mutton_Raw.get(1)));
 			}
@@ -636,7 +634,9 @@ public class Override_Drops {
 			tReplaceIron = T;
 		}
 		
-		for (EntityItem tEntity : aDrops) {ItemStack tStack = tEntity.getEntityItem(); if (ST.valid(tStack)) {
+		while (aDrops.remove(null));
+		
+		for (EntityItem tEntity : aDrops) if (tEntity != null) {ItemStack tStack = tEntity.getEntityItem(); if (ST.valid(tStack)) {
 			// Replace some of the Arrows with Headless Arrows.
 			if (MOBS_DROP_JUNK && ST.item_(tStack) == Items.arrow && RNGSUS.nextInt(aLooting * 2 + 4) < 3) {
 				ST.set(tStack, OP.arrowGtWood.mat(MT.Empty, 1), F, F);

@@ -10,16 +10,20 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.01: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[NOTE] My Minecraft Account is finally dead now (I hope), so do not trust anyone impersonating Greg or something. Anyways, screw MS for the way they handled Account Migration to the point I did not want to keep my Minecraft Account.
+[FIXED] Swamp Water should no longer flood Twilight Mazes. Though existing Floods miiiight have some shroomy Side Effects.
+[CHANGED] Pickaxes now have the same Attack Damage Stats as the Axe, but they give twice the Invulnerability Frames to the opponent.
+[CHANGED] Autosmelt on Tools works to make Charcoal again, even if the Charcoal Recipes do not exist in the Furnace.
+[ADDED] Fireleaf which is Steeleaf but converted with Fiery Blood or Fiery Tears. It has Fortune III and Auto-Collect along with some other Stuff.
 
 
-6.17.00: (Not released yet)
+6.17.00:
 [NOTE]
 There has been a hack going around in the modded minecraft landscape that is often referred to as "PipeBleed".
 GregTech was never affected by this but I still think it is important that you look into your Mods to see if it is fixed in your Modpack, because dozens of big Mods have this Issue. This shit is just as bad as the log4shell exploit.
 This Mod is supposed to fix the Issue in pretty much all afflicted other Mods: https://github.com/dogboy21/serializationisbad/releases
 [IMPORTANT]
-There is a going to be a new Fluid Property that makes it more difficult to pipe and store Magical Fluids! Many Containers will no longer be able to hold Magical Fluids, with few exceptions.
+There is a new Fluid Property that makes it more difficult to pipe and store Magical Fluids! Many Containers will no longer be able to hold Magical Fluids, with few exceptions.
 Palladium, TaHfC and Tungsten based Alloys will be able to store Magical Fluids
 Magical Materials like Ironwood, Thaumium, Netherite, Adamantium and Mana Steel will be able to hold Magical Fluids.
 The Thermos will be able to hold Magical Fluids, it is not because Aluminium (which normally WONT), it is because of the Vacuum.
@@ -38,20 +42,20 @@ Tanks will behave as if you stored Acid in a non-acid-proof Tank. They will even
 [CHANGED] Twilight Bunnies now drop the same Stuff Et Futurum Rabbits do, or Harvestcrafts Rabbit Meat.
 [CHANGED] Enchanted Books are now stackable but BEWARE that vanilla Anvils will eat the entire Stack you insert so dont keep it stacked in its UI.
 [CHANGED] Scythe cannot mine Lily Pads and similar anymore.
-[ADDED] GT6 Pickaxes now have the ability to penetrate Armor. They are still not considered Weapons for sake of Enchantments though, and they have crap Damage Stats.
+[ADDED] GT6 Pickaxes now have the ability to penetrate Armor. They are still not considered Weapons for sake of Enchantments though.
 [ADDED] Opening GT6 Loot Chests will now give quite a bit of XP. Remember you can just take unopened Loot Chests home and open them there for safety and less Inventory clutter.
 [ADDED] Villagers can now be lured with vanillas Emerald Items, similar to how Wheat works with Cows.
 [ADDED] Tusks, Hoofs, Horns and Antlers as Drops for various Mobs. Primarily as a way to make Glue early on.
 [ADDED] Rainbowood Fluid Barrel which is roughly on par with the Ironwood Barrel.
 
 
-//=== Version Number Jump due to changes to the Magic Resistance of Pipes and Tanks. ===//
+//=== Version Number Jump due to addition of a Magic Resistance Stat to Pipes and Tanks. ===//
 
 
 6.16.02:
 [NOTE] Did you know Railcraft is still being updated by the GTNH Team? https://github.com/GTNewHorizons/Railcraft/releases
 [IMPORTANT]
-There is a going to be a new Fluid Property that makes it more difficult to pipe and store Magical Fluids! Many Containers will no longer be able to hold Magical Fluids, with few exceptions.
+There is going to be a new Fluid Property that makes it more difficult to pipe and store Magical Fluids! Many Containers will no longer be able to hold Magical Fluids, with few exceptions.
 Palladium, TaHfC and Tungsten based Alloys will be able to store Magical Fluids
 Magical Materials like Ironwood, Thaumium, Netherite, Adamantium and Mana Steel will be able to hold Magical Fluids.
 The Thermos will be able to hold Magical Fluids, it is not because Aluminium (which normally WONT), it is because of the Vacuum.

@@ -984,6 +984,19 @@ public class ST {
 		if (aStack != null) try {codechicken.nei.api.API.hideItem(aStack);} catch(Throwable e) {/**/}
 	}
 	
+	public static boolean forceProperMaxStacksizes() {
+		Items.potionitem        .setMaxStackSize( 1);
+		Items.glass_bottle      .setMaxStackSize(64);
+		Items.bed               .setMaxStackSize(64);
+		Items.cake              .setMaxStackSize(64);
+		Items.wooden_door       .setMaxStackSize( 8);
+		Items.iron_door         .setMaxStackSize( 8);
+		Items.written_book      .setMaxStackSize(64);
+		Items.writable_book     .setMaxStackSize(64);
+		Items.enchanted_book    .setMaxStackSize(64);
+		return T;
+	}
+	
 	public static final List<String> LOOT_TABLES = new ArrayList<>();
 	
 	public static boolean generateLoot(Random aRandom, String aLoot, IInventory aInventory) {

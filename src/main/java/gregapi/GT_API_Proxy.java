@@ -77,6 +77,9 @@ import gregapi.random.IHasWorldAndCoords;
 import gregapi.tileentity.*;
 import gregapi.tileentity.inventories.ITileEntityBookShelf;
 import gregapi.util.*;
+import gregapi.wooddict.BeamEntry;
+import gregapi.wooddict.WoodDictionary;
+import gregapi.wooddict.WoodEntry;
 import gregapi.worldgen.GT6WorldGenerator;
 import gregtech.items.behaviors.Behavior_Gun;
 import net.minecraft.block.Block;
@@ -1192,6 +1195,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			aEvent.drops.set(i, ST.make(Blocks.dirt, aEvent.drops.get(i).stackSize, 1));
 		}
 		
+		if (IL.TF_Mushgloom_Huge.equal(aBlock)) {
+			aEvent.drops.clear();
+			aEvent.drops.add(aEvent.isSilkTouching ? IL.TF_Mushgloom_Huge.get(1) : IL.TF_Mushgloom.get(UT.Code.bind(1, 4, RNGSUS.nextInt(3) + RNGSUS.nextInt(1+aEvent.fortuneLevel))));
+		}
+		
 		if (aEvent.harvester != null) {
 			if (FAST_LEAF_DECAY) WD.leafdecay(aEvent.world, aEvent.x, aEvent.y, aEvent.z, aBlock, F, F);
 			ItemStack aTool = aEvent.harvester.getCurrentEquippedItem();
@@ -1205,23 +1213,28 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				}
 				
 				for (ItemStack tDrop : aEvent.drops) {
-					OM.set(tDrop);
-					
-					ItemStack
-					tTarget = (aEvent.isSilkTouching?BlocksGT.blockToSilk:BlocksGT.blockToDrop).get(tDrop);
-					if (ST.invalid(tTarget)) continue;
-					OM.set(ST.set(tDrop, tTarget, F, F));
-					
-					if (!tFireAspect) continue;
-					
-					tTarget = RM.get_smelting(tDrop);
-					if (ST.invalid(tTarget)) continue;
-					tDrop.stackSize *= tTarget.stackSize;
-					OM.set(ST.set(tDrop, tTarget, F, T));
-					
-					tTarget = (aEvent.isSilkTouching?BlocksGT.blockToSilk:BlocksGT.blockToDrop).get(tDrop);
-					if (ST.invalid(tTarget)) continue;
-					OM.set(ST.set(tDrop, tTarget, F, F));
+					ItemStack tTarget = (aEvent.isSilkTouching ? BlocksGT.blockToSilk : BlocksGT.blockToDrop).get(tDrop);
+					if (ST.valid(tTarget)) OM.set(ST.set(tDrop, tTarget, F, F)); else OM.set(tDrop);
+				}
+				
+				if (tFireAspect) for (ItemStack tDrop : aEvent.drops) {
+					ItemStack tTarget = RM.get_smelting(tDrop);
+					if (ST.valid(tTarget)) {
+						tDrop.stackSize *= tTarget.stackSize;
+						OM.set(ST.set(tDrop, tTarget, F, T));
+						tTarget = (aEvent.isSilkTouching?BlocksGT.blockToSilk:BlocksGT.blockToDrop).get(tDrop);
+						if (ST.valid(tTarget)) OM.set(ST.set(tDrop, tTarget, F, F));
+					} else {
+						WoodEntry tWoodEntry = WoodDictionary.WOODS.get(tDrop);
+						if (tWoodEntry != null && tWoodEntry.mCharcoalCount > 0) {
+							ST.set(tDrop, OP.gem.mat(MT.Charcoal, tWoodEntry.mCharcoalCount * tDrop.stackSize), T, F);
+						} else {
+							BeamEntry tBeamEntry = WoodDictionary.BEAMS.get(tDrop);
+							if (tBeamEntry != null && tBeamEntry.mCharcoalCount > 0) {
+								ST.set(tDrop, OP.gem.mat(MT.Charcoal, tBeamEntry.mCharcoalCount * tDrop.stackSize), T, F);
+							}
+						}
+					}
 				}
 				
 				if (tCanCollect && !aEvent.drops.isEmpty()) {
@@ -1246,6 +1259,33 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				}
 			}
 			UT.Inventories.removeNullStacksFromInventory(aEvent.harvester.inventory);
+		}
+	}
+	
+	@SubscribeEvent
+	public void onEntitySpawningEvent(EntityJoinWorldEvent aEvent) {
+		if (aEvent.entity instanceof EntityItem && !aEvent.entity.worldObj.isRemote) {
+			ItemStack aStack = ST.update(OM.get(((EntityItem)aEvent.entity).getEntityItem()), aEvent.entity);
+			if (ST.valid(aStack) && aStack.stackSize > 0) {
+				if (ST.meta_(aStack) == W || ST.item_(aStack) == Items.gold_nugget) ST.meta(aStack, 0);
+				if (ST.meta_(aStack) == 0 && ST.item_(aStack) == IL.TF_Mushgloom.item()) ST.meta(aStack, 9);
+				// Life Span Stuff
+				if (((EntityItem)aEvent.entity).lifespan > 1200) {
+					if (ST.item_(aStack) == Items.egg || ST.item_(aStack) == Items.feather || ST.item_(aStack) == Items.apple) {
+						((EntityItem)aEvent.entity).lifespan = 1200;
+					} else {
+						if (((EntityItem)aEvent.entity).lifespan == 6000) {
+							((EntityItem)aEvent.entity).lifespan = ITEM_DESPAWN_TIME;
+						}
+					}
+				}
+				// Result was valid so set the ItemStack.
+				((EntityItem)aEvent.entity).setEntityItemStack(aStack);
+			} else {
+				// Result was invalid therefore kill the Stack.
+				aEvent.entity.setDead();
+				return;
+			}
 		}
 	}
 	
@@ -1351,31 +1391,6 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		}
 		if (GENERATE_STREETS && (UT.Code.inside(-48, 48, aX) || UT.Code.inside(-48, 48, aZ))) {aEvent.setResult(Result.DENY); return;}
 		if (SPAWN_ZONE_MOB_PROTECTION && UT.Code.inside(-144, 144, aX-aWorld.getWorldInfo().getSpawnX()) && UT.Code.inside(-144, 144, aZ-aWorld.getWorldInfo().getSpawnZ()) && WD.opq(aWorld, aX, 0, aZ, F, F)) {aEvent.setResult(Result.DENY); return;}
-	}
-	
-	@SubscribeEvent
-	public void onEntitySpawningEvent(EntityJoinWorldEvent aEvent) {
-		if (aEvent.entity instanceof EntityItem && !aEvent.entity.worldObj.isRemote) {
-			ItemStack aStack = ST.update(OM.get(((EntityItem)aEvent.entity).getEntityItem()), aEvent.entity);
-			if (ST.valid(aStack) && aStack.stackSize > 0) {
-				if (ST.meta_(aStack) == W || ST.item_(aStack) == Items.gold_nugget) ST.meta(aStack, 0);
-				if (((EntityItem)aEvent.entity).lifespan > 1200) {
-					if (ST.item_(aStack) == Items.egg || ST.item_(aStack) == Items.feather || ST.item_(aStack) == Items.apple) {
-						((EntityItem)aEvent.entity).lifespan = 1200;
-					} else {
-						if (((EntityItem)aEvent.entity).lifespan == 6000) {
-							((EntityItem)aEvent.entity).lifespan = ITEM_DESPAWN_TIME;
-						}
-					}
-				}
-				// Result was valid so set the ItemStack.
-				((EntityItem)aEvent.entity).setEntityItemStack(aStack);
-			} else {
-				// Result was invalid therefore kill the Stack.
-				aEvent.entity.setDead();
-				return;
-			}
-		}
 	}
 	
 	@SubscribeEvent

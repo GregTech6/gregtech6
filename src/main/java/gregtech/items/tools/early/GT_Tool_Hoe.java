@@ -27,6 +27,7 @@ import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.render.IIconContainer;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.AchievementList;
@@ -62,7 +63,7 @@ public class GT_Tool_Hoe extends ToolStats {
 	
 	@Override
 	public float getBaseDamage() {
-		return 1.75F;
+		return 1.5F;
 	}
 	
 	@Override
@@ -73,6 +74,11 @@ public class GT_Tool_Hoe extends ToolStats {
 	@Override
 	public float getMaxDurabilityMultiplier() {
 		return 1.0F;
+	}
+	
+	@Override
+	public int getHurtResistanceTime(int aOriginalHurtResistance, Entity aEntity) {
+		return aOriginalHurtResistance / 2;
 	}
 	
 	@Override

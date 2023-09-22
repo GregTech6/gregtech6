@@ -394,8 +394,8 @@ public class LanguageHandler {
 		if (aMaterial == MT.FierySteel) {
 			if (aPrefix.contains(TD.Prefix.IS_CONTAINER))                           return aPrefix.mMaterialPre + "Fiery Blood" + aPrefix.mMaterialPost;
 		} else
-		if (aMaterial == MT.Steeleaf) {
-			if (aPrefix == OP.plantGtBlossom)                                       return "Steeleaf Leaf";
+		if (aMaterial == MT.Steeleaf || aMaterial == MT.Fireleaf) {
+			if (aPrefix == OP.plantGtBlossom)                                       return aMaterial.mNameLocal + " Leaf";
 			if (aPrefix.mNameInternal.startsWith("ingot"))                          return aPrefix.mMaterialPre + aMaterial.mNameLocal;
 		} else
 		if (aMaterial == MT.Bark) {
