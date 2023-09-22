@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.Collection;
 import java.util.List;
 
+import cpw.mods.fml.common.FMLLog;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_RemovedByPlayer;
@@ -59,6 +60,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
+import org.apache.logging.log4j.Level;
 
 /**
  * @author Gregorius Techneticies
@@ -136,11 +138,9 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 				}
 			}
 			
-			long tAmount = mTanks[1].amount() - mTanks[1].capacity() / 4;
-			
+			long tAmount = mTanks[1].amount() - (mTanks[1].capacity() / 4);
 			// Emit Steam
-			if (tAmount > 0) FL.move(mTanks[1], getAdjacentTank(SIDE_UP), tAmount<mOutput?tAmount:(mTanks[1].amount()>mTanks[1].capacity/2?(mTanks[1].amount*4>mTanks[1].capacity*3/*75%*/?2*mOutput:(mTanks[1].amount/mTanks[1].capacity)*mOutput):mOutput));
-			
+			if (tAmount > 0) FL.move(mTanks[1], getAdjacentTank(SIDE_UP), tAmount<mOutput?tAmount: (mTanks[1].amount()*2>mTanks[1].capacity()? (mTanks[1].amount()*4>mTanks[1].capacity()*3/*75%*/? 2*mOutput : (int)(((float)(mTanks[1].amount()*4-mTanks[1].capacity()*2)/(float)mTanks[1].capacity()) *mOutput) +mOutput) : mOutput));
 			// Set Barometer
 			mBarometer = (byte)UT.Code.scale(mTanks[1].amount(), mTanks[1].capacity(), 31, F);
 			

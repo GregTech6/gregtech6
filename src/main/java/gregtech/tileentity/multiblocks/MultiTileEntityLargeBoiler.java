@@ -203,12 +203,12 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 				}
 			}
 			
-			long tAmount = mTanks[1].amount() - mTanks[1].capacity() / 2;
+			long tAmount = mTanks[1].amount() - mTanks[1].capacity() / 4;
 			
 			// Emit Steam
 			if (tAmount > 0) {
-				FluidStack tDrainableSteam = mTanks[1].drain(UT.Code.bindInt(Math.min(tAmount > mTanks[1].capacity() / 4 ? mOutput * 2 : mOutput, tAmount)), F);
-				
+				FluidStack tDrainableSteam = mTanks[1].drain(UT.Code.bindInt(tAmount<mOutput?tAmount: (mTanks[1].amount()*2>mTanks[1].capacity()? (mTanks[1].amount()*4>mTanks[1].capacity()*3/*75%*/? 2*mOutput : (int)(((float)(mTanks[1].amount()*4-mTanks[1].capacity()*2)/(float)mTanks[1].capacity()) *mOutput) +mOutput) : mOutput)), F);
+
 				if (tDrainableSteam != null) {
 					int tTargets = 0;
 					
