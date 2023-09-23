@@ -538,21 +538,20 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			// walk over special Blocks.
 			if (tBlock instanceof IBlockOnWalkOver) ((IBlockOnWalkOver)tBlock).onWalkOver(aEvent.entityLiving, aEvent.entityLiving.worldObj, tX, tY, tZ);
 			// Only Serverside for this Stuff.
-			if (aEvent.entityLiving.worldObj.isRemote) {
+			if (!aEvent.entityLiving.worldObj.isRemote) {
 				// Zombies trample Farmland.
 				if (tBlock == Blocks.farmland && aEvent.entityLiving instanceof EntityZombie) {
 					aEvent.entityLiving.worldObj.setBlock(tX, tY, tZ, Blocks.dirt, 0, 3);
 					UT.Sounds.send(aEvent.entityLiving.worldObj, SFX.MC_DIG_GRAVEL, 1.0F, 1.0F, tX, tY, tZ);
 				}
-				
-				// For Area of Effect Block Damage Effects of certain Mobs.
+				// Area of Effect Block Destruction Ability of certain Mobs.
 				if (aEvent.entityLiving.hurtResistantTime > 0) {
-					// Minoshroom surprise charge through Fences!
+					// Minoshroom
 					if (MD.TF.mLoaded && aEvent.entityLiving instanceof EntityTFMinoshroom) {
-						// Once damaged the Minoshroom will not stay bound to its Room!
+						// Once damaged, the Minoshroom will not stay bound to its Room!
 						((EntityCreature)aEvent.entityLiving).detachHome();
-						// Minoshroom surprise charge through Fences!
-						for (int iX = tX-3, eX = tX+3; iX <= eX; iX++) for (int iZ = tZ-3, eZ = tZ+3; iZ <= eZ; iZ++) for (int iY = tY+1, eY = tY+3; iY <= eY; iY++) {
+						// Minoshroom surprise charge through the Fenced Gateways!
+						for (int iX = tX-15, eX = tX+15; iX <= eX; iX++) for (int iZ = tZ-15, eZ = tZ+15; iZ <= eZ; iZ++) for (int iY = tY+1, eY = tY+3; iY <= eY; iY++) {
 							if (aEvent.entityLiving.worldObj.getBlock(iX, iY, iZ) == Blocks.fence) {
 								aEvent.entityLiving.worldObj.setBlock(iX, iY, iZ, NB, 0, 3);
 								ST.drop(aEvent.entityLiving.worldObj, iX, iY, iZ, IL.Stick.get(1));
