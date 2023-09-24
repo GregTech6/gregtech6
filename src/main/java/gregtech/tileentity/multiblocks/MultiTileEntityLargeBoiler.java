@@ -24,6 +24,7 @@ import static gregapi.data.CS.*;
 import java.util.Collection;
 import java.util.List;
 
+import cpw.mods.fml.common.FMLLog;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_RemovedByPlayer;
 import gregapi.code.TagData;
 import gregapi.data.BI;
@@ -33,6 +34,8 @@ import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.TD;
 import gregapi.fluid.FluidTankGT;
+import gregapi.network.INetworkHandler;
+import gregapi.network.IPacket;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
@@ -62,13 +65,14 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
+import org.apache.logging.log4j.Level;
 
 /**
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase implements ITileEntityEnergy, ITileEntityGibbl, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockFluidHandler, IFluidHandler, IMTE_RemovedByPlayer {
 	public short mBoilerWalls = 18002;
-	public byte mBarometer = 0, oBarometer = 0;
+	public byte mBarometer = 0, oBarometer = 0,inDanger=0;
 	public short mEfficiency = 10000, mCoolDownResetTimer = 128;
 	public long mEnergy = 0, mCapacity = 20480000, mOutput = 204800;
 	public TagData mEnergyTypeAccepted = TD.Energy.HU;
@@ -264,10 +268,25 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 			// Well the Boiler gets structural Damage when being too hot, or when being too full of Steam.
 			if ((mBarometer > 4 && !checkStructure(F)) || mEnergy > mCapacity || mTanks[1].isFull()) {
 				explode(F);
+
 			}
+			if (inDanger ==0&&mTanks[1].amount()*10>mTanks[1].capacity()*9){
+				inDanger =1;updateClientData();}
+			if (inDanger ==1&&mTanks[1].amount()*10<mTanks[1].capacity()*9){
+				inDanger =0;updateClientData();}
+		}else {
+			if(inDanger==1)for (int i=0;i<5;i++) spawnDangerParticles();
 		}
 	}
-	
+	public void spawnDangerParticles(){
+		float x=xCoord-1 + getRandomNumber(30) / 10F;
+		float y=yCoord+1+getRandomNumber(30)/10F;
+		float z=zCoord-1+getRandomNumber(30)/10F;
+		float xMotion=(x-xCoord)/5;
+		float yMotion=(y-yCoord)/5;
+		float zMotion=(z-zCoord)/5;
+		worldObj.spawnParticle("explode", x,y,z,xMotion,yMotion,zMotion);
+	}
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
@@ -345,7 +364,19 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 	public void setVisualData(byte aData) {
 		mBarometer = (byte)(aData&31);
 	}
-	
+	@Override
+	public IPacket getClientDataPacket(boolean aSendAll) {
+		return aSendAll ? getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), getDirectionData(),inDanger) : getClientDataPacketByte(aSendAll, getVisualData());
+	}
+
+	@Override
+	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
+		mRGBa = UT.Code.getRGBInt(new short[] {UT.Code.unsignB(aData[0]), UT.Code.unsignB(aData[1]), UT.Code.unsignB(aData[2])});
+		setVisualData((byte) (aData[3]&31));
+		setDirectionData(aData[4]);
+		inDanger=aData[5];
+		return T;
+	}
 	// Icons
 	public static IIconContainer sColoreds[] = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/tanks/boiler_steam/colored/bottom"),
