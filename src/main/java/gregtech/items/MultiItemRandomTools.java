@@ -635,13 +635,14 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		// Spin to Win!
 		if (aTarget  == null) return Textures.ItemIcons.COMPASS[(int)(CLIENT_TIME % Textures.ItemIcons.COMPASS.length)].getIcon(0);
 		double tDistance = aTarget.getDistanceSquared(UT.Code.roundDown(aPlayer.posX), aTarget.posY, UT.Code.roundDown(aPlayer.posZ));
-		if (tDistance <=   0) return Textures.ItemIcons.COMPASS[(int)(CLIENT_TIME % Textures.ItemIcons.COMPASS.length)].getIcon(0);
+		if (tDistance <    1) return Textures.ItemIcons.COMPASS[(int)(CLIENT_TIME % Textures.ItemIcons.COMPASS.length)].getIcon(0);
 		// Point to Target!
 		int tIndex = UT.Code.roundDown(0.5+Textures.ItemIcons.COMPASS.length*(361170+aPlayer.rotationYaw-Math.atan2(aTarget.posZ+0.5-aPlayer.posZ, aTarget.posX+0.5-aPlayer.posX)*180/Math.PI)/360)%Textures.ItemIcons.COMPASS.length;
-		if (tDistance <    4) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME).nextInt(9) - 4) % Textures.ItemIcons.COMPASS.length].getIcon(0);
-		if (tDistance <   16) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME).nextInt(7) - 3) % Textures.ItemIcons.COMPASS.length].getIcon(0);
-		if (tDistance <  256) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME).nextInt(5) - 2) % Textures.ItemIcons.COMPASS.length].getIcon(0);
-		if (tDistance < 1024) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME).nextInt(3) - 1) % Textures.ItemIcons.COMPASS.length].getIcon(0);
+		if (tDistance <    4) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME  ).nextInt(3) - 1) % Textures.ItemIcons.COMPASS.length].getIcon(0);
+		if (tDistance <   16) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME/2).nextInt(3) - 1) % Textures.ItemIcons.COMPASS.length].getIcon(0);
+		if (tDistance <  256) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME/3).nextInt(3) - 1) % Textures.ItemIcons.COMPASS.length].getIcon(0);
+		if (tDistance < 1024) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME/4).nextInt(3) - 1) % Textures.ItemIcons.COMPASS.length].getIcon(0);
+		if (tDistance < 4096) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME/5).nextInt(3) - 1) % Textures.ItemIcons.COMPASS.length].getIcon(0);
 		return Textures.ItemIcons.COMPASS[tIndex].getIcon(0);
 	}
 	
@@ -662,13 +663,14 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		// Spin to Win!
 		if (aTarget  == null) return Textures.ItemIcons.COMPASS[(int)(CLIENT_TIME % Textures.ItemIcons.COMPASS.length)].getIcon(0);
 		double tDistance = aTarget.getDistanceSquared(UT.Code.roundDown(aPlayer.posX), aTarget.posY, UT.Code.roundDown(aPlayer.posZ));
-		if (tDistance <=   0) return Textures.ItemIcons.COMPASS[(int)(CLIENT_TIME % Textures.ItemIcons.COMPASS.length)].getIcon(0);
+		if (tDistance <    1) return Textures.ItemIcons.COMPASS[(int)(CLIENT_TIME % Textures.ItemIcons.COMPASS.length)].getIcon(0);
 		// Point to Target!
 		int tIndex = UT.Code.roundDown(0.5+Textures.ItemIcons.COMPASS.length*(361170+aPlayer.rotationYaw-Math.atan2(aTarget.posZ+0.5-aPlayer.posZ, aTarget.posX+0.5-aPlayer.posX)*180/Math.PI)/360)%Textures.ItemIcons.COMPASS.length;
-		if (tDistance <    4) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME).nextInt(9) - 4) % Textures.ItemIcons.COMPASS.length].getIcon(0);
-		if (tDistance <   16) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME).nextInt(7) - 3) % Textures.ItemIcons.COMPASS.length].getIcon(0);
-		if (tDistance <  256) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME).nextInt(5) - 2) % Textures.ItemIcons.COMPASS.length].getIcon(0);
-		if (tDistance < 1024) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME).nextInt(3) - 1) % Textures.ItemIcons.COMPASS.length].getIcon(0);
+		if (tDistance <    4) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME  ).nextInt(3) - 1) % Textures.ItemIcons.COMPASS.length].getIcon(0);
+		if (tDistance <   16) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME/2).nextInt(3) - 1) % Textures.ItemIcons.COMPASS.length].getIcon(0);
+		if (tDistance <  256) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME/3).nextInt(3) - 1) % Textures.ItemIcons.COMPASS.length].getIcon(0);
+		if (tDistance < 1024) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME/4).nextInt(3) - 1) % Textures.ItemIcons.COMPASS.length].getIcon(0);
+		if (tDistance < 4096) return Textures.ItemIcons.COMPASS[(tIndex + Textures.ItemIcons.COMPASS.length + new Random(CLIENT_TIME/5).nextInt(3) - 1) % Textures.ItemIcons.COMPASS.length].getIcon(0);
 		return Textures.ItemIcons.COMPASS[tIndex].getIcon(0);
 	}
 	
