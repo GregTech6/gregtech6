@@ -100,6 +100,9 @@ public class TwilightTreasureReplacer extends TFTreasure {
 			// Some other things.
 			uncommon .add(IL.Resin.get(24));
 			uncommon .add(IL.Food_Cinnamon.get(12));
+			// Nametags and Leashes.
+			rare     .add(Items.name_tag, 4);
+			rare     .add(Items.lead, 2);
 		}
 		
 		// Basic Chests of the Lich Tower need to contain some otherwise insanely hard to obtain Items.
