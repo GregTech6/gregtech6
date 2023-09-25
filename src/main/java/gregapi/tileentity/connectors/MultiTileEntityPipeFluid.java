@@ -19,6 +19,7 @@
 
 package gregapi.tileentity.connectors;
 
+import cpw.mods.fml.common.FMLLog;
 import gregapi.GT_API_Proxy;
 import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
@@ -29,6 +30,7 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.*;
+import gregapi.cover.ITileEntityCoverable;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -63,9 +65,11 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
+import org.apache.logging.log4j.Level;
 
-import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 import static gregapi.data.CS.*;
 
@@ -73,9 +77,9 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, IFluidHandler, ITileEntityGibbl, ITileEntityTemperature, ITileEntityProgress, ITileEntityServerTickPre, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IMultiTileEntity.IMTE_SyncDataByteArray {
-	public byte mLastReceivedFrom[] = ZL_BYTE, mRenderType = 0;
-	public long mTemperature = DEF_ENV_TEMP, mMaxTemperature, mTransferredAmount = 0, mCapacity = 1000,mPressure=0;
-	public boolean mGasProof = F, mAcidProof = F, mPlasmaProof = F, mMagicProof = F, mBlocking = F;
+	public byte mLastReceivedFrom[] = ZL_BYTE, mRenderType = 0, mReceive = SIDE_INVALID, mSend = SIDE_INVALID;
+	public long mTemperature = DEF_ENV_TEMP, mMaxTemperature, mTransferredAmount = 0, mCapacity = 1000;
+	public boolean mGasProof = F, mAcidProof = F, mPlasmaProof = F, mMagicProof = F, mBlocking = F, mUnidirectional = F;
 	public FluidTankGT[] mTanks = ZL_FT;
 	
 	/**
@@ -108,6 +112,9 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey("gt.mtransfer")) mTransferredAmount = aNBT.getLong("gt.mtransfer");
 		if (aNBT.hasKey(NBT_PIPERENDER)) mRenderType = aNBT.getByte(NBT_PIPERENDER);
+		if (aNBT.hasKey("gt.mUnidirectional")) mUnidirectional = aNBT.getBoolean("gt.mUnidirectional");
+		if (aNBT.hasKey("gt.mreceive")) mReceive = aNBT.getByte("gt.mreceive");
+		if (aNBT.hasKey("gt.msend")) mSend = aNBT.getByte("gt.msend");
 		if (aNBT.hasKey(NBT_OPAQUE)) mBlocking = aNBT.getBoolean(NBT_OPAQUE);
 		if (aNBT.hasKey(NBT_GASPROOF)) mGasProof = aNBT.getBoolean(NBT_GASPROOF);
 		if (aNBT.hasKey(NBT_ACIDPROOF)) mAcidProof = aNBT.getBoolean(NBT_ACIDPROOF);
@@ -115,7 +122,6 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		if (aNBT.hasKey(NBT_PLASMAPROOF)) mPlasmaProof = aNBT.getBoolean(NBT_PLASMAPROOF);
 		if (aNBT.hasKey(NBT_TANK_CAPACITY)) mCapacity = aNBT.getLong(NBT_TANK_CAPACITY);
 		if (aNBT.hasKey(NBT_TEMPERATURE)) mMaxTemperature = aNBT.getLong(NBT_TEMPERATURE);
-		if (aNBT.hasKey("gt.pressure")) mPressure = aNBT.getLong("gt.pressure");
 		if (aNBT.hasKey(NBT_TANK_COUNT)) {
 			mTanks = new FluidTankGT[Math.max(1, aNBT.getInteger(NBT_TANK_COUNT))];
 			mLastReceivedFrom = new byte[mTanks.length];
@@ -145,15 +151,18 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			mTanks[i].writeToNBT(aNBT, NBT_TANK+"."+i);
 			aNBT.setByte("gt.mlast."+i, mLastReceivedFrom[i]);
 		}
+		aNBT.setByte("gt.mreceive", mReceive);
+		aNBT.setByte("gt.msend", mSend);
+		aNBT.setBoolean("gt.mUnidirectional", mUnidirectional);
 		UT.NBT.setNumber(aNBT, "gt.mtransfer", mTransferredAmount);
-		UT.NBT.setNumber(aNBT, "gt.pressure", mPressure);
 	}
 	
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isClientSide()) return 0;
+		if (aTool.equals(TOOL_monkeywrench)) return handleMonkeyWrench(aPlayer, aSide, aHitX, aHitY, aHitZ);
 
-		if (aTool.equals(getFacingTool())) {
+		if (aTool.equals(getFacingTool())&&!mUnidirectional) {
 			byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
 			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aTargetSide);
 			if (tDelegator.mTileEntity instanceof ITileEntity && !((ITileEntity)tDelegator.mTileEntity).allowInteraction(aPlayer)) return 0;
@@ -219,6 +228,73 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		}
 		return 0;
 	}
+	public int handleMonkeyWrench(Entity aPlayer, byte aSide,float aHitX,float aHitY,float aHitZ){
+		if (mUnidirectional==false){
+			//disconnect all sides first
+			for (byte i=0;i<6;i++)disconnect(i,T);
+			//get target
+			byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
+			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aTargetSide);
+			if (tDelegator.mTileEntity instanceof ITileEntity && !((ITileEntity)tDelegator.mTileEntity).allowInteraction(aPlayer)) return 0;
+			if(connect(aTargetSide, T)){
+				mReceive=aTargetSide;
+				mUnidirectional=true;
+				updateClientData();
+				return 10000;
+			}
+			return 0;
+		}
+		//get target tile
+		byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
+		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aTargetSide);
+		if (tDelegator.mTileEntity instanceof ITileEntity && !((ITileEntity)tDelegator.mTileEntity).allowInteraction(aPlayer)) return 0;
+		//if target tile already connected, disconnect it and check if we need to disable unidirection mode.
+		//check if Receive is connected
+		if(mReceive!=SIDE_INVALID){
+			//clicking the receive side
+			if(mReceive==aTargetSide) {
+				disconnect(aTargetSide, T);
+				mReceive = SIDE_INVALID;
+				if (mSend ==SIDE_INVALID)mUnidirectional=false;updateClientData();
+				return 0;
+			}
+			//clicking send side
+			if (mSend == aTargetSide) {
+				disconnect(aTargetSide, T);
+				mSend = SIDE_INVALID;
+				updateClientData();
+				return 0;
+			}
+			//clicking other side
+			if (mSend==SIDE_INVALID&&connect(aTargetSide, T)){
+				mSend=aTargetSide;
+				updateClientData();
+				return 10000;
+			}
+			return 0;
+		}
+		//Now Receive side isn't connected.
+		if(mSend!=SIDE_INVALID) {
+			//but send side connected
+			//clicking send side
+			if (mSend == aTargetSide) {
+				disconnect(aTargetSide, T);
+				mSend = SIDE_INVALID;
+				mUnidirectional = false;
+				updateClientData();
+				return 0;
+			}
+			//clicking other side, reconnecting receive side
+			if (mReceive==SIDE_INVALID&&connect(aTargetSide, T)) {
+				mReceive = aTargetSide;
+				updateClientData();
+				return 10000;
+			}
+			return 0;
+		}
+		return 0;
+	}
+
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get(LH.PIPE_STATS_BANDWIDTH) + UT.Code.makeString(mCapacity/2) + " L/t");
@@ -351,7 +427,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		for (byte tSide : ALL_SIDES_VALID) if (aAdjacentOther[tSide] != null) {
 			// Covers let distribution happen, right?
 			if (isCovered(tSide) && mCovers.mBehaviours[tSide].interceptFluidDrain(tSide, mCovers, tSide, aTank.get())) continue;
-
+			
 			Block tBlock = aAdjacentOther[tSide].getBlock();
 			// Filling up Cauldrons from Vanilla. Yes I need to check for both to make this work. Some Mods override the Cauldron in a bad way.
 			if ((tBlock == Blocks.cauldron || tBlock instanceof BlockCauldron) && aTank.has(334) && FL.water(aTank.get())) {
@@ -374,8 +450,8 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		// Check if we are empty.
 		if (aTank.isEmpty()) return;
 		// Compile all possible Targets into one List.
-		DelegatorTileEntity[] tTanks = new DelegatorTileEntity[6];
-		FluidTankGT[] tPipes = new FluidTankGT[6];
+		List<DelegatorTileEntity> tTanks = new ArrayListNoNulls<>();
+		List<FluidTankGT> tPipes = new ArrayListNoNulls<>();
 		// Amount to check for Distribution
 		long tAmount = aTank.amount();
 		// Count all Targets. Also includes THIS for even distribution, thats why it starts at 1.
@@ -392,13 +468,11 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			if (aAdjacentPipes[tSide] != null) {
 				// Check if the Pipe can be filled with this Fluid.
 				FluidTankGT tTank = (FluidTankGT)aAdjacentPipes[tSide].mTileEntity.getFluidTankFillable(aAdjacentPipes[tSide].mSideOfTileEntity, aTank.get());
-				if (tTank != null && tTank.amount() < aTank.amount()&&aAdjacentPipes[tSide].mTileEntity.mPressure<=this.mPressure) {
+				if (tTank != null && tTank.amount() < aTank.amount()) {
 					// Setting Last Side Received From.
 					aAdjacentPipes[tSide].mTileEntity.mLastReceivedFrom[tTank.mIndex] |= SBIT[aAdjacentPipes[tSide].mSideOfTileEntity];
-					// Pressure decrease
-					aAdjacentPipes[tSide].mTileEntity.mPressure = this.mPressure <=1?0:this.mPressure- 1;
 					// Add to a random Position in the List.
-					tPipes[tSide]= tTank;
+					tPipes.add(rng(tPipes.size()+1), tTank);
 					// For Balancing the Pipe Output.
 					tAmount += tTank.amount();
 					// One more Target.
@@ -412,7 +486,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			// Check if the Tank can be filled with this Fluid.
 			if (aAdjacentTanks[tSide].mTileEntity.fill(aAdjacentTanks[tSide].getForgeSideOfTileEntity(), aTank.make(1), F) > 0 || aAdjacentTanks[tSide].mTileEntity.fill(aAdjacentTanks[tSide].getForgeSideOfTileEntity(), aTank.get(Long.MAX_VALUE), F) > 0) {
 				// Add to a random Position in the List.
-				tTanks[tSide]=aAdjacentTanks[tSide];
+				tTanks.add(rng(tTanks.size()+1), aAdjacentTanks[tSide]);
 				// One more Target.
 				tTargetCount++;
 				// Done everything.
@@ -424,28 +498,18 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		// Amount to distribute normally.
 		tAmount = UT.Code.divup(tAmount, tTargetCount);
 		// Distribute to Pipes first.
-		for (int i=0;i<6;i++) {
-			if(tPipes[i]==null)continue;
-			FluidTankGT tPipe= tPipes[i];
-			if (aAdjacentPipes[i].mTileEntity.mPressure<this.mPressure)	mTransferredAmount += aTank.remove(tPipe.add(aTank.amount(tAmount), aTank.get()));
-			else if(aAdjacentPipes[i].mTileEntity.mPressure==0&&0==this.mPressure) mTransferredAmount += aTank.remove(tPipe.add(aTank.amount(tAmount-tPipe.amount()), aTank.get()));
-		}
+		for (FluidTankGT tPipe : tPipes) mTransferredAmount += aTank.remove(tPipe.add(aTank.amount(tAmount-tPipe.amount()), aTank.get()));
 		// Check if we are empty.
 		if (aTank.isEmpty()) return;
 		// Distribute to Tanks afterwards.
-		for (int i=0;i<6;i++) {
-			if(tTanks[i]==null||tPipes[i]!=null)continue;
-			mTransferredAmount += aTank.remove(FL.fill(tTanks[i], aTank.get(tAmount), T));
-		}
+		for (DelegatorTileEntity tTank : tTanks) mTransferredAmount += aTank.remove(FL.fill(tTank, aTank.get(tAmount), T));
 		// Check if we are empty.
 		if (aTank.isEmpty()) return;
 		// No Targets? Nothing to do then.
-		if (Arrays.stream(tPipes).allMatch(Objects::isNull)) return;
+		if (tPipes.isEmpty()) return;
 		// And then if there still is pressure, distribute to Pipes again.
-		int size= 0;
-		for (FluidTankGT p:tPipes)if(p==null) size++;
-		tAmount = (aTank.amount() - mCapacity/2) / size;
-		if (tAmount > 0) for (FluidTankGT tPipe : tPipes) if (tPipe!=null)mTransferredAmount += aTank.remove(tPipe.add(aTank.amount(tAmount), aTank.get()));
+		tAmount = (aTank.amount() - mCapacity/2) / tPipes.size();
+		if (tAmount > 0) for (FluidTankGT tPipe : tPipes) mTransferredAmount += aTank.remove(tPipe.add(aTank.amount(tAmount), aTank.get()));
 	}
 	
 	@Override
@@ -506,7 +570,6 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			if (rFilledAmount > 0) updateInventory();
 			mLastReceivedFrom[tTank.mIndex] |= SBIT[UT.Code.side(aDirection)];
 		}
-		this.mPressure=4;
 		return rFilledAmount;
 	}
 	
@@ -530,7 +593,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
-		return aSendAll ? getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), getDirectionData()) : getClientDataPacketByte(aSendAll, getVisualData());
+		return aSendAll ? getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), getDirectionData(),mReceive,mSend) : getClientDataPacketByte(aSendAll, getVisualData());
 	}
 
 	@Override
@@ -538,6 +601,8 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		mRGBa = UT.Code.getRGBInt(new short[] {UT.Code.unsignB(aData[0]), UT.Code.unsignB(aData[1]), UT.Code.unsignB(aData[2])});
 		setVisualData(aData[3]);
 		setDirectionData(aData[4]);
+		mReceive=aData[5];
+		mSend=aData[6];
 		return T;
 	}
 	public boolean canEmitFluidsTo                          (byte aSide) {return connected(aSide);}
@@ -551,9 +616,9 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	
 	@Override public long getTemperatureValue               (byte aSide) {return mTemperature;}
 	@Override public long getTemperatureMax                 (byte aSide) {return mMaxTemperature;}
-
-	@Override public ITexture getTextureSide                (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {BlockTextureDefault tBase = BlockTextureDefault.get(mMaterial, getIconIndexSide      (aSide, aConnections, aDiameter, aRenderPass), mIsGlowing, mRGBa); switch(mRenderType) {case 1: return BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RESTRICTOR)); default: return tBase;}}
-	@Override public ITexture getTextureConnected           (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {BlockTextureDefault tBase = BlockTextureDefault.get(mMaterial, getIconIndexConnected (aSide, aConnections, aDiameter, aRenderPass), mIsGlowing, mRGBa); switch(mRenderType) {case 1: return BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RESTRICTOR)); default: return tBase;}}
+	
+	@Override public ITexture getTextureSide                (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {BlockTextureDefault tBase = BlockTextureDefault.get(mMaterial, getIconIndexSide      (aSide, aConnections, aDiameter, aRenderPass), mIsGlowing, mRGBa); switch(mRenderType) {case 1: return BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RESTRICTOR)); default: return mSend!=SIDE_INVALID&&mReceive!=SIDE_INVALID?aSide==mSend?BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_SEND)):aSide==mReceive?BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RECEIVE)):BlockTextureMulti.get(tBase):tBase;}}
+	@Override public ITexture getTextureConnected           (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {BlockTextureDefault tBase = BlockTextureDefault.get(mMaterial, getIconIndexConnected (aSide, aConnections, aDiameter, aRenderPass), mIsGlowing, mRGBa); switch(mRenderType) {case 1: return BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RESTRICTOR)); default: return mSend!=SIDE_INVALID&&mReceive!=SIDE_INVALID?aSide==mSend?BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_SEND)):aSide==mReceive?BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RECEIVE)):BlockTextureMulti.get(tBase):tBase;}}
 
 	@Override public int getIconIndexSide                   (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return IconsGT.INDEX_BLOCK_PIPE_SIDE;}
 	@Override public int getIconIndexConnected              (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return mTanks.length>=9?OP.pipeNonuple.mIconIndexBlock:mTanks.length>=4?OP.pipeQuadruple.mIconIndexBlock:aDiameter<0.37F?OP.pipeTiny.mIconIndexBlock:aDiameter<0.49F?OP.pipeSmall.mIconIndexBlock:aDiameter<0.74F?OP.pipeMedium.mIconIndexBlock:aDiameter<0.99F?OP.pipeLarge.mIconIndexBlock:OP.pipeHuge.mIconIndexBlock;}
