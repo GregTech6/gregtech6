@@ -13,8 +13,9 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [TEST] Hey Bear, I need to to try kill the Minoshroom by punching a Hole into the Rooms Fence and shooting the Bow at it.
 [NOTE] My Minecraft Account is finally dead now (I hope), so do not trust anyone impersonating Greg or something. Anyways, screw MS for the way they handled Account Migration to the point I did not want to keep my Minecraft Account.
 [FIXED] Swamp Water should no longer flood Twilight Mazes. Though existing Floods miiiight have some shroomy Side Effects.
-[CHANGED] Pickaxes now have the same Attack Damage Stats as the Axe, but they give twice the Invulnerability Frames to the opponent.
 [CHANGED] Autosmelt on Tools works to make Charcoal again, even if the Charcoal Recipes do not exist in the Furnace.
+[CHANGED] Pickaxes now have the same Attack Damage Stats as the Axe, but they give twice the Invulnerability Frames to the opponent.
+[CHANGED] Construction Pickaxes will now always harvest Ender Chests as if Silk Touched.
 [CHANGED] The GT6 Compasses that point to Coordinates will now jiggle the needle when you get really close to their target Coordinates.
 [ADDED] Rightclicking a GT6 Chest with Pincers will pull its content into your Inventory, prioritizing stackable Items first. This should greatly help with sorting through the contents of Loot Chests you opened at your Base, like a sane person would do.
 [ADDED] Fireleaf which is Steeleaf but converted with Fiery Blood or Fiery Tears. It has Fortune III and Auto-Collect along with some other Stuff.
