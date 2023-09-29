@@ -15,7 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Swamp Water should no longer flood Twilight Mazes. Though existing Floods miiiight have some shroomy Side Effects.
 [CHANGED] Autosmelt on Tools works to make Charcoal again, even if the Charcoal Recipes do not exist in the Furnace.
 [CHANGED] Pickaxes now have the same Attack Damage Stats as the Axe, but they give twice the Invulnerability Frames to the opponent.
-[CHANGED] Construction Pickaxes will now always harvest Ender Chests as if Silk Touched.
+[CHANGED] Construction Pickaxes will now always harvest Ender Chests as if Silk Touched. Obviously needs a Tier 3 Construction Pickaxe for that.
 [CHANGED] The GT6 Compasses that point to Coordinates will now jiggle the needle when you get really close to their target Coordinates.
 [ADDED] Rightclicking a GT6 Chest with Pincers will pull its content into your Inventory, prioritizing stackable Items first. This should greatly help with sorting through the contents of Loot Chests you opened at your Base, like a sane person would do.
 [ADDED] Fireleaf which is Steeleaf but converted with Fiery Blood or Fiery Tears. It has Fortune III and Auto-Collect along with some other Stuff.
