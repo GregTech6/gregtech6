@@ -161,9 +161,11 @@ public class ST {
 	public static ItemStack meta (ItemStack aStack, long aMeta) {return aStack == null ? null : meta_(aStack, aMeta);}
 	public static ItemStack meta_(ItemStack aStack, long aMeta) {Items.feather.setDamage(aStack, (short)aMeta); return aStack;}
 	
-	public static byte size (ItemStack aStack) {return aStack == null || item_(aStack) == null || aStack.stackSize < 0 ? 0 : UT.Code.bindByte(aStack.stackSize);}
+	public static byte      size (ItemStack aStack) {return aStack == null || item_(aStack) == null || aStack.stackSize < 0 ? 0 : UT.Code.bindByte(aStack.stackSize);}
 	public static ItemStack size (long aSize, ItemStack aStack) {return aStack == null || item_(aStack) == null ? null : size_(aSize, aStack);}
 	public static ItemStack size_(long aSize, ItemStack aStack) {aStack.stackSize = (int)aSize; return aStack;}
+	
+	public static byte maxsize(ItemStack aStack) {return (byte)(aStack == null || item_(aStack) == null ? 64 : item_(aStack).getItemStackLimit(aStack));}
 	
 	public static ItemStack copy (ItemStack aStack) {return aStack == null || item_(aStack) == null ? null : copy_(aStack);}
 	public static ItemStack copy_(ItemStack aStack) {return aStack.copy();}

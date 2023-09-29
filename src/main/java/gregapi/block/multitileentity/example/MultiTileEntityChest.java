@@ -170,7 +170,42 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	@Override
 	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isClientSide()) return 0;
-		if (aTool.equals(TOOL_wrench)) {byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ); if (aTargetSide > 1) {mFacing = aTargetSide; updateClientData(); causeBlockUpdate(); return 10000;}}
+		if (aTool.equals(TOOL_wrench)) {
+			byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
+			if (aTargetSide > 1) {
+				mFacing = aTargetSide;
+				updateClientData();
+				causeBlockUpdate();
+				return 10000;
+			}
+		}
+		if (aTool.equals(TOOL_pincers) && aPlayerInventory != null) {
+			long rCount = 0;
+			for (int i = 0; i < invsize(); i++) if (slotHas(i)) {
+				if (aPlayer instanceof EntityPlayer) UT.Inventories.checkAchievements((EntityPlayer)aPlayer, slot(i));
+				for (int j = 0; j < aPlayerInventory.getSizeInventory(); j++) {
+					if (ST.equal(slot(i), aPlayerInventory.getStackInSlot(j))) {
+						rCount += ST.move(this, aPlayerInventory, i, j);
+						if (!slotHas(i)) break;
+					}
+				}
+			}
+			for (int i = 0; i < invsize(); i++) if (ST.maxsize(slot(i)) > 1) {
+				for (int j = 9; j < aPlayerInventory.getSizeInventory(); j++) {
+					rCount += ST.move(this, aPlayerInventory, i, j);
+					if (!slotHas(i)) break;
+				}
+			}
+			for (int i = 0; i < invsize(); i++) if (slotHas(i)) {
+				for (int j = 9; j < aPlayerInventory.getSizeInventory(); j++) {
+					rCount += ST.move(this, aPlayerInventory, i, j);
+					if (!slotHas(i)) break;
+				}
+			}
+			if (rCount > 0) UT.Sounds.send(SFX.MC_COLLECT, this);
+			ST.update(aPlayer);
+			return rCount;
+		}
 		return 0;
 	}
 	

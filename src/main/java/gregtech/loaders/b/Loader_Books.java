@@ -191,8 +191,11 @@ public class Loader_Books implements Runnable {
 		, "Aurora Tower¶===================¶The Snow Queen Trophy you get can be used to produce CU through a Magic Field Absorber. She drops a Tri-Bow or a Seeker-Bow, both of which are fun Weapons."
 		, "Troll Caves¶===================¶... Greg writes this Book as they play Twilight Forest again themselves, and did not complete this part yet."
 		, "Troll Caves¶===================¶..."
-		, "Cloud Giants¶===================¶... Greg writes this Book as they play Twilight Forest again themselves, and did not complete this part yet."
-		, "Cloud Giants¶===================¶..."
+		, "Cloud Giants¶===================¶Far above the Highlands floats a Cloud. Use the Magical Beans from the Troll Caves on the Uberous Soil beneath that Cloud to spawn a huge Bean Stalk to get up there comfortably. Could also just pillar up though."
+		, "Cloud Giants¶===================¶Up on the big walkable Cloud you will find a giant Oak Tree and a giant small Hut, where at least two Giants live, who will respawn in that Hut every once in a while. Ranged Weapons are advisable against them."
+		, "Cloud Giants¶===================¶The entire Area may seem like everything is moving slower or laggier, but this is just an optical Illusion, everything still moves at normal speed. The Giants only seem slow because their movement didn't scale up."
+		, "Cloud Giants¶===================¶You can get a Giant Sword or a Giant Pickaxe from defeating a Giant. The Pickaxe can be used to mine any of the giant Blocks, such as the giant Leaves, giant Logs, giant Obsidian and ofcourse giant Cobblestone."
+		, "Cloud Giants¶===================¶It is also possible to use those giant Blocks to craft more Giant Pickaxes and Giant Swords. Also the Boxinator is capable of merging 64 Blocks into one of the giant Blocks using the Giant Pickaxe as free catalyst."
 		, "Troll Vault¶===================¶The giant Cube of Obsidian contains the Lamp of Cinders and vanilla Endgame Loot such as Ancient Debris and Wither Skeleton Skulls. At this Version of Minecraft it's the final worthwhile Loot of Twilight Forest."
 		, "Thorn Castle¶===================¶With the Lamp of Cinders you can either burn the Thorns or use it as an infinite Lighter. The Castle itself is unfinished, so there is not much to do there. There might be Ancient Debris below the Castle."
 		});
