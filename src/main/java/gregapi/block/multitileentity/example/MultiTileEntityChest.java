@@ -190,19 +190,31 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 					}
 				}
 			}
-			for (int i = 0; i < invsize(); i++) if (ST.maxsize(slot(i)) > 1) {
+			if (rCount <= 0) for (int i = 0; i < invsize(); i++) if (ST.maxsize(slot(i)) > 1 && ST.nbt(slot(i)) == null) {
 				for (int j = 9; j < aPlayerInventory.getSizeInventory(); j++) {
 					rCount += ST.move(this, aPlayerInventory, i, j);
 					if (!slotHas(i)) break;
 				}
 			}
-			for (int i = 0; i < invsize(); i++) if (slotHas(i)) {
+			if (rCount <= 0) for (int i = 0; i < invsize(); i++) if (ST.maxsize(slot(i)) > 1) {
 				for (int j = 9; j < aPlayerInventory.getSizeInventory(); j++) {
 					rCount += ST.move(this, aPlayerInventory, i, j);
 					if (!slotHas(i)) break;
 				}
 			}
-			if (rCount > 0) UT.Sounds.send(SFX.MC_COLLECT, this);
+			if (rCount <= 0) for (int i = 0; i < invsize(); i++) if (slotHas(i) && ST.nbt(slot(i)) != null) {
+				for (int j = 9; j < aPlayerInventory.getSizeInventory(); j++) {
+					rCount += ST.move(this, aPlayerInventory, i, j);
+					if (!slotHas(i)) break;
+				}
+			}
+			if (rCount <= 0) for (int i = 0; i < invsize(); i++) if (slotHas(i)) {
+				for (int j = 9; j < aPlayerInventory.getSizeInventory(); j++) {
+					rCount += ST.move(this, aPlayerInventory, i, j);
+					if (!slotHas(i)) break;
+				}
+			}
+			if (rCount >  0) UT.Sounds.send(SFX.MC_COLLECT, this);
 			ST.update(aPlayer);
 			return rCount;
 		}
