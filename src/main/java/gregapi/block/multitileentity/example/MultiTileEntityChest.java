@@ -180,10 +180,11 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 			}
 		}
 		if (aTool.equals(TOOL_pincers) && aPlayerInventory != null) {
-			long rCount = 0; for (int i = 0; i < invsize(); i++) if (slotHas(i)) {
+			long rCount = 0;
+			for (int i = 0; i < invsize(); i++) if (slotHas(i)) {
 				// Check for Achievements so those won't get skipped.
 				if (aPlayer instanceof EntityPlayer) UT.Inventories.checkAchievements((EntityPlayer)aPlayer, slot(i));
-				// Merge Stacks when applicable.
+				// Merge Stacks first when applicable.
 				for (int j = 0; j < aPlayerInventory.getSizeInventory(); j++) {
 					if (ST.equal(slot(i), aPlayerInventory.getStackInSlot(j))) {
 						rCount += ST.move(this, aPlayerInventory, i, j);
@@ -192,7 +193,7 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 				}
 			}
 			// Stackable NBT-less Items second.
-			if (rCount <= 0) for (int i = 0; i < invsize(); i++) if (slotHas(i) && ST.maxsize(slot(i)) > 1 && ST.nbt(slot(i)) == null) {
+			for (int i = 0; i < invsize(); i++) if (slotHas(i) && ST.maxsize(slot(i)) > 1 && ST.nbt(slot(i)) == null) {
 				for (int j = 9; j < aPlayerInventory.getSizeInventory(); j++) {
 					rCount += ST.move(this, aPlayerInventory, i, j);
 					if (!slotHas(i)) break;
