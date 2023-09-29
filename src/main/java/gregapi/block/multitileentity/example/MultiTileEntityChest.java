@@ -181,7 +181,7 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 		}
 		if (aTool.equals(TOOL_pincers) && aPlayerInventory != null) {
 			long rCount = 0; for (int i = 0; i < invsize(); i++) if (slotHas(i)) {
-				// Check for Achievements so those wont get skipped.
+				// Check for Achievements so those won't get skipped.
 				if (aPlayer instanceof EntityPlayer) UT.Inventories.checkAchievements((EntityPlayer)aPlayer, slot(i));
 				// Merge Stacks when applicable.
 				for (int j = 0; j < aPlayerInventory.getSizeInventory(); j++) {
@@ -219,13 +219,12 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 					if (!slotHas(i)) break;
 				}
 			}
+			// Nothing was done.
+			if (rCount <= 0) return 1;
 			// Make Sound and update Player Inventory if Items got transferred.
-			if (rCount >  0) {
-				UT.Sounds.send(SFX.MC_COLLECT, this);
-				ST.update(aPlayer);
-				return rCount;
-			}
-			return 1;
+			UT.Sounds.send(SFX.MC_COLLECT, this);
+			ST.update(aPlayer);
+			return rCount;
 		}
 		return 0;
 	}
