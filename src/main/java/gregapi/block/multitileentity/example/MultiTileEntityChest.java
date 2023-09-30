@@ -279,6 +279,7 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if (UT.Code.stringValid(mDungeonLootName)) aList.add(LH.Chat.BLINKING_CYAN + "Contains Loot of " + LH.Chat.WHITE + LH.get("loot." + mDungeonLootName));
+		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TAKE_PINCERS));
 	}
 	
 	@Override public boolean receiveDataByte(byte aData, INetworkHandler aNetworkHandler) {mUsingPlayers = aData; return T;}
