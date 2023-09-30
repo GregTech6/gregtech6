@@ -185,7 +185,7 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 				// Check for Achievements so those won't get skipped.
 				if (aPlayer instanceof EntityPlayer) UT.Inventories.checkAchievements((EntityPlayer)aPlayer, slot(i));
 				// Merge Stacks first when applicable.
-				for (int j = 0; j < aPlayerInventory.getSizeInventory(); j++) {
+				for (int j = 0; j < 36; j++) {
 					if (ST.equal(slot(i), aPlayerInventory.getStackInSlot(j))) {
 						rCount += ST.move(this, aPlayerInventory, i, j);
 						if (!slotHas(i)) break;
@@ -194,28 +194,28 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 			}
 			// Stackable NBT-less Items second.
 			for (int i = 0; i < invsize(); i++) if (slotHas(i) && ST.maxsize(slot(i)) > 1 && ST.nbt(slot(i)) == null) {
-				for (int j = 9; j < aPlayerInventory.getSizeInventory(); j++) {
+				for (int j = 9; j < 36; j++) {
 					rCount += ST.move(this, aPlayerInventory, i, j);
 					if (!slotHas(i)) break;
 				}
 			}
 			// Stackable NBT-containing Items third.
 			if (rCount <= 0) for (int i = 0; i < invsize(); i++) if (slotHas(i) && ST.maxsize(slot(i)) > 1) {
-				for (int j = 9; j < aPlayerInventory.getSizeInventory(); j++) {
+				for (int j = 9; j < 36; j++) {
 					rCount += ST.move(this, aPlayerInventory, i, j);
 					if (!slotHas(i)) break;
 				}
 			}
 			// Unstackable NBT-containing Items fourth.
 			if (rCount <= 0) for (int i = 0; i < invsize(); i++) if (slotHas(i) && ST.nbt(slot(i)) != null) {
-				for (int j = 9; j < aPlayerInventory.getSizeInventory(); j++) {
+				for (int j = 9; j < 36; j++) {
 					rCount += ST.move(this, aPlayerInventory, i, j);
 					if (!slotHas(i)) break;
 				}
 			}
 			// Unstackable NBT-less Items fifth.
 			if (rCount <= 0) for (int i = 0; i < invsize(); i++) if (slotHas(i)) {
-				for (int j = 9; j < aPlayerInventory.getSizeInventory(); j++) {
+				for (int j = 9; j < 36; j++) {
 					rCount += ST.move(this, aPlayerInventory, i, j);
 					if (!slotHas(i)) break;
 				}

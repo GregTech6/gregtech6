@@ -49,6 +49,8 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ChunkCoordinates;
@@ -1019,6 +1021,21 @@ public class ST {
 					if (item_(tStack) == Items.gold_ingot && tStack.stackSize <= 7) {
 						set(tStack, IL.TC_Gold_Coin.get(tStack.stackSize * 9L));
 					}
+				}
+				if (IL.EtFu_Sus_Stew.exists() && item_(tStack) == Items.mushroom_stew) {
+					NBTTagList tList = new NBTTagList();
+					switch(RNGSUS.nextInt(9)) {
+					case  1: tList.appendTag(UT.NBT.make("EffectId", Potion.field_76443_y .id, "EffectDuration",   7)); break;
+					case  2: tList.appendTag(UT.NBT.make("EffectId", Potion.fireResistance.id, "EffectDuration",  80)); break;
+					case  3: tList.appendTag(UT.NBT.make("EffectId", Potion.nightVision   .id, "EffectDuration", 100)); break;
+					case  4: tList.appendTag(UT.NBT.make("EffectId", Potion.weakness      .id, "EffectDuration", 180)); break;
+					case  5: tList.appendTag(UT.NBT.make("EffectId", Potion.regeneration  .id, "EffectDuration", 160)); break;
+					case  6: tList.appendTag(UT.NBT.make("EffectId", Potion.jump          .id, "EffectDuration", 120)); break;
+					case  7: tList.appendTag(UT.NBT.make("EffectId", Potion.poison        .id, "EffectDuration", 240)); break;
+					case  8: tList.appendTag(UT.NBT.make("EffectId", Potion.wither        .id, "EffectDuration", 160)); break;
+					default: tList.appendTag(UT.NBT.make("EffectId", Potion.blindness     .id, "EffectDuration", 160)); break;
+					}
+					nbt(set(tStack, IL.EtFu_Sus_Stew.get(tStack.stackSize)), UT.NBT.make("Effects", tList));
 				}
 				aInventory.setInventorySlotContents(i, update_(OM.get_(tStack)));
 			}
