@@ -603,6 +603,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 		RM.genericycle(IL.RC_Crushed_Obsidian .get(1), IL.HBM_Crushed_Obsidian.get(1));
 		RM.genericycle(IL.IC2_Grin_Powder.get(1), IL.HBM_Poison_Powder.get(1));
 		RM.genericycle(IL.FR_Royal_Jelly.get(1), IL.HaC_Royal_Jelly.get(1));
+		RM.genericycle(IL.Bottle_Honey.get(1), IL.EtFu_Bottle_Honey.get(1), IL.GrC_Honey_Bottle.get(1));
 		RM.genericycle(ST.make(MD.TC, "ItemResource", 1, 6), ST.make(MD.BoP, "gems", 1, 7));
 		
 		// Some of these aren't Temporary, but I like having all Generifier Recipes for Fluids in on place.

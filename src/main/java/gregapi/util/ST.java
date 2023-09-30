@@ -1009,16 +1009,18 @@ public class ST {
 			} else {
 				WeightedRandomChestContent.generateChestContents(aRandom, ChestGenHooks.getItems(aLoot, aRandom), aInventory, ChestGenHooks.getCount(aLoot, aRandom));
 			}
-			if (IL.TC_Gold_Coin.exists()) for (int i = 0, j = aInventory.getSizeInventory(); i < j; i++) {
+			for (int i = 0, j = aInventory.getSizeInventory(); i < j; i++) {
 				ItemStack tStack = aInventory.getStackInSlot(i);
-				if (ST.valid(tStack)) {
-					if (ST.item_(tStack) == Items.gold_nugget) {
-						ST.set(tStack, IL.TC_Gold_Coin.get(tStack.stackSize));
+				if (invalid(tStack)) continue;
+				if (IL.TC_Gold_Coin.exists()) {
+					if (item_(tStack) == Items.gold_nugget) {
+						set(tStack, IL.TC_Gold_Coin.get(tStack.stackSize));
 					}
-					if (ST.item_(tStack) == Items.gold_ingot && tStack.stackSize <= 7) {
-						ST.set(tStack, IL.TC_Gold_Coin.get(tStack.stackSize * 9L));
+					if (item_(tStack) == Items.gold_ingot && tStack.stackSize <= 7) {
+						set(tStack, IL.TC_Gold_Coin.get(tStack.stackSize * 9L));
 					}
 				}
+				aInventory.setInventorySlotContents(i, update_(OM.get_(tStack)));
 			}
 			return T;
 		} catch(Throwable e) {e.printStackTrace(ERR);}

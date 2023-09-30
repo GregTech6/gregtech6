@@ -152,8 +152,8 @@ public class MultiItemBottles extends MultiItemRandomWithCompat implements IItem
 		CR.shapeless(make(2, 1200), CR.DEF, new Object[] {OD.container1000soymilk, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
 		CR.shapeless(make(1, 1200), CR.DEF, new Object[] {OD.container1000soymilk, OP.bottle.dat(MT.Empty)});
 		
-		
-		addItem( 1300, "Honey", "Why does this Bottle look like a Bear and not a Bee?"        , FL.Honey                  .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.BESTIA         , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE, FL.HoneyGrC.make(250), FL.HoneyBoP.make(250), OP.bottle.dat(MT.Honey), OD.container250honey); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Yellow);
+		IL.Bottle_Honey.set(
+		addItem( 1300, "Honey", "Why does this Bottle look like a Bear and not a Bee?"        , FL.Honey                  .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.BESTIA         , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE, FL.HoneyGrC.make(250), FL.HoneyBoP.make(250), OP.bottle.dat(MT.Honey), OD.container250honey)); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Yellow);
 		addItem( 1301, "Honeydew"                     , "", OP.bottle.dat(MT.Honeydew)        , FL.Honeydew               .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.BESTIA         , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
 		addItem( 1302, "Royal Jelly"                  , ""                                    , FL.RoyalJelly             .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.BESTIA         , 2), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Yellow);
 		addItem( 1303, "Ambrosia"                     , "", "foodAmbrosia"                    , FL.Ambrosia               .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.BESTIA         , 1), TC.stack(TC.SANO      , 2), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Purple);
