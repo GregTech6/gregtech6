@@ -69,10 +69,10 @@ public class Loader_Loot implements Runnable {
 			TFTreasure.hedgemaze         = TwilightTreasureReplacer.create(TFTreasure.hedgemaze        ,  4, "hedgemaze"        , ChestGenHooks.BONUS_CHEST             ,   516);
 			TFTreasure.labyrinth_room    = TwilightTreasureReplacer.create(TFTreasure.labyrinth_room   ,  5, "labyrinth_room"   , ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,     8);
 			TFTreasure.labyrinth_deadend = TwilightTreasureReplacer.create(TFTreasure.labyrinth_deadend,  6, "labyrinth_deadend", ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   508);
+			TFTreasure.labyrinth_vault   = TwilightTreasureReplacer.create(TFTreasure.labyrinth_vault  , 10, "labyrinth_vault"  , ChestGenHooks.VILLAGE_BLACKSMITH      ,    16);
 			TFTreasure.tower_room        = TwilightTreasureReplacer.create(TFTreasure.tower_room       ,  7, "tower_room"       , ChestGenHooks.PYRAMID_DESERT_CHEST    ,     2);
 			TFTreasure.tower_library     = TwilightTreasureReplacer.create(TFTreasure.tower_library    ,  8, "tower_library"    , ChestGenHooks.STRONGHOLD_LIBRARY      ,   502);
 			TFTreasure.basement          = TwilightTreasureReplacer.create(TFTreasure.basement         ,  9, "basement"         , ChestGenHooks.STRONGHOLD_CROSSING     ,     9);
-			TFTreasure.labyrinth_vault   = TwilightTreasureReplacer.create(TFTreasure.labyrinth_vault  , 10, "labyrinth_vault"  , ChestGenHooks.VILLAGE_BLACKSMITH      ,    16);
 			TFTreasure.darktower_cache   = TwilightTreasureReplacer.create(TFTreasure.darktower_cache  , 11, "darktower_cache"  , ChestGenHooks.STRONGHOLD_CORRIDOR     ,   525);
 			TFTreasure.darktower_key     = TwilightTreasureReplacer.create(TFTreasure.darktower_key    , 12, "darktower_key"    , ChestGenHooks.DUNGEON_CHEST           ,    25);
 			TFTreasure.darktower_boss    = TwilightTreasureReplacer.create(TFTreasure.darktower_boss   , 13, "darktower_boss"   , ChestGenHooks.PYRAMID_JUNGLE_DISPENSER,    59);

@@ -73,6 +73,21 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		mRare            = rare      = (TFTreasureTable)UT.Reflection.getFieldContent(mTreasure, "rare"     , T, T);
 		mUltrarare       = ultrarare = (TFTreasureTable)UT.Reflection.getFieldContent(mTreasure, "ultrarare", T, T);
 		
+		// Hollow Hill 1
+		if (aIndex ==  1) {
+			//
+		}
+		// Hollow Hill 2
+		if (aIndex ==  2) {
+			HILLS_2 = this;
+			// A way to obtain Basalz Rods, even if not many.
+			rare     .add(OP.stick.mat(MT.Basalz, 4));
+		}
+		// Hollow Hill 3
+		if (aIndex ==  3) {
+			//
+		}
+		
 		// Hedge Maze
 		if (aIndex ==  4) {
 			// Harvestcraft Gardens
@@ -207,6 +222,8 @@ public class TwilightTreasureReplacer extends TFTreasure {
 			useless  .add(IL.EtFu_Chorus_Fruit.get(24));
 			if (IL.EtFu_Chorus_Flower.exists())
 			uncommon .add(IL.EtFu_Chorus_Flower.get(8));
+			// A way to obtain Blitz Rods, even if not many.
+			uncommon .add(OP.stick.mat(MT.Blitz, 4));
 		}
 		
 		// Troll Vaults
@@ -224,7 +241,6 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		
 		TWILIGHT_TREASURE.put(mCategory, this);
 		ST.LOOT_TABLES.add(mCategory);
-		if (aIndex == 2) HILLS_2 = this;
 	}
 	
 	@Override public boolean generate(World aWorld, Random aRandom, int aX, int aY, int aZ) {return generate(aWorld, aRandom, aX, aY, aZ, Blocks.chest);}

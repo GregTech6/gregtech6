@@ -618,6 +618,7 @@ public class GT_API_Post extends Abstract_Mod {
 			if ("enchantment.swift_sneak".equalsIgnoreCase(tEnchant.getName())) {
 				if (MD.TF.mLoaded) {
 					((TFTreasureTable)UT.Reflection.getFieldContent(TFTreasure.tower_library  , "ultrarare")).addEnchantedBook(tEnchant, 2);
+					((TFTreasureTable)UT.Reflection.getFieldContent(TFTreasure.labyrinth_vault, "rare"     )).addEnchantedBook(tEnchant, 2);
 					((TFTreasureTable)UT.Reflection.getFieldContent(TFTreasure.stronghold_room, "rare"     )).addEnchantedBook(tEnchant, 1);
 					((TFTreasureTable)UT.Reflection.getFieldContent(TFTreasure.darktower_cache, "rare"     )).addEnchantedBook(tEnchant, 1);
 					((TFTreasureTable)UT.Reflection.getFieldContent(TFTreasure.aurora_cache   , "rare"     )).addEnchantedBook(tEnchant, 1);
