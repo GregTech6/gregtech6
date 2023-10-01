@@ -39,10 +39,10 @@ import gregapi.util.UT;
 import gregapi.wooddict.SaplingEntry;
 import gregapi.wooddict.WoodDictionary;
 import gregapi.worldgen.StoneLayer;
-import gregtech.worldgen.TwilightTreasureReplacer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import twilightforest.TFTreasure;
+import twilightforest.TFTreasureTable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -617,19 +617,20 @@ public class GT_API_Post extends Abstract_Mod {
 			}
 			if ("enchantment.swift_sneak".equalsIgnoreCase(tEnchant.getName())) {
 				if (MD.TF.mLoaded) {
-					((TwilightTreasureReplacer)TFTreasure.stronghold_room).mRare     .addEnchantedBook(tEnchant, 1);
-					((TwilightTreasureReplacer)TFTreasure.darktower_cache).mRare     .addEnchantedBook(tEnchant, 1);
-					((TwilightTreasureReplacer)TFTreasure.aurora_cache   ).mRare     .addEnchantedBook(tEnchant, 1);
-					((TwilightTreasureReplacer)TFTreasure.aurora_room    ).mUncommon .addEnchantedBook(tEnchant, 1);
+					((TFTreasureTable)UT.Reflection.getFieldContent(TFTreasure.tower_library  , "ultrarare")).addEnchantedBook(tEnchant, 2);
+					((TFTreasureTable)UT.Reflection.getFieldContent(TFTreasure.stronghold_room, "rare"     )).addEnchantedBook(tEnchant, 1);
+					((TFTreasureTable)UT.Reflection.getFieldContent(TFTreasure.darktower_cache, "rare"     )).addEnchantedBook(tEnchant, 1);
+					((TFTreasureTable)UT.Reflection.getFieldContent(TFTreasure.aurora_cache   , "rare"     )).addEnchantedBook(tEnchant, 1);
+					((TFTreasureTable)UT.Reflection.getFieldContent(TFTreasure.aurora_room    , "uncommon" )).addEnchantedBook(tEnchant, 1);
 				}
 			}
 			if ("enchantment.mending".equalsIgnoreCase(tEnchant.getName())) {
 				if (MD.TF.mLoaded) {
-					((TwilightTreasureReplacer)TFTreasure.tower_library  ).mUltrarare.addEnchantedBook(tEnchant, 1);
-					((TwilightTreasureReplacer)TFTreasure.labyrinth_vault).mRare     .addEnchantedBook(tEnchant, 1);
-					((TwilightTreasureReplacer)TFTreasure.darktower_key  ).mRare     .addEnchantedBook(tEnchant, 1);
-					((TwilightTreasureReplacer)TFTreasure.aurora_room    ).mRare     .addEnchantedBook(tEnchant, 1);
-					((TwilightTreasureReplacer)TFTreasure.troll_vault    ).mUncommon .addEnchantedBook(tEnchant, 1);
+					((TFTreasureTable)UT.Reflection.getFieldContent(TFTreasure.tower_library  , "ultrarare")).addEnchantedBook(tEnchant, 1);
+					((TFTreasureTable)UT.Reflection.getFieldContent(TFTreasure.labyrinth_vault, "rare"     )).addEnchantedBook(tEnchant, 1);
+					((TFTreasureTable)UT.Reflection.getFieldContent(TFTreasure.darktower_key  , "rare"     )).addEnchantedBook(tEnchant, 1);
+					((TFTreasureTable)UT.Reflection.getFieldContent(TFTreasure.aurora_room    , "rare"     )).addEnchantedBook(tEnchant, 1);
+					((TFTreasureTable)UT.Reflection.getFieldContent(TFTreasure.troll_vault    , "uncommon" )).addEnchantedBook(tEnchant, 1);
 				}
 			}
 			if ("enchantment.Cold Touch".equalsIgnoreCase(tEnchant.getName())) {
