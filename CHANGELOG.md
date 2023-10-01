@@ -20,6 +20,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] The GT6 Compasses that point to Coordinates will now jiggle the needle when you get really close to their target Coordinates.
 [ADDED] Rightclicking a GT6 Chest with Pincers will pull its content into your Inventory, prioritizing stackable Items first. This should greatly help with sorting through the contents of Loot Chests you opened at your Base, like a sane person would do.
 [ADDED] Fireleaf which is Steeleaf but converted with Fiery Blood or Fiery Tears. It has Fortune III and Auto-Collect along with some other Stuff.
+[ADDED] Holy Water, Fiery Blood and Fiery Tears can be used in a Bath to add Enchantments to GT Arrows and GT Bullets.
 
 
 6.17.00:

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,15 +19,10 @@
 
 package gregtech.asm.transformers;
 
-import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.InsnNode;
-import org.objectweb.asm.tree.MethodInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-import org.objectweb.asm.tree.VarInsnNode;
-
 import gregtech.asm.GT_ASM;
 import net.minecraft.launchwrapper.IClassTransformer;
+import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.tree.*;
 
 /**
  * @author Gregorius Techneticies
@@ -50,8 +45,8 @@ public class CoFHLib_HashFix implements IClassTransformer {
 		
 		// And yes the getId() part violates the Hash Rule of Java since Item IDs constantly change when you load Worlds or join Servers.
 		
-		for (MethodNode m: classNode.methods) if (m.name.equals("hashcode")) {
-			GT_ASM.logger.info("Transforming " + transformedName + ".hashcode");
+		for (MethodNode m: classNode.methods) if (m.name.equals("hashCode")) {
+			GT_ASM.logger.info("Transforming " + transformedName + ".hashCode");
 			// Just use the system identityHashCode, but DO NOT combine it with the metadata due to Wildcard Issues!
 			m.instructions.clear();
 			m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0)); // Load `this`

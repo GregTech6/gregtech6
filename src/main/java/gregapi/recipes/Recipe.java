@@ -875,7 +875,7 @@ public class Recipe {
 		if (aOutputs      == null) aOutputs      = ZL_IS;
 		if (aFluidInputs  == null) aFluidInputs  = ZL_FS;
 		if (aFluidOutputs == null) aFluidOutputs = ZL_FS;
-		if (aChances      == null) aChances      = aOutputs.length<0?ZL_LONG:new long[aOutputs.length];
+		if (aChances      == null) aChances      = aOutputs.length <= 0?ZL_LONG:new long[aOutputs.length];
 		if (aChances.length < aOutputs.length) aChances = Arrays.copyOf(aChances, aOutputs.length);
 		aInputs  = UT.Code.getWithoutTrailingNulls(aInputs ).toArray(ZL_IS);
 		aOutputs = UT.Code.getWithoutTrailingNulls(aOutputs).toArray(ZL_IS);
@@ -926,8 +926,13 @@ public class Recipe {
 			}
 		}
 		
-		for (int i = 0; i < aInputs .length; i++) if (aInputs [i] != NI && aInputs [i].stackSize > 64) aInputs [i].stackSize = 64;
-		for (int i = 0; i < aOutputs.length; i++) if (aOutputs[i] != NI && aOutputs[i].stackSize > 64) aOutputs[i].stackSize = 64;
+		for (int i = 0; i < aInputs .length; i++) if (aInputs [i] != NI) {
+			if (aInputs [i].stackSize > 64) aInputs [i].stackSize = 64;
+		}
+		for (int i = 0; i < aOutputs.length; i++) if (aOutputs[i] != NI) {
+			aOutputs[i] = ST.update(aOutputs[i]);
+			if (aOutputs[i].stackSize > 64) aOutputs[i].stackSize = 64;
+		}
 		
 		mInputs = aInputs;
 		mOutputs = aOutputs;
