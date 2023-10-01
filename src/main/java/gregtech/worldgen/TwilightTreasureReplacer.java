@@ -50,13 +50,14 @@ public class TwilightTreasureReplacer extends TFTreasure {
 	public static TwilightTreasureReplacer HILLS_2;
 	
 	public final TFTreasure mTreasure;
+	public final TFTreasureTable mUseless, mCommon, mUncommon, mRare, mUltrarare;
 	public final String mCategory, mVanillacategory;
 	/** remember 32745 is the normal Loot Chest. */
 	public final short mChestID;
 	/** Twilight Forest Treasure Table Index */
 	public final int mTreasureID;
 	/** Amount of each Category to drop */
-	public int mRare = 2, mUncommon = 6, mCommon = 10;
+	public int mRares = 2, mUncommons = 6, mCommons = 10;
 	
 	public static TFTreasure create(TFTreasure aTreasure, int aIndex, String aCategory, String aVanillacategory, long aChestID) {return new TwilightTreasureReplacer(aTreasure, aIndex, aCategory, aVanillacategory, aChestID);}
 	public TwilightTreasureReplacer(TFTreasure aTreasure, int aIndex, String aCategory, String aVanillacategory, long aChestID) {
@@ -66,11 +67,11 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		mChestID         = (short)aChestID;
 		mTreasureID      = aIndex;
 		mTreasure        = aTreasure;
-		useless          = (TFTreasureTable)UT.Reflection.getFieldContent(mTreasure, "useless"  , T, T);
-		common           = (TFTreasureTable)UT.Reflection.getFieldContent(mTreasure, "common"   , T, T);
-		uncommon         = (TFTreasureTable)UT.Reflection.getFieldContent(mTreasure, "uncommon" , T, T);
-		rare             = (TFTreasureTable)UT.Reflection.getFieldContent(mTreasure, "rare"     , T, T);
-		ultrarare        = (TFTreasureTable)UT.Reflection.getFieldContent(mTreasure, "ultrarare", T, T);
+		mUseless         = useless   = (TFTreasureTable)UT.Reflection.getFieldContent(mTreasure, "useless"  , T, T);
+		mCommon          = common    = (TFTreasureTable)UT.Reflection.getFieldContent(mTreasure, "common"   , T, T);
+		mUncommon        = uncommon  = (TFTreasureTable)UT.Reflection.getFieldContent(mTreasure, "uncommon" , T, T);
+		mRare            = rare      = (TFTreasureTable)UT.Reflection.getFieldContent(mTreasure, "rare"     , T, T);
+		mUltrarare       = ultrarare = (TFTreasureTable)UT.Reflection.getFieldContent(mTreasure, "ultrarare", T, T);
 		
 		// Hedge Maze
 		if (aIndex ==  4) {
@@ -136,14 +137,14 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		
 		// Basement Cache, 1x1 Well and Dark Tower.
 		if (aIndex ==  8) {
-			mRare     =  3;
+			mRares     =  3;
 			// A Guide to the Twilight Forest.
 			rare     .add(ST.book("Manual_Portal_TF"));
 		}
 		
 		// Labyrinth Vault
 		if (aIndex == 10) {
-			mRare     =  4;
+			mRares     =  4;
 		}
 		
 		// Basic Chests of the Dark Tower need to contain some otherwise insanely hard to obtain Items.
@@ -171,14 +172,14 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		
 		// Urghast Loot
 		if (aIndex == 13) {
-			mCommon   =  8;
-			mUncommon = 27;
-			mRare     =  1;
+			mCommons   =  8;
+			mUncommons = 27;
+			mRares     =  1;
 		}
 		
 		// Tree Cache
 		if (aIndex == 14) {
-			mRare     =  4;
+			mRares     =  4;
 			// Thaumcraft Saplings
 			if (IL.TC_Greatwood_Sapling.exists())
 			rare     .add(IL.TC_Greatwood_Sapling.get(4));
@@ -197,7 +198,7 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		
 		// Troll Gardens
 		if (aIndex == 21) {
-			mRare     =  1;
+			mRares     =  1;
 			// Enderpearls are a bitch to get in Twilight Forest.
 			useless  .add(Items.ender_pearl, 16);
 			// Dimension Stuff that is nowhere else to be found.
@@ -210,7 +211,8 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		
 		// Troll Vaults
 		if (aIndex == 22) {
-			mRare     =  1;
+			mRares     =  1;
+			mUncommons = 12;
 			// Dimension Stuff that is nowhere else to be found.
 			if (IL.EtFu_Dragon_Breath.exists())
 			useless  .add(IL.EtFu_Dragon_Breath.get(36));
@@ -278,9 +280,9 @@ public class TwilightTreasureReplacer extends TFTreasure {
 	public boolean generate(IInventory aInventory) {
 		boolean rReturn = T;
 		// About twice as much Loot as normal TF because the Loot is quite lackluster compared to the time investment otherwise.
-		for (int i = 0; i < mRare    ; i++) rReturn &= addToInventory(aInventory, mTreasure.getRareItem    (RNGSUS));
-		for (int i = 0; i < mUncommon; i++) rReturn &= addToInventory(aInventory, mTreasure.getUncommonItem(RNGSUS));
-		for (int i = 0; i < mCommon  ; i++) rReturn &= addToInventory(aInventory, mTreasure.getCommonItem  (RNGSUS));
+		for (int i = 0; i < mRares    ; i++) rReturn &= addToInventory(aInventory, mTreasure.getRareItem    (RNGSUS));
+		for (int i = 0; i < mUncommons; i++) rReturn &= addToInventory(aInventory, mTreasure.getUncommonItem(RNGSUS));
+		for (int i = 0; i < mCommons  ; i++) rReturn &= addToInventory(aInventory, mTreasure.getCommonItem  (RNGSUS));
 		// Some Extra Loot from a fitting Vanilla Category in order to make most Modded Loot Items available in TF if you can't find the few Vanilla Dungeons.
 		if (UT.Code.stringValid(mVanillacategory)) for (int i = 0, j = 9+RNGSUS.nextInt(10); i < j; i++) rReturn &= addToInventory(aInventory, ChestGenHooks.getOneItem(mVanillacategory, RNGSUS));
 		return rReturn;

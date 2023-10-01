@@ -39,8 +39,10 @@ import gregapi.util.UT;
 import gregapi.wooddict.SaplingEntry;
 import gregapi.wooddict.WoodDictionary;
 import gregapi.worldgen.StoneLayer;
+import gregtech.worldgen.TwilightTreasureReplacer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
+import twilightforest.TFTreasure;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -611,6 +613,23 @@ public class GT_API_Post extends Abstract_Mod {
 					} else if (tMaterial.containsAny(TD.Properties.MAGNETIC_ACTIVE, TD.Properties.AUTO_COLLECTING)) {
 						tMaterial.addEnchantmentForTools(tEnchant, 1).addEnchantmentForWeapons(tEnchant, 1).addEnchantmentForArmors(tEnchant, 1);
 					}
+				}
+			}
+			if ("enchantment.swift_sneak".equalsIgnoreCase(tEnchant.getName())) {
+				if (MD.TF.mLoaded) {
+					((TwilightTreasureReplacer)TFTreasure.stronghold_room).mRare     .addEnchantedBook(tEnchant, 1);
+					((TwilightTreasureReplacer)TFTreasure.darktower_cache).mRare     .addEnchantedBook(tEnchant, 1);
+					((TwilightTreasureReplacer)TFTreasure.aurora_cache   ).mRare     .addEnchantedBook(tEnchant, 1);
+					((TwilightTreasureReplacer)TFTreasure.aurora_room    ).mUncommon .addEnchantedBook(tEnchant, 1);
+				}
+			}
+			if ("enchantment.mending".equalsIgnoreCase(tEnchant.getName())) {
+				if (MD.TF.mLoaded) {
+					((TwilightTreasureReplacer)TFTreasure.tower_library  ).mUltrarare.addEnchantedBook(tEnchant, 1);
+					((TwilightTreasureReplacer)TFTreasure.labyrinth_vault).mRare     .addEnchantedBook(tEnchant, 1);
+					((TwilightTreasureReplacer)TFTreasure.darktower_key  ).mRare     .addEnchantedBook(tEnchant, 1);
+					((TwilightTreasureReplacer)TFTreasure.aurora_room    ).mRare     .addEnchantedBook(tEnchant, 1);
+					((TwilightTreasureReplacer)TFTreasure.troll_vault    ).mUncommon .addEnchantedBook(tEnchant, 1);
 				}
 			}
 			if ("enchantment.Cold Touch".equalsIgnoreCase(tEnchant.getName())) {
