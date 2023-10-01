@@ -12,6 +12,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.17.01: (Not released yet)
 [TEST] Hey Bear, I need to to try kill the Minoshroom by punching a Hole into the Rooms Fence and shooting the Bow at it.
 [NOTE] My Minecraft Account is finally dead now (I hope), so do not trust anyone impersonating Greg or something. Anyways, screw MS for the way they handled Account Migration to the point I did not want to keep my Minecraft Account.
+[COMPAT] Added Thaumcraft Aspects to Twilight Forest Entities so you can actually recharge the Wand with the mobs there. Also Werebane works on Yetis now.
 [FIXED] Swamp Water should no longer flood Twilight Mazes. Though existing Floods miiiight have some shroomy Side Effects.
 [CHANGED] Autosmelt on Tools works to make Charcoal again, even if the Charcoal Recipes do not exist in the Furnace.
 [CHANGED] Pickaxes now have the same Attack Damage Stats as the Axe, but they give twice the Invulnerability Frames to the opponent.
