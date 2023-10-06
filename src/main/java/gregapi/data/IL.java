@@ -126,6 +126,7 @@ public enum IL implements IItemContainer {
 	TC_Nugget_Chicken, TC_Nugget_Beef, TC_Nugget_Pork, TC_Nugget_Fish, TC_Triple_Meat_Treat,
 	TC_Warded_Glass, TC_Block_Air,
 	TC_Thaumometer,
+	TC_Loot_Common, TC_Loot_Uncommon, TC_Loot_Rare,
 	TC_Thaumonomicon, TC_Crimson_Rites, TC_Knowledge_Fragment,
 	TC_Block_Flesh, TC_Block_Tallow, TC_Block_Amber, TC_Block_Amber_Bricks,
 	TC_Nitor, TC_Alumentum, TC_Tallow, TC_Phial, TC_Gold_Coin, TC_Gold_Ring,
@@ -513,6 +514,7 @@ public enum IL implements IItemContainer {
 	, EMITTERS = {Emitter_ULV, Emitter_LV, Emitter_MV, Emitter_HV, Emitter_EV, Emitter_IV, Emitter_LuV, Emitter_ZPM, Emitter_UV, Emitter_PUV1, Emitter_PUV2, Emitter_PUV3, Emitter_PUV4, Emitter_PUV5, Emitter_OMEGA}
 	, SENSORS = {Sensor_ULV, Sensor_LV, Sensor_MV, Sensor_HV, Sensor_EV, Sensor_IV, Sensor_LuV, Sensor_ZPM, Sensor_UV, Sensor_PUV1, Sensor_PUV2, Sensor_PUV3, Sensor_PUV4, Sensor_PUV5, Sensor_OMEGA}
 	, MAGIC_RESEARCH_PAPERS = {Paper_Magic_Research_0, Paper_Magic_Research_1, Paper_Magic_Research_2, Paper_Magic_Research_3, Paper_Magic_Research_4, Paper_Magic_Research_5, Paper_Magic_Research_6, Paper_Magic_Research_7, Paper_Magic_Research_8,}
+	, TC_LOOT_BAGS = {TC_Loot_Common, TC_Loot_Uncommon, TC_Loot_Rare}
 	;
 	private ItemStack mStack;
 	private boolean mHasNotBeenSet = T;

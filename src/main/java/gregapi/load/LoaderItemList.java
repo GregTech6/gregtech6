@@ -912,6 +912,9 @@ public class LoaderItemList implements Runnable {
 		IL.TC_Block_Tallow                      .set(ST.make(MD.TC, "blockCosmeticSolid"                    , 1, 5), new OreDictItemData(MT.Tallow, 9*U));
 		IL.TC_Block_Flesh                       .set(ST.make(MD.TC, "blockTaint"                            , 1, 2), new OreDictItemData(MT.MeatRotten, 18*U, MT.Bone, U));
 		IL.TC_Block_Air                         .set(ST.make(MD.TC, "blockAiry"                             , 1, 0));
+		IL.TC_Loot_Common                       .set(ST.make(MD.TC, "ItemLootBag"                           , 1, 0));
+		IL.TC_Loot_Uncommon                     .set(ST.make(MD.TC, "ItemLootBag"                           , 1, 1));
+		IL.TC_Loot_Rare                         .set(ST.make(MD.TC, "ItemLootBag"                           , 1, 2));
 		IL.TC_Phial                             .set(ST.make(MD.TC, "ItemEssence"                           , 1, 0), new OreDictItemData(ANY.Clay, U4, MT.Glass, 3*U4), CR.DELATE);
 		IL.TC_Gold_Ring                         .set(ST.make(MD.TC, "ItemBaubleBlanks"                      , 1, 1), OP.ring.dat(MT.Au), CR.DELATE);
 		IL.TC_Gold_Coin                         .set(ST.make(MD.TC, "ItemResource"                          , 1,18), new OreDictItemData(MT.Au, U9));

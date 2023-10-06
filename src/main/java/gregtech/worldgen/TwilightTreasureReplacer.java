@@ -57,7 +57,7 @@ public class TwilightTreasureReplacer extends TFTreasure {
 	/** Twilight Forest Treasure Table Index */
 	public final int mTreasureID;
 	/** Amount of each Category to drop */
-	public int mRares = 2, mUncommons = 6, mCommons = 10;
+	public int mRares = 2, mUncommons = 6, mCommons = 10, mVanillas = 6, mVanillaRNG = 7, mLootBag = 0;
 	
 	public static TFTreasure create(TFTreasure aTreasure, int aIndex, String aCategory, String aVanillacategory, long aChestID) {return new TwilightTreasureReplacer(aTreasure, aIndex, aCategory, aVanillacategory, aChestID);}
 	public TwilightTreasureReplacer(TFTreasure aTreasure, int aIndex, String aCategory, String aVanillacategory, long aChestID) {
@@ -75,21 +75,23 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		
 		// Hollow Hill 1
 		if (aIndex ==  1) {
-			//
+			mLootBag    =  0;
 		}
 		// Hollow Hill 2
 		if (aIndex ==  2) {
-			HILLS_2 = this;
+			mLootBag    =  0;
+			HILLS_2  = this;
 			// A way to obtain Basalz Rods, even if not many.
 			rare     .add(OP.stick.mat(MT.Basalz, 4));
 		}
 		// Hollow Hill 3
 		if (aIndex ==  3) {
-			//
+			mLootBag    =  1;
 		}
 		
 		// Hedge Maze
 		if (aIndex ==  4) {
+			mLootBag    =  0;
 			// Harvestcraft Gardens
 			if (MD.HaC.mLoaded) {ItemStack
 			tStack = ST.make(MD.HaC, "tropicalgarden", 4, 0); if (ST.valid(tStack)) useless.add(tStack);
@@ -121,8 +123,21 @@ public class TwilightTreasureReplacer extends TFTreasure {
 			rare     .add(Items.lead, 2);
 		}
 		
+		// Labyrinth Room
+		if (aIndex ==  5) {
+			mLootBag    =  1;
+		}
+		
+		// Labyrinth Dead End
+		if (aIndex ==  6) {
+			mLootBag    =  0;
+		}
+		
 		// Basic Chests of the Lich Tower need to contain some otherwise insanely hard to obtain Items.
 		if (aIndex ==  7) {
+			mLootBag    =  1;
+			mVanillas   =  3;
+			mVanillaRNG =  3;
 			// Clear the normal Junk List.
 			useless  .clear();
 			// Dimension Stuff that is nowhere else to be found.
@@ -136,6 +151,7 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		
 		// Library Chests of the Lich Tower need to contain some otherwise insanely hard to obtain Items.
 		if (aIndex ==  8) {
+			mLootBag    =  1;
 			// Clear the normal Junk List.
 			useless  .clear();
 			// The only practical way to get vanilla Ink.
@@ -151,19 +167,24 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		}
 		
 		// Basement Cache, 1x1 Well and Dark Tower.
-		if (aIndex ==  8) {
-			mRares     =  3;
+		if (aIndex ==  9) {
+			mLootBag    =  1;
+			mRares      =  3;
+			mVanillas   =  3;
+			mVanillaRNG =  3;
 			// A Guide to the Twilight Forest.
 			rare     .add(ST.book("Manual_Portal_TF"));
 		}
 		
 		// Labyrinth Vault
 		if (aIndex == 10) {
-			mRares     =  4;
+			mLootBag    =  2;
+			mRares      =  4;
 		}
 		
 		// Basic Chests of the Dark Tower need to contain some otherwise insanely hard to obtain Items.
 		if (aIndex == 11) {
+			mLootBag    =  1;
 			// Clear the normal Junk List.
 			useless  .clear();
 			// Dimension Stuff that is nowhere else to be found.
@@ -175,6 +196,7 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		
 		// Dark Tower Key Chest
 		if (aIndex == 12) {
+			mLootBag    =  2;
 			// AE essentials just in case.
 			if (MD.AE.mLoaded) {
 			useless  .add(OP.gem.mat(MT.CertusQuartz, 48));
@@ -187,14 +209,18 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		
 		// Urghast Loot
 		if (aIndex == 13) {
-			mCommons   =  8;
-			mUncommons = 27;
-			mRares     =  1;
+			mLootBag    =  2;
+			mVanillas   =  3;
+			mVanillaRNG =  3;
+			mCommons    =  8;
+			mUncommons  = 27;
+			mRares      =  1;
 		}
 		
 		// Tree Cache
 		if (aIndex == 14) {
-			mRares     =  4;
+			mLootBag    =  0;
+			mRares      =  4;
 			// Thaumcraft Saplings
 			if (IL.TC_Greatwood_Sapling.exists())
 			rare     .add(IL.TC_Greatwood_Sapling.get(4));
@@ -211,9 +237,35 @@ public class TwilightTreasureReplacer extends TFTreasure {
 			}
 		}
 		
+		// Stronghold Cache
+		if (aIndex == 15) {
+			mLootBag    =  0;
+		}
+		
+		// Stronghold Room
+		if (aIndex == 16) {
+			mLootBag    =  1;
+		}
+		
+		// Stronghold Boss
+		if (aIndex == 17) {
+			mLootBag    =  2;
+		}
+		
+		// Aurora Cache
+		if (aIndex == 18) {
+			mLootBag    =  1;
+		}
+		
+		// Aurora Room
+		if (aIndex == 19) {
+			mLootBag    =  2;
+		}
+		
 		// Troll Gardens
 		if (aIndex == 21) {
-			mRares     =  1;
+			mLootBag    =  2;
+			mRares      =  1;
 			// Enderpearls are a bitch to get in Twilight Forest.
 			useless  .add(Items.ender_pearl, 16);
 			// Dimension Stuff that is nowhere else to be found.
@@ -228,8 +280,9 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		
 		// Troll Vaults
 		if (aIndex == 22) {
-			mRares     =  1;
-			mUncommons = 12;
+			mLootBag    =  2;
+			mRares      =  1;
+			mUncommons  = 12;
 			// Dimension Stuff that is nowhere else to be found.
 			if (IL.EtFu_Dragon_Breath.exists())
 			useless  .add(IL.EtFu_Dragon_Breath.get(36));
@@ -299,8 +352,10 @@ public class TwilightTreasureReplacer extends TFTreasure {
 		for (int i = 0; i < mRares    ; i++) rReturn &= addToInventory(aInventory, mTreasure.getRareItem    (RNGSUS));
 		for (int i = 0; i < mUncommons; i++) rReturn &= addToInventory(aInventory, mTreasure.getUncommonItem(RNGSUS));
 		for (int i = 0; i < mCommons  ; i++) rReturn &= addToInventory(aInventory, mTreasure.getCommonItem  (RNGSUS));
-		// Some Extra Loot from a fitting Vanilla Category in order to make most Modded Loot Items available in TF if you can't find the few Vanilla Dungeons.
-		if (UT.Code.stringValid(mVanillacategory)) for (int i = 0, j = 9+RNGSUS.nextInt(10); i < j; i++) rReturn &= addToInventory(aInventory, ChestGenHooks.getOneItem(mVanillacategory, RNGSUS));
+		// If applicable, add a Thaumcraft Loot Bag to the Chest too.
+		rReturn &= addToInventory(aInventory, IL.TC_LOOT_BAGS[mLootBag].get(1));
+		// Some Extra Loot from a fitting Vanilla Category in order to make most Modded Loot Items available in TF, if you can't find the few Vanilla Dungeons.
+		if (UT.Code.stringValid(mVanillacategory)) for (int i = 0, j = mVanillas+RNGSUS.nextInt(mVanillaRNG); i < j; i++) rReturn &= addToInventory(aInventory, ChestGenHooks.getOneItem(mVanillacategory, RNGSUS));
 		return rReturn;
 	}
 	

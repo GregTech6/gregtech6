@@ -80,7 +80,7 @@ public class Loader_Loot implements Runnable {
 			TFTreasure.stronghold_cache  = TwilightTreasureReplacer.create(TFTreasure.stronghold_cache , 15, "stronghold_cache" , ChestGenHooks.STRONGHOLD_CORRIDOR     ,   510);
 			TFTreasure.stronghold_room   = TwilightTreasureReplacer.create(TFTreasure.stronghold_room  , 16, "stronghold_room"  , ChestGenHooks.DUNGEON_CHEST           ,    10);
 			TFTreasure.stronghold_boss   = TwilightTreasureReplacer.create(TFTreasure.stronghold_boss  , 17, "stronghold_boss"  , ChestGenHooks.VILLAGE_BLACKSMITH      ,   559);
-			TFTreasure.aurora_cache      = TwilightTreasureReplacer.create(TFTreasure.aurora_cache     , 18, "aurora_cache"     , ChestGenHooks.DUNGEON_CHEST           ,   513);
+			TFTreasure.aurora_cache      = TwilightTreasureReplacer.create(TFTreasure.aurora_cache     , 18, "aurora_cache"     , ChestGenHooks.DUNGEON_CHEST           ,    46);
 			TFTreasure.aurora_room       = TwilightTreasureReplacer.create(TFTreasure.aurora_room      , 19, "aurora_room"      , ChestGenHooks.DUNGEON_CHEST           ,    13);
 		////TFTreasure.aurora_boss       = TwilightTreasureReplacer.create(TFTreasure.aurora_boss      , 20, "aurora_boss"      , ChestGenHooks.DUNGEON_CHEST           , 32745);// This one is actually empty and unused.
 			TFTreasure.troll_garden      = TwilightTreasureReplacer.create(TFTreasure.troll_garden     , 21, "troll_garden"     , ChestGenHooks.DUNGEON_CHEST           ,   524);
@@ -162,6 +162,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 6, OP.gemFlawless.mat(MT.Maxixe, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 6, OP.ingot.mat(MT.Nd, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 3, OP.ingot.mat(MT.Cr, 1));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 3, OP.ingot.mat(MT.Mn, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Hunting_Creeper"));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Hunting_Skeleton"));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Hunting_Zombie"));
@@ -388,6 +389,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   4, 4, 8, OP.crateGtPlate.mat(MT.Brass, 1));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   6, 4, 8, OP.crateGtDust.mat(MT.Nd, 1));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   6, 2, 4, OP.crateGtDust.mat(MT.Cr, 1));
+		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   6, 2, 4, OP.crateGtDust.mat(MT.Mn, 1));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Ag));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   6, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 2));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   2, 1, 4, ST.make(ItemsGT.BOOKS, 1, 32002));
