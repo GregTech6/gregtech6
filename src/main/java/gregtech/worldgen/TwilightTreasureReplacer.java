@@ -247,7 +247,7 @@ public class TwilightTreasureReplacer extends TFTreasure {
 			mLootBag    =  1;
 		}
 		
-		// Stronghold Boss
+		// Phantoms
 		if (aIndex == 17) {
 			mLootBag    =  2;
 		}
