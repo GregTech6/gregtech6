@@ -18,10 +18,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Pickaxes now have the same Attack Damage Stats as the Axe, but they give twice the Invulnerability Frames to the opponent.
 [CHANGED] Construction Pickaxes will now always harvest Ender Chests as if Silk Touched. Obviously needs a Tier 3 Construction Pickaxe for that.
 [CHANGED] The GT6 Compasses that point to Coordinates will now jiggle the needle when you get really close to their target Coordinates.
+[CHANGED] Bumblebees now have a "Level" Tooltip indicating how far in their Evolution they are.
 [ADDED] Rightclicking a GT6 Chest with Pincers will pull its content into your Inventory, prioritizing stackable Items first. This should greatly help with sorting through the contents of Loot Chests you opened at your Base, like a sane person would do.
 [ADDED] Fireleaf which is Steeleaf but converted with Fiery Blood or Fiery Tears. It has Fortune III and Auto-Collect along with some other Stuff.
 [ADDED] Holy Water, Fiery Blood and Fiery Tears can be used in a Bath to add Enchantments to GT Arrows and GT Bullets.
 [ADDED] Twilight Forest Guide Book. I am finally done writing the thing. If you got one earlier dont worry, it updates itself automatically, unless you use a Language Pack.
+[ADDED] Glowtus now has actually Material Data and can be ground down to a small amount of Glowstone.
 
 
 6.17.00:

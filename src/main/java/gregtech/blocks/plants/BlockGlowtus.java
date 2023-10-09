@@ -19,17 +19,33 @@
 
 package gregtech.blocks.plants;
 
-import static gregapi.data.CS.*;
-
 import gregapi.block.misc.BlockBaseLilyPad;
 import gregapi.data.LH;
+import gregapi.data.MT;
+import gregapi.data.RM;
 import gregapi.old.Textures;
+import gregapi.util.OM;
+import gregapi.util.ST;
 import net.minecraft.block.material.Material;
 
-public class BlockGlowtus extends BlockBaseLilyPad {
+import static gregapi.data.CS.*;
+
+public class BlockGlowtus extends BlockBaseLilyPad implements Runnable {
 	public BlockGlowtus(String aUnlocalised) {
 		super(null, aUnlocalised, Material.plants, soundTypeGrass, 16, Textures.BlockIcons.GLOWTUS);
+		
+		GT.mBeforePostInit.add(this);
+		
 		for (int i = 0; i < 16; i++) LH.add(getUnlocalizedName()+"."+i, DYE_NAMES[i] + " Glowtus");
+		
+		OM.data(ST.make(this, 1, W), MT.Glowstone, U4);
+	}
+	
+	@Override
+	public void run() {
+		RM.biomass(ST.make(this, 4, W));
+		RM.mortarize(ST.make(this, 1, W), OM.dust(MT.Glowstone, U4));
+		RM.ic2_extractor(ST.make(this, 1, W), OM.dust(MT.Glowstone, U4));
 	}
 	
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_NONE;}
