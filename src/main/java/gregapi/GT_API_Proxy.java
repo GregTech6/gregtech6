@@ -27,6 +27,7 @@ import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
+import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
@@ -1201,7 +1202,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		if (aEvent.block instanceof IPrefixBlock && EnchantmentHelper.getSilkTouchModifier(aEvent.getPlayer())) aEvent.setExpToDrop(0);
 	}
 	
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.LOWEST) 
 	public void onBlockHarvestingEvent(BlockEvent.HarvestDropsEvent aEvent) {
 		Iterator<ItemStack> aDrops = aEvent.drops.iterator();
 		Block aBlock = (aEvent.block == Blocks.lit_redstone_ore ? Blocks.redstone_ore : aEvent.block == Blocks.lit_redstone_lamp ? Blocks.redstone_lamp : aEvent.block == BlocksGT.EtFu_Deepslate_Lit_Redstone_Ore ? BlocksGT.EtFu_Deepslate_Redstone_Ore : aEvent.block);
