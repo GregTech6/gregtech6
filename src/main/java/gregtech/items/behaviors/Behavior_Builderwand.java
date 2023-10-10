@@ -21,6 +21,7 @@ package gregtech.items.behaviors;
 
 import gregapi.block.IBlockExtendedMetaData;
 import gregapi.block.metatype.BlockMetaType;
+import gregapi.data.MD;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
@@ -29,9 +30,12 @@ import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import thaumcraft.api.nodes.INode;
 
 import static gregapi.data.CS.*;
 
@@ -40,8 +44,42 @@ public class Behavior_Builderwand extends AbstractBehaviorDefault {
 	public boolean onItemUse(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aWorld.isRemote || aPlayer == null || !(aItem instanceof MultiItemTool) || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
 		
+		TileEntity aTileEntity = WD.te(aWorld, aX, aY, aZ, T);
+		
+		if (MD.TC.mLoaded && aTileEntity instanceof INode) {
+			for (int tX = -1; tX <= 1; tX++)
+			for (int tZ = -1; tZ <= 1; tZ++)
+			for (int tY = -1; tY <= 2; tY++)
+			if (tX != 0 || tY != 0 || tZ != 0) if (WD.air(aWorld, aX+tX, aY+tY, aZ+tZ)) {
+				// Doublechecking Wand Permissions at that location.
+				if (!aPlayer.canPlayerEdit(aX+tX            , aY+tY            , aZ+tZ            , aSide, aStack)) continue;
+				if (!aPlayer.canPlayerEdit(aX+tX+OFFX[aSide], aY+tY+OFFY[aSide], aZ+tZ+OFFZ[aSide], aSide, aStack)) continue;
+				// Scan Inventory for equal Blocks.
+				for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
+					ItemStack tStack = aPlayer.inventory.mainInventory[aPlayer.inventory.mainInventory.length - i - 1];
+					if (ST.block(tStack) != (tY == 2 ? Blocks.wooden_slab : Blocks.glass)) continue;
+					
+					// Doublechecking Block Permissions at that location.
+					if (!aPlayer.canPlayerEdit(aX + tX, aY + tY, aZ + tZ, aSide, tStack)) continue;
+					
+					int tOldSize = tStack.stackSize;
+					if (tStack.tryPlaceItemIntoWorld(aPlayer, aWorld, aX + tX, aY + tY, aZ + tZ, SIDE_TOP, 0.5F, 0.25F, 0.5F)) {
+						if (UT.Entities.hasInfiniteItems(aPlayer)) {
+							tStack.stackSize = tOldSize;
+						} else {
+							ST.use(aPlayer, T, tStack, 0);
+							((MultiItemTool) aItem).doDamage(aStack, 1, aPlayer, F);
+						}
+					}
+					break;
+				}
+			}
+			return T;
+		}
+		
+		
 		Block aBlock = WD.block(aWorld, aX, aY, aZ, T);
-		if (ST.invalid(aBlock) || (aBlock instanceof IBlockExtendedMetaData == (WD.te(aWorld, aX, aY, aZ, T) == null))) return F;
+		if (ST.invalid(aBlock) || (aBlock instanceof IBlockExtendedMetaData == (aTileEntity == null))) return F;
 		short aMeta = (aBlock instanceof IBlockExtendedMetaData ? ((IBlockExtendedMetaData)aBlock).getExtendedMetaData(aWorld, aX, aY, aZ) : WD.meta(aWorld, aX, aY, aZ, T));
 		
 		int tDist = (MultiItemTool.getPrimaryMaterial(aStack).mToolQuality+1);

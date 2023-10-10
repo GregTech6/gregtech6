@@ -23,6 +23,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED] Fireleaf which is Steeleaf but converted with Fiery Blood or Fiery Tears. It has Fortune III and Auto-Collect along with some other Stuff.
 [ADDED] Holy Water, Fiery Blood and Fiery Tears can be used in a Bath to add Enchantments to GT Arrows and GT Bullets.
 [ADDED] Twilight Forest Guide Book. I am finally done writing the thing. If you got one earlier dont worry, it updates itself automatically, unless you use a Language Pack.
+[ADDED] Builders Wand will place Glass and vanilla Wood Slabs around Thaumcraft Aura Nodes.
 [ADDED] Glowtus now has actually Material Data and can be ground down to a small amount of Glowstone.
 
 
