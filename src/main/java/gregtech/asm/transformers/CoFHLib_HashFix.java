@@ -56,6 +56,6 @@ public class CoFHLib_HashFix implements IClassTransformer {
 			break;
 		}
 
-		return GT_ASM.writeByteArraySelfReferenceFixup(classNode);
+		return GT_ASM.writeByteArray(classNode);
 	}
 }
