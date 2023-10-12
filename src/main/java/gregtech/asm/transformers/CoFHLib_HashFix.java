@@ -50,12 +50,12 @@ public class CoFHLib_HashFix implements IClassTransformer {
 			// Just use the system identityHashCode, but DO NOT combine it with the metadata due to Wildcard Issues!
 			m.instructions.clear();
 			m.instructions.add(new VarInsnNode(Opcodes.ALOAD, 0)); // Load `this`
-			m.instructions.add(new VarInsnNode(Opcodes.GETFIELD, 20)); // replace 'this' on the stack with 'this.item' by popping off 'this' and looking up 'item' from it by class index
+			m.instructions.add(new FieldInsnNode(Opcodes.GETFIELD, "cofh/lib/util/ComparableItem", "item", "Lnet/minecraft/item/Item;")); // replace 'this' on the stack with 'this.item' by popping off 'this' and looking up 'item' from it by class index
 			m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "java/lang/System", "identityHashCode", "(Ljava/lang/Object;)I", false)); // This use the identity hash of the item itself as it's a singleton, thus stable.
 			m.instructions.add(new InsnNode(Opcodes.IRETURN));
 			break;
 		}
 
-		return GT_ASM.writeByteArray(classNode);
+		return GT_ASM.writeByteArraySelfReferenceFixup(classNode);
 	}
 }
