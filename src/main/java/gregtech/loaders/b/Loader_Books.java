@@ -97,7 +97,7 @@ public class Loader_Books implements Runnable {
 		, "The first Hint is obvious: ALWAYS. READ. THE. ENTIRE. TOOLTIP. FIRST! The Tooltips often contain the Information you need, but not many people think about reading them. They usually contain all the Stats of the Machine."
 		, "If a Machine doesn't process a certain Recipe (but does others), then you are not supplying enough Power. This is ALWAYS the Issue. The Tier of a Machine determines how much more Energy it consumes, than the normal Recipe."
 		, "The Tiers of Machines are as follows: anything between 16 and 64 Generic Units per Tick is Tier ONE¶Tier 2: 65-256¶Tier 3: 257-1024¶Tier 4: 1025-4096¶Tier 5: 4097-16192"
-		, "If the Tier of the Machine you are using is in a higher Range than the Tier of the Recipe (see its GU/t) it will multiply the required Input GU/t by 4 and half the Processing time, making the Recipe twice as expensive."
+		, "If the Tier of the Machine you are using is in a higher Range than the Tier of the Recipe (see its GU/t) it will multiply the required Input GU/t by 4 and halve the Processing time, making the Recipe twice as expensive."
 		, "And yes, 64 GU/t is STILL TIER ONE, you seriously have to insert that much into a Tier 1 Machine! It is often possible to use the Motor/Heater/etc of a higher Tier on the lowest Power Input to get the GU/t."
 		, "GT6 Electric Power is widely compatible with all Mods that use the IC² API, such as:¶IC², IC²-Classic, IC²-Addons, Railcraft, Forestry and more!"
 		, "Things emitting a Voltage less than 1024 EU/t are even capable of powering the non-IC² Machines of the following Mods:¶Galacticraft and it's Addons, Applied Energistics, Immersive Engineering, OpenModularTurrets, TechGuns and even GT5U!"
