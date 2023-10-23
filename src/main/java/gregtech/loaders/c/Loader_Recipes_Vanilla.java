@@ -471,6 +471,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.delate(ST.make(Items.golden_carrot, 1, 0));
 		
 		CR.shapeless(ST.make(Items.arrow, 1, 0), DEF_NCC, new Object[] {OD.itemFlint, arrowGtWood.dat(MT.Empty)});
+		CR.shapeless(ST.make(Items.arrow, 2, 0), DEF_NCC, new Object[] {OD.itemFlint, arrowGtWood.dat(MT.Empty), arrowGtWood.dat(MT.Empty)});
+		CR.shapeless(ST.make(Items.arrow, 3, 0), DEF_NCC, new Object[] {OD.itemFlint, arrowGtWood.dat(MT.Empty), arrowGtWood.dat(MT.Empty), arrowGtWood.dat(MT.Empty)});
+		CR.shapeless(ST.make(Items.arrow, 4, 0), DEF_NCC, new Object[] {OD.itemFlint, arrowGtWood.dat(MT.Empty), arrowGtWood.dat(MT.Empty), arrowGtWood.dat(MT.Empty), arrowGtWood.dat(MT.Empty)});
 		CR.shapeless(arrowGtWood .mat(MT.Empty, 1), DEF_NCC, new Object[] {Items.arrow});
 		
 		CR.shaped(arrowGtWood    .mat(MT.Empty, 1), CR.DEF_NCC_MIR, " S", "F ", 'S', stick.dat(ANY.Wood), 'F', OD.craftingFeather);
@@ -506,6 +509,9 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shapeless(ST.make(Items.dye, 3, DYE_INDEX_LightGray  ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Black  ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White ], DYE_OREDICTS_MIXABLE[DYE_INDEX_White]});
 		CR.shapeless(ST.make(Items.dye, 3, DYE_INDEX_Magenta    ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Pink]});
 		CR.shapeless(ST.make(Items.dye, 4, DYE_INDEX_Magenta    ), DEF, new Object[] {DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red   ], DYE_OREDICTS_MIXABLE[DYE_INDEX_Red], DYE_OREDICTS_MIXABLE[DYE_INDEX_White]});
+		
+		CR.shaped(toolHeadArrow.mat(MT.Steeleaf, 8), DEF, "X ", " x", 'X', ingot.dat(MT.Steeleaf));
+		CR.shaped(toolHeadArrow.mat(MT.Fireleaf, 8), DEF, "X ", " x", 'X', ingot.dat(MT.Fireleaf));
 		
 		CR.shaped(toolHeadArrow.mat(MT.Flint, 6), DEF, "fX", 'X', OD.itemFlint);
 		CR.shaped(toolHeadArrow.mat(MT.Flint, 4), DEF, "RX", 'X', OD.itemFlint, 'R', OD.itemRock);

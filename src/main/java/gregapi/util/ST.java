@@ -49,6 +49,8 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ChunkCoordinates;
@@ -161,9 +163,11 @@ public class ST {
 	public static ItemStack meta (ItemStack aStack, long aMeta) {return aStack == null ? null : meta_(aStack, aMeta);}
 	public static ItemStack meta_(ItemStack aStack, long aMeta) {Items.feather.setDamage(aStack, (short)aMeta); return aStack;}
 	
-	public static byte size (ItemStack aStack) {return aStack == null || item_(aStack) == null || aStack.stackSize < 0 ? 0 : UT.Code.bindByte(aStack.stackSize);}
+	public static byte      size (ItemStack aStack) {return aStack == null || item_(aStack) == null || aStack.stackSize < 0 ? 0 : UT.Code.bindByte(aStack.stackSize);}
 	public static ItemStack size (long aSize, ItemStack aStack) {return aStack == null || item_(aStack) == null ? null : size_(aSize, aStack);}
 	public static ItemStack size_(long aSize, ItemStack aStack) {aStack.stackSize = (int)aSize; return aStack;}
+	
+	public static byte maxsize(ItemStack aStack) {return (byte)(aStack == null || item_(aStack) == null ? 64 : item_(aStack).getItemStackLimit(aStack));}
 	
 	public static ItemStack copy (ItemStack aStack) {return aStack == null || item_(aStack) == null ? null : copy_(aStack);}
 	public static ItemStack copy_(ItemStack aStack) {return aStack.copy();}
@@ -1007,16 +1011,33 @@ public class ST {
 			} else {
 				WeightedRandomChestContent.generateChestContents(aRandom, ChestGenHooks.getItems(aLoot, aRandom), aInventory, ChestGenHooks.getCount(aLoot, aRandom));
 			}
-			if (IL.TC_Gold_Coin.exists()) for (int i = 0, j = aInventory.getSizeInventory(); i < j; i++) {
+			for (int i = 0, j = aInventory.getSizeInventory(); i < j; i++) {
 				ItemStack tStack = aInventory.getStackInSlot(i);
-				if (ST.valid(tStack)) {
-					if (ST.item_(tStack) == Items.gold_nugget) {
-						ST.set(tStack, IL.TC_Gold_Coin.get(tStack.stackSize));
+				if (invalid(tStack)) continue;
+				if (IL.TC_Gold_Coin.exists()) {
+					if (item_(tStack) == Items.gold_nugget) {
+						set(tStack, IL.TC_Gold_Coin.get(tStack.stackSize));
 					}
-					if (ST.item_(tStack) == Items.gold_ingot && tStack.stackSize <= 7) {
-						ST.set(tStack, IL.TC_Gold_Coin.get(tStack.stackSize * 9L));
+					if (item_(tStack) == Items.gold_ingot && tStack.stackSize <= 7) {
+						set(tStack, IL.TC_Gold_Coin.get(tStack.stackSize * 9L));
 					}
 				}
+				if (IL.EtFu_Sus_Stew.exists() && item_(tStack) == Items.mushroom_stew) {
+					NBTTagList tList = new NBTTagList();
+					switch(RNGSUS.nextInt(9)) {
+					case  1: tList.appendTag(UT.NBT.make("EffectId", Potion.field_76443_y .id, "EffectDuration",   7)); break;
+					case  2: tList.appendTag(UT.NBT.make("EffectId", Potion.fireResistance.id, "EffectDuration",  80)); break;
+					case  3: tList.appendTag(UT.NBT.make("EffectId", Potion.nightVision   .id, "EffectDuration", 100)); break;
+					case  4: tList.appendTag(UT.NBT.make("EffectId", Potion.weakness      .id, "EffectDuration", 180)); break;
+					case  5: tList.appendTag(UT.NBT.make("EffectId", Potion.regeneration  .id, "EffectDuration", 160)); break;
+					case  6: tList.appendTag(UT.NBT.make("EffectId", Potion.jump          .id, "EffectDuration", 120)); break;
+					case  7: tList.appendTag(UT.NBT.make("EffectId", Potion.poison        .id, "EffectDuration", 240)); break;
+					case  8: tList.appendTag(UT.NBT.make("EffectId", Potion.wither        .id, "EffectDuration", 160)); break;
+					default: tList.appendTag(UT.NBT.make("EffectId", Potion.blindness     .id, "EffectDuration", 160)); break;
+					}
+					nbt(set(tStack, IL.EtFu_Sus_Stew.get(tStack.stackSize)), UT.NBT.make("Effects", tList));
+				}
+				aInventory.setInventorySlotContents(i, update_(OM.get_(tStack)));
 			}
 			return T;
 		} catch(Throwable e) {e.printStackTrace(ERR);}

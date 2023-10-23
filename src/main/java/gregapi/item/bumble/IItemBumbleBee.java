@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.item.bumble;
 
-import static gregapi.data.CS.*;
-
-import java.util.Random;
-
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.entity.EntityLivingBase;
@@ -31,6 +27,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+
+import java.util.Random;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -149,8 +149,8 @@ public interface IItemBumbleBee {
 			return rBumbleTag;
 		}
 		
-		public static void setHumidityMin       (NBTTagCompound aBumbleTag, float aHumidity)        {aBumbleTag.setFloat("minhum", Math.max(0, aHumidity));}
-		public static void setHumidityMax       (NBTTagCompound aBumbleTag, float aHumidity)        {aBumbleTag.setFloat("maxhum", Math.max(0, aHumidity));}
+		public static void setHumidityMin       (NBTTagCompound aBumbleTag, float aHumidity)        {aBumbleTag.setFloat("minhum", aHumidity < 0.01F ? 0     : aHumidity);}
+		public static void setHumidityMax       (NBTTagCompound aBumbleTag, float aHumidity)        {aBumbleTag.setFloat("maxhum", aHumidity < 0.01F ? 0.01F : aHumidity);}
 		public static void setTemperatureMin    (NBTTagCompound aBumbleTag, long aTemperature)      {UT.NBT.setNumber( aBumbleTag, "mintemp"    , aTemperature);}
 		public static void setTemperatureMax    (NBTTagCompound aBumbleTag, long aTemperature)      {UT.NBT.setNumber( aBumbleTag, "maxtemp"    , aTemperature);}
 		public static void setOffspring         (NBTTagCompound aBumbleTag, long aOffspring)        {UT.NBT.setNumber( aBumbleTag, "offspring"  , UT.Code.bindStack(aOffspring));}
@@ -164,8 +164,8 @@ public interface IItemBumbleBee {
 		public static void setOutsideActive     (NBTTagCompound aBumbleTag, boolean aOutsideActive) {UT.NBT.setBoolean(aBumbleTag, "outside"    , aOutsideActive);}
 		public static void setInsideActive      (NBTTagCompound aBumbleTag, boolean aInsideActive)  {UT.NBT.setBoolean(aBumbleTag, "inside"     , aInsideActive);}
 		
-		public static float getHumidityMin      (NBTTagCompound aBumbleTag) {return Math.max(0, aBumbleTag.getFloat("minhum"));}
-		public static float getHumidityMax      (NBTTagCompound aBumbleTag) {return Math.max(0, aBumbleTag.getFloat("maxhum"));}
+		public static float getHumidityMin      (NBTTagCompound aBumbleTag) {return Math.max(0    , aBumbleTag.getFloat("minhum"));}
+		public static float getHumidityMax      (NBTTagCompound aBumbleTag) {return Math.max(0.01F, aBumbleTag.getFloat("maxhum"));}
 		public static long getTemperatureMin    (NBTTagCompound aBumbleTag) {return aBumbleTag.getLong("mintemp");}
 		public static long getTemperatureMax    (NBTTagCompound aBumbleTag) {return aBumbleTag.getLong("maxtemp");}
 		public static long getOffspring         (NBTTagCompound aBumbleTag) {return UT.Code.bindStack(aBumbleTag.getLong("offspring"));}

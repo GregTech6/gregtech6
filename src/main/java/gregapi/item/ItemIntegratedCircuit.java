@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,9 +26,9 @@ import gregapi.api.Abstract_Mod;
 import gregapi.cover.CoverRegistry;
 import gregapi.cover.covers.CoverSelectorTag;
 import gregapi.data.ANY;
+import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.data.OP;
-import gregapi.lang.LanguageHandler;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -50,6 +50,8 @@ public class ItemIntegratedCircuit extends ItemBase {
 		super(MD.GAPI.mID, "gt.integrated_circuit", "Selector Tag", "");
 		setHasSubtypes(T);
 		setMaxDamage(0);
+		
+		LH.add(mName + ".configuration", "Configuration: ");
 		
 		OM.data(ST.make(this, 1, W), ANY.Iron, U2*11);
 		
@@ -95,12 +97,12 @@ public class ItemIntegratedCircuit extends ItemBase {
 	@Override
 	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addAdditionalToolTips(aList, aStack, aF3_H);
-		aList.add(LanguageHandler.get(getUnlocalizedName() + ".configuration", "Configuration: ") + getConfigurationString(getDamage(aStack)));
+		aList.add(LH.get(mName + ".configuration", "Configuration: ") + getConfigurationString(getDamage(aStack)));
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack aStack) {
-		return getUnlocalizedName();
+		return mName;
 	}
 	
 	@Override
