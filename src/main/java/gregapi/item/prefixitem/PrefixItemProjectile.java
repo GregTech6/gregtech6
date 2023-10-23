@@ -86,7 +86,7 @@ public class PrefixItemProjectile extends PrefixItem implements IItemProjectile 
 	
 	@Override
 	public boolean hasProjectile(TagData aProjectileType, ItemStack aStack) {
-		return mProjectileType == aProjectileType && UT.Code.exists(ST.meta_(aStack), mMaterialList) && mMaterialList[ST.meta_(aStack)] != MT.Empty;
+		return (mProjectileType == aProjectileType || aProjectileType == null) && UT.Code.exists(ST.meta_(aStack), mMaterialList) && mMaterialList[ST.meta_(aStack)] != MT.Empty;
 	}
 	
 	@Override

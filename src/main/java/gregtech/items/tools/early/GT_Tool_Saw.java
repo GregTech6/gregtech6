@@ -148,6 +148,12 @@ public class GT_Tool_Saw extends ToolStats {
 			aEvent.dropChance = 1.0F;
 			return 0;
 		}
+		if (aBlock == Blocks.bookshelf) {
+			aDrops.clear();
+			aDrops.add(ST.make(Blocks.bookshelf, 1, 0));
+			aEvent.dropChance = 1.0F;
+			return 0;
+		}
 		if ((aBlock.getMaterial() == Material.ice || aBlock.getMaterial() == Material.packedIce) && aDrops.isEmpty()) {
 			aDrops.add(ST.make(aBlock, 1, aMetaData));
 			aEvent.dropChance = 1.0F;

@@ -150,7 +150,7 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 						ST.use(aPlayer, T, F, aStack, 1);
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, UT.NBT.removeEnchantments(tOutput), F);
 						worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+1.25, zCoord+0.5, tXP));
-						aPlayer.addExhaustion(0.25F);
+						aPlayer.addExhaustion(0.5F);
 					} else {
 						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
 						if (tRecipe != null) {

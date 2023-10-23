@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,17 +19,22 @@
 
 package gregtech.items.tools.early;
 
-import static gregapi.data.CS.*;
-
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.event.world.BlockEvent;
+
+import java.util.List;
+
+import static gregapi.data.CS.T;
 
 public class GT_Tool_PickaxeConstruction extends GT_Tool_Pickaxe {
 	@Override
@@ -42,6 +47,15 @@ public class GT_Tool_PickaxeConstruction extends GT_Tool_Pickaxe {
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {
 		return aIsToolHead ? MultiItemTool.getPrimaryMaterial(aStack, MT.Steel).mTextureSetsItems.get(OP.toolHeadConstructionPickaxe.mIconIndexItem) : MultiItemTool.getSecondaryMaterial(aStack, MT.WOODS.Spruce).mTextureSetsItems.get(OP.stick.mIconIndexItem);
+	}
+	
+	@Override
+	public int convertBlockDrops(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {
+		if (aBlock == Blocks.ender_chest) {
+			aDrops.clear();
+			aDrops.add(ST.make(Blocks.ender_chest, 1, 0));
+		}
+		return 0;
 	}
 	
 	@Override

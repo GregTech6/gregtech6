@@ -24,7 +24,6 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.compat.CompatBase;
 import gregapi.config.ConfigCategories;
-import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.OD;
 import gregapi.data.TC;
@@ -59,6 +58,13 @@ import static gregapi.data.CS.*;
 
 public class CompatTC extends CompatBase implements ICompatTC {
 	public CompatTC() {
+		LH.add("tc.aspect.strontio" , "Stupidness, Incompetence");
+		LH.add("tc.aspect.nebrisum" , "Cheatiness, Raiding, Hoarding");
+		LH.add("tc.aspect.electrum" , "Electricity, Lightning");
+		LH.add("tc.aspect.magneto"  , "Magnetism, Attraction");
+		LH.add("tc.aspect.radio"    , "Radiation");
+//      LH.add("tc.aspect.reflexio" , "Reflection");
+		
 		ThaumcraftApi            .class.getCanonicalName();
 		ThaumcraftApiHelper      .class.getCanonicalName();
 		Aspect                   .class.getCanonicalName();
@@ -131,12 +137,65 @@ public class CompatTC extends CompatBase implements ICompatTC {
 		
 		TC.REFLEXIO         .mAspect = Aspect.EXCHANGE;
 		
-		LH.add("tc.aspect.strontio" , "Stupidness, Incompetence");
-		LH.add("tc.aspect.nebrisum" , "Cheatiness, Raiding, Hoarding");
-		LH.add("tc.aspect.electrum" , "Electricity, Lightning");
-		LH.add("tc.aspect.magneto"  , "Magnetism, Attraction");
-		LH.add("tc.aspect.radio"    , "Radiation");
-//      LH.add("tc.aspect.reflexio" , "Reflection");
+		ThaumcraftApi.registerEntityTag("TwilightForest.Forest Squirrel"             , new AspectList().add(Aspect.BEAST, 2).add(Aspect.EARTH, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Forest Bunny"                , new AspectList().add(Aspect.BEAST, 2).add(Aspect.EARTH, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Tiny Bird"                   , new AspectList().add(Aspect.BEAST, 2).add(Aspect.FLIGHT, 2).add(Aspect.AIR, 1));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Glacier Penguin"             , new AspectList().add(Aspect.BEAST, 2).add(Aspect.FLIGHT, 1).add(Aspect.COLD, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Forest Raven"                , new AspectList().add(Aspect.BEAST, 2).add(Aspect.FLIGHT, 2).add(Aspect.AIR, 1).add(Aspect.SENSES, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Wild Boar"                   , new AspectList().add(Aspect.BEAST, 2).add(Aspect.EARTH, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Bighorn Sheep"               , new AspectList().add(Aspect.BEAST, 2).add(Aspect.EARTH, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Questing Ram"                , new AspectList().add(Aspect.BEAST, 5).add(Aspect.CLOTH, 5).add(Aspect.SENSES, 5));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Wild Deer"                   , new AspectList().add(Aspect.BEAST, 3).add(Aspect.EARTH, 3));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Firefly"                     , new AspectList().add(Aspect.BEAST, 1).add(Aspect.FLIGHT, 1).add(Aspect.LIGHT, 1));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Skeleton Druid"              , new AspectList().add(Aspect.UNDEAD, 3).add(Aspect.MAN, 1).add(Aspect.MAGIC, 1));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Loyal Zombie"                , new AspectList().add(Aspect.UNDEAD, 2).add(Aspect.MAN, 1).add(Aspect.EARTH, 1));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Lich Minion"                 , new AspectList().add(Aspect.UNDEAD, 2).add(Aspect.MAN, 1).add(Aspect.EARTH, 1));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Giant Miner"                 , new AspectList().add(Aspect.MAN, 5).add(Aspect.MINE, 3).add(Aspect.GREED, 3));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Armored Giant"               , new AspectList().add(Aspect.MAN, 5).add(Aspect.WEAPON, 3).add(Aspect.ARMOR, 3));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Redcap"                      , new AspectList().add(Aspect.MAN, 2).add(Aspect.MINE, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Redcap Sapper"               , new AspectList().add(Aspect.MAN, 2).add(Aspect.ENERGY, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.WinterWolf"                  , new AspectList().add(Aspect.BEAST, 3).add(Aspect.EARTH, 3));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Mist Wolf"                   , new AspectList().add(Aspect.BEAST, 3).add(Aspect.EARTH, 3));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Hostile Wolf"                , new AspectList().add(Aspect.BEAST, 3).add(Aspect.EARTH, 3));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Maze Slime"                  , new AspectList().add(Aspect.SLIME, 2).add(Aspect.WATER, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.King Spider"                 , new AspectList().add(Aspect.BEAST, 3).add(Aspect.ENTROPY, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Redscale Broodling"          , new AspectList().add(Aspect.BEAST, 3).add(Aspect.ENTROPY, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Hedge Spider"                , new AspectList().add(Aspect.BEAST, 3).add(Aspect.ENTROPY, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Swarm Spider"                , new AspectList().add(Aspect.BEAST, 2).add(Aspect.ENTROPY, 1));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Fire Beetle"                 , new AspectList().add(Aspect.BEAST, 3).add(Aspect.ENTROPY, 2).add(Aspect.FIRE, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Slime Beetle"                , new AspectList().add(Aspect.BEAST, 3).add(Aspect.ENTROPY, 2).add(Aspect.SLIME, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Pinch Beetle"                , new AspectList().add(Aspect.BEAST, 3).add(Aspect.ENTROPY, 2).add(Aspect.TRAP, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Mini Ghast"                  , new AspectList().add(Aspect.UNDEAD, 2).add(Aspect.FIRE, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Tower Ghast"                 , new AspectList().add(Aspect.UNDEAD, 6).add(Aspect.FIRE, 6));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Tower Boss"                  , new AspectList().add(Aspect.UNDEAD, 20).add(Aspect.FIRE, 20));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Tower Termite"               , new AspectList().add(Aspect.BEAST, 1).add(Aspect.TREE, 1));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Helmet Crab"                 , new AspectList().add(Aspect.BEAST, 1).add(Aspect.WATER, 1).add(Aspect.ARMOR, 1));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Mosquito Swarm"              , new AspectList().add(Aspect.BEAST, 1).add(Aspect.FLIGHT, 1).add(Aspect.POISON, 1));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Stable Ice Core"             , new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.COLD, 1));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Unstable Ice Core"           , new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.COLD, 1).add(Aspect.EXCHANGE, 1));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Ice Crystal"                 , new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.COLD, 1));
+		ThaumcraftApi.registerEntityTag("TwilightForest.SnowGuardian"                , new AspectList().add(Aspect.SOUL, 3).add(Aspect.ARMOR, 2).add(Aspect.WEAPON, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Death Tome"                  , new AspectList().add(Aspect.MIND, 3).add(Aspect.FLIGHT, 1).add(Aspect.MAGIC, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Twilight Wraith"             , new AspectList().add(Aspect.SOUL, 3).add(Aspect.FLIGHT, 1).add(Aspect.MAGIC, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Tower Golem"                 , new AspectList().add(Aspect.TREE, 4).add(Aspect.MECHANISM, 3));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Block&Chain Goblin"          , new AspectList().add(Aspect.MAN, 4).add(Aspect.WEAPON, 3));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Upper Goblin Knight"         , new AspectList().add(Aspect.MAN, 4).add(Aspect.WEAPON, 3));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Lower Goblin Knight"         , new AspectList().add(Aspect.MAN, 4).add(Aspect.ARMOR, 3));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Troll"                       , new AspectList().add(Aspect.MAN, 4).add(Aspect.CRYSTAL, 3).add(Aspect.DARKNESS, 3));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Twilight Kobold"             , new AspectList().add(Aspect.MAN, 1).add(Aspect.BEAST, 1));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Naga"                        , new AspectList().add(Aspect.BEAST, 20).add(Aspect.ARMOR, 20).add(Aspect.TRAVEL, 20));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Naga Segment"                , new AspectList().add(Aspect.BEAST, 20).add(Aspect.ARMOR, 20).add(Aspect.TRAVEL, 20));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Hydra"                       , new AspectList().add(Aspect.BEAST, 20).add(Aspect.HEAL, 20).add(Aspect.FIRE, 20));
+		ThaumcraftApi.registerEntityTag("TwilightForest.HydraHead"                   , new AspectList().add(Aspect.BEAST, 20).add(Aspect.MIND, 20).add(Aspect.FIRE, 20));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Twilight Lich"               , new AspectList().add(Aspect.UNDEAD, 20).add(Aspect.MAN, 20).add(Aspect.MAGIC, 20));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Harbinger Cube"              , new AspectList().add(Aspect.ELDRITCH, 20).add(Aspect.DEATH, 20).add(Aspect.ENTROPY, 20));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Adherent"                    , new AspectList().add(Aspect.ELDRITCH, 20).add(Aspect.DEATH, 20).add(Aspect.ENTROPY, 20));
+		ThaumcraftApi.registerEntityTag("TwilightForest.RovingCube"                  , new AspectList().add(Aspect.ELDRITCH, 20).add(Aspect.DEATH, 20).add(Aspect.ENTROPY, 20));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Minotaur"                    , new AspectList().add(Aspect.BEAST, 4).add(Aspect.MAN, 4).add(Aspect.WEAPON, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Minoshroom"                  , new AspectList().add(Aspect.BEAST, 20).add(Aspect.MAN, 20).add(Aspect.WEAPON, 20));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Knight Phantom"              , new AspectList().add(Aspect.SOUL, 20).add(Aspect.ARMOR, 20).add(Aspect.WEAPON, 20));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Yeti"                        , new AspectList().add(Aspect.BEAST, 4).add(Aspect.MAN, 4).add(Aspect.COLD, 2));
+		ThaumcraftApi.registerEntityTag("TwilightForest.Yeti Boss"                   , new AspectList().add(Aspect.BEAST, 20).add(Aspect.MAN, 20).add(Aspect.COLD, 20));
 	}
 	
 	@Override

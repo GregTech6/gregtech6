@@ -677,6 +677,7 @@ public class Loader_Fluids implements Runnable {
 		FL.reg(FL.Gas_Natural             .make(1000), ST.make(MD.MaCu, "fluids"                   , 1,27), IL.Bottle_Empty.get(1), F, T, T);
 		FL.reg(FL.Gas_Natural             .make(2000), ST.make(MD.MaCu, "fluids"                   , 1, 2), ST.make(MD.MaCu, "fluids", 1, 20), F, T, T);
 		FL.reg(FL.Ambrosia                .make(1000), IL.FR_Ambrosia                              .get(1), IL.FR_WaxCapsule.get(1), T, F, F);
+		FL.reg(FL.Honey                   .make( 250), IL.EtFu_Bottle_Honey                        .get(1), IL.Bottle_Empty.get(1), F, F, T);
 		FL.reg(FL.Honey                   .make(1000), IL.GrC_Honey_Jar                            .get(1), ST.make(Items.flower_pot, 1, 0));
 		FL.reg(FL.Honey                   .make( 500), IL.BoP_Jar_Honey                            .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));
 		FL.reg(FL.Potion_Poison_2         .make( 500), IL.BoP_Jar_Poison                           .get(1), IL.BoP_Jar_Empty.get(1, IL.Bottle_Empty.get(1)));

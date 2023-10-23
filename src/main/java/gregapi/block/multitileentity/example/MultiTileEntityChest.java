@@ -170,7 +170,63 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	@Override
 	public long onToolClick(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isClientSide()) return 0;
-		if (aTool.equals(TOOL_wrench)) {byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ); if (aTargetSide > 1) {mFacing = aTargetSide; updateClientData(); causeBlockUpdate(); return 10000;}}
+		if (aTool.equals(TOOL_wrench)) {
+			byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
+			if (aTargetSide > 1) {
+				mFacing = aTargetSide;
+				updateClientData();
+				causeBlockUpdate();
+				return 10000;
+			}
+		}
+		if (aTool.equals(TOOL_pincers) && aPlayerInventory != null) {
+			long rCount = 0;
+			for (int i = 0; i < invsize(); i++) if (slotHas(i)) {
+				// Check for Achievements so those won't get skipped.
+				if (aPlayer instanceof EntityPlayer) UT.Inventories.checkAchievements((EntityPlayer)aPlayer, slot(i));
+				// Merge Stacks first when applicable.
+				for (int j = 0; j < 36; j++) {
+					if (ST.equal(slot(i), aPlayerInventory.getStackInSlot(j))) {
+						rCount += ST.move(this, aPlayerInventory, i, j);
+						if (!slotHas(i)) break;
+					}
+				}
+			}
+			// Stackable NBT-less Items second.
+			for (int i = 0; i < invsize(); i++) if (slotHas(i) && ST.maxsize(slot(i)) > 1 && ST.nbt(slot(i)) == null) {
+				for (int j = 9; j < 36; j++) {
+					rCount += ST.move(this, aPlayerInventory, i, j);
+					if (!slotHas(i)) break;
+				}
+			}
+			// Stackable NBT-containing Items third.
+			if (rCount <= 0) for (int i = 0; i < invsize(); i++) if (slotHas(i) && ST.maxsize(slot(i)) > 1) {
+				for (int j = 9; j < 36; j++) {
+					rCount += ST.move(this, aPlayerInventory, i, j);
+					if (!slotHas(i)) break;
+				}
+			}
+			// Unstackable NBT-containing Items fourth.
+			if (rCount <= 0) for (int i = 0; i < invsize(); i++) if (slotHas(i) && ST.nbt(slot(i)) != null) {
+				for (int j = 9; j < 36; j++) {
+					rCount += ST.move(this, aPlayerInventory, i, j);
+					if (!slotHas(i)) break;
+				}
+			}
+			// Unstackable NBT-less Items fifth.
+			if (rCount <= 0) for (int i = 0; i < invsize(); i++) if (slotHas(i)) {
+				for (int j = 9; j < 36; j++) {
+					rCount += ST.move(this, aPlayerInventory, i, j);
+					if (!slotHas(i)) break;
+				}
+			}
+			// Nothing was done.
+			if (rCount <= 0) return 1;
+			// Make Sound and update Player Inventory if Items got transferred.
+			UT.Sounds.send(SFX.MC_COLLECT, this);
+			ST.update(aPlayer);
+			return rCount;
+		}
 		return 0;
 	}
 	
@@ -223,6 +279,7 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if (UT.Code.stringValid(mDungeonLootName)) aList.add(LH.Chat.BLINKING_CYAN + "Contains Loot of " + LH.Chat.WHITE + LH.get("loot." + mDungeonLootName));
+		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TAKE_PINCERS));
 	}
 	
 	@Override public boolean receiveDataByte(byte aData, INetworkHandler aNetworkHandler) {mUsingPlayers = aData; return T;}

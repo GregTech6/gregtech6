@@ -912,6 +912,9 @@ public class LoaderItemList implements Runnable {
 		IL.TC_Block_Tallow                      .set(ST.make(MD.TC, "blockCosmeticSolid"                    , 1, 5), new OreDictItemData(MT.Tallow, 9*U));
 		IL.TC_Block_Flesh                       .set(ST.make(MD.TC, "blockTaint"                            , 1, 2), new OreDictItemData(MT.MeatRotten, 18*U, MT.Bone, U));
 		IL.TC_Block_Air                         .set(ST.make(MD.TC, "blockAiry"                             , 1, 0));
+		IL.TC_Loot_Common                       .set(ST.make(MD.TC, "ItemLootBag"                           , 1, 0));
+		IL.TC_Loot_Uncommon                     .set(ST.make(MD.TC, "ItemLootBag"                           , 1, 1));
+		IL.TC_Loot_Rare                         .set(ST.make(MD.TC, "ItemLootBag"                           , 1, 2));
 		IL.TC_Phial                             .set(ST.make(MD.TC, "ItemEssence"                           , 1, 0), new OreDictItemData(ANY.Clay, U4, MT.Glass, 3*U4), CR.DELATE);
 		IL.TC_Gold_Ring                         .set(ST.make(MD.TC, "ItemBaubleBlanks"                      , 1, 1), OP.ring.dat(MT.Au), CR.DELATE);
 		IL.TC_Gold_Coin                         .set(ST.make(MD.TC, "ItemResource"                          , 1,18), new OreDictItemData(MT.Au, U9));
@@ -1382,6 +1385,8 @@ public class LoaderItemList implements Runnable {
 		IL.EtFu_Chorus_Popped                   .set(ST.make(MD.EtFu, "chorus_fruit_popped"                 , 1, 0));
 		IL.EtFu_Rabbit_Foot                     .set(ST.make(MD.EtFu, "rabbit_foot"                         , 1, 0));
 		IL.EtFu_Beet_Seeds                      .set(ST.make(MD.EtFu, "beetroot_seeds"                      , 1, 0), null, "seedBeet");
+		IL.EtFu_Sus_Stew                        .set(ST.make(MD.EtFu, "suspicious_stew"                     , 1, 0));
+		IL.EtFu_Bottle_Honey                    .set(ST.make(MD.EtFu, "honey_bottle"                        , 1, 0), null, OD.container250honey);
 		IL.EtFu_Dragon_Breath                   .set(ST.make(MD.EtFu, "dragon_breath"                       , 1, 0));
 		IL.EtFu_Lingering_Potion                .set(ST.make(MD.EtFu, "lingering_potion"                    , 1, 0));
 		IL.EtFu_Wither_Rose                     .set(ST.make(MD.EtFu, "wither_rose"                         , 1, 0), null, OD.flower, OD.flowerWither);
@@ -1462,6 +1467,8 @@ public class LoaderItemList implements Runnable {
 		if (IL.EtFu_Block_Copper    .exists()) MT.Cu            .mTextureSolid = BlockTextureCopied.get(IL.EtFu_Block_Copper    .block(), 0);
 		if (IL.EtFu_Block_Copper_Cut.exists()) MT.AnnealedCopper.mTextureSolid = BlockTextureCopied.get(IL.EtFu_Block_Copper_Cut.block(), 4);
 		if (IL.EtFu_Lingering_Potion.exists()) IL.EtFu_Lingering_Potion.item().setContainerItem(Items.glass_bottle);
+		if (IL.EtFu_Bottle_Honey    .exists()) IL.EtFu_Bottle_Honey    .item().setContainerItem(Items.glass_bottle);
+		if (IL.EtFu_Sus_Stew        .exists()) IL.EtFu_Sus_Stew        .item().setContainerItem(Items.bowl);
 		
 		
 		IL.GaSu_Granite                         .set(ST.make(MD.GaSu, "18Stones"                            , 1, 1), new OreDictItemData(MT.STONES.Granite   , U*9), OP.stone.dat(MT.STONES.Granite   ), CR.DELATE);

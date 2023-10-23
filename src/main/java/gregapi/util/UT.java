@@ -3120,7 +3120,7 @@ public class UT {
 			}
 			if (aEntity.getClass().getName().indexOf(".") < 0) return F;
 			String tClassName = UT.Reflection.getLowercaseClass(aEntity);
-			return tClassName.contains("wwolf") || tClassName.contains("villagerwere") || tClassName.contains("wolfman") || tClassName.contains("werewolf") || tClassName.contains("alphawolf") || tClassName.contains("tamewere") || tClassName.contains("minotaur") || tClassName.contains("minoshroom");
+			return tClassName.contains("wwolf") || tClassName.contains("yeti") || tClassName.contains("villagerwere") || tClassName.contains("wolfman") || tClassName.contains("werewolf") || tClassName.contains("alphawolf") || tClassName.contains("tamewere") || tClassName.contains("minotaur") || tClassName.contains("minoshroom");
 		}
 		
 		public static float getHeatDamageFromItem(ItemStack aStack) {
