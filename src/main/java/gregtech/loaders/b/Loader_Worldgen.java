@@ -253,10 +253,11 @@ public class Loader_Worldgen implements Runnable {
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble, MT.STONES.Marble, ST.block(MD.EB, "enhancedbiomes.tile.stoneEB"), 7, ST.block(MD.EB, "enhancedbiomes.tile.stoneCobbleEB"), 7));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble, MT.STONES.Marble, ST.block(MD.PFAA, "strongStone"), 5, ST.block(MD.PFAA, "strongCobble"), 5));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble, MT.STONES.Marble, ST.block(MD.UB, "metamorphicStone"), 2+8, ST.block(MD.UB, "metamorphicCobblestone"), 2
+		, new StoneLayerOres(MT.OREMATS.Cassiterite     , U16, 20, 80)
 		, new StoneLayerOres(MT.Dioptase                , U64, 24, 48, BIOMES_MOUNTAINS)
 		));
 		StoneLayer.LAYERS.add(new StoneLayer(BlocksGT.Marble
-		, new StoneLayerOres(MT.OREMATS.Cassiterite     , U16, 40, 80)
+		, new StoneLayerOres(MT.OREMATS.Cassiterite     , U16, 20, 80)
 		, new StoneLayerOres(MT.OREMATS.Stannite        , U16, 38, 82)
 		, new StoneLayerOres(MT.OREMATS.Kesterite       , U16, 38, 82)
 		, new StoneLayerOres(MT.OREMATS.Sphalerite      , U8 , 10, 30)

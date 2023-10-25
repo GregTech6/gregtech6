@@ -32,6 +32,7 @@ import gregapi.compat.forestry.ICompatFR;
 import gregapi.compat.galacticraft.ICompatGC;
 import gregapi.compat.industrialcraft.ICompatIC2;
 import gregapi.compat.industrialcraft.ICompatIC2EUItem;
+import gregapi.compat.opencomputers.ICompatOC;
 import gregapi.compat.thaumcraft.ICompatTC;
 import gregapi.compat.warpdrive.ICompatWD;
 import gregapi.config.Config;
@@ -1014,7 +1015,7 @@ public class CS {
 	/** Used to register ComputerCraft Stuff, this Object might be null if ComputerCraft isn't installed. */
 	public static ICompatCC         COMPAT_CC;
 	/** Used to register OpenComputers Stuff, this Object might be null if OpenComputers isn't installed. */
-//  public static ICompatOC         COMPAT_OC;
+	public static ICompatOC         COMPAT_OC;
 	/** Used to register Forestry Stuff, this Object might be null if Forestry isn't installed. */
 	public static ICompatFR         COMPAT_FR;
 	/** Used to register GalactiCraft Stuff, this Object might be null if GalactiCraft isn't installed. */
