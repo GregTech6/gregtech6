@@ -644,11 +644,9 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Coagulator   .addRecipe0(T,  0,  256, FL.Latex.make(L/9), NF, nugget.mat(MT.Rubber, 1));
 		
 		for (FluidStack tFluid : FL.array(MT.He.gas(U, T), MT.Ne.gas(U, T), MT.Ar.gas(U, T), MT.Kr.gas(U, T), MT.Xe.gas(U, T), MT.Rn.gas(U, T))) if (tFluid != null) {
-			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.Si             ,  U9), FL.array(       tFluid    , MT.Si            .liquid(35*U9, T)), NF, bouleGt.mat(MT.Si              , 1));
 			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.Ge             ,  U9), FL.array(       tFluid    , MT.Ge            .liquid(35*U9, T)), NF, bouleGt.mat(MT.Ge              , 1));
 			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.RedstoneAlloy  ,  U9), FL.array(       tFluid    , MT.RedstoneAlloy .liquid(35*U9, T)), NF, bouleGt.mat(MT.RedstoneAlloy   , 1));
 			RM.CrystallisationCrucible.addRecipe1(T, 16,  72000, OM.dust(MT.NikolineAlloy  ,  U9), FL.array(       tFluid    , MT.NikolineAlloy .liquid(35*U9, T)), NF, bouleGt.mat(MT.NikolineAlloy   , 1));
-			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.Si                  ), FL.array(FL.mul(tFluid, 9), MT.Si            .liquid(35*U , T)), NF, bouleGt.mat(MT.Si              , 9));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.Ge                  ), FL.array(FL.mul(tFluid, 9), MT.Ge            .liquid(35*U , T)), NF, bouleGt.mat(MT.Ge              , 9));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.RedstoneAlloy       ), FL.array(FL.mul(tFluid, 9), MT.RedstoneAlloy .liquid(35*U , T)), NF, bouleGt.mat(MT.RedstoneAlloy   , 9));
 			RM.CrystallisationCrucible.addRecipe1(T, 16, 648000, OM.dust(MT.NikolineAlloy       ), FL.array(FL.mul(tFluid, 9), MT.NikolineAlloy .liquid(35*U , T)), NF, bouleGt.mat(MT.NikolineAlloy   , 9));

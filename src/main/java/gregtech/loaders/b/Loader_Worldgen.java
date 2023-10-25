@@ -601,7 +601,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenGlowtus         ("plant.glowtus"           , T,16, 2, GEN_OVERWORLD, GEN_GT, GEN_PFAA                     , GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS);
 		new WorldgenBushes          ("plant.bush"              , T, 1, 4, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
 		
-		new WorldgenHives           (   "overworld.bumblehives", T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC, GEN_ENVM, GEN_ENVM_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT);
+		new WorldgenHives           (   "overworld.bumblehives", T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_ENVM_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT);
 		new WorldgenHives           (      "nether.bumblehives", T, GEN_NETHER);
 		new WorldgenHives           (         "end.bumblehives", T, GEN_END);
 		new WorldgenHives           (      "erebus.bumblehives", T, GEN_EREBUS);
