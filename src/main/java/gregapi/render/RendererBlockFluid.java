@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,20 +19,22 @@
 
 package gregapi.render;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import gregapi.data.FL;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.BlockFluidBase;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.IFluidBlock;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
 
 public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 	public static int RENDER_ID = FluidRegistry.renderIdFluid;
@@ -126,8 +128,8 @@ public class RendererBlockFluid implements ISimpleBlockRenderingHandler {
 			rRendered = T;
 			IIcon iconStill = aFluid.getIcon(1, bMeta);
 			float flowDir = (float)BlockFluidBase.getFlowDirection(aWorld, aX, aY, aZ);
-			
 			if (flowDir > -999.0F) iconStill = aFluid.getIcon(2, bMeta);
+			if (iconStill == null) iconStill = Blocks.water.getIcon(0, 0);
 			
 			heightNW -= RENDER_OFFSET;
 			heightSW -= RENDER_OFFSET;
