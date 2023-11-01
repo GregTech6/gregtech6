@@ -24,6 +24,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
@@ -189,7 +190,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 	
 	public static final List<short[]> sRainbow = new ArrayListNoNulls<>(), sRainbowFast = new ArrayListNoNulls<>(), sPosR = new ArrayListNoNulls<>(), sPosG = new ArrayListNoNulls<>(), sPosB = new ArrayListNoNulls<>(), sPosA = new ArrayListNoNulls<>(), sNegR = new ArrayListNoNulls<>(), sNegG = new ArrayListNoNulls<>(), sNegB = new ArrayListNoNulls<>(), sNegA = new ArrayListNoNulls<>();
 	
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.LOWEST) 
 	public void onTextureStitchedPre(TextureStitchEvent.Pre aEvent) {
 		// You should thank me for fixing this Fluid Bug. Seriously, some people just don't set the Icons of their registered Fluids...
 		for (Fluid aFluid : FluidRegistry.getRegisteredFluids().values()) {
@@ -203,7 +204,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		}
 	}
 	
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGHEST) 
 	public void onItemTooltip(ItemTooltipEvent aEvent) {
 		if (Abstract_Mod.sFinalized < Abstract_Mod.sModCountUsingGTAPI || ST.invalid(aEvent.itemStack)) return;
 		if (!DISPLAY_TEMP_TOOLTIP) {DISPLAY_TEMP_TOOLTIP = T; return;}
@@ -491,7 +492,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		}
 	}
 	
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGHEST) 
 	public void onClientTickEvent(ClientTickEvent aEvent) {
 		if (aEvent.phase == Phase.END) {
 			if (CLIENT_TIME == 10) {
@@ -586,7 +587,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 		}
 	}
 	
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.LOWEST) 
 	public void onDrawBlockHighlight(DrawBlockHighlightEvent aEvent) {
 		Block
 		aBlock = ST.block(aEvent.player.getCurrentEquippedItem());
