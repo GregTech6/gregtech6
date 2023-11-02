@@ -21,6 +21,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] The GT6 Compasses that point to Coordinates will now jiggle the needle when you get really close to their target Coordinates.
 [CHANGED] Bumblebees now have a "Level" Tooltip indicating how far in their Evolution they are.
 [CHANGED] Cassiterite should be more than twice as likely to show up as an Ore Vein in Marble now.
+[CHANGED] Many of the Endstone and Netherack Dust Recipes in the Centrifuge have been tweaked a bit. also they allow Dust Blocks now.
 [ADDED] Rightclicking a GT6 Chest with Pincers will pull its content into your Inventory, prioritizing stackable Items first. This should greatly help with sorting through the contents of Loot Chests you opened at your Base, like a sane person would do.
 [ADDED] Fireleaf which is Steeleaf but converted with Fiery Blood or Fiery Tears. It has Fortune III and Auto-Collect along with some other Stuff.
 [ADDED] Holy Water, Fiery Blood and Fiery Tears can be used in a Bath to add Enchantments to GT Arrows and GT Bullets.
