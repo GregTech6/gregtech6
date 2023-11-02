@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,11 +18,6 @@
  */
 
 package gregtech.tileentity.tools;
-
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -52,6 +47,11 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -167,7 +167,7 @@ public class MultiTileEntityBumbliaryAdvanced extends TileEntityBase07Paintable 
 							if (mLife % 1200 == 600 && rng(10000) < Util.getWorkForce(tRoyalTag) && checkWork(tRoyalTag)) {
 								if (null != tRoyalItem.bumbleCanProduce(worldObj, xCoord, yCoord, zCoord, tRoyalStack, tRoyalMeta, 1)) {
 									for (int i = 0, j = tRoyalItem.bumbleProductCount(tRoyalStack, tRoyalMeta); i < j; i++) {
-										if (rng(40000) < tRoyalItem.bumbleProductChance(tRoyalStack, tRoyalMeta, i)) {
+										if (rng(20000) < tRoyalItem.bumbleProductChance(tRoyalStack, tRoyalMeta, i)) {
 											if (null != tRoyalItem.bumbleCanProduct(worldObj, xCoord, yCoord, zCoord, tRoyalStack, tRoyalMeta, i)) {
 												ItemStack tProduct = tRoyalItem.bumbleProductStack(tRoyalStack, tRoyalMeta, 1, i);
 												if (ST.valid(tProduct)) for (int tSlot : SLOTS_COMBS) if (ST.equal(tProduct, slot(tSlot)) && addStackToSlot(tSlot, tProduct)) {
