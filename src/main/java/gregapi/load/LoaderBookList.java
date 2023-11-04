@@ -596,6 +596,9 @@ public class LoaderBookList implements Runnable {
 		}
 		if (MD.ChocoCraft.mLoaded) {
 			BooksGT.BOOK_REGISTER  .put(MD.ChocoCraft, "Chocopedia"                   ,   W, (byte)  4);
+			BooksGT.BOOK_REGISTER  .put(MD.ChocoCraft, "Loverly_Gysahl"               ,   W, (byte) 51);
+			BooksGT.BOOK_REGISTER  .put(MD.ChocoCraft, "Red_Gysahl"                   ,   W, (byte) 51);
+			BooksGT.BOOK_REGISTER  .put(MD.ChocoCraft, "Golden_Gysahl"                ,   W, (byte) 51);
 		}
 		if (MD.HOWL.mLoaded) {
 			BooksGT.BOOKS_NORMAL   .add(MD.HOWL, "lycanthropeBook"                    ,   W);
