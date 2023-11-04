@@ -2069,6 +2069,7 @@ public class CS {
 		, MaCr              = "magicalcrops"
 		, MaCu              = "Mariculture"
 		, MoCr              = "MoCreatures"
+		, ChocoCraft        = "chococraft"
 		, GoG               = "GrimoireOfGaia"
 		, DRPG              = "divinerpg"
 		, PdC               = "psychedelicraft"
