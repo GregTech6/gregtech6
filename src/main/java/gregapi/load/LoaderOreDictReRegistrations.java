@@ -610,6 +610,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration(OD.itemLeatherHardened            , OD.craftingLeather);
 		OreDictManager.INSTANCE.addReRegistration(OD.itemLeatherImpregnated         , OD.craftingLeather);
 		OreDictManager.INSTANCE.addReRegistration(OD.itemFeather                    , OD.craftingFeather);
+		OreDictManager.INSTANCE.addReRegistration(OD.chocobofeather                 , OD.itemFeather);
 		OreDictManager.INSTANCE.addReRegistration(OD.itemFur                        , OD.craftingFur);
 		OreDictManager.INSTANCE.addReRegistration(OD.itemPelt                       , OD.craftingFur);
 		OreDictManager.INSTANCE.addReRegistration(OD.itemGrassTall                  , OD.itemGrass);
