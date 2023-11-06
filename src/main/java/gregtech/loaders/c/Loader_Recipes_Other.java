@@ -237,56 +237,56 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		for (OreDictMaterial tClay : ANY.Clay.mToThis) for (OreDictMaterial tSand : ANY.SiO2.mToThis) {
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.Stone, MT.Concrete, MT.Talc, MT.STONES.Rhyolite, MT.STONES.Gneiss, MT.STONES.Shale, MT.Oilshale, MT.Dolomite, MT.STONES.Chert, MT.Asbestos}) {
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.CFoam.make(1000), ZL_IS);
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.CFoam.make(4000), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  128, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.CFoam.make(1000), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  512, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.CFoam.make(4000), ZL_IS);
 		}
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Diorite, MT.STONES.Marble, MT.Chalk, MT.CaCO3, MT.Endstone, MT.STONES.Livingrock, MT.STONES.Holystone, MT.STONES.Castlerock}) {
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_White], 10), ZL_IS);
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_White], 40), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  128, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_White], 10), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  512, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_White], 40), ZL_IS);
 		}
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Basalt, MT.STONES.Gabbro, MT.STONES.GraniteBlack, MT.STONES.Deepslate}) {
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Black], 10), ZL_IS);
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Black], 40), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  128, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Black], 10), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  512, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Black], 40), ZL_IS);
 		}
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Migmatite, MT.STONES.Eclogite, MT.STONES.SpaceRock, MT.STONES.Slate, MT.STONES.Cragrock}) {
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Gray], 10), ZL_IS);
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Gray], 40), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  128, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Gray], 10), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  512, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Gray], 40), ZL_IS);
 		}
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Andesite, MT.STONES.Dacite, MT.STONES.Deadrock, MT.STONES.Greywacke, MT.STONES.MoonRock, MT.STONES.MoonTurf}) {
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_LightGray], 10), ZL_IS);
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_LightGray], 40), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  128, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_LightGray], 10), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  512, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_LightGray], 40), ZL_IS);
 		}
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Blueschist}) {
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_LightBlue], 10), ZL_IS);
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_LightBlue], 40), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  128, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_LightBlue], 10), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  512, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_LightBlue], 40), ZL_IS);
 		}
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Greenschist, MT.STONES.Betweenstone, MT.PrismarineLight}) {
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Lime], 10), ZL_IS);
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Lime], 40), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  128, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Lime], 10), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  512, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Lime], 40), ZL_IS);
 		}
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Pitstone, MT.PrismarineDark, MT.STONES.Mazestone}) {
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Green], 10), ZL_IS);
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Green], 40), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  128, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Green], 10), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  512, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Green], 40), ZL_IS);
 		}
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Redrock, MT.STONES.MarsRock, MT.STONES.MarsSand, MT.Netherrack, MT.STONES.GraniteRed, MT.STONES.Granite}) {
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Red], 10), ZL_IS);
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Red], 40), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  128, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Red], 10), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  512, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Red], 40), ZL_IS);
 		}
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Komatiite, MT.STONES.Templerock}) {
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Yellow], 10), ZL_IS);
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Yellow], 40), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  128, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Yellow], 10), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  512, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Yellow], 40), ZL_IS);
 		}
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Limestone}) {
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Orange], 10), ZL_IS);
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Orange], 40), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  128, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Orange], 10), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  512, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Orange], 40), ZL_IS);
 		}
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Quartzite, MT.STONES.Siltstone}) {
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Pink], 10), ZL_IS);
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Pink], 40), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  128, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Pink], 10), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  512, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Pink], 40), ZL_IS);
 		}
 		for (OreDictMaterial tRock : new OreDictMaterial[] {MT.STONES.Umber, MT.STONES.Kimberlite}) {
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Brown], 10), ZL_IS);
-		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  256, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Brown], 40), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  128, ST.array(OM.dust(tRock, U* 6), OM.dust(tSand, U * 2), OM.dust(tClay, U4)), FL.mul(tWater, 1), FL.mul(DYED_C_FOAMS[DYE_INDEX_Brown], 10), ZL_IS);
+		RM.Mixer.addRecipeX(T,F,F,F,T, 16,  512, ST.array(OM.dust(tRock, U*24), OM.dust(tSand, U * 8), OM.dust(tClay, U )), FL.mul(tWater, 4), FL.mul(DYED_C_FOAMS[DYE_INDEX_Brown], 40), ZL_IS);
 		}
 		}
 		
