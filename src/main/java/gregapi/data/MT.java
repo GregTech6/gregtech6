@@ -2013,6 +2013,7 @@ public class MT {
 			Moonstone               .setOreMultiplier( 2);
 			Sunstone                .setOreMultiplier( 4);
 			Chimerite               .setOreMultiplier( 3);
+			OREMATS.Perlite         .setOreMultiplier( 8);
 			
 			
 			Empty                   .put(MD.MC);
@@ -3716,7 +3717,7 @@ public class MT {
 		Smithsonite             = oredustelec( 9211, "Smithsonite"               , SET_DULL      , 110, 223, 210, 255, MORTAR, BLACKLISTED_SMELTER, WASHING_MERCURY, WASHING_PERSULFATE               ).setSmelting(Zn   ,   U6).addSourceOf(Zn       ).setMcfg( 0, Zn             , 1*U, C                , 1*U, O                , 3*U)                                                                        ,
 		Sperrylite              = oredustelec( 9212, "Sperrylite"                , SET_SHINY     , 105, 105, 105, 255, MORTAR, BLACKLISTED_SMELTER, WASHING_MERCURY                                   ).setSmelting(Pt   ,   U4).addSourceOf(Pt,As    ).setMcfg( 0, Pt             , 1*U, As               , 2*U)                                                                                                ,
 		
-		Perlite                 = oredustcent( 9138, "Perlite"                   , SET_DULL      ,  30,  20,  30, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                                                .setMcfg( 1, Obsidian       , 9*U, H2O              , 1*U)                                                                                                ,
+		Perlite                 = oredustcent( 9138, "Perlite"                   , SET_DULL      ,  30,  20,  30, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                                                .setMcfg( 9, Obsidian       , 9*U, H2O              , 1*U)                                                                                                ,
 		Trona                   = oredustelec( 9159, "Trona"                     , SET_METALLIC  , 135, 135,  95, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                                                .setMcfg( 6, Na2CO3         , 6*U, H2O              , 6*U)                                                                                                ,
 		Mirabilite              = oredustdcmp( 9157, "Mirabilite"                , SET_DULL      , 240, 250, 210, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                                                .setMcfg( 7, Na2SO4         , 7*U, H2O              ,30*U)                                                                                                ,
 		Bischofite              = oredustdcmp( 9221, "Bischofite"                , SET_ROUGH     ,  99, 104, 118, 255, MORTAR, BLACKLISTED_SMELTER                                                    )                                                .setMcfg( 3, MgCl2          , 3*U, H2O              , 6*U)                                                                                                ,
