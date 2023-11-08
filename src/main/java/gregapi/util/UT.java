@@ -2805,7 +2805,7 @@ public class UT {
 			return addStackToPlayerInventory(aPlayer, aStack, F);
 		}
 		public static boolean addStackToPlayerInventory(EntityPlayer aPlayer, ItemStack aStack, boolean aCurrentSlotFirst) {
-			return addStackToPlayerInventory(aPlayer, aPlayer.inventory, aStack, aCurrentSlotFirst);
+			return aPlayer != null && addStackToPlayerInventory(aPlayer, aPlayer.inventory, aStack, aCurrentSlotFirst);
 		}
 		public static boolean addStackToPlayerInventory(EntityPlayer aPlayer, IInventory aInventory, ItemStack aStack, boolean aCurrentSlotFirst) {
 			if (aInventory != null && ST.valid(aStack)) {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregapi.data;
 
-import static gregapi.data.CS.*;
-
 import gregapi.GT_API;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.IIconContainer;
@@ -30,6 +28,8 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
+
+import static gregapi.data.CS.*;
 
 /** 
  * @author Gregorius Techneticies
@@ -100,6 +100,7 @@ public class BI {
 	
 	, CHAR_METER = new Icon("overlays/characters/meter")
 	, CHAR_METER_3 = new Icon("overlays/characters/cubicmeter")
+	, CHAR_DECAMETER_3 = new Icon("overlays/characters/cubicdecameter")
 	, CHAR_KELVIN = new Icon("overlays/characters/kelvin")
 	, CHAR_LITER = new Icon("overlays/characters/liter")
 	, CHAR_LUMIN = new Icon("overlays/characters/lumin")

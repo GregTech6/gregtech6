@@ -107,6 +107,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		if (slotHas(1)) aList.add(Chat.YELLOW + slot(1).getDisplayName() + Chat.GRAY + ": " + Chat.WHITE + slot(1).stackSize);
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.massstorage.tooltip.1") + UT.Code.makeString(mMaxStorage));
 		aList.add(Chat.CYAN + LH.get("gt.multitileentity.massstorage.tooltip.2"));
+		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TAKE_PINCERS));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_CUTTER));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_SCREWDRIVER));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_AUTO_OUTPUTS_MONKEY_WRENCH));
@@ -125,6 +126,32 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 		if (rReturn > 0) return rReturn;
 		if (isClientSide()) return 0;
+		if (aTool.equals(TOOL_pincers)) {
+			if ((mMode & B[3]) != 0) return 0;
+			long rCount = 0;
+			if (mPartialUnits > 0) {
+				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, getPartialStack(), worldObj, xCoord + OFFX[mFacing], yCoord, zCoord + OFFZ[mFacing]);
+				mPartialUnits = 0;
+				rCount += 10;
+			}
+			if (slotHas(0)) for (int j = 9; j < 36; j++) {
+				rCount += ST.move(this, aPlayerInventory, 0, j);
+				if (!slotHas(0)) break;
+			}
+			if (slotHas(1)) for (int j = 9; j < 36; j++) {
+				rCount += ST.move(this, aPlayerInventory, 0, j);
+				if (!slotHas(1)) break;
+			}
+			// Nothing was done.
+			if (rCount <= 0) return 1;
+			// Make Sound and update Player Inventory if Items got transferred.
+			UT.Sounds.send(SFX.MC_COLLECT, this);
+			ST.update(aPlayer);
+			// Update Mass Storage itself too.
+			updateClientData();
+			updateInventory();
+			return rCount;
+		}
 		if (aTool.equals(TOOL_softhammer)) {
 			if ((mMode & B[3]) != 0) return 0;
 			if (slotHas(0)) {

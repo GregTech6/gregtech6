@@ -176,6 +176,7 @@ public class MD {
 	, MaCr              = new ModData(ModIDs.MaCr               , "Magical Crops")
 	, MaCu              = new ModData(ModIDs.MaCu               , "Mariculture")
 	, MoCr              = new ModData(ModIDs.MoCr               , "Mo'Creatures")
+	, ChocoCraft        = new ModData(ModIDs.ChocoCraft         , "ChocoCraft (Plus)")
 	, GoG               = new ModData(ModIDs.GoG                , "Grimoire of Gaia")
 	, DRPG              = new ModData(ModIDs.DRPG               , "Divine RPG")
 	, PdC               = new ModData(ModIDs.PdC                , "Psychedelicraft") // Wait, why did I add some compat to this Drug Mod again?

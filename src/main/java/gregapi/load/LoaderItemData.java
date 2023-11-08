@@ -907,6 +907,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.MoCr, "scrollofsale"                             , 1,   W, MT.Paper              , U);
 		OM.data(MD.MoCr, "scrollofowner"                            , 1,   W, MT.Paper              , U);
 		OM.data(MD.MoCr, "scrolloffreedom"                          , 1,   W, MT.Paper              , U);
+		OM.data(MD.ChocoCraft, "Chocopedia"                         , 1,   W, MT.Paper              , U*3);
 		OM.data(MD.RoC, "rotarycraft_item_handbook"                 , 1,   W, MT.Paper              , U*6);
 		OM.data(MD.ReC, "reactorcraft_item_book"                    , 1,   W, MT.Paper              , U*6);
 		OM.data(MD.ElC, "electricraft_item_book"                    , 1,   W, MT.Paper              , U*6);

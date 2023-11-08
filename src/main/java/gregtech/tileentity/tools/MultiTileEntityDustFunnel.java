@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -87,6 +87,7 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get(LH.RECIPES_DUSTFUNNEL));
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_CLICK_TO_INTERACT)   + " (" + LH.get(LH.FACE_TOP) + ")");
+		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TAKE_PINCERS));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_TOGGLE_OUTPUTS_MONKEY_WRENCH));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 	}
@@ -135,6 +136,12 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isClientSide()) return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+		if (aTool.equals(TOOL_pincers)) {
+			ST.drop(worldObj, getCoords(), OM.dust(mContent));
+			mContent = null;
+			updateClientData();
+			return 10;
+		}
 		if (aTool.equals(TOOL_monkeywrench)) {
 			mMode = (byte)((DUST_TYPES.length + mMode + (aSneaking?-1:+1)) % DUST_TYPES.length);
 			if (aChatReturn != null) aChatReturn.add("Outputs in the Size of " + DUST_TYPES[mMode].mNameLocal);
@@ -272,7 +279,10 @@ public class MultiTileEntityDustFunnel extends TileEntityBase07Paintable impleme
 	
 	@Override
 	public boolean breakBlock() {
-		if (isServerSide()) ST.drop(worldObj, getCoords(), OM.dust(mContent));
+		if (isServerSide()) {
+			ST.drop(worldObj, getCoords(), OM.dust(mContent));
+			mContent = null;
+		}
 		return super.breakBlock();
 	}
 	

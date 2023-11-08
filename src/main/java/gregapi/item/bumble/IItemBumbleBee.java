@@ -96,6 +96,7 @@ public interface IItemBumbleBee {
 	public static class Util {
 		public static NBTTagCompound getBumbleTag(ItemStack aBumbleBee) {
 			NBTTagCompound aNBT = UT.NBT.getOrCreate(aBumbleBee), rBumbleTag = aNBT.getCompoundTag("gt.bumble");
+			if (rBumbleTag == null || rBumbleTag.hasNoTags()) rBumbleTag = getBumbleGenes(RNGSUS);
 			aNBT.setTag("gt.bumble", rBumbleTag);
 			return rBumbleTag;
 		}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,13 @@
 
 package gregapi.load;
 
-import static gregapi.data.CS.*;
-
 import gregapi.data.CS.BooksGT;
 import gregapi.data.IL;
 import gregapi.data.MD;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+
+import static gregapi.data.CS.W;
 
 public class LoaderBookList implements Runnable {
 	@Override
@@ -593,6 +593,12 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER  .put(MD.MoCr, "scrollofsale"                       ,   W, (byte) 18);
 			BooksGT.BOOK_REGISTER  .put(MD.MoCr, "scrollofowner"                      ,   W, (byte) 18);
 			BooksGT.BOOK_REGISTER  .put(MD.MoCr, "scrolloffreedom"                    ,   W, (byte) 18);
+		}
+		if (MD.ChocoCraft.mLoaded) {
+			BooksGT.BOOK_REGISTER  .put(MD.ChocoCraft, "Chocopedia"                   ,   W, (byte)  4);
+			BooksGT.BOOK_REGISTER  .put(MD.ChocoCraft, "Loverly_Gysahl"               ,   W, (byte) 51);
+			BooksGT.BOOK_REGISTER  .put(MD.ChocoCraft, "Red_Gysahl"                   ,   W, (byte) 51);
+			BooksGT.BOOK_REGISTER  .put(MD.ChocoCraft, "Golden_Gysahl"                ,   W, (byte) 51);
 		}
 		if (MD.HOWL.mLoaded) {
 			BooksGT.BOOKS_NORMAL   .add(MD.HOWL, "lycanthropeBook"                    ,   W);
