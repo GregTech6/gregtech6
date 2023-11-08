@@ -42,6 +42,7 @@ import gregapi.compat.forestry.ICompatFR;
 import gregapi.compat.galacticraft.ICompatGC;
 import gregapi.compat.industrialcraft.ICompatIC2;
 import gregapi.compat.industrialcraft.ICompatIC2EUItem;
+import gregapi.compat.opencomputers.ICompatOC;
 import gregapi.compat.thaumcraft.ICompatTC;
 import gregapi.compat.warpdrive.ICompatWD;
 import gregapi.config.Config;
@@ -600,6 +601,7 @@ public class GT_API extends Abstract_Mod {
 		if (ConfigsGT.GREGTECH.get("compat", "ThaumCraft"          , T)) ICompat.COMPAT_CLASSES.add(COMPAT_TC        = (ICompatTC        )UT.Reflection.callConstructor("gregapi.compat.thaumcraft.CompatTC"             , 0, null, D2));
 		if (ConfigsGT.GREGTECH.get("compat", "BuildCraft"          , T)) ICompat.COMPAT_CLASSES.add(COMPAT_BC        = (ICompatBC        )UT.Reflection.callConstructor("gregapi.compat.buildcraft.CompatBC"             , 0, null, D2));
 		if (ConfigsGT.GREGTECH.get("compat", "ComputerCraft"       , T)) ICompat.COMPAT_CLASSES.add(COMPAT_CC        = (ICompatCC        )UT.Reflection.callConstructor("gregapi.compat.computercraft.CompatCC"          , 0, null, D2));
+		if (ConfigsGT.GREGTECH.get("compat", "OpenComputers"       , T)) ICompat.COMPAT_CLASSES.add(COMPAT_OC        = (ICompatOC        )UT.Reflection.callConstructor("gregapi.compat.opencomputers.CompatOC"          , 0, null, D2));
 		if (ConfigsGT.GREGTECH.get("compat", "Forestry"            , T)) ICompat.COMPAT_CLASSES.add(COMPAT_FR        = (ICompatFR        )UT.Reflection.callConstructor("gregapi.compat.forestry.CompatFR"               , 0, null, D2));
 		if (ConfigsGT.GREGTECH.get("compat", "GalactiCraft"        , T)) ICompat.COMPAT_CLASSES.add(COMPAT_GC        = (ICompatGC        )UT.Reflection.callConstructor("gregapi.compat.galacticraft.CompatGC"           , 0, null, D2));
 		if (ConfigsGT.GREGTECH.get("compat", "WarpDrive"           , T)) ICompat.COMPAT_CLASSES.add(COMPAT_WD        = (ICompatWD        )UT.Reflection.callConstructor("gregapi.compat.warpdrive.CompatWD"              , 0, null, D2));
