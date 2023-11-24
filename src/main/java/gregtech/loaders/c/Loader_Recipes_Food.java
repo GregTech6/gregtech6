@@ -568,10 +568,10 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Distillery   .addRecipe1(F        , 16,  16, ST.tag(0), FL.Vodka       .make(   2), FL.Vodka      .make( 1), ZL_IS);
 		RM.Distillery   .addRecipe1(F        , 16,  16, ST.tag(0), FL.Rum_Dark    .make(   2), FL.Rum_Dark   .make( 1), ZL_IS);
 		RM.Distillery   .addRecipe1(T,T,F,F,F, 16,  80, ST.tag(0), FL.Sap         .make( 125), FL.DistW      .make(50), OM.dust(MT.Sugar));
-		RM.Distillery   .addRecipe1(T        , 16, 128, OM.dust(MT.Chili)    , FL.Sauce_Hot    .make(750), FL.Sauce_Diabolo .make(750), ZL_IS);
-		RM.Distillery   .addRecipe1(T        , 64, 128, OM.dust(MT.Chili)    , FL.Sauce_Diabolo.make(750), FL.Sauce_Diablo  .make(750), ZL_IS);
-		RM.Distillery   .addRecipe1(T        , 64, 128, OM.dust(MT.Gunpowder), FL.Sauce_Diablo .make(250), FL.Sauce_Snitches.make(250), ZL_IS);
-		RM.Distillery   .addRecipe1(T        , 64, 128, OM.dust(MT.Gunpowder), FL.Lemonade     .make(250), FL.Grenade_Juice .make(250), ZL_IS);
+		RM.Distillery   .addRecipe1(T        , 16, 128, OM.dust(MT.Chili)    , FL.Sauce_Hot    .make(750), FL.Sauce_Diabolo  .make(750), ZL_IS);
+		RM.Distillery   .addRecipe1(T        , 64, 128, OM.dust(MT.Chili)    , FL.Sauce_Diabolo.make(750), FL.Sauce_Diablo   .make(750), ZL_IS);
+		RM.Distillery   .addRecipe1(T        , 64, 128, OM.dust(MT.Gunpowder), FL.Sauce_Diablo .make(250), FL.Sauce_Cow_Level.make(250), ZL_IS);
+		RM.Distillery   .addRecipe1(T        , 64, 128, OM.dust(MT.Gunpowder), FL.Lemonade     .make(250), FL.Grenade_Juice  .make(250), ZL_IS);
 		
 		for (FluidStack tWater : FL.waters(1000)) {
 		RM.Distillery   .addRecipe1(T, 16,   48, OM.dust(MT.Coffee)    , FL.mul(tWater, 3, 4, T), FL.make("potion.darkcoffee", 750), ZL_IS);

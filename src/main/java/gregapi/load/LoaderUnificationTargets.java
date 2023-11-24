@@ -1173,7 +1173,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreRaw         , MT.OREMATS.Scheelite      , MD.EtFu, "modded_raw_ore", 9);
 		OreDictManager.INSTANCE.setTarget(OP.oreRaw         , MT.TiO2                   , MD.EtFu, "modded_raw_ore",10);
 		OreDictManager.INSTANCE.setTarget(OP.oreRaw         , MT.Zn                     , MD.EtFu, "modded_raw_ore",11);
-		OreDictManager.INSTANCE.setTarget(OP.oreRaw         , MT.OREMATS.Magnesite      , MD.EtFu, "modded_raw_ore",12);
+		OreDictManager.INSTANCE.setTarget(OP.oreRaw         , MT.MgCO3                  , MD.EtFu, "modded_raw_ore",12);
 		OreDictManager.INSTANCE.setTarget(OP.oreRaw         , MT.OREMATS.Borax          , MD.EtFu, "modded_raw_ore",13);
 		OreDictManager.INSTANCE.setTarget(OP.blockRaw       , MT.Cu                     , MD.EtFu, "raw_ore_block", 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockRaw       , MT.Fe                     , MD.EtFu, "raw_ore_block", 1);
@@ -1190,7 +1190,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.blockRaw       , MT.OREMATS.Scheelite      , MD.EtFu, "modded_raw_ore_block", 9);
 		OreDictManager.INSTANCE.setTarget(OP.blockRaw       , MT.TiO2                   , MD.EtFu, "modded_raw_ore_block",10);
 		OreDictManager.INSTANCE.setTarget(OP.blockRaw       , MT.Zn                     , MD.EtFu, "modded_raw_ore_block",11);
-		OreDictManager.INSTANCE.setTarget(OP.blockRaw       , MT.OREMATS.Magnesite      , MD.EtFu, "modded_raw_ore_block",12);
+		OreDictManager.INSTANCE.setTarget(OP.blockRaw       , MT.MgCO3                  , MD.EtFu, "modded_raw_ore_block",12);
 		OreDictManager.INSTANCE.setTarget(OP.blockRaw       , MT.OREMATS.Borax          , MD.EtFu, "modded_raw_ore_block",13);
 		OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Bone                   , MD.EtFu, "bone", 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Fe                     , MD.EtFu, "nugget_iron", 0);
@@ -1223,7 +1223,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.OREMATS.Scheelite      , MD.EtFu, "modded_deepslate_ore", 9);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.TiO2                   , MD.EtFu, "modded_deepslate_ore",10);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Zn                     , MD.EtFu, "modded_deepslate_ore",11);
-		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.OREMATS.Magnesite      , MD.EtFu, "modded_deepslate_ore",12);
+		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.MgCO3                  , MD.EtFu, "modded_deepslate_ore",12);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.OREMATS.Borax          , MD.EtFu, "modded_deepslate_ore",13);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.OREMATS.Cinnabar       , MD.EtFu, "deepslate_thaumcraft_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.InfusedAir             , MD.EtFu, "deepslate_thaumcraft_ore", 1);

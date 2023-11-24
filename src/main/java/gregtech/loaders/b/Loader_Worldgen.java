@@ -73,7 +73,7 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.TiO2                                    , F, U64,  0, 12, ST.block(MD.EtFu, "modded_deepslate_ore"),10, BIOMES_DESERT)
 		, new StoneLayerOres(MT.Au                                      , F, U32,  0, 16, ST.block(MD.EtFu, "deepslate_gold_ore"), BIOMES_MESA)
 		, new StoneLayerOres(MT.OREMATS.Bauxite                         , F, U32, 16, 32, ST.block(MD.EtFu, "modded_deepslate_ore"), 0, BIOMES_PLAINS)
-		, new StoneLayerOres(MT.OREMATS.Magnesite                       , F, U32, 10, 20, ST.block(MD.EtFu, "modded_deepslate_ore"), 12, BIOMES_DESERT, BIOMES_VOLCANIC)
+		, new StoneLayerOres(MT.MgCO3                                   , F, U32, 10, 20, ST.block(MD.EtFu, "modded_deepslate_ore"), 12, BIOMES_DESERT, BIOMES_VOLCANIC)
 		, new StoneLayerOres(MT.OREMATS.Borax                           , F, U32, 10, 20, ST.block(MD.EtFu, "modded_deepslate_ore"), 13, BIOMES_OCEAN, BIOMES_RIVER_LAKE)
 		, new StoneLayerOres(MT.OREMATS.Galena                          , F, U32,  0, 16, ST.block(MD.EtFu, "modded_deepslate_ore"), 2, BIOMES_MOUNTAINS)
 		, new StoneLayerOres(MT.Pb                                      , F, U16,  0, 32, ST.block(MD.EtFu, "modded_deepslate_ore"), 3, BIOMES_MOUNTAINS, BIOMES_WOODS)
