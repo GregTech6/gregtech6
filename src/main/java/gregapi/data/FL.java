@@ -276,7 +276,7 @@ public enum FL {
 	, Sauce_Hot                 ("potion.hotsauce"                                          , SIMPLE, LIQUID, FOOD)
 	, Sauce_Diabolo             ("potion.diabolosauce"                                      , SIMPLE, LIQUID, FOOD)
 	, Sauce_Diablo              ("potion.diablosauce"                                       , SIMPLE, LIQUID, FOOD)
-	, Sauce_Snitches            ("potion.diablosauce.strong"                                , SIMPLE, LIQUID, FOOD)
+	, Sauce_Cow_Level           ("potion.diablosauce.strong"                                , SIMPLE, LIQUID, FOOD)
 	, Sauce_BBQ                 ("bbqsauce"                                                 , SIMPLE, LIQUID, FOOD)
 	
 	, Slime_Blue                ("slime.blue"                                               , SIMPLE, LIQUID, FOOD, SLIME)

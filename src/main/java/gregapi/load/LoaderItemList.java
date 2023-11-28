@@ -554,8 +554,19 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.CHSL, "marble"                         , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.CHSL, "limestone"                      , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "stone"                          , null));
-		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "tuff"                           , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate"                      , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "copper_ore"                     , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_coal_ore"             , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_iron_ore"             , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_gold_ore"             , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_copper_ore"           , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_diamond_ore"          , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_lapis_ore"            , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_redstone_ore"         , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_emerald_ore"          , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "modded_deepslate_ore"           , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_thaumcraft_ore"       , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_certus_quartz_ore"    , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.GaSu, "18Stones"                       , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.GaSu, "basalt"                         , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BOTA, "stone"                          , null));
@@ -601,6 +612,7 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.ore_tungsten"               , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.ore_uranium"                , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.ore_uranium_scorched"       , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.cluster_copper"             , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.cluster_iron"               , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.cluster_titanium"           , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.cluster_aluminium"          , null));
