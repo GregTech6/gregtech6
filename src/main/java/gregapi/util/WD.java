@@ -178,11 +178,15 @@ public class WD {
 	public static boolean dimCANDY(World aWorld) {return aWorld != null && dimCANDY(aWorld.provider);}
 	public static boolean dimCANDY(WorldProvider aProvider) {return MD.CANDY.mLoaded && dimCANDY(aProvider, UT.Reflection.getLowercaseClass(aProvider));}
 	public static boolean dimCANDY(WorldProvider aProvider, String aProviderClassName) {return MD.CANDY.mLoaded && "WorldProviderCandy".equalsIgnoreCase(UT.Reflection.getLowercaseClass(aProvider));}
-	
+
 	public static boolean dimTROPIC(World aWorld) {return aWorld != null && dimTROPIC(aWorld.provider);}
 	public static boolean dimTROPIC(WorldProvider aProvider) {return MD.TROPIC.mLoaded && dimTROPIC(aProvider, UT.Reflection.getLowercaseClass(aProvider));}
 	public static boolean dimTROPIC(WorldProvider aProvider, String aProviderClassName) {return MD.TROPIC.mLoaded && "WorldProviderTropicraft".equalsIgnoreCase(aProviderClassName);}
-	
+
+	public static boolean dimTFC(World aWorld) {return aWorld != null && dimTFC(aWorld.provider);}
+	public static boolean dimTFC(WorldProvider aProvider) {return MD.TFC.mLoaded && dimTFC(aProvider, UT.Reflection.getLowercaseClass(aProvider));}
+	public static boolean dimTFC(WorldProvider aProvider, String aProviderClassName) {return MD.TFC.mLoaded && "TFCProvider".equalsIgnoreCase(aProviderClassName);}
+
 	public static boolean dimATUM(World aWorld) {return aWorld != null && dimATUM(aWorld.provider);}
 	public static boolean dimATUM(WorldProvider aProvider) {return MD.ATUM.mLoaded && dimATUM(aProvider, UT.Reflection.getLowercaseClass(aProvider));}
 	public static boolean dimATUM(WorldProvider aProvider, String aProviderClassName) {return MD.ATUM.mLoaded && "AtumWorldProvider".equalsIgnoreCase(aProviderClassName);}
@@ -431,7 +435,7 @@ public class WD {
 	}
 	/** @return the Height of the Water Level that should probably be in the Overworld. */
 	public static int waterLevel(int aDefaultOverworld) {
-		return MD.TFC.mLoaded || MD.TFCP.mLoaded? 143 : aDefaultOverworld;
+		return MD.TFCP.mLoaded? 143 : aDefaultOverworld;
 	}
 	/** @return the Height of the Water Level that should probably be in the Overworld. */
 	public static int waterLevel() {

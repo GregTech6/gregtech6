@@ -96,7 +96,7 @@ public class Loader_Fuels implements Runnable {
 		FM.Engine       .addRecipe0(T, - 64,  12, FL.Fuel.make(1)                             , FL.CarbonDioxide.make(1), ZL_IS);
 		
 		FM.Burn         .addRecipe0(T, - 96,  10, FL.make("nitrofuel", 1)                     , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Engine       .addRecipe0(T, - 96, 18, FL.make("nitrofuel", 1)                     , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 96, 14, FL.make("nitrofuel", 1)                     , FL.CarbonDioxide.make(1), ZL_IS);
 		
 		for (String tAlcohol : FluidsGT.RUM) if (FL.exists(tAlcohol)) {
 		FM.Burn         .addRecipe0(T, - 16,  6, FL.make(tAlcohol, 1)                        , FL.CarbonDioxide.make(1), ZL_IS);

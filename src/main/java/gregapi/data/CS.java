@@ -907,12 +907,11 @@ public class CS {
 	, DIM_CW2_Cavenia = -34
 	, DIM_CW2_Cavern = -31
 	, DIM_CW2_Caveworld = -30
-	, DIM_MOON = 2
-	, DIM_MARS = 3
+	, DIM_MOON = 29
 	, DIM_ASTEROIDS = 4
 	, DIM_PLANETS = 5
-	, DIM_AETHER = 6
-	, DIM_TWILIGHT = 7
+	, DIM_AETHER = -121
+	, DIM_TWILIGHT = -122
 	, DIM_ATUM = 17
 	, DIM_BETWEENLANDS = 20
 	, DIM_FROZEN_HEARTH = 21
@@ -923,6 +922,24 @@ public class CS {
 	, DIM_DEEPDARK = -100
 	, DIM_LASTMILLENIUM = -112
 	, DIM_TROPICS = -127
+	, DIM_TFC = 11
+	, DIM_DUCKEGGB = 12
+	, DIM_DUCKEGGC = 13
+	, DIM_MERCURY = 21
+	, DIM_VENUS = 22
+	, DIM_EARTH = 23
+	, DIM_MARS = 24
+	, DIM_URANUS = 27
+	, DIM_NEPTUNE = 28
+	, DIM_NO_12_1 = 31
+	, DIM_NO_12_2 = 32
+	, DIM_NO_93_1 = 33
+	, DIM_NO_93_2 = 34
+	, DIM_NO_43_1 = 35
+	, DIM_NO_24_1 = -14
+	, DIM_NO_24_2 = -13
+	, DIM_DRACONA = -12
+	, DIM_ENDEST = -11
 	;
 	
 	/** Lists of all the active World generation Features by Dimension Type, these are getting initialised in Load! */
@@ -961,6 +978,22 @@ public class CS {
 	, GEN_ALFHEIM           = new ArrayListNoNulls<>()
 	, GEN_TROPICS           = new ArrayListNoNulls<>()
 	, GEN_CANDY             = new ArrayListNoNulls<>()
+	, GEN_DUCKEGGB          = new ArrayListNoNulls<>()
+	, GEN_DUCKEGGC          = new ArrayListNoNulls<>()
+	, GEN_MERCURY           = new ArrayListNoNulls<>()
+	, GEN_VENUS             = new ArrayListNoNulls<>()
+	, GEN_EARTH             = new ArrayListNoNulls<>()
+	, GEN_URANUS            = new ArrayListNoNulls<>()
+	, GEN_NEPTUNE           = new ArrayListNoNulls<>()
+	, GEN_NO_12_1           = new ArrayListNoNulls<>()
+	, GEN_NO_12_2           = new ArrayListNoNulls<>()
+	, GEN_NO_93_1           = new ArrayListNoNulls<>()
+	, GEN_NO_93_2           = new ArrayListNoNulls<>()
+	, GEN_NO_43_1           = new ArrayListNoNulls<>()
+	, GEN_NO_24_1           = new ArrayListNoNulls<>()
+	, GEN_NO_24_2           = new ArrayListNoNulls<>()
+	, GEN_DRACONA           = new ArrayListNoNulls<>()
+	, GEN_ENDEST            = new ArrayListNoNulls<>()
 	, GEN_GEMS[]            = new List[] {GEN_OVERWORLD        , GEN_PFAA, GEN_ENVM,              GEN_A97,             GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_AETHER}
 	, GEN_FLOOR[]           = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_ENVM_GT, GEN_A97, GEN_A97_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_DEEPDARK, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_TWILIGHT, GEN_ALFHEIM, GEN_TROPICS, GEN_CANDY, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT}
 	, GEN_ALL[]             = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_ENVM_GT, GEN_A97, GEN_A97_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_DEEPDARK, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_TWILIGHT, GEN_ALFHEIM, GEN_TROPICS, GEN_CANDY, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT, GEN_AETHER, GEN_END, GEN_PLANETS, GEN_ASTEROIDS}
@@ -994,6 +1027,22 @@ public class CS {
 	, ORE_ALFHEIM           = new ArrayListNoNulls<>()
 	, ORE_TROPICS           = new ArrayListNoNulls<>()
 	, ORE_CANDY             = new ArrayListNoNulls<>()
+	, ORE_DUCKEGGB          = new ArrayListNoNulls<>()
+	, ORE_DUCKEGGC          = new ArrayListNoNulls<>()
+	, ORE_MERCURY           = new ArrayListNoNulls<>()
+	, ORE_VENUS             = new ArrayListNoNulls<>()
+	, ORE_EARTH             = new ArrayListNoNulls<>()
+	, ORE_URANUS            = new ArrayListNoNulls<>()
+	, ORE_NEPTUNE           = new ArrayListNoNulls<>()
+	, ORE_NO_12_1           = new ArrayListNoNulls<>()
+	, ORE_NO_12_2           = new ArrayListNoNulls<>()
+	, ORE_NO_93_1           = new ArrayListNoNulls<>()
+	, ORE_NO_93_2           = new ArrayListNoNulls<>()
+	, ORE_NO_43_1           = new ArrayListNoNulls<>()
+	, ORE_NO_24_1           = new ArrayListNoNulls<>()
+	, ORE_NO_24_2           = new ArrayListNoNulls<>()
+	, ORE_DRACONA           = new ArrayListNoNulls<>()
+	, ORE_ENDEST            = new ArrayListNoNulls<>()
 	, ORE_FLOOR[]           = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_ENVM, ORE_A97, ORE_TFC, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY, ORE_CW2_AquaCavern, ORE_CW2_Caveland, ORE_CW2_Cavenia, ORE_CW2_Cavern, ORE_CW2_Caveworld}
 	, ORE_ALL[]             = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_ENVM, ORE_A97, ORE_TFC, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY, ORE_CW2_AquaCavern, ORE_CW2_Caveland, ORE_CW2_Cavenia, ORE_CW2_Cavern, ORE_CW2_Caveworld, ORE_AETHER, ORE_END, ORE_PLANETS, ORE_ASTEROIDS}
 	;
