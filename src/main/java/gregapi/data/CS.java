@@ -213,7 +213,7 @@ public class CS {
 	public static int EU_PER_SMELT = 256;
 	/** The value of how many Energy Units a Liter of Lava is worth. It is worth about 180 to 333 RF in TE. Well, I go for 320 RF in GT, meaning 80 GU/L or 80000 GU per Bucket. Cannot be above 200 GU/L or else MFR exploit with infinite Lava! */
 	public static int EU_PER_LAVA = 80;
-	/** The value of how many Energy Units a Liter of Hot Coolant also known as Heatant is worth. It is worth 20 EU in IC2 Experimental, so it's the same 20 GU in GT6. */
+	/** The value of how many Energy Units a Liter of Hot Coolant also known as "Heatant" is worth. It is worth 20 EU in IC2 Experimental, so it's the same 20 GU in GT6. */
 	public static int EU_PER_COOLANT = 20;
 	/** The value of how many Energy Units a Liter of Semiheavy Water needs to turn into Hot Semiheavy Water. */
 	public static int EU_PER_SEMI_HEAVY_WATER = 40;
