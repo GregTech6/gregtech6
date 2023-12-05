@@ -45,7 +45,10 @@ import static gregapi.util.CR.*;
  */
 public class Loader_Recipes_Temporary implements Runnable {
 	@Override public void run() {
-		ItemStack tStack = null;
+		ItemStack tStack = NI;
+		
+		// That Stone Rod is overlapping a Recipe. Luckily it can be made using GT6 Methods, so it is okay to remove it.
+		CR.delate(MD.FMB, "stoneRod");
 		
 		// TODO: Graphite Electrodes are made from petroleum coke after it is mixed with coal tar pitch. They are then extruded and shaped, baked to carbonize the binder (pitch) and finally graphitized by heating it to temperatures approaching 3273K.
 		RM.Extruder.addRecipe2(T, 512, 512, OP.dust.mat(MT.Graphite, 1), IL.Shape_Extruder_Rod     .get(0), OP.stick    .mat(MT.Graphite, 1));

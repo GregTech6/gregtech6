@@ -634,14 +634,14 @@ public class CR {
 	
 	/**
 	 * Removes a Crafting Recipe.
-	 * @param aOutput The output of the Recipe.
+	 * @param aNames The output of the Recipe.
 	 * @return if it has removed at least one Recipe.
 	 */
 	public static boolean remout(ModData aMod, String... aNames) {if (aMod.mLoaded) for (String aName : aNames) remout(aMod, aName, W); return aMod.mLoaded;}
 	
 	/**
 	 * Removes a Crafting Recipe.
-	 * @param aOutput The output of the Recipe.
+	 * @param aName The output of the Recipe.
 	 * @return if it has removed at least one Recipe.
 	 */
 	public static boolean remout(ModData aMod, String aName, int aMetaData) {return remout(ST.make(aMod, aName, 1, aMetaData));}
