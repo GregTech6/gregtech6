@@ -19,9 +19,7 @@
 
 package gregapi.config;
 
-import cpw.mods.fml.common.event.FMLInterModComms;
 import gregapi.api.Abstract_Mod;
-import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.ST;
@@ -91,7 +89,7 @@ public class Config implements Runnable {
 		mConfig.load();
 		mConfig.save();
 		Abstract_Mod.sConfigs.add(this);
-		FMLInterModComms.sendRuntimeMessage(MD.GT.mID, "carbonconfig", "registerGui", tPathUsed.getAbsolutePath());
+		//FMLInterModComms.sendRuntimeMessage(MD.GT.mID, "carbonconfig", "registerGui", tPathUsed.getAbsolutePath());
 	}
 	
 	@Deprecated public Config(File aConfig) {this(new Configuration(aConfig));}
