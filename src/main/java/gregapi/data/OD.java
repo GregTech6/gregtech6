@@ -213,6 +213,7 @@ public enum OD {
 	, itemSkin
 	, itemFur
 	, itemPelt
+	, itemIvory
 	, itemTusk
 	, itemHoof
 	, itemHorn

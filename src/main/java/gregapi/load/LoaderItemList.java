@@ -705,6 +705,8 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "arcaniumOre"                    , null));
 		
 		
+		BlocksGT.EtFu_Beetroot_Crop              = GameRegistry.findBlock(MD.EtFu.mID, "beetroots");
+		DEB.println("TEST "+ BlocksGT.EtFu_Beetroot_Crop);
 		BlocksGT.EtFu_Deepslate_Redstone_Ore     = GameRegistry.findBlock(MD.EtFu.mID, "deepslate_redstone_ore");
 		BlocksGT.EtFu_Deepslate_Lit_Redstone_Ore = GameRegistry.findBlock(MD.EtFu.mID, "deepslate_lit_redstone_ore");
 		

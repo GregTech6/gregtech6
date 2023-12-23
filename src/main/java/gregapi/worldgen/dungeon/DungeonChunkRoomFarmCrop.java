@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,15 +19,15 @@
 
 package gregapi.worldgen.dungeon;
 
-import static gregapi.data.CS.*;
-
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.*;
 import gregapi.data.MD;
 import gregapi.util.ST;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -60,7 +60,7 @@ public class DungeonChunkRoomFarmCrop extends DungeonChunkRoomEmpty {
 		, Blocks.carrots
 		, Blocks.potatoes
 		, Blocks.wheat
-		, ST.block(MD.EtFu, "beetroots", null)
+		, BlocksGT.EtFu_Beetroot_Crop
 		, ST.block(MD.HaC, "pamartichokeCrop", null)
 		, ST.block(MD.HaC, "pamasparagusCrop", null)
 		, ST.block(MD.HaC, "pambambooshootCrop", null)

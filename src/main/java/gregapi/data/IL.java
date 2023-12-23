@@ -258,7 +258,7 @@ public enum IL implements IItemContainer {
 	Bag_Sap_Resin,
 	Rope, Rope_Silk, Rope_Grass, Rope_Vine, Rope_Plastic,
 	Slimeball_Borax,
-	Tusk, Tusk_Boar, Tusk_Hoglin,
+	Tusk, Tusk_Boar, Tusk_Hoglin, Tusk_Elephant,
 	Hoof, Hoof_Horse, Hoof_Mule, Hoof_Donkey, Hoof_Cow, Hoof_Deer,
 	Horn, Horn_Sheep, Horn_Cow,
 	Antler, Antler_Deer,

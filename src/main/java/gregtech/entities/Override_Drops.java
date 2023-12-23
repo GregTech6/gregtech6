@@ -496,7 +496,12 @@ public class Override_Drops {
 			for (int i = 0; i < 2; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
 				aDrops.add(ST.entity(aDead, IL.Tusk_Boar.get(1)));
 			}
-		} else if (aClass.equalsIgnoreCase("EntityTFDeer")) {
+		} else if (aClass.equalsIgnoreCase("EntityElephant") || aClass.equalsIgnoreCase("EntityElefant") || aClass.equalsIgnoreCase("MoCEntityElephant")) {
+			tReplaceIron = T;
+			for (int i = 0; i < 2; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
+				aDrops.add(ST.entity(aDead, IL.Tusk_Elephant.get(1)));
+			}
+		} else if (aClass.equalsIgnoreCase("EntityDeer") || aClass.equalsIgnoreCase("EntityTFDeer")) {
 			tReplaceIron = T;
 			for (int i = 0; i < 4; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
 				aDrops.add(ST.entity(aDead, IL.Hoof_Deer.get(1)));
@@ -504,7 +509,7 @@ public class Override_Drops {
 			for (int i = 0; i < 2; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
 				aDrops.add(ST.entity(aDead, IL.Antler_Deer.get(1)));
 			}
-		} else if (aClass.equalsIgnoreCase("EntityDeer") || aClass.equalsIgnoreCase("MoCEntityDeer")) {
+		} else if (aClass.equalsIgnoreCase("MoCEntityDeer")) {
 			tReplaceIron = T;
 			ItemStack tRaw    = IL.TF_Venison_Raw   .get(1, ST.make(MD.HaC, "venisonrawItem"   , 1, 0));
 			ItemStack tCooked = IL.TF_Venison_Cooked.get(1, ST.make(MD.HaC, "venisoncookedItem", 1, 0));
