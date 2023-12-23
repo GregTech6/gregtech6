@@ -1237,6 +1237,10 @@ public class LoaderItemList implements Runnable {
 		IL.MoCr_Turtle_Raw                      .set(ST.make(MD.MoCr, "turtleraw"                           , 1, 0), new OreDictItemData(MT.MeatRaw     , U*2, MT.Bone, U9), "foodTurtleraw");
 		
 		
+		IL.WiMo_Infected_Meat                   .set(ST.make(MD.WiMo, "infected_flesh"                      , 1, 0), new OreDictItemData(MT.MeatRotten  , U*2, MT.Bone, U9));
+		IL.WiMo_Thick_Bone                      .set(ST.make(MD.WiMo, "thick_bone"                          , 1, 0), new OreDictItemData(MT.Bone, U*4));
+		
+		
 		IL.Birb_Egg_Shell                       .set(ST.make(MD.Birb, "eggshell"                            , 1, 0), new OreDictItemData(MT.Bone, U9));
 		
 		

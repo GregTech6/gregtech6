@@ -37,8 +37,9 @@ import static gregapi.data.OP.*;
 
 public class Loader_Recipes_Food implements Runnable {
 	@Override public void run() {
-		RM.food_can(ST.make(Items.rotten_flesh  , 1, W), 4, "Canned Meat", IL.CANS_ROTTEN);
-		RM.food_can(ST.make(Items.spider_eye    , 1, W), 2, "Canned Spider Eye", IL.CANS_ROTTEN);
+		RM.food_can(IL.WiMo_Infected_Meat     .get(1), 4, "Canned Meat", IL.CANS_ROTTEN);
+		RM.food_can(ST.make(Items.rotten_flesh, 1, W), 4, "Canned Meat", IL.CANS_ROTTEN);
+		RM.food_can(ST.make(Items.spider_eye  , 1, W), 2, "Canned Meat", IL.CANS_ROTTEN);
 		
 		for (ItemStack tStack : ST.array(dustTiny.mat(MT.FishCooked, 9), dustSmall.mat(MT.FishCooked, 4), dust.mat(MT.FishCooked, 1), nugget.mat(MT.FishCooked, 9), chunkGt.mat(MT.FishCooked, 4), billet.mat(MT.FishCooked, 2), ingot.mat(MT.FishCooked, 1)))
 		RM.food_can(tStack, 2, "Canned Fish", IL.CANS_FISH);
