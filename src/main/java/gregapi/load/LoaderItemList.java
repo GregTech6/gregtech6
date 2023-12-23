@@ -47,6 +47,10 @@ public class LoaderItemList implements Runnable {
 	
 	@Override
 	public void run() {
+		BlocksGT.EtFu_Beetroot_Crop              = GameRegistry.findBlock(MD.EtFu.mID, "beetroots");
+		BlocksGT.EtFu_Deepslate_Redstone_Ore     = GameRegistry.findBlock(MD.EtFu.mID, "deepslate_redstone_ore");
+		BlocksGT.EtFu_Deepslate_Lit_Redstone_Ore = GameRegistry.findBlock(MD.EtFu.mID, "deepslate_lit_redstone_ore");
+		
 		GarbageGT.BLACKLIST.add(ST.make(MD.TC, "ItemThaumonomicon"              , 1,42));
 		GarbageGT.BLACKLIST.add(ST.make(MD.RT, "opSpectreKey"                   , 1, W));
 		
@@ -562,7 +566,8 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_copper_ore"           , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_diamond_ore"          , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_lapis_ore"            , null));
-		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_redstone_ore"         , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(BlocksGT.EtFu_Deepslate_Redstone_Ore);
+		StoneLayer.REPLACEABLE_BLOCKS.add(BlocksGT.EtFu_Deepslate_Lit_Redstone_Ore);
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_emerald_ore"          , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "modded_deepslate_ore"           , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_thaumcraft_ore"       , null));
@@ -703,12 +708,6 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "skythernOre"                    , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "mortumOre"                      , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "arcaniumOre"                    , null));
-		
-		
-		BlocksGT.EtFu_Beetroot_Crop              = GameRegistry.findBlock(MD.EtFu.mID, "beetroots");
-		DEB.println("TEST "+ BlocksGT.EtFu_Beetroot_Crop);
-		BlocksGT.EtFu_Deepslate_Redstone_Ore     = GameRegistry.findBlock(MD.EtFu.mID, "deepslate_redstone_ore");
-		BlocksGT.EtFu_Deepslate_Lit_Redstone_Ore = GameRegistry.findBlock(MD.EtFu.mID, "deepslate_lit_redstone_ore");
 		
 		
 		MT.H2O.mTextureDust   = MT.Steam.mTextureDust   = MT.FreshWater.mTextureDust   = MT.DistWater.mTextureDust   = MT.Ice.mTextureDust   = MT.Snow.mTextureDust   = MT.Snow.mTextureSolid = BlockTextureCopied.get(Blocks.snow);
@@ -1236,6 +1235,9 @@ public class LoaderItemList implements Runnable {
 		IL.MoCr_Ostrich_Raw                     .set(ST.make(MD.MoCr, "ostrichraw"                          , 1, 0), new OreDictItemData(MT.MeatRaw     , U*2, MT.Bone, U4), "foodOstrichraw");
 		IL.MoCr_Ostrich_Cooked                  .set(ST.make(MD.MoCr, "ostrichcooked"                       , 1, 0), new OreDictItemData(MT.MeatCooked  , U*2, MT.Bone, U4), "foodOstrichcooked");
 		IL.MoCr_Turtle_Raw                      .set(ST.make(MD.MoCr, "turtleraw"                           , 1, 0), new OreDictItemData(MT.MeatRaw     , U*2, MT.Bone, U9), "foodTurtleraw");
+		
+		
+		IL.Birb_Egg_Shell                       .set(ST.make(MD.Birb, "eggshell"                            , 1, 0), new OreDictItemData(MT.Bone, U9));
 		
 		
 		IL.MaCu_Dye_White                       .set(ST.make(MD.MaCu, "materials"                           , 1,27), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_White]);

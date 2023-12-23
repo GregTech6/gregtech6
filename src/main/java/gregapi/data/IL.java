@@ -179,6 +179,7 @@ public enum IL implements IItemContainer {
 	AE_Torch_Quartz,
 	MaCu_Dye_White, MaCu_Dye_Blue, MaCu_Dye_Green, MaCu_Dye_Yellow, MaCu_Dye_Red, MaCu_Dye_Brown, MaCu_Bait_Worm, MaCu_Bait_Ant, MaCu_Bait_Maggot, MaCu_Bait_Grasshopper, MaCu_Bait_Bee, MaCu_Polished_Planks, MaCu_Polished_Logs,
 	MoCr_Crab_Raw, MoCr_Crab_Cooked, MoCr_Turkey_Raw, MoCr_Turkey_Cooked, MoCr_Rat_Raw, MoCr_Rat_Cooked, MoCr_Ostrich_Raw, MoCr_Ostrich_Cooked, MoCr_Turtle_Raw,
+	Birb_Egg_Shell,
 	AA_Dye_Black, AA_Fertilizer, AA_Dough_Rice, AA_Bread_Rice, AA_XP,
 	RC_ShuntingWire, RC_ShuntingWireFrame,
 	RC_Rail_Reinforced, RC_Rail_Electric, RC_Rail_Standard, RC_Rail_Wooden, RC_Rail_Adv, RC_Rail_HS,

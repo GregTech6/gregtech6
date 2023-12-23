@@ -176,6 +176,8 @@ public class MD {
 	, MaCr              = new ModData(ModIDs.MaCr               , "Magical Crops")
 	, MaCu              = new ModData(ModIDs.MaCu               , "Mariculture")
 	, MoCr              = new ModData(ModIDs.MoCr               , "Mo'Creatures")
+	, WiMo              = new ModData(ModIDs.WiMo               , "Wild Mobs")
+	, Birb              = new ModData(ModIDs.Birb               , "Exotic Birbs")
 	, ChocoCraft        = new ModData(ModIDs.ChocoCraft         , "ChocoCraft (Plus)")
 	, GoG               = new ModData(ModIDs.GoG                , "Grimoire of Gaia")
 	, DRPG              = new ModData(ModIDs.DRPG               , "Divine RPG")

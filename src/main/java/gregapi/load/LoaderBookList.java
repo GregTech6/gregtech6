@@ -594,6 +594,9 @@ public class LoaderBookList implements Runnable {
 			BooksGT.BOOK_REGISTER  .put(MD.MoCr, "scrollofowner"                      ,   W, (byte) 18);
 			BooksGT.BOOK_REGISTER  .put(MD.MoCr, "scrolloffreedom"                    ,   W, (byte) 18);
 		}
+		if (MD.Birb.mLoaded) {
+			BooksGT.BOOK_REGISTER  .put(MD.Birb, "bird_book"                          ,   W, (byte)  8);
+		}
 		if (MD.ChocoCraft.mLoaded) {
 			BooksGT.BOOK_REGISTER  .put(MD.ChocoCraft, "Chocopedia"                   ,   W, (byte)  4);
 			BooksGT.BOOK_REGISTER  .put(MD.ChocoCraft, "Loverly_Gysahl"               ,   W, (byte) 51);
