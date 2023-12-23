@@ -46,6 +46,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.remove(ST.make(Blocks.glass, 1, 0), NI, ST.make(Blocks.glass, 1, 0), NI, ST.make(Blocks.glass, 1, 0));
 		CR.remove(ST.make(Items.blaze_rod, 1, 0));
 		CR.remove(ST.make(Items.bone, 1, 0));
+		CR.remove(IL.WiMo_Thick_Bone.get(1));
 		
 		CR.shapeless(dust.mat(MT.White, 1), DEF, new Object[] {Items.bone});
 		CR.shaped(ST.make(Items.paper, 1, 0), DEF, "XXX", 'X', Items.reeds);
@@ -133,6 +134,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shapeless(stickLong.mat(MT.IronMagnetic, 1), DEF, new Object[] {stickLong.dat(ANY.Fe), OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone});
 		
 		CR.shaped(IL.Dye_Bonemeal.get(1), DEF, "h", "X", 'X', Items.bone);
+		CR.shaped(IL.Dye_Bonemeal.get(2), DEF, "h", "X", 'X', IL.WiMo_Thick_Bone);
 		
 		
 		

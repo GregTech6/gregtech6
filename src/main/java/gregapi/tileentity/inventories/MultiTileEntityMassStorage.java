@@ -631,7 +631,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	
 	public long getUnitAmount(ItemStack aStack) {
 		OreDictItemData mData = OM.anydata_(slot(1)), aData = OM.anydata_(aStack);
-		if (mData != null && aData != null && mData.validPrefix() && aData.validPrefix() && mData.mMaterial.mMaterial == aData.mMaterial.mMaterial && mPartialUnits < getUnitAmount(mData.mPrefix)) {
+		if (mData != null && aData != null && mData.validData() && aData.validData() && !mData.mBlackListed && !aData.mBlackListed && mData.mMaterial.mMaterial == aData.mMaterial.mMaterial && mPartialUnits < getUnitAmount(mData.mPrefix)) {
 			if (mData.mPrefix.contains(TD.Prefix.DUST_BASED)) {
 				return aData.mPrefix.contains(TD.Prefix.DUST_BASED) ? aData.mPrefix.mAmount : 0;
 			}
