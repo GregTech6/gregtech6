@@ -256,7 +256,7 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
-		if (aRenderPass == 1) {box(aBlock, 0, 0, 0, 0, PX_P[1], 0); return T;}
+		if (aRenderPass == 1) {box(aBlock, 0, 0, 0, 1, PX_P[1], 1); return T;}
 		switch(mFacing) {
 		case SIDE_X_POS: box(aBlock, PX_P[12], PX_P[ 2], PX_P[ 2], PX_N[ 0], PX_N[ 2], PX_N[ 2]); return T;
 		case SIDE_Y_POS: box(aBlock, PX_P[ 2], PX_P[12], PX_P[ 2], PX_N[ 2], PX_N[ 0], PX_N[ 2]); return T;
