@@ -53,8 +53,9 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities implements IMTE_CanEntityDestroy, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_OnToolClick, IMTE_OnNeighborBlockChange, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, ITileEntityQuickObstructionCheck, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
+	public static final ITexture sStoneTexture = BlockTextureCopied.get(Blocks.stone), sSnowTexture = BlockTextureCopied.get(Blocks.snow_layer);
+	public ITexture mTexture = sStoneTexture;
 	public ItemStack mRock;
-	public ITexture mTexture;
 	public float mMinX = PX_P[5], mMinZ = PX_P[5], mMaxX = PX_N[5], mMaxY = PX_P[2], mMaxZ = PX_N[5];
 	
 	@Override
@@ -191,13 +192,16 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 	@Override
 	public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {
 		if (worldObj == null) {
-			mTexture = BlockTextureCopied.get(Blocks.stone); return 1;
+			mTexture = sStoneTexture; return 1;
+		}
+		for (byte tSide : ALL_SIDES_HORIZONTAL) if (getBlockAtSide(tSide) == Blocks.snow_layer) {
+			mTexture = sSnowTexture; return 2;
 		}
 		Block tBlock = getBlockAtSide(SIDE_BOTTOM);
 		if (tBlock == BlocksGT.Diggables) {
 			mTexture = BlockTextureCopied.get(BlocksGT.Kimberlite, SIDE_ANY, 0); return 1;
 		}
-		if (tBlock instanceof BlockStones || tBlock == Blocks.stone || tBlock == Blocks.end_stone || tBlock == Blocks.obsidian) {
+		if (tBlock instanceof BlockStones || tBlock == Blocks.snow || tBlock == Blocks.stone || tBlock == Blocks.end_stone || tBlock == Blocks.obsidian) {
 			mTexture = BlockTextureCopied.get(tBlock, SIDE_ANY, 0); return 1;
 		}
 		if (tBlock == Blocks.netherrack || tBlock == Blocks.nether_brick || tBlock == Blocks.soul_sand) {
@@ -232,9 +236,9 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 		return 1;
 	}
 	
-	@Override public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {box(aBlock,mMinX, 0, mMinZ, mMaxX, mMaxY, mMaxZ); return T;}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock,                                         mMinX, 0, mMinZ, mMaxX, mMaxY, mMaxZ);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool() {return box(                                        mMinX, 0, mMinZ, mMaxX, mMaxY, mMaxZ);}
+	@Override public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {box(aBlock, aRenderPass == 0 ? mMinX : 0, 0, aRenderPass == 0 ? mMinZ : 0, aRenderPass == 0 ? mMaxX : 1, aRenderPass == 0 ? mMaxY : PX_P[1], aRenderPass == 0 ? mMaxZ : 1); return T;}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock, mMinX, 0, mMinZ, mMaxX, mMaxY, mMaxZ);}
+	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool() {return box(mMinX, 0, mMinZ, mMaxX, mMaxY, mMaxZ);}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return null;}
 	
 	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}

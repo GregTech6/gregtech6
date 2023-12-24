@@ -49,7 +49,8 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities implements ITileEntityQuickObstructionCheck, IMTE_CanEntityDestroy, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_OnNeighborBlockChange, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState, IMTE_GetFlammability, IMTE_GetFireSpreadSpeed {
-	public static final ITexture mTexture = BlockTextureCopied.get(Blocks.log, SIDE_FRONT, 0);
+	public static final ITexture sWoodTexture = BlockTextureCopied.get(Blocks.log, SIDE_FRONT, 0), sSnowTexture = BlockTextureCopied.get(Blocks.snow_layer);
+	public ITexture mTexture = sWoodTexture;
 	public float mMinX = PX_P[2], mMinZ = PX_P[7], mMaxX = PX_N[2], mMaxZ = PX_N[7];
 	
 	@Override
@@ -164,10 +165,18 @@ public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities impl
 	
 	@Override public ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] || SIDES_TOP_HORIZONTAL[aSide] ? mTexture : null;}
 	
-	@Override public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {return 1;}
-	@Override public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {box(aBlock, mMinX, 0, mMinZ, mMaxX, PX_P[2], mMaxZ); return T;}
-	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock,                                          mMinX, 0, mMinZ, mMaxX, PX_P[2], mMaxZ);}
-	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool() {return box(                                         mMinX, 0, mMinZ, mMaxX, PX_P[2], mMaxZ);}
+	@Override
+	public int getRenderPasses(Block aBlock, boolean[] aShouldSideBeRendered) {
+		if (worldObj != null) for (byte tSide : ALL_SIDES_HORIZONTAL) if (getBlockAtSide(tSide) == Blocks.snow_layer) {
+			mTexture = sSnowTexture; return 2;
+		}
+		mTexture = sWoodTexture;
+		return 1;
+	}
+	
+	@Override public boolean setBlockBounds(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {box(aBlock, aRenderPass == 0 ? mMinX : 0, 0, aRenderPass == 0 ? mMinZ : 0, aRenderPass == 0 ? mMaxX : 1, aRenderPass == 0 ? PX_P[2] : PX_P[1], aRenderPass == 0 ? mMaxZ : 1); return T;}
+	@Override public void setBlockBoundsBasedOnState(Block aBlock) {box(aBlock, mMinX, 0, mMinZ, mMaxX, PX_P[2], mMaxZ);}
+	@Override public AxisAlignedBB getSelectedBoundingBoxFromPool() {return box(mMinX, 0, mMinZ, mMaxX, PX_P[2], mMaxZ);}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return null;}
 	
 	@Override public boolean isSurfaceSolid         (byte aSide) {return F;}

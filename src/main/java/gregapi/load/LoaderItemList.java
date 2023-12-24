@@ -1311,6 +1311,16 @@ public class LoaderItemList implements Runnable {
 		IL.NeLi_Budding_Green                   .set(ST.make(MD.NeLi, "NetherCrystal"                       , 1, 7), new OreDictItemData(MT.FluoriteGreen  , U*4));
 		IL.NeLi_Budding_Yellow                  .set(ST.make(MD.NeLi, "NetherCrystal"                       , 1, 8), new OreDictItemData(MT.FluoriteYellow , U*4));
 		IL.NeLi_Budding_Magenta                 .set(ST.make(MD.NeLi, "NetherCrystal"                       , 1, 9), new OreDictItemData(MT.FluoriteMagenta, U*4));
+		IL.NeLi_Cluster_White                   .set(ST.make(MD.NeLi, "CrystalClusterWhite"                 , 1, 0), new OreDictItemData(MT.FluoriteWhite  , U  ));
+		IL.NeLi_Cluster_Blue                    .set(ST.make(MD.NeLi, "CrystalClusterBlue"                  , 1, 0), new OreDictItemData(MT.FluoriteBlue   , U  ));
+		IL.NeLi_Cluster_Green                   .set(ST.make(MD.NeLi, "CrystalClusterGreen"                 , 1, 0), new OreDictItemData(MT.FluoriteGreen  , U  ));
+		IL.NeLi_Cluster_Yellow                  .set(ST.make(MD.NeLi, "CrystalClusterYellow"                , 1, 0), new OreDictItemData(MT.FluoriteYellow , U  ));
+		IL.NeLi_Cluster_Magenta                 .set(ST.make(MD.NeLi, "CrystalClusterMagenta"               , 1, 0), new OreDictItemData(MT.FluoriteMagenta, U  ));
+		IL.NeLi_Clu2ter_White                   .set(ST.make(MD.NeLi, "CrystalClusterWhite"                 , 1, 1), new OreDictItemData(MT.FluoriteWhite  , U*3));
+		IL.NeLi_Clu2ter_Blue                    .set(ST.make(MD.NeLi, "CrystalClusterBlue"                  , 1, 1), new OreDictItemData(MT.FluoriteBlue   , U*3));
+		IL.NeLi_Clu2ter_Green                   .set(ST.make(MD.NeLi, "CrystalClusterGreen"                 , 1, 1), new OreDictItemData(MT.FluoriteGreen  , U*3));
+		IL.NeLi_Clu2ter_Yellow                  .set(ST.make(MD.NeLi, "CrystalClusterYellow"                , 1, 1), new OreDictItemData(MT.FluoriteYellow , U*3));
+		IL.NeLi_Clu2ter_Magenta                 .set(ST.make(MD.NeLi, "CrystalClusterMagenta"               , 1, 1), new OreDictItemData(MT.FluoriteMagenta, U*3));
 		IL.NeLi_Lamp_White                      .set(ST.make(MD.NeLi, "CrystalLamp"                         , 1, 0), new OreDictItemData(MT.FluoriteWhite  , U*4, ANY.Glowstone, U*4), CR.DELATE);
 		IL.NeLi_Lamp_Blue                       .set(ST.make(MD.NeLi, "CrystalLamp"                         , 1, 1), new OreDictItemData(MT.FluoriteBlue   , U*4, ANY.Glowstone, U*4), CR.DELATE);
 		IL.NeLi_Lamp_Green                      .set(ST.make(MD.NeLi, "CrystalLamp"                         , 1, 2), new OreDictItemData(MT.FluoriteGreen  , U*4, ANY.Glowstone, U*4), CR.DELATE);

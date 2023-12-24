@@ -88,6 +88,8 @@ public enum IL implements IItemContainer {
 	NeLi_Blackstone, NeLi_Blackstone_Bricks, NeLi_Blackstone_Chiseled, NeLi_Blackstone_Cracked, NeLi_Blackstone_Polished, NeLi_Blackstone_Tiles, NeLi_Blackstone_Cross, NeLi_Blackstone_Path, NeLi_Basalt, NeLi_Basalt_Polished,
 	NeLi_Crystal_White, NeLi_Crystal_Blue, NeLi_Crystal_Green, NeLi_Crystal_Yellow, NeLi_Crystal_Magenta,
 	NeLi_Budding_White, NeLi_Budding_Blue, NeLi_Budding_Green, NeLi_Budding_Yellow, NeLi_Budding_Magenta,
+	NeLi_Cluster_White, NeLi_Cluster_Blue, NeLi_Cluster_Green, NeLi_Cluster_Yellow, NeLi_Cluster_Magenta,
+	NeLi_Clu2ter_White, NeLi_Clu2ter_Blue, NeLi_Clu2ter_Green, NeLi_Clu2ter_Yellow, NeLi_Clu2ter_Magenta,
 	NeLi_Glass_White, NeLi_Glass_Blue, NeLi_Glass_Green, NeLi_Glass_Yellow, NeLi_Glass_Magenta,
 	NeLi_Lamp_White, NeLi_Lamp_Blue, NeLi_Lamp_Green, NeLi_Lamp_Yellow, NeLi_Lamp_Magenta,
 	NeLi_Redstone_Lamp_White, NeLi_Redstone_Lamp_Blue, NeLi_Redstone_Lamp_Green, NeLi_Redstone_Lamp_Yellow, NeLi_Redstone_Lamp_Magenta,

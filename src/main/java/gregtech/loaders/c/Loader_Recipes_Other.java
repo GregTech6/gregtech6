@@ -556,9 +556,9 @@ public class Loader_Recipes_Other implements Runnable {
 		
 		// Glass
 		for (int i = 0; i < 16; i++) {
-		RM.Mixer            .addRecipe1(T, 16, 16, OM.dust(MT.Na2SO4     ), FL.array(MT.Glass.liquid(U*9*4, T), FL.mul(DYE_FLUIDS_CHEMICAL[i], 1,  1, T)), ZL_FS, ST.make(BlocksGT.Glass, 4, i));
+		RM.Mixer            .addRecipe1(T, 16, 64, OM.dust(MT.Na2SO4     ), FL.array(MT.Glass.liquid(U*9*4, T), FL.mul(DYE_FLUIDS_CHEMICAL[i], 1,  1, T)), ZL_FS, ST.make(BlocksGT.Glass, 4, i));
 		RM.Mixer            .addRecipe1(T, 16, 16, OM.dust(MT.Na2SO4,  U4), FL.array(MT.Glass.liquid(U*9  , T), FL.mul(DYE_FLUIDS_CHEMICAL[i], 1,  4, T)), ZL_FS, ST.make(BlocksGT.Glass, 1, i));
-		RM.Mixer            .addRecipe1(T, 16, 16, OM.dust(MT.K2SO4      ), FL.array(MT.Glass.liquid(U*9*4, T), FL.mul(DYE_FLUIDS_CHEMICAL[i], 1,  1, T)), ZL_FS, ST.make(BlocksGT.Glass, 4, i));
+		RM.Mixer            .addRecipe1(T, 16, 64, OM.dust(MT.K2SO4      ), FL.array(MT.Glass.liquid(U*9*4, T), FL.mul(DYE_FLUIDS_CHEMICAL[i], 1,  1, T)), ZL_FS, ST.make(BlocksGT.Glass, 4, i));
 		RM.Mixer            .addRecipe1(T, 16, 16, OM.dust(MT.K2SO4 ,  U4), FL.array(MT.Glass.liquid(U*9  , T), FL.mul(DYE_FLUIDS_CHEMICAL[i], 1,  4, T)), ZL_FS, ST.make(BlocksGT.Glass, 1, i));
 		
 		for (OreDictMaterial tMat : ANY.Glowstone.mToThis) {

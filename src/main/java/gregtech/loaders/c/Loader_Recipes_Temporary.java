@@ -370,6 +370,18 @@ public class Loader_Recipes_Temporary implements Runnable {
 			
 			RM.glowstone(IL.NeLi_Gloomstone.get(1), MT.Gloomstone);
 			
+			RM.smash(IL.NeLi_Cluster_White  .get(1), OP.gem.mat(MT.FluoriteWhite  , 1));
+			RM.smash(IL.NeLi_Cluster_Blue   .get(1), OP.gem.mat(MT.FluoriteBlue   , 1));
+			RM.smash(IL.NeLi_Cluster_Green  .get(1), OP.gem.mat(MT.FluoriteGreen  , 1));
+			RM.smash(IL.NeLi_Cluster_Yellow .get(1), OP.gem.mat(MT.FluoriteYellow , 1));
+			RM.smash(IL.NeLi_Cluster_Magenta.get(1), OP.gem.mat(MT.FluoriteMagenta, 1));
+			
+			RM.smash(IL.NeLi_Clu2ter_White  .get(1), OP.gem.mat(MT.FluoriteWhite  , 3));
+			RM.smash(IL.NeLi_Clu2ter_Blue   .get(1), OP.gem.mat(MT.FluoriteBlue   , 3));
+			RM.smash(IL.NeLi_Clu2ter_Green  .get(1), OP.gem.mat(MT.FluoriteGreen  , 3));
+			RM.smash(IL.NeLi_Clu2ter_Yellow .get(1), OP.gem.mat(MT.FluoriteYellow , 3));
+			RM.smash(IL.NeLi_Clu2ter_Magenta.get(1), OP.gem.mat(MT.FluoriteMagenta, 3));
+			
 			RM.compactsmash(OP.gem.mat(MT.FluoriteWhite  , 1), 4, IL.NeLi_Crystal_White  .get(1));
 			RM.compactsmash(OP.gem.mat(MT.FluoriteBlue   , 1), 4, IL.NeLi_Crystal_Blue   .get(1));
 			RM.compactsmash(OP.gem.mat(MT.FluoriteGreen  , 1), 4, IL.NeLi_Crystal_Green  .get(1));
