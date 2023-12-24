@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -31,10 +31,7 @@ import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
-import gregapi.render.BlockTextureDefault;
-import gregapi.render.BlockTextureMulti;
-import gregapi.render.IIconContainer;
-import gregapi.render.ITexture;
+import gregapi.render.*;
 import gregapi.tileentity.ITileEntityQuickObstructionCheck;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.util.OM;
@@ -216,6 +213,8 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	sOverlayBerry       = new Textures.BlockIcons.CustomIcon("machines/plants/bush/overlay/berries"),
 	sOverlayImmature    = new Textures.BlockIcons.CustomIcon("machines/plants/bush/overlay/berries_immature");
 	
+	public static final ITexture sSnowTexture = BlockTextureCopied.get(Blocks.snow_layer);
+	
 	private ITexture mTexture;
 	
 	@Override
@@ -250,11 +249,14 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 		} else {
 			mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, 0xff00ff), BlockTextureDefault.get(sOverlayBush));
 		}
+		
+		for (byte tSide : ALL_SIDES_HORIZONTAL) if (getBlockAtSide(tSide) == Blocks.snow_layer) return 2;
 		return 1;
 	}
 	
 	@Override
 	public boolean setBlockBounds2(Block aBlock, int aRenderPass, boolean[] aShouldSideBeRendered) {
+		if (aRenderPass == 1) {box(aBlock, 0, 0, 0, 0, PX_P[1], 0); return T;}
 		switch(mFacing) {
 		case SIDE_X_POS: box(aBlock, PX_P[12], PX_P[ 2], PX_P[ 2], PX_N[ 0], PX_N[ 2], PX_N[ 2]); return T;
 		case SIDE_Y_POS: box(aBlock, PX_P[ 2], PX_P[12], PX_P[ 2], PX_N[ 2], PX_N[ 0], PX_N[ 2]); return T;
@@ -268,7 +270,7 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return aShouldSideBeRendered[aSide] || SIDES_VALID[mFacing] ? mTexture : null;
+		return aRenderPass == 0 ? aShouldSideBeRendered[aSide] || SIDES_VALID[mFacing] ? mTexture : null : aShouldSideBeRendered[aSide] ? sSnowTexture : null;
 	}
 	
 	@Override
