@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,11 +18,6 @@
  */
 
 package gregtech.tileentity.portals;
-
-import static gregapi.data.CS.*;
-
-import java.io.File;
-import java.util.List;
 
 import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
@@ -50,6 +45,11 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+
+import java.io.File;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -208,8 +208,8 @@ public abstract class MultiTileEntityMiniPortal extends TileEntityBase04MultiTil
 	
 	@Override public void onServerStart() {getPortalListA().clear(); getPortalListB().clear();}
 	@Override public void onServerStop () {getPortalListA().clear(); getPortalListB().clear();}
-	@Override public void onServerLoad(File aSaveLocation) {getPortalListA().clear(); getPortalListB().clear();}
-	@Override public void onServerSave(File aSaveLocation) {getPortalListA().clear(); getPortalListB().clear();}
+	@Override public void onServerLoad(File aSaveLocation) {if (CODE_CLIENT) {getPortalListA().clear(); getPortalListB().clear();}}
+	@Override public void onServerSave(File aSaveLocation) {if (CODE_CLIENT) {getPortalListA().clear(); getPortalListB().clear();}}
 	
 	public void disableThisPortal() {
 		mActive = F;
