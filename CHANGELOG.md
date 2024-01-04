@@ -6,7 +6,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.02: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[FIXED] Some Bug with Bukkit/Cauldron/etc. where things like Mini Portals and Ender Garbage Bins did not work correctly because of certain Events being thrown with weird Paths, triggering "loaded a different Save File" detection, which for Servers should flat out not be possible in the first place.
 
 
 6.17.01:

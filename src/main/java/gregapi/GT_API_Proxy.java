@@ -181,16 +181,19 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	private File mSaveLocation = null;
 	
 	/**
-	 * Check if the Save Location passed in matches the current Save Location.
+	 * saves Data whenever Save File Location changes.
 	 */
 	public boolean checkSaveLocation(File aSaveLocation, boolean aSaveTheWorldIfNull) {
 		boolean tSave = F, tLoad = F;
 		if (aSaveLocation == null) {
+			// Usually when the Server is already stopped.
 			tSave = (aSaveTheWorldIfNull && mSaveLocation != null);
 		} else if (mSaveLocation == null) {
+			// First time accessing a Save File.
 			tLoad = T;
 		} else {
-			tSave = tLoad = !mSaveLocation.equals(aSaveLocation);
+			// Servers only ever have one World Loaded, so this check is Singleplayer Only.
+			tSave = tLoad = (CODE_CLIENT && !mSaveLocation.equals(aSaveLocation) && !mSaveLocation.getAbsolutePath().equals(aSaveLocation.getAbsolutePath()));
 		}
 		
 		if (tSave) {
