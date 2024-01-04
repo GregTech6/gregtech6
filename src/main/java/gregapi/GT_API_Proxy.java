@@ -119,6 +119,7 @@ import net.minecraft.world.WorldSettings;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraftforge.common.ChestGenHooks;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -224,9 +225,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		MultiTileEntityRegistry.onServerStop();
 	}
 	
-	@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldSave  (WorldEvent.Save   aEvent) {checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory(), F);}
-	@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldLoad  (WorldEvent.Load   aEvent) {checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory(), F);}
-	@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldUnload(WorldEvent.Unload aEvent) {checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory(), F);}
+	@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldSave  (WorldEvent.Save   aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory(), F);}
+	@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldLoad  (WorldEvent.Load   aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory(), F);}
+	@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldUnload(WorldEvent.Unload aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory(), F);}
 	
 	public  static final List<ITileEntityServerTickPre  > SERVER_TICK_PRE                = new ArrayListNoNulls<>(), SERVER_TICK_PR2  = new ArrayListNoNulls<>();
 	public  static final List<ITileEntityServerTickPost > SERVER_TICK_POST               = new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
