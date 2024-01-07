@@ -184,28 +184,20 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	/**
 	 * saves Data whenever Save File Location changes.
 	 */
-	public boolean checkSaveLocation(File aSaveLocation, boolean aSaveTheWorldIfNull) {
-		boolean tSave = F, tLoad = F;
-		if (aSaveLocation == null) {
-			// Usually when the Server is already stopped.
-			tSave = (aSaveTheWorldIfNull && mSaveLocation != null);
-		} else if (mSaveLocation == null) {
-			// First time accessing a Save File.
-			tLoad = T;
-		} else {
-			// Servers only ever have one World Loaded, so this check is Singleplayer Only.
-			tSave = tLoad = (CODE_CLIENT && !mSaveLocation.equals(aSaveLocation) && !mSaveLocation.getAbsolutePath().equals(aSaveLocation.getAbsolutePath()));
-		}
+	public boolean checkSaveLocation(File aSaveLocation) {
+		boolean tSave = (aSaveLocation == null), tLoad = (mSaveLocation == null);
+		// Did Save Files swap secretly? Can happen in Singleplayer with the popular Forge Monopoly Bug: "Go directly to Main Menu. Do not enter World, do not collect blocks"
+		if (CODE_CLIENT && aSaveLocation != null && !aSaveLocation.equals(mSaveLocation)) tSave = tLoad = T;
 		
-		if (tSave) {
+		if (tSave && mSaveLocation != null) {
 			OUT.println("Saving  World! " + mSaveLocation);
 			new File(mSaveLocation, "gregtech").mkdirs();
 			GarbageGT.onServerSave(mSaveLocation);
 			MultiTileEntityRegistry.onServerSave(mSaveLocation);
 		}
-		if (tLoad) {
-			OUT.println("Loading World! " + aSaveLocation);
-			mSaveLocation = aSaveLocation;
+		mSaveLocation = aSaveLocation;
+		if (tLoad && mSaveLocation != null) {
+			OUT.println("Loading World! " + mSaveLocation);
 			new File(mSaveLocation, "gregtech").mkdirs();
 			GarbageGT.onServerLoad(mSaveLocation);
 			MultiTileEntityRegistry.onServerLoad(mSaveLocation);
@@ -221,13 +213,13 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@Override
 	public void onProxyAfterServerStopping(Abstract_Mod aMod, FMLServerStoppingEvent aEvent) {
-		checkSaveLocation(null, T);
+		checkSaveLocation(null);
 		MultiTileEntityRegistry.onServerStop();
 	}
 	
-	@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldSave  (WorldEvent.Save   aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory(), F);}
-	@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldLoad  (WorldEvent.Load   aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory(), F);}
-	@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldUnload(WorldEvent.Unload aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory(), F);}
+	@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldSave  (WorldEvent.Save   aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory());}
+	@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldLoad  (WorldEvent.Load   aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory());}
+	@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldUnload(WorldEvent.Unload aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory());}
 	
 	public  static final List<ITileEntityServerTickPre  > SERVER_TICK_PRE                = new ArrayListNoNulls<>(), SERVER_TICK_PR2  = new ArrayListNoNulls<>();
 	public  static final List<ITileEntityServerTickPost > SERVER_TICK_POST               = new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
@@ -652,7 +644,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			}
 			
 			if (SERVER_TIME % 20 == 1) {
-				checkSaveLocation(aEvent.world.getSaveHandler().getWorldDirectory(), T);
+				checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory());
 				
 				for (int i = 0; i < aEvent.world.loadedTileEntityList.size(); i++) {
 					TileEntity aTileEntity = (TileEntity)aEvent.world.loadedTileEntityList.get(i);
