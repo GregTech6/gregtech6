@@ -182,23 +182,28 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	private File mSaveLocation = null;
 	
 	/**
-	 * saves Data whenever Save File Location changes.
+	 * saves Data whenever Save File Location changes or if aForceSave is passed, usually by the minutely Autosave.
 	 */
-	public boolean checkSaveLocation(File aSaveLocation) {
-		boolean tSave = (aSaveLocation == null), tLoad = (mSaveLocation == null);
-		// Did Save Files swap secretly? Can happen in Singleplayer with the popular Forge Monopoly Bug: "Go directly to Main Menu. Do not enter World, do not collect blocks"
+	public boolean checkSaveLocation(File aSaveLocation, boolean aForceSave) {
+		boolean tSave = (aForceSave || aSaveLocation == null), tLoad = (mSaveLocation == null);
+		// Did Save Files swap secretly? Can happen in Singleplayer with the popular Forge Monopoly Bug: "Go directly to the Main Menu. Do not enter your World. Do not collect 200 Blocks."
 		if (CODE_CLIENT && aSaveLocation != null && !aSaveLocation.equals(mSaveLocation)) tSave = tLoad = T;
 		
 		if (tSave && mSaveLocation != null) {
-			OUT.println("Saving  World! " + mSaveLocation);
+			// Only print this if it is not the minutely Autosave.
+			if (aSaveLocation == null) OUT.println("Saving  World! " + mSaveLocation); else DEB.println("Autosave! " + mSaveLocation);
+			// Make the Folder to drop the Save Files into.
 			new File(mSaveLocation, "gregtech").mkdirs();
+			// Call the Save Function in all the things that need it.
 			GarbageGT.onServerSave(mSaveLocation);
 			MultiTileEntityRegistry.onServerSave(mSaveLocation);
 		}
 		mSaveLocation = aSaveLocation;
 		if (tLoad && mSaveLocation != null) {
 			OUT.println("Loading World! " + mSaveLocation);
+			// Make the Folder to uhh wait why is that needed? Probably helps preventing Issues though, so why not.
 			new File(mSaveLocation, "gregtech").mkdirs();
+			// Call the Load Function in all the things that need it.
 			GarbageGT.onServerLoad(mSaveLocation);
 			MultiTileEntityRegistry.onServerLoad(mSaveLocation);
 		}
@@ -213,13 +218,13 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@Override
 	public void onProxyAfterServerStopping(Abstract_Mod aMod, FMLServerStoppingEvent aEvent) {
-		checkSaveLocation(null);
+		checkSaveLocation(null, T);
 		MultiTileEntityRegistry.onServerStop();
 	}
 	
-	@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldLoad  (WorldEvent.Load   aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory());}
-	//@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldUnload(WorldEvent.Unload aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory());}
-	//@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldSave  (WorldEvent.Save   aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory());}
+	@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldLoad  (WorldEvent.Load   aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory(), F);}
+	//@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldUnload(WorldEvent.Unload aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory(), F);}
+	//@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldSave  (WorldEvent.Save   aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory(), F);}
 	
 	public  static final List<ITileEntityServerTickPre  > SERVER_TICK_PRE                = new ArrayListNoNulls<>(), SERVER_TICK_PR2  = new ArrayListNoNulls<>();
 	public  static final List<ITileEntityServerTickPost > SERVER_TICK_POST               = new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
@@ -644,7 +649,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			}
 			
 			if (SERVER_TIME % 20 == 1) {
-				checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory());
+				checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory(), SERVER_TIME % 1200 == 1);
 				
 				for (int i = 0; i < aEvent.world.loadedTileEntityList.size(); i++) {
 					TileEntity aTileEntity = (TileEntity)aEvent.world.loadedTileEntityList.get(i);
