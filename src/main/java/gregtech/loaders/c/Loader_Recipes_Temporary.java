@@ -45,7 +45,10 @@ import static gregapi.util.CR.*;
  */
 public class Loader_Recipes_Temporary implements Runnable {
 	@Override public void run() {
-		ItemStack tStack = null;
+		ItemStack tStack = NI;
+		
+		// That Stone Rod is overlapping a Recipe. Luckily it can be made using GT6 Methods, so it is okay to remove it.
+		CR.delate(MD.FMB, "stoneRod");
 		
 		// TODO: Graphite Electrodes are made from petroleum coke after it is mixed with coal tar pitch. They are then extruded and shaped, baked to carbonize the binder (pitch) and finally graphitized by heating it to temperatures approaching 3273K.
 		RM.Extruder.addRecipe2(T, 512, 512, OP.dust.mat(MT.Graphite, 1), IL.Shape_Extruder_Rod     .get(0), OP.stick    .mat(MT.Graphite, 1));
@@ -366,6 +369,18 @@ public class Loader_Recipes_Temporary implements Runnable {
 			RM.ic2_extractor(IL.NeLi_Soul_Rose.get(1), ST.make(Items.dye, 2, DYE_INDEX_LightBlue));
 			
 			RM.glowstone(IL.NeLi_Gloomstone.get(1), MT.Gloomstone);
+			
+			RM.smash(IL.NeLi_Cluster_White  .get(1), OP.gem.mat(MT.FluoriteWhite  , 1));
+			RM.smash(IL.NeLi_Cluster_Blue   .get(1), OP.gem.mat(MT.FluoriteBlue   , 1));
+			RM.smash(IL.NeLi_Cluster_Green  .get(1), OP.gem.mat(MT.FluoriteGreen  , 1));
+			RM.smash(IL.NeLi_Cluster_Yellow .get(1), OP.gem.mat(MT.FluoriteYellow , 1));
+			RM.smash(IL.NeLi_Cluster_Magenta.get(1), OP.gem.mat(MT.FluoriteMagenta, 1));
+			
+			RM.smash(IL.NeLi_Clu2ter_White  .get(1), OP.gem.mat(MT.FluoriteWhite  , 3));
+			RM.smash(IL.NeLi_Clu2ter_Blue   .get(1), OP.gem.mat(MT.FluoriteBlue   , 3));
+			RM.smash(IL.NeLi_Clu2ter_Green  .get(1), OP.gem.mat(MT.FluoriteGreen  , 3));
+			RM.smash(IL.NeLi_Clu2ter_Yellow .get(1), OP.gem.mat(MT.FluoriteYellow , 3));
+			RM.smash(IL.NeLi_Clu2ter_Magenta.get(1), OP.gem.mat(MT.FluoriteMagenta, 3));
 			
 			RM.compactsmash(OP.gem.mat(MT.FluoriteWhite  , 1), 4, IL.NeLi_Crystal_White  .get(1));
 			RM.compactsmash(OP.gem.mat(MT.FluoriteBlue   , 1), 4, IL.NeLi_Crystal_Blue   .get(1));

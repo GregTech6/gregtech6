@@ -482,6 +482,14 @@ public class Override_Drops {
 			for (int i = 0; i < 2; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
 				aDrops.add(ST.entity(aDead, IL.Horn_Cow.get(1)));
 			}
+		} else if (aClass.equalsIgnoreCase("EntityBison")) {
+			tReplaceIron = T;
+			for (int i = 0; i < 4; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
+				aDrops.add(ST.entity(aDead, IL.Hoof_Cow.get(1)));
+			}
+			for (int i = 0; i < 2; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
+				aDrops.add(ST.entity(aDead, IL.Horn_Cow.get(1)));
+			}
 		} else if (aClass.equalsIgnoreCase("EntityTFBoar")) {
 			tReplaceIron = T;
 			for (int i = 0; i < 2; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
@@ -496,7 +504,12 @@ public class Override_Drops {
 			for (int i = 0; i < 2; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
 				aDrops.add(ST.entity(aDead, IL.Tusk_Boar.get(1)));
 			}
-		} else if (aClass.equalsIgnoreCase("EntityTFDeer")) {
+		} else if (aClass.equalsIgnoreCase("EntityElephant") || aClass.equalsIgnoreCase("EntityElefant") || aClass.equalsIgnoreCase("MoCEntityElephant")) {
+			tReplaceIron = T;
+			for (int i = 0; i < 2; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
+				aDrops.add(ST.entity(aDead, IL.Tusk_Elephant.get(1)));
+			}
+		} else if (aClass.equalsIgnoreCase("EntityDeer") || aClass.equalsIgnoreCase("EntityTFDeer")) {
 			tReplaceIron = T;
 			for (int i = 0; i < 4; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
 				aDrops.add(ST.entity(aDead, IL.Hoof_Deer.get(1)));
@@ -524,7 +537,7 @@ public class Override_Drops {
 			int tAmount = 1+RNGSUS.nextInt(3);
 			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting + 1);
 			while (tAmount-->0) aDrops.add(ST.entity(aDead, Items.feather, 1, 0));
-		} else if (aClass.equalsIgnoreCase("MoCEntityHorse")) {
+		} else if (aClass.equalsIgnoreCase("MoCEntityHorse") || aClass.equalsIgnoreCase("MoCEntityHorseMob")) {
 			tReplaceIron = T;
 			int tAmount = 2+RNGSUS.nextInt(3);
 			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting + 1);
@@ -582,7 +595,7 @@ public class Override_Drops {
 			if (RNGSUS.nextInt(100) <= 10 + aLooting) {
 				aDrops.add(ST.entity(aDead, IL.Food_Carrot.get(1)));
 			}
-		} else if (aClass.equalsIgnoreCase("EntityWarg") || aClass.equalsIgnoreCase("EntityHellhound") || aClass.equalsIgnoreCase("MoCEntityWWolf") || aClass.equalsIgnoreCase("EntityTFMistWolf") || aClass.equalsIgnoreCase("EntityTFWinterWolf")) {
+		} else if (aClass.equalsIgnoreCase("EntityDireWolf") || aClass.equalsIgnoreCase("EntityWarg") || aClass.equalsIgnoreCase("EntityHellhound") || aClass.equalsIgnoreCase("MoCEntityWWolf") || aClass.equalsIgnoreCase("EntityTFMistWolf") || aClass.equalsIgnoreCase("EntityTFWinterWolf")) {
 			tReplaceIron = T;
 			int tAmount = 1+RNGSUS.nextInt(4);
 			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting + 1);

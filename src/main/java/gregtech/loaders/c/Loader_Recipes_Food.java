@@ -37,8 +37,9 @@ import static gregapi.data.OP.*;
 
 public class Loader_Recipes_Food implements Runnable {
 	@Override public void run() {
-		RM.food_can(ST.make(Items.rotten_flesh  , 1, W), 4, "Canned Meat", IL.CANS_ROTTEN);
-		RM.food_can(ST.make(Items.spider_eye    , 1, W), 2, "Canned Spider Eye", IL.CANS_ROTTEN);
+		RM.food_can(IL.WiMo_Infected_Meat     .get(1), 4, "Canned Meat", IL.CANS_ROTTEN);
+		RM.food_can(ST.make(Items.rotten_flesh, 1, W), 4, "Canned Meat", IL.CANS_ROTTEN);
+		RM.food_can(ST.make(Items.spider_eye  , 1, W), 2, "Canned Meat", IL.CANS_ROTTEN);
 		
 		for (ItemStack tStack : ST.array(dustTiny.mat(MT.FishCooked, 9), dustSmall.mat(MT.FishCooked, 4), dust.mat(MT.FishCooked, 1), nugget.mat(MT.FishCooked, 9), chunkGt.mat(MT.FishCooked, 4), billet.mat(MT.FishCooked, 2), ingot.mat(MT.FishCooked, 1)))
 		RM.food_can(tStack, 2, "Canned Fish", IL.CANS_FISH);
@@ -302,16 +303,15 @@ public class Loader_Recipes_Food implements Runnable {
 		addListener(OD.itemEgg, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			if (FL.Water_Hot.exists())
-			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Water_Hot       .make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
+			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Water_Hot       .make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1), IL.Birb_Egg_Shell.get(1));
 			if (FL.Hot_Water.exists())
-			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Hot_Water       .make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
+			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Hot_Water       .make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1), IL.Birb_Egg_Shell.get(1));
 			if (FL.Water_Boiling.exists())
-			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Water_Boiling   .make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
-			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Water_Geothermal.make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
-			RM.Autoclave        .addRecipe2(T,  0,  128, aEvent.mStack, ST.tag(0), FL.Steam.make(800), FL.DistW.make(5), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1));
-			RM.Mixer            .addRecipe2(T, 16,   16, aEvent.mStack, OP.stick.mat(MT.WoodTreated, 0), IL.Food_Egg_Scrambled.get(1));
-			RM.Juicer           .addRecipe1(T, 16,   16, aEvent.mStack, IL.Food_Egg_White.get(1), IL.Food_Egg_Yolk.get(1)); // There not gonna be a Squeezer Recipe!
-			RM.Centrifuge       .addRecipe1(T, 16,   64, aEvent.mStack, IL.Food_Egg_White.get(1), IL.Food_Egg_Yolk.get(1));
+			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Water_Boiling   .make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1), IL.Birb_Egg_Shell.get(1));
+			RM.Bath             .addRecipe1(T,  0,  128, aEvent.mStack, FL.Water_Geothermal.make(100), FL.Water.make(100), (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1), IL.Birb_Egg_Shell.get(1));
+			RM.Autoclave        .addRecipe2(T,  0,  128, aEvent.mStack, ST.tag(0), FL.Steam.make(800), FL.DistW.make(5)  , (ST.equal(aEvent.mStack, Items.egg)?IL.Food_Brown_Egg_Boiled:IL.Food_White_Egg_Boiled).get(1), IL.Birb_Egg_Shell.get(1));
+			RM.Juicer           .addRecipe1(T, 16,   16, aEvent.mStack, IL.Food_Egg_White.get(1), IL.Food_Egg_Yolk.get(1), IL.Birb_Egg_Shell.get(1)); // There is not gonna be a Squeezer Recipe!
+			RM.Centrifuge       .addRecipe1(T, 16,   64, aEvent.mStack, IL.Food_Egg_White.get(1), IL.Food_Egg_Yolk.get(1), IL.Birb_Egg_Shell.get(1));
 			RM.add_smelting(aEvent.mStack, IL.Food_Egg_Fried.get(1));
 		}});
 		addListener(OD.itemEgg, "foodScrambledegg", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
@@ -319,7 +319,7 @@ public class Loader_Recipes_Food implements Runnable {
 			for (OreDictMaterial tMat : ANY.Flour.mToThis)
 			RM.Mixer            .addRecipe2(T, 16,   16, aEvent.mStack, OM.dust(tMat), IL.Food_Dough_Egg.get(1));
 		}});
-		addListener(OD.itemTusk, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+		addListener(OD.itemTusk, OD.itemIvory, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (OD.listAllmeatsubstitute.is_(aEvent.mStack)) return;
 			RM.add_smelting(aEvent.mStack, IL.Sticky_Goo.get(1), F, T, F);
 			RM.mortarize(aEvent.mStack, IL.Dye_Bonemeal.get(1));

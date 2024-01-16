@@ -213,7 +213,7 @@ public class CS {
 	public static int EU_PER_SMELT = 256;
 	/** The value of how many Energy Units a Liter of Lava is worth. It is worth about 180 to 333 RF in TE. Well, I go for 320 RF in GT, meaning 80 GU/L or 80000 GU per Bucket. Cannot be above 200 GU/L or else MFR exploit with infinite Lava! */
 	public static int EU_PER_LAVA = 80;
-	/** The value of how many Energy Units a Liter of Hot Coolant also known as Heatant is worth. It is worth 20 EU in IC2 Experimental, so it's the same 20 GU in GT6. */
+	/** The value of how many Energy Units a Liter of Hot Coolant also known as "Heatant" is worth. It is worth 20 EU in IC2 Experimental, so it's the same 20 GU in GT6. */
 	public static int EU_PER_COOLANT = 20;
 	/** The value of how many Energy Units a Liter of Semiheavy Water needs to turn into Hot Semiheavy Water. */
 	public static int EU_PER_SEMI_HEAVY_WATER = 40;
@@ -257,7 +257,7 @@ public class CS {
 	
 	, BIOMES_DESERT         = new BiomeNameSet(BiomeGenBase.desert, BiomeGenBase.desertHills, "Sahara", "Red Desert", "Desert Archipelago", "Oasis", "Sandstone Canyon", "Sandstone Canyon 2", "Sandstone Ranges", "Sahel", "Lush Desert", "Desert Oil Field", "Desert Island", "Mountainous Desert", "Desert Mountains", "Volcanic Desert", "Ulterior Outback")
 	, BIOMES_MESA           = new BiomeNameSet(BiomeGenBase.mesa, BiomeGenBase.mesaPlateau, BiomeGenBase.mesaPlateau_F, "Canyon", "Mesa (Bryce)", "Mesa", "Clay Hills")
-	, BIOMES_SAVANNA        = new BiomeNameSet(BiomeGenBase.savanna, BiomeGenBase.savannaPlateau, "Steppe", "Subterranean Savannah", "Oak Savanna", "Savannah", "Savanna", "Shrubland", "Shrublands", "Roofed Shrublands", "Xeric Savanna", "Xeric Shrubland", "Prairie")
+	, BIOMES_SAVANNA        = new BiomeNameSet(BiomeGenBase.savanna, BiomeGenBase.savannaPlateau, "Steppe", "Subterranean Savannah", "Oak Savanna", "Savannah", "Savanna", "Shrubland", "Shrublands", "Roofed Shrublands", "Xeric Savanna", "Xeric Shrubland", "Prairie", "Canyon")
 	
 	, BIOMES_SWAMP          = new BiomeNameSet(BiomeGenBase.swampland, "Green Swamplands", "DeepSwamp", "Land of Lakes Marsh", "Marsh", "Lush Swamp", "Moor", "Mire", "Bog", "Twilight Swamp", "Submerged Swamp", "Fire Swamp")
 	, BIOMES_WILLOW         = new BiomeNameSet(BiomeGenBase.swampland, "Green Swamplands", "DeepSwamp", "Land of Lakes Marsh", "Marsh", "Lush Swamp", "Moor", "Mire", "Bog", "Twilight Swamp", "Submerged Swamp")
@@ -1700,8 +1700,8 @@ public class CS {
 		RailAluminiumDetector, RailMagnaliumDetector, RailBronzeDetector, RailStainlessSteelDetector, RailSteelDetector, RailTitaniumDetector, RailTungstenDetector, RailTungstenSteelDetector, RailTungstenCarbideDetector, RailAdamantiumDetector,
 		RailRoad;
 		
-		/** EFR Deepslate Redstone Ore Blocks. */
-		public static Block EtFu_Deepslate_Redstone_Ore, EtFu_Deepslate_Lit_Redstone_Ore;
+		/** EFR unregistered Blocks. */
+		public static Block EtFu_Deepslate_Redstone_Ore, EtFu_Deepslate_Lit_Redstone_Ore, EtFu_Beetroot_Crop;
 		/** GT6 Stone Type. */
 		public static BlockBase GraniteBlack, GraniteRed, Basalt, Marble, Limestone, Granite, Diorite, Andesite, Komatiite, SchistGreen, SchistBlue, Kimberlite, Quartzite, PrismarineLight, PrismarineDark, Slate, Shale;
 		/** Contains all GT6 Stone Types. */
@@ -2118,6 +2118,8 @@ public class CS {
 		, MaCr              = "magicalcrops"
 		, MaCu              = "Mariculture"
 		, MoCr              = "MoCreatures"
+		, WiMo              = "wildmobsmod"
+		, Birb              = "exoticbirds"
 		, ChocoCraft        = "chococraft"
 		, GoG               = "GrimoireOfGaia"
 		, DRPG              = "divinerpg"

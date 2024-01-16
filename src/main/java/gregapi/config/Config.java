@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2023 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,7 @@
 
 package gregapi.config;
 
-import static gregapi.data.CS.*;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-
 import gregapi.api.Abstract_Mod;
-import gregapi.data.CS.DirectoriesGT;
 import gregapi.data.MT;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.ST;
@@ -34,6 +27,12 @@ import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -90,6 +89,7 @@ public class Config implements Runnable {
 		mConfig.load();
 		mConfig.save();
 		Abstract_Mod.sConfigs.add(this);
+		//FMLInterModComms.sendRuntimeMessage(MD.GT.mID, "carbonconfig", "registerGui", tPathUsed.getAbsolutePath());
 	}
 	
 	@Deprecated public Config(File aConfig) {this(new Configuration(aConfig));}

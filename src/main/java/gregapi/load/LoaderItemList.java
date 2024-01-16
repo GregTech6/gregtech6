@@ -47,6 +47,10 @@ public class LoaderItemList implements Runnable {
 	
 	@Override
 	public void run() {
+		BlocksGT.EtFu_Beetroot_Crop              = GameRegistry.findBlock(MD.EtFu.mID, "beetroots");
+		BlocksGT.EtFu_Deepslate_Redstone_Ore     = GameRegistry.findBlock(MD.EtFu.mID, "deepslate_redstone_ore");
+		BlocksGT.EtFu_Deepslate_Lit_Redstone_Ore = GameRegistry.findBlock(MD.EtFu.mID, "deepslate_lit_redstone_ore");
+		
 		GarbageGT.BLACKLIST.add(ST.make(MD.TC, "ItemThaumonomicon"              , 1,42));
 		GarbageGT.BLACKLIST.add(ST.make(MD.RT, "opSpectreKey"                   , 1, W));
 		
@@ -562,7 +566,8 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_copper_ore"           , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_diamond_ore"          , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_lapis_ore"            , null));
-		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_redstone_ore"         , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(BlocksGT.EtFu_Deepslate_Redstone_Ore);
+		StoneLayer.REPLACEABLE_BLOCKS.add(BlocksGT.EtFu_Deepslate_Lit_Redstone_Ore);
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_emerald_ore"          , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "modded_deepslate_ore"           , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_thaumcraft_ore"       , null));
@@ -703,10 +708,6 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "skythernOre"                    , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "mortumOre"                      , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DRPG, "arcaniumOre"                    , null));
-		
-		
-		BlocksGT.EtFu_Deepslate_Redstone_Ore     = GameRegistry.findBlock(MD.EtFu.mID, "deepslate_redstone_ore");
-		BlocksGT.EtFu_Deepslate_Lit_Redstone_Ore = GameRegistry.findBlock(MD.EtFu.mID, "deepslate_lit_redstone_ore");
 		
 		
 		MT.H2O.mTextureDust   = MT.Steam.mTextureDust   = MT.FreshWater.mTextureDust   = MT.DistWater.mTextureDust   = MT.Ice.mTextureDust   = MT.Snow.mTextureDust   = MT.Snow.mTextureSolid = BlockTextureCopied.get(Blocks.snow);
@@ -1236,6 +1237,13 @@ public class LoaderItemList implements Runnable {
 		IL.MoCr_Turtle_Raw                      .set(ST.make(MD.MoCr, "turtleraw"                           , 1, 0), new OreDictItemData(MT.MeatRaw     , U*2, MT.Bone, U9), "foodTurtleraw");
 		
 		
+		IL.WiMo_Infected_Meat                   .set(ST.make(MD.WiMo, "infected_flesh"                      , 1, 0), new OreDictItemData(MT.MeatRotten  , U*2, MT.Bone, U9));
+		IL.WiMo_Thick_Bone                      .set(ST.make(MD.WiMo, "thick_bone"                          , 1, 0), new OreDictItemData(MT.Bone, U*4));
+		
+		
+		IL.Birb_Egg_Shell                       .set(ST.make(MD.Birb, "eggshell"                            , 1, 0), new OreDictItemData(MT.Bone, U9));
+		
+		
 		IL.MaCu_Dye_White                       .set(ST.make(MD.MaCu, "materials"                           , 1,27), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_White]);
 		IL.MaCu_Dye_Blue                        .set(ST.make(MD.MaCu, "materials"                           , 1,28), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue]);
 		IL.MaCu_Dye_Green                       .set(ST.make(MD.MaCu, "materials"                           , 1,29), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_Green]);
@@ -1303,6 +1311,16 @@ public class LoaderItemList implements Runnable {
 		IL.NeLi_Budding_Green                   .set(ST.make(MD.NeLi, "NetherCrystal"                       , 1, 7), new OreDictItemData(MT.FluoriteGreen  , U*4));
 		IL.NeLi_Budding_Yellow                  .set(ST.make(MD.NeLi, "NetherCrystal"                       , 1, 8), new OreDictItemData(MT.FluoriteYellow , U*4));
 		IL.NeLi_Budding_Magenta                 .set(ST.make(MD.NeLi, "NetherCrystal"                       , 1, 9), new OreDictItemData(MT.FluoriteMagenta, U*4));
+		IL.NeLi_Cluster_White                   .set(ST.make(MD.NeLi, "CrystalClusterWhite"                 , 1, 0), new OreDictItemData(MT.FluoriteWhite  , U  ));
+		IL.NeLi_Cluster_Blue                    .set(ST.make(MD.NeLi, "CrystalClusterBlue"                  , 1, 0), new OreDictItemData(MT.FluoriteBlue   , U  ));
+		IL.NeLi_Cluster_Green                   .set(ST.make(MD.NeLi, "CrystalClusterGreen"                 , 1, 0), new OreDictItemData(MT.FluoriteGreen  , U  ));
+		IL.NeLi_Cluster_Yellow                  .set(ST.make(MD.NeLi, "CrystalClusterYellow"                , 1, 0), new OreDictItemData(MT.FluoriteYellow , U  ));
+		IL.NeLi_Cluster_Magenta                 .set(ST.make(MD.NeLi, "CrystalClusterMagenta"               , 1, 0), new OreDictItemData(MT.FluoriteMagenta, U  ));
+		IL.NeLi_Clu2ter_White                   .set(ST.make(MD.NeLi, "CrystalClusterWhite"                 , 1, 1), new OreDictItemData(MT.FluoriteWhite  , U*3));
+		IL.NeLi_Clu2ter_Blue                    .set(ST.make(MD.NeLi, "CrystalClusterBlue"                  , 1, 1), new OreDictItemData(MT.FluoriteBlue   , U*3));
+		IL.NeLi_Clu2ter_Green                   .set(ST.make(MD.NeLi, "CrystalClusterGreen"                 , 1, 1), new OreDictItemData(MT.FluoriteGreen  , U*3));
+		IL.NeLi_Clu2ter_Yellow                  .set(ST.make(MD.NeLi, "CrystalClusterYellow"                , 1, 1), new OreDictItemData(MT.FluoriteYellow , U*3));
+		IL.NeLi_Clu2ter_Magenta                 .set(ST.make(MD.NeLi, "CrystalClusterMagenta"               , 1, 1), new OreDictItemData(MT.FluoriteMagenta, U*3));
 		IL.NeLi_Lamp_White                      .set(ST.make(MD.NeLi, "CrystalLamp"                         , 1, 0), new OreDictItemData(MT.FluoriteWhite  , U*4, ANY.Glowstone, U*4), CR.DELATE);
 		IL.NeLi_Lamp_Blue                       .set(ST.make(MD.NeLi, "CrystalLamp"                         , 1, 1), new OreDictItemData(MT.FluoriteBlue   , U*4, ANY.Glowstone, U*4), CR.DELATE);
 		IL.NeLi_Lamp_Green                      .set(ST.make(MD.NeLi, "CrystalLamp"                         , 1, 2), new OreDictItemData(MT.FluoriteGreen  , U*4, ANY.Glowstone, U*4), CR.DELATE);

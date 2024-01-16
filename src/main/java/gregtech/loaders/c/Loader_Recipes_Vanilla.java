@@ -46,6 +46,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.remove(ST.make(Blocks.glass, 1, 0), NI, ST.make(Blocks.glass, 1, 0), NI, ST.make(Blocks.glass, 1, 0));
 		CR.remove(ST.make(Items.blaze_rod, 1, 0));
 		CR.remove(ST.make(Items.bone, 1, 0));
+		CR.remove(IL.WiMo_Thick_Bone.get(1));
 		
 		CR.shapeless(dust.mat(MT.White, 1), DEF, new Object[] {Items.bone});
 		CR.shaped(ST.make(Items.paper, 1, 0), DEF, "XXX", 'X', Items.reeds);
@@ -133,6 +134,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shapeless(stickLong.mat(MT.IronMagnetic, 1), DEF, new Object[] {stickLong.dat(ANY.Fe), OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone, OD.itemRedstone});
 		
 		CR.shaped(IL.Dye_Bonemeal.get(1), DEF, "h", "X", 'X', Items.bone);
+		CR.shaped(IL.Dye_Bonemeal.get(2), DEF, "h", "X", 'X', IL.WiMo_Thick_Bone);
 		
 		
 		
@@ -668,11 +670,13 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.glass_pane        , 1, W), OM.dust(MT.Glass, U));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.stained_glass_pane, 1, W), OM.dust(MT.Glass, U));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Items.bone, 1, W), IL.Dye_Bonemeal.get(2));
+		RM.Mortar       .addRecipe1(T, 16, 64, IL.WiMo_Thick_Bone.get(1), IL.Dye_Bonemeal.get(4));
 		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.flint, 1, W), dust.mat(MT.Flint, 1));
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.gravel, 1, W), ST.make(Items.flint, 1, 0));
 		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.coal, 1, 0), OM.dust(MT.Coal));
 		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.coal, 1, 1), OM.dust(MT.Charcoal));
 		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.rotten_flesh, 1, W), dust.mat(MT.MeatRotten, 1));
+		RM.Mortar       .addRecipe1(T, 16, 16, IL.WiMo_Infected_Meat.get(1), dust.mat(MT.MeatRotten, 1));
 		
 		
 		RM.Shredder     .addRecipe1(T, 16, 16, ST.make(Items.flint, 1, W), dust.mat(MT.Flint, 1));
@@ -685,6 +689,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Shredder     .addRecipe1(T, 16, 16, IL.Module_Basalt_Generator.get(0), OM.dust(MT.STONES.Basalt));
 		RM.Shredder     .addRecipe1(T, 16, 16, IL.Module_Blackstone_Generator.get(0), OM.dust(MT.STONES.Blackstone));
 		RM.Shredder     .addRecipe1(T, 16, 32, ST.make(Items.bone, 1, W), IL.Dye_Bonemeal.get(4));
+		RM.Shredder     .addRecipe1(T, 16, 64, IL.WiMo_Thick_Bone.get(1), IL.Dye_Bonemeal.get(8));
 		RM.Shredder     .addRecipe1(T, 16,128,  6000, ST.make(Blocks.melon_block, 1, W), IL.Remains_Fruit.get(9));
 		
 		
