@@ -19,6 +19,7 @@
 
 package gregtech.tileentity.multiblocks;
 
+import cn.kuzuanpa.ktfruaddon.fluid.flList;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.CS.*;
 import gregapi.data.FL;
@@ -150,7 +151,7 @@ public class MultiTileEntityLargeTurbineSteam extends MultiTileEntityLargeTurbin
 			mEnergyProducedNextTick += tSteam / 2;
 			mTanks[0].setEmpty();
 			if (mSteamCounter >= STEAM_PER_WATER) {
-				mTanks[1].fillAll(FL.DistW.make(mSteamCounter / STEAM_PER_WATER));
+				mTanks[1].fillAll(flList.HotDistW.make(mSteamCounter / STEAM_PER_WATER));
 				mSteamCounter %= STEAM_PER_WATER;
 			}
 		}

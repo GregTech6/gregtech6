@@ -19,6 +19,7 @@
 
 package gregapi.tileentity.connectors;
 
+import cn.kuzuanpa.ktfruaddon.material.matList;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetDebugInfo;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
@@ -91,23 +92,25 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 		OreDictManager.INSTANCE.setTarget_(OP.cableGt04, aMat, aRegistry.add( "4x " + aMat.getLocal() + " Cable", "Electric Wires", aID+19, aCreativeTabID, aClass, aMat.mToolQuality, 16, aBlock     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 1.0F, NBT_RESISTANCE, 2.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 1, NBT_DIAMETER, PX_P[ 8], NBT_PIPESIZE, aVoltage, NBT_PIPEBANDWIDTH, aAmperage* 4, NBT_CONTACTDAMAGE, aContactDamageCable, NBT_PIPELOSS, aLossCable)), T, F, T);
 		OreDictManager.INSTANCE.setTarget_(OP.cableGt08, aMat, aRegistry.add( "8x " + aMat.getLocal() + " Cable", "Electric Wires", aID+23, aCreativeTabID, aClass, aMat.mToolQuality,  8, aBlock     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 1.0F, NBT_RESISTANCE, 2.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 1, NBT_DIAMETER, PX_P[12], NBT_PIPESIZE, aVoltage, NBT_PIPEBANDWIDTH, aAmperage* 8, NBT_CONTACTDAMAGE, aContactDamageCable, NBT_PIPELOSS, aLossCable)), T, F, T);
 		OreDictManager.INSTANCE.setTarget_(OP.cableGt12, aMat, aRegistry.add("12x " + aMat.getLocal() + " Cable", "Electric Wires", aID+27, aCreativeTabID, aClass, aMat.mToolQuality,  4, aBlock     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 1.0F, NBT_RESISTANCE, 2.0F, NBT_COLOR, UT.Code.getRGBInt(aMat.fRGBaSolid), NBT_PIPERENDER, 1, NBT_DIAMETER, PX_P[16], NBT_PIPESIZE, aVoltage, NBT_PIPEBANDWIDTH, aAmperage*12, NBT_CONTACTDAMAGE, aContactDamageCable, NBT_PIPELOSS, aLossCable)), T, F, T);
-		
-		for (OreDictMaterial tMat : ANY.Rubber.mToThis) {
+
+		if(aVoltage<V[4]/*EV*/)for (OreDictMaterial tMat : ANY.Rubber.mToThis) registerLaminatorRecipes(aID, aVoltage, aRegistry, tMat);
+		else if (aVoltage<V[7]/*ZPM*/) registerLaminatorRecipes(aID, aVoltage, aRegistry, matList.SBR.mat);
+		else registerLaminatorRecipes(aID,aVoltage,aRegistry,matList.SiliconeRubber.mat);
+		}
+	}
+	private static void registerLaminatorRecipes(int aID, long aVoltage, MultiTileEntityRegistry aRegistry, OreDictMaterial tMat) {
 		RM.Laminator.addRecipe2(T, 16, 16, OP.plate.mat(tMat, 1), aRegistry.getItem(aID   ), aRegistry.getItem(aID+16   ));
 		RM.Laminator.addRecipe2(T, 16, 16, OP.plate.mat(tMat, 1), aRegistry.getItem(aID+ 1), aRegistry.getItem(aID+16+ 1));
 		RM.Laminator.addRecipe2(T, 16, 32, OP.plate.mat(tMat, 2), aRegistry.getItem(aID+ 3), aRegistry.getItem(aID+16+ 3));
 		RM.Laminator.addRecipe2(T, 16, 48, OP.plate.mat(tMat, 3), aRegistry.getItem(aID+ 7), aRegistry.getItem(aID+16+ 7));
 		RM.Laminator.addRecipe2(T, 16, 64, OP.plate.mat(tMat, 4), aRegistry.getItem(aID+11), aRegistry.getItem(aID+16+11));
-		
+
 		RM.Laminator.addRecipe2(T, 16, 16, OP.foil .mat(tMat, 4), aRegistry.getItem(aID   ), aRegistry.getItem(aID+16   ));
 		RM.Laminator.addRecipe2(T, 16, 16, OP.foil .mat(tMat, 4), aRegistry.getItem(aID+ 1), aRegistry.getItem(aID+16+ 1));
 		RM.Laminator.addRecipe2(T, 16, 32, OP.foil .mat(tMat, 8), aRegistry.getItem(aID+ 3), aRegistry.getItem(aID+16+ 3));
 		RM.Laminator.addRecipe2(T, 16, 48, OP.foil .mat(tMat,12), aRegistry.getItem(aID+ 7), aRegistry.getItem(aID+16+ 7));
 		RM.Laminator.addRecipe2(T, 16, 64, OP.foil .mat(tMat,16), aRegistry.getItem(aID+11), aRegistry.getItem(aID+16+11));
-		}
-		}
 	}
-	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);

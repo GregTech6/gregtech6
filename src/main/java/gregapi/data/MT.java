@@ -3046,7 +3046,7 @@ public class MT {
 			Lapis                           .ores(Lazurite                  , Sodalite                  , Pyrite                );
 			OREMATS.Cooperite               .ores(Pd                        , Ni                        , Ir                    );
 			OREMATS.Cinnabar                .ores(Redstone                  , S                         , Glowstone             , Se                    );
-			OREMATS.Chromite                .ores(MnO2                      , Fe2O3                     , MgCO3                 , OREMATS.Bromargyrite  );
+			OREMATS.Chromite                .ores(Cr                        , MnO2                      , Fe2O3                     , MgCO3                 , OREMATS.Bromargyrite  );
 			OREMATS.Bromargyrite            .ores(MnO2                      , Ag                        , OREMATS.Chromite      , OREMATS.Smithsonite   );
 			Mn                              .ores(MnO2                      , Fe2O3                     , OREMATS.Chromite      );
 			MnO2                            .ores(OREMATS.Bromargyrite      , Fe2O3                     , OREMATS.Chromite      );
