@@ -574,6 +574,7 @@ public class Override_Drops {
 			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting + 1);
 			while (tAmount-->0) aDrops.add(ST.entity(aDead, aBurn?IL.Food_Mutton_Cooked.get(1):IL.Food_Mutton_Raw.get(1)));
 		} else if (aClass.equalsIgnoreCase("EntityTFBunny") || aClass.equalsIgnoreCase("EntityAerbunny")) {
+			// TODO Remove EFR Rabbit Stuff from TF Bunny because redundancy.
 			tReplaceIron = T;
 			for(int i = 0, j = RNGSUS.nextInt(2) + RNGSUS.nextInt(1 + aLooting); i < j; ++i) {
 				aDrops.add(ST.entity(aDead, MD.EtFu, "rabbit_hide", 1, 0));
