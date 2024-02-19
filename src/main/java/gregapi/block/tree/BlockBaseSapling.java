@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,9 @@
 
 package gregapi.block.tree;
 
-import static gregapi.data.CS.*;
-import static net.minecraftforge.common.EnumPlantType.*;
-
-import java.util.Random;
-
 import cpw.mods.fml.common.Optional;
 import gregapi.block.BlockBaseMeta;
-import gregapi.data.CS.ModIDs;
+import gregapi.data.CS.*;
 import gregapi.data.MD;
 import gregapi.data.OP;
 import gregapi.render.IIconContainer;
@@ -35,10 +30,7 @@ import gregapi.util.UT;
 import gregapi.util.WD;
 import micdoodle8.mods.galacticraft.api.block.IOxygenReliantBlock;
 import mods.railcraft.common.carts.EntityTunnelBore;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockSnow;
-import net.minecraft.block.BlockTallGrass;
-import net.minecraft.block.IGrowable;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -53,6 +45,11 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.terraingen.TerrainGen;
+
+import java.util.Random;
+
+import static gregapi.data.CS.*;
+import static net.minecraftforge.common.EnumPlantType.Plains;
 
 /**
  * @author Gregorius Techneticies
@@ -130,7 +127,7 @@ public abstract class BlockBaseSapling extends BlockBaseMeta implements IPlantab
 	
 	public boolean canPlaceTree(World aWorld, int aX, int aY, int aZ) {
 		Block tBlock = aWorld.getBlock(aX, aY, aZ);
-		return tBlock == this || tBlock instanceof BlockTallGrass || tBlock instanceof BlockSnow || tBlock.canBeReplacedByLeaves(aWorld, aX, aY, aZ);
+		return tBlock == this || tBlock instanceof BlockTallGrass || tBlock instanceof BlockSnow || tBlock instanceof BlockLeavesBase || tBlock.canBeReplacedByLeaves(aWorld, aX, aY, aZ);
 	}
 	
 	@Override public boolean canPlaceBlockAt(World aWorld, int aX, int aY, int aZ) {return super.canPlaceBlockAt(aWorld, aX, aY, aZ) && canBlockStay(aWorld, aX, aY, aZ);}
