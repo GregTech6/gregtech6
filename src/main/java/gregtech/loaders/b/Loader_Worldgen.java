@@ -768,13 +768,13 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenColtan ("ore.special.coltan"           , T,  20,  40,  32, 480, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
 		
 		// Has to be after Bedrock Ores, because it would reduce Ore chances too much otherwise.
-		new WorldgenFluidSpring(   "overworld.fluid.oil.extraheavy", T, BlocksGT.OilExtraHeavy  , 15, 100, tInfiniteOil ? FL.Oil_ExtraHeavy  .make( 6000) : NF, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
-		new WorldgenFluidSpring(   "overworld.fluid.oil.heavy"     , T, BlocksGT.OilHeavy       , 15, 100, tInfiniteOil ? FL.Oil_Heavy       .make( 6000) : NF, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
-		new WorldgenFluidSpring(   "overworld.fluid.oil.medium"    , T, BlocksGT.OilMedium      , 15, 100, tInfiniteOil ? FL.Oil_Medium      .make( 6000) : NF, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
-		new WorldgenFluidSpring(   "overworld.fluid.oil.light"     , T, BlocksGT.OilLight       , 15, 100, tInfiniteOil ? FL.Oil_Light       .make( 6000) : NF, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
-		new WorldgenFluidSpring(   "overworld.fluid.gas.natural"   , T, BlocksGT.GasNatural     , 15,  50, tInfiniteGas ? FL.Gas_Natural     .make( 3000) : NF, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
-		new WorldgenFluidSpring(   "overworld.fluid.water"         , T, BlocksGT.WaterGeothermal, 15,  25,                FL.Water_Geothermal.make(   40)     , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_TFC);
-		new WorldgenFluidSpring(   "overworld.fluid.lava"          , T, Blocks.lava             ,  0,  10,                FL.Lava            .make(  100)     , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_TFC);
+		new WorldgenFluidSpring(   "overworld.fluid.oil.extraheavy", T, BlocksGT.OilExtraHeavy  , 15, 200, tInfiniteOil ? FL.Oil_ExtraHeavy  .make( 6000) : NF, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
+		new WorldgenFluidSpring(   "overworld.fluid.oil.heavy"     , T, BlocksGT.OilHeavy       , 15, 200, tInfiniteOil ? FL.Oil_Heavy       .make( 6000) : NF, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
+		new WorldgenFluidSpring(   "overworld.fluid.oil.medium"    , T, BlocksGT.OilMedium      , 15, 200, tInfiniteOil ? FL.Oil_Medium      .make( 6000) : NF, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
+		new WorldgenFluidSpring(   "overworld.fluid.oil.light"     , T, BlocksGT.OilLight       , 15, 200, tInfiniteOil ? FL.Oil_Light       .make( 6000) : NF, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
+		new WorldgenFluidSpring(   "overworld.fluid.gas.natural"   , T, BlocksGT.GasNatural     , 15, 300, tInfiniteGas ? FL.Gas_Natural     .make( 3000) : NF, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC);
+		new WorldgenFluidSpring(   "overworld.fluid.water"         , T, BlocksGT.WaterGeothermal, 15, 400,                FL.Water_Geothermal.make(   40)     , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_TFC);
+		new WorldgenFluidSpring(   "overworld.fluid.lava"          , T, Blocks.lava             ,  0,1000,                FL.Lava            .make(  100)     , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_TFC);
 		new WorldgenFluidSpring(        "atum.fluid.oil.extraheavy", T, BlocksGT.OilExtraHeavy  , 15, 200, tInfiniteOil ? FL.Oil_ExtraHeavy  .make( 2000) : NF, GEN_ATUM);
 		new WorldgenFluidSpring(        "atum.fluid.oil.heavy"     , T, BlocksGT.OilHeavy       , 15, 200, tInfiniteOil ? FL.Oil_Heavy       .make( 2000) : NF, GEN_ATUM);
 		new WorldgenFluidSpring(        "atum.fluid.oil.medium"    , T, BlocksGT.OilMedium      , 15, 200, tInfiniteOil ? FL.Oil_Medium      .make( 2000) : NF, GEN_ATUM);
