@@ -80,7 +80,7 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 		if (aNBT.hasKey(NBT_FUELMAP)) mRecipes = RecipeMap.RECIPE_MAPS.get(aNBT.getString(NBT_FUELMAP));
 		if (aNBT.hasKey(NBT_EFFICIENCY)) mEfficiency = (short)UT.Code.bind_(0, 10000, aNBT.getShort(NBT_EFFICIENCY));
 		if (aNBT.hasKey(NBT_ENERGY_EMITTED)) mEnergyTypeEmitted = TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED));
-		mTanks[0].readFromNBT(aNBT, NBT_TANK+".0").setCapacity(mRate * 128);
+		mTanks[0].readFromNBT(aNBT, NBT_TANK+".0").setCapacity(mRate * 16);
 		mTanks[1].readFromNBT(aNBT, NBT_TANK+".1").setCapacity(mRate * 128);
 	}
 	
