@@ -153,42 +153,42 @@ public class Loader_Fuels implements Runnable {
 		
 		
 		
-		FM.Burn         .addRecipe0(T, - 16,  1, FL.make("hydrogen", 2)                      , FL.Water.make(3), ZL_IS);
-		FM.Gas          .addRecipe0(T, - 16,  2, FL.make("hydrogen", 2)                      , FL.Water.make(3), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  1, FL.make("hydrogen", 2)                      , FL.Steam.make(60), ZL_IS);
+		FM.Gas          .addRecipe0(T, - 16,  2, FL.make("hydrogen", 2)                      , FL.Steam.make(60), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  1, FL.amount(MT.T.mGas, 2)                     , FL.amount(MT.T2O.mLiquid, 3), ZL_IS);
 		FM.Gas          .addRecipe0(T, - 16,  2, FL.amount(MT.T.mGas, 2)                     , FL.amount(MT.T2O.mLiquid, 3), ZL_IS);
 
-		FM.Burn         .addRecipe0(T, - 64, 24, FL.make("methane", 5)                       , FL.Water.make(6), FL.CarbonDioxide.make(3));
-		FM.Burn         .addRecipe0(T, - 64, 16, FL.make("gas_natural_gas", 5)               , FL.Water.make(6), FL.CarbonDioxide.make(3));
-		FM.Gas          .addRecipe0(T, - 64, 30, FL.make("methane", 5)                       , FL.Water.make(6), FL.CarbonDioxide.make(3));
-		FM.Gas          .addRecipe0(T, - 64, 20, FL.make("gas_natural_gas", 5)               , FL.Water.make(6), FL.CarbonDioxide.make(3));
+		FM.Burn         .addRecipe0(T, - 64, 24, FL.make("methane", 5)                       , FL.Steam.make(120), FL.CarbonDioxide.make(3));
+		FM.Burn         .addRecipe0(T, - 64, 16, FL.make("gas_natural_gas", 5)               , FL.Steam.make(120), FL.CarbonDioxide.make(3));
+		FM.Gas          .addRecipe0(T, - 64, 30, FL.make("methane", 5)                       , FL.Steam.make(120), FL.CarbonDioxide.make(3));
+		FM.Gas          .addRecipe0(T, - 64, 20, FL.make("gas_natural_gas", 5)               , FL.Steam.make(120), FL.CarbonDioxide.make(3));
 		if (FL.exists("naturalgas")) {
-		FM.Burn         .addRecipe0(T, - 64, 16, FL.make("naturalgas", 5)                    , FL.Water.make(6), FL.CarbonDioxide.make(3));
-		FM.Gas          .addRecipe0(T, - 64, 20, FL.make("naturalgas", 5)                    , FL.Water.make(6), FL.CarbonDioxide.make(3));
+		FM.Burn         .addRecipe0(T, - 64, 16, FL.make("naturalgas", 5)                    , FL.Steam.make(120), FL.CarbonDioxide.make(3));
+		FM.Gas          .addRecipe0(T, - 64, 20, FL.make("naturalgas", 5)                    , FL.Steam.make(120), FL.CarbonDioxide.make(3));
 		}
 		if (FL.exists("gas.natural")) {
-		FM.Burn         .addRecipe0(T, - 64, 16, FL.make("gas.natural", 5)                   , FL.Water.make(6), FL.CarbonDioxide.make(3));
-		FM.Gas          .addRecipe0(T, - 64, 20, FL.make("gas.natural", 5)                   , FL.Water.make(6), FL.CarbonDioxide.make(3));
+		FM.Burn         .addRecipe0(T, - 64, 16, FL.make("gas.natural", 5)                   , FL.Steam.make(120), FL.CarbonDioxide.make(3));
+		FM.Gas          .addRecipe0(T, - 64, 20, FL.make("gas.natural", 5)                   , FL.Steam.make(120), FL.CarbonDioxide.make(3));
 		}
 		if (FL.exists("ic2biogas")) {
-		FM.Burn         .addRecipe0(T, - 64, 24, FL.make("ic2biogas", 20)                    , FL.Water.make(6), FL.CarbonDioxide.make(3));
-		FM.Gas          .addRecipe0(T, - 64, 30, FL.make("ic2biogas", 20)                    , FL.Water.make(6), FL.CarbonDioxide.make(3));
+		FM.Burn         .addRecipe0(T, - 64, 24, FL.make("ic2biogas", 20)                    , FL.Steam.make(120), FL.CarbonDioxide.make(3));
+		FM.Gas          .addRecipe0(T, - 64, 30, FL.make("ic2biogas", 20)                    , FL.Steam.make(120), FL.CarbonDioxide.make(3));
 		}
 		if (FL.LPG.exists()) {
-		FM.Burn         .addRecipe0(T, - 64, 42, FL.LPG.make(7)                              , FL.Water.make(7), FL.CarbonDioxide.make(6));
+		FM.Burn         .addRecipe0(T, - 64, 42, FL.LPG.make(7)                              , FL.Steam.make(140), FL.CarbonDioxide.make(6));
 		}
 		
-		FM.Burn         .addRecipe0(T, - 64, 42, FL.make("butane", 7)                        , FL.Water.make(7), FL.CarbonDioxide.make(6));
-		FM.Gas          .addRecipe0(T, - 64, 56, FL.make("butane", 7)                        , FL.Water.make(7), FL.CarbonDioxide.make(6));
+		FM.Burn         .addRecipe0(T, - 64, 42, FL.make("butane", 7)                        , FL.Steam.make(140), FL.CarbonDioxide.make(6));
+		FM.Gas          .addRecipe0(T, - 64, 56, FL.make("butane", 7)                        , FL.Steam.make(140), FL.CarbonDioxide.make(6));
 		
-		FM.Burn         .addRecipe0(T, - 64, 30, FL.make("propane", 5)                       , FL.Water.make(5), FL.CarbonDioxide.make(4));
-		FM.Gas          .addRecipe0(T, - 64, 40, FL.make("propane", 5)                       , FL.Water.make(5), FL.CarbonDioxide.make(4));
+		FM.Burn         .addRecipe0(T, - 64, 30, FL.make("propane", 5)                       , FL.Steam.make(100), FL.CarbonDioxide.make(4));
+		FM.Gas          .addRecipe0(T, - 64, 40, FL.make("propane", 5)                       , FL.Steam.make(100), FL.CarbonDioxide.make(4));
 		
-		FM.Burn         .addRecipe0(T, - 64,  4, FL.make("ethylene", 1)                      , FL.Water.make(1), FL.CarbonDioxide.make(1));
-		FM.Gas          .addRecipe0(T, - 64,  5, FL.make("ethylene", 1)                      , FL.Water.make(1), FL.CarbonDioxide.make(1));
+		FM.Burn         .addRecipe0(T, - 64,  4, FL.make("ethylene", 1)                      , FL.Steam.make(20), FL.CarbonDioxide.make(1));
+		FM.Gas          .addRecipe0(T, - 64,  5, FL.make("ethylene", 1)                      , FL.Steam.make(20), FL.CarbonDioxide.make(1));
 		
-		FM.Burn         .addRecipe0(T, - 64,  3, FL.make("propylene", 1)                     , FL.Water.make(1), FL.CarbonDioxide.make(1));
-		FM.Gas          .addRecipe0(T, - 64,  4, FL.make("propylene", 1)                     , FL.Water.make(1), FL.CarbonDioxide.make(1));
+		FM.Burn         .addRecipe0(T, - 64,  3, FL.make("propylene", 1)                     , FL.Steam.make(20), FL.CarbonDioxide.make(1));
+		FM.Gas          .addRecipe0(T, - 64,  4, FL.make("propylene", 1)                     , FL.Steam.make(20), FL.CarbonDioxide.make(1));
 		
 		FM.Hot          .addRecipe0(T, - 16,  6, FL.Blaze.make(1)                            , NF, ZL_IS);
 		FM.Hot          .addRecipe0(T, - 16, EU_PER_LAVA/16, FL.Lava.make(1)                 , FL.Lava_Pahoehoe.make(1), ZL_IS);
