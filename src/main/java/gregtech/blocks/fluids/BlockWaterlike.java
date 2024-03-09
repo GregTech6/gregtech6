@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -70,6 +70,7 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 		quantaPerBlockFloat = quantaPerBlock;
 		setResistance(30);
 		setBlockName(aName);
+		setLightOpacity(LIGHT_OPACITY_WATER);
 		ST.register(this, aName, ItemBlock.class);
 		LH.add(getUnlocalizedName(), getLocalizedName());
 		LanguageHandler.set(getLocalizedName(), getLocalizedName()); // WAILA is retarded...

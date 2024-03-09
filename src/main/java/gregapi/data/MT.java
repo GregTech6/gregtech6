@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -594,7 +594,7 @@ public class MT {
 	Rb      = rubidium       (),
 	Sr      = strontium      (),
 	Y       = yttrium        (),
-	Zr      = zirconium      ().qual(3,  6.0,  512, 3).lens(DYE_INDEX_White),
+	Zr      = zirconium      ().qual(3,  8.0, 1280, 3).lens(DYE_INDEX_White),
 	Nb      = niobium        (),
 	Mo      = molybdenum     ().qual(3,  7.0,  512, 2),
 	Tc      = technetium     ().qual(3, 10.0, 1280, 1), Gregorium=Tc,
@@ -1639,9 +1639,9 @@ public class MT {
 	
 	
 	Stone                   = stone         ( 8500, "Stone"                                         , 205, 205, 205, 255, MELTING, MOLTEN, UNRECYCLABLE)                                                                                                                                                                                                                                                                        .aspects(TC.TERRA       , 1).qual(1, 2.0, 16, 1).heat(1100).setRGBaLiquid(192,  96,  64, 255), Gravel = Stone,
-	Concrete                = stone         ( 8501, "Concrete"                                      , 100, 100, 100, 255, MELTING)                                                                                                                                  .setMcfg( 0, Stone          , 1*U)                                                                                                                          .aspects(TC.TERRA       , 1).qual(1, 2.5, 32, 0).heat(500).setSmelting(Stone, U),
+	Concrete                = stone         ( 8501, "Concrete"              , SET_BRICK             , 100, 100, 100, 255, MELTING)                                                                                                                                  .setMcfg( 0, Stone          , 1*U)                                                                                                                          .aspects(TC.TERRA       , 1).qual(1, 2.5, 32, 0).heat(500).setSmelting(Stone, U),
 	Netherrack              = stone         ( 8502, "Netherrack"                                    , 200,   0,   0, 255, UNBURNABLE, FLAMMABLE, BLACKLISTED_SMELTER)                                                                                                                                                                                                                                                           .aspects(TC.IGNIS       , 1).qual(1, 2.0,  8, 0).heat(1500, 3000),
-	NetherBrick             = stone         ( 8503, "Nether Brick"                                  , 100,   0,   0, 255, UNBURNABLE, "BrickNether")                                                                                                                                                                                                                                                                            .aspects(TC.IGNIS       , 1).qual(1, 2.0, 24, 1).heat(1800, 3000).setPulver(Netherrack, U),
+	NetherBrick             = stone         ( 8503, "Nether Brick"          , SET_BRICK             , 100,   0,   0, 255, UNBURNABLE, "BrickNether")                                                                                                                                                                                                                                                                            .aspects(TC.IGNIS       , 1).qual(1, 2.0, 24, 1).heat(1800, 3000).setPulver(Netherrack, U),
 	Endstone                = stone         ( 8504, "Endstone"                                      , 217, 222, 158, 255, ENDER_DRAGON_PROOF)                                                                                                                                                                                                                                                                                   .aspects(TC.TENEBRAE    , 1).qual(1, 3.0, 16, 1).heat(1200).addSourceOf(He,He_3),
 	
 	PrismarineLight         = stone         ( 9219, "Prismarine"            , SET_PRISMARINE        , 110, 178, 165, 255, G_GEM_ORES, CRYSTAL, CRYSTALLISABLE)                                                                                                                                                                                                                                                                  .aspects(TC.TEMPESTAS   , 1).qual(1, 4.0, 48, 1).setLocal("Light Prismarine"),

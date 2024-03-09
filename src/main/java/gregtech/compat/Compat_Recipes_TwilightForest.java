@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -41,6 +41,8 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		CR.shaped(IL.Stick.get(2), DEF, "s", "X", 'X', IL.TF_Dry_Bush);
 		CR.shaped(IL.Stick.get(2), DEF, "k", "X", 'X', IL.TF_Dry_Bush);
 		
+		// Hide that damn thing so people wont get the Idea to use it.
+		ST.hide(IL.TF_Uncrafting.item());
 		// To get the Glass Bottle back, which is the Container Item.
 		CR.shapeless(IL.TF_Firefly.get(1), new Object[] {IL.TF_Firefly_Jar});
 		// Since the Cube gives all Progress related TF Achievements with GT6, it is not that bad that you use up the 5 Trophies in co-op Multiplayer. Oh and yes I know the Lamp of Cinders has itself as Container Item, that is intended as you just need to "have" it.
