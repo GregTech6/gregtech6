@@ -19,6 +19,7 @@
 
 package gregtech.loaders.b;
 
+import cn.kuzuanpa.ktfruaddon.material.matList;
 import gregapi.block.BlockBase;
 import gregapi.block.metatype.BlockStones;
 import gregapi.config.ConfigCategories;
@@ -837,8 +838,9 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresSmall("ore.small.niter"            , T,  10, 120,  32, MT.Niter               , GEN_NETHER);
 		new WorldgenOresSmall("ore.small.efrine"           , T,  90, 120,   8, MT.Efrine              , GEN_NETHER);
 		new WorldgenOresSmall("ore.small.cinnabar"         , T,   5, 250,  16, MT.OREMATS.Cinnabar    , GEN_NETHER);
-		new WorldgenOresSmall("ore.small.ancientdebris"    , !IL.Ancient_Debris.exists(), 5, 90, 16, MT.AncientDebris, GEN_NETHER, GEN_MARS);
-		
+		new WorldgenOresSmall("ore.small.ancientdebris"    , T,   5,  90,  16, MT.AncientDebris       , GEN_NETHER);
+		new WorldgenOresSmall("ore.small.intellite"        , T,   5, 120,   8, matList.Ij.mat         , GEN_OVERWORLD,GEN_MOON, GEN_PLANETS, GEN_MARS);
+
 		new WorldgenOresSmall("ore.small.blackquartz"      , MD.AA      .mLoaded,  20,  40,   1, MT.BlackQuartz                , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_ENVM_GT, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
 		new WorldgenOresSmall("ore.small.certus"           , MD.AE      .mLoaded,  20,  40,   1, MT.CertusQuartz               , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_ENVM_GT, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_ALFHEIM, GEN_ASTEROIDS, GEN_MOON);
 		new WorldgenOresSmall("ore.small.vinteum"          , MD.ARS     .mLoaded,  30,  60,   8, MT.Vinteum                    , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_ENVM_GT, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_ALFHEIM);
@@ -861,7 +863,8 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresSmall("ore.small.potassiumfeldspar", MD.IHL     .mLoaded,  40,  80,   1, MT.PotassiumFeldspar          , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_ENVM_GT, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
 		new WorldgenOresSmall("ore.small.trona"            , MD.IHL     .mLoaded,  40,  80,   1, MT.OREMATS.Trona              , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_ENVM_GT, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM);
 		new WorldgenOresSmall("ore.small.nikolite"         ,!MT.Nikolite.mHidden,  10,  40,   4, MT.Nikolite                   , GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_ENVM_GT, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_AETHER, GEN_MARS, GEN_PLANETS, GEN_ALFHEIM, GEN_NETHER, GEN_END);
-		
+		new WorldgenOresSmall("ore.small.intellite"        , T,   5,  90,  16, matList.Ij.mat         , GEN_OVERWORLD,GEN_MOON, GEN_PLANETS, GEN_MARS);
+
 		for (OreDictMaterial tGem : OreDictMaterial.MATERIAL_ARRAY) if (tGem != null && tGem.contains(TD.Properties.RANDOM_SMALL_GEM_ORE)) {
 		new WorldgenOresSmall("ore.small."+tGem.mNameInternal.toLowerCase(), T, 5, 250, 1, tGem, GEN_GEMS);
 		if (ConfigsGT.WORLDGEN.get("ore.random_small_gem_ores", tGem.mNameInternal, T)) StoneLayer.RANDOM_SMALL_GEM_ORES.add(tGem);
@@ -911,7 +914,8 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenOresLarge("ore.large.desh"        , T, T, 10,  90, 100, 3, 16, MT.OREMATS.TritaniumHexafluoride, MT.OREMATS.DuraniumHexaastatide, MT.OREMATS.DuraniumHexabromide , MT.Desh               , ORE_MARS);
 		new WorldgenOresLarge("ore.large.syrmorite"   , T, T, 30,  45, 160, 2, 32, MT.Syrmorite                    , MT.Syrmorite                   , MT.Syrmorite                   , MT.Syrmorite          , ORE_BETWEENLANDS);
 		new WorldgenOresLarge("ore.large.octine"      , T, T, 10,  25,  40, 1, 32, MT.Octine                       , MT.Octine                      , MT.Octine                      , MT.Octine             , ORE_BETWEENLANDS);
-		
+		new WorldgenOresLarge("ore.large.intellite"   , T, T, 10,  95,  80, 1,  4, matList.Ij.mat                           , MT.OREMATS.Ilmenite            , MT.Ag                          , MT.Ag                 , ORE_OVERWORLD, ORE_PLANETS, ORE_MARS, ORE_MOON, ORE_TWILIGHT);
+
 		for (int i = 0, j = ConfigsGT.WORLDGEN_GT5.get(ConfigCategories.general, "AmountOfCustomLargeVeinSlots", 0); i < j; i++) {
 		new WorldgenOresLarge("ore.large.custom"+(i<10?"0":"") + i, F, T, 0, 0, 0, 0, 0, MT.NULL, MT.NULL, MT.NULL, MT.NULL, ORE_ALL);
 		}
