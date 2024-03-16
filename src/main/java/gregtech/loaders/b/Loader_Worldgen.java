@@ -622,25 +622,26 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenGlowtus         ("plant.glowtus"           , T,16, 2, GEN_OVERWORLD, GEN_GT, GEN_PFAA                     , GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS);
 		new WorldgenBushes          ("plant.bush"              , T, 1, 4, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_TFC, GEN_EREBUS, GEN_TWILIGHT, GEN_TROPICS, GEN_ALFHEIM);
 		
-		new WorldgenHives           (   "overworld.bumblehives", T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_ENVM_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT);
-		new WorldgenHives           (      "nether.bumblehives", T, GEN_NETHER);
-		new WorldgenHives           (         "end.bumblehives", T, GEN_END);
-		new WorldgenHives           (      "erebus.bumblehives", T, GEN_EREBUS);
-		new WorldgenHives           (    "twilight.bumblehives", T, GEN_TWILIGHT);
-		new WorldgenHives           (     "tropics.bumblehives", T, GEN_TROPICS);
-		new WorldgenHives           (     "alfheim.bumblehives", T, GEN_ALFHEIM);
-		new WorldgenHives           ("betweenlands.bumblehives", T, GEN_BETWEENLANDS);
-		new WorldgenHives           (      "aether.bumblehives", T, GEN_AETHER);
-		new WorldgenHives           (        "atum.bumblehives", T, GEN_ATUM);
+		//new WorldgenHives           (   "overworld.bumblehives", T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_A97, GEN_A97_GT, GEN_ENVM, GEN_ENVM_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT);
+		//new WorldgenHives           (      "nether.bumblehives", T, GEN_NETHER);
+		//new WorldgenHives           (         "end.bumblehives", T, GEN_END);
+		//new WorldgenHives           (      "erebus.bumblehives", T, GEN_EREBUS);
+		//new WorldgenHives           (    "twilight.bumblehives", T, GEN_TWILIGHT);
+		//new WorldgenHives           (     "tropics.bumblehives", T, GEN_TROPICS);
+		//new WorldgenHives           (     "alfheim.bumblehives", T, GEN_ALFHEIM);
+		//new WorldgenHives           ("betweenlands.bumblehives", T, GEN_BETWEENLANDS);
+		//new WorldgenHives           (      "aether.bumblehives", T, GEN_AETHER);
+		//new WorldgenHives           (        "atum.bumblehives", T, GEN_ATUM);
 		
-		new WorldgenCenterBiomes    ("center.biomes"           , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
-		new WorldgenStreets         ("center.streets"          , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
-		new WorldgenNexus           ("center.nexus"            , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
-		new WorldgenBeacon          ("center.beacon"           , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
-		new WorldgenTesting         ("center.testing"          , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
-		
-		new WorldgenDungeonGT("overworld.structure.dungeon.large", T, 400, 3, 7, 20, 20, 6, T, F, F, T, T, T, T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
-		
+		new WorldgenCenterBiomes    ("center.biomes"           , F, GEN_OVERWORLD, GEN_GT);
+		new WorldgenStreets         ("center.streets"          , F, GEN_OVERWORLD, GEN_GT);
+		new WorldgenNexus           ("center.nexus"            , F, GEN_OVERWORLD, GEN_GT);
+		new WorldgenBeacon          ("center.beacon"           , F, GEN_OVERWORLD, GEN_GT);
+		new WorldgenTesting         ("center.testing"          , F, GEN_OVERWORLD, GEN_GT);
+
+		new WorldgenDungeonGT("overworld.structure.dungeon.large.tfc", T, 4000, 2, 3, 20, 20, 6, T, F, F, T, F, F, F, GEN_PFAA, GEN_TFC);
+		new WorldgenDungeonGT("overworld.structure.dungeon.large.common", T, 1000, 3, 12, 20, 20, 6, T, F, F, T, F, T, F, GEN_OVERWORLD, GEN_GT, GEN_PLANETS, GEN_MOON, GEN_MARS);
+
 		for (BlockBase tStone : BlocksGT.stones) if (tStone != BlocksGT.PrismarineDark && tStone != BlocksGT.PrismarineLight) {
 		new WorldgenStone("overworld.stone."+ ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), F, tStone,  0,  1, 200, 100, 0, 120, null, F, GEN_OVERWORLD, GEN_PFAA, GEN_A97, GEN_TFC, GEN_ENVM, GEN_CW2_AquaCavern, GEN_CW2_Caveland, GEN_CW2_Cavenia, GEN_CW2_Cavern, GEN_CW2_Caveworld);
 		new WorldgenStone("nether.stone."   + ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), F, tStone,  0,  1, 200, 200, 0, 120, null, F, GEN_NETHER);

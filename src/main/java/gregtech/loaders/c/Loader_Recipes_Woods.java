@@ -222,7 +222,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			CR.shaped(ring               .mat(aEntry.mMaterialPlank, 4), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC,  "P ",  " k"       , 'P', aEntry.mPlank);
 			CR.shaped(round              .mat(aEntry.mMaterialPlank, 9), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC,  "P ",  "fk"       , 'P', aEntry.mPlank);
 			CR.shaped(toolHeadBuilderwand.mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC,  "ks",  "fP"       , 'P', aEntry.mPlank);
-			CR.shaped(toolHeadHammer     .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC, "PP ", "PPg", "PPv", 'P', aEntry.mPlank);
+			CR.shaped(toolHeadHammer     .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC, "PP ", "PP ", "PPv", 'P', aEntry.mPlank);
 			if (!aEntry.mMaterialPlank.contains(TD.Compounds.COATED)) {
 			CR.shaped(toolHeadRawArrow   .mat(aEntry.mMaterialPlank, 4), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC,        "  P", "r v", 'P', aEntry.mPlank);
 			CR.shaped(toolHeadRawSword   .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC,        " P ", "rPv", 'P', aEntry.mPlank);
