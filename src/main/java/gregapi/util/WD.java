@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -397,7 +397,7 @@ public class WD {
 		return  !MD.GC.mLoaded || !(aWorld.provider instanceof IGalacticraftWorldProvider) || OxygenUtil.checkTorchHasOxygen(aWorld, NB, aX, aY, aZ);
 	}
 	public static boolean collectable_air(World aWorld, int aX, int aY, int aZ) {
-		return (!MD.GC.mLoaded || !(aWorld.provider instanceof IGalacticraftWorldProvider)) && !hasCollide(aWorld, aX, aY, aZ);
+		return (!MD.GC.mLoaded || !(aWorld.provider instanceof IGalacticraftWorldProvider)) && !hasCollide(aWorld, aX, aY, aZ) && !liquid(aWorld, aX, aY, aZ);
 	}
 	
 	/** @return the regular Environment Temperature of the World at this Location according to my calculations. In Kelvin, ofcourse. */

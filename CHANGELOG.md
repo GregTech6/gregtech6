@@ -9,6 +9,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] A bunch of Bugs related to saving and loading Worlds, in regards to GT6 Specific Data.
 [FIXED] Some Bug with Bukkit/Cauldron/etc. where things like Mini Portals and Ender Garbage Bins did not work correctly because of certain Events being thrown with weird Paths, triggering "loaded a different Save File" detection, which for Servers should flat out not be possible in the first place.
 [FIXED] Rivers, Lakes, Oceans and Beaches do no longer dry placed Grass Bales.
+[FIXED] Air vents were collecting Air even whe nsubmerged in Liquids or other Gasses.
 [CHANGED] Roasters of higher Tiers no longer have overclocking penalty.
 [CHANGED] Zirconium now has durability and speed identical to Diamonds.
 
