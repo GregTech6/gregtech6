@@ -42,6 +42,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.MessageToMessageCodec;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
@@ -69,7 +70,7 @@ public final class NetworkHandler extends MessageToMessageCodec<FMLProxyPacket, 
 	public NetworkHandler(String aModID, String aChannelName, IPacket... aPacketTypes) {
 		mModID = aModID;
 		if (aChannelName.length() > 4) throw new IllegalArgumentException("String for Channel Name must contain 4 Characters or less!");
-		mChannel = NetworkRegistry.INSTANCE.newChannel(aChannelName, this, FMLCommonHandler.instance().getSide()==Side.CLIENT?new HandlerClient(this):new HandlerServer(this));
+		mChannel = NetworkRegistry.INSTANCE.newChannel(aChannelName, this, FMLCommonHandler.instance().getEffectiveSide()==Side.CLIENT?new HandlerClient(this):new HandlerServer(this));
 		mPacketTypes = new IPacket[256];
 		for (int i = 0; i < aPacketTypes.length; i++) {
 			int tID = UT.Code.unsignB(aPacketTypes[i].getPacketID());
@@ -195,7 +196,7 @@ public final class NetworkHandler extends MessageToMessageCodec<FMLProxyPacket, 
 		
 		@Override
 		protected void channelRead0(ChannelHandlerContext ctx, IPacket aPacket) throws Exception {
-			aPacket.process(null, mNetworkHandler);
+			aPacket.process(MinecraftServer.getServer().getEntityWorld(), mNetworkHandler);
 		}
 	}
 }

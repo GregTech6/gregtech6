@@ -27,6 +27,7 @@ import gregapi.data.*;
 import gregapi.data.LH.Chat;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
+import gregapi.network.packets.PacketMoldEvent;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
@@ -117,7 +118,20 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 		UT.NBT.setBoolean(aNBT, NBT_MODE, mUseRedstone);
 		return aNBT;
 	}
-	
+
+	@Override
+	public boolean receiveClientEvent(int p_145842_1_, int p_145842_2_) {
+		if (p_145842_1_ == 120) {
+			int tBit = B[p_145842_2_];
+			if ((mShape & tBit) == 0) {
+				mShape |= tBit;
+				UT.Sounds.send(SFX.MC_DIG_ROCK, 1.0F, -1.0F, this);
+				updateClientData();
+			}
+		}
+		return false;
+	}
+
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		if (mShape == 0)
@@ -323,14 +337,19 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 	
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (isClientSide()) return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+		if (isClientSide() && !aTool.equals(TOOL_chisel)) return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 		if (aTool.equals(TOOL_thermometer)) {if (aChatReturn != null) aChatReturn.add("Temperature: " + mTemperature + "K"); return 10000;}
-		if (aTool.equals(TOOL_chisel) && mContent == null && slot(0) == null && aHitX > PX_P[2] && aHitX < PX_N[2] && aHitZ > PX_P[2] && aHitZ < PX_N[2]) {
-			int tBit = B[((int)(5 * (aHitX - PX_P[2]) / PX_P[12]))*5+(int)(5 * (aHitZ - PX_P[2]) / PX_P[12])];
-			if ((mShape & tBit) == 0) {
-				UT.Sounds.send(SFX.MC_DIG_ROCK, 1.0F, -1.0F, this);
-				mShape |= tBit;
-				updateClientData();
+		if (aTool.equals(TOOL_chisel) && slot(0) == null && aHitX > PX_P[2] && aHitX < PX_N[2] && aHitZ > PX_P[2] && aHitZ < PX_N[2]) {
+			if (isClientSide()) {
+				int index = (int) (5 * (aHitX - PX_P[2]) / PX_P[12]) * 5 + (int) (5 * (aHitZ - PX_P[2]) / PX_P[12]);
+				int tBit = B[index];
+
+				if ((mShape & tBit) == 0) {
+					mShape |= tBit;
+					NW_SERV.sendToServer(new PacketMoldEvent(getX(), getY(), getZ(), index));
+				}
+				return 0;
+			} else {
 				return 10000;
 			}
 		}

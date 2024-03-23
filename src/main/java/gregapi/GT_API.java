@@ -639,6 +639,7 @@ public class GT_API extends Abstract_Mod {
 		// [        +125] = PacketItemStackChat
 		// [+112 to +119] = PacketBlockEvent
 		// [+104 to +111] = PacketBlockError
+		// [+ 80 to + 87] = PacketMoldEvent
 		// [+ 72 to + 79] = PacketDeathPoint
 		// [-120 to + 71] = PacketSyncData
 		// [-128 to -121] = PacketSound

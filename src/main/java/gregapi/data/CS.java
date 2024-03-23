@@ -1002,7 +1002,7 @@ public class CS {
 	public static INetworkHandler NW_GT;
 
 	/** For using the API internal Network Functionality for the already existing Packets. */
-	public static INetworkHandler NW_API, NW_AP2;
+	public static INetworkHandler NW_API, NW_AP2, NW_SERV;
 
 	/** Used to register IC2 Stuff, this Object might be null if IC2 isn't installed. */
 	public static ICompatIC2        COMPAT_IC2;

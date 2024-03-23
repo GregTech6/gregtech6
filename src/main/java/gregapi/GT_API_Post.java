@@ -29,6 +29,11 @@ import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
 import gregapi.data.*;
 import gregapi.load.*;
+import gregapi.network.NetworkHandler;
+import gregapi.network.packets.PacketConfig;
+import gregapi.network.packets.PacketItemStackChat;
+import gregapi.network.packets.PacketMoldEvent;
+import gregapi.network.packets.PacketPrefix;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
@@ -731,6 +736,9 @@ public class GT_API_Post extends Abstract_Mod {
 	
 	@Override
 	public void onModServerStarting2(FMLServerStartingEvent aEvent) {
+		NW_SERV = new NetworkHandler(MD.GAPI.mID, "SERV", new PacketConfig(), new PacketPrefix(), new PacketItemStackChat()
+				, new PacketMoldEvent( 0), new PacketMoldEvent                          	( 1), new PacketMoldEvent                     	    ( 2), new PacketMoldEvent                           ( 3), new PacketMoldEvent                           ( 4), new PacketMoldEvent                           ( 5), new PacketMoldEvent                        	( 6), new PacketMoldEvent                           ( 7)
+		);
 		if (DISABLE_ALL_IC2_COMPRESSOR_RECIPES) ic2.api.recipe.Recipes.compressor.getRecipes().clear();
 		if (DISABLE_ALL_IC2_EXTRACTOR_RECIPES ) ic2.api.recipe.Recipes.extractor .getRecipes().clear();
 		if (DISABLE_ALL_IC2_MACERATOR_RECIPES ) ic2.api.recipe.Recipes.macerator .getRecipes().clear();
