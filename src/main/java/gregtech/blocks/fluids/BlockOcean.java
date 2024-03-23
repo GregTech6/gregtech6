@@ -40,7 +40,7 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class BlockOcean extends BlockWaterlike {
-	public static boolean PLACEMENT_ALLOWED = F, FLOWS_OUT = T, SPREAD_TO_AIR = T, UPDATE_TICK = T;
+	public static boolean PLACEMENT_ALLOWED = F, FLOWS_OUT = T, SPREAD_TO_AIR = F, UPDATE_TICK = T;
 	
 	public BlockOcean(String aName, Fluid aFluid) {
 		super(aName, aFluid, FLOWS_OUT, T);
