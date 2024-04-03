@@ -170,7 +170,6 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 			ERR.println("NOTICE: Two Materials used the same ID: " + aID + " - Names: " + aNameOreDict + " and " + rMaterial1.mNameInternal);
 			return rMaterial1;
 		}
-		if (rMaterial1.mID < 0) MATERIAL_MAP.remove(rMaterial1);
 		OreDictMaterial rMaterial2 = new OreDictMaterial((short)aID, aNameOreDict, aLocalName);
 		rMaterial1.setRegistration(rMaterial2);
 		return rMaterial2;

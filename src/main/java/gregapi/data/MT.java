@@ -1889,10 +1889,12 @@ public class MT {
 		DATA.Dye_Materials.getClass();
 		OREMATS.Magnetite.getClass();
 		WOODS.Oak.getClass();
+		STONES.Basalt.getClass();
 		AM.Hydrogen.getClass();
 		ANY.init();
 		TECH.Unknown.getClass();
 		TECH.init();
+		UNUSED.Vis.getClass();
 	}
 	
 	/** I had to remove the full length names of Elements from this List, but in order to keep Compat with Mods that used some, such as IHL or Tinkers Gregworks, I got a few of them here. */
