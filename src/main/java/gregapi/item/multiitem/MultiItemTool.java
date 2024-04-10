@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -473,6 +473,8 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		if (aBlock == NB || WD.bedrock(aBlock)) return 0;
 		if (ST.instaharvest(aBlock, aMeta)) return 10;
 		if (!isItemStackUsable(aStack)) return 0;
+		// Required because a combination of Twilight Forest and Block Metadata Extenders can fuck this up and give me values like 49 for vanilla Blocks.
+		if (aMeta > 15 && (aBlock == Blocks.dirt || aBlock == Blocks.grass || aBlock == Blocks.stone)) aMeta = 0;
 		float tMultiplier = 1.0F;
 		OreDictMaterial tMaterial = getPrimaryMaterial(aStack);
 		if ((IL.TF_Mazestone.equal(aBlock) || IL.TF_Mazehedge.equal(aBlock) || IL.TF_Towerwood.equal(aBlock)) && tMaterial.contains(TD.Properties.MAZEBREAKER)) tMultiplier *= 40;
