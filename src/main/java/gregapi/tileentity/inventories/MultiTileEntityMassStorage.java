@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -337,7 +337,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide && (mMode & B[3]) == 0) {
-			if (slotHas(0)) slot(0, insertItems(slot(0), F));
+			if (!slotNull(0)) slot(0, insertItems(slot(0), F));
 			boolean temp = F;
 			if (mInventoryChanged || aTimer % 100 == 0) {
 				if (slotHas(1)) {

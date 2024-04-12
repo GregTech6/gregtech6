@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -262,6 +262,8 @@ public class Loader_Recipes_Ores implements Runnable {
 		
 		
 		
+		RM.Sifting      .addRecipe1(T, 16,  144, new long[] {10000, 90, 360, 1350, 1800, 3600, 4500}, crushedPurified    .mat(MT.Asbestos           , 1), crushedCentrifugedTiny.mat(MT.Asbestos           , 9), gemExquisite.mat(MT.Jade  , 1), gemFlawless.mat(MT.Jade  , 1), gem.mat(MT.Jade  , 1), gemFlawed.mat(MT.Jade  , 2), gemChipped.mat(MT.Jade  , 4), dust.mat(MT.Jade  , 1));
+		RM.Sifting      .addRecipe1(T, 16,   16, new long[] {10000, 10,  40,  150,  200,  400,  500}, crushedPurifiedTiny.mat(MT.Asbestos           , 1), crushedCentrifugedTiny.mat(MT.Asbestos           , 1), gemExquisite.mat(MT.Jade  , 1), gemFlawless.mat(MT.Jade  , 1), gem.mat(MT.Jade  , 1), gemFlawed.mat(MT.Jade  , 2), gemChipped.mat(MT.Jade  , 4), dust.mat(MT.Jade  , 1));
 		RM.Sifting      .addRecipe1(T, 16,  144, new long[] {10000, 90, 360, 1350, 1800, 3600, 4500}, crushedPurified    .mat(MT.Sn                 , 1), crushedCentrifugedTiny.mat(MT.Sn                 , 9), gemExquisite.mat(MT.Zircon, 1), gemFlawless.mat(MT.Zircon, 1), gem.mat(MT.Zircon, 1), gemFlawed.mat(MT.Zircon, 2), gemChipped.mat(MT.Zircon, 4), dust.mat(MT.Zircon, 1));
 		RM.Sifting      .addRecipe1(T, 16,   16, new long[] {10000, 10,  40,  150,  200,  400,  500}, crushedPurifiedTiny.mat(MT.Sn                 , 1), crushedCentrifugedTiny.mat(MT.Sn                 , 1), gemExquisite.mat(MT.Zircon, 1), gemFlawless.mat(MT.Zircon, 1), gem.mat(MT.Zircon, 1), gemFlawed.mat(MT.Zircon, 2), gemChipped.mat(MT.Zircon, 4), dust.mat(MT.Zircon, 1));
 		RM.Sifting      .addRecipe1(T, 16,  144, new long[] {10000, 90, 360, 1350, 1800, 3600, 4500}, crushedPurified    .mat(MT.OREMATS.Cassiterite, 1), crushedCentrifugedTiny.mat(MT.OREMATS.Cassiterite, 9), gemExquisite.mat(MT.Zircon, 1), gemFlawless.mat(MT.Zircon, 1), gem.mat(MT.Zircon, 1), gemFlawed.mat(MT.Zircon, 2), gemChipped.mat(MT.Zircon, 4), dust.mat(MT.Zircon, 1));
