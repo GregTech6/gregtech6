@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -106,8 +106,8 @@ public class OreDictItemData {
 		ArrayList<OreDictMaterialStack> aList = new ArrayListNoNulls<>(), rList = new ArrayListNoNulls<>();
 		
 		for (OreDictItemData tData : aData) if (tData != null) {
-			if (tData.validMaterial() && tData.mMaterial.mAmount > 0) aList.add(tData.mMaterial.clone());
-			for (OreDictMaterialStack tMaterial : tData.mByProducts) if (tMaterial.mAmount > 0) aList.add(tMaterial.clone());
+			if (tData.validMaterial() && tData.mMaterial.mAmount > 0) aList.add(OM.stack(tData.mMaterial.mMaterial.mTargetReversing, tData.mMaterial.mAmount));
+			for (OreDictMaterialStack tMaterial : tData.mByProducts) if (tMaterial.mAmount > 0) aList.add(OM.stack(tMaterial.mMaterial.mTargetReversing, tMaterial.mAmount));
 		}
 		
 		for (OreDictMaterialStack aMaterial : aList) {

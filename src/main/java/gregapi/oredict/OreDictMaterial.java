@@ -268,6 +268,8 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public int mPriorityPrefixIndex = 0;
 	/** Contains the most useful Prefix made of 1 Unit for this Material. */
 	public OreDictPrefix mPriorityPrefix = null;
+	/** The Material which is the target for Recycling a Crafting Recipe. Mainly to prevent things like Iron from showing up twice in the Ingredients List */
+	public OreDictMaterial mTargetReversing = this;
 	/** The Material which is the target for Re-Registration. */
 	public OreDictMaterial mTargetRegistration = this;
 	/** The Material which is the target for selecting the preferred Tool Handle. */

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -145,5 +145,12 @@ public class ANY {
 		_Steel          .stealLooks(MT.Steel          ).put(DONT_SHOW_THIS_COMPONENT);
 		_Bronze         .stealLooks(MT.Bronze         ).put(DONT_SHOW_THIS_COMPONENT);
 		_Metal          .stealLooks(MT.Fe             ).put(DONT_SHOW_THIS_COMPONENT);
+		
+		MT.W.mTargetReversing = ANY.W;
+		MT.Cu.mTargetReversing = ANY.Cu;
+		MT.Fe.mTargetReversing = ANY.Fe.mTargetReversing = ANY.Iron;
+		MT.Steel.mTargetReversing = ANY.Steel;
+		MT.Stone.mTargetReversing = ANY.Stone;
+		MT.Wood.mTargetReversing = ANY.Wood;
 	}
 }

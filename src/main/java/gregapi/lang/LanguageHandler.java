@@ -164,7 +164,7 @@ public class LanguageHandler {
 		if (aPrefix == OP.crateGtPlate    || aPrefix == OP.crateGt64Plate    || aPrefix == OP.blockPlate   ) return aPrefix.mMaterialPre + getLocalName(OP.plate   , aMaterial);
 		if (aPrefix == OP.crateGtPlateGem || aPrefix == OP.crateGt64PlateGem || aPrefix == OP.blockPlateGem) return aPrefix.mMaterialPre + getLocalName(OP.plateGem, aMaterial);
 		
-		if (aMaterial.mID >= 0 && aMaterial.mID < 10 && aPrefix.contains(TD.Prefix.ORE)) return "Unidentified Ore";
+		if (aMaterial.mID >= 0 && aMaterial.mID < 10 && aPrefix.contains(TD.Prefix.ORE)) return APRIL_FOOLS ? "Schrödingers Ore" : "Unidentified Ore";
 		
 		if (APRIL_FOOLS) {
 			if (aMaterial == MT.Empty) {
