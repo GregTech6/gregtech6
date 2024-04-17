@@ -11,6 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Rivers, Lakes, Oceans and Beaches do no longer dry placed Grass Bales.
 [FIXED] Air vents were collecting Air even when submerged in Liquids or other Gasses.
 [FIXED] Somethign that made Mass Storages jam somehow, I think. I dont know how to repliciate it, so I dont know if it's fixed.
+[FIXED] Potion Fluids now use the Potion's getLiquidColor() instead of a hardcoded Texture.
 [CHANGED] Platinum Group Metals, their Sludge and Rare Earth now have better Thaumcraft Aspects.
 [CHANGED] Roasters of higher Tiers no longer have overclocking penalty.
 [CHANGED] Zirconium now has durability and speed identical to Diamonds.
