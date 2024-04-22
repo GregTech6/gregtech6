@@ -547,11 +547,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.data(MD.VOLTZ, "veWire"      , 1,  17, MT.Diamond,  U9);
 			OM.data(MD.VOLTZ, "veWire"      , 1,  18, MT.Pt     ,  U9);
 		}
-		
-		// Bugfix just in case that one broken Version of Et Futurum Requiem is used.
-		if (MD.EtFu.mLoaded) {
-			OreDictManager.INSTANCE.setTarget(OP.ingot, MT.Cu, MD.EtFu, "copper_ingot", 0);
-		}
+
 	}
 	
 	@Override
