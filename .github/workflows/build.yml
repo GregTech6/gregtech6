@@ -46,7 +46,7 @@ jobs:
         MAVEN_USERNAME: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
         ONLY_RELEASES: true
-      run: if [[ "$REF" == "refs/tags/v"* ]]; then rm -rf ./build/libs; mkdir -p ./build/libs; ./gradlew testIfUploadable setupCIWorkspace build uploadArchives --stacktrace; fi
+      run: if [[ "$REF" == "refs/tags/v"* ]]; then sleep 600; rm -rf ./build/libs; mkdir -p ./build/libs; ./gradlew testIfUploadable setupCIWorkspace build uploadArchives --stacktrace; fi
   #- name: Workflow Dispatch
     #uses: benc-uk/workflow-dispatch@v1
     #with:

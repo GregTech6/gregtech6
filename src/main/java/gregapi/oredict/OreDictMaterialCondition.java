@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,9 +19,9 @@
 
 package gregapi.oredict;
 
-import static gregapi.data.CS.*;
-
 import gregapi.code.ICondition;
+
+import static gregapi.data.CS.U;
 
 /**
  * @author Gregorius Techneticies
@@ -31,6 +31,7 @@ import gregapi.code.ICondition;
 public class OreDictMaterialCondition {
 	public static ICondition<OreDictMaterial> selfcrush()                       {return SelfCrush.INSTANCE;}
 	public static ICondition<OreDictMaterial> fullpulver()                      {return FullPulver.INSTANCE;}
+	public static ICondition<OreDictMaterial> selfforge()                       {return SelfForge.INSTANCE;}
 	public static ICondition<OreDictMaterial> fullforge()                       {return FullForge.INSTANCE;}
 	public static ICondition<OreDictMaterial> meltmin   (long aMeltingPoint)    {return new MeltingPointMin(aMeltingPoint);}
 	public static ICondition<OreDictMaterial> meltmax   (long aMeltingPoint)    {return new MeltingPointMax(aMeltingPoint);}
@@ -51,6 +52,11 @@ public class OreDictMaterialCondition {
 	private static class FullPulver implements ICondition<OreDictMaterial> {
 		public static final FullPulver INSTANCE = new FullPulver();
 		@Override public boolean isTrue(OreDictMaterial aMaterial) {return aMaterial.mTargetPulver.mAmount >= U;}
+	}
+	
+	private static class SelfForge implements ICondition<OreDictMaterial> {
+		public static final SelfForge INSTANCE = new SelfForge();
+		@Override public boolean isTrue(OreDictMaterial aMaterial) {return aMaterial.mTargetForging.mMaterial == aMaterial;}
 	}
 	
 	private static class FullForge implements ICondition<OreDictMaterial> {

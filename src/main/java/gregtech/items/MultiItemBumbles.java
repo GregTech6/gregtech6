@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -92,7 +92,7 @@ public class MultiItemBumbles extends MultiItemRandomWithCompat implements IItem
 		make(  420, "Alienated Bumblebee"       , "Doesn't feel comfortable with Society");
 		make(  430, "Nihilistic Bumblebee"      , "Who cares? Nothing matters.");
 		
-		make(  500, "Stoned Bumblebee"          , "Duuuude, I'm so damn biiig");
+		make(  500, "Stoned Bumblebee"          , "Duuuude");//Forgot to remove one reference last year. I need a new thing for the Stoner Bumble to say...
 		make(  510, "Rocking Bumblebee"         , "");
 		make(  520, "Hard Rock Bumblebee"       , "");
 		make(  530, "Bumbelvis"                 , "Has left the Building");

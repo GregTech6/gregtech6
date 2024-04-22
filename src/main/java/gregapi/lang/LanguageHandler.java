@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -164,6 +164,8 @@ public class LanguageHandler {
 		if (aPrefix == OP.crateGtPlate    || aPrefix == OP.crateGt64Plate    || aPrefix == OP.blockPlate   ) return aPrefix.mMaterialPre + getLocalName(OP.plate   , aMaterial);
 		if (aPrefix == OP.crateGtPlateGem || aPrefix == OP.crateGt64PlateGem || aPrefix == OP.blockPlateGem) return aPrefix.mMaterialPre + getLocalName(OP.plateGem, aMaterial);
 		
+		if (aMaterial.mID >= 0 && aMaterial.mID < 10 && aPrefix.contains(TD.Prefix.ORE)) return APRIL_FOOLS ? "Schrödingers Ore" : "Unidentified Ore";
+		
 		if (APRIL_FOOLS) {
 			if (aMaterial == MT.Empty) {
 			if (aPrefix == OP.bulletGtSmall)                                        return aPrefix.mMaterialPre + "Bolt Shaft";
@@ -183,8 +185,8 @@ public class LanguageHandler {
 			if (aPrefix == OP.bulletGtSmall)                                        return "Small Bullet Casing";
 			if (aPrefix == OP.bulletGtMedium)                                       return "Medium Bullet Casing";
 			if (aPrefix == OP.bulletGtLarge)                                        return "Large Bullet Casing";
-			if (aPrefix.contains(TD.Prefix.ORE))                                    return "Unknown Ore";
-			if (aPrefix.contains(TD.Prefix.ORE_PROCESSING_BASED))                   return "Processed Unknown Ore";
+			if (aPrefix.contains(TD.Prefix.ORE))                                    return "Unidentified Ore";
+			if (aPrefix.contains(TD.Prefix.ORE_PROCESSING_BASED))                   return "Processed Unidentified Ore";
 		} else
 		if (aMaterial == MT.Stone) {
 			if (aPrefix == OP.rockGt)                                               return "Rock";

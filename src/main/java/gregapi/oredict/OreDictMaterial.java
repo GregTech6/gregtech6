@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -117,8 +117,8 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	 * <BR>[30800:30899] SuperCoder79
 	 * <BR>[30900:30999] ManaMetal Mod
 	 * <BR>[31000:31099] BioAstroiner
-	 * <BR>[31100:31199] the next one who asks me (do not use unless I personally tell you to use this smaller Range)
-	 * <BR>[31200:31299] Free
+	 * <BR>[31100:31199] KSP Atlas
+	 * <BR>[31200:31299] the next one who asks me (do not use unless I personally tell you to use this smaller Range)
 	 * <BR>[31300:31399] Free
 	 * <BR>[31400:31499] Free
 	 * <BR>[31500:31599] Free
@@ -268,6 +268,8 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public int mPriorityPrefixIndex = 0;
 	/** Contains the most useful Prefix made of 1 Unit for this Material. */
 	public OreDictPrefix mPriorityPrefix = null;
+	/** The Material which is the target for Recycling a Crafting Recipe. Mainly to prevent things like Iron from showing up twice in the Ingredients List */
+	public OreDictMaterial mTargetReversing = this;
 	/** The Material which is the target for Re-Registration. */
 	public OreDictMaterial mTargetRegistration = this;
 	/** The Material which is the target for selecting the preferred Tool Handle. */

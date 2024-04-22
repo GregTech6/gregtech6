@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -112,7 +112,7 @@ public class GT6_Main extends Abstract_Mod {
 		gt_proxy.mDisableVanillaOres     = ConfigsGT.GREGTECH.get("general", "DisableVanillaOres"    , T);
 		gt_proxy.mDisableVanillaLakes    = ConfigsGT.GREGTECH.get("general", "DisableVanillaLakes"   , T);
 		mDisableIC2Ores                  = ConfigsGT.GREGTECH.get("general", "DisableIC2Ores"        , T);
-		BlockOcean.SPREAD_TO_AIR         = ConfigsGT.GREGTECH.get("general", "OceanBlocksSpreadToAir", T);
+		BlockOcean.SPREAD_TO_AIR         = ConfigsGT.GREGTECH.get("general", "OceanBlocksSpreadToAir", F);
 		BlockOcean.FLOWS_OUT             = ConfigsGT.GREGTECH.get("general", "OceanBlocksFlowOutFar" , F);
 		BlockSwamp.FLOWS_OUT             = ConfigsGT.GREGTECH.get("general", "SwampBlocksFlowOutFar" , F);
 		BlockRiver.FLOWS_OUT             = ConfigsGT.GREGTECH.get("general", "RiverBlocksFlowOutFar" , F);
