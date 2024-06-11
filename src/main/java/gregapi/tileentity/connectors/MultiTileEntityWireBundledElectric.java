@@ -44,6 +44,7 @@ public class MultiTileEntityWireBundledElectric extends MultiTileEntityWireElect
 		
 		if (aIsServerSide) {
 			mWattageLast = mTransferredWattage;
+			mAmperesLast = mTransferredAmperes;
 			mTransferredWattage = 0;
 			mTransferredAmperes = 0;
 			if (EnergyCompat.IC_ENERGY) for (byte tSide : ALL_SIDES_VALID) if (canAcceptEnergyFrom(tSide)) {

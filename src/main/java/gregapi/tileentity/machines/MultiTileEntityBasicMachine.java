@@ -94,7 +94,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public byte mFluidInputs  = 127, mFluidOutputs = 127, mFluidAutoInput = SIDE_UNDEFINED, mFluidAutoOutput = SIDE_UNDEFINED;
 	public short mEfficiency = 10000;
 	public int mParallel = 1;
-	public long mEnergy = 0, mInputMin = 16, mInput = 32, mInputMax = 64, mMinEnergy = 0, mOutputEnergy = 0, mChargeRequirement = 0;
+	public long mEnergy = 0, mInputMin = 16, mInput = 32, mInputMax = 64, mMinEnergy = 0, mOutputEnergy = 0, mChargeRequirement = 0, mVoltageLast = 0,mAmperesLast = 0;
 	public TagData mEnergyTypeAccepted = TD.Energy.TU, mEnergyTypeEmitted = TD.Energy.QU, mEnergyTypeCharged = TD.Energy.TU;
 	public Recipe mLastRecipe = null, mCurrentRecipe = null;
 	public FluidTankGT[] mTanksInput = ZL_FT, mTanksOutput = ZL_FT;
@@ -410,6 +410,11 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			if (aChatReturn != null) onMagnifyingGlass(aChatReturn);
 			return 1;
 		}
+		if (aTool.equals(TOOL_electrometer) && isServerSide() && aChatReturn!=null) {
+			if (mAmperesLast!=0) aChatReturn.add("Receiving: "+ mVoltageLast + " EU/A * "+mAmperesLast+"A");
+			else aChatReturn.add("Receiving 0 EU/t");
+			return 1;
+		}
 		return 0;
 	}
 	
@@ -484,21 +489,29 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {
+		mVoltageLast = 0;
+		mAmperesLast = 0;
 		if (mStopped) return 0;
 		boolean tPositive = (aSize > 0);
 		aSize = Math.abs(aSize);
 		if (aSize > getEnergySizeInputMax(aEnergyType, aSide)) {
 			if (aDoInject) overcharge(aSize, aEnergyType);
+			mVoltageLast = aSize;
+			mAmperesLast = aAmount;
 			return aAmount;
 		}
 		if (aEnergyType == mEnergyTypeCharged && mChargeRequirement > 0) {
 			if (aDoInject) mChargeRequirement -= aSize * aAmount;
+			mVoltageLast = aSize;
+			mAmperesLast = aAmount;
 			return aAmount;
 		}
 		if (aEnergyType == mEnergyTypeAccepted) {
 			if (aDoInject) mStateNew = tPositive;
 			long tInput = Math.min(mInputMax - mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize) + (tInput%aSize!=0?1:0));
 			if (aDoInject) mEnergy += tConsumed * aSize;
+			mVoltageLast = aSize;
+			mAmperesLast = tConsumed;
 			return tConsumed;
 		}
 		return 0;

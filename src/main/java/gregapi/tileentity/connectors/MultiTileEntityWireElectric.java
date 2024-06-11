@@ -62,7 +62,7 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress, IMTE_GetDebugInfo, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
-	public long mTransferredAmperes = 0, mTransferredWattage = 0, mWattageLast = 0, mLoss = 1, mAmperage = 1, mVoltage = 32;
+	public long mTransferredAmperes = 0, mTransferredWattage = 0, mWattageLast = 0, mAmperesLast = 0, mLoss = 1, mAmperage = 1, mVoltage = 32;
 	public byte mRenderType = 0, mBurnCounter = 0;
 	
 	/**
@@ -136,8 +136,9 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 	
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (aTool.equals(TOOL_electrometer) && isServerSide()) {
-			if (aChatReturn != null) aChatReturn.add(mWattageLast + " EU/t");
+		if (aTool.equals(TOOL_electrometer) && isServerSide() && aChatReturn!=null) {
+			if (mAmperesLast!=0) aChatReturn.add(mWattageLast/mAmperesLast + " EU/A * "+mAmperesLast+"A");
+			else aChatReturn.add("0 EU/t");
 			return 1;
 		}
 		return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
@@ -154,6 +155,7 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 			} else {
 				if (aTimer % 512 == 2 && mBurnCounter > 0) mBurnCounter--;
 				mWattageLast = mTransferredWattage;
+				mAmperesLast = mTransferredAmperes;
 				mTransferredWattage = 0;
 				mTransferredAmperes = 0;
 				if (EnergyCompat.IC_ENERGY) for (byte tSide : ALL_SIDES_VALID) if (canAcceptEnergyFrom(tSide)) {
