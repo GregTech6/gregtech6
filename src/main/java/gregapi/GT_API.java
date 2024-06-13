@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -438,6 +438,7 @@ public class GT_API extends Abstract_Mod {
 			MT.WOODS.Foxfire.setLocal("Chrome");
 			MT.Rb.setLocal("Ruby");
 			MT.Ruby.setLocal("Red Sapphire");
+			MT.KCl.setLocal("Sylveonite");
 			MT.KNO3.setLocal("Niter");
 			MT.NaNO3.setLocal("Nitre");
 			MT.Glyceryl.setLocal("Nitro");
