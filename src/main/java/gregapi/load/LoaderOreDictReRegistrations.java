@@ -72,8 +72,6 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addAutoBlackListing("IngotEnrichedUranium");
 		OreDictManager.INSTANCE.addAutoBlackListing("blockSolidGlass");
 		OreDictManager.INSTANCE.addAutoBlackListing(OD.blockGlassColorless);
-		OreDictManager.INSTANCE.addAutoBlackListing(OD.blockGlassColorless);
-		OreDictManager.INSTANCE.addAutoBlackListing(OD.paneGlassColorless);
 		OreDictManager.INSTANCE.addAutoBlackListing(OD.paneGlassColorless);
 		OreDictManager.INSTANCE.addAutoBlackListing(OD.glassColorless);
 		OreDictManager.INSTANCE.addAutoBlackListing(OD.blockGlass);
