@@ -139,7 +139,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 					}
 				}
 			}
-			
+			mAmperageLastEmitting=0;
 			if (mActive) {
 				if (!mStopped) {
 					long tOutput = (mMode == 0 ? mBatteryCount : Math.min(mMode, mBatteryCount));
