@@ -19,6 +19,10 @@
 
 package gregapi.util;
 
+import com.bioxx.tfc.Core.TFC_Climate;
+import com.bioxx.tfc.Core.TFC_Core;
+import com.bioxx.tfc.WorldGen.TFCBiome;
+import com.bioxx.tfc.WorldGen.TFCProvider;
 import cpw.mods.fml.common.FMLCommonHandler;
 import gregapi.GT_API;
 import gregapi.block.IBlockDebugable;
@@ -406,6 +410,7 @@ public class WD {
 	
 	/** @return the regular Environment Temperature of the World at this Location according to my calculations. In Kelvin, ofcourse. */
 	public static long envTemp(World aWorld, int aX, int aY, int aZ) {
+		if(aWorld.provider instanceof TFCProvider) return (long) Math.max(1, C + TFC_Climate.getHeightAdjustedTemp(aWorld, aX, aY, aZ));
 		return envTemp(aWorld.getBiomeGenForCoords(aX, aZ), aX, aY, aZ);
 	}
 	/** @return the regular Environment Temperature of the World at this Location according to my calculations. In Kelvin, ofcourse. */
