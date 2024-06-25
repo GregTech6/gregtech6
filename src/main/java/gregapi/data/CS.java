@@ -1310,6 +1310,7 @@ public class CS {
 	, NBT_TANK_SIDE_OUT             = "gt.tanksideout"              // Byte
 	, NBT_TANK_SIDE_AUTO_IN         = "gt.tanksideautoin"           // Byte
 	, NBT_TANK_SIDE_AUTO_OUT        = "gt.tanksideautoout"          // Byte
+	, NBT_AUTO_OUTPUT_CATALYZER     = "gt.autooutputcatalyzer"      // Boolean
 	, NBT_TANK_DISABLED_IN          = "gt.tankdisabledin"           // Boolean
 	, NBT_TANK_DISABLED_OUT         = "gt.tankdisabledout"          // Boolean
 	, NBT_COVERS                    = "gt.covers"                   // Tag Compound with 24 Tags.

@@ -23,6 +23,7 @@ import buildcraft.api.tiles.IHasWork;
 import cpw.mods.fml.common.Optional;
 import gregapi.GT_API;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
+import gregapi.code.ItemStackContainer;
 import gregapi.code.TagData;
 import gregapi.data.*;
 import gregapi.data.LH.Chat;
@@ -56,8 +57,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraftforge.fluids.*;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static gregapi.data.CS.*;
 
@@ -88,7 +91,7 @@ import static gregapi.data.CS.*;
 	@Optional.Interface(iface = "buildcraft.api.tiles.IHasWork", modid = ModIDs.BC)
 })
 public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle implements IHasWork, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntitySwitchableOnOff, ITileEntityRunningSuccessfully, ITileEntityAdjacentInventoryUpdatable, ITileEntityEnergy, ITileEntityProgress, ITileEntityGibbl, IFluidHandler {
-	public boolean mSpecialIsStartEnergy = F, mNoConstantEnergy = F, mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mParallelDuration = F, mCanUseOutputTanks = F;
+	public boolean mSpecialIsStartEnergy = F, mNoConstantEnergy = F, mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mParallelDuration = F, mCanUseOutputTanks = F, mOutputCatalyzer =F;
 	public byte mEnergyInputs = 127, mEnergyOutput = SIDE_UNDEFINED, mOutputBlocked = 0, mMode = 0, mIgnited = 0;
 	public byte mItemInputs   = 127, mItemOutputs  = 127, mItemAutoInput  = SIDE_UNDEFINED, mItemAutoOutput  = SIDE_UNDEFINED;
 	public byte mFluidInputs  = 127, mFluidOutputs = 127, mFluidAutoInput = SIDE_UNDEFINED, mFluidAutoOutput = SIDE_UNDEFINED;
@@ -137,6 +140,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (aNBT.hasKey(NBT_INV_SIDE_OUT)) mItemOutputs = (byte)(aNBT.getByte(NBT_INV_SIDE_OUT) | SBIT_A);
 		if (aNBT.hasKey(NBT_INV_SIDE_AUTO_IN)) mItemAutoInput = aNBT.getByte(NBT_INV_SIDE_AUTO_IN);
 		if (aNBT.hasKey(NBT_INV_SIDE_AUTO_OUT)) mItemAutoOutput = aNBT.getByte(NBT_INV_SIDE_AUTO_OUT);
+		if (aNBT.hasKey(NBT_AUTO_OUTPUT_CATALYZER)) mOutputCatalyzer = aNBT.getBoolean(NBT_AUTO_OUTPUT_CATALYZER);
 		if (aNBT.hasKey(NBT_INV_DISABLED_IN)) mDisabledItemInput = aNBT.getBoolean(NBT_INV_DISABLED_IN);
 		if (aNBT.hasKey(NBT_INV_DISABLED_OUT)) mDisabledItemOutput = aNBT.getBoolean(NBT_INV_DISABLED_OUT);
 		if (aNBT.hasKey(NBT_TANK_SIDE_IN)) mFluidInputs = (byte)(aNBT.getByte(NBT_TANK_SIDE_IN) | SBIT_A);
@@ -234,6 +238,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		
 		UT.NBT.setNumber(aNBT, NBT_MODE, mMode);
 		UT.NBT.setNumber(aNBT, NBT_IGNITION, mIgnited);
+		UT.NBT.setBoolean(aNBT, NBT_AUTO_OUTPUT_CATALYZER, mOutputCatalyzer);
 		UT.NBT.setBoolean(aNBT, NBT_INV_DISABLED_IN, mDisabledItemInput);
 		UT.NBT.setBoolean(aNBT, NBT_INV_DISABLED_OUT, mDisabledItemOutput);
 		UT.NBT.setBoolean(aNBT, NBT_TANK_DISABLED_IN, mDisabledFluidInput);
@@ -413,6 +418,11 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (aTool.equals(TOOL_electrometer) && isServerSide() && aChatReturn!=null) {
 			if (mAmperesLast!=0) aChatReturn.add("Receiving: "+ mVoltageLast + " EU/A * "+mAmperesLast+"A");
 			else aChatReturn.add("Receiving 0 EU/t");
+			return 1;
+		}
+		if(aTool.equals(TOOL_cutter)){
+			mOutputCatalyzer =!mOutputCatalyzer;
+			if(aChatReturn!=null)aChatReturn.add("Output Content on Recipe Change: "+(mOutputCatalyzer ?"Enabled":"Disabled"));
 			return 1;
 		}
 		return 0;
@@ -866,7 +876,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 							((ITileEntityAdjacentInventoryUpdatable)tDelegator.mTileEntity).adjacentInventoryUpdated(tDelegator.mSideOfTileEntity, this);
 						}
 					}
-					
+					if(mOutputCatalyzer) outputCatalyzer();
 					onProcessFinished();
 				}
 			}
@@ -1010,6 +1020,16 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	}
 	
 	public void onProcessStarted () {/**/}
+	public void outputCatalyzer(){
+		if(mCurrentRecipe!=null&&mCurrentRecipe.mFluidInputs!=null)Arrays.stream(mTanksInput).filter(tank-> Arrays.stream(mCurrentRecipe.mFluidInputs).anyMatch(fluid-> fluid.amount==0&& tank.contains(fluid))).forEach(tank -> FL.move(tank,getFluidOutputTarget(FACING_TO_SIDE[mFacing][mFluidAutoOutput], tank.fluid())));
+		if(mCurrentRecipe==null)return;
+		List<ItemStackContainer> filter = Arrays.stream(mCurrentRecipe.mInputs).filter(item -> item != null && item.stackSize == 0).map(ItemStackContainer::new).collect(Collectors.toList());
+
+		for (int i = 0; i < mRecipes.mInputItemsCount; i++) {
+			int i1 = i;
+			if (filter.stream().anyMatch(t -> t.isStackEqual(slot(i1)))) for(int j=mRecipes.mInputItemsCount;j<mRecipes.mInputItemsCount+mRecipes.mOutputItemsCount;j++) ST.move(this,i,j);
+		}
+	}
 	public void onProcessFinished() {/**/}
 	
 	@Override public void onFacingChange(byte aPreviousFacing) {updateAccessibleSlots();}
