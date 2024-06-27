@@ -458,34 +458,34 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(MT.D2O             .liquid(U, T)), FL.array(MT.T2O.liquid(U10, F)), ZL_IS);
 		
 		
-		RM.Smelter      .addRecipe1(T, 16,  111 * 2, OM.dust(MT.Ice, U9)             , NF, FL.Water.make( 111), NI);
-		RM.Smelter      .addRecipe1(T, 16,  250 * 2, OM.dust(MT.Ice, U4)             , NF, FL.Water.make( 250), NI);
-		RM.Smelter      .addRecipe1(T, 16, 1000 * 2, OM.dust(MT.Ice)                 , NF, FL.Water.make(1000), NI);
-		RM.Smelter      .addRecipe1(T, 16,  250 * 2, gemChipped.mat(MT.Ice    , 1   ), NF, FL.Water.make( 250), NI);
-		RM.Smelter      .addRecipe1(T, 16,  500 * 2, gemFlawed.mat(MT.Ice     , 1   ), NF, FL.Water.make( 500), NI);
-		RM.Smelter      .addRecipe1(T, 16, 1000 * 2, gem.mat(MT.Ice           , 1   ), NF, FL.Water.make(1000), NI);
-		RM.Smelter      .addRecipe1(T, 16, 1000 * 2, ST.make(Blocks.ice       , 1, W), NF, FL.Water.make(1000), NI);
-		RM.Smelter      .addRecipe1(T, 16, 2000 * 2, ST.make(Blocks.packed_ice, 1, W), NF, FL.Water.make(2000), NI);
-		RM.Smelter      .addRecipe1(T, 16,  111 * 2, OM.dust(MT.Snow, U9)            , NF, FL.Water.make( 111), NI);
-		RM.Smelter      .addRecipe1(T, 16,  250 * 2, OM.dust(MT.Snow, U4)            , NF, FL.Water.make( 250), NI);
-		RM.Smelter      .addRecipe1(T, 16, 1000 * 2, OM.dust(MT.Snow)                , NF, FL.Water.make(1000), NI);
-		RM.Smelter      .addRecipe1(T, 16,  250 * 2, ST.make(Items.snowball   , 1, W), NF, FL.Water.make( 250), NI);
-		RM.Smelter      .addRecipe1(T, 16, 1000 * 2, ST.make(Blocks.snow      , 1, W), NF, FL.Water.make(1000), NI);
+		RM.Smelter      .addRecipe1(T, 50,  11, OM.dust(MT.Ice, U9)             , NF, FL.Water.make( 111), NI);
+		RM.Smelter      .addRecipe1(T, 50,  25, OM.dust(MT.Ice, U4)             , NF, FL.Water.make( 250), NI);
+		RM.Smelter      .addRecipe1(T, 50, 100, OM.dust(MT.Ice)                 , NF, FL.Water.make(1000), NI);
+		RM.Smelter      .addRecipe1(T, 50,  25, gemChipped.mat(MT.Ice    , 1   ), NF, FL.Water.make( 250), NI);
+		RM.Smelter      .addRecipe1(T, 50,  50, gemFlawed.mat(MT.Ice     , 1   ), NF, FL.Water.make( 500), NI);
+		RM.Smelter      .addRecipe1(T, 50, 100, gem.mat(MT.Ice           , 1   ), NF, FL.Water.make(1000), NI);
+		RM.Smelter      .addRecipe1(T, 50, 100, ST.make(Blocks.ice       , 1, W), NF, FL.Water.make(1000), NI);
+		RM.Smelter      .addRecipe1(T, 50, 200, ST.make(Blocks.packed_ice, 1, W), NF, FL.Water.make(2000), NI);
+		RM.Smelter      .addRecipe1(T, 50,  11, OM.dust(MT.Snow, U9)            , NF, FL.Water.make( 111), NI);
+		RM.Smelter      .addRecipe1(T, 50,  25, OM.dust(MT.Snow, U4)            , NF, FL.Water.make( 250), NI);
+		RM.Smelter      .addRecipe1(T, 50, 100, OM.dust(MT.Snow)                , NF, FL.Water.make(1000), NI);
+		RM.Smelter      .addRecipe1(T, 50,  25, ST.make(Items.snowball   , 1, W), NF, FL.Water.make( 250), NI);
+		RM.Smelter      .addRecipe1(T, 50, 100, ST.make(Blocks.snow      , 1, W), NF, FL.Water.make(1000), NI);
 		
 		
-		RM.Drying       .addRecipe1(T, 16,  111 * 4, OM.dust(MT.Ice, U9)             , NF, FL.DistW.make( 111), NI);
-		RM.Drying       .addRecipe1(T, 16,  250 * 4, OM.dust(MT.Ice, U4)             , NF, FL.DistW.make( 250), NI);
-		RM.Drying       .addRecipe1(T, 16, 1000 * 4, OM.dust(MT.Ice)                 , NF, FL.DistW.make(1000), NI);
-		RM.Drying       .addRecipe1(T, 16,  250 * 4, gemChipped.mat(MT.Ice    , 1   ), NF, FL.DistW.make( 250), NI);
-		RM.Drying       .addRecipe1(T, 16,  500 * 4, gemFlawed.mat(MT.Ice     , 1   ), NF, FL.DistW.make( 500), NI);
-		RM.Drying       .addRecipe1(T, 16, 1000 * 4, gem.mat(MT.Ice           , 1   ), NF, FL.DistW.make(1000), NI);
-		RM.Drying       .addRecipe1(T, 16, 1000 * 4, ST.make(Blocks.ice       , 1, W), NF, FL.DistW.make(1000), NI);
-		RM.Drying       .addRecipe1(T, 16, 2000 * 4, ST.make(Blocks.packed_ice, 1, W), NF, FL.DistW.make(2000), NI);
-		RM.Drying       .addRecipe1(T, 16,  111 * 4, OM.dust(MT.Snow, U9)            , NF, FL.DistW.make( 111), NI);
-		RM.Drying       .addRecipe1(T, 16,  250 * 4, OM.dust(MT.Snow, U4)            , NF, FL.DistW.make( 250), NI);
-		RM.Drying       .addRecipe1(T, 16, 1000 * 4, OM.dust(MT.Snow)                , NF, FL.DistW.make(1000), NI);
-		RM.Drying       .addRecipe1(T, 16,  250 * 4, ST.make(Items.snowball   , 1, W), NF, FL.DistW.make( 250), NI);
-		RM.Drying       .addRecipe1(T, 16, 1000 * 4, ST.make(Blocks.snow      , 1, W), NF, FL.DistW.make(1000), NI);
+		RM.Drying       .addRecipe1(T, 50,  11 * 2 , OM.dust(MT.Ice, U9)             , NF, FL.DistW.make( 111), NI);
+		RM.Drying       .addRecipe1(T, 50,  25 * 2 , OM.dust(MT.Ice, U4)             , NF, FL.DistW.make( 250), NI);
+		RM.Drying       .addRecipe1(T, 50, 100 * 2 , OM.dust(MT.Ice)                 , NF, FL.DistW.make(1000), NI);
+		RM.Drying       .addRecipe1(T, 50,  25 * 2 , gemChipped.mat(MT.Ice    , 1   ), NF, FL.DistW.make( 250), NI);
+		RM.Drying       .addRecipe1(T, 50,  50 * 2 , gemFlawed.mat(MT.Ice     , 1   ), NF, FL.DistW.make( 500), NI);
+		RM.Drying       .addRecipe1(T, 50, 100 * 2 , gem.mat(MT.Ice           , 1   ), NF, FL.DistW.make(1000), NI);
+		RM.Drying       .addRecipe1(T, 50, 100 * 2 , ST.make(Blocks.ice       , 1, W), NF, FL.DistW.make(1000), NI);
+		RM.Drying       .addRecipe1(T, 50, 200 * 2 , ST.make(Blocks.packed_ice, 1, W), NF, FL.DistW.make(2000), NI);
+		RM.Drying       .addRecipe1(T, 50,  11 * 2 , OM.dust(MT.Snow, U9)            , NF, FL.DistW.make( 111), NI);
+		RM.Drying       .addRecipe1(T, 50,  25 * 2 , OM.dust(MT.Snow, U4)            , NF, FL.DistW.make( 250), NI);
+		RM.Drying       .addRecipe1(T, 50, 100 * 2 , OM.dust(MT.Snow)                , NF, FL.DistW.make(1000), NI);
+		RM.Drying       .addRecipe1(T, 50,  25 * 2 , ST.make(Items.snowball   , 1, W), NF, FL.DistW.make( 250), NI);
+		RM.Drying       .addRecipe1(T, 50, 100 * 2 , ST.make(Blocks.snow      , 1, W), NF, FL.DistW.make(1000), NI);
 		
 		
 		RM.Drying       .addRecipe0(T, 16,   16           , FL.Water           .make(10), FL.DistW.make( 8), ZL_IS);

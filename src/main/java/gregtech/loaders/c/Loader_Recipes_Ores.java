@@ -312,9 +312,9 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Centrifuge       .addRecipe1(T, 16,  288, new long[] {7500, 5000, 2500, 2500, 2500}, IL.TROPIC_Sand_Black    .get(1), dust.mat(MT.STONES.Basalt      , 6), dust.mat(MT.RedSand, 3), dustTiny.mat(MT.V2O5,12), dustTiny.mat(MT.Cu, 6), dustTiny.mat(MT.Ni, 3));
 		}
 		
-		RM.Smelter      .addRecipe1(T, 64, 1440, 5000, OM.dust(MT.Monazite     ), NF, MT.He.gas(U2 , F), OM.dust(MT.RareEarth     ));
-		RM.Smelter      .addRecipe1(T, 64,  360, 5000, OM.dust(MT.Monazite,  U4), NF, MT.He.gas(U8 , F), OM.dust(MT.RareEarth,  U4));
-		RM.Smelter      .addRecipe1(T, 64,  160, 5000, OM.dust(MT.Monazite,  U9), NF, MT.He.gas(U18, F), OM.dust(MT.RareEarth,  U9));
+		RM.Smelter      .addRecipe1(T, 500, 144, 5000, OM.dust(MT.Monazite     ), NF, MT.He.gas(U2 , F), OM.dust(MT.RareEarth     ));
+		RM.Smelter      .addRecipe1(T, 500,  36, 5000, OM.dust(MT.Monazite,  U4), NF, MT.He.gas(U8 , F), OM.dust(MT.RareEarth,  U4));
+		RM.Smelter      .addRecipe1(T, 500,  16, 5000, OM.dust(MT.Monazite,  U9), NF, MT.He.gas(U18, F), OM.dust(MT.RareEarth,  U9));
 		
 		
 		RM.Lightning    .addRecipe2(T,512, 2304, new long[] {8000}, ST.tag(1), crushedPurified       .mat(MT.Dolamide , 1), crushedCentrifugedTiny.mat(MT.Dolamide ,18));
