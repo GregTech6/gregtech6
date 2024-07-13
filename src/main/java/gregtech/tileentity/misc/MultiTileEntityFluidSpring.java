@@ -98,7 +98,7 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 	@Override
 	public void onTick(long aTimer, boolean aIsServerSide) {
 		super.onTick(aTimer, aIsServerSide);
-		if (mFluid.amount <= 0) {mFluid.amount = 600;}
+		if (mFluid.amount <= 0) mFluid.amount = 600;
 		if (aIsServerSide) {
 			boolean tProduce = F;
 			if (mActive) {
