@@ -675,7 +675,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Mortar       .addRecipe1(T, 16, 32, ST.make(Blocks.gravel, 1, W), ST.make(Items.flint, 1, 0));
 		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.coal, 1, 0), OM.dust(MT.Coal));
 		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.coal, 1, 1), OM.dust(MT.Charcoal));
-		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.rotten_flesh, 1, W), dust.mat(MT.MeatRotten, 1));
+		RM.Mortar       .addRecipe1(T, 16, 16, ST.make(Items.rotten_flesh, 1, W), dust.mat(MT.MeatRotten, 1)); if (IL.WiMo_Infected_Meat.exists())
 		RM.Mortar       .addRecipe1(T, 16, 16, IL.WiMo_Infected_Meat.get(1), dust.mat(MT.MeatRotten, 1));
 		
 		
