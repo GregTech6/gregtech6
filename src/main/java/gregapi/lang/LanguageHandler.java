@@ -513,6 +513,9 @@ public class LanguageHandler {
 		if (aMaterial == MT.Sugar) {
 			if (aPrefix == OP.gemChipped)                                           return "Sugar Cubes";
 		} else
+		if (aMaterial == MT.KCl) {
+			if (aPrefix.mNameInternal.startsWith("dust"))                           return aPrefix.mMaterialPre + "Rock Salt";
+		} else
 		if (aMaterial == MT.Ceramic) {
 			if (aPrefix == OP.scrapGt)                                              return "Brittle Ceramic Scraps";
 			if (aPrefix.mNameInternal.startsWith("dust"))                           return aPrefix.mMaterialPre + "Dry Clay Powder";

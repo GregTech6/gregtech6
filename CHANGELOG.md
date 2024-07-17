@@ -15,6 +15,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Platinum Group Metals, their Sludge and Rare Earth now have better Thaumcraft Aspects.
 [CHANGED] Roasters of higher Tiers no longer have overclocking penalty.
 [CHANGED] Zirconium now has durability and speed identical to Diamonds.
+[CHANGED] Rock Salt is mostly named Sylvite now, except in its Dust form.
 
 
 6.17.01:

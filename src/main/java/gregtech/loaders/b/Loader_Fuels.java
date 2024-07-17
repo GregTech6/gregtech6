@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -155,6 +155,8 @@ public class Loader_Fuels implements Runnable {
 		
 		FM.Burn         .addRecipe0(T, - 16,  1, FL.make("hydrogen", 2)                      , FL.Steam.make(60), ZL_IS);
 		FM.Gas          .addRecipe0(T, - 16,  2, FL.make("hydrogen", 2)                      , FL.Steam.make(60), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  1, FL.amount(MT.D.mGas, 2)                     , FL.amount(MT.D2O.mLiquid, 3), ZL_IS);
+		FM.Gas          .addRecipe0(T, - 16,  2, FL.amount(MT.D.mGas, 2)                     , FL.amount(MT.D2O.mLiquid, 3), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  1, FL.amount(MT.T.mGas, 2)                     , FL.amount(MT.T2O.mLiquid, 3), ZL_IS);
 		FM.Gas          .addRecipe0(T, - 16,  2, FL.amount(MT.T.mGas, 2)                     , FL.amount(MT.T2O.mLiquid, 3), ZL_IS);
 

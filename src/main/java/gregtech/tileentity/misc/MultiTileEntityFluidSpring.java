@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,7 @@
 
 package gregtech.tileentity.misc;
 
-import static gregapi.data.CS.*;
-
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetBlockHardness;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetExplosionResistance;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetLightOpacity;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsSideSolid;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnRegistration;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataShort;
+import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.FL;
 import gregapi.network.INetworkHandler;
@@ -47,6 +40,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidFinite;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -103,6 +98,7 @@ public class MultiTileEntityFluidSpring extends TileEntityBase04MultiTileEntitie
 	@Override
 	public void onTick(long aTimer, boolean aIsServerSide) {
 		super.onTick(aTimer, aIsServerSide);
+		if (mFluid.amount <= 0) mFluid.amount = 600;
 		if (aIsServerSide) {
 			boolean tProduce = F;
 			if (mActive) {

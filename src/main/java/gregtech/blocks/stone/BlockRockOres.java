@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -20,7 +20,6 @@
 package gregtech.blocks.stone;
 
 import gregapi.block.BlockBaseMeta;
-import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.MD;
 import gregapi.data.MT;
@@ -54,7 +53,7 @@ public class BlockRockOres extends BlockBaseMeta {
 		LH.add(getUnlocalizedName()+ ".0", "Anthracite Coal");
 		LH.add(getUnlocalizedName()+ ".1", "Lignite Coal");
 		LH.add(getUnlocalizedName()+ ".2", "Salt");
-		LH.add(getUnlocalizedName()+ ".3", "Rock Salt");
+		LH.add(getUnlocalizedName()+ ".3", "Sylvite");
 		LH.add(getUnlocalizedName()+ ".4", "Bauxite");
 		LH.add(getUnlocalizedName()+ ".5", "Oil Shale");
 		LH.add(getUnlocalizedName()+ ".6", "Gypsum");
