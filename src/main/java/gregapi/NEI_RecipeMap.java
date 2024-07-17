@@ -33,6 +33,7 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.data.*;
 import gregapi.gui.ContainerClient;
+import gregapi.item.ItemFluidDisplay;
 import gregapi.lang.LanguageHandler;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
@@ -668,9 +669,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 				break;
 			}
 			for (PositionedStack tStack : tRecipe.mInputs) if (aStack == tStack.item) {
-				if (!gregapi.data.IL.Display_Fluid.equal(tStack.item, T, T)) {
-					if (tStack.item.stackSize == 0) currenttip.add(1, LH.Chat.BLINKING_CYAN + "Does not get consumed in the process");
-				}
+				if (tStack.item.stackSize == 0|| (IL.Display_Fluid.equal(aStack,T,T) && (((ItemFluidDisplay) aStack.getItem()).getFluid(aStack)==null|| ((ItemFluidDisplay) aStack.getItem()).getFluid(aStack).amount == 0))) currenttip.add(1, LH.Chat.BLINKING_CYAN + "Does not get consumed in the process");
 				break;
 			}
 		}

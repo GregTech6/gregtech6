@@ -35,6 +35,8 @@ import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.TD;
 import gregapi.fluid.FluidTankGT;
+import gregapi.network.INetworkHandler;
+import gregapi.network.IPacket;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
@@ -64,7 +66,7 @@ import net.minecraftforge.fluids.IFluidTank;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityFunnelAccessible, ITileEntityGibbl, ITileEntityEnergyDataCapacitor, IFluidHandler, IMTE_RemovedByPlayer, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
-	protected byte mBarometer = 0, oBarometer = 0;
+	protected byte mBarometer = 0, oBarometer = 0, inDanger =0;
 	protected short mEfficiency = 10000, mCoolDownResetTimer = 128;
 	protected long mEnergy = 0, mCapacity = 640000, mOutput = 6400;
 	protected TagData mEnergyTypeAccepted = TD.Energy.HU;
@@ -135,12 +137,9 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 					mCoolDownResetTimer = 128;
 				}
 			}
-			
-			long tAmount = mTanks[1].amount() - mTanks[1].capacity() / 2;
-			
+			long tAmount = mTanks[1].amount() - (mTanks[1].capacity() / 4);
 			// Emit Steam
-			if (tAmount > 0) FL.move(mTanks[1], getAdjacentTank(SIDE_UP), Math.min(tAmount > mTanks[1].capacity() / 4 ? mOutput * 2 : mOutput, tAmount));
-			
+			if (tAmount > 0) FL.move(mTanks[1], getAdjacentTank(SIDE_UP), tAmount<mOutput?tAmount: (mTanks[1].amount()*2>mTanks[1].capacity()? (mTanks[1].amount()*4>mTanks[1].capacity()*3/*75%*/? 2*mOutput : (int)(((float)(mTanks[1].amount()*4-mTanks[1].capacity()*2)/(float)mTanks[1].capacity()) *mOutput) +mOutput) : mOutput));
 			// Set Barometer
 			mBarometer = (byte)UT.Code.scale(mTanks[1].amount(), mTanks[1].capacity(), 31, F);
 			
@@ -148,9 +147,23 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 			if (mEnergy > mCapacity || mTanks[1].isFull()) {
 				explode(F);
 			}
+			if (inDanger ==0&&mTanks[1].amount()*10>mTanks[1].capacity()*9){
+				inDanger =1;updateClientData();}
+			if (inDanger ==1&&mTanks[1].amount()*10<mTanks[1].capacity()*9){
+				inDanger =0;updateClientData();}
+		}else {
+			if (inDanger ==1) spawnDangerParticles();
 		}
 	}
-	
+	public void spawnDangerParticles(){
+        float x=xCoord-1 + getRandomNumber(30) / 10F;
+		float y=yCoord+getRandomNumber(30)/10F;
+		float z=zCoord-1+getRandomNumber(30)/10F;
+		float xMotion=(x-xCoord)/6;
+		float yMotion=(y-yCoord)/6;
+		float zMotion=(z-zCoord)/6;
+		worldObj.spawnParticle("explode", x,y,z,xMotion,yMotion,zMotion);
+	}
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
@@ -226,7 +239,7 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 		super.onTickResetChecks(aTimer, aIsServerSide);
 		oBarometer = mBarometer;
 	}
-	
+
 	@Override
 	public void setVisualData(byte aData) {
 		mBarometer = (byte)(aData&31);
@@ -245,7 +258,19 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 	@Override public byte getVisualData() {return mBarometer;}
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
-	
+	@Override
+	public IPacket getClientDataPacket(boolean aSendAll) {
+		return aSendAll ? getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), getDirectionData(), inDanger) : getClientDataPacketByte(aSendAll, getVisualData());
+	}
+
+	@Override
+	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
+		mRGBa = UT.Code.getRGBInt(new short[] {UT.Code.unsignB(aData[0]), UT.Code.unsignB(aData[1]), UT.Code.unsignB(aData[2])});
+		setVisualData((byte) (aData[3]&31));
+		setDirectionData(aData[4]);
+		inDanger =aData[5];
+		return T;
+	}
 	@Override public boolean isEnergyType(TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == mEnergyTypeAccepted;}
 	@Override public boolean isEnergyAcceptingFrom(TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, F);}
 	@Override public boolean isEnergyCapacitorType(TagData aEnergyType, byte aSide) {return aEnergyType == mEnergyTypeAccepted;}

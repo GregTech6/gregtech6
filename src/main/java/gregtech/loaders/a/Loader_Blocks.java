@@ -143,7 +143,7 @@ public class Loader_Blocks implements Runnable {
 		tNBTList.appendTag(new NBTTagString(ST.regName(BlocksGT.Ocean)));
 		FMLInterModComms.sendMessage(MD.IC2C.mID, "watergen", UT.NBT.make("blocks", tNBTList));
 		
-		BlocksGT.WaterGeothermal                                                = new BlockBaseFluid            ("gt.block.fluid.water.geothermal"  , FL.Water_Geothermal,    0, Material.water      ).setLighterThanWater().addEffectBathing(Potion.regeneration.id, 100, 0).addEffectBathing(Potion.resistance.id, 2400, 2);
+		BlocksGT.WaterGeothermal                                                = new BlockBaseFluid            ("gt.block.fluid.water.geothermal"  , FL.Water_Geothermal,    0, Material.water      ).setLighterThanWater().addEffectBathing(Potion.resistance.id, 2400, 2);
 		if (COMPAT_TC != null) COMPAT_TC.registerThaumcraftAspectsToItem(ST.make(BlocksGT.WaterGeothermal, 1, W), F, TC.stack(TC.AQUA, 3), TC.stack(TC.SANO, 3));
 		
 		BlocksGT.OilExtraHeavy                                                  = new BlockBaseFluid            ("gt.block.fluid.oil.extraheavy"    , FL.Oil_ExtraHeavy  , 1000, MaterialOil.instance).setLighterThanWater().addEffectBreathing(Potion.poison.id, 300, 0).addEffectBreathing(Potion.confusion.id, 120, 0).addEffectBathing(PotionsGT.ID_FLAMMABLE, 300, 1).addEffectBathing(PotionsGT.ID_STICKY  , 300, 1).addEffectBathing(Potion.blindness.id, 60, 1).setWeb();

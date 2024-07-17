@@ -19,6 +19,7 @@
 
 package gregtech.items;
 
+import cn.kuzuanpa.ktfruaddon.fluid.flList;
 import gregapi.GT_API;
 import gregapi.code.IItemContainer;
 import gregapi.cover.covers.CoverTextureCanvas;
@@ -114,7 +115,7 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		IL.Ceramic_Tap_Raw                 .set(addItem(987, "Clay Tap"                 , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*3), TC.stack(TC.TERRA, 2), TC.stack(TC.MOTUS     , 1))); CR.shapeless(ST.make(Items.clay_ball, 3, 0), CR.DEF_NCC, new Object[] {last()});
 		IL.Ceramic_Funnel_Raw              .set(addItem(988, "Clay Funnel"              , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*3), TC.stack(TC.TERRA, 2), TC.stack(TC.MOTUS     , 1))); CR.shapeless(ST.make(Items.clay_ball, 3, 0), CR.DEF_NCC, new Object[] {last()});
 		IL.Ceramic_Crucible_Raw            .set(addItem(989, "Clay Crucible"            , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*7), TC.stack(TC.TERRA, 2), TC.stack(TC.IGNIS     , 1))); CR.shapeless(ST.make(Items.clay_ball, 7, 0), CR.DEF_NCC, new Object[] {last()});
-		IL.Ceramic_Basin_Raw               .set(addItem(990, "Clay Basin"               , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*5), TC.stack(TC.TERRA, 2), TC.stack(TC.GELUM     , 1))); CR.shapeless(ST.make(Items.clay_ball, 5, 0), CR.DEF_NCC, new Object[] {last()});
+		IL.Ceramic_Basin_Raw               .set(addItem(990, "Clay Basin"               , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*5), TC.stack(TC.TERRA, 2), TC.stack(TC.GELUM     , 1)));
 		IL.Ceramic_Mold_Raw                .set(addItem(991, "Clay Mold"                , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*5), TC.stack(TC.TERRA, 2), TC.stack(TC.GELUM     , 1))); CR.shapeless(ST.make(Items.clay_ball, 5, 0), CR.DEF_NCC, new Object[] {last()});
 		IL.Ceramic_Faucet_Raw              .set(addItem(992, "Clay Faucet"              , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*3), TC.stack(TC.TERRA, 2), TC.stack(TC.MOTUS     , 1))); CR.shapeless(ST.make(Items.clay_ball, 3, 0), CR.DEF_NCC, new Object[] {last()});
 		IL.Ceramic_Crossing_Raw            .set(addItem(993, "Clay Crossing"            , "Put in Furnace to harden", new OreDictItemData(MT.Clay, U*5), TC.stack(TC.TERRA, 2), TC.stack(TC.ITER      , 1))); CR.shapeless(ST.make(Items.clay_ball, 5, 0), CR.DEF_NCC, new Object[] {last()});
@@ -428,7 +429,7 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(tWood             ), FL.Glue.make( 25), NF, IL.Pellet_Wood.get(1));
 		RM.Mixer.addRecipe1(T, 16, 16, OM.dust(MT.Bark           ), FL.Glue.make( 25), NF, IL.Pellet_Wood.get(1));
 		RM.Compressor.addRecipe1(T, 16, 16, IL.Pellet_Wood.get(2), ST.make(BlocksGT.Planks, 1, 8));
-		RM.CokeOven.addRecipe1(T, 0, 900, IL.Pellet_Wood.get(1), NF, FL.Oil_Creosote.make(25), chunkGt.mat(MT.Charcoal, 1));
+		RM.CokeOven.addRecipe1(T, 0, 900, IL.Pellet_Wood.get(1), NF, flList.WoodTar.make(25), chunkGt.mat(MT.Charcoal, 1));
 		
 		
 		IL.Module_Stone_Generator          .set(addItem(6000, "Stone Generator Module"           , "Generates Stone for Recipes, also known as a Cobble Generator", TC.stack(TC.MACHINA, 1), TC.stack(TC.FABRICO, 1), TC.stack(TC.IGNIS, 1), TC.stack(TC.TERRA, 1), TC.stack(TC.AQUA, 1)));

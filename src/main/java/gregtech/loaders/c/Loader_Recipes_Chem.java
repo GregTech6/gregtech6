@@ -19,6 +19,8 @@
 
 package gregtech.loaders.c;
 
+import cn.kuzuanpa.ktfruaddon.fluid.flList;
+import gnu.trove.list.linked.TFloatLinkedList;
 import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.OM;
@@ -125,7 +127,6 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe1(T, 16,   48, OM.dust(MT.Ca                  ,U * 1), MT.F           .gas  (U * 2, T)                                                            , NF                                , OM.dust(MT.CaF2, U*3));
 		RM.HeatMixer    .addRecipe1(T, 16,   48, OM.dust(MT.S                   ,U * 1), MT.H           .gas  (U * 2, T)                                                            , MT.H2S            .gas  (U * 3, F), ZL_IS);
 		RM.HeatMixer    .addRecipe1(T, 16,   48, OM.dust(MT.Blaze               ,U9   ), MT.H           .gas  (U * 2, T)                                                            , MT.H2S            .gas  (U * 3, F), ZL_IS);
-		RM.HeatMixer    .addRecipe1(T, 16,  160, OM.dust(MT.WO3                 ,U * 4), MT.H           .gas  (U * 6, T)                                                            , MT.H2O            .liquid(U* 9, F), OM.dust(MT.W, U));
 //      RM.Mixer        .addRecipe1(T, 16,   96, OM.dust(MT.FeS                 ,U * 2), MT.HCl         .fluid(U * 4, T)                                                            , MT.H2S            .gas  (U * 3, F), OM.dust(MT.FeCl2, U*3));
 		RM.Mixer        .addRecipe1(T, 16,   80, OM.dust(MT.Ca                  ,U * 1), MT.HCl         .fluid(U * 4, T)                                                            , MT.H              .gas  (U * 2, F), OM.dust(MT.CaCl2, U*3));
 		RM.Mixer        .addRecipe1(T, 16,   80, OM.dust(MT.Mg                  ,U * 1), MT.HCl         .fluid(U * 4, T)                                                            , MT.H              .gas  (U * 2, F), OM.dust(MT.MgCl2, U*3));      
@@ -171,7 +172,6 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Mixer        .addRecipe2(T, 16,  144, tIron, OM.dust(MT.FeCl3, U*8)                                                                                                                                          , OM.dust(MT.FeCl2, U*9));
 		}
 		
-		RM.HeatMixer    .addRecipe1(T,  16, 186, OM.dust(MT.OREMATS.Uraninite, U*1), MT.HF.gas(U*8, T), MT.H2O.liquid(U*6, F), OM.dust(MT.UF4, U*5));
 		RM.Mixer        .addRecipe1(T,  16, 112, OM.dust(MT.UF4, U*5), MT.F.gas(U*2, T), NF, MT.UF6.gas(U*7, T));
 		RM.Mixer        .addRecipe0(T,  16, 144, FL.array(MT.H .gas   (U*2, T), MT.UF6   .gas   (U*7, T)), MT.HF  .gas   (U*4, T), OM.dust(MT.UF4   , U*5));
 		RM.Mixer        .addRecipe0(T,  16, 144, FL.array(MT.H .gas   (U*2, T), MT.U238F6.gas   (U*7, T)), MT.HF  .gas   (U*4, T), OM.dust(MT.U238F4, U*5));
@@ -346,27 +346,14 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Distillery       .addRecipe1(T, 16,  24, ST.tag(1), FL.Biomass       .make( 40), MT.Glycerol.liquid(U50, F), FL.DistW.make(20));
 		RM.Distillery       .addRecipe1(T, 16,  24, ST.tag(1), FL.BiomassIC2    .make( 40), MT.Glycerol.liquid(U50, F), FL.DistW.make(20));
 		
-		
-		RM.DistillationTower.addRecipe0(F, 64,  16, new long[] { 500,  500,  500}, FL.array(FL.Biomass       .make( 80)), FL.array(FL.Reikanol.make(20, FL.BioEthanol), MT.Glycerol.liquid(U50, F), FL.Methane.make(4), FL.DistW.make(50)), ZL_IS);
-		RM.DistillationTower.addRecipe0(F, 64,  16, new long[] { 500,  500,  500}, FL.array(FL.BiomassIC2    .make( 80)), FL.array(FL.Reikanol.make(20, FL.BioEthanol), MT.Glycerol.liquid(U50, F), FL.Methane.make(4), FL.DistW.make(50)), ZL_IS);
-		RM.DistillationTower.addRecipe0(F, 64, 256, new long[] {5000, 5000, 5000}, FL.array(FL.Oil_ExtraHeavy.make( 25)), FL.array(FL.Fuel.make(35), FL.Diesel.make(25), FL.Kerosine.make(25), FL.Petrol.make(20), FL.Propane.make( 5), FL.Butane.make( 5), FL.lube(50)), dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.PetCoke, 1));
-		RM.DistillationTower.addRecipe0(F, 64, 196, new long[] {4000, 4000, 4000}, FL.array(FL.Oil_Heavy     .make( 25)), FL.array(FL.Fuel.make(30), FL.Diesel.make(20), FL.Kerosine.make(20), FL.Petrol.make(15), FL.Propane.make(10), FL.Butane.make(10), FL.lube(40)), dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.PetCoke, 1)); if (FL.Oil_Heavy2.exists())
-		RM.DistillationTower.addRecipe0(F, 64, 196, new long[] {4000, 4000, 4000}, FL.array(FL.Oil_Heavy2    .make( 25)), FL.array(FL.Fuel.make(30), FL.Diesel.make(20), FL.Kerosine.make(20), FL.Petrol.make(15), FL.Propane.make(10), FL.Butane.make(10), FL.lube(40)), dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.PetCoke, 1));
-		RM.DistillationTower.addRecipe0(F, 64, 128, new long[] {3000, 3000, 3000}, FL.array(FL.Oil_Medium    .make( 25)), FL.array(FL.Fuel.make(25), FL.Diesel.make(15), FL.Kerosine.make(15), FL.Petrol.make(15), FL.Propane.make(15), FL.Butane.make(15), FL.lube(25)), dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.PetCoke, 1));
-		RM.DistillationTower.addRecipe0(F, 64, 128, new long[] {3000, 3000, 3000}, FL.array(FL.Oil_Normal    .make( 25)), FL.array(FL.Fuel.make(25), FL.Diesel.make(15), FL.Kerosine.make(15), FL.Petrol.make(15), FL.Propane.make(15), FL.Butane.make(15), FL.lube(25)), dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.PetCoke, 1)); if (FL.Oil_HotCrude.exists())
-		RM.DistillationTower.addRecipe0(F, 64,  64, new long[] {3000, 3000, 3000}, FL.array(FL.Oil_HotCrude  .make( 25)), FL.array(FL.Fuel.make(25), FL.Diesel.make(15), FL.Kerosine.make(15), FL.Petrol.make(15), FL.Propane.make(15), FL.Butane.make(15), FL.lube(25)), dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.PetCoke, 1));
-		RM.DistillationTower.addRecipe0(F, 64,  64, new long[] {2000, 2000, 2000}, FL.array(FL.Oil_Light     .make( 25)), FL.array(FL.Fuel.make(15), FL.Diesel.make(10), FL.Kerosine.make(10), FL.Petrol.make(10), FL.Propane.make(25), FL.Butane.make(25), FL.lube(15)), dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.PetCoke, 1)); if (FL.Oil_Light2.exists())
-		RM.DistillationTower.addRecipe0(F, 64,  64, new long[] {2000, 2000, 2000}, FL.array(FL.Oil_Light2    .make( 25)), FL.array(FL.Fuel.make(15), FL.Diesel.make(10), FL.Kerosine.make(10), FL.Petrol.make(10), FL.Propane.make(25), FL.Butane.make(25), FL.lube(15)), dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.PetCoke, 1));
-		RM.DistillationTower.addRecipe0(F, 64,  64, new long[] {1000, 1000, 1000}, FL.array(FL.Oil_Soulsand  .make( 25)), FL.array(FL.Fuel.make(10), FL.Diesel.make( 5), FL.Kerosine.make( 5), FL.Petrol.make( 5), FL.Propane.make( 5), FL.Butane.make( 5), FL.lube(40)), dustTiny.mat(MT.WaxParaffin, 1), dustTiny.mat(MT.Asphalt, 1), dustTiny.mat(MT.PetCoke, 1));
-		
-		
+
 		RM.CryoDistillationTower.addRecipe0(T, 64,  64, new long[] {9000}, FL.array(FL.Air       .make(200)), FL.array(MT.N.gas(U7, T), MT.O.gas(U20, T), MT.CO2.gas(U100, T), MT.He.gas(U1000, T), MT.Ne.gas(U1000, T), MT.Ar.gas(U1000, T)), OP.dustTiny.mat(MT.Ice, 1));
 		RM.CryoDistillationTower.addRecipe0(T, 64,  64, new long[] {7000}, FL.array(FL.Air_Nether.make(200)), FL.array(MT.N.gas(U7, T), MT.O.gas(U20, T), MT.SO2.gas(U100, T), MT.He.gas(U1000, T), MT.Ne.gas(U1000, T), MT.Ar.gas(U1000, T)), OP.dustTiny.mat(MT.Ash, 1));
 		RM.CryoDistillationTower.addRecipe0(T, 64,  64, new long[] {6000}, FL.array(FL.Air_End   .make(200)), FL.array(MT.N.gas(U7, T), MT.O.gas(U20, T), MT.CO2.gas(U100, T), MT.Kr.gas(U1000, T), MT.Xe.gas(U1000, T), MT.Rn.gas(U1000, T)), OP.dustTiny.mat(MT.Ice, 1));
 		
 		
 		RM.SteamCracking    .addRecipe0(F, 16,  64, FL.array(FL.Steam.make(1000), FL.Propane.make(100)), FL.array(FL.Hydrogen.make( 2), FL.Methane.make(27), FL.Ethylene.make(42), FL.Propylene.make(19)), ZL_IS);
-		RM.SteamCracking    .addRecipe0(F, 16,  64, FL.array(FL.Steam.make(1000), FL.Butane .make(100)), FL.array(FL.Hydrogen.make( 5), FL.Methane.make( 9), FL.Ethylene.make(78), FL.Propylene.make( 3)), ZL_IS);
+		RM.SteamCracking    .addRecipe0(F, 16,  64, FL.array(FL.Steam.make(1000), FL.Butane .make(100)), FL.array(FL.Hydrogen.make( 5), FL.Methane.make( 9), FL.Ethylene.make(78), FL.Propylene.make( 12), flList.Butadiene.make(3)), ZL_IS);
 		
 		// TODO proper Ratios
 		if (FL.Reikanol.exists())
@@ -376,8 +363,8 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.CatalyticCracking.addRecipe1(F, 16,  64, OP.dust.mat(MT.Pt, 0), FL.array(FL.Hydrogen.make(100), FL.Fuel      .make(100)), FL.array(FL.Ethylene.make(40), FL.Propylene.make(10)), ZL_IS);
 		
 		// TODO Fluidized Bed Reactor
-		RM.Mixer            .addRecipe1(T, 16,  16, OP.dust.mat(MT.MgCl2, 0), FL.array(MT.TiCl4.liquid(U1000, T), FL.Ethylene .make(100)), ZL_FS, OP.dust.mat(MT.Plastic, 1));
-		RM.Mixer            .addRecipe1(T, 16,  16, OP.dust.mat(MT.MgCl2, 0), FL.array(MT.TiCl4.liquid(U1000, T), FL.Propylene.make(100)), ZL_FS, OP.dust.mat(MT.Plastic, 1));
+		//RM.Mixer            .addRecipe1(T, 16,  16, OP.dust.mat(MT.MgCl2, 0), FL.array(MT.TiCl4.liquid(U1000, T), FL.Ethylene .make(100)), ZL_FS, OP.dust.mat(MT.Plastic, 1));
+		//RM.Mixer            .addRecipe1(T, 16,  16, OP.dust.mat(MT.MgCl2, 0), FL.array(MT.TiCl4.liquid(U1000, T), FL.Propylene.make(100)), ZL_FS, OP.dust.mat(MT.Plastic, 1));
 		
 		
 		RM.Injector         .addRecipe1(T, 64, 1152, OP.dust     .mat(MT.Th, 1), MT.LiCl.liquid(U*144, T), FL.Thorium_Salt.make(20736), ZL_IS);
@@ -471,34 +458,34 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Centrifuge   .addRecipe0(T, 64,   64, FL.array(MT.D2O             .liquid(U, T)), FL.array(MT.T2O.liquid(U10, F)), ZL_IS);
 		
 		
-		RM.Smelter      .addRecipe1(T, 16,  111 * 2, OM.dust(MT.Ice, U9)             , NF, FL.Water.make( 111), NI);
-		RM.Smelter      .addRecipe1(T, 16,  250 * 2, OM.dust(MT.Ice, U4)             , NF, FL.Water.make( 250), NI);
-		RM.Smelter      .addRecipe1(T, 16, 1000 * 2, OM.dust(MT.Ice)                 , NF, FL.Water.make(1000), NI);
-		RM.Smelter      .addRecipe1(T, 16,  250 * 2, gemChipped.mat(MT.Ice    , 1   ), NF, FL.Water.make( 250), NI);
-		RM.Smelter      .addRecipe1(T, 16,  500 * 2, gemFlawed.mat(MT.Ice     , 1   ), NF, FL.Water.make( 500), NI);
-		RM.Smelter      .addRecipe1(T, 16, 1000 * 2, gem.mat(MT.Ice           , 1   ), NF, FL.Water.make(1000), NI);
-		RM.Smelter      .addRecipe1(T, 16, 1000 * 2, ST.make(Blocks.ice       , 1, W), NF, FL.Water.make(1000), NI);
-		RM.Smelter      .addRecipe1(T, 16, 2000 * 2, ST.make(Blocks.packed_ice, 1, W), NF, FL.Water.make(2000), NI);
-		RM.Smelter      .addRecipe1(T, 16,  111 * 2, OM.dust(MT.Snow, U9)            , NF, FL.Water.make( 111), NI);
-		RM.Smelter      .addRecipe1(T, 16,  250 * 2, OM.dust(MT.Snow, U4)            , NF, FL.Water.make( 250), NI);
-		RM.Smelter      .addRecipe1(T, 16, 1000 * 2, OM.dust(MT.Snow)                , NF, FL.Water.make(1000), NI);
-		RM.Smelter      .addRecipe1(T, 16,  250 * 2, ST.make(Items.snowball   , 1, W), NF, FL.Water.make( 250), NI);
-		RM.Smelter      .addRecipe1(T, 16, 1000 * 2, ST.make(Blocks.snow      , 1, W), NF, FL.Water.make(1000), NI);
+		RM.Smelter      .addRecipe1(T, 50,  11, OM.dust(MT.Ice, U9)             , NF, FL.Water.make( 111), NI);
+		RM.Smelter      .addRecipe1(T, 50,  25, OM.dust(MT.Ice, U4)             , NF, FL.Water.make( 250), NI);
+		RM.Smelter      .addRecipe1(T, 50, 100, OM.dust(MT.Ice)                 , NF, FL.Water.make(1000), NI);
+		RM.Smelter      .addRecipe1(T, 50,  25, gemChipped.mat(MT.Ice    , 1   ), NF, FL.Water.make( 250), NI);
+		RM.Smelter      .addRecipe1(T, 50,  50, gemFlawed.mat(MT.Ice     , 1   ), NF, FL.Water.make( 500), NI);
+		RM.Smelter      .addRecipe1(T, 50, 100, gem.mat(MT.Ice           , 1   ), NF, FL.Water.make(1000), NI);
+		RM.Smelter      .addRecipe1(T, 50, 100, ST.make(Blocks.ice       , 1, W), NF, FL.Water.make(1000), NI);
+		RM.Smelter      .addRecipe1(T, 50, 200, ST.make(Blocks.packed_ice, 1, W), NF, FL.Water.make(2000), NI);
+		RM.Smelter      .addRecipe1(T, 50,  11, OM.dust(MT.Snow, U9)            , NF, FL.Water.make( 111), NI);
+		RM.Smelter      .addRecipe1(T, 50,  25, OM.dust(MT.Snow, U4)            , NF, FL.Water.make( 250), NI);
+		RM.Smelter      .addRecipe1(T, 50, 100, OM.dust(MT.Snow)                , NF, FL.Water.make(1000), NI);
+		RM.Smelter      .addRecipe1(T, 50,  25, ST.make(Items.snowball   , 1, W), NF, FL.Water.make( 250), NI);
+		RM.Smelter      .addRecipe1(T, 50, 100, ST.make(Blocks.snow      , 1, W), NF, FL.Water.make(1000), NI);
 		
 		
-		RM.Drying       .addRecipe1(T, 16,  111 * 4, OM.dust(MT.Ice, U9)             , NF, FL.DistW.make( 111), NI);
-		RM.Drying       .addRecipe1(T, 16,  250 * 4, OM.dust(MT.Ice, U4)             , NF, FL.DistW.make( 250), NI);
-		RM.Drying       .addRecipe1(T, 16, 1000 * 4, OM.dust(MT.Ice)                 , NF, FL.DistW.make(1000), NI);
-		RM.Drying       .addRecipe1(T, 16,  250 * 4, gemChipped.mat(MT.Ice    , 1   ), NF, FL.DistW.make( 250), NI);
-		RM.Drying       .addRecipe1(T, 16,  500 * 4, gemFlawed.mat(MT.Ice     , 1   ), NF, FL.DistW.make( 500), NI);
-		RM.Drying       .addRecipe1(T, 16, 1000 * 4, gem.mat(MT.Ice           , 1   ), NF, FL.DistW.make(1000), NI);
-		RM.Drying       .addRecipe1(T, 16, 1000 * 4, ST.make(Blocks.ice       , 1, W), NF, FL.DistW.make(1000), NI);
-		RM.Drying       .addRecipe1(T, 16, 2000 * 4, ST.make(Blocks.packed_ice, 1, W), NF, FL.DistW.make(2000), NI);
-		RM.Drying       .addRecipe1(T, 16,  111 * 4, OM.dust(MT.Snow, U9)            , NF, FL.DistW.make( 111), NI);
-		RM.Drying       .addRecipe1(T, 16,  250 * 4, OM.dust(MT.Snow, U4)            , NF, FL.DistW.make( 250), NI);
-		RM.Drying       .addRecipe1(T, 16, 1000 * 4, OM.dust(MT.Snow)                , NF, FL.DistW.make(1000), NI);
-		RM.Drying       .addRecipe1(T, 16,  250 * 4, ST.make(Items.snowball   , 1, W), NF, FL.DistW.make( 250), NI);
-		RM.Drying       .addRecipe1(T, 16, 1000 * 4, ST.make(Blocks.snow      , 1, W), NF, FL.DistW.make(1000), NI);
+		RM.Drying       .addRecipe1(T, 50,  11 * 2 , OM.dust(MT.Ice, U9)             , NF, FL.DistW.make( 111), NI);
+		RM.Drying       .addRecipe1(T, 50,  25 * 2 , OM.dust(MT.Ice, U4)             , NF, FL.DistW.make( 250), NI);
+		RM.Drying       .addRecipe1(T, 50, 100 * 2 , OM.dust(MT.Ice)                 , NF, FL.DistW.make(1000), NI);
+		RM.Drying       .addRecipe1(T, 50,  25 * 2 , gemChipped.mat(MT.Ice    , 1   ), NF, FL.DistW.make( 250), NI);
+		RM.Drying       .addRecipe1(T, 50,  50 * 2 , gemFlawed.mat(MT.Ice     , 1   ), NF, FL.DistW.make( 500), NI);
+		RM.Drying       .addRecipe1(T, 50, 100 * 2 , gem.mat(MT.Ice           , 1   ), NF, FL.DistW.make(1000), NI);
+		RM.Drying       .addRecipe1(T, 50, 100 * 2 , ST.make(Blocks.ice       , 1, W), NF, FL.DistW.make(1000), NI);
+		RM.Drying       .addRecipe1(T, 50, 200 * 2 , ST.make(Blocks.packed_ice, 1, W), NF, FL.DistW.make(2000), NI);
+		RM.Drying       .addRecipe1(T, 50,  11 * 2 , OM.dust(MT.Snow, U9)            , NF, FL.DistW.make( 111), NI);
+		RM.Drying       .addRecipe1(T, 50,  25 * 2 , OM.dust(MT.Snow, U4)            , NF, FL.DistW.make( 250), NI);
+		RM.Drying       .addRecipe1(T, 50, 100 * 2 , OM.dust(MT.Snow)                , NF, FL.DistW.make(1000), NI);
+		RM.Drying       .addRecipe1(T, 50,  25 * 2 , ST.make(Items.snowball   , 1, W), NF, FL.DistW.make( 250), NI);
+		RM.Drying       .addRecipe1(T, 50, 100 * 2 , ST.make(Blocks.snow      , 1, W), NF, FL.DistW.make(1000), NI);
 		
 		
 		RM.Drying       .addRecipe0(T, 16,   16           , FL.Water           .make(10), FL.DistW.make( 8), ZL_IS);

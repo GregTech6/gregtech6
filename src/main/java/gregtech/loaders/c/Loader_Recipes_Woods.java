@@ -19,6 +19,7 @@
 
 package gregtech.loaders.c;
 
+import cn.kuzuanpa.ktfruaddon.fluid.flList;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.data.*;
 import gregapi.oredict.OreDictManager;
@@ -140,7 +141,7 @@ public class Loader_Recipes_Woods implements Runnable {
 		CR.shaped(plateTiny          .mat(MT.Wood, 9), CR.DEF_NCC,  "s ",  " P"       , 'P', OD.buttonWood);
 		CR.shaped(ring               .mat(MT.Wood, 4), CR.DEF_NCC,  "P ",  " k"       , 'P', OD.buttonWood);
 		CR.shaped(round              .mat(MT.Wood, 9), CR.DEF_NCC,  "P ",  "fk"       , 'P', OD.buttonWood);
-		CR.shaped(toolHeadHammer     .mat(MT.Wood, 1), CR.DEF_NCC, "PP ", "PPg", "PPv", 'P', OD.buttonWood);
+		CR.shaped(toolHeadHammer     .mat(MT.Wood, 1), CR.DEF_NCC, "PP ", "PP ", "PPv", 'P', OD.buttonWood);
 		CR.shaped(toolHeadRawArrow   .mat(MT.Wood, 4), CR.DEF_NCC,        "  P", "r v", 'P', OD.buttonWood);
 		CR.shaped(toolHeadRawSword   .mat(MT.Wood, 1), CR.DEF_NCC,        " P ", "rPv", 'P', OD.buttonWood);
 		CR.shaped(toolHeadRawPickaxe .mat(MT.Wood, 1), CR.DEF_NCC,        "PPP", "rgv", 'P', OD.buttonWood);
@@ -176,7 +177,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			if (aEntry.mCreosoteAmount > 0 || aEntry.mCharcoalCount > 0) {
 				ItemStack[] tOutputs = new ItemStack[aEntry.mCharcoalCount];
 				if (tOutputs.length > 0) Arrays.fill(tOutputs, gem.mat(MT.Charcoal, 1));
-				RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mLog, NF, aEntry.mCreosoteAmount <= 0 ? NF : FL.Oil_Creosote.make(aEntry.mCreosoteAmount), tOutputs);
+				RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mLog, NF, aEntry.mCreosoteAmount <= 0 ? NF : flList.WoodTar.make(aEntry.mCreosoteAmount), tOutputs);
 			}
 			
 			CR.remove(ST.validMeta(1, aEntry.mLog));
@@ -197,7 +198,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			if (aEntry.mCreosoteAmount > 0 || aEntry.mCharcoalCount > 0) {
 				ItemStack[] tOutputs = new ItemStack[aEntry.mCharcoalCount];
 				if (tOutputs.length > 0) Arrays.fill(tOutputs, gem.mat(MT.Charcoal, 1));
-				RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mBeam, NF, aEntry.mCreosoteAmount <= 0 ? NF : FL.Oil_Creosote.make(aEntry.mCreosoteAmount), tOutputs);
+				RM.CokeOven.addRecipe1(T, 0, 3600, aEntry.mBeam, NF, aEntry.mCreosoteAmount <= 0 ? NF : flList.WoodTar.make(aEntry.mCreosoteAmount), tOutputs);
 			}
 			
 			CR.shaped   (ST.validMeta(NERFED_WOOD?aEntry.mStickCountSaw :aEntry.mStickCountLathe, aEntry.mStick            ), CR.DEF_NCC, "sBf", 'B', aEntry.mBeam);
@@ -221,7 +222,7 @@ public class Loader_Recipes_Woods implements Runnable {
 			CR.shaped(ring               .mat(aEntry.mMaterialPlank, 4), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC,  "P ",  " k"       , 'P', aEntry.mPlank);
 			CR.shaped(round              .mat(aEntry.mMaterialPlank, 9), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC,  "P ",  "fk"       , 'P', aEntry.mPlank);
 			CR.shaped(toolHeadBuilderwand.mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC,  "ks",  "fP"       , 'P', aEntry.mPlank);
-			CR.shaped(toolHeadHammer     .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC, "PP ", "PPg", "PPv", 'P', aEntry.mPlank);
+			CR.shaped(toolHeadHammer     .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC, "PP ", "PP ", "PPv", 'P', aEntry.mPlank);
 			if (!aEntry.mMaterialPlank.contains(TD.Compounds.COATED)) {
 			CR.shaped(toolHeadRawArrow   .mat(aEntry.mMaterialPlank, 4), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC,        "  P", "r v", 'P', aEntry.mPlank);
 			CR.shaped(toolHeadRawSword   .mat(aEntry.mMaterialPlank, 1), CR.ONLY_IF_HAS_RESULT | CR.DEF_NCC,        " P ", "rPv", 'P', aEntry.mPlank);

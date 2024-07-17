@@ -256,7 +256,8 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 					boolean tRealHit = (!aEntity.worldObj.isRemote || aEntity.hurtResistantTime <= 0);
 					boolean tCriticalHit = aPlayer.fallDistance > 0 && !aPlayer.onGround && !aPlayer.isOnLadder() && !aPlayer.isInWater() && !aPlayer.isPotionActive(Potion.blindness) && aPlayer.ridingEntity == null && aEntity instanceof EntityLivingBase;
 					if (tCriticalHit && tDamage > 0) tDamage *= 1.5;
-					float tFullDamage = (tDamage+tMagicDamage) * TFC_DAMAGE_MULTIPLIER;
+					//enchantment don't multiply TFCMultiplier because TFCmixin did that.
+					float tFullDamage = (tDamage) * TFC_DAMAGE_MULTIPLIER+tMagicDamage;
 					DamageSource tSource = tStats.getDamageSource(aPlayer, aEntity);
 					if (tStats.canPenetrate()) tSource.setDamageBypassesArmor();
 					// Avoiding the Betweenlands Damage Cap of 40 in a fair way.

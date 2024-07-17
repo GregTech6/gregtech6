@@ -40,7 +40,9 @@ import gregapi.tileentity.machines.ITileEntitySwitchableMode;
 import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -49,7 +51,7 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityEnergyDataCapacitor, ITileEntityRunningActively, ITileEntitySwitchableOnOff, ITileEntitySwitchableMode, ITileEntityProgress {
 	public boolean mEmitsEnergy = F, mStopped = F, mActive = F;
-	public long mEnergy = 0, mInput = 32, mOutput = 32, mBatteryCount = -1, mChargeableCount = -1, mReceivablePower = 0;
+	public long mEnergy = 0, mInput = 32, mOutput = 32, mBatteryCount = -1, mChargeableCount = -1, mReceivablePower = 0, mAmperageLastEmitting = 0, mAmperageLastReceiving = 0;
 	public byte mActiveState = 0, mMode = 0;
 	public TagData mEnergyType = TD.Energy.QU;
 	public TagData mEnergyTypeOut = TD.Energy.QU;
@@ -137,13 +139,14 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 					}
 				}
 			}
-			
+			mAmperageLastEmitting=0;
 			if (mActive) {
 				if (!mStopped) {
 					long tOutput = (mMode == 0 ? mBatteryCount : Math.min(mMode, mBatteryCount));
 					if (tOutput > 0) {
 						long tEmittedPackets = ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyTypeOut, mOutput, tOutput, this);
 						mEmitsEnergy = (tEmittedPackets > 0);
+						mAmperageLastEmitting = tEmittedPackets;
 						mEnergy -= mOutput * tEmittedPackets;
 					}
 				}
@@ -176,10 +179,12 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {
+		mAmperageLastReceiving = 0;
 		if (mReceivablePower <= 0) return 0;
 		aSize = Math.abs(aSize);
 		if (aSize > getEnergySizeInputMax(aEnergyType, aSide)) {
 			if (aDoInject) overcharge(aSize, aEnergyType);
+			mAmperageLastReceiving = aAmount;
 			return aAmount;
 		}
 		if (mEnergy >= mInput * 320 * invsize()) return 0;
@@ -189,9 +194,20 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 			mReceivablePower -= tConsumed * aSize;
 			mEnergy += tConsumed * aSize;
 		}
+		mAmperageLastReceiving = tConsumed;
 		return tConsumed;
 	}
-	
+	@Override
+	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		if (aTool.equals(TOOL_electrometer) && isServerSide() && aChatReturn!=null) {
+			if (mAmperageLastReceiving !=0) aChatReturn.add("Receiving: "+mAmperageLastReceiving + " A");
+			else aChatReturn.add("Not Receiving Power");
+			if (mAmperageLastEmitting !=0) aChatReturn.add("Emitting: "+mAmperageLastEmitting + " A");
+			else aChatReturn.add("Not Emitting Power");
+			return 1;
+		}
+		return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+	}
 	@Override public Object getGUIClient2(int aGUIID, EntityPlayer aPlayer) {return new ContainerClientDefault(aPlayer.inventory, this, aGUIID);}
 	@Override public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {return new ContainerCommonDefault(aPlayer.inventory, this, aGUIID);}
 	

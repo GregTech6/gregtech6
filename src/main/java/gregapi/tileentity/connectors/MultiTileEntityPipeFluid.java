@@ -19,7 +19,9 @@
 
 package gregapi.tileentity.connectors;
 
+import cpw.mods.fml.common.FMLLog;
 import gregapi.GT_API_Proxy;
+import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.block.multitileentity.MultiTileEntityBlock;
@@ -28,17 +30,20 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.*;
+import gregapi.cover.ITileEntityCoverable;
+import gregapi.data.FL;
+import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.fluid.FluidTankGT;
+import gregapi.network.INetworkHandler;
+import gregapi.network.IPacket;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
-import gregapi.tileentity.ITileEntityAdjacentInventoryUpdatable;
-import gregapi.tileentity.ITileEntityQuickObstructionCheck;
-import gregapi.tileentity.ITileEntityServerTickPre;
+import gregapi.tileentity.*;
 import gregapi.tileentity.data.ITileEntityGibbl;
 import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.tileentity.data.ITileEntityTemperature;
@@ -60,6 +65,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
+import org.apache.logging.log4j.Level;
 
 import java.util.Collection;
 import java.util.List;
@@ -70,10 +76,10 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, IFluidHandler, ITileEntityGibbl, ITileEntityTemperature, ITileEntityProgress, ITileEntityServerTickPre, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
-	public byte mLastReceivedFrom[] = ZL_BYTE, mRenderType = 0;
+public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, IFluidHandler, ITileEntityGibbl, ITileEntityTemperature, ITileEntityProgress, ITileEntityServerTickPre, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IMultiTileEntity.IMTE_SyncDataByteArray {
+	public byte mLastReceivedFrom[] = ZL_BYTE, mRenderType = 0, mReceive = SIDE_INVALID, mSend = SIDE_INVALID;
 	public long mTemperature = DEF_ENV_TEMP, mMaxTemperature, mTransferredAmount = 0, mCapacity = 1000;
-	public boolean mGasProof = F, mAcidProof = F, mPlasmaProof = F, mMagicProof = F, mBlocking = F;
+	public boolean mGasProof = F, mAcidProof = F, mPlasmaProof = F, mMagicProof = F, mBlocking = F, mUnidirectional = F;
 	public FluidTankGT[] mTanks = ZL_FT;
 	
 	/**
@@ -106,6 +112,9 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		super.readFromNBT2(aNBT);
 		if (aNBT.hasKey("gt.mtransfer")) mTransferredAmount = aNBT.getLong("gt.mtransfer");
 		if (aNBT.hasKey(NBT_PIPERENDER)) mRenderType = aNBT.getByte(NBT_PIPERENDER);
+		if (aNBT.hasKey("gt.mUnidirectional")) mUnidirectional = aNBT.getBoolean("gt.mUnidirectional");
+		if (aNBT.hasKey("gt.mreceive")) mReceive = aNBT.getByte("gt.mreceive");
+		if (aNBT.hasKey("gt.msend")) mSend = aNBT.getByte("gt.msend");
 		if (aNBT.hasKey(NBT_OPAQUE)) mBlocking = aNBT.getBoolean(NBT_OPAQUE);
 		if (aNBT.hasKey(NBT_GASPROOF)) mGasProof = aNBT.getBoolean(NBT_GASPROOF);
 		if (aNBT.hasKey(NBT_ACIDPROOF)) mAcidProof = aNBT.getBoolean(NBT_ACIDPROOF);
@@ -142,14 +151,23 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			mTanks[i].writeToNBT(aNBT, NBT_TANK+"."+i);
 			aNBT.setByte("gt.mlast."+i, mLastReceivedFrom[i]);
 		}
+		aNBT.setByte("gt.mreceive", mReceive);
+		aNBT.setByte("gt.msend", mSend);
+		aNBT.setBoolean("gt.mUnidirectional", mUnidirectional);
 		UT.NBT.setNumber(aNBT, "gt.mtransfer", mTransferredAmount);
 	}
 	
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
-		if (rReturn > 0) return rReturn;
 		if (isClientSide()) return 0;
+		if (aTool.equals(TOOL_monkeywrench)) return handleMonkeyWrench(aPlayer, aSide, aHitX, aHitY, aHitZ);
+
+		if (aTool.equals(getFacingTool())&&!mUnidirectional) {
+			byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
+			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aTargetSide);
+			if (tDelegator.mTileEntity instanceof ITileEntity && !((ITileEntity)tDelegator.mTileEntity).allowInteraction(aPlayer)) return 0;
+			return (connected(aTargetSide)?disconnect(aTargetSide, T):connect(aTargetSide, T))?10000:0;
+		}
 		if (aTool.equals(TOOL_plunger)) return GarbageGT.trash(mTanks);
 		if (aTool.equals(TOOL_thermometer)) {if (aChatReturn != null) aChatReturn.add("Temperature: " + mTemperature + "K"); return 10000;}
 		if (aTool.equals(TOOL_magnifyingglass)) {
@@ -210,7 +228,73 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		}
 		return 0;
 	}
-	
+	public int handleMonkeyWrench(Entity aPlayer, byte aSide,float aHitX,float aHitY,float aHitZ){
+		if (mUnidirectional==false){
+			//disconnect all sides first
+			for (byte i=0;i<6;i++)disconnect(i,T);
+			//get target
+			byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
+			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aTargetSide);
+			if (tDelegator.mTileEntity instanceof ITileEntity && !((ITileEntity)tDelegator.mTileEntity).allowInteraction(aPlayer)) return 0;
+			if(connect(aTargetSide, T)){
+				mReceive=aTargetSide;
+				mUnidirectional=true;
+				updateClientData();
+				return 10000;
+			}
+			return 0;
+		}
+		//get target tile
+		byte aTargetSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
+		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(aTargetSide);
+		if (tDelegator.mTileEntity instanceof ITileEntity && !((ITileEntity)tDelegator.mTileEntity).allowInteraction(aPlayer)) return 0;
+		//if target tile already connected, disconnect it and check if we need to disable unidirection mode.
+		//check if Receive is connected
+		if(mReceive!=SIDE_INVALID){
+			//clicking the receive side
+			if(mReceive==aTargetSide) {
+				disconnect(aTargetSide, T);
+				mReceive = SIDE_INVALID;
+				if (mSend ==SIDE_INVALID)mUnidirectional=false;updateClientData();
+				return 0;
+			}
+			//clicking send side
+			if (mSend == aTargetSide) {
+				disconnect(aTargetSide, T);
+				mSend = SIDE_INVALID;
+				updateClientData();
+				return 0;
+			}
+			//clicking other side
+			if (mSend==SIDE_INVALID&&connect(aTargetSide, T)){
+				mSend=aTargetSide;
+				updateClientData();
+				return 10000;
+			}
+			return 0;
+		}
+		//Now Receive side isn't connected.
+		if(mSend!=SIDE_INVALID) {
+			//but send side connected
+			//clicking send side
+			if (mSend == aTargetSide) {
+				disconnect(aTargetSide, T);
+				mSend = SIDE_INVALID;
+				mUnidirectional = false;
+				updateClientData();
+				return 0;
+			}
+			//clicking other side, reconnecting receive side
+			if (mReceive==SIDE_INVALID&&connect(aTargetSide, T)) {
+				mReceive = aTargetSide;
+				updateClientData();
+				return 10000;
+			}
+			return 0;
+		}
+		return 0;
+	}
+
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get(LH.PIPE_STATS_BANDWIDTH) + UT.Code.makeString(mCapacity/2) + " L/t");
@@ -506,7 +590,21 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		}
 		return F;
 	}
-	
+
+	@Override
+	public IPacket getClientDataPacket(boolean aSendAll) {
+		return aSendAll ? getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData(), getDirectionData(),mReceive,mSend) : getClientDataPacketByte(aSendAll, getVisualData());
+	}
+
+	@Override
+	public boolean receiveDataByteArray(byte[] aData, INetworkHandler aNetworkHandler) {
+		mRGBa = UT.Code.getRGBInt(new short[] {UT.Code.unsignB(aData[0]), UT.Code.unsignB(aData[1]), UT.Code.unsignB(aData[2])});
+		setVisualData(aData[3]);
+		setDirectionData(aData[4]);
+		mReceive=aData[5];
+		mSend=aData[6];
+		return T;
+	}
 	public boolean canEmitFluidsTo                          (byte aSide) {return connected(aSide);}
 	public boolean canAcceptFluidsFrom                      (byte aSide) {return connected(aSide);}
 	
@@ -519,9 +617,9 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	@Override public long getTemperatureValue               (byte aSide) {return mTemperature;}
 	@Override public long getTemperatureMax                 (byte aSide) {return mMaxTemperature;}
 	
-	@Override public ITexture getTextureSide                (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {BlockTextureDefault tBase = BlockTextureDefault.get(mMaterial, getIconIndexSide      (aSide, aConnections, aDiameter, aRenderPass), mIsGlowing, mRGBa); switch(mRenderType) {case 1: return BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RESTRICTOR)); default: return tBase;}}
-	@Override public ITexture getTextureConnected           (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {BlockTextureDefault tBase = BlockTextureDefault.get(mMaterial, getIconIndexConnected (aSide, aConnections, aDiameter, aRenderPass), mIsGlowing, mRGBa); switch(mRenderType) {case 1: return BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RESTRICTOR)); default: return tBase;}}
-	
+	@Override public ITexture getTextureSide                (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {BlockTextureDefault tBase = BlockTextureDefault.get(mMaterial, getIconIndexSide      (aSide, aConnections, aDiameter, aRenderPass), mIsGlowing, mRGBa); switch(mRenderType) {case 1: return BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RESTRICTOR)); default: return mSend!=SIDE_INVALID&&mReceive!=SIDE_INVALID?aSide==mSend?BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_SEND)):aSide==mReceive?BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RECEIVE)):BlockTextureMulti.get(tBase):tBase;}}
+	@Override public ITexture getTextureConnected           (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {BlockTextureDefault tBase = BlockTextureDefault.get(mMaterial, getIconIndexConnected (aSide, aConnections, aDiameter, aRenderPass), mIsGlowing, mRGBa); switch(mRenderType) {case 1: return BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RESTRICTOR)); default: return mSend!=SIDE_INVALID&&mReceive!=SIDE_INVALID?aSide==mSend?BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_SEND)):aSide==mReceive?BlockTextureMulti.get(tBase, BlockTextureDefault.get(Textures.BlockIcons.PIPE_RECEIVE)):BlockTextureMulti.get(tBase):tBase;}}
+
 	@Override public int getIconIndexSide                   (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return IconsGT.INDEX_BLOCK_PIPE_SIDE;}
 	@Override public int getIconIndexConnected              (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return mTanks.length>=9?OP.pipeNonuple.mIconIndexBlock:mTanks.length>=4?OP.pipeQuadruple.mIconIndexBlock:aDiameter<0.37F?OP.pipeTiny.mIconIndexBlock:aDiameter<0.49F?OP.pipeSmall.mIconIndexBlock:aDiameter<0.74F?OP.pipeMedium.mIconIndexBlock:aDiameter<0.99F?OP.pipeLarge.mIconIndexBlock:OP.pipeHuge.mIconIndexBlock;}
 	

@@ -19,16 +19,10 @@
 
 package gregtech.tileentity.multiblocks;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-
-import cpw.mods.fml.common.FMLLog;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_RemovedByPlayer;
 import gregapi.code.TagData;
 import gregapi.data.BI;
-import gregapi.data.CS.GarbageGT;
+import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -45,11 +39,7 @@ import gregapi.tileentity.data.ITileEntityGibbl;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.energy.ITileEntityEnergyDataCapacitor;
-import gregapi.tileentity.multiblocks.IMultiBlockEnergy;
-import gregapi.tileentity.multiblocks.IMultiBlockFluidHandler;
-import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
-import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
-import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockBase;
+import gregapi.tileentity.multiblocks.*;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
@@ -65,12 +55,16 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
-import org.apache.logging.log4j.Level;
+
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase implements ITileEntityEnergy, ITileEntityGibbl, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockFluidHandler, IFluidHandler, IMTE_RemovedByPlayer {
+public class MultiTileEntitySafeLargeBoiler extends TileEntityBase10MultiBlockBase implements ITileEntityEnergy, ITileEntityGibbl, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockFluidHandler, IFluidHandler, IMTE_RemovedByPlayer {
 	public short mBoilerWalls = 18002;
 	public byte mBarometer = 0, oBarometer = 0,inDanger=0;
 	public short mEfficiency = 10000, mCoolDownResetTimer = 128;
@@ -265,10 +259,18 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 			// Set Barometer
 			mBarometer = (byte)UT.Code.scale(mTanks[1].amount(), mTanks[1].capacity(), 31, F);
 			
-			// Well the Boiler gets structural Damage when being too hot, or when being too full of Steam.
-			if ((mBarometer > 4 && !checkStructure(F)) || mEnergy > mCapacity || mTanks[1].isFull()) {
+			// Well the Boiler gets structural Damage when being too hot
+			if ((mBarometer > 4 && !checkStructure(F)) || mEnergy > mCapacity) {
 				explode(F);
-
+			}
+			if(mTanks[1].isFull()){
+				mTanks[1].setFluid(mTanks[1].getFluid(),mTanks[1].capacity());
+				inDanger =2;
+				UT.Sounds.send(SFX.MC_FIZZ, this);
+				updateClientData();
+			}else if(inDanger==2){
+				updateClientData();
+				inDanger=1;
 			}
 			if (inDanger ==0&&mTanks[1].amount()*10>mTanks[1].capacity()*9){
 				inDanger =1;updateClientData();}
@@ -276,15 +278,16 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 				inDanger =0;updateClientData();}
 		}else {
 			if(inDanger==1)for (int i=0;i<5;i++) spawnDangerParticles();
+			if(inDanger==2)for (int i=0;i<20;i++) spawnDangerParticles();
 		}
 	}
 	public void spawnDangerParticles(){
-		float x=xCoord-1 + getRandomNumber(30) / 10F;
-		float y=yCoord+1+getRandomNumber(30)/10F;
-		float z=zCoord-1+getRandomNumber(30)/10F;
-		float xMotion=(x-xCoord)/5;
-		float yMotion=(y-yCoord)/5;
-		float zMotion=(z-zCoord)/5;
+		float x=getOffsetXN(mFacing,1)+(getRandomNumber(30)/10F-1);
+		float y=yCoord+1+getRandomNumber(60)/10F;
+		float z=getOffsetZN(mFacing,1)+(getRandomNumber(30)/10F-1);
+		float xMotion=(x-xCoord+getRandomNumber(10)-5)/5;
+		float yMotion=(y-yCoord+getRandomNumber(10)-5)/5;
+		float zMotion=(z-zCoord+getRandomNumber(10)-5)/5;
 		worldObj.spawnParticle("explode", x,y,z,xMotion,yMotion,zMotion);
 	}
 	@Override
@@ -423,5 +426,5 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 	
 	@Override public boolean canDrop(int aInventorySlot) {return F;}
 	
-	@Override public String getTileEntityName() {return "gt.multitileentity.multiblock.boiler.steam";}
+	@Override public String getTileEntityName() {return "gt.multitileentity.multiblock.boiler.safe.steam";}
 }
