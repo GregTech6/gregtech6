@@ -19,10 +19,10 @@ jobs:
     #  run: git fetch --prune --unshallow --tags
     - name: Pull full tag information if any so `git describe` works in gradle
       run: git fetch -uf origin ${{ github.ref }}:${{ github.ref }}
-    - name: Set up JDK 1.8
+    - name: Set up JDK 1.21
       uses: actions/setup-java@v1
       with:
-        java-version: 1.8
+        java-version: 1.21
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Sync cache
@@ -38,7 +38,7 @@ jobs:
         MAVEN_USERNAME: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
         ARTIFACT_VERSION: 6-SNAPSHOT
-      run: if [[ "$REF" == "refs/heads/master" ]]; then ./gradlew setupCIWorkspace build uploadArchives --stacktrace; fi
+      run: if [[ "$REF" == "refs/heads/master" ]]; then ./gradlew build uploadArchives --stacktrace; fi
     - name: Build RELEASE with Gradle
       env:
         REF: ${{ github.ref }}
@@ -46,7 +46,7 @@ jobs:
         MAVEN_USERNAME: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
         ONLY_RELEASES: true
-      run: if [[ "$REF" == "refs/tags/v"* ]]; then sleep 600; rm -rf ./build/libs; mkdir -p ./build/libs; ./gradlew testIfUploadable setupCIWorkspace build uploadArchives --stacktrace; fi
+      run: if [[ "$REF" == "refs/tags/v"* ]]; then sleep 600; rm -rf ./build/libs; mkdir -p ./build/libs; ./gradlew testIfUploadable build uploadArchives --stacktrace; fi
   #- name: Workflow Dispatch
     #uses: benc-uk/workflow-dispatch@v1
     #with:
@@ -79,10 +79,10 @@ jobs:
     #  run: git fetch --prune --unshallow --tags
     - name: Pull full tag information if any so `git describe` works in gradle
       run: git fetch -uf origin ${{ github.ref }}:${{ github.ref }}
-    - name: Set up JDK 1.8
+    - name: Set up JDK 1.21
       uses: actions/setup-java@v1
       with:
-        java-version: 1.8
+        java-version: 1.21
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Sync cache
