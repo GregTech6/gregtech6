@@ -61,6 +61,14 @@ if (System.getenv().ARTIFACT_VERSION == null) {
 }
 
 
+// Sadly we can't enable these because normal MC code gets caught by them now, so just rely on your IDE instead
+//allprojects {
+//	tasks.withType(JavaCompile) {
+//		options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
+//	}
+//}
+
+
 task changelog(type: Copy) {
 	from('./CHANGELOG.md') {
 		rename '.*', "$archivesBaseName-$version-changelog.md"
