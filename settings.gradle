@@ -1,4 +1,3 @@
-
 pluginManagement {
     repositories {
         maven {
@@ -19,3 +18,8 @@ pluginManagement {
 plugins {
     id 'com.gtnewhorizons.gtnhsettingsconvention' version '1.0.23'
 }
+
+// The actual hell... maven uploading uses the project name instead of the archiveBaseName as was done in the past.
+// And in addition the project name defaults to whatever random directory name the git was cloned into instead of
+// *anything* remotely reasonable or sensible, the hell gradle...
+rootProject.name = 'gregtech_1.7.10'

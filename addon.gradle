@@ -1,5 +1,6 @@
 //archivesBaseName = 'gregtech_1.7.10'
 
+
 //if (!hasProperty("mavenUsername")) {
 //	ext.mavenUsername="${System.getenv().MAVEN_USER}"
 //}
@@ -16,6 +17,7 @@ if (!hasProperty("mavenURL")) {
 } else {
 	project.setProperty("mavenPublishUrl", ext.mavenURL)
 }
+
 
 // GT6's versions via `v6.17.02` style, where the GTNH standard is `6.17.02`, so use ours for now at least
 task buildInfo {
@@ -64,6 +66,7 @@ task changelog(type: Copy) {
 		rename '.*', "$archivesBaseName-$version-changelog.md"
 	}
 	into './build/libs'
+//	classifier = 'changelog'
 	ext.output = new File("./build/libs/$archivesBaseName-$version-changelog.md")
 }
 
@@ -72,6 +75,7 @@ task supporterlist(type: Copy) {
 		rename '.*', "$archivesBaseName-$version-supporterlist.txt"
 	}
 	into './build/libs'
+//	classifier = 'supporterlist'
 	ext.output = new File("./build/libs/$archivesBaseName-$version-supporterlist.txt")
 }
 
@@ -80,6 +84,7 @@ task supporterlistgold(type: Copy) {
 		rename '.*', "$archivesBaseName-$version-supporterlistgold.txt"
 	}
 	into './build/libs'
+//	classifier = 'supporterlistgold'
 	ext.output = new File("./build/libs/$archivesBaseName-$version-supporterlistgold.txt")
 }
 

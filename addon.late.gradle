@@ -17,9 +17,27 @@ artifacts {
 }
 
 
+// Really gtnh, why are the project artifacts not default included like normal?
+publishing.publications["maven"].with {
+	artifact(changelog.output) {
+		classifier = "changelog"
+		builtBy changelog
+	}
+	artifact(supporterlist.output) {
+		classifier = "supporterlist"
+		builtBy supporterlist
+	}
+	artifact(supporterlistgold.output) {
+		classifier = "supporterlistgold"
+		builtBy supporterlistgold
+	}
+	artifact(defaultConfigPack)
+}
+
 
 if ( !project.buildInfo.tag.contains("-dirty") && (System.getenv().ONLY_RELEASES!="true" || project.buildInfo.isRelease) ) {
 	task testIfUploadable {}
+
 
 //	// Not using GTNH's because they use different naming conventions for the envvars and properties or are just outright missing
 //	publishing {
