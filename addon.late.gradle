@@ -6,3 +6,39 @@ jar.configure {
 		)
 	}
 }
+
+
+// Use our own config file so we can customize checks, mainly star imports since GT6 uses so many in specific ways
+project.getExtensions().getByType(CheckstyleExtension.class).setConfigFile(new File(project.projectDir, 'checkstyle.xml'));
+
+
+artifacts {
+	archives changelog.output, supporterlist.output, supporterlistgold.output, defaultConfigPack
+}
+
+if (!hasProperty("mavenUsername")) {
+	ext.mavenUsername="${System.getenv().MAVEN_USERNAME}"
+}
+
+if (!hasProperty("mavenPassword")) {
+	ext.mavenPassword="${System.getenv().MAVEN_PASSWORD}"
+}
+
+if (!hasProperty("mavenURL")) {
+	ext.mavenURL="${System.getenv().MAVEN_URL}"
+}
+
+if ( !project.buildInfo.tag.contains("-dirty") && (System.getenv().ONLY_RELEASES!="true" || project.buildInfo.isRelease) ) {
+	task testIfUploadable {}
+
+	uploadArchives {
+		dependsOn jar
+		repositories {
+			mavenDeployer {
+				repository(url: mavenURL) {
+					authentication(userName: mavenUsername, password: mavenPassword)
+				}
+			}
+		}
+	}
+}

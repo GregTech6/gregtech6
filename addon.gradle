@@ -1,0 +1,83 @@
+archivesBaseName = 'gregtech_1.7.10'
+
+// GT6's versions via `v6.17.02` style, where the GTNH standard is `6.17.02`, so use ours for now at least
+task buildInfo {
+	def matcher = "v6.[0-9]*"
+	def cmdTag = "git describe --match ${matcher} --abbrev=0 --exact-match --dirty"
+	def procTag = cmdTag.execute()
+	procTag.waitFor()
+	if (procTag.exitValue() == 0) {
+		ext.isRelease = true
+		ext.tag = "${procTag.text.trim().substring(1)}" // Full Release
+		ext.version = ext.tag
+	} else {
+		ext.isRelease = false
+		def cmdLat = "git describe --match ${matcher} --dirty"
+		def procLat = cmdLat.execute()
+		procLat.waitFor()
+		if (procLat.exitValue() == 0) {
+			ext.tag = procLat.text.trim().substring(1)
+		} else {
+			def cmdDes = "git describe --dirty"
+			def procDes = cmdDes.execute()
+			procDes.waitFor()
+			if (procDes.exitValue() == 0) {
+				ext.tag = "DEV-${procDes.text.trim()}"
+			} else {
+				ext.tag = "NOGIT" // No tags at all?!
+			}
+		}
+		if (System.getenv().VERSION_FALLBACK != null) {
+			ext.version = System.getenv().VERSION_FALLBACK
+		} else {
+			ext.version = ext.tag
+		}
+	}
+}
+
+if (System.getenv().ARTIFACT_VERSION == null) {
+	version = "${project.buildInfo.version}"
+} else {
+	version = "${System.getenv().ARTIFACT_VERSION}"
+}
+
+
+task changelog(type: Copy) {
+	from('./CHANGELOG.md') {
+		rename '.*', "$archivesBaseName-$version-changelog.md"
+	}
+	into './build/libs'
+	ext.output = new File("./build/libs/$archivesBaseName-$version-changelog.md")
+}
+
+task supporterlist(type: Copy) {
+	from('./src/main/resources/supporterlist.txt') {
+		rename '.*', "$archivesBaseName-$version-supporterlist.txt"
+	}
+	into './build/libs'
+	ext.output = new File("./build/libs/$archivesBaseName-$version-supporterlist.txt")
+}
+
+task supporterlistgold(type: Copy) {
+	from('./src/main/resources/supporterlistgold.txt') {
+		rename '.*', "$archivesBaseName-$version-supporterlistgold.txt"
+	}
+	into './build/libs'
+	ext.output = new File("./build/libs/$archivesBaseName-$version-supporterlistgold.txt")
+}
+
+task defaultConfigPack(type: Zip) {
+	doFirst {
+		mkdir "${project.buildDir}/${project.libsDirName}"
+	}
+	from('./.defaultconfigs/')
+	include('**/')
+	archiveClassifier = 'defaultConfigPack'
+//	destinationDirectory = new File("${project.buildDir}")
+	destinationDirectory = new File("${project.buildDir}/${project.libsDirName}")
+}
+
+jar.dependsOn supporterlist
+jar.dependsOn supporterlistgold
+jar.dependsOn changelog
+jar.dependsOn defaultConfigPack
