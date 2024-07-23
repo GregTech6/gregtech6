@@ -1,0 +1,8 @@
+jar.configure {
+	manifest {
+		attributes(
+			'FMLCorePluginContainsFMLMod': 'true',
+			'FMLCorePlugin': 'gregtech.asm.GT_ASM'
+		)
+	}
+}

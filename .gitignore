@@ -26,6 +26,8 @@
 !/gradle.properties
 !/jitpack.yml
 !/repositories.gradle
+!/addon.gradle
+!/addon.late.gradle
 !/gradlew
 !/gradlew.bat
 !/gradle/wrapper/gradle-wrapper.jar
