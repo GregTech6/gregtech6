@@ -16,7 +16,7 @@ pluginManagement {
 }
 
 plugins {
-    id 'com.gtnewhorizons.gtnhsettingsconvention' version '1.0.23'
+    id 'com.gtnewhorizons.gtnhsettingsconvention' version '1.0.24'
 }
 
 // The actual hell... maven uploading uses the project name instead of the archiveBaseName as was done in the past.
