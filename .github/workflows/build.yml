@@ -35,18 +35,18 @@ jobs:
       env:
         REF: ${{ github.ref }}
         MAVEN_URL: ${{ secrets.MAVEN_UPLOAD_URL }}
-        MAVEN_USERNAME: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
+        MAVEN_USER: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
         ARTIFACT_VERSION: 6-SNAPSHOT
-      run: if [[ "$REF" == "refs/heads/master" ]]; then ./gradlew build uploadArchives --stacktrace; fi
+      run: if [[ "$REF" == "refs/heads/master" ]]; then ./gradlew build publish -PmavenPublishUrl="$MAVEN_URL" --stacktrace; fi
     - name: Build RELEASE with Gradle
       env:
         REF: ${{ github.ref }}
         MAVEN_URL: ${{ secrets.MAVEN_UPLOAD_URL }}
-        MAVEN_USERNAME: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
+        MAVEN_USER: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
         ONLY_RELEASES: true
-      run: if [[ "$REF" == "refs/tags/v"* ]]; then sleep 600; rm -rf ./build/libs; mkdir -p ./build/libs; ./gradlew testIfUploadable build uploadArchives --stacktrace; fi
+      run: if [[ "$REF" == "refs/tags/v"* ]]; then sleep 120; rm -rf ./build/libs; mkdir -p ./build/libs; ./gradlew testIfUploadable build publish -PmavenPublishUrl="$MAVEN_URL" --stacktrace; fi
   #- name: Workflow Dispatch
     #uses: benc-uk/workflow-dispatch@v1
     #with:
@@ -58,9 +58,9 @@ jobs:
     - name: Regenerate website
       env:
         MAVEN_URL: ${{ secrets.MAVEN_UPLOAD_URL }}
-        MAVEN_USERNAME: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
+        MAVEN_USER: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
-      run: curl -X PUT ${MAVEN_URL}/REGEN -u "${MAVEN_USERNAME}:${MAVEN_PASSWORD}" --data ''
+      run: curl -X PUT ${MAVEN_URL}/REGEN -u "${MAVEN_USER}:${MAVEN_PASSWORD}" --data ''
   webhook-dispatch:
     runs-on: ubuntu-22.04
     needs: [build, regenerate-website]
@@ -95,7 +95,7 @@ jobs:
       env:
         REF: ${{ github.ref }}
         MAVEN_URL: ${{ secrets.MAVEN_UPLOAD_URL }}
-        MAVEN_USERNAME: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
+        MAVEN_USER: ${{ secrets.MAVEN_UPLOAD_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
         ONLY_RELEASES: true
         FORUM_SECRETS: ${{ secrets.FORUM_SECRETS }}

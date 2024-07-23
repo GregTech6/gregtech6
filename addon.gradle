@@ -1,4 +1,21 @@
-archivesBaseName = 'gregtech_1.7.10'
+//archivesBaseName = 'gregtech_1.7.10'
+
+//if (!hasProperty("mavenUsername")) {
+//	ext.mavenUsername="${System.getenv().MAVEN_USER}"
+//}
+//
+//if (!hasProperty("mavenPassword")) {
+//	ext.mavenPassword="${System.getenv().MAVEN_PASSWORD}"
+//}
+
+if (!hasProperty("mavenURL")) {
+	if (System.getenv().MAVEN_URL != null) {
+		ext.mavenURL = "${System.getenv().MAVEN_URL}"
+		project.setProperty("mavenPublishUrl", ext.mavenURL)
+	}
+} else {
+	project.setProperty("mavenPublishUrl", ext.mavenURL)
+}
 
 // GT6's versions via `v6.17.02` style, where the GTNH standard is `6.17.02`, so use ours for now at least
 task buildInfo {

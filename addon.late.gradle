@@ -16,29 +16,28 @@ artifacts {
 	archives changelog.output, supporterlist.output, supporterlistgold.output, defaultConfigPack
 }
 
-if (!hasProperty("mavenUsername")) {
-	ext.mavenUsername="${System.getenv().MAVEN_USERNAME}"
-}
 
-if (!hasProperty("mavenPassword")) {
-	ext.mavenPassword="${System.getenv().MAVEN_PASSWORD}"
-}
-
-if (!hasProperty("mavenURL")) {
-	ext.mavenURL="${System.getenv().MAVEN_URL}"
-}
 
 if ( !project.buildInfo.tag.contains("-dirty") && (System.getenv().ONLY_RELEASES!="true" || project.buildInfo.isRelease) ) {
 	task testIfUploadable {}
 
-	uploadArchives {
-		dependsOn jar
-		repositories {
-			mavenDeployer {
-				repository(url: mavenURL) {
-					authentication(userName: mavenUsername, password: mavenPassword)
-				}
-			}
-		}
-	}
+//	// Not using GTNH's because they use different naming conventions for the envvars and properties or are just outright missing
+//	publishing {
+//		repositories {
+//			maven {
+//				url = mavenURL
+//			}
+//		}
+//	}
+
+//	uploadArchives {
+//		dependsOn jar
+//		repositories {
+//			mavenDeployer {
+//				repository(url: mavenURL) {
+//					authentication(userName: mavenUsername, password: mavenPassword)
+//				}
+//			}
+//		}
+//	}
 }
