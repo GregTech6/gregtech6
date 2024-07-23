@@ -6,6 +6,7 @@
 
 !/.gitignore
 !/.gitattributes
+!/.editorconfig
 
 # License files
 !/LICENSE*
@@ -21,17 +22,23 @@
 # Build files
 !/build.gradle
 !/settings.gradle
+!/dependencies.gradle
+!/gradle.properties
+!/jitpack.yml
+!/repositories.gradle
 !/gradlew
 !/gradlew.bat
 !/gradle/wrapper/gradle-wrapper.jar
 !/gradle/wrapper/gradle-wrapper.properties
 !/.tool-versions
+!.ignore
 
 # Meta Project Files
 !/.meta/**/*
 
 # Github files
 !/.github/**/*
+!/CODEOWNERS
 
 # Default Config Pack
 !/.defaultconfigs/**/*

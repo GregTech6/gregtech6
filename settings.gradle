@@ -1,2 +1,21 @@
 
-// Leaving this empty for now, it just needs to exist...
+pluginManagement {
+    repositories {
+        maven {
+            // RetroFuturaGradle
+            name "GTNH Maven"
+            url "https://nexus.gtnewhorizons.com/repository/public/"
+            mavenContent {
+                includeGroup("com.gtnewhorizons")
+                includeGroupByRegex("com\\.gtnewhorizons\\..+")
+            }
+        }
+        gradlePluginPortal()
+        mavenCentral()
+        mavenLocal()
+    }
+}
+
+plugins {
+    id 'com.gtnewhorizons.gtnhsettingsconvention' version '1.0.23'
+}

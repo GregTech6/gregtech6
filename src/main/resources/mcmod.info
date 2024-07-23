@@ -1,9 +1,9 @@
 [{
-  "modid": "gregtech",
-  "name": "GregTech",
+  "modid": "${modId}",
+  "name": "${modName}",
   "description": "Has taken Minecraft to a whole new Level of complexity!",
-  "mcversion": "${mcversion}",
-  "version": "${version}",
+  "mcversion": "${minecraftVersion}",
+  "version": "${modVersion}",
   "logoFile": "/logos/logo_gt.png",
   "url": "https://gregtech.mechaenetia.com/",
   "updateUrl": "https://gregtech.mechaenetia.com/1.7.10",

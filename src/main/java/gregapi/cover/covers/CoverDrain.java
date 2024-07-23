@@ -62,7 +62,7 @@ import static gregapi.data.CS.*;
  */
 public class CoverDrain extends AbstractCoverAttachment {
 	@Override public boolean interceptCoverPlacement(byte aCoverSide, CoverData aData, Entity aPlayer) {return !(aData.mTileEntity.canTick() && aData.mTileEntity instanceof IFluidHandler);}
-	
+
 	@Override
 	@SuppressWarnings("unchecked")
 	public void onTickPre(byte aCoverSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {
@@ -84,7 +84,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 			}
 			if (SERVER_TIME % 100 == 50 && (FL.XP.exists() || FL.Mob.exists())) {
 				// Yes, I know that the AABB Check is a bit weird looking, but I think I will do more than just XP Orbs with this later on.
-				for (Entity tEntity : (Iterable<Entity>)aData.mTileEntity.getWorld().getEntitiesWithinAABB(EntityXPOrb.class, AxisAlignedBB.getBoundingBox(aData.mTileEntity.getOffsetX(aCoverSide, 2)-1, aData.mTileEntity.getOffsetY(aCoverSide, 2)-1, aData.mTileEntity.getOffsetZ(aCoverSide, 2)-1, aData.mTileEntity.getOffsetX(aCoverSide, 2)+2, aData.mTileEntity.getOffsetY(aCoverSide, 2)+2, aData.mTileEntity.getOffsetZ(aCoverSide, 2)+2))) if (!tEntity.isDead) {
+				for (Entity tEntity : (Iterable<? extends Entity>)aData.mTileEntity.getWorld().getEntitiesWithinAABB(EntityXPOrb.class, AxisAlignedBB.getBoundingBox(aData.mTileEntity.getOffsetX(aCoverSide, 2)-1, aData.mTileEntity.getOffsetY(aCoverSide, 2)-1, aData.mTileEntity.getOffsetZ(aCoverSide, 2)-1, aData.mTileEntity.getOffsetX(aCoverSide, 2)+2, aData.mTileEntity.getOffsetY(aCoverSide, 2)+2, aData.mTileEntity.getOffsetZ(aCoverSide, 2)+2))) if (!tEntity.isDead) {
 					if (tEntity instanceof EntityXPOrb) {
 						if (MD.OB.mLoaded) {
 							try {
@@ -109,7 +109,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 			if (aReceivedBlockUpdate || SERVER_TIME % 20 == 5) {
 				Block tBlock = aData.mTileEntity.getBlockAtSide(aCoverSide);
 				FluidStack tFluid = NF;
-				
+
 				if (tBlock instanceof BlockBaseFluid) {
 					byte tMeta = aData.mTileEntity.getMetaDataAtSide(aCoverSide);
 					BlockBaseFluid tFluidBlock = ((BlockBaseFluid)tBlock);
@@ -143,7 +143,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 						FL.fill_((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], FL.Dirty_Water.make(16000), T);
 					} else
 					if (tBlock instanceof IFluidBlock) tFluid = ((IFluidBlock)tBlock).drain(aData.mTileEntity.getWorld(), aData.mTileEntity.getOffsetX(aCoverSide), aData.mTileEntity.getOffsetY(aCoverSide), aData.mTileEntity.getOffsetZ(aCoverSide), F);
-					
+
 					if (tFluid != null && (SIDES_HORIZONTAL[aCoverSide] || FL.gas(tFluid) || (FL.lighter(tFluid)?SIDES_BOTTOM:SIDES_TOP)[aCoverSide])) {
 						if (FL.fillAll((IFluidHandler)aData.mTileEntity, ALL_SIDES_THIS_AND_ANY[aCoverSide], tFluid, T)) {
 							if (tBlock instanceof IFluidBlock) {
@@ -157,7 +157,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 			}
 		}
 	}
-	
+
 	@Override
 	public boolean onWalkOver(byte aCoverSide, CoverData aData, Entity aEntity) {
 		if (SIDES_TOP[aCoverSide] && !aData.mStopped && aData.mTileEntity instanceof IFluidHandler && aData.mTileEntity.isServerSide()) {
@@ -222,7 +222,7 @@ public class CoverDrain extends AbstractCoverAttachment {
 		}
 		return F;
 	}
-	
+
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addToolTips(aList, aStack, aF3_H);
@@ -239,14 +239,14 @@ public class CoverDrain extends AbstractCoverAttachment {
 		aList.add(LH.Chat.GREEN + "Stand on this and Sneak to drain your XP");
 		aList.add(LH.Chat.DGRAY + LH.get(LH.TOOL_TO_TOGGLE_CONTROLLER_COVER));
 	}
-	
+
 	@Override public boolean isOpaque(byte aSide, CoverData aData) {return T;}
 	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return F;}
-	
+
 	@Override public ITexture getCoverTextureSurface(byte aSide, CoverData aData) {return sTextureFront;}
 	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide == aTextureSide ? sTextureFront : aSide == OPOS[aTextureSide] ? sTextureBack : sTextureSides;}
 	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return sTextureSides;}
-	
+
 	public static final ITexture
 	sTextureSides = BlockTextureDefault.get("machines/covers/drain/sides"),
 	sTextureFront = BlockTextureDefault.get("machines/covers/drain/front"),
