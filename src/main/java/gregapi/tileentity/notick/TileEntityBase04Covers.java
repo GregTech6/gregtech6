@@ -467,7 +467,7 @@ public abstract class TileEntityBase04Covers extends TileEntityBase03MultiTileEn
 	@Override
 	public final ITexture getTexture(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (aRenderPass < mInternalRenderPasses) {
-			if (hasCovers() && mCovers.mBehaviours[aSide] != null && isCoverSurface(aSide, aRenderPass)) return BlockTextureMulti.get(getTexture2(aBlock, aRenderPass, aSide, aShouldSideBeRendered), mCovers.mBehaviours[aSide].getCoverTextureSurface(aSide, mCovers));
+			if (hasCovers() &&  mCovers.mBehaviours!=null && mCovers.mBehaviours[aSide] != null && isCoverSurface(aSide, aRenderPass)) return BlockTextureMulti.get(getTexture2(aBlock, aRenderPass, aSide, aShouldSideBeRendered), mCovers.mBehaviours[aSide].getCoverTextureSurface(aSide, mCovers));
 			return getTexture2(aBlock, aRenderPass, aSide, aShouldSideBeRendered);
 		}
 		int tRenderPass = aRenderPass-mInternalRenderPasses;
