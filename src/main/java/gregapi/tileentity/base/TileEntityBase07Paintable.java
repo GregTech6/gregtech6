@@ -30,12 +30,16 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSubItems;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataByte;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataByteArray;
 import gregapi.block.multitileentity.MultiTileEntityBlockInternal;
+import gregapi.code.TagData;
 import gregapi.data.MT;
+import gregapi.data.OP;
+import gregapi.data.TD;
 import gregapi.item.IItemColorableRGB;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.tileentity.ITileEntityDecolorable;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -61,12 +65,22 @@ public abstract class TileEntityBase07Paintable extends TileEntityBase06Covers i
 		if (aNBT.hasKey(NBT_FLAMMABILITY)) mFlammability = aNBT.getInteger(NBT_FLAMMABILITY);
 		if (aNBT.hasKey(NBT_MATERIAL)) mMaterial = OreDictMaterial.get(aNBT.getString(NBT_MATERIAL));
 	}
-	
+	public void overcharge(long aVoltage, TagData aEnergyType) {
+		if(TD.Energy.ALL_ELECTRIC.contains(aEnergyType))explode(4);
+		else {
+			setToAir();
+			for (int i = 0; i < 4; i++) ST.place(worldObj,xCoord,yCoord,zCoord, OP.scrapGt.mat(mMaterial,getRandomNumber(18)));
+		}
+		// Yes, I will annoy people with that a lot, even when they disable Explosions.
+		UT.Sounds.send(worldObj, TD.Energy.ALL_ELECTRIC.contains(aEnergyType)?SFX.IC_MACHINE_OVERLOAD:TD.Energy.ALL_KINETIC.contains(aEnergyType)?SFX.IC_MACHINE_INTERRUPT:SFX.MC_EXPLODE, 1, 1, getCoords());
+		// The Noise should make the position obvious.
+		DEB.println("Machine overcharged with: " + aVoltage + " " + aEnergyType.getLocalisedNameLong());
+	}
 	@Override
 	public IPacket getClientDataPacket(boolean aSendAll) {
 		return aSendAll ? getClientDataPacketByteArray(aSendAll, (byte)UT.Code.getR(mRGBa), (byte)UT.Code.getG(mRGBa), (byte)UT.Code.getB(mRGBa), getVisualData()) : getClientDataPacketByte(aSendAll, getVisualData());
 	}
-	
+
 	@Override
 	public boolean receiveDataByte(byte aData, INetworkHandler aNetworkHandler) {
 		setVisualData(aData);

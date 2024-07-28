@@ -485,18 +485,10 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 			}
 		}
 	}
-	
+
 	public void overcharge(long aVoltage, TagData aEnergyType) {
 		// Only explode if allowed
-		if (OVERCHARGE_EXPLOSIONS) {
-			if (TD.Energy.ALL_EXPLODING.contains(aEnergyType)) {
-				explode(UT.Code.tierMax(aVoltage));
-			} else {
-				explode(0.1);
-			}
-		} else if (OVERCHARGE_BREAKING) {
-			explode(0.1);
-		}
+		explode(TD.Energy.ALL_ELECTRIC.contains(aEnergyType)?4:0.1);
 		// Yes, I will annoy people with that a lot, even when they disable Explosions.
 		UT.Sounds.send(worldObj, TD.Energy.ALL_ELECTRIC.contains(aEnergyType)?SFX.IC_MACHINE_OVERLOAD:TD.Energy.ALL_KINETIC.contains(aEnergyType)?SFX.IC_MACHINE_INTERRUPT:SFX.MC_EXPLODE, 1, 1, getCoords());
 		// The Noise should make the position obvious.
