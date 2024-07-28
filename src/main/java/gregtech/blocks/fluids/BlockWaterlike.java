@@ -46,9 +46,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.BlockFluidClassic;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.*;
 
 import java.util.List;
 import java.util.Random;
@@ -126,14 +124,14 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 			if (displaceIfPossible(aWorld, aX, aY+densityDir, aZ)) aWorld.setBlock(aX, aY+densityDir, aZ, this, 1, WATER_UPDATE_FLAGS | 1);
 			return;
 		}
-		
+
 		int tFlowMeta  = (aWorld.getBlock(aX, aY-densityDir, aZ) instanceof BlockWaterlike ? 1 : quantaPerBlock - quantaRemaining + 1);
 		if (tFlowMeta >= quantaPerBlock) return;
-		
-		if (aWorld.blockExists(aX  , aY, aZ-1) && displaceIfPossible(aWorld, aX  , aY, aZ-1)) aWorld.setBlock(aX  , aY, aZ-1, this, tFlowMeta, WATER_UPDATE_FLAGS | 1);
-		if (aWorld.blockExists(aX  , aY, aZ+1) && displaceIfPossible(aWorld, aX  , aY, aZ+1)) aWorld.setBlock(aX  , aY, aZ+1, this, tFlowMeta, WATER_UPDATE_FLAGS | 1);
-		if (aWorld.blockExists(aX-1, aY, aZ  ) && displaceIfPossible(aWorld, aX-1, aY, aZ  )) aWorld.setBlock(aX-1, aY, aZ  , this, tFlowMeta, WATER_UPDATE_FLAGS | 1);
-		if (aWorld.blockExists(aX+1, aY, aZ  ) && displaceIfPossible(aWorld, aX+1, aY, aZ  )) aWorld.setBlock(aX+1, aY, aZ  , this, tFlowMeta, WATER_UPDATE_FLAGS | 1);
+
+		if (aWorld.blockExists(aX  , aY, aZ-1)&& (aWorld.getBlock(aX  , aY, aZ-1)instanceof BlockRiver) && displaceIfPossible(aWorld, aX  , aY, aZ-1)) aWorld.setBlock(aX  , aY, aZ-1, this, tFlowMeta, WATER_UPDATE_FLAGS | 1);
+		if (aWorld.blockExists(aX  , aY, aZ+1)&& (aWorld.getBlock(aX  , aY, aZ+1)instanceof BlockRiver) && displaceIfPossible(aWorld, aX  , aY, aZ+1)) aWorld.setBlock(aX  , aY, aZ+1, this, tFlowMeta, WATER_UPDATE_FLAGS | 1);
+		if (aWorld.blockExists(aX-1, aY, aZ  )&& (aWorld.getBlock(aX-1, aY, aZ  )instanceof BlockRiver) && displaceIfPossible(aWorld, aX-1, aY, aZ  )) aWorld.setBlock(aX-1, aY, aZ  , this, tFlowMeta, WATER_UPDATE_FLAGS | 1);
+		if (aWorld.blockExists(aX+1, aY, aZ  )&& (aWorld.getBlock(aX+1, aY, aZ  )instanceof BlockRiver) && displaceIfPossible(aWorld, aX+1, aY, aZ  )) aWorld.setBlock(aX+1, aY, aZ  , this, tFlowMeta, WATER_UPDATE_FLAGS | 1);
 	}
 	
 	@Override
