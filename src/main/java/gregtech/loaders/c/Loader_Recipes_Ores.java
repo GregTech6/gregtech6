@@ -78,9 +78,9 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Centrifuge       .addRecipe1(T, 64,  144, new long[] {  648, 648, 648, 648, 648, 648}, dust                  .mat(MT.PlatinumGroupSludge, 1), dustTiny.mat(MT.Ru, 8), dustTiny.mat(MT.Rh, 8), dustTiny.mat(MT.Pd, 8), dustTiny.mat(MT.Os, 8), dustTiny.mat(MT.Ir, 8), dustTiny.mat(MT.Pt, 8));
 		RM.Centrifuge       .addRecipe1(T, 64,   16, new long[] {   80,  80,  80,  80,  80,  80}, crushedCentrifugedTiny.mat(MT.PlatinumGroupSludge, 1), dustTiny.mat(MT.Ru, 8), dustTiny.mat(MT.Rh, 8), dustTiny.mat(MT.Pd, 8), dustTiny.mat(MT.Os, 8), dustTiny.mat(MT.Ir, 8), dustTiny.mat(MT.Pt, 8));
 		RM.Centrifuge       .addRecipe1(T, 64,  144, new long[] {  720, 720, 720, 720, 720, 720}, crushedCentrifuged    .mat(MT.PlatinumGroupSludge, 1), dustTiny.mat(MT.Ru, 8), dustTiny.mat(MT.Rh, 8), dustTiny.mat(MT.Pd, 8), dustTiny.mat(MT.Os, 8), dustTiny.mat(MT.Ir, 8), dustTiny.mat(MT.Pt, 8));
-		
-		RM.Centrifuge       .addRecipe0(T, 64,  288, new long[] {8000,  250,  250,  250,  250,  250}, FL.Lava                    .make(100), NF, dustTiny.mat(MT.STONES.Basalt, 1), nugget.mat(MT.Cu, 8), nugget.mat(MT.Sn, 4), nugget.mat(MT.Pb, 2), nugget.mat(MT.Au, 1), nugget.mat(MT.Ag, 1));
-		RM.Centrifuge       .addRecipe0(T, 64,  144, new long[] {9000,  300,  300,  300,  300,  300}, FL.Lava_Pahoehoe           .make(100), NF, dustTiny.mat(MT.STONES.Basalt, 1), nugget.mat(MT.Cu, 8), nugget.mat(MT.Sn, 4), nugget.mat(MT.Pb, 2), nugget.mat(MT.Au, 1), nugget.mat(MT.Ag, 1));
+
+		RM.Centrifuge       .addRecipe0(T, 64,  288, new long[] {8000, 4500,  250,  250,  250,  250}, FL.Lava                    .make(100), NF, dust.mat(MT.Obsidian, 1), dustTiny.mat(MT.STONES.Basalt, 1), dustTiny.mat(MT.Fe2O3, 8), dustTiny.mat(MT.Netherrack, 4), dustTiny.mat(MT.Au, 2), nugget.mat(MT.Ag, 1));
+		RM.Centrifuge       .addRecipe0(T, 64,  144, new long[] {9000, 5000,  300,  300,  300,  300}, FL.Lava_Pahoehoe           .make(100), NF, dust.mat(MT.Obsidian, 1), dustTiny.mat(MT.STONES.Basalt, 1), dustTiny.mat(MT.Fe2O3, 8), dustTiny.mat(MT.Netherrack, 4), dustTiny.mat(MT.Au, 2), nugget.mat(MT.Ag, 1));
 		if (FL.Lava_Volcanic.exists())
 		RM.Centrifuge       .addRecipe0(T, 64,  144, new long[] {9500, 1000, 1000, 1000, 1000, 1000}, FL.Lava_Volcanic           .make(100), NF, dustTiny.mat(MT.STONES.Basalt, 4), nugget.mat(MT.Cu, 8), nugget.mat(MT.Sn, 4), nugget.mat(MT.Pb, 2), nugget.mat(MT.Au, 1), nugget.mat(MT.Ag, 1));
 		if (IL.NePl_SoulSoil.exists())
