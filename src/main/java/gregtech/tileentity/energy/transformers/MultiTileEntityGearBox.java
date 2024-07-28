@@ -57,7 +57,7 @@ import static gregapi.data.CS.*;
  */
 public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMTE_GetOreDictItemData, IMTE_AddToolTips {
 	public boolean mJammed = F, mUsedGear = F, mGearsWork = F;
-	public long mMaxThroughPut = 64, mCurrentSpeed = 0, mCurrentPower = 0, mTransferredLast = 0;
+	public long mMaxThroughPut = 64, mCurrentSpeed = 0, mCurrentPower = 0, mTransferredSpeedLast = 0, mTransferredPowerLast = 0;
 	public short mAxleGear = 0;
 	public byte mInputtedSides = 0, oInputtedSides = 0, mOrder = 0, mRotationData = 0, oRotationData = 0, mIgnorePower = 0;
 	
@@ -158,7 +158,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			causeBlockUpdate();
 			return 10000;
 		}
-		if (aTool.equals(TOOL_tachometer)) {
+		if (aTool.equals(TOOL_unimeter)) {
 			if (aChatReturn != null) {
 				if (FACE_CONNECTED[0][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][0]) aChatReturn.add(FACE_CONNECTED[0][mInputtedSides] ? "Accepts from Bottom" : "Emits to Bottom");
 				if (FACE_CONNECTED[1][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][1]) aChatReturn.add(FACE_CONNECTED[1][mInputtedSides] ? "Accepts from Top"    : "Emits to Top");
@@ -166,7 +166,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				if (FACE_CONNECTED[3][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][3]) aChatReturn.add(FACE_CONNECTED[3][mInputtedSides] ? "Accepts from South"  : "Emits to South");
 				if (FACE_CONNECTED[4][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][4]) aChatReturn.add(FACE_CONNECTED[4][mInputtedSides] ? "Accepts from West"   : "Emits to West");
 				if (FACE_CONNECTED[5][mAxleGear & 63] || AXIS_XYZ[(mAxleGear >>> 6) & 3][5]) aChatReturn.add(FACE_CONNECTED[5][mInputtedSides] ? "Accepts from East"   : "Emits to East");
-				aChatReturn.add(mTransferredLast + " RU/t");
+				aChatReturn.add(mTransferredSpeedLast + " RU/t");
 			}
 			return 1;
 		}
@@ -183,8 +183,8 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		if (aIsServerSide) {
 			if (mJammed || !mGearsWork) mCurrentPower = 0;
 			
-			mTransferredLast = Math.abs(mCurrentPower * mCurrentSpeed);
-			
+			mTransferredSpeedLast = mCurrentSpeed ;
+			mTransferredPowerLast = mCurrentPower;
 			if (mUsedGear && mCurrentPower > 0) {
 				boolean temp = T;
 				while (temp) {
@@ -214,7 +214,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 					if (++mOrder >= 6) mOrder = 0;
 				}
 			}
-			mTransferredLast -= Math.abs(mCurrentPower * mCurrentSpeed);
+			mTransferredSpeedLast -= Math.abs(mCurrentPower * mCurrentSpeed);
 			if (!mUsedGear) mRotationData &= ~B[6];
 			oInputtedSides = mInputtedSides;
 			mInputtedSides = 0;

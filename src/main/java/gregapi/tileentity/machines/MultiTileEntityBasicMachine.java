@@ -44,6 +44,7 @@ import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.tileentity.data.ITileEntityGibbl;
 import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
+import gregapi.tileentity.energy.IMeterDetectable;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -57,9 +58,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraftforge.fluids.*;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static gregapi.data.CS.*;
@@ -90,14 +89,14 @@ import static gregapi.data.CS.*;
 @Optional.InterfaceList(value = {
 	@Optional.Interface(iface = "buildcraft.api.tiles.IHasWork", modid = ModIDs.BC)
 })
-public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle implements IHasWork, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntitySwitchableOnOff, ITileEntityRunningSuccessfully, ITileEntityAdjacentInventoryUpdatable, ITileEntityEnergy, ITileEntityProgress, ITileEntityGibbl, IFluidHandler {
+public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle implements IHasWork, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntitySwitchableOnOff, ITileEntityRunningSuccessfully, ITileEntityAdjacentInventoryUpdatable, ITileEntityEnergy, ITileEntityProgress, ITileEntityGibbl, IFluidHandler, IMeterDetectable {
 	public boolean mSpecialIsStartEnergy = F, mNoConstantEnergy = F, mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mParallelDuration = F, mCanUseOutputTanks = F, mOutputCatalyzer =F;
 	public byte mEnergyInputs = 127, mEnergyOutput = SIDE_UNDEFINED, mOutputBlocked = 0, mMode = 0, mIgnited = 0;
 	public byte mItemInputs   = 127, mItemOutputs  = 127, mItemAutoInput  = SIDE_UNDEFINED, mItemAutoOutput  = SIDE_UNDEFINED;
 	public byte mFluidInputs  = 127, mFluidOutputs = 127, mFluidAutoInput = SIDE_UNDEFINED, mFluidAutoOutput = SIDE_UNDEFINED;
 	public short mEfficiency = 10000;
 	public int mParallel = 1;
-	public long mEnergy = 0, mInputMin = 16, mInput = 32, mInputMax = 64, mMinEnergy = 0, mOutputEnergy = 0, mChargeRequirement = 0, mVoltageLast = 0,mAmperesLast = 0;
+	public long mEnergy = 0, mInputMin = 16, mInput = 32, mInputMax = 64, mMinEnergy = 0, mOutputEnergy = 0, mOutputEnergyLast=0, mChargeRequirement = 0;
 	public TagData mEnergyTypeAccepted = TD.Energy.TU, mEnergyTypeEmitted = TD.Energy.QU, mEnergyTypeCharged = TD.Energy.TU;
 	public Recipe mLastRecipe = null, mCurrentRecipe = null;
 	public FluidTankGT[] mTanksInput = ZL_FT, mTanksOutput = ZL_FT;
@@ -109,7 +108,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public RecipeMap mRecipes = RM.Furnace;
 	public long mProgress = 0, mMaxProgress = 0;
 	public boolean mSuccessful = F, mActive = F, mRunning = F;
-	
+	public final ArrayList<MeterData> receivedEnergy=new ArrayList<>(), receivedEnergyLast=new ArrayList<>();
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
@@ -415,9 +414,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			if (aChatReturn != null) onMagnifyingGlass(aChatReturn);
 			return 1;
 		}
-		if (aTool.equals(TOOL_electrometer) && isServerSide() && aChatReturn!=null) {
-			if (mAmperesLast!=0) aChatReturn.add("Receiving: "+ mVoltageLast + " EU/A * "+mAmperesLast+"A");
-			else aChatReturn.add("Receiving 0 EU/t");
+		if (aTool.equals(TOOL_unimeter) && isServerSide() && aChatReturn!=null) {
+			IMeterDetectable.sendReceiveEmitMessage(receivedEnergyLast,mEnergyTypeEmitted,mOutputEnergyLast,1,aChatReturn);
 			return 1;
 		}
 		if(aTool.equals(TOOL_cutter)){
@@ -473,7 +471,12 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			doWork(aTimer);
 			
 			if (mTimer % 600 == 5 && mRunning) doDefaultStructuralChecks();
-			
+
+			mOutputEnergyLast=0;
+			receivedEnergyLast.clear();
+			receivedEnergyLast.addAll(receivedEnergy);
+			receivedEnergy.clear();
+
 			for (int i = 0; i < mTanksInput .length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i                       , FL.display(mTanksInput [i], T, T));
 			for (int i = 0; i < mTanksOutput.length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i + mTanksInput.length  , FL.display(mTanksOutput[i], T, T));
 		}
@@ -499,34 +502,29 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {
-		mVoltageLast = 0;
-		mAmperesLast = 0;
 		if (mStopped) return 0;
 		boolean tPositive = (aSize > 0);
 		aSize = Math.abs(aSize);
 		if (aSize > getEnergySizeInputMax(aEnergyType, aSide)) {
 			if (aDoInject) overcharge(aSize, aEnergyType);
-			mVoltageLast = aSize;
-			mAmperesLast = aAmount;
+			this.receivedEnergy.add(new MeterData(aEnergyType,aSize, aAmount));
 			return aAmount;
 		}
 		if (aEnergyType == mEnergyTypeCharged && mChargeRequirement > 0) {
 			if (aDoInject) mChargeRequirement -= aSize * aAmount;
-			mVoltageLast = aSize;
-			mAmperesLast = aAmount;
+			this.receivedEnergy.add(new MeterData(aEnergyType,aSize, aAmount));
 			return aAmount;
 		}
 		if (aEnergyType == mEnergyTypeAccepted) {
 			if (aDoInject) mStateNew = tPositive;
 			long tInput = Math.min(mInputMax - mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize) + (tInput%aSize!=0?1:0));
 			if (aDoInject) mEnergy += tConsumed * aSize;
-			mVoltageLast = aSize;
-			mAmperesLast = tConsumed;
+			this.receivedEnergy.add(new MeterData(aEnergyType, aSize, tConsumed));
 			return tConsumed;
 		}
 		return 0;
 	}
-	
+
 	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting ? aEnergyType == mEnergyTypeEmitted : aEnergyType == mEnergyTypeAccepted || aEnergyType == mEnergyTypeCharged;}
 	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) &&                   FACE_CONNECTED[FACING_ROTATIONS[mFacing][aSide]][mEnergyInputs] && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
 	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) && (SIDES_INVALID[mEnergyOutput] || FACING_ROTATIONS[mFacing][aSide]==mEnergyOutput) && super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
@@ -1017,6 +1015,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	public void doOutputEnergy() {
 		ITileEntityEnergy.Util.emitEnergyToSide(mEnergyTypeEmitted, FACING_TO_SIDE[mFacing][mEnergyOutput], mOutputEnergy, 1, this);
+		mOutputEnergyLast=mOutputEnergy;
 	}
 	
 	public void onProcessStarted () {/**/}

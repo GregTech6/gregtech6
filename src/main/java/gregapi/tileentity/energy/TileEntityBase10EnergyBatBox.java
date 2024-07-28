@@ -21,6 +21,7 @@ package gregapi.tileentity.energy;
 
 import static gregapi.data.CS.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -49,13 +50,13 @@ import net.minecraft.nbt.NBTTagCompound;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityEnergyDataCapacitor, ITileEntityRunningActively, ITileEntitySwitchableOnOff, ITileEntitySwitchableMode, ITileEntityProgress {
+public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityEnergyDataCapacitor, ITileEntityRunningActively, ITileEntitySwitchableOnOff, ITileEntitySwitchableMode, ITileEntityProgress, IMeterDetectable {
 	public boolean mEmitsEnergy = F, mStopped = F, mActive = F;
 	public long mEnergy = 0, mInput = 32, mOutput = 32, mBatteryCount = -1, mChargeableCount = -1, mReceivablePower = 0, mAmperageLastEmitting = 0, mAmperageLastReceiving = 0;
 	public byte mActiveState = 0, mMode = 0;
 	public TagData mEnergyType = TD.Energy.QU;
 	public TagData mEnergyTypeOut = TD.Energy.QU;
-	
+	public final ArrayList<MeterData> receivedEnergy=new ArrayList<>(),receivedEnergyLast = new ArrayList<>();
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
@@ -80,9 +81,9 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 		UT.NBT.setBoolean(aNBT, NBT_ACTIVE_ENERGY, mEmitsEnergy);
 	}
 	
-	static {LH.add("gt.tooltip.energybattery.1", "Selector Covers can set the amount of emitted Packets");}
+	static {LH.add("gt.tooltip.energybattery.1", "Selector Covers can set the amount of Ampere emitted per tick");}
 	static {LH.add("gt.tooltip.energybattery.2", "Mode 0 = Emit as much as possible, this is Default");}
-	static {LH.add("gt.tooltip.energybattery.3", "Mode 1 - 15 = Emit up to 1 - 15 Packets if enough Energy Storages");}
+	static {LH.add("gt.tooltip.energybattery.3", "Mode 1 - 15 = Emit up to 1 - 15 A/t if possible");}
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
@@ -124,7 +125,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 					}
 				}
 			}
-			
+
 			mActive = (mEnergy >= mOutput);
 			
 			if (mBatteryCount < 0 || mChargeableCount < 0 || mInventoryChanged) {
@@ -152,7 +153,11 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 				}
 				if (mTimer % 600 == 5) doDefaultStructuralChecks();
 			}
-			
+
+			receivedEnergyLast.clear();
+			receivedEnergyLast.addAll(receivedEnergy);
+			receivedEnergy.clear();
+
 			mReceivablePower = mChargeableCount * mInput * 2;
 		}
 	}
@@ -179,12 +184,10 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	
 	@Override
 	public long doInject(TagData aEnergyType, byte aSide, long aSize, long aAmount, boolean aDoInject) {
-		mAmperageLastReceiving = 0;
 		if (mReceivablePower <= 0) return 0;
 		aSize = Math.abs(aSize);
 		if (aSize > getEnergySizeInputMax(aEnergyType, aSide)) {
 			if (aDoInject) overcharge(aSize, aEnergyType);
-			mAmperageLastReceiving = aAmount;
 			return aAmount;
 		}
 		if (mEnergy >= mInput * 320 * invsize()) return 0;
@@ -193,17 +196,14 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 		if (aDoInject) {
 			mReceivablePower -= tConsumed * aSize;
 			mEnergy += tConsumed * aSize;
+			this.receivedEnergy.add(new MeterData(aEnergyType, aSize, tConsumed));
 		}
-		mAmperageLastReceiving = tConsumed;
 		return tConsumed;
 	}
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (aTool.equals(TOOL_electrometer) && isServerSide() && aChatReturn!=null) {
-			if (mAmperageLastReceiving !=0) aChatReturn.add("Receiving: "+mAmperageLastReceiving + " A");
-			else aChatReturn.add("Not Receiving Power");
-			if (mAmperageLastEmitting !=0) aChatReturn.add("Emitting: "+mAmperageLastEmitting + " A");
-			else aChatReturn.add("Not Emitting Power");
+		if (aTool.equals(TOOL_unimeter) && isServerSide() && aChatReturn!=null) {
+			IMeterDetectable.sendReceiveEmitMessage(receivedEnergyLast,mEnergyTypeOut,mOutput,mAmperageLastEmitting,aChatReturn);
 			return 1;
 		}
 		return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);

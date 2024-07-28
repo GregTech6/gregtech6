@@ -542,13 +542,13 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		IL.Thermometer_Quicksilver         .set(addItem(10000, "Quicksilver Thermometer"  , "Measures Temperature"                   , new Behavior_Tool(TOOL_thermometer  ), TC.stack(TC.SENSUS, 2), TC.stack(TC.IGNIS, 2), TC.stack(TC.GELUM, 2)));
 		IL.Geiger_Counter_Empty            .set(addItem(10001, "Geiger Counter (Empty)"   , "Fill with proper inert Gas"                                                    , TC.stack(TC.SENSUS, 1), TC.stack(TC.RADIO, 1)));
 		IL.Geiger_Counter                  .set(addItem(10002, "Geiger Counter"           , "Measures Neutron Count"                 , new Behavior_Tool(TOOL_geigercounter), TC.stack(TC.SENSUS, 5), TC.stack(TC.RADIO, 5)));
-		IL.Electro_Meter                   .set(addItem(10003, "Electrometer"             , "Measures Electricity"                   , new Behavior_Tool(TOOL_electrometer ), TC.stack(TC.SENSUS, 5), TC.stack(TC.ELECTRUM, 5)));
-		IL.Tacho_Meter                     .set(addItem(10004, "Tachometer"               , "Measures Rotation Speed"                , new Behavior_Tool(TOOL_tachometer   ), TC.stack(TC.SENSUS, 5), TC.stack(TC.MOTUS, 5)));
+		IL.Uni_Meter                       .set(addItem(10003, "Universalmeter"           , "Measures Simple Energies"               , new Behavior_Tool(TOOL_unimeter), TC.stack(TC.SENSUS, 5), TC.stack(TC.ELECTRUM, 5)));
+		IL.Uni_Meter_Core                  .set(addItem(10004, "Universalmeter Core"      , ""                                       ,                                                  TC.stack(TC.SENSUS, 5), TC.stack(TC.MOTUS, 5)));
 		
 		CR.shaped(IL.Thermometer_Quicksilver    .get(1), CR.DEF_REV, " GD", "GQG", "PG ", 'P', OP.plate.dat(ANY.Cu), 'G', OP.plate.dat(MT.Glass), 'D', DYE_OREDICTS[DYE_INDEX_Red], 'Q', OD.itemQuicksilver);
 		CR.shaped(IL.Geiger_Counter_Empty       .get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', OP.capcellcon .dat(MT.Al   ), 'P', OP.plate.dat(MT.Al             ), 'T', OP.screw.dat(MT.Al             ), 'C', OD_CIRCUITS[1]);
-		CR.shaped(IL.Electro_Meter              .get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', OP.wireFine   .dat(ANY.Cu  ), 'P', OP.plate.dat(MT.SteelGalvanized), 'T', OP.screw.dat(MT.SteelGalvanized), 'C', OD_CIRCUITS[1]);
-		CR.shaped(IL.Tacho_Meter                .get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', OP.gearGtSmall.dat(MT.Brass), 'P', OP.plate.dat(MT.Brass          ), 'T', OP.screw.dat(MT.Brass          ), 'C', OD.itemRedstone);
+		CR.shaped(IL.Uni_Meter.get(1), CR.DEF_REV, "TXT", "PCP", "TdT", 'X', IL.Uni_Meter_Core, 'P', OP.plate.dat(MT.Al), 'T', OP.screw.dat(MT.Al), 'C', OD_CIRCUITS[2]);
+		CR.shaped(IL.Uni_Meter_Core.get(1), CR.DEF_REV, "REK", "MCL", "TdT", 'R', OP.gearGtSmall.dat(MT.Steel), 'E', OP.wireFine.dat(MT.Cu), 'K', OP.spring.dat(MT.Steel),'M',OP.bolt.dat(MT.SteelMagnetic),'L',OP.plateTiny.dat(MT.Si), 'C', OP.gem.dat(MT.Redstone));
 		
 		OM.data(IL.Geiger_Counter.get(1), OM.data(IL.Geiger_Counter_Empty.get(1)));
 		

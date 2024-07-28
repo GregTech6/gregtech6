@@ -1116,7 +1116,7 @@ public class CS {
 	, TOOL_thermometer      = "thermometer"
 	, TOOL_magnifyingglass  = "magnifyingglass"
 	, TOOL_geigercounter    = "geigercounter"
-	, TOOL_electrometer     = "electrometer"
+	, TOOL_unimeter         = "electrometer"
 	, TOOL_tachometer       = "tachometer"
 	, TOOL_prospector       = "prospector"
 	, TOOL_ducttape         = "ducttape"
