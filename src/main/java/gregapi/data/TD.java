@@ -531,7 +531,10 @@ public class TD {
 		public static final TagData SOLDERING_MATERIAL                      = TagData.createTagData("PROCESSING.SOLDERING_MATERIAL", "Soldering Metal");
 		public static final TagData SOLDERING_MATERIAL_BAD                  = TagData.createTagData("PROCESSING.SOLDERING_MATERIAL_BAD", "Bad Soldering Metal");
 		public static final TagData SOLDERING_MATERIAL_GOOD                 = TagData.createTagData("PROCESSING.SOLDERING_MATERIAL_GOOD", "Good Soldering Metal");
-		
+
+		public static final TagData WASHING_ACID_SULFUR                     = TagData.createTagData("PROCESSING.WASHING_ACID_SULFUR", "Acid Washable Sulfur");
+		public static final TagData WASHING_ACID_AQUAREGIA                  = TagData.createTagData("PROCESSING.WASHING_ACID_AQUAREGIA", "AquaRegia Washable");
+
 		public static final TagData WASHING_FIRESTONE                       = TagData.createTagData("PROCESSING.WASHING_FIRESTONE", "Firestone Washable");
 		public static final TagData WASHING_PERSULFATE                      = TagData.createTagData("PROCESSING.WASHING_PERSULFATE", "Persulfate Washable"), WASHING_SODIUMPERSULFATE = WASHING_PERSULFATE;
 		public static final TagData WASHING_MERCURY                         = TagData.createTagData("PROCESSING.WASHING_MERCURY", "Mercury Washable");
