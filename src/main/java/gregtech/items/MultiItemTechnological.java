@@ -19,6 +19,7 @@
 
 package gregtech.items;
 
+import cn.kuzuanpa.ktfruaddon.material.matList;
 import gregapi.cover.covers.*;
 import gregapi.data.*;
 import gregapi.item.CreativeTab;
@@ -630,28 +631,22 @@ public class MultiItemTechnological extends MultiItemRandomWithCompat {
 		RM.Press.addRecipeX(T, 16, 64, ST.array(ST.make(Blocks.end_stone, 5, W)                              , OP.gem      .mat(MT.EnderEye, 2)), IL.Electrode_FR_Ender       .get(4));
 		
 		
-		IL.Circuit_Plate_Empty             .set(addItem(tLastID = 30000, "Circuit Plate"                    , "Needs Circuit Wiring"                            , new OreDictItemData(ANY.SiO2, U, ANY.Plastic, U), TC.stack(TC.FABRICO, 1)));
-		
-		for (OreDictMaterial tMat : ANY.SiO2.mToThis) {
-			ItemStack tDust = OP.dust.mat(tMat, 1);
-			if (ST.valid(tDust)) for (OreDictMaterial tMt2 : ANY.Plastic.mToThis) {
-				RM.Press.addRecipe2(T, F, F, F, T, 16, 64, OP.plate.mat(tMt2, 1), tDust, IL.Circuit_Plate_Empty.get(1));
-			}
-		}
+		IL.Circuit_Plate_Empty             .set(addItem(tLastID = 30000, "Circuit Plate"                    , "Needs Circuit Wiring"                            , new OreDictItemData(ANY.SiO2, U, ANY.Wood, U), TC.stack(TC.FABRICO, 1)));
+
 		
 		IL.Circuit_Wire_Copper             .set(addItem(tLastID = 30001, "Circuit Wiring (Copper)"          , "Needs to be placed on an empty Circuit Plate"    , new OreDictItemData(MT.Cu, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.PERMUTATIO, 1)));
-		IL.Circuit_Plate_Copper            .set(addItem(tLastID = 30002, "Circuit Plate (Copper)"           , "Needs Circuit Parts"                             , new OreDictItemData(MT.Cu, U, ANY.SiO2, U, ANY.Plastic, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.PERMUTATIO, 1)));
+		IL.Circuit_Plate_Copper            .set(addItem(tLastID = 30002, "Circuit Plate (Copper)"           , "Needs Circuit Parts"                             , new OreDictItemData(MT.Cu, U, ANY.SiO2, U, ANY.Wood, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.PERMUTATIO, 1)));
 		IL.Circuit_Wire_Gold               .set(addItem(tLastID = 30003, "Circuit Wiring (Gold)"            , "Needs to be placed on an empty Circuit Plate"    , new OreDictItemData(MT.Au, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.LUCRUM, 1)));
-		IL.Circuit_Plate_Gold              .set(addItem(tLastID = 30004, "Circuit Plate (Gold)"             , "Needs Circuit Parts"                             , new OreDictItemData(MT.Au, U, ANY.SiO2, U, ANY.Plastic, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.LUCRUM, 1), "oc:materialCircuitBoardPrinted"));
+		IL.Circuit_Plate_Gold              .set(addItem(tLastID = 30004, "Circuit Plate (Gold)"             , "Needs Circuit Parts"                             , new OreDictItemData(MT.Au, U, MT.Bakelite, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.LUCRUM, 1), "oc:materialCircuitBoardPrinted"));
 		IL.Circuit_Wire_Platinum           .set(addItem(tLastID = 30005, "Circuit Wiring (Platinum)"        , "Needs to be placed on an empty Circuit Plate"    , new OreDictItemData(MT.Pt, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.NEBRISUM, 1)));
-		IL.Circuit_Plate_Platinum          .set(addItem(tLastID = 30006, "Circuit Plate (Platinum)"         , "Needs Circuit Parts"                             , new OreDictItemData(MT.Pt, U, ANY.SiO2, U, ANY.Plastic, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.NEBRISUM, 1)));
+		IL.Circuit_Plate_Platinum          .set(addItem(tLastID = 30006, "Circuit Plate (Platinum)"         , "Needs Circuit Parts"                             , new OreDictItemData(MT.Pt, U, MT.Bakelite, U, matList.EpoxyResin.mat, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.NEBRISUM, 1)));
 		
 		IL.Circuit_Wire_Magic              .set(addItem(tLastID = 30011, "Circuit Wiring (Magic)"           , "Needs to be placed on an empty Circuit Plate"    , TC.stack(TC.FABRICO, 1), TC.stack(TC.PRAECANTIO, 1)));
-		IL.Circuit_Plate_Magic             .set(addItem(tLastID = 30012, "Circuit Plate (Magic)"            , "Needs Circuit Parts"                             , new OreDictItemData(ANY.SiO2, U, ANY.Plastic, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.PRAECANTIO, 1)));
+		IL.Circuit_Plate_Magic             .set(addItem(tLastID = 30012, "Circuit Plate (Magic)"            , "Needs Circuit Parts"                             , new OreDictItemData(ANY.SiO2, U, ANY.Wood, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.PRAECANTIO, 1)));
 		IL.Circuit_Wire_Enderium           .set(addItem(tLastID = 30013, "Circuit Wiring (Enderium)"        , "Needs to be placed on an empty Circuit Plate"    , new OreDictItemData(MT.Enderium, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.ALIENIS, 1)));
-		IL.Circuit_Plate_Enderium          .set(addItem(tLastID = 30014, "Circuit Plate (Enderium)"         , "Needs Circuit Parts"                             , new OreDictItemData(MT.Enderium, U, ANY.SiO2, U, ANY.Plastic, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.ALIENIS, 1)));
+		IL.Circuit_Plate_Enderium          .set(addItem(tLastID = 30014, "Circuit Plate (Enderium)"         , "Needs Circuit Parts"                             , new OreDictItemData(MT.Enderium, U, ANY.SiO2, U, ANY.Wood, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.ALIENIS, 1)));
 		IL.Circuit_Wire_Signalum           .set(addItem(tLastID = 30015, "Circuit Wiring (Signalum)"        , "Needs to be placed on an empty Circuit Plate"    , new OreDictItemData(MT.Signalum, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.POTENTIA, 1)));
-		IL.Circuit_Plate_Signalum          .set(addItem(tLastID = 30016, "Circuit Plate (Signalum)"         , "Needs Circuit Parts"                             , new OreDictItemData(MT.Signalum, U, ANY.SiO2, U, ANY.Plastic, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.POTENTIA, 1)));
+		IL.Circuit_Plate_Signalum          .set(addItem(tLastID = 30016, "Circuit Plate (Signalum)"         , "Needs Circuit Parts"                             , new OreDictItemData(MT.Signalum, U, ANY.SiO2, U, ANY.Wood, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.POTENTIA, 1)));
 		
 		IL.Circuit_Plate_HSLA              .set(addItem(tLastID = 30099, "Circuit Plate (HSLA)"             , "Needs Circuit Parts"                             , new OreDictItemData(MT.HSLA, U, MT.Au, U), TC.stack(TC.FABRICO, 1), TC.stack(TC.MACHINA, 1), MD.RoC.mLoaded ? null : TD.Creative.HIDDEN));
 		

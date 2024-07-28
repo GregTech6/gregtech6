@@ -133,7 +133,8 @@ public enum FL {
 	, Saltwater                 ("saltwater"                                                , SIMPLE, LIQUID)
 	, Brine                     ("brine"                                                    , SIMPLE, LIQUID)
 	, Holywater                 ("holywater"                                                , SIMPLE, LIQUID, MAGIC)
-	
+	, FreshWater                ("freshwater"                                               , SIMPLE, LIQUID, WATER)
+
 	, Milk                      ("milk"                                                     , SIMPLE, LIQUID, FOOD, MILK)
 	, MilkSoy                   ("soymilk"                  , "potion.soymilk"              , SIMPLE, LIQUID, FOOD, MILK)
 	, MilkGrC                   ("grcmilk.milk"                                             , SIMPLE, LIQUID, FOOD, MILK, NONSTANDARD)
