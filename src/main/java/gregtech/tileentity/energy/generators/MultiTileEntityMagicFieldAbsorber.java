@@ -133,28 +133,34 @@ public class MultiTileEntityMagicFieldAbsorber extends TileEntityBase09FacingSin
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
 		int aIndex = SIDES_TOP[aSide]?4:aSide==mFacing?SIDES_HORIZONTAL[aSide]?0:2:SIDES_HORIZONTAL[aSide]?1:3;
-		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get((mActive?sOverlaysActive:sOverlays)[aIndex]));
+		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get((mActive?sOverlaysActive:sOverlays)[aIndex]), mActive? BlockTextureDefault.get(sOverlaysActiveGlowing[aIndex],true):null);
 	}
 	
 	// Icons
-	public static IIconContainer sColoreds[] = new IIconContainer[] {
+	public static IIconContainer[] sColoreds = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/colored/side_facing"),
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/colored/side"),
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/colored/bottom_facing"),
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/colored/bottom"),
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/colored/top"),
-	}, sOverlays[] = new IIconContainer[] {
+	}, sOverlays = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay/side_facing"),
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay/side"),
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay/bottom_facing"),
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay/bottom"),
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay/top"),
-	}, sOverlaysActive[] = new IIconContainer[] {
+	}, sOverlaysActive = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay_active/side_facing"),
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay_active/side"),
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay_active/bottom_facing"),
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay_active/bottom"),
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay_active/top"),
+	}, sOverlaysActiveGlowing = new IIconContainer[] {
+		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay_active_glowing/side_facing"),
+		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay_active_glowing/side"),
+		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay_active_glowing/bottom_facing"),
+		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay_active_glowing/bottom"),
+		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay_active_glowing/top"),
 	};
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.magicenergyabsorber";}
