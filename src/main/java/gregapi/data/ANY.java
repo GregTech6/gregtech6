@@ -82,8 +82,7 @@ public class ANY {
 	WoodPlastic     = any("Any Wood Or Plastic" ),
 	Rubber          = any("Any Rubber"          ),
 	Plastic         = any("Any Plastic"         ),
-	PlasticHard     = any("Any Hard Plastic"    ),
-	
+
 	_Steel          = any("Any Steel"           ),
 	_Bronze         = any("Any Bronze"          ),
 	_Metal          = any("Any Metal"           );
@@ -137,7 +136,6 @@ public class ANY {
 		WoodTreated     .stealLooks(MT.WoodTreated    ).steal(MT.Wood           ).setLocal("Treated Wood"       ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE                                        ).addReRegistrationToThis(MT.WoodTreated, MT.WoodPolished).setFurnaceBurnTime(TICKS_PER_SMELT/2);
 		WoodUntreated   .stealLooks(MT.WOODS.Spruce   ).steal(MT.Wood           ).setLocal("Untreated Wood"     ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE                                        ).addReRegistrationToThis(ANY.WoodMagical.mToThis.toArray(ZL_MT)).addReRegistrationToThis(ANY.WoodNormal.mToThis.toArray(ZL_MT)).setFurnaceBurnTime(TICKS_PER_SMELT/2);
 		Wood            .stealLooks(MT.WOODS.Spruce   ).steal(MT.Wood           ).setLocal("Wood"               ).setAllToTheOutputOf(MT.Wood           ).put(WOOD, FLAMMABLE                                        ).setFurnaceBurnTime(TICKS_PER_SMELT/2);
-		PlasticHard     .stealLooks(MT.Polycarbonate  ).steal(MT.Polycarbonate  ).setLocal("Hard Plastic"       ).setAllToTheOutputOf(MT.Plastic        ).put(                                                       );
 		Plastic         .stealLooks(MT.Plastic        ).steal(MT.Plastic        ).setLocal("Plastic"            ).setAllToTheOutputOf(MT.Plastic        ).put(                                                       ).addReRegistrationToThis(MT.Plastic);
 		Rubber          .stealLooks(MT.Rubber         ).steal(MT.Rubber         ).setLocal("Rubber"             ).setAllToTheOutputOf(MT.Rubber         ).put(                                                       ).addReRegistrationToThis(MT.Rubber);
 		WoodPlastic     .stealLooks(MT.WOODS.Spruce   ).steal(MT.Wood                                                                                   ).put(DONT_SHOW_THIS_COMPONENT                               ).addReRegistrationToThis(ANY.Plastic, MT.PetrifiedWood);

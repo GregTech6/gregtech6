@@ -2403,7 +2403,7 @@ public class MT {
 			PVC                     .put(MD.HBM);
 			Teflon                  .put(MD.HBM);
 			Bakelite                .put(MD.HBM);
-			Polycarbonate           .put(MD.HBM).visDefault();
+			Polycarbonate           .put(MD.HBM);
 			
 			
 			In                      .put(MD.ReC);

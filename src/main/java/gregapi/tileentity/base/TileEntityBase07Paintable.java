@@ -66,7 +66,8 @@ public abstract class TileEntityBase07Paintable extends TileEntityBase06Covers i
 		if (aNBT.hasKey(NBT_MATERIAL)) mMaterial = OreDictMaterial.get(aNBT.getString(NBT_MATERIAL));
 	}
 	public void overcharge(long aVoltage, TagData aEnergyType) {
-		if(TD.Energy.ALL_ELECTRIC.contains(aEnergyType))explode(4);
+		if(TD.Energy.ALL_ELECTRIC.contains(aEnergyType)||TD.Energy.QU.equals(aEnergyType))explode(4);
+		else if(TD.Energy.HEAT.equals(aEnergyType))setToFire();
 		else {
 			setToAir();
 			for (int i = 0; i < 4; i++) ST.place(worldObj,xCoord,yCoord,zCoord, OP.scrapGt.mat(mMaterial,getRandomNumber(18)));
