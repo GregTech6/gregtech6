@@ -229,8 +229,8 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 		updateInventory();
 		return mTank.drain(aMaxDrain, aDoDrain);
 	}
-	
-	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACING_ROTATIONS[mFacing][aSide]], mRGBa), BlockTextureDefault.get((mBurning?sOverlaysActive:sOverlays)[FACING_ROTATIONS[mFacing][aSide]])): null;}
+
+	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACING_ROTATIONS[mFacing][aSide]], mRGBa), BlockTextureDefault.get((mBurning?sOverlaysActive:sOverlays)[FACING_ROTATIONS[mFacing][aSide]]), mBurning? BlockTextureDefault.get(sOverlaysActiveGlowing[FACING_ROTATIONS[mFacing][aSide]],true):null): null;}
 	
 	@Override public void onEntityCollidedWithBlock(Entity aEntity) {if (mBurning || mCooldown > 0) UT.Entities.applyHeatDamage(aEntity, Math.min(10.0F, mRate / 10.0F));}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(0, 0, 0, 1, 0.875, 1);}
@@ -279,6 +279,13 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 		new Textures.BlockIcons.CustomIcon("machines/generators/burning_liquid/overlay_active/front"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/burning_liquid/overlay_active/right"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/burning_liquid/overlay_active/back")
+	}, sOverlaysActiveGlowing = new IIconContainer[] {
+		new Textures.BlockIcons.CustomIcon("machines/generators/burning_liquid/overlay_active_glowing/bottom"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/burning_liquid/overlay_active_glowing/top"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/burning_liquid/overlay_active_glowing/left"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/burning_liquid/overlay_active_glowing/front"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/burning_liquid/overlay_active_glowing/right"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/burning_liquid/overlay_active_glowing/back")
 	};
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.burning_liquid";}
