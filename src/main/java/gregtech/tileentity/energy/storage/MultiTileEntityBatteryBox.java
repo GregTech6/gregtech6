@@ -32,7 +32,7 @@ public class MultiTileEntityBatteryBox extends TileEntityBase10EnergyBatBox impl
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
-		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aSide==mFacing?0:1], mRGBa), BlockTextureDefault.get(sOverlays[mActiveState & 3][aSide==mFacing?0:1]));
+		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aSide==mFacing?0:1], mRGBa), BlockTextureDefault.get(sOverlays[0][aSide==mFacing?0:1]), (mActiveState&3)==0?null:BlockTextureDefault.get(sOverlays[mActiveState & 3][aSide==mFacing?0:1],true));
 	}
 	
 	// Icons

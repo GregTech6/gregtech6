@@ -295,7 +295,7 @@ public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09Faci
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
 		int aIndex = aSide==mFacing?0:aSide==OPOS[mFacing]?1:2;
-		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get(sOverlays[mActiveState][aIndex]));
+		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get(sOverlays[0][aIndex], mRGBa), mActiveState==0?null:BlockTextureDefault.get(sOverlays[mActiveState][aIndex],true));
 	}
 	
 	// Icons

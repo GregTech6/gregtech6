@@ -41,7 +41,7 @@ public class MultiTileEntityLaserAbsorberElectric extends TileEntityBase10Energy
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
 		int aIndex = aSide==mFacing?0:aSide==OPOS[mFacing]?1:2;
-		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get((mActivity.mState>0?sOverlaysActive:sOverlays)[aIndex]));
+		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get(sOverlays[aIndex]), mActivity.mState>0?BlockTextureDefault.get(sOverlaysActive[aIndex],true):null);
 	}
 	
 	// Icons
