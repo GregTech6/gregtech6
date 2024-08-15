@@ -28,10 +28,10 @@ import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.energy.ITileEntityEnergyElectricityAcceptor;
-import gregapi.tileentity.energy.TileEntityBase11Bidirectional;
+import gregapi.tileentity.energy.TileEntityBase11BidirectionalConverter;
 import net.minecraft.block.Block;
 
-public class MultiTileEntityTransformerRotation extends TileEntityBase11Bidirectional implements ITileEntityEnergyElectricityAcceptor {
+public class MultiTileEntityTransformerRotation extends TileEntityBase11BidirectionalConverter implements ITileEntityEnergyElectricityAcceptor {
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;

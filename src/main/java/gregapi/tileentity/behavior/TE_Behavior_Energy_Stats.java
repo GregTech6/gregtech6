@@ -33,7 +33,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
 public class TE_Behavior_Energy_Stats extends TE_Behavior_Energy {
-	public long mRec, mMin, mMax;
+	public long mRec, mMin, mMax, mAmount = 1;
 	public boolean mOverloaded = F;
 	public TE_Behavior_Energy_Capacitor mStorage;
 	
@@ -41,7 +41,12 @@ public class TE_Behavior_Energy_Stats extends TE_Behavior_Energy {
 		super(aTileEntity, aNBT, aEnergyType);
 		mStorage = aStorage; mMin = Math.abs(aSizeMin); mRec = Math.abs(aSizeRec); mMax = Math.abs(aSizeMax);
 	}
-	
+
+	public TE_Behavior_Energy_Stats setAmount(long mAmount) {
+		this.mAmount = mAmount;
+		return this;
+	}
+
 	public boolean isType(TagData aEnergyType) {return mType == aEnergyType;}
 	public long sizeMin(TagData aEnergyType) {return mType != aEnergyType ? 0 : mMin;}
 	public long sizeRec(TagData aEnergyType) {return mType != aEnergyType ? 0 : mRec;}
@@ -49,10 +54,10 @@ public class TE_Behavior_Energy_Stats extends TE_Behavior_Energy {
 	public Collection<TagData> getTypes() {return mType.AS_LIST;}
 	
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H, String aSides, boolean aEmitting) {
-		aList.add((aEmitting ? (Chat.RED + LH.get(LH.ENERGY_OUTPUT)) : (Chat.GREEN + LH.get(LH.ENERGY_INPUT))) + ": " + Chat.WHITE + mRec + " " + mType.getLocalisedChatNameShort() + Chat.WHITE + "/t ("+(mMin>1?mMin+" to ":"up to ")+mMax+(UT.Code.stringInvalid(aSides)?"":", "+aSides)+")");
+		aList.add((aEmitting ? (Chat.RED + LH.get(LH.ENERGY_OUTPUT)) : (Chat.GREEN + LH.get(LH.ENERGY_INPUT))) + ": " + Chat.WHITE + mRec + " ("+(mMin>1?mMin+" to ":"up to ")+mMax+") "+mType.getLocalisedChatNameShort()+Chat.WHITE+(mAmount==1?"/t ":"/A * "+Chat.CYAN+mAmount+" A/t ")+Chat.WHITE+(UT.Code.stringInvalid(aSides)?"":"("+aSides)+")");
 		aList.add(aEmitting ? LH.getToolTipRedstoneFluxEmit(mType) : LH.getToolTipRedstoneFluxAccept(mType));
 	}
-	
+
 	public long doInject(long aSize, long aAmount, boolean aDoInject) {
 		aSize = Math.abs(aSize);
 		if (aSize > mMax) {

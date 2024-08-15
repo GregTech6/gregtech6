@@ -37,7 +37,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class TileEntityBase11Bidirectional extends TileEntityBase10EnergyConverter implements ITileEntityAdjacentOnOff {
+public abstract class TileEntityBase11BidirectionalConverter extends TileEntityBase10EnergyConverter implements ITileEntityAdjacentOnOff {
 	protected boolean mReversed = F;
 	
 	public TE_Behavior_Energy_Converter mConRevert = null;

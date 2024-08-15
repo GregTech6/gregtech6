@@ -38,7 +38,7 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 		super(aTileEntity, aNBT);
 		mStorage = aStorage;
 		mEnergyIN = aEnergyIN;
-		mEnergyOUT = aEnergyOUT;
+		mEnergyOUT = aEnergyOUT.setAmount(aMultiplier);
 		mMultiplier = aMultiplier;
 		mWasteEnergy = aWasteEnergy;
 		mSizeIrrelevant = TD.Energy.ALL_SIZE_IRRELEVANT.contains(mEnergyOUT.mType);
