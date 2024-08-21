@@ -227,13 +227,13 @@ public class MultiTileEntityPipeItem extends TileEntityBase10ConnectorRendered i
 			if (ST.canConnect(tDelegator) && !(tDelegator.mTileEntity instanceof TileEntityBase09Connector)) {
 				if (!(tDelegator.mTileEntity instanceof TileEntityHopper || tDelegator.mTileEntity instanceof TileEntityDispenser) || getMetaDataAtSide(aSide) != tDelegator.mSideOfTileEntity) {
 					// special cases for the win...
-					CoverData tCovers = getCoverData();
-					if (tCovers != null && tCovers.mBehaviours[aSide] instanceof CoverFilterItem && tCovers.mNBTs[aSide] != null) {
-						ItemStack tStack = ST.load(tCovers.mNBTs[aSide], "gt.filter.item");
-						return ST.valid(tStack) && ST.move(new DelegatorTileEntity<>((TileEntity)aSender, SIDE_ANY), tDelegator, ST.hashset(tStack), F, F, tCovers.mVisuals[aSide] != 0, T, 64, 1, 64, 1) > 0;
-					}
-					// well normal case is this.
-					return ST.move(new DelegatorTileEntity<>((TileEntity)aSender, SIDE_ANY), tDelegator) > 0;
+					// kuzuanpa: bad design bro..
+					//CoverData tCovers = getCoverData();
+					//if (tCovers != null && tCovers.mBehaviours[aSide] instanceof CoverFilterItem && tCovers.mNBTs[aSide] != null) {
+					//	ItemStack tStack = ST.load(tCovers.mNBTs[aSide], "gt.filter.item");
+					//return ST.move(new DelegatorTileEntity<>((TileEntity)aSender, SIDE_ANY), tDelegator, ST.hashset(tStack), F, F, tCovers.mVisuals[aSide] != 0, T, 64, 1, 64, 1) > 0;
+					//}
+					if(aSender instanceof IInventory && canExtractItem(0,((IInventory)aSender).getStackInSlot(0),aSide))return ST.move(new DelegatorTileEntity<>((TileEntity)aSender, SIDE_ANY), tDelegator) > 0;
 				}
 			}
 		}
