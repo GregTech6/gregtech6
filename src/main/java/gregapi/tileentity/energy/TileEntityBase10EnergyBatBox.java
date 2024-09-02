@@ -52,7 +52,7 @@ import net.minecraft.nbt.NBTTagCompound;
  */
 public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityEnergyDataCapacitor, ITileEntityRunningActively, ITileEntitySwitchableOnOff, ITileEntitySwitchableMode, ITileEntityProgress, IMeterDetectable {
 	public boolean mEmitsEnergy = F, mStopped = F, mActive = F;
-	public long mEnergy = 0, mInput = 32, mOutput = 32, mBatteryCount = -1, mChargeableCount = -1, mReceivablePower = 0, mAmperageLastEmitting = 0, mAmperageLastReceiving = 0;
+	public long mEnergy = 0, mInput = 32, mOutput = 32, mBatteryCount = -1, mChargeableCount = -1, mReceivablePower = 0, mAmperageLastEmitting = 0, mOutputLast=0;
 	public byte mActiveState = 0, mMode = 0;
 	public TagData mEnergyType = TD.Energy.QU;
 	public TagData mEnergyTypeOut = TD.Energy.QU;
@@ -146,6 +146,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 					long tOutput = (mMode == 0 ? mBatteryCount : Math.min(mMode, mBatteryCount));
 					if (tOutput > 0) {
 						long tEmittedPackets = ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyTypeOut, mOutput, tOutput, this);
+						mOutputLast=mOutput;
 						mEmitsEnergy = (tEmittedPackets > 0);
 						mAmperageLastEmitting = tEmittedPackets;
 						mEnergy -= mOutput * tEmittedPackets;
@@ -203,7 +204,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aTool.equals(TOOL_unimeter) && isServerSide() && aChatReturn!=null) {
-			IMeterDetectable.sendReceiveEmitMessage(receivedEnergyLast,mEnergyTypeOut,mOutput,mAmperageLastEmitting,aChatReturn);
+			IMeterDetectable.sendReceiveEmitMessage(receivedEnergyLast,mEnergyTypeOut,mOutputLast,mAmperageLastEmitting,aChatReturn);
 			return 1;
 		}
 		return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
