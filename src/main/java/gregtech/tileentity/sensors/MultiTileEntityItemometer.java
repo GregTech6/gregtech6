@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,7 @@
 
 package gregtech.tileentity.sensors;
 
-import static gregapi.data.CS.*;
-
+import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
@@ -30,6 +29,8 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -48,14 +49,14 @@ public class MultiTileEntityItemometer extends MultiTileEntitySensorTE {
 				if (tSlots != null && tSlots.length >  0) {
 					for (int i : tSlots) {
 						ItemStack tStack = ((IInventory)aDelegator.mTileEntity).getStackInSlot(i);
-						if (tStack != null) rAmount += tStack.stackSize;
+						if (tStack != null && !IL.Display_Fluid.equal(tStack, T, T)) rAmount += tStack.stackSize;
 					}
 					return rAmount;
 				}
 			}
 			for (int i = 0, j = ((IInventory)aDelegator.mTileEntity).getSizeInventory(); i < j; i++) {
 				ItemStack tStack = ((IInventory)aDelegator.mTileEntity).getStackInSlot(i);
-				if (tStack != null) rAmount += tStack.stackSize;
+				if (tStack != null && !IL.Display_Fluid.equal(tStack, T, T)) rAmount += tStack.stackSize;
 			}
 			return rAmount;
 		}
@@ -65,8 +66,8 @@ public class MultiTileEntityItemometer extends MultiTileEntitySensorTE {
 	@Override
 	public long getCurrentMax(DelegatorTileEntity<TileEntity> aDelegator) {
 		if (aDelegator.mTileEntity instanceof IInventory) {
-			if (aDelegator.mTileEntity instanceof ISidedInventory) return ((ISidedInventory)aDelegator.mTileEntity).getAccessibleSlotsFromSide(aDelegator.mSideOfTileEntity).length * ((IInventory)aDelegator.mTileEntity).getInventoryStackLimit();
-			return ((IInventory)aDelegator.mTileEntity).getSizeInventory() * ((IInventory)aDelegator.mTileEntity).getInventoryStackLimit();
+			if (aDelegator.mTileEntity instanceof ISidedInventory) return (long)((ISidedInventory)aDelegator.mTileEntity).getAccessibleSlotsFromSide(aDelegator.mSideOfTileEntity).length * ((IInventory)aDelegator.mTileEntity).getInventoryStackLimit();
+			return (long)((IInventory)aDelegator.mTileEntity).getSizeInventory() * ((IInventory)aDelegator.mTileEntity).getInventoryStackLimit();
 		}
 		return 0;
 	}
