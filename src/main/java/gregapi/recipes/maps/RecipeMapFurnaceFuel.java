@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.recipes.maps;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-
 import gregapi.data.FL;
 import gregapi.data.OP;
 import gregapi.data.TD;
@@ -36,6 +32,10 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.Collection;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -76,7 +76,7 @@ public class RecipeMapFurnaceFuel extends RecipeMap {
 						for (int i = 1; i < 64; i++) {
 							ItemStack tAshes = OM.dust(tMaterial.mMaterial, tMaterial.mAmount * i);
 							if (ST.valid(tAshes)) {
-								rRecipe = new Recipe(F, F, T, ST.array(ST.amount(i, aInputs[0])), ST.array(tAshes), null, null, null, null, tFuelValue * EU_PER_FURNACE_TICK, -1, 0);
+								rRecipe = new Recipe(F, F, T, ST.array(ST.amount(i, aInputs[0])), ST.array(tAshes), null, null, null, null, tFuelValue * i * EU_PER_FURNACE_TICK, -1, 0);
 								break;
 							}
 						}
