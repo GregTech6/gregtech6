@@ -155,7 +155,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (aNBT.hasKey(NBT_ENERGY_EMITTED_SIDES)) mEnergyOutput = aNBT.getByte(NBT_ENERGY_EMITTED_SIDES);
 		if (aNBT.hasKey(NBT_OUTPUT)) mOutputEnergy = aNBT.getLong(NBT_OUTPUT);
 		if (aNBT.hasKey(NBT_INPUT_EU)) mChargeRequirement = aNBT.getLong(NBT_INPUT_EU);
-		if (aNBT.hasKey(NBT_HAS_GLOWING_TEXTURE)) mUseGlowingTexture = aNBT.getBoolean(NBT_HAS_GLOWING_TEXTURE);
+		if (aNBT.hasKey(NBT_USE_GLOWING_TEXTURE)) mUseGlowingTexture = aNBT.getBoolean(NBT_USE_GLOWING_TEXTURE);
 
 		long tCapacity = 1000;
 		if (aNBT.hasKey(NBT_TANK_CAPACITY)) tCapacity = UT.Code.bindInt(aNBT.getLong(NBT_TANK_CAPACITY));
