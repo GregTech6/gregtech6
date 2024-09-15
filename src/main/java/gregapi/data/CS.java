@@ -1158,7 +1158,7 @@ public class CS {
 	, NBT_COLOR                     = "gt.color"                    // Integer
 	, NBT_PAINTED                   = "gt.painted"                  // Boolean
 	, NBT_TEXTURE                   = "gt.texture"                  // String
-	, NBT_USE_GLOWING_TEXTURE = "gt.texture.glowing"          // Boolean
+	, NBT_USE_GLOWING_TEXTURE       = "gt.texture.glowing"          // Boolean
 	, NBT_DESIGNS                   = "gt.designs"                  // Number
 	, NBT_DESIGN                    = "gt.design"                   // Number
 	, NBT_GUI                       = "gt.gui"                      // String
