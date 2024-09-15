@@ -54,7 +54,7 @@ public abstract class TileEntityBase07Paintable extends TileEntityBase06Covers i
 	protected int mRGBa = UNCOLORED, mFlammability = 0;
 	protected float mHardness = 1.0F, mResistance = 3.0F;
 	protected OreDictMaterial mMaterial = MT.NULL;
-	
+	protected int breakPreventCount=0;
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
@@ -66,14 +66,19 @@ public abstract class TileEntityBase07Paintable extends TileEntityBase06Covers i
 		if (aNBT.hasKey(NBT_MATERIAL)) mMaterial = OreDictMaterial.get(aNBT.getString(NBT_MATERIAL));
 	}
 	public void overcharge(long aVoltage, TagData aEnergyType) {
-		if(TD.Energy.ALL_ELECTRIC.contains(aEnergyType)||TD.Energy.QU.equals(aEnergyType))explode(4);
-		else if(TD.Energy.HEAT.equals(aEnergyType))setToFire();
-		else {
-			setToAir();
-			for (int i = 0; i < 4; i++) ST.place(worldObj,xCoord,yCoord,zCoord, OP.scrapGt.mat(mMaterial,getRandomNumber(18)));
+		if(TD.Energy.ALL_KINETIC.contains(aEnergyType)){
+			if(breakPreventCount>80){
+				setToAir();
+				for (int i = 0; i < 4; i++) ST.place(worldObj,xCoord,yCoord,zCoord, OP.scrapGt.mat(mMaterial,getRandomNumber(18)));
+				DEB.println("Machine overcharged with: " + aVoltage + " " + aEnergyType.getLocalisedNameLong());
+			}else breakPreventCount++;
+			UT.Sounds.send(worldObj, SFX.IC_MACHINE_INTERRUPT, 1, 1, getCoords());
+			return;
 		}
+		if(TD.Energy.ALL_ELECTRIC.contains(aEnergyType)||TD.Energy.QU.equals(aEnergyType))explode(4);
+		else setToFire();
 		// Yes, I will annoy people with that a lot, even when they disable Explosions.
-		UT.Sounds.send(worldObj, TD.Energy.ALL_ELECTRIC.contains(aEnergyType)?SFX.IC_MACHINE_OVERLOAD:TD.Energy.ALL_KINETIC.contains(aEnergyType)?SFX.IC_MACHINE_INTERRUPT:SFX.MC_EXPLODE, 1, 1, getCoords());
+		UT.Sounds.send(worldObj, TD.Energy.ALL_ELECTRIC.contains(aEnergyType)?SFX.IC_MACHINE_OVERLOAD:SFX.MC_EXPLODE, 1, 1, getCoords());
 		// The Noise should make the position obvious.
 		DEB.println("Machine overcharged with: " + aVoltage + " " + aEnergyType.getLocalisedNameLong());
 	}

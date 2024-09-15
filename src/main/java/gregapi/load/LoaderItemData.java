@@ -1651,7 +1651,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.BC_FACTORY, "tankBlock"                  , 1,   W, MT.Glass              ,  U * 8);
 		
 		
-		OM.data(MD.OB, "tank"                               , 1,   W, MT.Obsidian           ,  U *18, MT.Glass              ,15* U16);
+		OM.data(MD.OB, "tank"                               , 1,   W, MT.Glass           ,  U * 2, MT.StainlessSteel              , U);
 		
 		
 		OM.data(MD.EIO, "blockTank"                         , 1,   0, ANY.Fe                , 11* U2, MT.Glass              ,  U * 1);
@@ -1820,8 +1820,9 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.RC, "anvil", 1, 0                                                                , ANY.Steel ,  U *30);
 		OM.data(MD.RC, "anvil", 1, 1                                                                , ANY.Steel ,  U *25);
 		OM.data(MD.RC, "anvil", 1, 2                                                                , ANY.Steel ,  U *20);
-		
-		
+		OM.data(MD.RC, "machine.alpha", 1, 8                                                        , ANY.Stone ,  U * 12,ANY.Wood, U * 9,MT.Redstone,U*3,ANY.Iron,U*11);
+		OM.data(MD.RC, "machine.beta", 1, 7                                                         , ANY.Stone ,  U * 2,MT.Cu ,  U2 *5, ANY.Wood, U2 * 3,MT.Redstone,U2,ANY.Iron,U2);
+
 		OM.dat2(MD.RoC, "rotarycraft_item_bedsword"         , 1     , MT.Bedrock_HSLA_Alloy ,  U * 2, MT.HSLA               ,  U * 1);
 		OM.dat2(MD.RoC, "rotarycraft_item_bedpick"          , 1     , MT.Bedrock_HSLA_Alloy ,  U * 3, MT.HSLA               ,  U * 2);
 		OM.dat2(MD.RoC, "rotarycraft_item_bedshovel"        , 1     , MT.Bedrock_HSLA_Alloy ,  U * 1, MT.HSLA               ,  U * 2);
@@ -2229,7 +2230,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.BOTA, "livingrock0Slab"                  , 1,   W, MT.STONES.Livingrock  ,  U2);
 		OM.data(MD.BOTA, "livingrock1Slab"                  , 1,   W, MT.STONES.Livingrock  ,  U2);
 		OM.dat2(MD.BOTA, "terraAxe"                         , 1     , MT.Terrasteel         ,  U * 4, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(ANY.Glowstone       , U * 4));
-		OM.dat2(MD.BOTA, "terraPick"                        , 1     , MT.Terrasteel         ,  U * 4, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(MT.STONES.Livingrock, U * 8));
+		OM.dat2(MD.BOTA, "terraPick"                        , 1     , MT.Terrasteel         ,  U * 2, OM.stack(MT.Livingwood, OP.stick.mAmount * 1));
 		OM.dat2(MD.BOTA, "glassPick"                        , 1     , MT.Manasteel          ,  U * 1, OM.stack(MT.Livingwood, OP.stick.mAmount * 2), OM.stack(MT.Glass            , U * 2));
 		
 		
@@ -2551,7 +2552,7 @@ public class LoaderItemData implements Runnable {
 		OM.data(ST.make(Blocks.noteblock                     , 1, W), ANY.Wood              ,  U * 8, MT.Redstone, U);
 		OM.data(ST.make(Blocks.jukebox                       , 1, W), ANY.Wood              ,  U * 8, ANY.Diamond, U);
 		OM.data(ST.make(Blocks.crafting_table                , 1, W), ANY.Wood              ,  U * 4);
-		OM.data(ST.make(Blocks.piston                        , 1, W), ANY.Stone             ,  U * 4, ANY.Wood, U * 3);
+		OM.data(ST.make(Blocks.piston                        , 1, W), ANY.Stone             ,  U * 4, ANY.Wood, U * 3,MT.Redstone,U,ANY.Iron,U);
 		OM.data(ST.make(Blocks.sticky_piston                 , 1, W), ANY.Stone             ,  U * 4, ANY.Wood, U * 3);
 		OM.data(ST.make(Blocks.dispenser                     , 1, W), ANY.Stone             ,  U * 7, MT.Redstone, U);
 		OM.data(ST.make(Blocks.dropper                       , 1, W), ANY.Stone             ,  U * 7, MT.Redstone, U);

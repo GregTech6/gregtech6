@@ -394,7 +394,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shaped(ST.make(Items.comparator              , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES , " T ", "TQT", "SSS", 'T', OD.craftingRedstoneTorch, 'Q', OD.craftingQuartz, 'S', stoneSmooth         );
 		CR.shaped(ST.make(Items.comparator              , 1, 0), DEF                            , " T ", "TQT", "SSS", 'T', OD.craftingRedstoneTorch, 'Q', OD.craftingQuartz, 'S', plate.dat(ANY.Stone));
 		CR.shaped(ST.make(Blocks.daylight_detector      , 1, 0), DEF                            , "GGG", "QQQ", "PPP", 'P', OD.slabWood             , 'Q', OD.craftingQuartz, 'G', plate.dat(MT.Glass ));
-		CR.shaped(ST.make(Blocks.piston                 , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES , "WWW", "CBC", "CRC", 'W', OD.plankAnyWood, 'C', stoneCobble, 'B', OD.craftingPistonIngot, 'R', OD.itemRedstone);
+		CR.shaped(ST.make(Blocks.piston                 , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES , "WWW", "CBC", "CRC", 'W', OD.plankAnyWood, 'C', stoneCobble, 'B', ingot.dat(ANY.Iron), 'R', OD.itemRedstone);
 		CR.shaped(ST.make(Blocks.sticky_piston          , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES ,  "G" ,  "P"        , 'G', OD.craftingPistonGlue, 'P', Blocks.piston);
 		CR.shaped(ST.make(Items.bow                     , 1, 0), DEF_MIR                        , " WS", "WkS", " WS", 'S', OD.itemString, 'W', OD.stickAnyWood);
 		CR.shaped(ST.make(Blocks.dropper                , 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES , "CCC", "C C", "CRC", 'C', stoneCobble, 'R', OD.itemRedstone);
@@ -956,11 +956,7 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.add_smelting(ST.make(Items.glass_bottle  , 1, W), ST.make(Blocks.glass_pane, 1, 0), F, F, F);
 		
 		RM.unbox(IL.Plank.get(3), ST.make(Blocks.bookshelf, 1, W), ST.make(Items.book, 3, 0));
-		
-		RM.pack(ST.make(Items.brick      , 2, W), ST.make(Blocks.stone_slab         , 1, 4));
-		RM.pack(ST.make(Items.brick      , 3, W), ST.make(Blocks.brick_stairs       , 1, 0));
-		RM.pack(ST.make(Items.brick      , 4, W), ST.make(Blocks.brick_block        , 1, 0));
-		
+
 		RM.pack(ST.make(Items.netherbrick, 2, W), ST.make(Blocks.stone_slab         , 1, 6));
 		RM.pack(ST.make(Items.netherbrick, 3, W), ST.make(Blocks.nether_brick_stairs, 1, 0));
 		RM.pack(ST.make(Items.netherbrick, 4, W), ST.make(Blocks.nether_brick       , 1, 0));
