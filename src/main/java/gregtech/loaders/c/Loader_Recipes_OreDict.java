@@ -42,11 +42,11 @@ import static gregapi.data.OP.*;
 public class Loader_Recipes_OreDict extends OreDictListenerEvent_Names {
 	@Override
 	public void addAllListeners() {
-		addListener(new Object[] {OP.dust.dat(MT.Glass), OP.dust.dat(MT.Sand), OP.dust.dat(MT.RedSand), OP.dust.dat(MT.EndSandWhite), OP.dust.dat(MT.EndSandBlack)}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.add_smelting(aEvent.mStack, ST.make(Blocks.glass_pane, 1, 0), F, F, F);
+		addListener(new Object[] {OP.dust.dat(MT.Sand), OP.dust.dat(MT.RedSand), OP.dust.dat(MT.EndSandWhite), OP.dust.dat(MT.EndSandBlack)}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.add_smelting(aEvent.mStack, gem.mat(MT.RoughGlass,1), F, F, F);
 		}});
-		addListener(new Object[] {OP.blockDust.dat(MT.Glass), OP.blockDust.dat(MT.Sand), OP.blockDust.dat(MT.RedSand), OP.blockDust.dat(MT.EndSandWhite), OP.blockDust.dat(MT.EndSandBlack)}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			RM.add_smelting(aEvent.mStack, ST.make(Blocks.glass, 1, 0), F, F, F);
+		addListener(new Object[] {OP.blockDust.dat(MT.Sand), OP.blockDust.dat(MT.RedSand), OP.blockDust.dat(MT.EndSandWhite), OP.blockDust.dat(MT.EndSandBlack)}, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.add_smelting(aEvent.mStack, block.mat(MT.RoughGlass,1), F, F, F);
 		}});
 		addListener(OP.dust.dat(MT.Stone), new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.add_smelting(aEvent.mStack, OP.plate.mat(MT.Stone, 1), T, F, F);
