@@ -88,7 +88,7 @@ import static gregapi.data.CS.*;
 	@Optional.Interface(iface = "buildcraft.api.tiles.IHasWork", modid = ModIDs.BC)
 })
 public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle implements IHasWork, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntitySwitchableOnOff, ITileEntityRunningSuccessfully, ITileEntityAdjacentInventoryUpdatable, ITileEntityEnergy, ITileEntityProgress, ITileEntityGibbl, IFluidHandler {
-	public boolean mSpecialIsStartEnergy = F, mNoConstantEnergy = F, mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mParallelDuration = F, mCanUseOutputTanks = F, mUseGlowingTexture =F;
+	public boolean mSpecialIsStartEnergy = F, mNoConstantEnergy = F, mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mParallelDuration = F, mCanUseOutputTanks = F;
 	public byte mEnergyInputs = 127, mEnergyOutput = SIDE_UNDEFINED, mOutputBlocked = 0, mMode = 0, mIgnited = 0;
 	public byte mItemInputs   = 127, mItemOutputs  = 127, mItemAutoInput  = SIDE_UNDEFINED, mItemAutoOutput  = SIDE_UNDEFINED;
 	public byte mFluidInputs  = 127, mFluidOutputs = 127, mFluidAutoInput = SIDE_UNDEFINED, mFluidAutoOutput = SIDE_UNDEFINED;
@@ -152,7 +152,6 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (aNBT.hasKey(NBT_ENERGY_EMITTED_SIDES)) mEnergyOutput = aNBT.getByte(NBT_ENERGY_EMITTED_SIDES);
 		if (aNBT.hasKey(NBT_OUTPUT)) mOutputEnergy = aNBT.getLong(NBT_OUTPUT);
 		if (aNBT.hasKey(NBT_INPUT_EU)) mChargeRequirement = aNBT.getLong(NBT_INPUT_EU);
-		if (aNBT.hasKey(NBT_USE_GLOWING_TEXTURE)) mUseGlowingTexture = aNBT.getBoolean(NBT_USE_GLOWING_TEXTURE);
 
 		long tCapacity = 1000;
 		if (aNBT.hasKey(NBT_TANK_CAPACITY)) tCapacity = UT.Code.bindInt(aNBT.getLong(NBT_TANK_CAPACITY));
@@ -201,7 +200,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running/front"),
 				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running/right"),
 				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running/back")};
-				if(mUseGlowingTexture){
+
 				mTexturesActiveGlow = new IIconContainer[] {
 				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_active_glowing/bottom"),
 				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_active_glowing/top"),
@@ -216,7 +215,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running_glowing/front"),
 				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running_glowing/right"),
 				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running_glowing/back")};
-				}
+
 			} else {
 				TileEntity tCanonicalTileEntity = MultiTileEntityRegistry.getCanonicalTileEntity(getMultiTileEntityRegistryID(), getMultiTileEntityID());
 				if (tCanonicalTileEntity instanceof MultiTileEntityBasicMachine) {
@@ -224,10 +223,10 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 					mTexturesInactive = ((MultiTileEntityBasicMachine) tCanonicalTileEntity).mTexturesInactive;
 					mTexturesRunning = ((MultiTileEntityBasicMachine) tCanonicalTileEntity).mTexturesRunning;
 					mTexturesActive = ((MultiTileEntityBasicMachine) tCanonicalTileEntity).mTexturesActive;
-					if(mUseGlowingTexture){
+
 					mTexturesRunningGlow = ((MultiTileEntityBasicMachine) tCanonicalTileEntity).mTexturesRunningGlow;
 					mTexturesActiveGlow = ((MultiTileEntityBasicMachine) tCanonicalTileEntity).mTexturesActiveGlow;
-					}
+
 				} else {
 					mTexturesMaterial = mTexturesInactive = mTexturesRunning = mTexturesActive =mTexturesActiveGlow =mTexturesRunningGlow = L6_IICONCONTAINER;
 				}
@@ -1029,7 +1028,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	@Override public void setVisualData(byte aData) {mRunning=((aData&2)!=0); mActive=((aData&1)!=0);}
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return mActive ? SIDES_THIS[mFacing] : SIDES_HORIZONTAL;}
-	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(mTexturesMaterial[FACING_ROTATIONS[mFacing][aSide]], mRGBa), BlockTextureDefault.get( (mActive||worldObj==null?mTexturesActive:mRunning?mTexturesRunning:mTexturesInactive) [FACING_ROTATIONS[mFacing][aSide]]), mUseGlowingTexture &&(mActive||mRunning) ? BlockTextureDefault.get( (mActive||worldObj==null?mTexturesActiveGlow:mTexturesRunningGlow)[FACING_ROTATIONS[mFacing][aSide]],true) : null ) : null;}
+	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(mTexturesMaterial[FACING_ROTATIONS[mFacing][aSide]], mRGBa), BlockTextureDefault.get( (mActive||worldObj==null?mTexturesActive:mRunning?mTexturesRunning:mTexturesInactive) [FACING_ROTATIONS[mFacing][aSide]]), (mActive||mRunning) ? BlockTextureDefault.get( (mActive||worldObj==null?mTexturesActiveGlow:mTexturesRunningGlow)[FACING_ROTATIONS[mFacing][aSide]],true) : null ) : null;}
 	
 	@Override public boolean canSave(int aSlot) {return !IL.Display_Fluid.equal(slot(aSlot), T, T);}
 	@Override public boolean hasWork() {return mMaxProgress > 0 || mChargeRequirement > 0;}
