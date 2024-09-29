@@ -35,7 +35,7 @@ public class MultiTileEntityTransformerElectric extends TileEntityBase11Bidirect
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
 		int aIndex = aSide==mFacing?0:aSide==OPOS[mFacing]?1:2;
-		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get(sOverlays[mActivity.mState][aIndex]));
+		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get(sOverlays[0][aIndex]), mActivity.mState==0?null:BlockTextureDefault.get(sOverlays[mActivity.mState][aIndex],true));
 	}
 	
 	// Icons
