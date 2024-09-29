@@ -229,29 +229,27 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		RM.Press.addRecipeX(F, 16, 64, ST.array(IL.RC_Rail_Standard.get(4), OP.railGt.mat(MT.Os      , 4), OP.dustTiny .mat(tMat, 1)), IL.RC_Rail_HS.get(16));
 		}
 		
-		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.Al              ,  6), IL.RC_Rail_Standard.get( 1));
-		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.Magnalium       ,  3), IL.RC_Rail_Standard.get( 2));
-		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.Fe              ,  3), IL.RC_Rail_Standard.get( 1));
-		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.WroughtIron     ,  2), IL.RC_Rail_Standard.get( 1));
-		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.MeteoricIron    ,  3), IL.RC_Rail_Standard.get( 2));
-		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.Bronze          ,  4), IL.RC_Rail_Standard.get( 1));
-		RM.RollFormer.addRecipe1(T, 16,  32, OP.railGt.mat(MT.HSLA            ,  3), IL.RC_Rail_Standard.get( 2));
-		RM.RollFormer.addRecipe1(T, 16,  32, OP.railGt.mat(MT.Steel           ,  3), IL.RC_Rail_Standard.get( 2));
-		RM.RollFormer.addRecipe1(T, 16,  32, OP.railGt.mat(MT.MeteoricSteel   ,  1), IL.RC_Rail_Standard.get( 1));
-		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.StainlessSteel  ,  1), IL.RC_Rail_Standard.get( 1));
-		RM.RollFormer.addRecipe1(T, 16,  64, OP.railGt.mat(MT.Ti              ,  3), IL.RC_Rail_Standard.get( 4));
-		RM.RollFormer.addRecipe1(T, 16,  64, OP.railGt.mat(MT.W               ,  3), IL.RC_Rail_Standard.get( 4));
-		RM.RollFormer.addRecipe1(T, 16,  64, OP.railGt.mat(MT.TungstenSintered,  3), IL.RC_Rail_Standard.get( 4));
-		RM.RollFormer.addRecipe1(T, 64,  32, OP.railGt.mat(MT.Meteorite       ,  1), IL.RC_Rail_Reinforced.get( 1));
-		RM.RollFormer.addRecipe1(T, 64,  32, OP.railGt.mat(MT.ObsidianSteel   ,  1), IL.RC_Rail_Reinforced.get( 1));
-		RM.RollFormer.addRecipe1(T, 64,  64, OP.railGt.mat(MT.TungstenSteel   ,  1), IL.RC_Rail_Reinforced.get( 2));
-		RM.RollFormer.addRecipe1(T, 64,  64, OP.railGt.mat(MT.TungstenCarbide ,  1), IL.RC_Rail_Reinforced.get( 2));
-		RM.RollFormer.addRecipe1(T, 64,  96, OP.railGt.mat(MT.HSSG            ,  1), IL.RC_Rail_Reinforced.get( 3));
-		RM.RollFormer.addRecipe1(T, 64, 128, OP.railGt.mat(MT.HSSE            ,  1), IL.RC_Rail_Reinforced.get( 4));
-		RM.RollFormer.addRecipe1(T, 64, 128, OP.railGt.mat(MT.HSSS            ,  1), IL.RC_Rail_Reinforced.get( 4));
+		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.Magnalium       ,  3), IL.RC_Rail_Standard.get( 8));
+		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.Fe              ,  3), IL.RC_Rail_Standard.get( 4));
+		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.WroughtIron     ,  2), IL.RC_Rail_Standard.get( 4));
+		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.MeteoricIron    ,  3), IL.RC_Rail_Standard.get( 8));
+		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.Bronze          ,  4), IL.RC_Rail_Standard.get( 4));
+		RM.RollFormer.addRecipe1(T, 16,  32, OP.railGt.mat(MT.HSLA            ,  3), IL.RC_Rail_Standard.get( 8));
+		RM.RollFormer.addRecipe1(T, 16,  32, OP.railGt.mat(MT.Steel           ,  3), IL.RC_Rail_Standard.get( 8));
+		RM.RollFormer.addRecipe1(T, 16,  32, OP.railGt.mat(MT.MeteoricSteel   ,  1), IL.RC_Rail_Standard.get( 4));
+		RM.RollFormer.addRecipe1(T, 16,  16, OP.railGt.mat(MT.StainlessSteel  ,  1), IL.RC_Rail_Standard.get( 4));
+		RM.RollFormer.addRecipe1(T, 16,  64, OP.railGt.mat(MT.Ti              ,  3), IL.RC_Rail_Standard.get( 16));
+		RM.RollFormer.addRecipe1(T, 16,  64, OP.railGt.mat(MT.W               ,  3), IL.RC_Rail_Standard.get( 16));
+		RM.RollFormer.addRecipe1(T, 16,  64, OP.railGt.mat(MT.TungstenSintered,  3), IL.RC_Rail_Standard.get( 16));
+		RM.RollFormer.addRecipe1(T, 64,  32, OP.railGt.mat(MT.Meteorite       ,  1), IL.RC_Rail_Reinforced.get( 2));
+		RM.RollFormer.addRecipe1(T, 64,  32, OP.railGt.mat(MT.ObsidianSteel   ,  1), IL.RC_Rail_Reinforced.get( 2));
+		RM.RollFormer.addRecipe1(T, 64,  64, OP.railGt.mat(MT.TungstenSteel   ,  1), IL.RC_Rail_Reinforced.get( 4));
+		RM.RollFormer.addRecipe1(T, 64,  64, OP.railGt.mat(MT.TungstenCarbide ,  1), IL.RC_Rail_Reinforced.get( 4));
+		RM.RollFormer.addRecipe1(T, 64,  96, OP.railGt.mat(MT.HSSG            ,  1), IL.RC_Rail_Reinforced.get( 6));
+		RM.RollFormer.addRecipe1(T, 64, 128, OP.railGt.mat(MT.HSSE            ,  1), IL.RC_Rail_Reinforced.get( 8));
+		RM.RollFormer.addRecipe1(T, 64, 128, OP.railGt.mat(MT.HSSS            ,  1), IL.RC_Rail_Reinforced.get( 8));
 		RM.RollFormer.addRecipe1(T, 64,2048, OP.railGt.mat(MT.Ad              ,  1), IL.RC_Rail_Reinforced.get(64));
-		
-		RM.RollFormer.addRecipe1(T, 16,  64, OP.stick.mat(MT.Al               ,  3), IL.RC_Rebar.get( 1));
+
 		RM.RollFormer.addRecipe1(T, 16, 256, OP.stick.mat(MT.Magnalium        ,  3), IL.RC_Rebar.get( 4));
 		RM.RollFormer.addRecipe1(T, 16, 128, OP.stick.mat(MT.Fe               ,  3), IL.RC_Rebar.get( 2));
 		RM.RollFormer.addRecipe1(T, 16, 320, OP.stick.mat(MT.WroughtIron      ,  6), IL.RC_Rebar.get( 5));
@@ -269,7 +267,6 @@ public class Compat_Recipes_Railcraft extends CompatMods {
 		RM.RollFormer.addRecipe1(T, 16, 512, OP.stick.mat(MT.HSSS             ,  1), IL.RC_Rebar.get( 8));
 		RM.RollFormer.addRecipe1(T, 16,4096, OP.stick.mat(MT.Ad               ,  1), IL.RC_Rebar.get(64));
 		
-		RM.RollFormer.addRecipe1(T, 16,  64, OP.ingot.mat(MT.Al               ,  3), IL.RC_Post_Metal.get( 4));
 		RM.RollFormer.addRecipe1(T, 16, 256, OP.ingot.mat(MT.Magnalium        ,  3), IL.RC_Post_Metal.get(16));
 		RM.RollFormer.addRecipe1(T, 16, 128, OP.ingot.mat(MT.Fe               ,  3), IL.RC_Post_Metal.get( 8));
 		RM.RollFormer.addRecipe1(T, 16, 192, OP.ingot.mat(MT.WroughtIron      ,  3), IL.RC_Post_Metal.get(12));
