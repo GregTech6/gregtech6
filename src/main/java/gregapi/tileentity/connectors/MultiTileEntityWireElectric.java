@@ -131,7 +131,7 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get(LH.WIRE_STATS_VOLTAGE) + mVoltage + " " + TD.Energy.EU.getLocalisedNameShort() + " (" + VN[UT.Code.tierMin(mVoltage)] + ")");
 		aList.add(Chat.CYAN     + LH.get(LH.WIRE_STATS_AMPERAGE) + mAmperage);
-		aList.add(Chat.CYAN     + LH.get(LH.WIRE_STATS_LOSS) + mLoss + " " + TD.Energy.EU.getLocalisedNameShort() + "/m");
+		aList.add(Chat.CYAN     + LH.get(LH.WIRE_STATS_LOSS) + mLoss + " " + TD.Energy.EU.getLocalisedNameShort() + "/(m*A)");
 		if (mContactDamage) aList.add(Chat.DRED     + LH.get(LH.HAZARD_CONTACT));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
@@ -151,7 +151,7 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 		super.onTick2(aTimer, aIsServerSide);
 		
 		if (aIsServerSide) {
-			if (mBurnCounter >= 16) {
+			if (mBurnCounter > 16) {
 				setToFire();
 			} else {
 				if (aTimer % 512 == 2 && mBurnCounter > 0) mBurnCounter--;
@@ -202,6 +202,8 @@ public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRender
 		mTransferredWattage += Math.abs(aVoltage * aAmperage);
 		if (Math.abs(aVoltage) > mVoltage || mTransferredAmperes > mAmperage) {
 			if (mBurnCounter < 16) mBurnCounter++;
+			else if (mBurnCounter == 16)DEB.println("Wire overcharged with: " + aVoltage + "EU/A * " + aAmperage+"A");
+
 			return F;
 		}
 		return T;
