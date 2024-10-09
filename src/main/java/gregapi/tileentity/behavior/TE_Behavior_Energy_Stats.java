@@ -65,7 +65,7 @@ public class TE_Behavior_Energy_Stats extends TE_Behavior_Energy {
 			return aAmount;
 		}
 		if (mStorage == null || mStorage.mEnergy >= mStorage.mCapacity) return 0;
-		long tInput = Math.min(mStorage.mCapacity - mStorage.mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize) + (tInput%aSize!=0?1:0));
+		long tInput = Math.min(mStorage.mCapacity - mStorage.mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize));//Use floor Ampere to avoid overload
 		if (aDoInject) mStorage.mEnergy += tConsumed * aSize;
 		return tConsumed;
 	}

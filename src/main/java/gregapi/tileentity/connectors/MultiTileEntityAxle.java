@@ -34,6 +34,7 @@ import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityQuickObstructionCheck;
 import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
+import gregapi.tileentity.energy.IMeterDetectable;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.energy.ITileEntityEnergyDataConductor;
 import gregapi.util.UT;
@@ -52,9 +53,10 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress, IMTE_GetDebugInfo {
-	public long mTransferredPower = 0, mTransferredSpeed = 0, mTransferredEnergy = 0, mTransferredSpeedLast = 0, mTransferredPowerLast =0,  mPower = 1, mSpeed = 32;
+public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress, IMTE_GetDebugInfo, IMeterDetectable {
+	public long mTransferredPower = 0, mTransferredSpeed = 0, mTransferredSpeedLast = 0,   mPower = 1, mSpeed = 32;
 	public byte mRotationDir = 0, oRotationDir = 0;
+	public final ArrayList<IMeterDetectable.MeterData> transferredEnergy =new ArrayList<>(), transferredEnergyLast =new ArrayList<>();
 
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -80,7 +82,7 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aTool.equals(TOOL_unimeter) && isServerSide()) {
-			if (aChatReturn != null) aChatReturn.add(mTransferredSpeedLast + " RU/A * " + mTransferredPowerLast + "A");
+			IMeterDetectable.sendTransferMessage(transferredEnergyLast,aChatReturn);
 			return 1;
 		}
 		return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
@@ -93,8 +95,10 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 		if (aIsServerSide) {
 			if (mTransferredSpeed == 0 && aTimer > 5) mRotationDir = 0;
 			mTransferredSpeedLast = mTransferredSpeed;
-			mTransferredPowerLast = mTransferredPower;
-			mTransferredEnergy = mTransferredSpeed = mTransferredPower = 0;
+			mTransferredSpeed = mTransferredPower = 0;
+			transferredEnergyLast.clear();
+			transferredEnergyLast.addAll(transferredEnergy);
+			transferredEnergy.clear();
 		}
 	}
 	
@@ -118,9 +122,9 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 	}
 	
 	public long addToEnergyTransferred(long aSpeed, long aOriginalPower, long aPower) {
+		transferredEnergy.add(new MeterData(TD.Energy.RU,aSpeed, aPower));
 		mTransferredSpeed += aSpeed;
 		mTransferredPower += aPower;
-		mTransferredEnergy += Math.abs(aSpeed * aPower);
 		// Yes Rotation Speed only becomes a problem when it is actually being transferred,
 		// If the Axle just Rotates Idle then it can spin at ludicrous Speeds.
 		if (Math.abs(aSpeed) > mSpeed || mTransferredPower > mPower) {
@@ -167,7 +171,7 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 	@Override public long getProgressValue                  (byte aSide) {return mTransferredPower;}
 	@Override public long getProgressMax                    (byte aSide) {return mPower;}
 	
-	@Override public ArrayList<String> getDebugInfo(int aScanLevel) {return aScanLevel > 0 ? new ArrayListNoNulls<>(F, "Transferred Power: " + mTransferredSpeedLast) : null;}
+	@Override public ArrayList<String> getDebugInfo(int aScanLevel) {return aScanLevel > 0 ? new ArrayListNoNulls<>(F, "Transferred Power: " + mTransferredPower) : null;}
 	
 	@Override public ITexture getTextureSide                (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(Textures.BlockIcons.AXLES[(mConnections & 12) != 0 ? 0 : (mConnections & 48) != 0 ? 2 : 1][aSide][mRotationDir], mRGBa);}
 	@Override public ITexture getTextureConnected           (byte aSide, byte aConnections, float aDiameter, int aRenderPass) {return BlockTextureDefault.get(Textures.BlockIcons.AXLES[(mConnections & 12) != 0 ? 0 : (mConnections & 48) != 0 ? 2 : 1][aSide][mRotationDir], mRGBa);}

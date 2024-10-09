@@ -63,7 +63,7 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityWireElectric extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, ITileEntityEnergy, ITileEntityEnergyDataConductor, ITileEntityProgress, IMTE_GetDebugInfo, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IMeterDetectable {
-	public long mTransferredAmperes = 0, mTransferredWattage = 0, mWattageLast = 0, mAmperesLast = 0, mLoss = 1, mAmperage = 1, mVoltage = 32;
+	public long mTransferredAmperes = 0, mTransferredWattage = 0, mWattageLast = 0, mLoss = 1, mAmperage = 1, mVoltage = 32;
 	public byte mRenderType = 0, mBurnCounter = 0;
 	public final ArrayList<IMeterDetectable.MeterData> transferredEnergy =new ArrayList<>(), transferredEnergyLast =new ArrayList<>();
 
