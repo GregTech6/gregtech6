@@ -56,7 +56,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	public byte mActiveState = 0, mMode = 0;
 	public TagData mEnergyType = TD.Energy.QU;
 	public TagData mEnergyTypeOut = TD.Energy.QU;
-	public final ArrayList<MeterData> receivedEnergy=new ArrayList<>(),receivedEnergyLast = new ArrayList<>();
+	public ArrayList<MeterData> receivedEnergy=new ArrayList<>(),receivedEnergyLast = new ArrayList<>();
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
@@ -155,9 +155,8 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 				if (mTimer % 600 == 5) doDefaultStructuralChecks();
 			}
 
-			receivedEnergyLast.clear();
-			receivedEnergyLast.addAll(receivedEnergy);
-			receivedEnergy.clear();
+			receivedEnergyLast = receivedEnergy;
+			receivedEnergy = new ArrayList<>();
 
 			mReceivablePower = mChargeableCount * mInput * 2;
 		}
