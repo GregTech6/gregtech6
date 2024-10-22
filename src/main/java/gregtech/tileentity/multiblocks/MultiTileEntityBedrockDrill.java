@@ -134,7 +134,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 		aList.add(Chat.WHITE         + LH.get("gt.tooltip.multiblock.bedrockdrill.4"));
 		if (IL.HBM_Bedrock_Coltan.exists() || IL.HBM_Bedrock_Oil.exists())
 		aList.add(Chat.BLINKING_CYAN + LH.get("gt.tooltip.multiblock.bedrockdrill.5"));
-		aList.add(Chat.GREEN         + LH.get(LH.ENERGY_INPUT) + ": " + Chat.WHITE + "1024 to 4096 " + mEnergyTypeAccepted.getLocalisedChatNameShort() + Chat.WHITE + "/t (up to 32768 " + mEnergyTypeAccepted.getLocalisedChatNameShort() + Chat.WHITE + "/t total)");
+		aList.add(Chat.GREEN         + LH.get(LH.ENERGY_INPUT) + ": " + Chat.WHITE + "1024 to 4096 " + mEnergyTypeAccepted.getLocalisedChatNameShort() + Chat.WHITE + "/A * up to 8"+Chat.CYAN+"A/t");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
