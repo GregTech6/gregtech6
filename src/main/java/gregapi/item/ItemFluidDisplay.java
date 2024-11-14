@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,7 +25,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.GT_API;
 import gregapi.api.Abstract_Mod;
 import gregapi.config.ConfigCategories;
-import gregapi.data.*;
+import gregapi.data.FL;
+import gregapi.data.LH;
+import gregapi.data.MD;
+import gregapi.data.OP;
 import gregapi.fluid.FluidGT;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
@@ -165,52 +168,17 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 				aList.add(LH.Chat.ORANGE + "Industrial Use ONLY!");
 				aList.add(LH.Chat.RED + "Not Flammable!");
 			} else {
-				Collection<Recipe>
-				tRecipes = FM.Burn.mRecipeFluidMap.get(aName);
-				if (tRecipes != null && !tRecipes.isEmpty()) {
-					long tFuelValue = 0;
-					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
-					if (tFuelValue > 0) {
-						if (tAmount > 1) {
-							aList.add(LH.Chat.RED + "Burning: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + UT.Code.makeString((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total");
-						} else {
-							aList.add(LH.Chat.RED + "Burning: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L ");
-						}
-					}
-				}
-				tRecipes = FM.Engine.mRecipeFluidMap.get(aName);
-				if (tRecipes != null && !tRecipes.isEmpty()) {
-					long tFuelValue = 0;
-					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
-					if (tFuelValue > 0) {
-						if (tAmount > 1) {
-							aList.add(LH.Chat.RED + "Engine: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + UT.Code.makeString((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total");
-						} else {
-							aList.add(LH.Chat.RED + "Engine: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L ");
-						}
-					}
-				}
-				tRecipes = FM.Gas.mRecipeFluidMap.get(aName);
-				if (tRecipes != null && !tRecipes.isEmpty()) {
-					long tFuelValue = 0;
-					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
-					if (tFuelValue > 0) {
-						if (tAmount > 1) {
-							aList.add(LH.Chat.RED + "Turbine: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + UT.Code.makeString((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total");
-						} else {
-							aList.add(LH.Chat.RED + "Turbine: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L ");
-						}
-					}
-				}
-				tRecipes = FM.Hot.mRecipeFluidMap.get(aName);
-				if (tRecipes != null && !tRecipes.isEmpty()) {
-					long tFuelValue = 0;
-					for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
-					if (tFuelValue > 0) {
-						if (tAmount > 1) {
-							aList.add(LH.Chat.RED + "Heat Exchanger: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + UT.Code.makeString((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total");
-						} else {
-							aList.add(LH.Chat.RED + "Heat Exchanger: " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L ");
+				for (Recipe.RecipeMap tMap : Recipe.RecipeMap.FUEL_MAP_LIST) {
+					Collection<Recipe> tRecipes = tMap.mRecipeFluidMap.get(aName);
+					if (tRecipes != null && !tRecipes.isEmpty()) {
+						long tFuelValue = 0;
+						for (Recipe tRecipe : tRecipes) if (tRecipe.mEnabled && tRecipe.mFluidInputs[0] != null) tFuelValue = Math.max(tFuelValue, (tRecipe.getAbsoluteTotalPower() * U) / tRecipe.mFluidInputs[0].amount);
+						if (tFuelValue > 0) {
+							if (tAmount > 1) {
+								aList.add(LH.Chat.RED + LH.get(tMap.mNameInternal) + ": " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L; " + LH.Chat.WHITE + UT.Code.makeString((tFuelValue * tAmount) / U) + LH.Chat.YELLOW + " GU total");
+							} else {
+								aList.add(LH.Chat.RED + LH.get(tMap.mNameInternal) + ": " + LH.Chat.WHITE + UT.Code.makeString(tFuelValue / U) + LH.Chat.YELLOW + " GU/L ");
+							}
 						}
 					}
 				}
