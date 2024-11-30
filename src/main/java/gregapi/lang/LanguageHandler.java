@@ -157,6 +157,7 @@ public class LanguageHandler {
 	}
 	
 	public static String getLocalName(OreDictPrefix aPrefix, OreDictMaterial aMaterial) {
+		if(FMLCommonHandler.instance().getCurrentLanguage().equals("zh_CN"))return aPrefix.mMaterialPre + aMaterial.mNameLocal + aPrefix.mMaterialPost;
 		// Certain Materials have slightly different default Localisations.
 		if (aPrefix == OP.crateGtRaw      || aPrefix == OP.crateGt64Raw      || aPrefix == OP.blockRaw     ) return aPrefix.mMaterialPre + getLocalName(OP.ore     , aMaterial);
 		if (aPrefix == OP.crateGtGem      || aPrefix == OP.crateGt64Gem      || aPrefix == OP.blockGem     ) return aPrefix.mMaterialPre + getLocalName(OP.gem     , aMaterial);
@@ -164,9 +165,9 @@ public class LanguageHandler {
 		if (aPrefix == OP.crateGtIngot    || aPrefix == OP.crateGt64Ingot    || aPrefix == OP.blockIngot   ) return aPrefix.mMaterialPre + getLocalName(OP.ingot   , aMaterial);
 		if (aPrefix == OP.crateGtPlate    || aPrefix == OP.crateGt64Plate    || aPrefix == OP.blockPlate   ) return aPrefix.mMaterialPre + getLocalName(OP.plate   , aMaterial);
 		if (aPrefix == OP.crateGtPlateGem || aPrefix == OP.crateGt64PlateGem || aPrefix == OP.blockPlateGem) return aPrefix.mMaterialPre + getLocalName(OP.plateGem, aMaterial);
-		
+
 		if (aMaterial.mID >= 0 && aMaterial.mID < 10 && aPrefix.contains(TD.Prefix.ORE)) return APRIL_FOOLS ? "Schrödingers Ore" : "Unidentified Ore";
-		
+
 		if (APRIL_FOOLS) {
 			if (aMaterial == MT.Empty) {
 			if (aPrefix == OP.bulletGtSmall)                                        return aPrefix.mMaterialPre + "Bolt Shaft";
@@ -178,7 +179,7 @@ public class LanguageHandler {
 			if (aPrefix == OP.bulletGtLarge)                                        return aPrefix.mMaterialPre + aMaterial.mNameLocal + " Bolt";
 			}
 		}
-		
+
 		if (aMaterial == MT.Empty) {
 			if (aPrefix == OP.chemtube)                                             return "Empty Glass Tube";
 			if (aPrefix == OP.arrowGtWood)                                          return "Headless Wood Arrow";
@@ -553,7 +554,7 @@ public class LanguageHandler {
 			if (aPrefix == OP.crushedTiny)                                          return "Tiny Ground " + aMaterial.mNameLocal;
 			if (aPrefix.mNameInternal.startsWith("crushed"))                        return aPrefix.mMaterialPre + aMaterial.mNameLocal;
 		}
-		
+
 		if (aMaterial.contains(TD.Properties.WOOD)) {
 			if (aPrefix == OP.rockGt)                                               return aMaterial.mNameLocal;
 			if (aPrefix == OP.scrapGt)                                              return aMaterial.mNameLocal + " Splinters";
@@ -570,9 +571,9 @@ public class LanguageHandler {
 		if (aMaterial.mID > 0 && aMaterial.mID <= 830 && aMaterial.mID % 10 == 0 && aMaterial.mMeltingPoint > C && aMaterial.mTargetCrushing.mMaterial == aMaterial && aMaterial.contains(TD.Processing.SMITHABLE)) {
 			if (aPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) return aPrefix.mMaterialPre + "Native " + aMaterial.mNameLocal + aPrefix.mMaterialPost;
 		}
-		
-		
-		
+
+
+
 		// Use Standard Localisation
 		return aPrefix.mMaterialPre + aMaterial.mNameLocal + aPrefix.mMaterialPost;
 	}

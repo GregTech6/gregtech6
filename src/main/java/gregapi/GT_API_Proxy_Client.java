@@ -164,6 +164,9 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			Textures.BlockIcons.LEAVES_AB[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_BROWN;
 			break;
 		}
+	}
+
+	public static void loadI18n(){
 		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) {
 			LH.add("oredict.prefix.prefix." + tPrefix.mNameInternal, tPrefix.mMaterialPre);
 			LH.add("oredict.prefix.suffix." + tPrefix.mNameInternal, tPrefix.mMaterialPost);
@@ -176,7 +179,6 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			System.out.println(tMaterial.mNameLocal);
 		}
 	}
-	
 	@Override
 	public void onProxyBeforeInit(Abstract_Mod aMod, FMLInitializationEvent aEvent) {
 

@@ -30,6 +30,7 @@ import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.event.FMLServerStoppedEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
+import gregapi.GT_API_Proxy_Client;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.compat.ICompat;
 import gregapi.util.CR;
@@ -199,9 +200,10 @@ public abstract class Abstract_Mod {
 	public void onModInit(FMLInitializationEvent aEvent) {
 		if (mStartedInit) return;
 		try {
+			if(CODE_CLIENT) GT_API_Proxy_Client.loadI18n();
 			OUT.println(getModNameForLog() + ": ===================");
 			ORD.println(getModNameForLog() + ": ===================");
-			
+
 			loadRunnables("Before Init", mBeforeInit); mBeforeInit.clear(); mBeforeInit = null;
 			
 			OUT.println(getModNameForLog() + ": Init-Phase started!");
