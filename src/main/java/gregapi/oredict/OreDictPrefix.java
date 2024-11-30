@@ -81,7 +81,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 	public List<AdvancedCrafting1ToY> mShapelessManagersSingle = new ArrayListNoNulls<>();
 	public List<AdvancedCraftingXToY> mShapelessManagers = new ArrayListNoNulls<>();
 	public float mHeatDamage = 0.0F;
-	public String mNameLocal, mMaterialPre, mMaterialPost, mNameCategory, mNameTextureSet;
+	public String mNameLocal, mMaterialPre= "", mMaterialPost = "", mNameCategory, mNameTextureSet;
 	/** List of Prefixes which are familiar to this Prefix. Like "dust" having "dustSmall" and "dustTiny" and vice versa. Note that this per Default also contains the Prefix itself inside this Set. */
 	public final Set<OreDictPrefix> mFamiliarPrefixes = new HashSetNoNulls<>();
 	/** Secondary Materials of this Prefix. OreDictMaterialStacks are In Material Units */

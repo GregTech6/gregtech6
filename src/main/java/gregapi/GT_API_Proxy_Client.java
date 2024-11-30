@@ -164,19 +164,27 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			Textures.BlockIcons.LEAVES_AB[9] = Textures.BlockIcons.LEAVES_OPAQUE_MAPLE_BROWN;
 			break;
 		}
+		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) {
+			LH.add("oredict.prefix.prefix." + tPrefix.mNameInternal, tPrefix.mMaterialPre);
+			LH.add("oredict.prefix.suffix." + tPrefix.mNameInternal, tPrefix.mMaterialPost);
+			tPrefix.mMaterialPre = LH.get("oredict.prefix.prefix." + tPrefix.mNameInternal, tPrefix.mMaterialPre);
+			tPrefix.mMaterialPost = LH.get("oredict.prefix.suffix." + tPrefix.mNameInternal, tPrefix.mMaterialPost);
+		}
+		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) {
+			LH.add("gt.material." + tMaterial.mNameInternal, tMaterial.mNameLocal);
+			tMaterial.mNameLocal = LH.get("gt.material." + tMaterial.mNameInternal, tMaterial.mNameLocal);
+			System.out.println(tMaterial.mNameLocal);
+		}
 	}
 	
 	@Override
 	public void onProxyBeforeInit(Abstract_Mod aMod, FMLInitializationEvent aEvent) {
-		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) LH.add("gt.material." + tMaterial.mNameInternal, tMaterial.mNameLocal);
+
 	}
 	
 	@Override
 	public void onProxyAfterInit(Abstract_Mod aMod, FMLInitializationEvent aEvent) {
-		for (OreDictPrefix tPrefix : OreDictPrefix.VALUES) {
-			LH.add("oredict.prefix." + tPrefix.mNameInternal, tPrefix.mNameLocal);
-			tPrefix.mNameLocal = LH.get("oredict.prefix." + tPrefix.mNameInternal, tPrefix.mNameLocal);
-		}
+
 	}
 	
 	@Override
