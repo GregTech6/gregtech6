@@ -19,7 +19,6 @@
 
 package gregapi.lang;
 
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import gregapi.data.ANY;
 import gregapi.data.MT;
@@ -80,7 +79,7 @@ public class LanguageHandler {
 					Property tProperty = sLangFile.get("LanguageFile", tEntry.getKey(), tEntry.getValue());
 					TEMPMAP.put(tEntry.getKey()        , sUseFile?tProperty.getString():tEntry.getValue());
 					TEMPMAP.put(tEntry.getKey()+".name", sUseFile?tProperty.getString():tEntry.getValue());
-					LanguageRegistry.instance().injectLanguage(FMLCommonHandler.instance().getCurrentLanguage(), TEMPMAP);
+					LanguageRegistry.instance().injectLanguage("en_US", TEMPMAP);
 					TEMPMAP.clear();
 				}
 				BUFFERMAP.clear();
@@ -89,7 +88,7 @@ public class LanguageHandler {
 			tSave |= tProperty.wasRead();
 			TEMPMAP.put(aKey        , sUseFile?tProperty.getString():aEnglish);
 			TEMPMAP.put(aKey+".name", sUseFile?tProperty.getString():aEnglish);
-			LanguageRegistry.instance().injectLanguage(FMLCommonHandler.instance().getCurrentLanguage(), TEMPMAP);
+			LanguageRegistry.instance().injectLanguage("en_US", TEMPMAP);
 			TEMPMAP.clear();
 		}
 		if (tSave && mWritingEnabled) sLangFile.save();
