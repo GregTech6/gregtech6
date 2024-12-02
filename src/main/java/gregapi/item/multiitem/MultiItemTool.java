@@ -316,7 +316,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	}
 	
 	@Override
-	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+	public void addAdditionalToolTips(List<String> aList, EntityPlayer aPlayer, ItemStack aStack, boolean aF3_H) {
 		long tMaxDamage = getToolMaxDamage(aStack), tDamage = getToolDamage(aStack);
 		OreDictMaterial tMat1 = getPrimaryMaterial(aStack), tMat2 = getSecondaryMaterial(aStack);
 		IToolStats tStats = getToolStats(aStack);

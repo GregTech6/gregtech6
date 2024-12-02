@@ -178,8 +178,8 @@ public class MultiItemBooks extends MultiItemRandomWithCompat {
 	}
 	
 	@Override
-	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		super.addAdditionalToolTips(aList, aStack, aF3_H);
+	public void addAdditionalToolTips(List<String> aList, EntityPlayer aPlayer, ItemStack aStack, boolean aF3_H) {
+		super.addAdditionalToolTips(aList, aPlayer, aStack, aF3_H);
 		String tTitle = UT.NBT.getBookTitle(aStack);
 		if (UT.Code.stringValid(tTitle)) {
 			aList.add(LH.Chat.CYAN + tTitle);

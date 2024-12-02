@@ -34,6 +34,7 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -95,8 +96,8 @@ public class ItemIntegratedCircuit extends ItemBase {
 	}
 	
 	@Override
-	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		super.addAdditionalToolTips(aList, aStack, aF3_H);
+	public void addAdditionalToolTips(List<String> aList, EntityPlayer aPlayer, ItemStack aStack, boolean aF3_H) {
+		super.addAdditionalToolTips(aList, aPlayer, aStack, aF3_H);
 		aList.add(LH.get(mName + ".configuration", "Configuration: ") + getConfigurationString(getDamage(aStack)));
 	}
 	

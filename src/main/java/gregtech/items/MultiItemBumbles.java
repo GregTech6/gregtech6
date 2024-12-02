@@ -499,7 +499,7 @@ public class MultiItemBumbles extends MultiItemRandomWithCompat implements IItem
 	}
 	
 	@Override
-	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+	public void addAdditionalToolTips(List<String> aList, EntityPlayer aPlayer, ItemStack aStack, boolean aF3_H) {
 		short aMeta = ST.meta_(aStack);
 		String tTooltip = getFlowerTooltip(aMeta);
 		if (UT.Code.stringValid(tTooltip)) aList.add(LH.Chat.CYAN + "Requirement:" + LH.Chat._WHITE + tTooltip);

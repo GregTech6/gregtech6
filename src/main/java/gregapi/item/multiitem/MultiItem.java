@@ -265,7 +265,7 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 				aList.add(LH.Chat.BLUE + ((tFluid==null?0:tFluid.amount) + "L / " + tStats[0] + "L"));
 			}
 			
-			addAdditionalToolTips(aList, aStack, aF3_H);
+			addAdditionalToolTips(aList, aPlayer, aStack, aF3_H);
 			
 			ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get(ST.meta_(aStack));
 			if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) aList = tBehavior.getAdditionalToolTips(this, aList, aStack);

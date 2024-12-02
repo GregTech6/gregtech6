@@ -74,13 +74,18 @@ public class ItemBase extends Item implements IItemProjectile, IItemUpdatable, I
 		try {
 			if (getMaxDamage() > 0 && !getHasSubtypes()) aList.add((aStack.getMaxDamage() - getDamage(aStack)) + " / " + aStack.getMaxDamage());
 			if (mTooltip != null) aList.add(LanguageHandler.translate(mTooltip, mTooltip));
-			addAdditionalToolTips(aList, aStack, aF3_H);
+			addAdditionalToolTips(aList, aPlayer, aStack, aF3_H);
 		} catch(Throwable e) {
 			e.printStackTrace(ERR);
 		}
 		while (aList.remove(null));
 	}
-	
+
+	protected void addAdditionalToolTips(List<String> aList, EntityPlayer aPlayer, ItemStack aStack, boolean aF3_H) {
+		addAdditionalToolTips(aList,aStack,aF3_H);
+	}
+
+	@Deprecated
 	protected void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		//
 	}

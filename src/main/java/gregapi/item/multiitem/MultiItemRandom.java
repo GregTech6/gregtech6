@@ -401,7 +401,7 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable {
 	}
 	
 	@Override
-	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+	public void addAdditionalToolTips(List<String> aList, EntityPlayer aPlayer, ItemStack aStack, boolean aF3_H) {
 		IFoodStat tStat = mFoodStats.get((short)getDamage(aStack));
 		if (tStat != null) tStat.addAdditionalToolTips(this, aList, aStack, aF3_H);
 	}

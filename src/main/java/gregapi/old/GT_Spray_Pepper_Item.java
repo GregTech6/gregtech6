@@ -37,7 +37,7 @@ public class GT_Spray_Pepper_Item extends GT_Tool_Item {
 	}
 	
 	@Override
-	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+	public void addAdditionalToolTips(List<String> aList, EntityPlayer aPlayer, ItemStack aStack, boolean aF3_H) {
 		aList.add(LanguageHandler.get(getUnlocalizedName() + ".tooltip_1", "especially Pedobears, Care Bears,"));
 		aList.add(LanguageHandler.get(getUnlocalizedName() + ".tooltip_2", "Confession Bears, Bear Grylls"));
 		aList.add(LanguageHandler.get(getUnlocalizedName() + ".tooltip_3", "And ofcourse Man-Bear-Pig"));
