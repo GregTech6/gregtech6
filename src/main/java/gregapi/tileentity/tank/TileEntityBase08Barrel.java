@@ -24,6 +24,7 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetMaxStackSize;
 import gregapi.data.*;
 import gregapi.data.LH.Chat;
 import gregapi.fluid.FluidTankGT;
+import gregapi.fluid.FluidTankGTRateLimitedPowerConducting;
 import gregapi.item.IItemRottable;
 import gregapi.recipes.Recipe;
 import gregapi.tileentity.ITileEntityConnectedTank;
@@ -50,7 +51,7 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable implements IMTE_AddToolTips, IMTE_GetMaxStackSize, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntityProgress, ITileEntityConnectedTank, IFluidHandler, IFluidContainerItem, IItemRottable {
-	public FluidTankGT mTank = new FluidTankGT(16000);
+	public FluidTankGT mTank = new FluidTankGTRateLimitedPowerConducting(16000);
 	public byte mMode = 0;
 	public long mSealedTime = 0, mMaxSealedTime = 0, mMeltingPoint = Long.MAX_VALUE;
 	public Recipe mRecipe = null;
@@ -76,7 +77,6 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		UT.NBT.setNumber(aNBT, NBT_PROGRESS, mSealedTime);
 		mTank.writeToNBT(aNBT, NBT_TANK);
 	}
-	
 	@Override
 	public NBTTagCompound writeItemNBT2(NBTTagCompound aNBT) {
 		if (mMode != 0) aNBT.setByte(NBT_MODE, mMode);
@@ -90,7 +90,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 		aList.add(Chat.CYAN + mTank.contentcap());
 		if (mTank.has() && (mMode & B[1]) != 0) aList.add(Chat.CYAN + "Sealed (" + mSealedTime + ")");
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
-		aList.add(Chat.ORANGE   + LH.get(LH.NO_POWER_CONDUCTING_FLUIDS));
+		aList.add(Chat.ORANGE   + LH.get(LH.POWER_CONDUCTING_FLUIDS_SLOW));
 		if (onlySimple()) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ONLY_SIMPLE));
 		if (mGasProof   ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_GASPROOF));
 		if (mAcidProof  ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
@@ -208,7 +208,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 					} else {
 						if ((mMode & B[0]) != 0) {
 							byte[] tSides = ZL_BYTE;
-							if (FL.gas(tFluid)) tSides = ALL_SIDES_VERTICAL; else if (FL.lighter(tFluid)) tSides = ALL_SIDES_TOP; else tSides = ALL_SIDES_BOTTOM;
+							if (FL.lighter(tFluid)) tSides = ALL_SIDES_TOP; else tSides = ALL_SIDES_BOTTOM;
 							for (byte tSide : tSides) if (mTank.has() && FL.move(mTank, getAdjacentTank(tSide)) > 0) updateInventory();
 						}
 					}
@@ -231,7 +231,7 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	}
 	
 	public boolean allowFluid(FluidStack aFluid) {
-		return !FL.powerconducting(aFluid) && FL.temperature(aFluid) < mMeltingPoint && (!onlySimple() || FL.simple(aFluid));
+		return FL.temperature(aFluid) < mMeltingPoint && (!onlySimple() || FL.simple(aFluid));
 	}
 	
 	@Override

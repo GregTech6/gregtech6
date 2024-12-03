@@ -207,21 +207,18 @@ public class FluidTankGT implements IFluidTank {
 		if (isEmpty()) {
 			long tCapacity = capacity(aFluid);
 			if (aFluid.amount <= tCapacity || mVoidExcess) {
-				mFluid = aFluid.copy();
-				mChangedFluids = T;
-				mAmount = aFluid.amount;
-				if (mAmount > tCapacity) mAmount = tCapacity;
+				add(aFluid.amount, aFluid);
 				return T;
 			}
 			return F;
 		}
 		if (contains(aFluid)) {
 			if (mAmount + aFluid.amount <= capacity()) {
-				mAmount += aFluid.amount;
+				add(aFluid.amount, aFluid);
 				return T;
 			}
 			if (mVoidExcess) {
-				mAmount = capacity();
+				add(aFluid.amount, aFluid);
 				return T;
 			}
 		}
@@ -231,29 +228,9 @@ public class FluidTankGT implements IFluidTank {
 	public boolean fillAll(FluidStack aFluid, long aMultiplier) {
 		if (aMultiplier <= 0) return T;
 		if (aMultiplier == 1) return fillAll(aFluid);
-		if (aFluid == null || aFluid.amount <= 0) return T;
-		if (isEmpty()) {
-			long tCapacity = capacity(aFluid);
-			if (aFluid.amount * aMultiplier <= tCapacity || mVoidExcess) {
-				mFluid = aFluid.copy();
-				mChangedFluids = T;
-				mAmount = aFluid.amount * aMultiplier;
-				if (mAmount > tCapacity) mAmount = tCapacity;
-				return T;
-			}
-			return F;
-		}
-		if (contains(aFluid)) {
-			if (mAmount + aFluid.amount * aMultiplier <= capacity()) {
-				mAmount += aFluid.amount * aMultiplier;
-				return T;
-			}
-			if (mVoidExcess) {
-				mAmount = capacity();
-				return T;
-			}
-		}
-		return F;
+		FluidStack stackNew = aFluid.copy();
+		stackNew.amount *= (int) aMultiplier;
+		return fillAll(stackNew);
 	}
 	
 	/** Resets Tank Contents entirely */

@@ -19,7 +19,6 @@
 
 package gregtech.tileentity.multiblocks;
 
-import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -71,7 +70,7 @@ public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + mTank.contentcap());
 		aList.add(Chat.ORANGE   + LH.get(LH.NO_GUI_FUNNEL_TAP_TO_TANK));
-		aList.add(Chat.ORANGE   + LH.get(LH.NO_POWER_CONDUCTING_FLUIDS));
+		aList.add(Chat.ORANGE   + LH.get(LH.POWER_CONDUCTING_FLUIDS_SLOW));
 		if (onlySimple()) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ONLY_SIMPLE));
 		if (mGasProof   ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_GASPROOF));
 		if (mAcidProof  ) aList.add(Chat.ORANGE + LH.get(LH.TOOLTIP_ACIDPROOF));
