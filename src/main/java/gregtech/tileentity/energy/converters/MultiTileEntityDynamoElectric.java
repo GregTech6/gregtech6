@@ -41,19 +41,19 @@ public class MultiTileEntityDynamoElectric extends TileEntityBase10EnergyConvert
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
 		int aIndex = aSide==mFacing?0:aSide==OPOS[mFacing]?1:2;
-		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get((mActivity.mState>0?sOverlaysActive:sOverlays)[aIndex]));
+		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get(sOverlays[aIndex]), mActivity.mState>0?BlockTextureDefault.get(sOverlaysActive[aIndex],true):null);
 	}
 	
 	// Icons
-	public static IIconContainer sColoreds[] = new IIconContainer[] {
+	public static IIconContainer[] sColoreds = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/dynamos/electric_rotation/colored/front"),
 		new Textures.BlockIcons.CustomIcon("machines/dynamos/electric_rotation/colored/back"),
 		new Textures.BlockIcons.CustomIcon("machines/dynamos/electric_rotation/colored/side"),
-	}, sOverlays[] = new IIconContainer[] {
+	}, sOverlays = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/dynamos/electric_rotation/overlay/front"),
 		new Textures.BlockIcons.CustomIcon("machines/dynamos/electric_rotation/overlay/back"),
 		new Textures.BlockIcons.CustomIcon("machines/dynamos/electric_rotation/overlay/side"),
-	}, sOverlaysActive[] = new IIconContainer[] {
+	}, sOverlaysActive = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/dynamos/electric_rotation/overlay_active/front"),
 		new Textures.BlockIcons.CustomIcon("machines/dynamos/electric_rotation/overlay_active/back"),
 		new Textures.BlockIcons.CustomIcon("machines/dynamos/electric_rotation/overlay_active/side"),
