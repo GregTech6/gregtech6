@@ -19,7 +19,7 @@
 
 package gregtech.items;
 
-import cn.kuzuanpa.ktfruaddon.material.matList;
+import cn.kuzuanpa.ktfruaddon.api.material.matList;
 import gregapi.cover.covers.*;
 import gregapi.data.*;
 import gregapi.item.CreativeTab;

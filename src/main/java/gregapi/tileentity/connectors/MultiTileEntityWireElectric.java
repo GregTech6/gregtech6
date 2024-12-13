@@ -19,7 +19,7 @@
 
 package gregapi.tileentity.connectors;
 
-import cn.kuzuanpa.ktfruaddon.material.matList;
+import cn.kuzuanpa.ktfruaddon.api.material.matList;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetDebugInfo;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;

@@ -19,7 +19,7 @@
 
 package gregtech.loaders.c;
 
-import cn.kuzuanpa.ktfruaddon.fluid.flList;
+import cn.kuzuanpa.ktfruaddon.api.fluid.flList;
 import gnu.trove.list.linked.TFloatLinkedList;
 import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;

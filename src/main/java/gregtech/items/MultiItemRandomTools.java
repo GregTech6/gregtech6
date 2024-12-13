@@ -19,7 +19,7 @@
 
 package gregtech.items;
 
-import cn.kuzuanpa.ktfruaddon.fluid.flList;
+import cn.kuzuanpa.ktfruaddon.api.fluid.flList;
 import gregapi.GT_API;
 import gregapi.code.IItemContainer;
 import gregapi.cover.covers.CoverTextureCanvas;

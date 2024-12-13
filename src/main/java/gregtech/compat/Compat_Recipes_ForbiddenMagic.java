@@ -21,7 +21,7 @@ package gregtech.compat;
 
 import static gregapi.data.CS.*;
 
-import cn.kuzuanpa.ktfruaddon.fluid.flList;
+import cn.kuzuanpa.ktfruaddon.api.fluid.flList;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;

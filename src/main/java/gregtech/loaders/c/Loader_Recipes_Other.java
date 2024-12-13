@@ -19,7 +19,7 @@
 
 package gregtech.loaders.c;
 
-import cn.kuzuanpa.ktfruaddon.fluid.flList;
+import cn.kuzuanpa.ktfruaddon.api.fluid.flList;
 import gregapi.block.metatype.BlockMetaType;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.*;

@@ -19,7 +19,7 @@
 
 package gregtech.loaders.b;
 
-import cn.kuzuanpa.ktfruaddon.item.util.ItemList;
+import cn.kuzuanpa.ktfruaddon.api.item.ItemList;
 import gregapi.block.MaterialMachines;
 import gregapi.block.MaterialScoopable;
 import gregapi.block.multitileentity.MultiTileEntityBlock;

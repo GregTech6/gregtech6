@@ -19,7 +19,7 @@
 
 package gregtech.loaders.c;
 
-import cn.kuzuanpa.ktfruaddon.fluid.flList;
+import cn.kuzuanpa.ktfruaddon.api.fluid.flList;
 import gregapi.block.metatype.BlockStones;
 import gregapi.config.ConfigCategories;
 import gregapi.data.*;
