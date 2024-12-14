@@ -236,6 +236,10 @@ public abstract class Abstract_Mod {
 			if (sFinishedInit >= sModCountUsingGTAPI) {
 				for (Abstract_Mod tMod : MODS_USING_GT_API) try {tMod.onModFinalInit(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
 				//send Recipe infos to NEI, because NEI handle these info in PostInit and wont accept anything after that.
+				//Although strange, I cannot find a place better than there:
+				// GT_MOD runs their init phase after GT_API_POST, funny making only machines of addons be loaded but GT itself not.
+				// GT_MOD itself doesn't seem like a place to place that.
+				// GT_API runs after NEI in Post init phase, making GT_API load before it will make loop depend.
 				new NEI_GT_IMCSender().run();
 			}
 			
