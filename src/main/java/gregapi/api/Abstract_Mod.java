@@ -30,6 +30,7 @@ import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.event.FMLServerStoppedEvent;
 import cpw.mods.fml.common.event.FMLServerStoppingEvent;
+import gregapi.NEI_GT_IMCSender;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.compat.ICompat;
 import gregapi.util.CR;
@@ -232,7 +233,11 @@ public abstract class Abstract_Mod {
 			
 			loadRunnables("Saving Configs", sConfigs);
 			
-			if (sFinishedInit >= sModCountUsingGTAPI) for (Abstract_Mod tMod : MODS_USING_GT_API) try {tMod.onModFinalInit(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
+			if (sFinishedInit >= sModCountUsingGTAPI) {
+				for (Abstract_Mod tMod : MODS_USING_GT_API) try {tMod.onModFinalInit(aEvent);} catch(Throwable e) {e.printStackTrace(ERR);}
+				//send Recipe infos to NEI, because NEI handle these info in PostInit and wont accept anything after that.
+				new NEI_GT_IMCSender().run();
+			}
 			
 			OUT.println(getModNameForLog() + ": ====================");
 			ORD.println(getModNameForLog() + ": ====================");
