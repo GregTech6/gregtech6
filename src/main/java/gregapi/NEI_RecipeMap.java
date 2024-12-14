@@ -76,18 +76,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 		if (Loader.instance().getIndexedModList().get("NotEnoughItems").getVersion().contains("-GTNH")) {
 			API.registerRecipeHandler(this);
 			API.registerUsageHandler(this);
-			
-			NBTTagCompound tNBT = UT.NBT.make();
-			tNBT.setString ("modId"            , MD.GT.mID);
-			tNBT.setString ("modName"          , MD.GT.mName);
-			tNBT.setString ("handler"          , mRecipeMap.mNameNEI);
-			tNBT.setString ("itemName"         , ST.regMeta(mRecipeMap.mRecipeMachineList.isEmpty() ? ST.make(Blocks.lit_furnace, 1, 0) : mRecipeMap.mRecipeMachineList.get(0)));
-			tNBT.setInteger("handlerHeight"    , 135);
-			tNBT.setInteger("handlerWidth"     , 166);
-			tNBT.setInteger("maxRecipesPerPage",   2);
-			tNBT.setInteger("yShift"           ,   6);
-			tNBT.setBoolean("modRequired"      ,   T);
-			FMLInterModComms.sendMessage("NotEnoughItems", "registerHandlerInfo", tNBT);
+
 		} else {
 			GuiCraftingRecipe.craftinghandlers.add(this);
 			GuiUsageRecipe.usagehandlers.add(this);
@@ -277,7 +266,6 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 			}
 
 			if (aRecipe.mSpecialItems != null) mInputs.add(new FixedPositionedStack(aRecipe.mSpecialItems,  80, 43));
-			if (!mRecipeMap.mRecipeMachineList.isEmpty()) mInputs.add(new FixedPositionedStack(mRecipeMap.mRecipeMachineList, 152, 83));
 
 			tStartIndex = 0;
 
@@ -680,38 +668,39 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	public void drawExtras(int aRecipeIndex) {
 		long tGUt       = ((CachedDefaultRecipe)arecipes.get(aRecipeIndex)).mRecipe.mEUt;
 		long tDuration  = ((CachedDefaultRecipe)arecipes.get(aRecipeIndex)).mRecipe.mDuration;
-		if (tGUt == 0) {
+
+		if (tGUt > 0) {
 			if (mRecipeMap.mShowVoltageAmperageInNEI) {
-				drawText(10, 93, "Tier: unspecified", 0xFF000000);
-			}
-		} else {
-			if (tGUt > 0) {
-				drawText    (10, 73, "Costs: "  + UT.Code.makeString(tGUt * tDuration        ) + " GU"  , 0xFF000000);
-				if (mRecipeMap.mShowVoltageAmperageInNEI) {
-					if (!mRecipeMap.mCombinePower)
-					drawText(10, 83, "Usage: "  + UT.Code.makeString(tGUt                    ) + " GU/t", 0xFF000000);
-					drawText(10, 93, "Tier: "   + UT.Code.makeString(tGUt / mRecipeMap.mPower) + " GU"  , 0xFF000000);
-					drawText(10,103, "Power: "  + UT.Code.makeString(       mRecipeMap.mPower)          , 0xFF000000);
-				} else {
-					if (tGUt != 1 && !mRecipeMap.mCombinePower)
-					drawText(10, 83, "Usage: "  + UT.Code.makeString(tGUt                    ) + " GU/t", 0xFF000000);
-				}
+				if (!mRecipeMap.mCombinePower)
+				drawText(10, 73, "Usage: "  + UT.Code.makeString(tGUt                    ) + " GU/t", 0xFF000000);
+				drawText(10, 83, "Power: "  + UT.Code.makeString(       mRecipeMap.mPower)          , 0xFF000000);
 			} else {
-				tGUt *= -1;
-				drawText    (10, 73, "Gain: "   + UT.Code.makeString(tGUt * tDuration        ) + " GU"  , 0xFF000000);
-				if (mRecipeMap.mShowVoltageAmperageInNEI) {
-					if (!mRecipeMap.mCombinePower)
-					drawText(10, 83, "Output: " + UT.Code.makeString(tGUt                    ) + " GU/t", 0xFF000000);
-					drawText(10, 93, "Tier: "   + UT.Code.makeString(tGUt / mRecipeMap.mPower) + " GU"  , 0xFF000000);
-					drawText(10,103, "Power: "  + UT.Code.makeString(       mRecipeMap.mPower)          , 0xFF000000);
-				} else {
-					if (tGUt != 1 && !mRecipeMap.mCombinePower)
-					drawText(10, 83, "Output: " + UT.Code.makeString(tGUt                    ) + " GU/t", 0xFF000000);
-				}
+				if (tGUt != 1 && !mRecipeMap.mCombinePower)
+				drawText(10, 73, "Usage: "  + UT.Code.makeString(tGUt                    ) + " GU/t", 0xFF000000);
 			}
+			drawText    (10, 93, "Total: "  + UT.Code.makeString(tGUt * tDuration        ) + " GU"  , 0xFF000000);
+		} else if (tGUt < 0){
+			tGUt *= -1;
+			if (mRecipeMap.mShowVoltageAmperageInNEI) {
+				if (!mRecipeMap.mCombinePower)
+				drawText(10, 73, "Output: " + UT.Code.makeString(tGUt                    ) + " GU/t", 0xFF000000);
+				drawText(10, 83, "Power: "  + UT.Code.makeString(       mRecipeMap.mPower)          , 0xFF000000);
+			} else {
+				if (tGUt != 1 && !mRecipeMap.mCombinePower)
+				drawText(10, 73, "Output: " + UT.Code.makeString(tGUt                    ) + " GU/t", 0xFF000000);
+			}
+			drawText    (10, 93, "Total: "   + UT.Code.makeString(tGUt * tDuration        ) + " GU"  , 0xFF000000);
 		}
+
 		if (tDuration > 0)
-		drawText(10,113, "Time: " + (tDuration < 1200 ? UT.Code.makeString(tDuration) + " ticks" : tDuration < 36000 ? UT.Code.makeString(tDuration/20) + " secs" : UT.Code.makeString(tDuration/1200) + " mins"), 0xFF000000);
+		drawText(10,103, "Time: " + (tDuration < 1200 ? UT.Code.makeString(tDuration) + " ticks" : tDuration < 36000 ? UT.Code.makeString(tDuration/20) + " secs" : UT.Code.makeString(tDuration/1200) + " mins"), 0xFF000000);
+
+		String aDepend = ((CachedDefaultRecipe)arecipes.get(aRecipeIndex)).mRecipe.mDepend;
+
+		if (UT.Code.stringValid(aDepend))
+		drawText(10,113, "Depend: " + aDepend, 0xFF000000);
+
+
 		if (UT.Code.stringValid(mRecipeMap.mNEISpecialValuePre) || UT.Code.stringValid(mRecipeMap.mNEISpecialValuePost))
 		drawText(10,123, mRecipeMap.mNEISpecialValuePre + UT.Code.makeString(((CachedDefaultRecipe)arecipes.get(aRecipeIndex)).mRecipe.mSpecialValue * mRecipeMap.mNEISpecialValueMultiplier) + mRecipeMap.mNEISpecialValuePost, 0xFF000000);
 	}

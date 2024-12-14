@@ -679,7 +679,9 @@ public class Recipe {
 	public boolean mCanBeBuffered = T;
 	/** If this Recipe needs the Output Slots to be completely empty. Needed in case you have randomised Outputs */
 	public boolean mNeedsEmptyOutput = F;
-	
+	/** The Dependency info displayed in NEI, use to help players identify what they actually need**/
+	public String mDepend = null;
+
 	public int getOutputChance(long aIndex) {if (aIndex < 0 || aIndex >= mChances.length) return getMaxChance(aIndex); return (int)mChances[(int)aIndex];}
 	public int getMaxChance(long aIndex) {if (aIndex < 0 || aIndex >= mMaxChances.length) return 10000; return (int)mMaxChances[(int)aIndex];}
 	
@@ -707,7 +709,11 @@ public class Recipe {
 		mNeedsEmptyOutput = T;
 		return this;
 	}
-	
+
+	public Recipe setDependency(String aDependency) {
+		mDepend = aDependency;
+		return this;
+	}
 	public boolean blockINblockOUT() {
 		return mInputs.length == 1 && mOutputs.length == 1 && mFluidInputs.length == 0 && mFluidOutputs.length == 0 && ST.block(mInputs[0]) != NB && ST.block(mOutputs[0]) != NB && mInputs[0].stackSize == 1 && mOutputs[0].stackSize == 1;
 	}
