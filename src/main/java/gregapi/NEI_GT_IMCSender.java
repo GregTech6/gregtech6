@@ -1,6 +1,5 @@
 package gregapi;
 
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import gregapi.data.MD;
 import gregapi.recipes.Recipe;
@@ -8,8 +7,6 @@ import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import org.apache.logging.log4j.Level;
-
 
 public class NEI_GT_IMCSender implements Runnable{
     @Override
@@ -88,7 +85,6 @@ public class NEI_GT_IMCSender implements Runnable{
         aNBT.setString("handlerID", aName);
         aNBT.setString("itemName", aStack);
         aNBT.setInteger("priority", aPriority);
-        FMLLog.log(Level.FATAL,"added itemname:"+aStack+" for priority:"+aPriority);
         FMLInterModComms.sendMessage("NotEnoughItems", "registerCatalystInfo", aNBT);
     }
 }
