@@ -3044,53 +3044,55 @@ public class UT {
 		
 		public static boolean isWearingFullFrostHazmat(EntityLivingBase aEntity) {
 			if (isCreative(aEntity)) return T;
-			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_FROST.contains(aEntity.getEquipmentInSlot(i), T)) return F;
+			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_FROST.contains(aEntity.getEquipmentInSlot(i), T)&& !hasHazmatNBT(aEntity.getEquipmentInSlot(i),"frost")) return F;
 			return T;
 		}
 		
 		public static boolean isWearingFullHeatHazmat(EntityLivingBase aEntity) {
 			if (isCreative(aEntity) || aEntity.getClass() == EntityWither.class || aEntity.getClass() == EntityBlaze.class || aEntity.getClass() == EntityPigZombie.class || aEntity.getClass() == EntityMagmaCube.class || aEntity.getClass() == EntityGhast.class) return T;
-			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_HEAT.contains(aEntity.getEquipmentInSlot(i), T)) return F;
+			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_HEAT.contains(aEntity.getEquipmentInSlot(i), T)&& !hasHazmatNBT(aEntity.getEquipmentInSlot(i),"heat")) return F;
 			return T;
 		}
 		
 		public static boolean isWearingFullBioHazmat(EntityLivingBase aEntity) {
 			if (isCreative(aEntity) || aEntity.getClass() == EntityWither.class || aEntity.getClass() == EntityIronGolem.class) return T;
-			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_BIO.contains(aEntity.getEquipmentInSlot(i), T)) return F;
+			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_BIO.contains(aEntity.getEquipmentInSlot(i), T)&& !hasHazmatNBT(aEntity.getEquipmentInSlot(i),"bio")) return F;
 			return T;
 		}
 		
 		public static boolean isWearingFullChemHazmat(EntityLivingBase aEntity) {
 			if (isCreative(aEntity)) return T;
-			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_CHEM.contains(aEntity.getEquipmentInSlot(i), T)) return F;
+			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_CHEM.contains(aEntity.getEquipmentInSlot(i), T)&& !hasHazmatNBT(aEntity.getEquipmentInSlot(i),"chem")) return F;
 			return T;
 		}
 		
 		public static boolean isWearingFullInsectHazmat(EntityLivingBase aEntity) {
 			if (isCreative(aEntity) || aEntity.getClass() == EntityWither.class || aEntity.getClass() == EntityIronGolem.class) return T;
-			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_INSECTS.contains(aEntity.getEquipmentInSlot(i), T)) return F;
+			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_INSECTS.contains(aEntity.getEquipmentInSlot(i), T)&& !hasHazmatNBT(aEntity.getEquipmentInSlot(i),"insect")) return F;
 			return T;
 		}
 		
 		public static boolean isWearingFullRadioHazmat(EntityLivingBase aEntity) {
 			if (isCreative(aEntity) || aEntity.getClass() == EntityWither.class || aEntity.getClass() == EntityIronGolem.class) return T;
-			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_RADIOACTIVE.contains(aEntity.getEquipmentInSlot(i), T)) return F;
+			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_RADIOACTIVE.contains(aEntity.getEquipmentInSlot(i), T)&& !hasHazmatNBT(aEntity.getEquipmentInSlot(i),"radio")) return F;
 			return T;
 		}
 		
 		public static boolean isWearingFullElectroHazmat(EntityLivingBase aEntity) {
 			if (isCreative(aEntity)) return T;
-			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_LIGHTNING.contains(aEntity.getEquipmentInSlot(i), T)) return F;
+			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_LIGHTNING.contains(aEntity.getEquipmentInSlot(i), T)&& !hasHazmatNBT(aEntity.getEquipmentInSlot(i),"electro")) return F;
 			return T;
 		}
 		
 		public static boolean isWearingFullGasHazmat(EntityLivingBase aEntity) {
 			if (isCreative(aEntity) || aEntity.getClass() == EntityWither.class || aEntity.getClass() == EntityIronGolem.class) return T;
-			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_GAS.contains(aEntity.getEquipmentInSlot(i), T)) return F;
+			for (byte i = 1; i < 5; i++) if (!ArmorsGT.HAZMATS_GAS.contains(aEntity.getEquipmentInSlot(i), T) && !hasHazmatNBT(aEntity.getEquipmentInSlot(i),"gas")) return F;
 			return T;
 		}
 		
-		
+		protected static boolean hasHazmatNBT(ItemStack stack, String hazmatType) {
+			return stack != null && stack.stackTagCompound != null && stack.stackTagCompound.hasKey("gt.hazmat."+hazmatType) && stack.stackTagCompound.getBoolean("gt.hazmat."+hazmatType);
+		}
 		
 		public static boolean isSlimeCreature(Entity aEntity) {
 			return aEntity instanceof EntitySlime || UT.Reflection.getLowercaseClass(aEntity).contains("slime");

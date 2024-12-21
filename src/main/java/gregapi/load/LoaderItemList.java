@@ -19,6 +19,7 @@
 
 package gregapi.load;
 
+import com.bioxx.tfc.api.TFCItems;
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.data.*;
 import gregapi.old.Textures;
@@ -2282,5 +2283,51 @@ public class LoaderItemList implements Runnable {
 		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(Items.chainmail_chestplate                     , 1, W));
 		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(Items.chainmail_leggings                       , 1, W));
 		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(Items.chainmail_boots                          , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(Items.iron_helmet                              , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(Items.iron_chestplate                          , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(Items.iron_leggings                            , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(Items.iron_boots                               , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(Items.golden_helmet                            , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(Items.golden_chestplate                        , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(Items.golden_leggings                          , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(Items.golden_boots                             , 1, W));
+
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.copperHelmet    , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.copperChestplate, 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.copperGreaves   , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.copperBoots     , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.bronzeHelmet    , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.bronzeChestplate, 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.bronzeGreaves   , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.bronzeBoots     , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.blackBronzeHelmet    , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.blackBronzeChestplate, 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.blackBronzeGreaves   , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.blackBronzeBoots     , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.bismuthBronzeHelmet    , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.bismuthBronzeChestplate, 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.bismuthBronzeGreaves   , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.bismuthBronzeBoots     , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.wroughtIronHelmet    , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.wroughtIronChestplate, 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.wroughtIronGreaves   , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.wroughtIronBoots     , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.steelHelmet    , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.steelChestplate, 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.steelGreaves   , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.steelBoots     , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.blackSteelHelmet    , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.blackSteelChestplate, 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.blackSteelGreaves   , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.blackSteelBoots     , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.redSteelHelmet    , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.redSteelChestplate, 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.redSteelGreaves   , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.redSteelBoots     , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.blueSteelHelmet    , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.blueSteelChestplate, 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.blueSteelGreaves   , 1, W));
+		ArmorsGT.HAZMATS_LIGHTNING              .add(ST.make(TFCItems.blueSteelBoots     , 1, W));
+
 	}
 }
