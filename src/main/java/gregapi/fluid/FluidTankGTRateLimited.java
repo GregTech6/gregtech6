@@ -19,7 +19,6 @@
 
 package gregapi.fluid;
 
-import gregapi.data.FL;
 import gregapi.tileentity.IRateLimitedTank;
 import gregapi.util.UT;
 import net.minecraft.nbt.NBTTagCompound;
@@ -87,22 +86,26 @@ public class FluidTankGTRateLimited extends FluidTankGT implements IRateLimitedT
 
 	@Override
 	public int fill(FluidStack aFluid) {
-		return (int) setLastInputRate2(super.fill(aFluid));
+		setLastInputRate2(aFluid);
+		return super.fill(aFluid);
 	}
 
 	@Override
 	public int fill(FluidStack aFluid, boolean aDoFill) {
-		return (int) setLastInputRate2(super.fill(aFluid, aDoFill));
+		setLastInputRate2(aFluid);
+		return super.fill(aFluid, aDoFill);
 	}
 
 	@Override
 	public long add(long aFilled) {
-		return setLastInputRate2(super.add(aFilled));
+		setLastInputRate2(aFilled);
+		return super.add(aFilled);
 	}
 
 	@Override
 	public long add(long aFilled, FluidStack aFluid) {
-		return setLastInputRate2(super.add(aFilled, aFluid));
+		setLastInputRate2(aFilled);
+		return super.add(aFilled, aFluid);
 	}
 
 	@Override
