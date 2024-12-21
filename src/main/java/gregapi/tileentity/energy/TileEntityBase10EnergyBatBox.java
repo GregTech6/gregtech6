@@ -19,12 +19,7 @@
 
 package gregapi.tileentity.energy;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
+import cn.kuzuanpa.ktfruaddon.api.tile.IMeterDetectable;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.IL;
@@ -47,6 +42,12 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -56,7 +57,7 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	public byte mActiveState = 0, mMode = 0;
 	public TagData mEnergyType = TD.Energy.QU;
 	public TagData mEnergyTypeOut = TD.Energy.QU;
-	public ArrayList<MeterData> receivedEnergy=new ArrayList<>(),receivedEnergyLast = new ArrayList<>();
+	public ArrayList<IMeterDetectable.MeterData> receivedEnergy=new ArrayList<>(),receivedEnergyLast = new ArrayList<>();
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
