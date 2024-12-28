@@ -19,6 +19,7 @@
 
 package gregapi.tileentity.energy;
 
+import cn.kuzuanpa.ktfruaddon.api.tile.IMeterDetectable;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.LH;
@@ -30,6 +31,8 @@ import gregapi.tileentity.behavior.TE_Behavior_Energy_Converter;
 import gregapi.tileentity.behavior.TE_Behavior_Energy_Stats;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.util.UT;
+import net.minecraft.entity.Entity;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -41,7 +44,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively {
+public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, IMeterDetectable {
 	protected boolean mStopped = F, mNegativeInput = F, oNegativeInput = F;
 	protected byte mExplosionPrevention = 0, mMode = 0;
 	
@@ -49,7 +52,7 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 	public TE_Behavior_Energy_Capacitor mStorage = null;
 	public TE_Behavior_Energy_Converter mConverter = null;
 	public TE_Behavior_Active_Trinary mActivity = null;
-	
+
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
@@ -143,7 +146,16 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 			overcharge(aSize, aEnergyType);
 		}
 	}
-	
+
+	@Override
+	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		if (aTool.equals(TOOL_unimeter) && isServerSide() && aChatReturn!=null) {
+			IMeterDetectable.sendReceiveEmitMessage(mConverter.mEnergyIN.receivedEnergyLast,mConverter.emittedEnergyLast,aChatReturn);
+			return 1;
+		}
+		return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+	}
+
 	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return (aEmitting?mConverter.mEnergyOUT:mConverter.mEnergyIN).isType(aEnergyType);}
 	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || (!mStopped && (mConverter.mWasteEnergy || (mConverter.mEmitsEnergy == mConverter.mCanEmitEnergy)))) && (SIDES_INVALID[aSide] || isInput (aSide)) && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
 	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return                                                                                                                         (SIDES_INVALID[aSide] || isOutput(aSide)) && super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}

@@ -19,21 +19,25 @@
 
 package gregapi.tileentity.behavior;
 
+import cn.kuzuanpa.ktfruaddon.api.tile.IMeterDetectable;
 import gregapi.data.TD;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.util.UT;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
+import java.util.ArrayList;
+
 import static gregapi.data.CS.*;
 
-public class TE_Behavior_Energy_Converter extends TE_Behavior {
+public class TE_Behavior_Energy_Converter extends TE_Behavior implements IMeterDetectable{
 	public TE_Behavior_Energy_Stats mEnergyIN, mEnergyOUT;
 	public TE_Behavior_Energy_Capacitor mStorage;
 	public boolean mWasteEnergy = F, mLimitConsumption = F, mOverloaded = F, mEmitsEnergy = F, mCanEmitEnergy = F, mSizeIrrelevant = F, mFast = F;
 	public long mMultiplier = 1;
 	public byte mFactor = 1;
-	
+	public ArrayList<IMeterDetectable.MeterData> emittedEnergy =new ArrayList<>(),emittedEnergyLast  = new ArrayList<>();
+
 	public TE_Behavior_Energy_Converter(TileEntity aTileEntity, NBTTagCompound aNBT, TE_Behavior_Energy_Capacitor aStorage, TE_Behavior_Energy_Stats aEnergyIN, TE_Behavior_Energy_Stats aEnergyOUT, long aMultiplier, boolean aWasteEnergy, boolean aNegativeOutput, boolean aLimitConsumption) {
 		super(aTileEntity, aNBT);
 		mStorage = aStorage;
@@ -42,7 +46,7 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 		mMultiplier = aMultiplier;
 		mWasteEnergy = aWasteEnergy;
 		mSizeIrrelevant = TD.Energy.ALL_SIZE_IRRELEVANT.contains(mEnergyOUT.mType);
-		mLimitConsumption = aLimitConsumption || TD.Energy.ALL_COMSUMPTION_LIMITED.contains(mEnergyIN.mType);
+		mLimitConsumption = true;
 		if (aNegativeOutput) mFactor = -1;
 	}
 	
@@ -59,6 +63,9 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 	}
 	
 	public boolean doConversion(long aTimer, TileEntity aEmitter, byte aSide, byte aMode, boolean aNegative) {
+		emittedEnergyLast = emittedEnergy;
+		emittedEnergy = new ArrayList<>();
+		mEnergyIN.onTick();
 		long tOutput = UT.Code.units(mStorage.mEnergy, mEnergyIN.mRec, mEnergyOUT.mRec, F);
 		if (aMode > 0) tOutput = Math.min(tOutput, UT.Code.units(mEnergyOUT.mMax, 16, 16-aMode, F));
 		mCanEmitEnergy = (tOutput >= mEnergyOUT.mMin);
@@ -79,12 +86,14 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 				long tEmittedPackets = (SIDES_VALID[aSide] ? ITileEntityEnergy.Util.emitEnergyToSide(mEnergyOUT.mType, aSide, aNegative ? -1 : 1,                     tOutput*mMultiplier, aEmitter) : ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyOUT.mType, aNegative ? -1 : 1,                     tOutput*mMultiplier, (ITileEntityEnergy)aEmitter));
 				if (tEmittedPackets > 0) {
 					if (!mWasteEnergy) mStorage.mEnergy -= UT.Code.units(tEmittedPackets, mEnergyOUT.mRec*mMultiplier, mEnergyIN.mRec, T);
+					emittedEnergy.add(new IMeterDetectable.MeterData(mEnergyOUT.mType, aNegative ? -1 : 1, tEmittedPackets));
 					mEmitsEnergy = T;
 				}
 			} else {
 				long tEmittedPackets = (SIDES_VALID[aSide] ? ITileEntityEnergy.Util.emitEnergyToSide(mEnergyOUT.mType, aSide, aNegative ? -tOutput*mFactor : tOutput*mFactor, mMultiplier, aEmitter) : ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyOUT.mType, aNegative ? -tOutput*mFactor : tOutput*mFactor, mMultiplier, (ITileEntityEnergy)aEmitter));
 				if (tEmittedPackets > 0) {
 					if (!mWasteEnergy) mStorage.mEnergy -= UT.Code.units(tEmittedPackets * tOutput, mEnergyOUT.mRec*mMultiplier, mEnergyIN.mRec, T);
+					emittedEnergy.add(new IMeterDetectable.MeterData(mEnergyOUT.mType, aNegative ? -tOutput*mFactor : tOutput*mFactor, tEmittedPackets));
 					mEmitsEnergy = T;
 				}
 			}
@@ -94,6 +103,9 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 	}
 	
 	public boolean doBipolar(long aTimer, TileEntity aEmitter, byte aSidePos, byte aSideNeg, byte aMode) {
+		emittedEnergyLast = emittedEnergy;
+		emittedEnergy = new ArrayList<>();
+		mEnergyIN.onTick();
 		long tOutput = UT.Code.units(mStorage.mEnergy, mEnergyIN.mRec, mEnergyOUT.mRec, F);
 		if (aMode > 0) tOutput = Math.min(tOutput, UT.Code.units(mEnergyOUT.mMax, 16, 16-aMode, F));
 		mCanEmitEnergy = (tOutput >= mEnergyOUT.mMin);
@@ -116,6 +128,8 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 				tEmittedPackets+= ITileEntityEnergy.Util.emitEnergyToSide(mEnergyOUT.mType, aSideNeg, 1,-tOutput*mMultiplier, aEmitter);
 				if (tEmittedPackets > 0) {
 					if (!mWasteEnergy) mStorage.mEnergy -= UT.Code.units(tEmittedPackets, mEnergyOUT.mRec*mMultiplier, mEnergyIN.mRec, T);
+					emittedEnergy.add(new IMeterDetectable.MeterData(mEnergyOUT.mType, 1, tOutput*mMultiplier));
+					emittedEnergy.add(new IMeterDetectable.MeterData(mEnergyOUT.mType, 1, -tOutput*mMultiplier));
 					mEmitsEnergy = T;
 				}
 			} else {
@@ -124,6 +138,8 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 				tEmittedPackets+= ITileEntityEnergy.Util.emitEnergyToSide(mEnergyOUT.mType, aSideNeg,-tOutput, mMultiplier, aEmitter);
 				if (tEmittedPackets > 0) {
 					if (!mWasteEnergy) mStorage.mEnergy -= UT.Code.units(tEmittedPackets * tOutput, mEnergyOUT.mRec*mMultiplier, mEnergyIN.mRec, T);
+					emittedEnergy.add(new IMeterDetectable.MeterData(mEnergyOUT.mType,  tOutput, mMultiplier));
+					emittedEnergy.add(new IMeterDetectable.MeterData(mEnergyOUT.mType, -tOutput, mMultiplier));
 					mEmitsEnergy = T;
 				}
 			}
@@ -133,6 +149,9 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 	}
 	
 	public boolean doTwinType(long aTimer, TileEntity aEmitter, byte aSide1, byte aSide2, byte aMode, TE_Behavior_Energy_Stats aEnergyOUT) {
+		emittedEnergyLast = emittedEnergy;
+		emittedEnergy = new ArrayList<>();
+		mEnergyIN.onTick();
 		long tOutput = UT.Code.units(mStorage.mEnergy, mEnergyIN.mRec, mEnergyOUT.mRec, F);
 		if (aMode > 0) tOutput = Math.min(tOutput, UT.Code.units(mEnergyOUT.mMax, 16, 16-aMode, F));
 		mCanEmitEnergy = (tOutput >= mEnergyOUT.mMin);
@@ -151,29 +170,35 @@ public class TE_Behavior_Energy_Converter extends TE_Behavior {
 			}
 			if (mSizeIrrelevant) {
 				long tEmittedPackets = ITileEntityEnergy.Util.emitEnergyToSide(mEnergyOUT.mType, aSide1, 1, tOutput*mMultiplier, aEmitter);
+				emittedEnergy.add(new IMeterDetectable.MeterData(mEnergyOUT.mType, 1, tOutput*mMultiplier));
 				if (!mWasteEnergy) mStorage.mEnergy -= UT.Code.units(tEmittedPackets, mEnergyOUT.mRec*mMultiplier, mEnergyIN.mRec, T);
 				mEmitsEnergy = (tEmittedPackets > 0);
 				
 				if (TD.Energy.ALL_SIZE_IRRELEVANT.contains(aEnergyOUT.mType)) {
 					tEmittedPackets = ITileEntityEnergy.Util.emitEnergyToSide(aEnergyOUT.mType, aSide2, 1, tOutput*mMultiplier, aEmitter);
+					emittedEnergy.add(new IMeterDetectable.MeterData(aEnergyOUT.mType,  1, tOutput*mMultiplier));
 					if (!mWasteEnergy) mStorage.mEnergy -= UT.Code.units(tEmittedPackets, aEnergyOUT.mRec*mMultiplier, mEnergyIN.mRec, T);
 					mEmitsEnergy = (tEmittedPackets > 0 || mEmitsEnergy);
 				} else {
 					tEmittedPackets = ITileEntityEnergy.Util.emitEnergyToSide(aEnergyOUT.mType, aSide2, tOutput*mFactor, mMultiplier, aEmitter);
+					emittedEnergy.add(new IMeterDetectable.MeterData(aEnergyOUT.mType,  tOutput*mFactor, mMultiplier));
 					if (!mWasteEnergy) mStorage.mEnergy -= UT.Code.units(tEmittedPackets * tOutput, aEnergyOUT.mRec*mMultiplier, mEnergyIN.mRec, T);
 					mEmitsEnergy = (tEmittedPackets > 0 || mEmitsEnergy);
 				}
 			} else {
 				long tEmittedPackets = ITileEntityEnergy.Util.emitEnergyToSide(mEnergyOUT.mType, aSide1, tOutput*mFactor, mMultiplier, aEmitter);
+				emittedEnergy.add(new IMeterDetectable.MeterData(mEnergyOUT.mType, tOutput*mFactor, mMultiplier));
 				if (!mWasteEnergy) mStorage.mEnergy -= UT.Code.units(tEmittedPackets * tOutput, mEnergyOUT.mRec*mMultiplier, mEnergyIN.mRec, T);
 				mEmitsEnergy = (tEmittedPackets > 0);
 				
 				if (TD.Energy.ALL_SIZE_IRRELEVANT.contains(aEnergyOUT.mType)) {
 					tEmittedPackets = ITileEntityEnergy.Util.emitEnergyToSide(aEnergyOUT.mType, aSide2, 1, tOutput*mMultiplier, aEmitter);
+					emittedEnergy.add(new IMeterDetectable.MeterData(aEnergyOUT.mType, 1, tOutput*mMultiplier));
 					if (!mWasteEnergy) mStorage.mEnergy -= UT.Code.units(tEmittedPackets, aEnergyOUT.mRec*mMultiplier, mEnergyIN.mRec, T);
 					mEmitsEnergy = (tEmittedPackets > 0 || mEmitsEnergy);
 				} else {
 					tEmittedPackets = ITileEntityEnergy.Util.emitEnergyToSide(aEnergyOUT.mType, aSide2, tOutput*mFactor, mMultiplier, aEmitter);
+					emittedEnergy.add(new IMeterDetectable.MeterData(aEnergyOUT.mType, tOutput*mFactor, mMultiplier));
 					if (!mWasteEnergy) mStorage.mEnergy -= UT.Code.units(tEmittedPackets * tOutput, aEnergyOUT.mRec*mMultiplier, mEnergyIN.mRec, T);
 					mEmitsEnergy = (tEmittedPackets > 0 || mEmitsEnergy);
 				}

@@ -19,11 +19,7 @@
 
 package gregapi.tileentity.behavior;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-
+import cn.kuzuanpa.ktfruaddon.api.tile.IMeterDetectable;
 import gregapi.code.TagData;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -32,11 +28,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-public class TE_Behavior_Energy_Stats extends TE_Behavior_Energy {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
+
+public class TE_Behavior_Energy_Stats extends TE_Behavior_Energy implements IMeterDetectable{
 	public long mRec, mMin, mMax, mAmount = 1;
 	public boolean mOverloaded = F;
 	public TE_Behavior_Energy_Capacitor mStorage;
-	
+	public ArrayList<IMeterDetectable.MeterData> receivedEnergy =new ArrayList<>(),receivedEnergyLast  = new ArrayList<>();
+
 	public TE_Behavior_Energy_Stats(TileEntity aTileEntity, NBTTagCompound aNBT, TagData aEnergyType, TE_Behavior_Energy_Capacitor aStorage, long aSizeMin, long aSizeRec, long aSizeMax) {
 		super(aTileEntity, aNBT, aEnergyType);
 		mStorage = aStorage; mMin = Math.abs(aSizeMin); mRec = Math.abs(aSizeRec); mMax = Math.abs(aSizeMax);
@@ -58,15 +62,21 @@ public class TE_Behavior_Energy_Stats extends TE_Behavior_Energy {
 		aList.add(aEmitting ? LH.getToolTipRedstoneFluxEmit(mType) : LH.getToolTipRedstoneFluxAccept(mType));
 	}
 
+	public void onTick(){
+		receivedEnergyLast = receivedEnergy;
+		receivedEnergy = new ArrayList<>();
+	}
 	public long doInject(long aSize, long aAmount, boolean aDoInject) {
 		aSize = Math.abs(aSize);
 		if (aSize > mMax) {
 			if (aDoInject) mOverloaded = T;
+			receivedEnergy.add(new IMeterDetectable.MeterData(mType, aSize, aAmount));
 			return aAmount;
 		}
 		if (mStorage == null || mStorage.mEnergy >= mStorage.mCapacity) return 0;
-		long tInput = Math.min(mStorage.mCapacity - mStorage.mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize));//Use floor Ampere to avoid overload
+		long tInput = Math.min(mStorage.mCapacity - mStorage.mEnergy, aSize * aAmount), tConsumed = Math.min(aAmount, (tInput/aSize) + (tInput%aSize!=0?1:0));
 		if (aDoInject) mStorage.mEnergy += tConsumed * aSize;
+		receivedEnergy.add(new IMeterDetectable.MeterData(mType, aSize, tConsumed));
 		return tConsumed;
 	}
 }
