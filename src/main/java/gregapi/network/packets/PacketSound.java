@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,7 +21,6 @@ package gregapi.network.packets;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
-
 import gregapi.network.INetworkHandler;
 import gregapi.util.UT;
 import net.minecraft.util.ChunkCoordinates;
@@ -72,6 +71,6 @@ public class PacketSound extends PacketCoordinates {
 	
 	@Override
 	public void process(IBlockAccess aWorld, INetworkHandler aNetworkHandler) {
-		UT.Sounds.play(mSoundName, 10, mSoundStrength, mSoundPitch, mX, mY, mZ);
+		UT.Sounds.play(mSoundName, 2, mSoundStrength, mSoundPitch, mX, mY, mZ);
 	}
 }
