@@ -300,8 +300,8 @@ public class CS {
 	, BIOMES_MARS           = new BiomeNameSet("Mars", "mars", "marsFlat")
 	, BIOMES_ASTEROIDS      = new BiomeNameSet("Asteroids", "asteroids")
 	, BIOMES_SPACE          = new BiomeNameSet("Space", "Alien Forest", "Moon", "mercury", "venus", "jupiter", "saturn", "uranus", "neptune", "pluto", "ceres", "eris", "europa", "io", "deimos", "phobos", "triton", "callisto", "ganymede", "rhea", "titan", "Hot Dry Rock", "Stormland", "CrystalChasms", "moon", "marsFlat", "Asteroids", "asteroids", "space", "DeepSwamp", "Marsh", "OceanSpires", "SpacePartiallySubmerged", "SpaceLowIslands", "SpaceRockyWaters", "SpaceMidHills", "SpaceHighPlateaus", "SpaceLowHills", "SpaceMidPlains", "SpaceLowPlains", "SpaceDeepOceans", "SpaceOceans", "SpaceShallowWaters", "SpaceDefault", "Pluto", "Pluto2", "Pluto3", "Pluto4", "Kuiper Belt", "Io", "IoAsh", "Haumea")
-	,/**Biomes usually in space but removed Moon Mars and Asteroids. This is to avoid multiple gen occurs in one place**/
-	BIOMES_PLANETS        = new BiomeNameSet("Alien Forest", "mercury", "venus", "jupiter", "saturn", "uranus", "neptune", "pluto", "ceres", "eris", "europa", "io", "deimos", "phobos", "triton", "callisto", "ganymede", "rhea", "titan", "Hot Dry Rock", "Stormland", "CrystalChasms", "DeepSwamp", "Marsh", "OceanSpires", "SpacePartiallySubmerged", "SpaceLowIslands", "SpaceRockyWaters", "SpaceMidHills", "SpaceHighPlateaus", "SpaceLowHills", "SpaceMidPlains", "SpaceLowPlains", "SpaceDeepOceans", "SpaceOceans", "SpaceShallowWaters", "SpaceDefault", "Pluto", "Pluto2", "Pluto3", "Pluto4", "Kuiper Belt", "Io", "IoAsh", "Haumea");
+	,/**Biomes usually in planets but removed Asteroids.**/
+	  BIOMES_PLANETS        = new BiomeNameSet(         "Alien Forest", "Moon", "mercury", "venus", "jupiter", "saturn", "uranus", "neptune", "pluto", "ceres", "eris", "europa", "io", "deimos", "phobos", "triton", "callisto", "ganymede", "rhea", "titan", "Hot Dry Rock", "Stormland", "CrystalChasms", "moon", "marsFlat",                                    "DeepSwamp", "Marsh", "OceanSpires", "SpacePartiallySubmerged", "SpaceLowIslands", "SpaceRockyWaters", "SpaceMidHills", "SpaceHighPlateaus", "SpaceLowHills", "SpaceMidPlains", "SpaceLowPlains", "SpaceDeepOceans", "SpaceOceans", "SpaceShallowWaters", "SpaceDefault", "Pluto", "Pluto2", "Pluto3", "Pluto4", "Kuiper Belt", "Io", "IoAsh", "Haumea");
 
 	// "Wasteland City", "Fens", "Carr", "Kakadu", "Scree", "Scrub", "Basin", "Badlands", "Outback", "Windy Island", "Cold Plains", "Cold Forest", "Hot Plains", "Hot Forest"
 	
@@ -947,58 +947,58 @@ public class CS {
 	/** Lists of all the active World generation Features by Dimension Type, these are getting initialised in Load! */
 	@SuppressWarnings("unchecked")
 	public static final List<WorldgenObject>
-	  GEN_OVERWORLD         = new ArrayListNoNulls<>()
-	, GEN_GT                = new ArrayListNoNulls<>()
-	, GEN_PFAA              = new ArrayListNoNulls<>()
-	, GEN_TFC               = new ArrayListNoNulls<>()
-	, GEN_NETHER            = new ArrayListNoNulls<>()
-	, GEN_AETHER            = new ArrayListNoNulls<>()
-	, GEN_END               = new ArrayListNoNulls<>()
-	, GEN_MOON              = new ArrayListNoNulls<>()
-	, GEN_MARS              = new ArrayListNoNulls<>()
-	, GEN_PLANETS           = new ArrayListNoNulls<>()
-	, GEN_ASTEROIDS         = new ArrayListNoNulls<>()
-	, GEN_TWILIGHT          = new ArrayListNoNulls<>()
-	, GEN_EREBUS            = new ArrayListNoNulls<>()
-	, GEN_BETWEENLANDS      = new ArrayListNoNulls<>()
-	, GEN_ATUM              = new ArrayListNoNulls<>()
-	, GEN_DEEPDARK          = new ArrayListNoNulls<>()
-	, GEN_ENVM              = new ArrayListNoNulls<>()
-	, GEN_ENVM_GT           = new ArrayListNoNulls<>()
-	, GEN_A97               = new ArrayListNoNulls<>()
-	, GEN_A97_GT            = new ArrayListNoNulls<>()
-	, GEN_CW2_AquaCavern    = new ArrayListNoNulls<>()
-	, GEN_CW2_AquaCavern_GT = new ArrayListNoNulls<>()
-	, GEN_CW2_Caveland      = new ArrayListNoNulls<>()
-	, GEN_CW2_Caveland_GT   = new ArrayListNoNulls<>()
-	, GEN_CW2_Cavenia       = new ArrayListNoNulls<>()
-	, GEN_CW2_Cavenia_GT    = new ArrayListNoNulls<>()
-	, GEN_CW2_Cavern        = new ArrayListNoNulls<>()
-	, GEN_CW2_Cavern_GT     = new ArrayListNoNulls<>()
-	, GEN_CW2_Caveworld     = new ArrayListNoNulls<>()
-	, GEN_CW2_Caveworld_GT  = new ArrayListNoNulls<>()
-	, GEN_ALFHEIM           = new ArrayListNoNulls<>()
-	, GEN_TROPICS           = new ArrayListNoNulls<>()
-	, GEN_CANDY             = new ArrayListNoNulls<>()
-	, GEN_DUCKEGGB          = new ArrayListNoNulls<>()
-	, GEN_DUCKEGGC          = new ArrayListNoNulls<>()
-	, GEN_MERCURY           = new ArrayListNoNulls<>()
-	, GEN_VENUS             = new ArrayListNoNulls<>()
-	, GEN_EARTH             = new ArrayListNoNulls<>()
-	, GEN_URANUS            = new ArrayListNoNulls<>()
-	, GEN_NEPTUNE           = new ArrayListNoNulls<>()
-	, GEN_NO_12_1           = new ArrayListNoNulls<>()
-	, GEN_NO_12_2           = new ArrayListNoNulls<>()
-	, GEN_NO_93_1           = new ArrayListNoNulls<>()
-	, GEN_NO_93_2           = new ArrayListNoNulls<>()
-	, GEN_NO_43_1           = new ArrayListNoNulls<>()
-	, GEN_NO_24_1           = new ArrayListNoNulls<>()
-	, GEN_NO_24_2           = new ArrayListNoNulls<>()
-	, GEN_DRACONA           = new ArrayListNoNulls<>()
-	, GEN_ENDEST            = new ArrayListNoNulls<>()
-	, GEN_GEMS[]            = new List[] {GEN_OVERWORLD        , GEN_PFAA, GEN_ENVM,              GEN_A97,             GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_AETHER}
-	, GEN_FLOOR[]           = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_ENVM_GT, GEN_A97, GEN_A97_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_DEEPDARK, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_TWILIGHT, GEN_ALFHEIM, GEN_TROPICS, GEN_CANDY, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT}
-	, GEN_ALL[]             = new List[] {GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_ENVM, GEN_ENVM_GT, GEN_A97, GEN_A97_GT, GEN_EREBUS, GEN_BETWEENLANDS, GEN_ATUM, GEN_MARS, GEN_DEEPDARK, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_TWILIGHT, GEN_ALFHEIM, GEN_TROPICS, GEN_CANDY, GEN_CW2_AquaCavern, GEN_CW2_AquaCavern_GT, GEN_CW2_Caveland, GEN_CW2_Caveland_GT, GEN_CW2_Cavenia, GEN_CW2_Cavenia_GT, GEN_CW2_Cavern, GEN_CW2_Cavern_GT, GEN_CW2_Caveworld, GEN_CW2_Caveworld_GT, GEN_AETHER, GEN_END, GEN_PLANETS, GEN_ASTEROIDS}
+	                      GEN_OVERWORLD         = new ArrayListNoNulls<>()
+	,                     GEN_GT                = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_PFAA              = new ArrayListNoNulls<>()
+	,                     GEN_TFC               = new ArrayListNoNulls<>()
+	,                     GEN_NETHER            = new ArrayListNoNulls<>()
+	,                     GEN_AETHER            = new ArrayListNoNulls<>()
+	,                     GEN_END               = new ArrayListNoNulls<>()
+	,                     GEN_MOON              = new ArrayListNoNulls<>()
+	,                     GEN_MARS              = new ArrayListNoNulls<>()
+	,                     GEN_PLANETS           = new ArrayListNoNulls<>()
+	,                     GEN_ASTEROIDS         = new ArrayListNoNulls<>()
+	,                     GEN_TWILIGHT          = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_EREBUS            = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_BETWEENLANDS      = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_ATUM              = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_DEEPDARK          = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_ENVM              = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_ENVM_GT           = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_A97               = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_A97_GT            = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_CW2_AquaCavern    = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_CW2_AquaCavern_GT = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_CW2_Caveland      = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_CW2_Caveland_GT   = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_CW2_Cavenia       = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_CW2_Cavenia_GT    = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_CW2_Cavern        = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_CW2_Cavern_GT     = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_CW2_Caveworld     = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_CW2_Caveworld_GT  = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_ALFHEIM           = new ArrayListNoNulls<>()
+	,                     GEN_TROPICS           = new ArrayListNoNulls<>()
+	, /**Unused in TFRU**/GEN_CANDY             = new ArrayListNoNulls<>()
+	,                     GEN_DUCKEGGB          = new ArrayListNoNulls<>()
+	,                     GEN_DUCKEGGC          = new ArrayListNoNulls<>()
+	,                     GEN_MERCURY           = new ArrayListNoNulls<>()
+	,                     GEN_VENUS             = new ArrayListNoNulls<>()
+	,                     GEN_EARTH             = new ArrayListNoNulls<>()
+	,                     GEN_URANUS            = new ArrayListNoNulls<>()
+	,                     GEN_NEPTUNE           = new ArrayListNoNulls<>()
+	,                     GEN_NO_12_1           = new ArrayListNoNulls<>()
+	,                     GEN_NO_12_2           = new ArrayListNoNulls<>()
+	,                     GEN_NO_93_1           = new ArrayListNoNulls<>()
+	,                     GEN_NO_93_2           = new ArrayListNoNulls<>()
+	,                     GEN_NO_43_1           = new ArrayListNoNulls<>()
+	,                     GEN_NO_24_1           = new ArrayListNoNulls<>()
+	,                     GEN_NO_24_2           = new ArrayListNoNulls<>()
+	,                     GEN_DRACONA           = new ArrayListNoNulls<>()
+	,                     GEN_ENDEST            = new ArrayListNoNulls<>()
+	, /**all gen can gen Gems**/             GEN_GEMS[]            = new List[] {GEN_OVERWORLD        , GEN_MARS, GEN_AETHER}
+	, /**Common planet generators**/         GEN_FLOOR[]           = new List[] {GEN_OVERWORLD, GEN_GT, GEN_MARS, GEN_DEEPDARK, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_TWILIGHT, GEN_ALFHEIM, GEN_TROPICS, GEN_CANDY, GEN_DUCKEGGB, GEN_DUCKEGGC, GEN_MERCURY, GEN_VENUS, GEN_EARTH, GEN_URANUS, GEN_NEPTUNE, GEN_NO_12_1, GEN_NO_12_2, GEN_NO_93_1, GEN_NO_93_2, GEN_NO_43_1, GEN_NO_24_1, GEN_NO_24_2, GEN_DRACONA, GEN_ENDEST }
+	, /**All generators, including astroid**/GEN_ALL[]             = new List[] {GEN_OVERWORLD, GEN_GT, GEN_MARS, GEN_DEEPDARK, GEN_TFC, GEN_NETHER, GEN_MOON, GEN_TWILIGHT, GEN_ALFHEIM, GEN_TROPICS, GEN_CANDY, GEN_DUCKEGGB, GEN_DUCKEGGC, GEN_MERCURY, GEN_VENUS, GEN_EARTH, GEN_URANUS, GEN_NEPTUNE, GEN_NO_12_1, GEN_NO_12_2, GEN_NO_93_1, GEN_NO_93_2, GEN_NO_43_1, GEN_NO_24_1, GEN_NO_24_2, GEN_DRACONA, GEN_ENDEST , GEN_AETHER, GEN_END, GEN_PLANETS, GEN_ASTEROIDS}
 	;
 	
 	/** Lists of all the active Large Ore Vein generation by Dimension Type, these are getting initialised in Load! */
@@ -1045,8 +1045,7 @@ public class CS {
 	, ORE_NO_24_2           = new ArrayListNoNulls<>()
 	, ORE_DRACONA           = new ArrayListNoNulls<>()
 	, ORE_ENDEST            = new ArrayListNoNulls<>()
-	, ORE_FLOOR[]           = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_ENVM, ORE_A97, ORE_TFC, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY, ORE_CW2_AquaCavern, ORE_CW2_Caveland, ORE_CW2_Cavenia, ORE_CW2_Cavern, ORE_CW2_Caveworld}
-	, ORE_ALL[]             = new List[] {ORE_OVERWORLD, ORE_PFAA, ORE_ENVM, ORE_A97, ORE_TFC, ORE_NETHER, ORE_MOON, ORE_MARS, ORE_TWILIGHT, ORE_EREBUS, ORE_BETWEENLANDS, ORE_ATUM, ORE_ALFHEIM, ORE_DEEPDARK, ORE_TROPICS, ORE_CANDY, ORE_CW2_AquaCavern, ORE_CW2_Caveland, ORE_CW2_Cavenia, ORE_CW2_Cavern, ORE_CW2_Caveworld, ORE_AETHER, ORE_END, ORE_PLANETS, ORE_ASTEROIDS}
+	, ORE_ALL[]             = new List[] {ORE_OVERWORLD, ORE_MARS, ORE_TFC, ORE_NETHER, ORE_MOON, ORE_TWILIGHT, ORE_ALFHEIM, ORE_TROPICS, ORE_CANDY, ORE_DUCKEGGB, ORE_DUCKEGGC, ORE_MERCURY, ORE_VENUS, ORE_EARTH, ORE_URANUS, ORE_NEPTUNE, ORE_NO_12_1, ORE_NO_12_2, ORE_NO_93_1, ORE_NO_93_2, ORE_NO_43_1, ORE_NO_24_1, ORE_NO_24_2, ORE_DRACONA, ORE_ENDEST , ORE_AETHER, ORE_END, ORE_PLANETS, ORE_ASTEROIDS}
 	;
 	
 	/** For Internal Usage. Even though after 2 years I still don't use this one... */

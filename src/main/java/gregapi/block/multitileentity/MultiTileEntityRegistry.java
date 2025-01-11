@@ -79,6 +79,8 @@ import static gregapi.data.CS.*;
 public class MultiTileEntityRegistry {
 	private static final HashMap<String, MultiTileEntityRegistry> NAMED_REGISTRIES = new HashMap<>();
 	private static final ItemStackMap<ItemStackContainer, MultiTileEntityRegistry> REGISTRIES = new ItemStackMap<>();
+	/**Minecraft or Forge damn remaps Items and Blocks ID on Server start, This will hold ids before that remap.**/
+	public static final HashMap<Integer, MultiTileEntityRegistry> UnRemapped_Registries = new HashMap<>();
 	private static final HashSetNoNulls<Class<?>> sRegisteredTileEntities = new HashSetNoNulls<>();
 	private static final HashSetNoNulls<String> sRegisteredTileEntityClassNames = new HashSetNoNulls<>();
 	private final HashSetNoNulls<Class<?>> mRegisteredTileEntities = new HashSetNoNulls<>();
@@ -86,7 +88,8 @@ public class MultiTileEntityRegistry {
 	public HashMap<Short, CreativeTab> mCreativeTabs = new HashMap<>();
 	public Map<Short, MultiTileEntityClassContainer> mRegistry = new HashMap<>();
 	public List<MultiTileEntityClassContainer> mRegistrations = new ArrayListNoNulls<>();
-	
+
+	public final int initID;
 	public final String mNameInternal;
 	public final MultiTileEntityBlockInternal mBlock;
 	
@@ -110,11 +113,18 @@ public class MultiTileEntityRegistry {
 		if (GAPI.mStartedInit) throw new IllegalStateException("The MultiTileEntity Registry must be initialised at the Preload Phase and not later, because it relies on an ItemBlock being created!");
 		mNameInternal = aNameInternal;
 		mBlock = aBlock;
+		initID = ST.id(mBlock);
 		mBlock.mMultiTileEntityRegistry = this;
+		UnRemapped_Registries.put(initID, this);
 		REGISTRIES.put(mBlock, W, this);
 		NAMED_REGISTRIES.put(mNameInternal, this);
 	}
-	
+
+	/** Whatever you do, DO NOT GET THE UTTERLY RETARDED IDEA OF ADDING YOUR MULTITILEENTITIES TO MY OWN REGISTRY!!! Create your own instance! */
+	public static MultiTileEntityRegistry getRegistryByUnRemappedID(int id) {
+		return UnRemapped_Registries.get(id);
+	}
+
 	/** Whatever you do, DO NOT GET THE UTTERLY RETARDED IDEA OF ADDING YOUR MULTITILEENTITIES TO MY OWN REGISTRY!!! Create your own instance! */
 	public static MultiTileEntityRegistry getRegistry(int aRegistryID) {
 		return REGISTRIES.get(new ItemStackContainer(Item.getItemById(aRegistryID), 1, W));
@@ -140,7 +150,10 @@ public class MultiTileEntityRegistry {
 		if (tClassContainer == null) return null;
 		return tClassContainer.mCanonicalTileEntity;
 	}
-	
+
+	/** Returns the MultiTileEntityRegistry ID that used in init phrase. */
+	public int initID() {return initID;}
+
 	/** Returns the MultiTileEntityRegistry ID that is currently used by this World. */
 	public int currentID() {return ST.id(mBlock);}
 	

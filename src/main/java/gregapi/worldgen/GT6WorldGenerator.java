@@ -19,12 +19,6 @@
 
 package gregapi.worldgen;
 
-import static gregapi.data.CS.*;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.BiomeNameSet;
 import gregapi.util.WD;
@@ -33,6 +27,12 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -123,6 +123,7 @@ public class GT6WorldGenerator {
 		BiomeGenBase aBiome = aWorld.getBiomeGenForCoords(aX+7, aZ+7);
 		if (aBiome == null || BIOMES_VOID.contains(aBiome.biomeName)) return;
 
+		int dimID = aWorld.provider.dimensionId;
 		//if (BIOMES_EREBUS.contains(aBiome.biomeName)) {
 		//	generate(new WorldGenContainer(GEN_EREBUS, ORE_EREBUS, DIM_EREBUS, aWorld, aX, aZ));
 		//	return;
@@ -136,11 +137,11 @@ public class GT6WorldGenerator {
 		if (BIOMES_ASTEROIDS.contains(aBiome.biomeName)) {
 			generate(new WorldGenContainer(GEN_ASTEROIDS, ORE_ASTEROIDS, DIM_ASTEROIDS, aWorld, aX, aZ));
 		}
-		if (BIOMES_PLANETS.contains(aBiome.biomeName)) {
+		if (aWorld.provider.dimensionId != DIM_OVERWORLD && aWorld.provider.dimensionId != DIM_NETHER && aWorld.provider.dimensionId != DIM_END) {
 			generate(new WorldGenContainer(GEN_PLANETS, ORE_PLANETS, DIM_PLANETS, aWorld, aX, aZ));
 		}
 
-		switch(aWorld.provider.dimensionId) {
+		switch(dimID) {
 		case -2147483648  : return;
 		case DIM_OVERWORLD: generate(new WorldGenContainer(PFAA ? GEN_PFAA : GENERATE_STONE ? GEN_GT : GEN_OVERWORLD, PFAA ? ORE_PFAA : GENERATE_STONE ? null : ORE_OVERWORLD, DIM_OVERWORLD, aWorld, aX, aZ)); return;
 		case DIM_NETHER   : generate(new WorldGenContainer(GEN_NETHER, ORE_NETHER, DIM_NETHER, aWorld, aX, aZ)); return;

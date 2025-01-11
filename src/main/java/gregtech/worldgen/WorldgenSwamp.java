@@ -19,13 +19,6 @@
 
 package gregtech.worldgen;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
-import gregapi.data.CS.BlocksGT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import gregtech.blocks.fluids.BlockSwamp;
@@ -36,6 +29,12 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
+
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -69,7 +68,8 @@ public class WorldgenSwamp extends WorldgenObject {
 					tPlacedNone = F;
 					
 					BlockSwamp.PLACEMENT_ALLOWED = T;
-					if (!aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Swamp, 0, 0)) {
+					if (!aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Swamp, 0, 0) && aWorld.getBlock(aMinX+tX, tY, aMinZ+tZ) != BlocksGT.Swamp) {
+						System.out.println("Failed to generate Water at: "+aMinX+tX+"/"+tY+"/"+aMinZ+tZ+"/"+aWorld.getBlock(aMinX+tX, tY, aMinZ+tZ));
 						aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, Blocks.water, 0, 0);
 						aChunk.lastSaveTime = Long.MAX_VALUE;
 						return F;
