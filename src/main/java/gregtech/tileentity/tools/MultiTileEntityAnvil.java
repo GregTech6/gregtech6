@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -125,7 +125,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 				mDurability -= tDurability;
 				if (mDurability <= 0) {
 					UT.Sounds.send(SFX.MC_BREAK, this);
-					ST.drop(worldObj, getCoords(), OP.scrapGt.mat(mMaterial, 48+rng(16))); // Drops up to 63 Scraps, so 7 Units.
+					ST.drop(worldObj, getCoords(), OP.scrapGt.mat(mMaterial.mTargetSmashing.mMaterial, 48+rng(16))); // Drops up to 63 Scraps, so 7 Units.
 					setToAir();
 				}
 				updateInventory();
