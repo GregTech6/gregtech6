@@ -331,14 +331,14 @@ public class Loader_Recipes_Chem implements Runnable {
 		
 		RM.Distillery       .addRecipe1(T, 16,  24, ST.tag(0), FL.Biomass       .make( 40), FL.Reikanol.make(12, FL.BioEthanol), FL.DistW.make(20));
 		RM.Distillery       .addRecipe1(T, 16,  24, ST.tag(0), FL.BiomassIC2    .make( 40), FL.Reikanol.make(12, FL.BioEthanol), FL.DistW.make(20));
-		RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_ExtraHeavy.make( 25), FL.Fuel.make(35), FL.lube(50));
-		RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_Heavy     .make( 25), FL.Fuel.make(30), FL.lube(40)); if (FL.Oil_Heavy2.exists())
-		RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_Heavy2    .make( 25), FL.Fuel.make(30), FL.lube(40));
-		RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_Medium    .make( 25), FL.Fuel.make(25), FL.lube(25));
-		RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_Normal    .make( 25), FL.Fuel.make(25), FL.lube(25)); if (FL.Oil_HotCrude.exists())
-		RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_HotCrude  .make( 25), FL.Fuel.make(25), FL.lube(25));
-		RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_Light     .make( 25), FL.Fuel.make(15), FL.lube(15)); if (FL.Oil_Light2.exists())
-		RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_Light2    .make( 25), FL.Fuel.make(15), FL.lube(15));
+		//RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_ExtraHeavy.make( 25), FL.Fuel.make(35), FL.lube(50));
+		//RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_Heavy     .make( 25), FL.Fuel.make(30), FL.lube(40)); if (FL.Oil_Heavy2.exists())
+		//RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_Heavy2    .make( 25), FL.Fuel.make(30), FL.lube(40));
+		//RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_Medium    .make( 25), FL.Fuel.make(25), FL.lube(25));
+		//RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_Normal    .make( 25), FL.Fuel.make(25), FL.lube(25)); if (FL.Oil_HotCrude.exists())
+		//RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_HotCrude  .make( 25), FL.Fuel.make(25), FL.lube(25));
+		//RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_Light     .make( 25), FL.Fuel.make(15), FL.lube(15)); if (FL.Oil_Light2.exists())
+		//RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_Light2    .make( 25), FL.Fuel.make(15), FL.lube(15));
 		RM.Distillery       .addRecipe1(T, 16,  16, ST.tag(0), FL.Oil_Soulsand  .make( 25), FL.Fuel.make(10), FL.lube(40));
 		
 		
