@@ -1272,6 +1272,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		if (mLiquid == null) return FL.Error.make(1);
 		FluidStack rFluid = mLiquid.copy();
 		rFluid.amount = (int)UT.Code.units(aMaterialAmount, mLiquidUnit, rFluid.amount, aRoundUp);
+		if(rFluid.amount == 0 && aMaterialAmount != 0)ERR.println("A too small amount of "+this+" was requested, resulting in a zero amount of "+rFluid+"!");
 		return rFluid;
 	}
 	
@@ -1280,6 +1281,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		if (mGas == null) return FL.Error.make(1);
 		FluidStack rFluid = mGas.copy();
 		rFluid.amount = (int)UT.Code.units(aMaterialAmount, mGasUnit, rFluid.amount, aRoundUp);
+		if(rFluid.amount == 0 && aMaterialAmount != 0)ERR.println("A too small amount of "+this+" was requested, resulting in a zero amount of "+rFluid+"!");
 		return rFluid;
 	}
 	
@@ -1288,6 +1290,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 		if (mPlasma == null) return FL.Error.make(1);
 		FluidStack rFluid = mPlasma.copy();
 		rFluid.amount = (int)UT.Code.units(aMaterialAmount, mPlasmaUnit, rFluid.amount, aRoundUp);
+		if(rFluid.amount == 0 && aMaterialAmount != 0)ERR.println("A too small amount of "+this+" was requested, resulting in a zero amount of "+rFluid+"!");
 		return rFluid;
 	}
 	
