@@ -33,7 +33,6 @@ import gregtech.items.behaviors.Behavior_DataStorage;
 import gregtech.items.behaviors.Behavior_DataStorage16;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 
 import static gregapi.data.CS.*;
@@ -470,7 +469,7 @@ public class MultiItemTechnological extends MultiItemRandomWithCompat {
 		
 		
 		IL.Comp_Laser_Gas_Empty            .set(addItem(tLastID = 11000, "Empty Gas Laser Emitter"          , "For Electric Lasers"                             , TC.stack(TC.LUX, 1), TC.stack(TC.VACUOS, 2)));
-		CR.shaped(IL.Comp_Laser_Gas_Empty.get(1), CR.DEF_REV_NCC, "CWM", "WGx", "MTd", 'W', MT.DATA.CABLES_01[2], 'C', OD_CIRCUITS[2], 'M', OP.plate.dat(MT.Ag), 'T', OP.screw.dat(MT.StainlessSteel), 'G', OD.blockGlassColorless);
+		CR.shaped(IL.Comp_Laser_Gas_Empty.get(1), CR.DEF_REV_NCC, "CWM", "WGx", "MTd", 'W', MT.DATA.CABLES_01[2], 'C', OD_CIRCUITS[1], 'M', OP.plate.dat(MT.Ag), 'T', OP.screw.dat(MT.StainlessSteel), 'G', OD.blockGlassColorless);
 		
 		IL.Comp_Laser_Gas_He               .set(addItem(tLastID = 11001, "Helium Laser Emitter"             , "Purpose: Weak Optical Appliances"                , TC.stack(TC.LUX, 2), TC.stack(TC.AER, 1), OM.data(IL.Comp_Laser_Gas_Empty.get(1))));
 		IL.Comp_Laser_Gas_Ne               .set(addItem(tLastID = 11002, "Neon Laser Emitter"               , "Purpose: Weak Optical Appliances"                , TC.stack(TC.LUX, 2), TC.stack(TC.AER, 1), OM.data(IL.Comp_Laser_Gas_Empty.get(1))));
