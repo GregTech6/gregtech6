@@ -298,6 +298,7 @@ public class MT {
 	/** Making the Table a little bit more overviewable. DO NOT USE THESE FUNCTIONS YOURSELF!!! Use "OreDictMaterial.createMaterial(YOUR-ID-AS-SPECIFIED-IN-THE-ID-RANGES, OREDICT-NAME, LOCALISED-NAME)" */
 	static OreDictMaterial wood(int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA, Object... aRandomData)  {
 		OreDictMaterial rMaterial = create(aID, aNameOreDict, aSets, aR, aG, aB, aA, aRandomData, G_WOOD, ANY.Wood, ANY.WoodPlastic, WOOD, MORTAR);
+		rMaterial.visDefault();
 		String tPlank = "plank"+rMaterial.mNameInternal;
 		OreDictManager.INSTANCE.addAutoBlackListing(tPlank);
 		OreDictManager.INSTANCE.addReRegistration(tPlank, OD.plankAnyWood);
@@ -310,6 +311,7 @@ public class MT {
 	/** Making the Table a little bit more overviewable. DO NOT USE THESE FUNCTIONS YOURSELF!!! Use "OreDictMaterial.createMaterial(YOUR-ID-AS-SPECIFIED-IN-THE-ID-RANGES, OREDICT-NAME, LOCALISED-NAME)" */
 	static OreDictMaterial woodnormal(int aID, String aNameOreDict, String aLocal, long aR, long aG, long aB, double aSpeed, long aDurability, Object... aRandomData) {
 		OreDictMaterial rMaterial = create(aID, aNameOreDict, SET_WOOD, aR, aG, aB, 255, aRandomData, G_WOOD, ANY.Wood, ANY.WoodPlastic, ANY.WoodNormal, ANY.WoodDefault, ANY.WoodUntreated, WOOD, MORTAR, TICKS_PER_SMELT/2, FLAMMABLE, APPROXIMATE).setLocal(aLocal).uumMcfg( 0, C, 6*U, H2O,15*U).aspects(TC.ARBOR, 1).setBurning(Ash, U9).setSmelting(Ash, U4).qual(1, aSpeed, aDurability, 0).heat(400, 500);
+		rMaterial.visDefault();
 		String tPlank = "plank"+rMaterial.mNameInternal, tStick = "stick"+rMaterial.mNameInternal;
 		OreDictManager.INSTANCE.addAutoBlackListing(tPlank);
 		OreDictManager.INSTANCE.addReRegistration(tStick, OD.stickWood);
@@ -322,6 +324,7 @@ public class MT {
 	/** Making the Table a little bit more overviewable. DO NOT USE THESE FUNCTIONS YOURSELF!!! Use "OreDictMaterial.createMaterial(YOUR-ID-AS-SPECIFIED-IN-THE-ID-RANGES, OREDICT-NAME, LOCALISED-NAME)" */
 	static OreDictMaterial stone(int aID, String aNameOreDict, TextureSet[] aSets, long aR, long aG, long aB, long aA, Object... aRandomData)  {
 		OreDictMaterial rMaterial = create(aID, aNameOreDict, aSets, aR, aG, aB, aA, aRandomData, G_STONE, ANY.Stone, STONE, BRITTLE, MORTAR, FURNACE, EXTRUDER, EXTRUDER_SIMPLE);
+		rMaterial.visDefault();
 		String tStone = "stone"+rMaterial.mNameInternal;
 		OreDictManager.INSTANCE.addAutoBlackListing(tStone);
 		OreDictManager.INSTANCE.setAutomaticItemData(tStone, new OreDictItemData(rMaterial, "stoneNetherbrick".equalsIgnoreCase(tStone) ? U*4 : U*9));

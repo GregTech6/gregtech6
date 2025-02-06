@@ -131,7 +131,7 @@ public final class OreDictManager {
 	
 	private Set<IOreDictListenerEvent> mBufferedListeners1 = new HashSetNoNulls<>();
 	private void addListenerInternal(IOreDictListenerEvent aListener) {
-		if (mGlobalOreDictListeners.add(aListener)) for (OreDictRegistrationContainer tEvent : mGlobalRegistrations) aListener.onOreRegistration(tEvent);
+		if (mGlobalOreDictListeners.add(aListener)) for (OreDictRegistrationContainer tEvent : mGlobalRegistrations) if(!tEvent.mMaterial.mHidden) aListener.onOreRegistration(tEvent);
 	}
 	
 	/**
@@ -454,12 +454,14 @@ public final class OreDictManager {
 		OreDictRegistrationContainer tRegistration = new OreDictRegistrationContainer(aPrefix, aMaterial, aEvent.Name, aEvent.Ore, aEvent, aModID, aRegName, aNotAlreadyRegisteredName);
 		
 		// Global Listeners. Those are usually direct Name->Recipe Systems, meaning they should have priority over Prefix based Stuff.
-		for (IOreDictListenerEvent tListener : mGlobalOreDictListeners) tListener.onOreRegistration(tRegistration);
+		for (IOreDictListenerEvent tListener : mGlobalOreDictListeners) if(!tRegistration.mMaterial.mHidden) tListener.onOreRegistration(tRegistration);
+
+		if(tRegistration.mMaterial.mHidden)ERR.println("Blocked hidden material registration: " + tRegistration.mMaterial.mNameInternal + " (" + tRegistration.mMaterial.mNameLocal + ")");
 		
 		// Prefix Stuff comes after Global Stuff
 		if (aPrefix != null) aPrefix.onOreRegistration(tRegistration);
-		
-		mGlobalRegistrations.add(tRegistration);
+
+		if(!tRegistration.mMaterial.mHidden) mGlobalRegistrations.add(tRegistration);
 	}
 	
 	private final Map<String, ItemStack> sName2StackMap = new HashMap<>();

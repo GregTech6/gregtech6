@@ -640,7 +640,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		
 		RM.Polarizer    .add(new RecipeMapHandlerMaterial(MT.Nd, NF, 128, 144, NF, MT.NeodymiumMagnetic, NI, T, tConditionP));
 		
-		for (OreDictMaterial tMaterial : ANY.WoodUntreated.mToThis) {
+		for (OreDictMaterial tMaterial : ANY.WoodUntreated.mToThis) if(!tMaterial.mHidden){
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMaterial, FL.Oil_Seed     .make( 100),   0, 144, NF, MT.WoodTreated , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMaterial, FL.Oil_Lin      .make( 100),   0, 144, NF, MT.WoodTreated , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMaterial, FL.Oil_Hemp     .make( 100),   0, 144, NF, MT.WoodTreated , NI, T, tConditionP));
@@ -731,47 +731,47 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.MeteoflameRedSteel     , NF                                ,   0,   1, NF, MT.MeteoricRedSteel     , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.MeteoflameSteel        , NF                                ,   0,   1, NF, MT.MeteoricSteel        , NI, T, tConditionP));
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(MT.FlamascusSteel         , NF                                ,   0,   1, NF, MT.DamascusSteel        , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.WroughtIron, MT.MeteoricIron, MT.IronMagnetic, MT.Meteorite, MT.IronCompressed, MT.IronCast, MT.Thaumium, MT.Enori, MT.Manasteel})
+		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.WroughtIron, MT.MeteoricIron, MT.IronMagnetic, MT.Meteorite, MT.IronCompressed, MT.IronCast, MT.Thaumium, MT.Enori, MT.Manasteel}) if(!tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Fe                   , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.MeteoricSteel, MT.SteelMagnetic, MT.Knightmetal, MT.FierySteel})
+		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.MeteoricSteel, MT.SteelMagnetic, MT.Knightmetal, MT.FierySteel}) if(!tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Steel                , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.STONES.Betweenstone, MT.STONES.Pitstone, MT.STONES.Umber, MT.STONES.Diorite, MT.STONES.Redrock, MT.STONES.GraniteBlack, MT.STONES.GraniteRed, MT.STONES.Granite, MT.STONES.Limestone, MT.STONES.Marble, MT.STONES.Basalt, MT.STONES.Gabbro, MT.Concrete, MT.STONES.Eclogite, MT.STONES.Shale, MT.STONES.Andesite, MT.STONES.Dacite, MT.STONES.Chert, MT.STONES.Blueschist, MT.Epidote, MT.STONES.Migmatite, MT.STONES.Quartzite, MT.STONES.Gneiss, MT.STONES.Greenschist, MT.STONES.Greywacke, MT.STONES.Komatiite, MT.STONES.Kimberlite, MT.STONES.Siltstone, MT.STONES.Rhyolite, MT.STONES.MoonRock, MT.STONES.MoonTurf, MT.STONES.MarsRock, MT.STONES.MarsSand, MT.STONES.SpaceRock, MT.STONES.Livingrock, MT.STONES.Deadrock, MT.STONES.Holystone})
+		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.STONES.Betweenstone, MT.STONES.Pitstone, MT.STONES.Umber, MT.STONES.Diorite, MT.STONES.Redrock, MT.STONES.GraniteBlack, MT.STONES.GraniteRed, MT.STONES.Granite, MT.STONES.Limestone, MT.STONES.Marble, MT.STONES.Basalt, MT.STONES.Gabbro, MT.Concrete, MT.STONES.Eclogite, MT.STONES.Shale, MT.STONES.Andesite, MT.STONES.Dacite, MT.STONES.Chert, MT.STONES.Blueschist, MT.Epidote, MT.STONES.Migmatite, MT.STONES.Quartzite, MT.STONES.Gneiss, MT.STONES.Greenschist, MT.STONES.Greywacke, MT.STONES.Komatiite, MT.STONES.Kimberlite, MT.STONES.Siltstone, MT.STONES.Rhyolite, MT.STONES.MoonRock, MT.STONES.MoonTurf, MT.STONES.MarsRock, MT.STONES.MarsSand, MT.STONES.SpaceRock, MT.STONES.Livingrock, MT.STONES.Deadrock, MT.STONES.Holystone}) if(!tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Stone                , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Oilshale})
+		for (OreDictMaterial tMaterial : new OreDictMaterial[] {MT.Oilshale}) if(!tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.STONES.Shale         , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.Ash.mToThis) if (tMaterial != MT.Ash)
+		for (OreDictMaterial tMaterial : ANY.Ash.mToThis) if (tMaterial != MT.Ash && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Ash                  , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.Diamond.mToThis) if (tMaterial != MT.Diamond)
+		for (OreDictMaterial tMaterial : ANY.Diamond.mToThis) if (tMaterial != MT.Diamond && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Diamond              , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.Sapphire.mToThis) if (tMaterial != MT.Sapphire)
+		for (OreDictMaterial tMaterial : ANY.Sapphire.mToThis) if (tMaterial != MT.Sapphire && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Sapphire             , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.Emerald.mToThis) if (tMaterial != MT.Emerald)
+		for (OreDictMaterial tMaterial : ANY.Emerald.mToThis) if (tMaterial != MT.Emerald && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Emerald              , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.Amethyst.mToThis) if (tMaterial != MT.Amethyst)
+		for (OreDictMaterial tMaterial : ANY.Amethyst.mToThis) if (tMaterial != MT.Amethyst && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Amethyst             , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.Jasper.mToThis) if (tMaterial != MT.Jasper)
+		for (OreDictMaterial tMaterial : ANY.Jasper.mToThis) if (tMaterial != MT.Jasper && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Jasper               , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.TigerEye.mToThis) if (tMaterial != MT.TigerEyeYellow)
+		for (OreDictMaterial tMaterial : ANY.TigerEye.mToThis) if (tMaterial != MT.TigerEyeYellow && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.TigerEyeYellow       , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.CaF2.mToThis) if (tMaterial != MT.CaF2)
+		for (OreDictMaterial tMaterial : ANY.CaF2.mToThis) if (tMaterial != MT.CaF2 && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.CaF2                 , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.Rubber.mToThis) if (tMaterial != MT.Rubber)
+		for (OreDictMaterial tMaterial : ANY.Rubber.mToThis) if (tMaterial != MT.Rubber && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Rubber               , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.Plastic.mToThis) if (tMaterial != MT.Plastic)
+		for (OreDictMaterial tMaterial : ANY.Plastic.mToThis) if (tMaterial != MT.Plastic && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Plastic              , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.Wood.mToThis) if (tMaterial != MT.Wood)
+		for (OreDictMaterial tMaterial : ANY.Wood.mToThis) if (tMaterial != MT.Wood && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Wood                 , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.Wax.mToThis) if (tMaterial != MT.Wax)
+		for (OreDictMaterial tMaterial : ANY.Wax.mToThis) if (tMaterial != MT.Wax && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Wax                  , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.Phosphorus.mToThis) if (tMaterial != MT.Phosphorus)
+		for (OreDictMaterial tMaterial : ANY.Phosphorus.mToThis) if (tMaterial != MT.Phosphorus && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Phosphorus           , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.Glowstone.mToThis) if (tMaterial != MT.Glowstone)
+		for (OreDictMaterial tMaterial : ANY.Glowstone.mToThis) if (tMaterial != MT.Glowstone && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Glowstone            , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.Clay.mToThis) if (tMaterial != MT.Clay)
+		for (OreDictMaterial tMaterial : ANY.Clay.mToThis) if (tMaterial != MT.Clay && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Clay                 , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.W.mToThis) if (tMaterial != MT.W)
+		for (OreDictMaterial tMaterial : ANY.W.mToThis) if (tMaterial != MT.W && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.W                    , NI, T, tConditionP));
-		for (OreDictMaterial tMaterial : ANY.Si.mToThis) if (tMaterial != MT.Si)
+		for (OreDictMaterial tMaterial : ANY.Si.mToThis) if (tMaterial != MT.Si && !tMaterial.mHidden)
 		RM.Generifier   .add(new RecipeMapHandlerMaterial(tMaterial                 , NF                                ,   0,   1, NF, MT.Si                   , NI, T, tConditionP));
 		
 		// Since Gems and Ingots are sometimes mutually exclusive, I made sure that those are always possible Extruder Fodder.

@@ -378,7 +378,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 	
 	private final Set<IOreDictListenerEvent> mBufferedListeners = new HashSetNoNulls<>();
 	private void addListenerInternal(IOreDictListenerEvent aListener) {
-		if (mListenersOre.add(aListener)) for (OreDictRegistrationContainer tEvent : mRegistrations) aListener.onOreRegistration(tEvent);
+		if (mListenersOre.add(aListener)) for (OreDictRegistrationContainer tEvent : mRegistrations) if(!tEvent.mMaterial.mHidden) aListener.onOreRegistration(tEvent);
 	}
 	
 	public void onPostLoad() {
@@ -475,7 +475,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 				}
 				for (IOreDictListenerEvent tListener : mListenersOre) {
 					if (D2) ORD.println("Processing '" + aEvent.mOreDictName + "' with the Prefix '" + mNameInternal + "' and without Material at " + UT.Reflection.getClassName(tListener));
-					tListener.onOreRegistration(aEvent);
+					if(!aEvent.mMaterial.mHidden) tListener.onOreRegistration(aEvent);
 				}
 				mRegistrations.add(aEvent);
 				if (!mRegisteredItems.contains(new ItemStackContainer(aEvent.mStack, W))) mRegisteredItems.add(aEvent.mStack);
@@ -498,7 +498,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 					}
 					for (IOreDictListenerEvent tListener : mListenersOre) {
 						if (D2) ORD.println("Processing '" + aEvent.mOreDictName + "' with the Prefix '" + mNameInternal + "' and the Material '" + aEvent.mMaterial.mNameInternal + "' at " + UT.Reflection.getClassName(tListener));
-						tListener.onOreRegistration(aEvent);
+						if(!aEvent.mMaterial.mHidden) tListener.onOreRegistration(aEvent);
 					}
 					mRegistrations.add(aEvent);
 				}

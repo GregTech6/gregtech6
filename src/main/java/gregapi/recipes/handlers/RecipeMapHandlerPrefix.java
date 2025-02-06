@@ -202,7 +202,7 @@ public class RecipeMapHandlerPrefix extends RecipeMapHandler {
 	
 	@SuppressWarnings("unchecked")
 	public boolean addRecipeForMaterial(RecipeMap aMap, OreDictMaterial aMaterial) {
-		if (!mCondition.isTrue(aMaterial) || aMaterial.contains(TD.Properties.INVALID_MATERIAL)) return F;
+		if (!mCondition.isTrue(aMaterial) || aMaterial.contains(TD.Properties.INVALID_MATERIAL) || aMaterial.mHidden) return F;
 		
 		ItemStack[] tInputs = new ItemStack[mInputPrefixes.length + (ST.valid(mAdditionalInput) ? 1 : 0)];
 		if (ST.valid(mAdditionalInput)) tInputs[tInputs.length-1] = mAdditionalInput;
