@@ -62,6 +62,9 @@ public class FluidTankGT implements IFluidTank {
 				mFluid = FL.load_(aNBT);
 				mAmount = (isEmpty() ? 0 : aNBT.hasKey("LAmount") ? aNBT.getLong("LAmount") : mFluid.amount);
 			}
+		}else {
+			mFluid = null;
+			mAmount = 0;
 		}
 		return this;
 	}

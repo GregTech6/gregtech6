@@ -19,6 +19,7 @@
 
 package gregtech.tileentity.multiblocks;
 
+import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -28,6 +29,8 @@ import gregapi.tileentity.ITileEntityTapAccessible;
 import gregapi.tileentity.multiblocks.IMultiBlockFluidHandler;
 import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockBase;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -43,7 +46,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase implements IMultiBlockFluidHandler, IFluidHandler, ITileEntityFunnelAccessible, ITileEntityTapAccessible {
+public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase implements IMultiBlockFluidHandler, IFluidHandler, ITileEntityFunnelAccessible, ITileEntityTapAccessible, IMultiTileEntity.IMTE_WailaDetectable {
 	public FluidTankGT mTank = new FluidTankGT(432000);
 	public short mTankWalls = 18002;
 	public boolean mGasProof = F, mAcidProof = F, mPlasmaProof = F, mMagicProof = F;
@@ -56,7 +59,7 @@ public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase
 		if (aNBT.hasKey(NBT_ACIDPROOF)) mAcidProof = aNBT.getBoolean(NBT_ACIDPROOF);
 		if (aNBT.hasKey(NBT_MAGICPROOF)) mMagicProof = aNBT.getBoolean(NBT_MAGICPROOF);
 		if (aNBT.hasKey(NBT_PLASMAPROOF)) mPlasmaProof = aNBT.getBoolean(NBT_PLASMAPROOF);
-		mTank.setCapacity(aNBT.getLong(NBT_TANK_CAPACITY));
+		if (aNBT.hasKey(NBT_TANK_CAPACITY)) mTank.setCapacity(aNBT.getLong(NBT_TANK_CAPACITY));
 		mTank.readFromNBT(aNBT, NBT_TANK);
 	}
 	
@@ -118,7 +121,13 @@ public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase
 	public FluidStack tapDrain(byte aSide, int aMaxDrain, boolean aDoDrain) {
 		return mTank.drain(aMaxDrain, aDoDrain);
 	}
-	
+
+	@Override
+	public List<String> getWailaBody(List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		if(mTank.getFluid() != null)currenttip.add(LH.get(LH.CONTENT)+" "+ Chat.WHITE + mTank.getFluid().amount + "/" + mTank.getCapacity()+ Chat.CYAN + " L "+ Chat.WHITE + mTank.getFluid().getLocalizedName());
+		return currenttip;
+	}
+
 	@Override protected IFluidTank getFluidTankFillable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToFill) {return mTank;}
 	@Override protected IFluidTank getFluidTankDrainable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToDrain) {return mTank;}
 	@Override protected IFluidTank[] getFluidTanks(MultiTileEntityMultiBlockPart aPart, byte aSide) {return mTank.AS_ARRAY;}

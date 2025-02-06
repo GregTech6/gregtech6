@@ -19,9 +19,11 @@
 
 package gregapi.tileentity.base;
 
+import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_BreakBlock;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnBlockExploded;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
+import gregapi.data.LH;
 import gregapi.tileentity.ITileEntityInventoryGUI;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -38,7 +40,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class TileEntityBase05Inventories extends TileEntityBase04MultiTileEntities implements IInventory, ITileEntityInventoryGUI, IMTE_OnBlockExploded, IMTE_BreakBlock {
+public abstract class TileEntityBase05Inventories extends TileEntityBase04MultiTileEntities implements IInventory, ITileEntityInventoryGUI, IMTE_OnBlockExploded, IMTE_BreakBlock, IMultiTileEntity.IMTE_OnRegistrationFirstClient {
 	private ItemStack[] mInventory = ZL_IS;
 	
 	public boolean mInventoryChanged = F;
@@ -185,5 +187,10 @@ public abstract class TileEntityBase05Inventories extends TileEntityBase04MultiT
 			return T;
 		}
 		return F;
+	}
+
+	@Override
+	public void onRegistrationFirstClient(MultiTileEntityRegistry aRegistry, short aID) {
+		LH.add(getTileEntityName(), getInventoryName());
 	}
 }

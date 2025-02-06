@@ -19,7 +19,6 @@
 
 package gregapi.tileentity.connectors;
 
-import cpw.mods.fml.common.FMLLog;
 import gregapi.GT_API_Proxy;
 import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
@@ -30,9 +29,6 @@ import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.*;
-import gregapi.cover.ITileEntityCoverable;
-import gregapi.data.FL;
-import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.fluid.FluidTankGT;
 import gregapi.network.INetworkHandler;
@@ -43,7 +39,10 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.ITexture;
-import gregapi.tileentity.*;
+import gregapi.tileentity.ITileEntity;
+import gregapi.tileentity.ITileEntityAdjacentInventoryUpdatable;
+import gregapi.tileentity.ITileEntityQuickObstructionCheck;
+import gregapi.tileentity.ITileEntityServerTickPre;
 import gregapi.tileentity.data.ITileEntityGibbl;
 import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.tileentity.data.ITileEntityTemperature;
@@ -52,6 +51,8 @@ import gregapi.tileentity.delegate.ITileEntityCanDelegate;
 import gregapi.util.CR;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCauldron;
 import net.minecraft.entity.Entity;
@@ -65,7 +66,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
-import org.apache.logging.log4j.Level;
 
 import java.util.Collection;
 import java.util.List;
@@ -76,7 +76,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, IFluidHandler, ITileEntityGibbl, ITileEntityTemperature, ITileEntityProgress, ITileEntityServerTickPre, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IMultiTileEntity.IMTE_SyncDataByteArray {
+public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, IFluidHandler, ITileEntityGibbl, ITileEntityTemperature, ITileEntityProgress, ITileEntityServerTickPre, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IMultiTileEntity.IMTE_SyncDataByteArray, IMultiTileEntity.IMTE_WailaDetectable {
 	public byte mLastReceivedFrom[] = ZL_BYTE, mRenderType = 0, mReceive = SIDE_INVALID, mSend = SIDE_INVALID;
 	public long mTemperature = DEF_ENV_TEMP, mMaxTemperature, mTransferredAmount = 0, mCapacity = 1000;
 	public boolean mGasProof = F, mAcidProof = F, mPlasmaProof = F, mMagicProof = F, mBlocking = F, mUnidirectional = F;
@@ -122,18 +122,14 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		if (aNBT.hasKey(NBT_PLASMAPROOF)) mPlasmaProof = aNBT.getBoolean(NBT_PLASMAPROOF);
 		if (aNBT.hasKey(NBT_TANK_CAPACITY)) mCapacity = aNBT.getLong(NBT_TANK_CAPACITY);
 		if (aNBT.hasKey(NBT_TEMPERATURE)) mMaxTemperature = aNBT.getLong(NBT_TEMPERATURE);
-		if (aNBT.hasKey(NBT_TANK_COUNT)) {
-			mTanks = new FluidTankGT[Math.max(1, aNBT.getInteger(NBT_TANK_COUNT))];
-			mLastReceivedFrom = new byte[mTanks.length];
-			for (int i = 0; i < mTanks.length; i++) {
-				mTanks[i] = new FluidTankGT(aNBT, NBT_TANK+"."+i, mCapacity).setIndex(i);
-				mLastReceivedFrom[i] = aNBT.getByte("gt.mlast."+i);
-			}
-		} else {
-			mTanks = new FluidTankGT(aNBT, NBT_TANK+"."+0, mCapacity).AS_ARRAY;
-			mLastReceivedFrom = new byte[] {aNBT.getByte("gt.mlast.0")};
+		if (aNBT.hasKey(NBT_TANK_COUNT)) mTanks = new FluidTankGT[Math.max(1, aNBT.getInteger(NBT_TANK_COUNT))];
+
+		mLastReceivedFrom = new byte[mTanks.length];
+		for (int i = 0; i < mTanks.length; i++) {
+			mTanks[i] = new FluidTankGT(aNBT, NBT_TANK+"."+i, mCapacity).setIndex(i);
+			mLastReceivedFrom[i] = aNBT.getByte("gt.mlast."+i);
 		}
-		
+
 		if (worldObj != null && isServerSide() && mHasToAddTimer) {
 			if (WD.even(this)) {
 				GT_API_Proxy.SERVER_TICK_PRE.add(this);
@@ -156,7 +152,16 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		aNBT.setBoolean("gt.mUnidirectional", mUnidirectional);
 		UT.NBT.setNumber(aNBT, "gt.mtransfer", mTransferredAmount);
 	}
-	
+
+	@Override
+	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound nbt) {
+		for (int i = 0; i < mTanks.length; i++) {
+			mTanks[i].writeToNBT(nbt, NBT_TANK+"."+i);
+			nbt.setByte("gt.mlast."+i, mLastReceivedFrom[i]);
+		}
+		return nbt;
+	}
+
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isClientSide()) return 0;
@@ -605,6 +610,16 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		mSend=aData[6];
 		return T;
 	}
+
+	@Override
+	public List<String> getWailaBody(List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        for (int i = 0; i < mTanks.length; i++) {
+            FluidTankGT tTank = mTanks[i];
+            if (tTank.getFluid() != null) currenttip.add(LH.get(LH.CONTENT) + i + " " + Chat.WHITE + tTank.getFluid().amount + "/" + tTank.getCapacity() + Chat.CYAN + " L " + Chat.WHITE + tTank.getFluid().getLocalizedName());
+        }
+        return currenttip;
+	}
+
 	public boolean canEmitFluidsTo                          (byte aSide) {return connected(aSide);}
 	public boolean canAcceptFluidsFrom                      (byte aSide) {return connected(aSide);}
 	

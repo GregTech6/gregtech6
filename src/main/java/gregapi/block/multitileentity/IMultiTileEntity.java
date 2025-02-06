@@ -19,11 +19,6 @@
 
 package gregapi.block.multitileentity;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,6 +28,8 @@ import gregapi.network.INetworkHandler;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.tileentity.ITileEntitySpecificPlacementBehavior;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -47,6 +44,7 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.MovingObjectPosition;
@@ -56,6 +54,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * @author Gregorius Techneticies
@@ -360,8 +363,32 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 		/** Gets called to determine OreDictItemData, this is a List with the first element being the Default OreDictItemData, followed by Covers and Stuff. */
 		public List<OreDictItemData> getOreDictItemData(List<OreDictItemData> aList);
 	}
-	
+
 	public static interface IMTE_GetDebugInfo extends IMultiTileEntity {
 		public ArrayList<String> getDebugInfo(int aScanLevel);
+	}
+
+	public static interface IMTE_WailaDetectable extends IMultiTileEntity {
+		/**Modify the Stack of waila displaying**/
+		public default ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config){
+			return null;
+		}
+
+		public default List<String> getWailaHead(List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+			return currenttip;
+		}
+
+		public default List<String> getWailaBody(List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+			return currenttip;
+		}
+
+		public default List<String> getWailaTail(List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+			return currenttip;
+		}
+
+		public default NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound nbt) {
+			te.writeToNBT(nbt);
+			return nbt;
+		}
 	}
 }

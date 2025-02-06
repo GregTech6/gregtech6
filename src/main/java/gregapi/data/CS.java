@@ -26,6 +26,7 @@ import gregapi.block.IBlockPlacable;
 import gregapi.block.IPrefixBlock;
 import gregapi.block.fluid.BlockBaseFluid;
 import gregapi.code.*;
+import gregapi.compat.ICompat;
 import gregapi.compat.buildcraft.ICompatBC;
 import gregapi.compat.computercraft.ICompatCC;
 import gregapi.compat.forestry.ICompatFR;
@@ -34,6 +35,7 @@ import gregapi.compat.industrialcraft.ICompatIC2;
 import gregapi.compat.industrialcraft.ICompatIC2EUItem;
 import gregapi.compat.opencomputers.ICompatOC;
 import gregapi.compat.thaumcraft.ICompatTC;
+import gregapi.compat.waila.ICompatWaila;
 import gregapi.compat.warpdrive.ICompatWD;
 import gregapi.config.Config;
 import gregapi.dummies.DummyWorld;
@@ -1072,6 +1074,8 @@ public class CS {
 	public static ICompatGC         COMPAT_GC;
 	/** Used to register Warpdrive Stuff, this Object might be null if Warpdrive isn't installed. */
 	public static ICompatWD         COMPAT_WD;
+	/** Used to register Waila Stuff, this Object might be null if Warpdrive isn't installed. */
+	public static ICompatWaila      COMPAT_Waila;
 	
 	/** Date and Time of when the Game launched. */
 	public static final String DATE_OF_GAME_START = UT.Code.dateAndTime();
