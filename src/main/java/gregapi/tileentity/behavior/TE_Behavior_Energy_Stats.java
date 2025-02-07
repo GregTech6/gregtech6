@@ -58,7 +58,7 @@ public class TE_Behavior_Energy_Stats extends TE_Behavior_Energy implements IMet
 	public Collection<TagData> getTypes() {return mType.AS_LIST;}
 	
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H, String aSides, boolean aEmitting) {
-		aList.add((aEmitting ? (Chat.RED + LH.get(LH.ENERGY_OUTPUT)) : (Chat.GREEN + LH.get(LH.ENERGY_INPUT))) + ": " + Chat.WHITE + mRec + " ("+(mMin>1?mMin+" to ":"up to ")+mMax+") "+mType.getLocalisedChatNameShort()+Chat.WHITE+(mAmount==1?"/t ":"/A * "+Chat.CYAN+mAmount+" A/t ")+Chat.WHITE+(UT.Code.stringInvalid(aSides)?"":"("+aSides)+")");
+		aList.add((aEmitting ? (Chat.RED + LH.get(LH.ENERGY_OUTPUT)) : (Chat.GREEN + LH.get(LH.ENERGY_INPUT))) + ": " + Chat.WHITE +mMin+" - "+mMax+" "+mType.getLocalisedChatNameShort()+Chat.WHITE+(mAmount==1?"/t ":"/A * "+Chat.CYAN+mAmount+" A/t ")+Chat.WHITE+(UT.Code.stringInvalid(aSides)?"":", "+aSides));
 		aList.add(aEmitting ? LH.getToolTipRedstoneFluxEmit(mType) : LH.getToolTipRedstoneFluxAccept(mType));
 	}
 

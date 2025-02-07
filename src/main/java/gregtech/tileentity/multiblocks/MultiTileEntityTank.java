@@ -123,9 +123,9 @@ public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase
 	}
 
 	@Override
-	public List<String> getWailaBody(List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-		if(mTank.getFluid() != null)currenttip.add(LH.get(LH.CONTENT)+" "+ Chat.WHITE + mTank.getFluid().amount + "/" + mTank.getCapacity()+ Chat.CYAN + " L "+ Chat.WHITE + mTank.getFluid().getLocalizedName());
-		return currenttip;
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		IMTE_WailaDetectable.addTankDesc(currentTip,LH.get(LH.CONTENT)+" ",mTank,"");
+		return currentTip;
 	}
 
 	@Override protected IFluidTank getFluidTankFillable(MultiTileEntityMultiBlockPart aPart, byte aSide, FluidStack aFluidToFill) {return mTank;}

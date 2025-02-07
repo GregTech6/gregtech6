@@ -612,12 +612,9 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	}
 
 	@Override
-	public List<String> getWailaBody(List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        for (int i = 0; i < mTanks.length; i++) {
-            FluidTankGT tTank = mTanks[i];
-            if (tTank.getFluid() != null) currenttip.add(LH.get(LH.CONTENT) + i + " " + Chat.WHITE + tTank.getFluid().amount + "/" + tTank.getCapacity() + Chat.CYAN + " L " + Chat.WHITE + tTank.getFluid().getLocalizedName());
-        }
-        return currenttip;
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+        for (int i = 0; i < mTanks.length; i++) IMTE_WailaDetectable.addTankDesc(currentTip,LH.get(LH.CONTENT)+(i+1)+" ",mTanks[i],"");
+        return currentTip;
 	}
 
 	public boolean canEmitFluidsTo                          (byte aSide) {return connected(aSide);}

@@ -23,7 +23,10 @@ import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.code.ArrayListNoNulls;
+import gregapi.code.TagData;
 import gregapi.data.CS.ModIDs;
+import gregapi.data.LH;
+import gregapi.fluid.FluidTankGT;
 import gregapi.network.INetworkHandler;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterialStack;
@@ -374,21 +377,35 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 			return null;
 		}
 
-		public default List<String> getWailaHead(List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-			return currenttip;
+		public default List<String> getWailaHead(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+			return currentTip;
 		}
 
-		public default List<String> getWailaBody(List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-			return currenttip;
+		public default List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+			return currentTip;
 		}
 
-		public default List<String> getWailaTail(List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-			return currenttip;
+		public default List<String> getWailaTail(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+			return currentTip;
 		}
 
 		public default NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound nbt) {
 			te.writeToNBT(nbt);
 			return nbt;
+		}
+		public static List<String> addTankDesc(List<String> current, String prefix, FluidTankGT mTank, String suffix){
+			if (mTank == null || mTank.isEmpty()) return current;
+			current.add(prefix + LH.Chat.WHITE + mTank.getFluid().amount + "/" + mTank.getCapacity()+ LH.Chat.CYAN + " L "+ LH.Chat.WHITE + mTank.getFluid().getLocalizedName() + suffix);
+			return current;
+		}
+		public static List<String> addEnergyFlowDesc(List<String> current, String prefix, TagData energyType, long voltage, long ampere, String suffix){
+			if(ampere == 1)current.add(prefix + LH.Chat.WHITE + voltage + energyType.getLocalisedChatNameShort() + LH.Chat.WHITE +"/t"                                  + LH.Chat.WHITE + suffix);
+			else           current.add(prefix + LH.Chat.WHITE + voltage + energyType.getLocalisedChatNameShort() + LH.Chat.WHITE +"/A * "+ LH.Chat.CYAN + ampere +"A/t" + LH.Chat.WHITE + suffix);
+			return current;
+		}
+		public static List<String> addEnergyStoreDesc(List<String> current, String prefix, TagData energyType, long amount, String suffix){
+			current.add(prefix + LH.Chat.WHITE + amount + energyType.getLocalisedChatNameShort() + LH.Chat.WHITE  + suffix);
+			return current;
 		}
 	}
 }

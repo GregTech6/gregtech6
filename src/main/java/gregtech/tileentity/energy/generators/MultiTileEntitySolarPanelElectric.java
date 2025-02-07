@@ -19,11 +19,8 @@
 
 package gregtech.tileentity.energy.generators;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-
+import cn.kuzuanpa.ktfruaddon.api.tile.IMeterDetectable;
+import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.code.TagData;
 import gregapi.data.LH;
 import gregapi.data.TD;
@@ -39,13 +36,23 @@ import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class MultiTileEntitySolarPanelElectric extends TileEntityBase09FacingSingle implements ITileEntityEnergyElectricityEmitter, ITileEntityRunningActively, ITileEntitySwitchableOnOff {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
+public class MultiTileEntitySolarPanelElectric extends TileEntityBase09FacingSingle implements ITileEntityEnergyElectricityEmitter, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMultiTileEntity.IMTE_WailaDetectable, IMeterDetectable {
 	protected boolean mEmitsEnergy = F, mStopped = F, mActive = F, oActive = F, mCheck = T, mSky = F;
-	protected long mEnergy = 0, mOutput = 8;
+	protected long mEnergy = 0, mOutput = 8, mOutputLast = 0;
 	protected TagData mEnergyTypeEmitted = TD.Energy.QU;
 	
 	@Override
@@ -73,7 +80,16 @@ public class MultiTileEntitySolarPanelElectric extends TileEntityBase09FacingSin
 		addToolTipsEnergy(aList, aStack, aF3_H);
 		super.addToolTips(aList, aStack, aF3_H);
 	}
-	
+
+	@Override
+	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		if(aTool.equals(TOOL_unimeter)){
+			IMeterDetectable.sendReceiveEmitMessage(new ArrayList<>(), mEnergyTypeEmitted, mOutputLast, 1,aChatReturn);
+			return 1;
+		}
+		return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+	}
+
 	public void addToolTipsEnergy(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		LH.addEnergyToolTips(this, aList, null, mEnergyTypeEmitted, null, LH.get(LH.FACE_FRONT));
 	}
@@ -161,6 +177,7 @@ public class MultiTileEntitySolarPanelElectric extends TileEntityBase09FacingSin
 			} else {
 				mEmitsEnergy = (ITileEntityEnergy.Util.emitEnergyToNetwork(mEnergyTypeEmitted, mEnergy, 1, this) > 0);
 			}
+			mOutputLast = mEnergy;
 		}
 		
 		if (mEmitsEnergy) mEnergy = 0;
@@ -209,6 +226,13 @@ public class MultiTileEntitySolarPanelElectric extends TileEntityBase09FacingSin
 		new Textures.BlockIcons.CustomIcon("machines/solarpanels/solarpanel_electric_8eu/overlay_active/bottom"),
 		new Textures.BlockIcons.CustomIcon("machines/solarpanels/solarpanel_electric_8eu/overlay_active/top"),
 	};
-	
+
+
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		IMTE_WailaDetectable.addEnergyFlowDesc(currentTip, LH.get(LH.ENERGY_OUTPUT)+" ", mEnergyTypeEmitted, mOutput, 1, "");
+		return currentTip;
+	}
+
 	@Override public String getTileEntityName() {return "gt.multitileentity.solarpanel.electric_8eu";}
 }

@@ -19,13 +19,8 @@
 
 package gregtech.tileentity.energy.generators;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-
+import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.code.TagData;
-import gregapi.data.CS.GarbageGT;
 import gregapi.data.FL;
 import gregapi.data.FM;
 import gregapi.data.LH;
@@ -48,6 +43,8 @@ import gregapi.tileentity.machines.ITileEntityAdjacentOnOff;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
@@ -57,17 +54,23 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntityEnergy, ITileEntityRunningActively, ITileEntityAdjacentOnOff {
+public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntityEnergy, ITileEntityRunningActively, ITileEntityAdjacentOnOff, IMultiTileEntity.IMTE_WailaDetectable {
 	public boolean mStopped = F;
 	public short mEfficiency = 10000;
 	public long mEnergy = 0, mRate = 32;
 	public TagData mEnergyTypeEmitted = TD.Energy.RU;
 	public RecipeMap mRecipes = FM.Engine;
 	public Recipe mLastRecipe = null;
-	public FluidTankGT[] mTanks = {new FluidTankGT(1000), new FluidTankGT(1000)};
+	public FluidTankGT[] mTanks = {new FluidTankGT(1000), new FluidTankGT(1000), new FluidTankGT(1000), new FluidTankGT(1000)}, mTanksOut = {mTanks[1], mTanks[2], mTanks[3]};
 	public TE_Behavior_Active_Trinary mActivity = null;
 	
 	@Override
@@ -115,15 +118,15 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 				mActivity.mActive = F;
 				Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, T, Long.MAX_VALUE, NI, mTanks[0].AS_ARRAY, ZL_IS);
 				if (tRecipe != null) {
-					if (tRecipe.mFluidOutputs.length <= 0 || mTanks[1].canFillAll(tRecipe.mFluidOutputs[0])) {
+					if (canOutputFill(tRecipe.mFluidOutputs, mTanksOut)) {
 						if (tRecipe.isRecipeInputEqual(T, F, mTanks[0].AS_ARRAY, ZL_IS)) {
 							mActivity.mActive = T;
 							mLastRecipe = tRecipe;
 							mEnergy += UT.Code.units(tRecipe.getAbsoluteTotalPower(), 10000, mEfficiency, F);
-							if (tRecipe.mFluidOutputs.length > 0) mTanks[1].fill(tRecipe.mFluidOutputs[0]);
-							while (mEnergy < mRate * 2 && (tRecipe.mFluidOutputs.length <= 0 || mTanks[1].canFillAll(tRecipe.mFluidOutputs[0])) && tRecipe.isRecipeInputEqual(T, F, mTanks[0].AS_ARRAY, ZL_IS)) {
+							fillOutput(tRecipe.mFluidOutputs, mTanksOut);
+							while (mEnergy < mRate * 2 && (canOutputFill(tRecipe.mFluidOutputs, mTanksOut)) && tRecipe.isRecipeInputEqual(T, F, mTanks[0].AS_ARRAY, ZL_IS)) {
 								mEnergy += UT.Code.units(tRecipe.getAbsoluteTotalPower(), 10000, mEfficiency, F);
-								if (tRecipe.mFluidOutputs.length > 0) mTanks[1].fill(tRecipe.mFluidOutputs[0]);
+								fillOutput(tRecipe.mFluidOutputs, mTanksOut);
 								if (mTanks[0].isEmpty()) break;
 							}
 						} else {
@@ -137,15 +140,30 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 				}
 			}
 			if (mEnergy < 0) mEnergy = 0;
-			
-			if (mTanks[1].has()) {
-				FL.move(mTanks[1], getAdjacentTank(OPOS[mFacing]));
-				if (FL.gas(mTanks[1]) && !WD.hasCollide(worldObj, getOffset(OPOS[mFacing], 1))) {
-					mTanks[1].setEmpty();
-				}
-			}
-		}
+
+            for (FluidTankGT tank : mTanksOut) {
+                FL.move(tank, getAdjacentTank(OPOS[mFacing]));
+                if (FL.gas(tank) && !WD.hasCollide(worldObj, getOffset(OPOS[mFacing], 1))) {
+					tank.setEmpty();
+                }
+            }
+        }
 	}
+
+	public boolean canOutputFill(FluidStack[] outputs, FluidTankGT[] tanks){
+		return Arrays.stream(outputs).allMatch(output -> Arrays.stream(tanks).anyMatch(tank -> tank.canFillAll(output)));
+	}
+
+
+	public void fillOutput(FluidStack[] outputs, FluidTankGT[] tanks){
+        for (FluidStack output : outputs) {
+            for (FluidTankGT tank : tanks) {
+				int filled = tank.fill(output);
+                if(filled > 0) output.amount -= filled;
+				if(output.amount <= 0) break;
+            }
+        }
+    }
 	
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
@@ -251,6 +269,13 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 		new Textures.BlockIcons.CustomIcon("machines/generators/motor_liquid/overlay_active/back"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/motor_liquid/overlay_active/sides"),
 	};
-	
+
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		for (int i = 0; i < mTanks.length; i++) IMTE_WailaDetectable.addTankDesc(currentTip,LH.get(LH.CONTENT)+(i+1)+" ",mTanks[i],"");
+		IMTE_WailaDetectable.addEnergyFlowDesc(currentTip, LH.get(LH.ENERGY_OUTPUT)+" ", mEnergyTypeEmitted, mRate, 1, "");
+		return currentTip;
+	}
+
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.motor_liquid";}
 }

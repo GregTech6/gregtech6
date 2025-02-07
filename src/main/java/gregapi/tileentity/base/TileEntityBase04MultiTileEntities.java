@@ -24,7 +24,6 @@ import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.block.multitileentity.MultiTileEntityClassContainer;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.LH;
 import gregapi.network.IPacket;
 import gregapi.network.packets.data.*;
 import gregapi.network.packets.ids.*;

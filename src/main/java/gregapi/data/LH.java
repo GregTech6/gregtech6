@@ -256,6 +256,9 @@ public class LH {
 	, TIME_WEEKS = "gt.lang.time.weeks"
 	, ADMIN_ONLY_CREATION = "gt.lang.admin.only.creation"
 	, WIP = "gt.lang.work.in.progress"
+			, FORMED = "gt.lang.formed"
+			, CONTENT = "gt.lang.content"
+
 	;
 	
 	public static final String add(String aKey, String aEnglish) {LanguageHandler.add(aKey, aEnglish); return aKey;}
@@ -344,12 +347,12 @@ public class LH {
 	public static final void addEnergyToolTips(ITileEntityEnergy aTileEntity, List<String> aToolTips, TagData aEnergyTypeIN, TagData aEnergyTypeOUT, String aSidesIN, String aSidesOUT) {
 		if (aEnergyTypeIN != null) {
 			long tMin = aTileEntity.getEnergySizeInputMin(aEnergyTypeOUT, SIDE_ANY), tRec = aTileEntity.getEnergySizeInputRecommended(aEnergyTypeOUT, SIDE_ANY), tMax = aTileEntity.getEnergySizeInputMax(aEnergyTypeOUT, SIDE_ANY);
-			aToolTips.add(Chat.GREEN + LH.get(LH.ENERGY_INPUT ) + ": " + Chat.WHITE + tRec + " " + aEnergyTypeIN .getLocalisedChatNameShort() + Chat.WHITE + (tRec == tMin && tRec == tMax ? "/t" : (tMin <= 1 ? "/t (up to " : "/t ("+tMin+" to ")+tMax+(UT.Code.stringInvalid(aSidesIN )?"":", "+aSidesIN )+")"));
+			aToolTips.add(Chat.GREEN + LH.get(LH.ENERGY_INPUT ) + ": " + Chat.WHITE + (tMin == tMax ? tMin : tMin +" - "+ tMax) + " " + aEnergyTypeIN .getLocalisedChatNameShort() + Chat.WHITE +"/t"+ (UT.Code.stringInvalid(aSidesIN )?"":", "+aSidesIN ));
 			aToolTips.add(getToolTipRedstoneFluxAccept(aEnergyTypeIN));
 		}
 		if (aEnergyTypeOUT != null) {
 			long tMin = aTileEntity.getEnergySizeOutputMin(aEnergyTypeOUT, SIDE_ANY), tRec = aTileEntity.getEnergySizeOutputRecommended(aEnergyTypeOUT, SIDE_ANY), tMax = aTileEntity.getEnergySizeOutputMax(aEnergyTypeOUT, SIDE_ANY);
-			aToolTips.add(Chat.RED   + LH.get(LH.ENERGY_OUTPUT) + ": " + Chat.WHITE + tRec + " " + aEnergyTypeOUT.getLocalisedChatNameShort() + Chat.WHITE + (tRec == tMin && tRec == tMax ? "/t" : (tMin <= 1 ? "/t (up to " : "/t ("+tMin+" to ")+tMax+(UT.Code.stringInvalid(aSidesOUT)?"":", "+aSidesOUT)+")"));
+			aToolTips.add(Chat.RED   + LH.get(LH.ENERGY_OUTPUT) + ": " + Chat.WHITE + (tMin == tMax ? tMin : tMin +" - "+ tMax) + " " + aEnergyTypeOUT.getLocalisedChatNameShort() + Chat.WHITE +"/t"+ (UT.Code.stringInvalid(aSidesOUT)?"":", "+aSidesOUT));
 			aToolTips.add(getToolTipRedstoneFluxEmit(aEnergyTypeOUT));
 		}
 	}
@@ -637,6 +640,8 @@ public class LH {
 		add(TIME_WEEKS                                  , "Weeks");
 		add(ADMIN_ONLY_CREATION                         , "Admins have to spawn this in. (or you MineTweaker a Recipe in)");
 		add(WIP                                         , Chat.RESET + Chat.WHITE + Chat.BOLD + "WIP" + Chat.RESET_TOOLTIP + ", This may not be as functional as you expect it to be!");
+		add(FORMED                                      , "Formed");
+		add(CONTENT                                     , "Content");
 	}
 	
 	public static class Chat {

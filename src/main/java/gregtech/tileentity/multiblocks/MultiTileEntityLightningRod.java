@@ -19,11 +19,6 @@
 
 package gregtech.tileentity.multiblocks;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.LH;
@@ -40,6 +35,11 @@ import gregapi.util.WD;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -106,7 +106,7 @@ public class MultiTileEntityLightningRod extends TileEntityBase10MultiBlockBase 
 		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.lightningrod.7"));
 		aList.add(Chat.YELLOW   + LH.get("gt.tooltip.multiblock.lightningrod.8"));
 		aList.add(Chat.ORANGE   + LH.get("gt.tooltip.multiblock.lightningrod.9"));
-		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_OUTPUT) + ": " + Chat.WHITE + VREC[6] + " " + mEnergyTypeEmitted.getLocalisedChatNameShort() + Chat.WHITE + "/p (up to 16 Amps)");
+		aList.add(Chat.GREEN    + LH.get(LH.ENERGY_OUTPUT) + ": " + Chat.WHITE + VREC[6] + " " + mEnergyTypeEmitted.getLocalisedChatNameShort() + Chat.WHITE + "/A, max 16A");
 		aList.add(Chat.WHITE    + mCapacity + " " + mEnergyTypeEmitted.getLocalisedChatNameShort() + Chat.GRAY + " per Lightning Strike");
 		super.addToolTips(aList, aStack, aF3_H);
 	}

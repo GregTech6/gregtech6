@@ -191,6 +191,7 @@ public abstract class TileEntityBase05Inventories extends TileEntityBase04MultiT
 
 	@Override
 	public void onRegistrationFirstClient(MultiTileEntityRegistry aRegistry, short aID) {
+		super.onRegistrationFirst(aRegistry, aID);
 		LH.add(getTileEntityName(), getInventoryName());
 	}
 }

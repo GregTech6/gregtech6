@@ -19,6 +19,7 @@
 
 package gregtech.tileentity.energy.generators;
 
+import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.code.TagData;
@@ -35,6 +36,8 @@ import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -50,7 +53,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
+public abstract class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IMultiTileEntity.IMTE_WailaDetectable {
 	private static int FLAME_RANGE = 3;
 	
 	protected short mEfficiency = 10000;
@@ -279,7 +282,12 @@ public abstract class MultiTileEntityGeneratorSolid extends TileEntityBase09Faci
 	@Override public boolean getStateRunningActively() {return mBurning;}
 	
 	@Override public float getBlockHardness() {return mBurning ? super.getBlockHardness() * 16 : super.getBlockHardness();}
-	
+
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		IMTE_WailaDetectable.addEnergyStoreDesc(currentTip, LH.get(LH.ENERGY_CONTAINED)+" ", mEnergyTypeEmitted, mEnergy,"");
+		return currentTip;
+	}
 	protected void spawnBurningParticles(double aX, double aY, double aZ) {
 		worldObj.spawnParticle("smoke", aX, aY, aZ, 0, 0, 0);
 		worldObj.spawnParticle("flame", aX, aY, aZ, 0, 0, 0);

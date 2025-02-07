@@ -19,15 +19,10 @@
 
 package gregtech.tileentity.energy.generators;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-
+import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.code.TagData;
-import gregapi.data.CS.GarbageGT;
 import gregapi.data.FL;
 import gregapi.data.FM;
 import gregapi.data.LH;
@@ -49,6 +44,8 @@ import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
@@ -59,10 +56,15 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
 
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
+public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IMultiTileEntity.IMTE_WailaDetectable {
 	private static int FLAME_RANGE = 2;
 	
 	public short mEfficiency = 10000;
@@ -273,6 +275,14 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 		new Textures.BlockIcons.CustomIcon("machines/generators/hot_fluid/overlay_active_glowing/right"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/hot_fluid/overlay_active_glowing/back")
 	};
-	
+
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		IMTE_WailaDetectable.addTankDesc(currentTip, LH.get(LH.CONTENT)+"1 ", mTanks[0],"");
+		IMTE_WailaDetectable.addTankDesc(currentTip, LH.get(LH.CONTENT)+"2 ", mTanks[1],"");
+		IMTE_WailaDetectable.addEnergyStoreDesc(currentTip, LH.get(LH.ENERGY_CONTAINED)+" ", mEnergyTypeEmitted, mEnergy,"");
+		return currentTip;
+	}
+
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.hot_fluid";}
 }

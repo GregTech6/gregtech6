@@ -19,6 +19,7 @@
 
 package gregtech.tileentity.energy.generators;
 
+import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.code.TagData;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -33,6 +34,8 @@ import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.util.UT;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -43,7 +46,7 @@ import java.util.List;
 
 import static gregapi.data.CS.*;
 
-public class MultiTileEntityMagicFieldAbsorber extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff {
+public class MultiTileEntityMagicFieldAbsorber extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMultiTileEntity.IMTE_WailaDetectable {
 	protected boolean mStopped = F, mActive = F, mCheck = T;
 	protected long mOutput = 64;
 	protected TagData mEnergyTypeEmitted = TD.Energy.TU;
@@ -75,7 +78,7 @@ public class MultiTileEntityMagicFieldAbsorber extends TileEntityBase09FacingSin
 	
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
-		if (aIsServerSide && !mStopped) {
+		if (!mStopped) {
 			if ((mCheck || mBlockUpdated || aTimer % 600 == 5)) {
 				boolean tActive = mActive;
 				mCheck = F;
@@ -98,7 +101,7 @@ public class MultiTileEntityMagicFieldAbsorber extends TileEntityBase09FacingSin
 				if (tActive != mActive) updateClientData();
 			}
 			
-			if (mActive) {
+			if (aIsServerSide && mActive) {
 				if (mEnergyTypeEmitted == TD.Energy.KU) {
 					Util.emitEnergyToNetwork(mEnergyTypeEmitted, aTimer % 128 < 64 ? -mOutput : mOutput, 1, this);
 				} else if (TD.Energy.ALL_SIZE_IRRELEVANT.contains(mEnergyTypeEmitted)) {
@@ -162,6 +165,11 @@ public class MultiTileEntityMagicFieldAbsorber extends TileEntityBase09FacingSin
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay_active_glowing/bottom"),
 		new Textures.BlockIcons.CustomIcon("machines/magicenergyabsorber/overlay_active_glowing/top"),
 	};
-	
+
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		IMTE_WailaDetectable.addEnergyFlowDesc(currentTip, LH.get(LH.ENERGY_OUTPUT)+" ", mEnergyTypeEmitted, mOutput, 1, "");
+		return currentTip;
+	}
 	@Override public String getTileEntityName() {return "gt.multitileentity.magicenergyabsorber";}
 }

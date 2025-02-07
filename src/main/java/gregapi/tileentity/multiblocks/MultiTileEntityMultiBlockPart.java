@@ -688,10 +688,10 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 		return F;
 	}
 	@Override
-	public List<String> getWailaBody(List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 		ITileEntityMultiBlockController tTileEntity = getTarget(T);
-		if(tTileEntity instanceof TileEntityBase01Root) currenttip.add(LH.get(LH.FORMED)+ " " + LH.Chat.WHITE + LH.get(((TileEntityBase01Root) tTileEntity).getTileEntityName()));
-		return currenttip;
+		if(tTileEntity instanceof TileEntityBase01Root) currentTip.add(LH.get(LH.FORMED)+ " " + LH.Chat.WHITE + LH.get(((TileEntityBase01Root) tTileEntity).getTileEntityName()));
+		return currentTip;
 	}
 
 	// Useless Garbage :P
