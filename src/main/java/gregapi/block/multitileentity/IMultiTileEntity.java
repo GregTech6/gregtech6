@@ -389,10 +389,10 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 			return currentTip;
 		}
 
-		public default NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound nbt) {
-			te.writeToNBT(nbt);
-			return nbt;
+		public default NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+			return aNBT;
 		}
+
 		public static List<String> addTankDesc(List<String> current, String prefix, FluidTankGT mTank, String suffix){
 			if (mTank == null || mTank.isEmpty()) return current;
 			current.add(prefix + LH.Chat.WHITE + mTank.getFluid().amount + "/" + mTank.getCapacity()+ LH.Chat.CYAN + " L "+ LH.Chat.WHITE + mTank.getFluid().getLocalizedName() + suffix);

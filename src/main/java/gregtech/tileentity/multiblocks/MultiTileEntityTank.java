@@ -29,12 +29,14 @@ import gregapi.tileentity.ITileEntityTapAccessible;
 import gregapi.tileentity.multiblocks.IMultiBlockFluidHandler;
 import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockBase;
+import gregapi.util.UT;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
@@ -123,7 +125,17 @@ public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase
 	}
 
 	@Override
+	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		mTank.writeToNBT(aNBT, NBT_TANK);
+		return aNBT;
+	}
+
+	@Override
 	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		NBTTagCompound aNBT = accessor.getNBTData();
+
+		mTank.readFromNBT(aNBT, NBT_TANK);
+
 		IMTE_WailaDetectable.addTankDesc(currentTip,LH.get(LH.CONTENT)+" ",mTank,"");
 		return currentTip;
 	}

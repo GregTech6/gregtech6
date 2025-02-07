@@ -26,7 +26,6 @@ public class CompatWaila extends CompatBase implements IWailaDataProvider, IComp
     public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
         TileEntity tileEntity = accessor.getTileEntity();
         if (!(tileEntity instanceof IMultiTileEntity.IMTE_WailaDetectable)) return null;
-        tileEntity.readFromNBT(accessor.getNBTData());
         return ((IMultiTileEntity.IMTE_WailaDetectable) tileEntity).getWailaStack(accessor, config);
     }
 
@@ -34,7 +33,6 @@ public class CompatWaila extends CompatBase implements IWailaDataProvider, IComp
     public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         TileEntity tileEntity = accessor.getTileEntity();
         if (!(tileEntity instanceof IMultiTileEntity.IMTE_WailaDetectable)) return currenttip;
-        tileEntity.readFromNBT(accessor.getNBTData());
         return ((IMultiTileEntity.IMTE_WailaDetectable) tileEntity).getWailaHead(currenttip, accessor, config);
     }
 
@@ -42,7 +40,6 @@ public class CompatWaila extends CompatBase implements IWailaDataProvider, IComp
     public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         TileEntity tileEntity = accessor.getTileEntity();
         if (!(tileEntity instanceof IMultiTileEntity.IMTE_WailaDetectable)) return currenttip;
-        tileEntity.readFromNBT(accessor.getNBTData());
         return ((IMultiTileEntity.IMTE_WailaDetectable) tileEntity).getWailaBody(currenttip, accessor, config);
     }
 
@@ -50,7 +47,6 @@ public class CompatWaila extends CompatBase implements IWailaDataProvider, IComp
     public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
         TileEntity tileEntity = accessor.getTileEntity();
         if (!(tileEntity instanceof IMultiTileEntity.IMTE_WailaDetectable)) return currenttip;
-        tileEntity.readFromNBT(accessor.getNBTData());
         return ((IMultiTileEntity.IMTE_WailaDetectable) tileEntity).getWailaTail(currenttip, accessor, config);
     }
 

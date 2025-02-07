@@ -154,15 +154,6 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 	}
 
 	@Override
-	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound nbt) {
-		for (int i = 0; i < mTanks.length; i++) {
-			mTanks[i].writeToNBT(nbt, NBT_TANK+"."+i);
-			nbt.setByte("gt.mlast."+i, mLastReceivedFrom[i]);
-		}
-		return nbt;
-	}
-
-	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isClientSide()) return 0;
 		if (aTool.equals(TOOL_monkeywrench)) return handleMonkeyWrench(aPlayer, aSide, aHitX, aHitY, aHitZ);
@@ -611,8 +602,25 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 		return T;
 	}
 
+
+	@Override
+	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		for (int i = 0; i < mTanks.length; i++) {
+			mTanks[i].writeToNBT(aNBT, NBT_TANK+"."+i);
+			aNBT.setByte("gt.mlast."+i, mLastReceivedFrom[i]);
+		}
+		return aNBT;
+	}
+
 	@Override
 	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		NBTTagCompound aNBT = accessor.getNBTData();
+		mLastReceivedFrom = new byte[mTanks.length];
+		for (int i = 0; i < mTanks.length; i++) {
+			mTanks[i] = new FluidTankGT(aNBT, NBT_TANK+"."+i, mCapacity).setIndex(i);
+			mLastReceivedFrom[i] = aNBT.getByte("gt.mlast."+i);
+		}
+
         for (int i = 0; i < mTanks.length; i++) IMTE_WailaDetectable.addTankDesc(currentTip,LH.get(LH.CONTENT)+(i+1)+" ",mTanks[i],"");
         return currentTip;
 	}

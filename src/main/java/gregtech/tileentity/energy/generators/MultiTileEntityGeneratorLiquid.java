@@ -49,6 +49,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
@@ -291,7 +292,20 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 	};
 
 	@Override
+	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
+		mTank.writeToNBT(aNBT, NBT_TANK);
+		return aNBT;
+	}
+
+	@Override
 	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		NBTTagCompound aNBT = accessor.getNBTData();
+
+		mEnergy = aNBT.getLong(NBT_ENERGY);
+		mTank.setCapacity(mRate * 10);
+		mTank.readFromNBT(aNBT, NBT_TANK);
+
 		IMTE_WailaDetectable.addTankDesc(currentTip, LH.get(LH.CONTENT)+" ", mTank,"");
 		IMTE_WailaDetectable.addEnergyStoreDesc(currentTip, LH.get(LH.ENERGY_CONTAINED)+" ", mEnergyTypeEmitted, mEnergy,"");
 		return currentTip;

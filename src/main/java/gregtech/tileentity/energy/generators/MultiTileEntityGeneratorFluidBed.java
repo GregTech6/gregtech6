@@ -51,6 +51,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
@@ -310,9 +311,21 @@ public class MultiTileEntityGeneratorFluidBed extends TileEntityBase09FacingSing
 		new Textures.BlockIcons.CustomIcon("machines/generators/burning_fluidbed/overlay_active_glowing/back")
 	};
 
+	@Override
+	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
+		mTank.writeToNBT(aNBT, NBT_TANK);
+		return aNBT;
+	}
 
 	@Override
 	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		NBTTagCompound aNBT = accessor.getNBTData();
+
+		mEnergy = aNBT.getLong(NBT_ENERGY);
+		mTank.setCapacity(Math.max(mRecipes.mMaxFluidInputSize, mRate));
+		mTank.readFromNBT(aNBT, NBT_TANK);
+
 		IMTE_WailaDetectable.addTankDesc(currentTip, LH.get(LH.CONTENT)+" ", mTank,"");
 		IMTE_WailaDetectable.addEnergyStoreDesc(currentTip, LH.get(LH.ENERGY_CONTAINED)+" ", mEnergyTypeEmitted, mEnergy,"");
 		return currentTip;

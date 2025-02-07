@@ -51,6 +51,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
@@ -277,9 +278,24 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 	};
 
 	@Override
+	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
+		mTanks[0].writeToNBT(aNBT, NBT_TANK+".0");
+		mTanks[1].writeToNBT(aNBT, NBT_TANK+".1");
+		return aNBT;
+	}
+
+	@Override
 	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-		IMTE_WailaDetectable.addTankDesc(currentTip, LH.get(LH.CONTENT)+"1 ", mTanks[0],"");
-		IMTE_WailaDetectable.addTankDesc(currentTip, LH.get(LH.CONTENT)+"2 ", mTanks[1],"");
+		NBTTagCompound aNBT = accessor.getNBTData();
+
+		mEnergy = aNBT.getLong(NBT_ENERGY);
+		mTanks[0].setCapacity(mRate * 10);
+		mTanks[0].readFromNBT(aNBT, NBT_TANK+".0");
+		mTanks[1].readFromNBT(aNBT, NBT_TANK+".1");
+
+		IMTE_WailaDetectable.addTankDesc(currentTip, LH.get(LH.CONTENT)+" ", mTanks[0],"");
+		IMTE_WailaDetectable.addTankDesc(currentTip, LH.get(LH.CONTENT)+" ", mTanks[1],"");
 		IMTE_WailaDetectable.addEnergyStoreDesc(currentTip, LH.get(LH.ENERGY_CONTAINED)+" ", mEnergyTypeEmitted, mEnergy,"");
 		return currentTip;
 	}

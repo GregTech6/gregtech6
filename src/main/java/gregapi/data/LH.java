@@ -256,8 +256,8 @@ public class LH {
 	, TIME_WEEKS = "gt.lang.time.weeks"
 	, ADMIN_ONLY_CREATION = "gt.lang.admin.only.creation"
 	, WIP = "gt.lang.work.in.progress"
-			, FORMED = "gt.lang.formed"
-			, CONTENT = "gt.lang.content"
+	, FORMED = "gt.lang.formed"
+	, CONTENT = "gt.lang.content"
 
 	;
 	
