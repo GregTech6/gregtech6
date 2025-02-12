@@ -19,10 +19,6 @@
 
 package gregapi.gui;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.data.LH;
@@ -32,6 +28,11 @@ import gregapi.tileentity.machines.MultiTileEntityBasicMachine;
 import gregapi.util.UT;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ICrafting;
+
+import java.util.List;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
 
 public class ContainerCommonBasicMachine extends ContainerCommon {
 	private RecipeMap mRecipes;
@@ -44,11 +45,12 @@ public class ContainerCommonBasicMachine extends ContainerCommon {
 	@Override
 	public int addSlots(InventoryPlayer aPlayerInventory) {
 		mRecipes = ((MultiTileEntityBasicMachine)mTileEntity).mRecipes;
+		MultiTileEntityBasicMachine machine = ((MultiTileEntityBasicMachine)mTileEntity);
 		int tIndex = 0;
-		
-		addSlotToContainer(mRecipes.getSpecialSlot(mTileEntity, mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount, 80, 43));
-		
-		switch (mRecipes.mInputItemsCount) {
+
+		addSlotToContainer(mRecipes.getSpecialSlot(mTileEntity, machine.getInputItemsCount() + machine.getOutputItemsCount(), 80, 43));
+
+		switch (machine.getInputItemsCount()) {
 		case  0:
 			break;
 		case  1:
@@ -155,7 +157,7 @@ public class ContainerCommonBasicMachine extends ContainerCommon {
 			break;
 		}
 		
-		switch (mRecipes.mOutputItemsCount) {
+		switch (machine.getOutputItemsCount()) {
 		case  0:
 			break;
 		case  1:
@@ -297,7 +299,10 @@ public class ContainerCommonBasicMachine extends ContainerCommon {
 	}
 	
 	@Override public int getStartIndex() {return 0;}
-	@Override public int getSlotCount() {return mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + (mRecipes.getSpecialSlot(mTileEntity, 0, 80, 43)!=null?1:0);}
+	@Override public int getSlotCount() {
+
+		return ((MultiTileEntityBasicMachine)mTileEntity).getInputItemsCount() + ((MultiTileEntityBasicMachine)mTileEntity).getOutputItemsCount() + (mRecipes.getSpecialSlot(mTileEntity, 0, 80, 43) != null ? 1 : 0);
+	}
 	@Override public int getShiftClickStartIndex() {return 0;}
-	@Override public int getShiftClickSlotCount() {return mRecipes.mInputItemsCount + (mRecipes.getSpecialSlot(mTileEntity, 0, 80, 43)!=null?1:0);}
+	@Override public int getShiftClickSlotCount() {return ((MultiTileEntityBasicMachine)mTileEntity).getInputItemsCount() + (mRecipes.getSpecialSlot(mTileEntity, 0, 80, 43)!=null?1:0);}
 }
