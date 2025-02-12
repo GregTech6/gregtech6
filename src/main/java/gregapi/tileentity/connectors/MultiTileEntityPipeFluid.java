@@ -20,6 +20,7 @@
 package gregapi.tileentity.connectors;
 
 import gregapi.GT_API_Proxy;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
@@ -76,7 +77,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, IFluidHandler, ITileEntityGibbl, ITileEntityTemperature, ITileEntityProgress, ITileEntityServerTickPre, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IMultiTileEntity.IMTE_SyncDataByteArray, IMultiTileEntity.IMTE_WailaDetectable {
+public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered implements ITileEntityQuickObstructionCheck, IFluidHandler, ITileEntityGibbl, ITileEntityTemperature, ITileEntityProgress, ITileEntityServerTickPre, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IMultiTileEntity.IMTE_SyncDataByteArray, IWailaTile {
 	public byte mLastReceivedFrom[] = ZL_BYTE, mRenderType = 0, mReceive = SIDE_INVALID, mSend = SIDE_INVALID;
 	public long mTemperature = DEF_ENV_TEMP, mMaxTemperature, mTransferredAmount = 0, mCapacity = 1000;
 	public boolean mGasProof = F, mAcidProof = F, mPlasmaProof = F, mMagicProof = F, mBlocking = F, mUnidirectional = F;
@@ -621,7 +622,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 			mLastReceivedFrom[i] = aNBT.getByte("gt.mlast."+i);
 		}
 
-        for (int i = 0; i < mTanks.length; i++) IMTE_WailaDetectable.addTankDesc(currentTip,LH.get(LH.CONTENT)+(i+1)+" ",mTanks[i],"");
+        for (int i = 0; i < mTanks.length; i++) IWailaTile.addTankDesc(currentTip,LH.get(LH.CONTENT)+(i+1)+" ",mTanks[i],"");
         return currentTip;
 	}
 

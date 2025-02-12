@@ -22,6 +22,7 @@ package gregtech.tileentity.energy.reactors;
 import gregapi.GT_API_Proxy;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -36,11 +37,14 @@ import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
@@ -53,7 +57,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble implements ITileEntityServerTickPost, IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
+public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingDouble implements ITileEntityServerTickPost, IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IWailaTile {
 	public int[] mNeutronCounts = new int[]{0, 0, 0, 0};
 	public int[] oNeutronCounts = new int[]{0, 0, 0, 0};
 	public long mEnergy = 0, oEnergy = 0;
@@ -318,6 +322,47 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	@Override public boolean getStateOnOff() {return !mStopped;}
 	public byte setStateMode(byte aMode) {return mMode = aMode;}
 	public byte getStateMode() {return mMode;}
-	
+
+	@Override
+	public IWailaInfoProvider[] getWailaInfos() {
+		return instanceInfoState.asArray();
+	}
+
+	@Override
+	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		IWailaTile.super.getWailaNBT(te, aNBT);
+		mTanks[0].writeToNBT(aNBT,NBT_TANK+".0");
+		mTanks[1].writeToNBT(aNBT,NBT_TANK+".1");
+		for (int i = 0; i < 4; i++) {
+			NBTTagCompound tag = new NBTTagCompound();
+			if(!slotHas(i))continue;
+			ST.save(tag,"item",slot(i));
+			UT.NBT.setNumber(tag, "num",oNeutronCounts[i]);
+			tag.setBoolean("m", isReactorRodModerated(i));
+			aNBT.setTag("gt.waila."+i, tag);
+		}
+		return aNBT;
+	}
+
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		IWailaTile.super.getWailaBody(currentTip, accessor, config);
+		NBTTagCompound aNBT = accessor.getNBTData();
+		mTanks[0].readFromNBT(aNBT, NBT_TANK+".0");
+		mTanks[1].readFromNBT(aNBT, NBT_TANK+".1");
+
+		IWailaTile.addTankDesc(currentTip,LH.get(LH.CONTENT)+"1 ", mTanks[0],"");
+		IWailaTile.addTankDesc(currentTip,LH.get(LH.CONTENT)+"2 ", mTanks[1],"");
+		for (int i = 0; i < 4; i++) {
+			NBTTagCompound tag = aNBT.getCompoundTag("gt.waila."+i);
+			ItemStack stack = ST.load(tag,"item");
+			if(stack==null || !(stack.getItem() instanceof IItemReactorRod))continue;
+			boolean moderated = tag.getBoolean("m");
+			currentTip.add(Chat.WHITE + tag.getLong("num")+ Chat.PURPLE + " N " + Chat.WHITE + stack.getDisplayName()+Chat.GRAY+" "+LH.get(LH.REMAIN)+" " + Chat.WHITE+ stack.getTagCompound().getLong(NBT_DURABILITY)/120000 +Chat.PURPLE+"NU"+(moderated?Chat.ORANGE+" M":""));
+		}
+
+		return currentTip;
+	}
+
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.reactor.core";}
 }

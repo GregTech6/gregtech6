@@ -19,12 +19,8 @@
 
 package gregtech.tileentity.energy.transformers;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_HasMultiBlockMachineRelevantData;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
@@ -55,7 +51,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
 
-public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09FacingSingle implements IMTE_HasMultiBlockMachineRelevantData, ITileEntityCanDelegate, ITileEntityMachineBlockUpdateable, ITileEntityRunningActively, ITileEntityEnergyElectricityAcceptor, ITileEntitySwitchableOnOff {
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
+public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09FacingSingle implements IMTE_HasMultiBlockMachineRelevantData, ITileEntityCanDelegate, ITileEntityMachineBlockUpdateable, ITileEntityRunningActively, ITileEntityEnergyElectricityAcceptor, ITileEntitySwitchableOnOff, IWailaTile {
 	protected boolean mWasteEnergy = F, mStopped = F, mActive = F;
 	protected long mInput = 0, mOutput = 0, mThroughput = 0, mActiveData = 0, mDistance = 0;
 	protected byte mActiveState = 0;
@@ -320,6 +321,11 @@ public class MultiTileEntityLongDistanceTransformer extends TileEntityBase09Faci
 		new Textures.BlockIcons.CustomIcon("machines/transformers/longdistancetransformer_electric/overlay_unloaded/back"),
 		new Textures.BlockIcons.CustomIcon("machines/transformers/longdistancetransformer_electric/overlay_unloaded/side"),
 	}};
-	
+
+	@Override
+	public IWailaInfoProvider[] getWailaInfos() {
+		return new IWailaInfoProvider[]{IWailaTile.instanceInfoState, IWailaTile.instanceInfoEnergyIORange};
+	}
+
 	@Override public String getTileEntityName() {return "gt.multitileentity.longdistancetransformers.transformer_electric";}
 }

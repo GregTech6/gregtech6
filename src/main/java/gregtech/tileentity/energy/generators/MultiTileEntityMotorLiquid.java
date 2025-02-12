@@ -19,7 +19,7 @@
 
 package gregtech.tileentity.energy.generators;
 
-import gregapi.block.multitileentity.IMultiTileEntity;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.code.TagData;
 import gregapi.data.FL;
 import gregapi.data.FM;
@@ -64,7 +64,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntityEnergy, ITileEntityRunningActively, ITileEntityAdjacentOnOff, IMultiTileEntity.IMTE_WailaDetectable {
+public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntityEnergy, ITileEntityRunningActively, ITileEntityAdjacentOnOff, IWailaTile {
 	public boolean mStopped = F;
 	public short mEfficiency = 10000;
 	public long mEnergy = 0, mRate = 32;
@@ -86,6 +86,8 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 		if (aNBT.hasKey(NBT_ENERGY_EMITTED)) mEnergyTypeEmitted = TagData.createTagData(aNBT.getString(NBT_ENERGY_EMITTED));
 		mTanks[0].readFromNBT(aNBT, NBT_TANK+".0").setCapacity(mRate * 16);
 		mTanks[1].readFromNBT(aNBT, NBT_TANK+".1").setCapacity(mRate * 128);
+		mTanks[2].readFromNBT(aNBT, NBT_TANK+".2").setCapacity(mRate * 128);
+		mTanks[3].readFromNBT(aNBT, NBT_TANK+".3").setCapacity(mRate * 128);
 	}
 	
 	@Override
@@ -96,6 +98,8 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 		mActivity.save(aNBT);
 		mTanks[0].writeToNBT(aNBT, NBT_TANK+".0");
 		mTanks[1].writeToNBT(aNBT, NBT_TANK+".1");
+		mTanks[2].writeToNBT(aNBT, NBT_TANK+".2");
+		mTanks[3].writeToNBT(aNBT, NBT_TANK+".3");
 	}
 	
 	@Override
@@ -157,13 +161,7 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 
 
 	public void fillOutput(FluidStack[] outputs, FluidTankGT[] tanks){
-        for (FluidStack output : outputs) {
-            for (FluidTankGT tank : tanks) {
-				int filled = tank.fill(output);
-                if(filled > 0) output.amount -= filled;
-				if(output.amount <= 0) break;
-            }
-        }
+		Arrays.stream(outputs).forEach(output -> Arrays.stream(tanks).anyMatch(tank -> tank.canFillAll(output) && tank.fill(output) > 0));
     }
 	
 	@Override
@@ -272,18 +270,28 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 	};
 
 	@Override
+	public IWailaInfoProvider[] getWailaInfos() {
+		return new IWailaInfoProvider[] {IWailaTile.instanceInfoState, IWailaTile.instanceInfoEnergyIORange};
+	}
+
+	@Override
 	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		IWailaTile.super.getWailaNBT(te, aNBT);
 		mTanks[0].writeToNBT(aNBT, NBT_TANK+".0");
 		mTanks[1].writeToNBT(aNBT, NBT_TANK+".1");
+		mTanks[2].writeToNBT(aNBT, NBT_TANK+".2");
+		mTanks[3].writeToNBT(aNBT, NBT_TANK+".3");
 		return aNBT;
 	}
 	@Override
 	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		IWailaTile.super.getWailaBody(currentTip, accessor, config);
 		NBTTagCompound aNBT = accessor.getNBTData();
 		mTanks[0].readFromNBT(aNBT, NBT_TANK+".0").setCapacity(mRate * 16);
 		mTanks[1].readFromNBT(aNBT, NBT_TANK+".1").setCapacity(mRate * 128);
-		for (int i = 0; i < mTanks.length; i++) IMTE_WailaDetectable.addTankDesc(currentTip,LH.get(LH.CONTENT)+(i+1)+" ",mTanks[i],"");
-		IMTE_WailaDetectable.addEnergyFlowDesc(currentTip, LH.get(LH.ENERGY_OUTPUT)+" ", mEnergyTypeEmitted, mRate, 1, "");
+		mTanks[2].readFromNBT(aNBT, NBT_TANK+".2").setCapacity(mRate * 128);
+		mTanks[3].readFromNBT(aNBT, NBT_TANK+".3").setCapacity(mRate * 128);
+		for (int i = 0; i < mTanks.length; i++) IWailaTile.addTankDesc(currentTip,LH.get(LH.CONTENT)+(i+1)+" ",mTanks[i],"");
 		return currentTip;
 	}
 

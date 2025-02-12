@@ -20,6 +20,7 @@
 package gregapi.tileentity.energy;
 
 import cn.kuzuanpa.ktfruaddon.api.tile.IMeterDetectable;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.LH;
@@ -31,6 +32,8 @@ import gregapi.tileentity.behavior.TE_Behavior_Energy_Converter;
 import gregapi.tileentity.behavior.TE_Behavior_Energy_Stats;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.util.UT;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -44,7 +47,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, IMeterDetectable {
+public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, IMeterDetectable, IWailaTile {
 	protected boolean mStopped = F, mNegativeInput = F, oNegativeInput = F;
 	protected byte mExplosionPrevention = 0, mMode = 0;
 	
@@ -177,7 +180,26 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 	public boolean getStateOnOff() {return !mStopped;}
 	public byte setStateMode(byte aMode) {mMode = aMode; return mMode;}
 	public byte getStateMode() {return mMode;}
-	
+
+	@Override
+	public IWailaInfoProvider[] getWailaInfos() {
+		return new IWailaInfoProvider[] {IWailaTile.instanceInfoState};
+	}
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		if (!(accessor.getTileEntity() instanceof ITileEntityEnergy))return currentTip;
+		for (byte i = 0; i < 6; i++) for (TagData energyType : getEnergyTypes(i)) {
+			if (!isEnergyAcceptingFrom(energyType, i, true)) continue;
+			long vMin = getEnergySizeInputMin(energyType, i), vMax = getEnergySizeInputMax(energyType, i);
+			IWailaTile.addEnergyFlowDesc(currentTip, LH.get(LH.ENERGY_INPUT)+" ", energyType, vMin, vMax, 1, "");
+		}
+		for (byte i = 0; i < 6; i++) for (TagData energyType : getEnergyTypes(i)) {
+			if (!isEnergyEmittingTo(energyType, i, true)) continue;
+			IWailaTile.addEnergyFlowDesc(currentTip, LH.get(LH.ENERGY_OUTPUT)+" ", energyType, mConverter.mEnergyOUT.sizeMin(energyType), mConverter.mEnergyOUT.sizeMax(energyType), mConverter.mEnergyOUT.mAmount, "");
+		}
+		return currentTip;
+	}
+
 	// Stuff to Override
 	
 	public boolean takesAnyLowerSize() {return F;}

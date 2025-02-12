@@ -19,9 +19,9 @@
 
 package gregtech.tileentity.energy.generators;
 
-import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.code.TagData;
 import gregapi.data.FL;
 import gregapi.data.FM;
@@ -39,6 +39,7 @@ import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityTapAccessible;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.tileentity.energy.ITileEntityEnergy;
+import gregapi.tileentity.machines.ITileEntityAdjacentOnOff;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.util.UT;
 import gregapi.util.WD;
@@ -63,7 +64,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityTapAccessible, ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IMultiTileEntity.IMTE_WailaDetectable {
+public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityTapAccessible, ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, ITileEntityAdjacentOnOff, IWailaTile {
 	private static int FLAME_RANGE = 2;
 	
 	protected byte mCooldown = 0;
@@ -252,7 +253,11 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 	@Override public boolean getStateRunningPassively() {return mBurning;}
 	@Override public boolean getStateRunningPossible() {return mBurning || (mTank.has() && !WD.hasCollide(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing)) && !getBlockAtSide(mFacing).getMaterial().isLiquid() && WD.oxygen(worldObj, getOffsetX(mFacing), getOffsetY(mFacing), getOffsetZ(mFacing)));}
 	@Override public boolean getStateRunningActively() {return mBurning;}
-	
+
+	@Override public boolean setAdjacentOnOff(boolean aOnOff) {if (mBurning && !aOnOff) {mBurning = F; mCooldown = 0;} return mBurning;}
+	@Override public boolean setStateOnOff(boolean aOnOff) {if (mBurning && !aOnOff) {mBurning = F; mCooldown = 0;} return mBurning;}
+	@Override public boolean getStateOnOff() {return true;}
+
 	@Override public float getBlockHardness() {return mBurning ? super.getBlockHardness() * 16 : super.getBlockHardness();}
 	
 	protected void spawnBurningParticles(double aX, double aY, double aZ) {
@@ -290,9 +295,13 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 		new Textures.BlockIcons.CustomIcon("machines/generators/burning_liquid/overlay_active_glowing/right"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/burning_liquid/overlay_active_glowing/back")
 	};
-
+	@Override
+	public IWailaInfoProvider[] getWailaInfos() {
+		return new IWailaInfoProvider[] {IWailaTile.instanceInfoState, IWailaTile.instanceInfoEnergyIORange};
+	}
 	@Override
 	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		IWailaTile.super.getWailaNBT(te, aNBT);
 		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
 		mTank.writeToNBT(aNBT, NBT_TANK);
 		return aNBT;
@@ -300,14 +309,15 @@ public class MultiTileEntityGeneratorLiquid extends TileEntityBase09FacingSingle
 
 	@Override
 	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		IWailaTile.super.getWailaBody(currentTip, accessor, config);
 		NBTTagCompound aNBT = accessor.getNBTData();
 
 		mEnergy = aNBT.getLong(NBT_ENERGY);
 		mTank.setCapacity(mRate * 10);
 		mTank.readFromNBT(aNBT, NBT_TANK);
 
-		IMTE_WailaDetectable.addTankDesc(currentTip, LH.get(LH.CONTENT)+" ", mTank,"");
-		IMTE_WailaDetectable.addEnergyStoreDesc(currentTip, LH.get(LH.ENERGY_CONTAINED)+" ", mEnergyTypeEmitted, mEnergy,"");
+		IWailaTile.addTankDesc(currentTip, LH.get(LH.CONTENT)+" ", mTank,"");
+		IWailaTile.addEnergyAmountDesc(currentTip, LH.get(LH.ENERGY_CONTAINED)+" ", mEnergyTypeEmitted, mEnergy,"");
 		return currentTip;
 	}
 

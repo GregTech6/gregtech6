@@ -19,31 +19,27 @@
 
 package gregtech.tileentity.energy.generators;
 
-import static gregapi.data.CS.*;
-
 import gregapi.data.FL;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
 import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
-import gregapi.tileentity.machines.ITileEntityAdjacentOnOff;
 import net.minecraft.block.Block;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 
+import static gregapi.data.CS.FACING_ROTATIONS;
+import static gregapi.data.CS.NI;
+
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityGeneratorGas extends MultiTileEntityGeneratorLiquid implements ITileEntityAdjacentOnOff {
+public class MultiTileEntityGeneratorGas extends MultiTileEntityGeneratorLiquid {
 	@Override
 	protected IFluidTank getFluidTankFillable2(byte aSide, FluidStack aFluidToFill) {
 		return mRecipes.containsInput(aFluidToFill, this, NI) && FL.gas(aFluidToFill) ? mTank : null;
 	}
-	
-	@Override public boolean setAdjacentOnOff(boolean aOnOff) {if (mBurning && !aOnOff) {mBurning = F; mCooldown = 0;} return mBurning;}
-	@Override public boolean setStateOnOff(boolean aOnOff) {if (mBurning && !aOnOff) {mBurning = F; mCooldown = 0;} return mBurning;}
-	@Override public boolean getStateOnOff() {return mBurning;}
 	
 	@Override
 	protected void spawnBurningParticles(double aX, double aY, double aZ) {

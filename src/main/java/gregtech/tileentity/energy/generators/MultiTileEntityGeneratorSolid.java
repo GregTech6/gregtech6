@@ -19,7 +19,7 @@
 
 package gregtech.tileentity.energy.generators;
 
-import gregapi.block.multitileentity.IMultiTileEntity;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.code.TagData;
@@ -54,7 +54,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IMultiTileEntity.IMTE_WailaDetectable {
+public abstract class MultiTileEntityGeneratorSolid extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IWailaTile {
 	private static int FLAME_RANGE = 3;
 	
 	protected short mEfficiency = 10000;
@@ -285,17 +285,24 @@ public abstract class MultiTileEntityGeneratorSolid extends TileEntityBase09Faci
 	@Override public float getBlockHardness() {return mBurning ? super.getBlockHardness() * 16 : super.getBlockHardness();}
 
 	@Override
+	public IWailaInfoProvider[] getWailaInfos() {
+		return new IWailaInfoProvider[] {IWailaTile.instanceInfoState, IWailaTile.instanceInfoEnergyIORange};
+	}
+
+	@Override
 	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		IWailaTile.super.getWailaNBT(te, aNBT);
 		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
 		return aNBT;
 	}
 
 	@Override
 	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		IWailaTile.super.getWailaBody(currentTip, accessor, config);
 		NBTTagCompound aNBT = accessor.getNBTData();
 
 		mEnergy = aNBT.getLong(NBT_ENERGY);
-		IMTE_WailaDetectable.addEnergyStoreDesc(currentTip, LH.get(LH.ENERGY_CONTAINED)+" ", mEnergyTypeEmitted, mEnergy,"");
+		IWailaTile.addEnergyAmountDesc(currentTip, LH.get(LH.ENERGY_CONTAINED)+" ", mEnergyTypeEmitted, mEnergy,"");
 		return currentTip;
 	}
 	protected void spawnBurningParticles(double aX, double aY, double aZ) {

@@ -19,6 +19,7 @@
 
 package gregtech.tileentity.energy.converters;
 
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.LH;
@@ -37,6 +38,8 @@ import gregapi.tileentity.machines.ITileEntityAdjacentOnOff;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.tileentity.machines.ITileEntitySwitchableMode;
 import gregapi.util.UT;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
@@ -48,9 +51,9 @@ import java.util.List;
 
 import static gregapi.data.CS.*;
 
-public class MultiTileEntityEngineElectric extends TileEntityBase09FacingSingle implements ITileEntityAdjacentOnOff, ITileEntityEnergyFluxHandler, ITileEntityEnergyElectricityAcceptor, ITileEntityRunningActively, ITileEntitySwitchableMode {
+public class MultiTileEntityEngineElectric extends TileEntityBase09FacingSingle implements ITileEntityAdjacentOnOff, ITileEntityEnergyFluxHandler, ITileEntityEnergyElectricityAcceptor, ITileEntityRunningActively, ITileEntitySwitchableMode, IWailaTile {
 	/** The Array containing the different Engine State Colours from Blue over Green to Red */
-	public static final int sEngineColors[] = {0x0000ff, 0x0011ee, 0x0022dd, 0x0033cc, 0x0044bb, 0x0055aa, 0x006699, 0x007788, 0x008877, 0x009966, 0x00aa55, 0x00bb44, 0x00cc33, 0x00dd22, 0x00ee11, 0x00ff00, 0x00ff00, 0x11ee00, 0x22dd00, 0x33cc00, 0x44bb00, 0x55aa00, 0x669900, 0x778800, 0x887700, 0x996600, 0xaa5500, 0xbb4400, 0xcc3300, 0xdd2200, 0xee1100, 0xff0000};
+	public static final int[] sEngineColors = {0x0000ff, 0x0011ee, 0x0022dd, 0x0033cc, 0x0044bb, 0x0055aa, 0x006699, 0x007788, 0x008877, 0x009966, 0x00aa55, 0x00bb44, 0x00cc33, 0x00dd22, 0x00ee11, 0x00ff00, 0x00ff00, 0x11ee00, 0x22dd00, 0x33cc00, 0x44bb00, 0x55aa00, 0x669900, 0x778800, 0x887700, 0x996600, 0xaa5500, 0xbb4400, 0xcc3300, 0xdd2200, 0xee1100, 0xff0000};
 	
 	protected boolean mEmitsEnergy = F, mStopped = F, mActive = F, oActive = F;
 	protected byte mState = 15, mPiston = 0;
@@ -252,14 +255,14 @@ public class MultiTileEntityEngineElectric extends TileEntityBase09FacingSingle 
 	}
 	
 	// Icons
-	public static IIconContainer sColoreds[] = new IIconContainer[] {
+	public static IIconContainer[] sColoreds = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/engines/kinetic_electric/colored/front"),
 		new Textures.BlockIcons.CustomIcon("machines/engines/kinetic_electric/colored/back"),
 		new Textures.BlockIcons.CustomIcon("machines/engines/kinetic_electric/colored/side"),
 		new Textures.BlockIcons.CustomIcon("machines/engines/kinetic_electric/colored/cage"),
 		new Textures.BlockIcons.CustomIcon("machines/engines/kinetic_electric/colored/engine"),
 		new Textures.BlockIcons.CustomIcon("machines/engines/kinetic_electric/colored/engine_hull")
-	}, sOverlays[] = new IIconContainer[] {
+	}, sOverlays = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/engines/kinetic_electric/overlay/front"),
 		new Textures.BlockIcons.CustomIcon("machines/engines/kinetic_electric/overlay/back"),
 		new Textures.BlockIcons.CustomIcon("machines/engines/kinetic_electric/overlay/side"),
@@ -267,6 +270,19 @@ public class MultiTileEntityEngineElectric extends TileEntityBase09FacingSingle 
 		new Textures.BlockIcons.CustomIcon("machines/engines/kinetic_electric/overlay/engine"),
 		new Textures.BlockIcons.CustomIcon("machines/engines/kinetic_electric/overlay/engine_hull")
 	};
-	
+
+	@Override
+	public IWailaInfoProvider[] getWailaInfos() {
+		return new IWailaInfoProvider[] {IWailaTile.instanceInfoState, IWailaTile.instanceInfoEnergyIORange};
+	}
+
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		IWailaTile.super.getWailaBody(currentTip, accessor, config);
+
+		currentTip.add(LH.get(LH.ENERGY_OUTPUT)+ " "+ Chat.WHITE + ((mOutput * (mState + 1)) / 16) + mEnergyTypeEmitted.getLocalisedChatNameShort() + Chat.WHITE + "/t");
+		return currentTip;
+	}
+
 	@Override public String getTileEntityName() {return "gt.multitileentity.engine.kinetic_electricity";}
 }

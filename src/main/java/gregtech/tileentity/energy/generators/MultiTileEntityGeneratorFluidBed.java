@@ -19,7 +19,7 @@
 
 package gregtech.tileentity.energy.generators;
 
-import gregapi.block.multitileentity.IMultiTileEntity;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.code.TagData;
@@ -65,7 +65,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityGeneratorFluidBed extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IMultiTileEntity.IMTE_WailaDetectable {
+public class MultiTileEntityGeneratorFluidBed extends TileEntityBase09FacingSingle implements IFluidHandler, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityEnergy, ITileEntityRunningActively, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IWailaTile {
 	private static int FLAME_RANGE = 2;
 	
 	protected short mEfficiency = 10000;
@@ -312,7 +312,13 @@ public class MultiTileEntityGeneratorFluidBed extends TileEntityBase09FacingSing
 	};
 
 	@Override
+	public IWailaInfoProvider[] getWailaInfos() {
+		return new IWailaInfoProvider[] {IWailaTile.instanceInfoState, IWailaTile.instanceInfoEnergyIORange};
+	}
+
+	@Override
 	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		IWailaTile.super.getWailaNBT(te, aNBT);
 		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
 		mTank.writeToNBT(aNBT, NBT_TANK);
 		return aNBT;
@@ -320,14 +326,15 @@ public class MultiTileEntityGeneratorFluidBed extends TileEntityBase09FacingSing
 
 	@Override
 	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		IWailaTile.super.getWailaBody(currentTip, accessor, config);
 		NBTTagCompound aNBT = accessor.getNBTData();
 
 		mEnergy = aNBT.getLong(NBT_ENERGY);
 		mTank.setCapacity(Math.max(mRecipes.mMaxFluidInputSize, mRate));
 		mTank.readFromNBT(aNBT, NBT_TANK);
 
-		IMTE_WailaDetectable.addTankDesc(currentTip, LH.get(LH.CONTENT)+" ", mTank,"");
-		IMTE_WailaDetectable.addEnergyStoreDesc(currentTip, LH.get(LH.ENERGY_CONTAINED)+" ", mEnergyTypeEmitted, mEnergy,"");
+		IWailaTile.addTankDesc(currentTip, LH.get(LH.CONTENT)+" ", mTank,"");
+		IWailaTile.addEnergyAmountDesc(currentTip, LH.get(LH.ENERGY_CONTAINED)+" ", mEnergyTypeEmitted, mEnergy,"");
 		return currentTip;
 	}
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.burning_fluidbed";}

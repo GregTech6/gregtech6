@@ -19,14 +19,9 @@
 
 package gregtech.tileentity.autotools;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-
 import gregapi.block.IBlockToolable;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.code.TagData;
-import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.TD;
@@ -46,7 +41,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
-public class MultiTileEntityAutoToolIgniter extends TileEntityBase09FacingSingle implements ITileEntityEnergyElectricityAcceptor, ITileEntitySwitchableOnOff {
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
+public class MultiTileEntityAutoToolIgniter extends TileEntityBase09FacingSingle implements ITileEntityEnergyElectricityAcceptor, ITileEntitySwitchableOnOff, IWailaTile {
 	public boolean mStopped = F;
 	public byte mQuality = 2, mCoolDown = 0, mSendSound = 0;
 	public long mEnergy = 0, mInput = 32;
@@ -150,6 +150,11 @@ public class MultiTileEntityAutoToolIgniter extends TileEntityBase09FacingSingle
 		new Textures.BlockIcons.CustomIcon("machines/autotools/igniter/overlay/front"),
 		new Textures.BlockIcons.CustomIcon("machines/autotools/igniter/overlay/side"),
 	};
-	
+
+	@Override
+	public IWailaInfoProvider[] getWailaInfos() {
+		return new IWailaInfoProvider[] {IWailaTile.instanceInfoState, IWailaTile.instanceInfoEnergyIORange};
+	}
+
 	@Override public String getTileEntityName() {return "gt.multitileentity.autotool.igniter";}
 }

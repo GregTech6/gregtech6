@@ -20,9 +20,9 @@
 package gregapi.tileentity.machines;
 
 import buildcraft.api.tiles.IHasWork;
-import cn.kuzuanpa.ktfruaddon.api.tile.IMeterDetectable;
 import cpw.mods.fml.common.Optional;
 import gregapi.GT_API;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.TagData;
@@ -45,9 +45,12 @@ import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.tileentity.data.ITileEntityGibbl;
 import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
+import cn.kuzuanpa.ktfruaddon.api.tile.IMeterDetectable;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -58,10 +61,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraftforge.fluids.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static gregapi.data.CS.*;
@@ -92,7 +92,7 @@ import static gregapi.data.CS.*;
 @Optional.InterfaceList(value = {
 	@Optional.Interface(iface = "buildcraft.api.tiles.IHasWork", modid = ModIDs.BC)
 })
-public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle implements IHasWork, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntitySwitchableOnOff, ITileEntityRunningSuccessfully, ITileEntityAdjacentInventoryUpdatable, ITileEntityEnergy, ITileEntityProgress, ITileEntityGibbl, IFluidHandler, IMeterDetectable {
+public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle implements IHasWork, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntitySwitchableOnOff, ITileEntityRunningSuccessfully, ITileEntityAdjacentInventoryUpdatable, ITileEntityEnergy, ITileEntityProgress, ITileEntityGibbl, IFluidHandler, IMeterDetectable, IWailaTile {
 	public boolean mSpecialIsStartEnergy = F, mNoConstantEnergy = F, mCheapOverclocking = F, mCouldUseRecipe = F, mStopped = F, oActive = F, oRunning = F, mStateNew = F, mStateOld = F, mDisabledItemInput = F, mDisabledItemOutput = F, mDisabledFluidInput = F, mDisabledFluidOutput = F, mRequiresIgnition = F, mParallelDuration = F, mCanUseOutputTanks = F, mOutputCatalyzer =F;
 	public byte mEnergyInputs = 127, mEnergyOutput = SIDE_UNDEFINED, mOutputBlocked = 0, mMode = 0, mIgnited = 0;
 	public byte mItemInputs   = 127, mItemOutputs  = 127, mItemAutoInput  = SIDE_UNDEFINED, mItemAutoOutput  = SIDE_UNDEFINED;
@@ -285,7 +285,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal) + (mParallel > 1 ? " (up to "+mParallel+"x processed per run)" : ""));
+		aList.add(Chat.CYAN + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal) + (mParallel > 1 ? " ("+ String.format(LH.get(LH.PARALLEL), mParallel) +")": ""));
 		
 		if (mCheapOverclocking)
 		aList.add(Chat.YELLOW + LH.get(LH.CHEAP_OVERCLOCKING));
@@ -575,6 +575,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public ItemStack[] getDefaultInventory(NBTTagCompound aNBT) {
 		if (aNBT.hasKey(NBT_RECIPEMAP)) mRecipes = RecipeMap.RECIPE_MAPS.get(aNBT.getString(NBT_RECIPEMAP));
 		if (aNBT.hasKey(NBT_PARALLEL)) {mParallel = Math.max(1, aNBT.getInteger(NBT_PARALLEL));}
+		if (aNBT.hasKey(NBT_INV_SIZE)) mInvSize = aNBT.getByte(NBT_INV_SIZE);
 		ACCESSIBLE_SLOTS = UT.Code.getAscendingArray(getInputItemsCount() + getOutputItemsCount());
 		ACCESSIBLE_INPUTS = UT.Code.getAscendingArray(getInputItemsCount());
 		ACCESSIBLE_OUTPUTS = new int[getOutputItemsCount()];
@@ -680,24 +681,24 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			while (rMaxTimes > 1 && aRecipe.getAbsoluteTotalPower() * rMaxTimes > mInputMax * 600) rMaxTimes--;
 		}
 		
-		for (int i = 0, j = getInputItemsCount(); i < getOutputItemsCount() && i < aRecipe.mOutputs.length; i++, j++) if (ST.valid(aRecipe.mOutputs[i])) {
-			if (slotHas(j)) {
-				if ((mMode & 1) != 0 || aRecipe.mNeedsEmptyOutput) {
-					mOutputBlocked++;
-					return 0;
+		for (int i = 0; i < getOutputItemsCount() && i < aRecipe.mOutputs.length; i++) {
+			int rMaxTimesi = 0;
+			for(int j = getInputItemsCount(); j< getInputItemsCount()+ getOutputItemsCount(); j++)if (ST.valid(aRecipe.mOutputs[i])) {
+				if (slotHas(j)) {
+					if ((mMode & 1) != 0 || aRecipe.mNeedsEmptyOutput) {
+						mOutputBlocked++;
+						return 0;
+					}
+					if (!ST.equal(slot(j), aRecipe.mOutputs[i], F)) {
+						mOutputBlocked++;
+						return 0;
+					}
+					rMaxTimesi += Math.min(rMaxTimes, (slot(j).getMaxStackSize() - slot(j).stackSize) / aRecipe.mOutputs[i].stackSize);
+				} else {
+					rMaxTimesi += Math.min(rMaxTimes, Math.max(1, 64 / aRecipe.mOutputs[i].stackSize));
 				}
-				if (!ST.equal(slot(j), aRecipe.mOutputs[i], F)) {
-					mOutputBlocked++;
-					return 0;
-				}
-				rMaxTimes = Math.min(rMaxTimes, (slot(j).getMaxStackSize() - slot(j).stackSize) / aRecipe.mOutputs[i].stackSize);
-				if (rMaxTimes <= 0) {
-					mOutputBlocked++;
-					return 0;
-				}
-			} else {
-				rMaxTimes = Math.min(rMaxTimes, Math.max(1, 64 / aRecipe.mOutputs[i].stackSize));
 			}
+			rMaxTimes = Math.min(rMaxTimes, rMaxTimesi);
 		}
 		if (aRecipe.mFluidOutputs.length > 0) {
 			int tEmptyOutputTanks = 0, tRequiredEmptyTanks = aRecipe.mFluidOutputs.length;
@@ -865,7 +866,25 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				mProgress += aEnergy;
 			}
 			if (mProgress >= mMaxProgress && (mStateOld&&!mStateNew || !TD.Energy.ALL_ALTERNATING.contains(mEnergyTypeAccepted))) {
-				for (int i = 0; i < mOutputItems .length; i++) if (mOutputItems [i] != null && addStackToSlot(getInputItemsCount()+(i % getOutputItemsCount()), mOutputItems[i])) {mSuccessful = T; mIgnited = 40; mOutputItems[i] = null; continue;}
+				for (int i = 0, j=0; i < mOutputItems .length && getInputItemsCount() + (i % getOutputItemsCount()) + j < getSizeInventory(); j++ ) if (mOutputItems [i] != null) {
+					if(mOutputItems[i].stackSize <= 64 && addStackToSlot(getInputItemsCount()+(i % getOutputItemsCount()) + j, mOutputItems[i])) {
+						mSuccessful = T;
+						mIgnited = 40;
+						mOutputItems[i] = null;
+						i++;
+						continue;
+					}
+					if(mOutputItems[i].stackSize > 64){
+						ItemStack stack = mOutputItems[i].copy();
+						stack.stackSize = 64;
+						if(addStackToSlot(getInputItemsCount()+(i % getOutputItemsCount()) + j, stack)) {
+							mSuccessful = T;
+							mIgnited = 40;
+							mOutputItems[i].stackSize -= 64;
+							continue;
+						}
+					}
+				}
 				for (int i = 0; i < mOutputFluids.length; i++) if (mOutputFluids[i] != null) for (int j = 0; j < mTanksOutput.length; j++) {
 					if (mTanksOutput[j].contains(mOutputFluids[i])) {
 						updateInventory();
@@ -1095,5 +1114,82 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	@Override
 	public void adjacentInventoryUpdated(byte aSide, IInventory aTileEntity) {
 		if (FACE_CONNECTED[FACING_ROTATIONS[mFacing][aSide]][mItemInputs|mItemOutputs]) updateInventory();
+	}
+
+	@Override
+	public IWailaInfoProvider[] getWailaInfos() {
+		return new IWailaInfoProvider[]{IWailaTile.instanceInfoState, IWailaTile.instanceInfoEnergyIORange};
+	}
+
+	@Override
+	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		IWailaTile.super.getWailaNBT(te, aNBT);
+		for (int i = 0; i < mTanksInput .length; i++) mTanksInput [i].writeToNBT(aNBT, NBT_TANK+".i."+i);
+		for (int i = 0; i < mTanksOutput.length; i++) mTanksOutput[i].writeToNBT(aNBT, NBT_TANK+".o."+i);
+		if(mMaxProgress > 0)aNBT.setShort("gt.waila.progress", (short)((65535F*mProgress/mMaxProgress)-32767));
+		if(mChargeRequirement > 0)aNBT.setLong("gt.waila.charge.req", mChargeRequirement);
+		if(mMinEnergy > 4)UT.NBT.setNumber(aNBT,"gt.waila.energy.min", mMinEnergy);
+		int[] outItems = new int[mOutputItems.length*3];
+		for (int i = 0; i < mOutputItems.length; i++) {
+			if(mOutputItems[i] == null)continue;
+			outItems[i*3] = ST.id(mOutputItems[i]);
+			outItems[i*3+1] =  mOutputItems[i].stackSize;
+			outItems[i*3+2] = ST.meta(mOutputItems[i]);
+		}
+		if(outItems.length>0)aNBT.setIntArray("gt.waila.out.items", outItems);
+
+		int[] outFluids = new int[mOutputFluids.length*2];
+		for (int i = 0; i < mOutputFluids.length; i++) {
+			if(mOutputFluids[i] == null)continue;
+			outFluids[i*2] = mOutputFluids[i].getFluidID();
+			outFluids[i*2+1] =  mOutputFluids[i].amount;
+		}
+		if(outFluids.length>0)aNBT.setIntArray("gt.waila.out.fluids", outFluids);
+		return aNBT;
+	}
+
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		IWailaTile.super.getWailaBody(currentTip, accessor, config);
+
+		NBTTagCompound aNBT = accessor.getNBTData();
+		for (int i = 0; i < mTanksInput.length; i++) {mTanksInput[i].readFromNBT(aNBT, NBT_TANK+".i."+i);}
+		for (int i = 0; i < mTanksInput.length; i++) IWailaTile.addTankDesc(currentTip,LH.get(LH.CONTENT)+"I"+(i+1)+" ",mTanksInput[i],"");
+
+
+		for (int i = 0; i < mTanksOutput.length; i++) {mTanksOutput[i].readFromNBT(aNBT, NBT_TANK+".o."+i);}
+		for (int i = 0; i < mTanksOutput.length; i++) IWailaTile.addTankDesc(currentTip,LH.get(LH.CONTENT)+"O"+(i+1)+" ",mTanksOutput[i],"");
+
+		float progress = ((aNBT.getShort("gt.waila.progress")+32767)*100F/65536F);
+		if(aNBT.hasKey("gt.waila.charge.req"))currentTip.add(LH.get(LH.ENERGY_REQUIRED_CHARGE)+" "+ LH.Chat.WHITE+ aNBT.getLong("gt.waila.charge.req") + mEnergyTypeCharged.getLocalisedChatNameShort());
+		if(aNBT.hasKey("gt.waila.progress"))currentTip.add(LH.get(LH.PROGRESS)+ " " + LH.Chat.WHITE+ String.format("%.3f%%",progress));
+		if(aNBT.hasKey("gt.waila.energy.min"))currentTip.add(LH.get(LH.ENERGY_REQUIRED)+" "+ LH.Chat.WHITE+ aNBT.getLong("gt.waila.energy.min") + mEnergyTypeAccepted.getLocalisedChatNameShort()+Chat.WHITE+"/t");
+
+		if(aNBT.hasKey("gt.waila.out.items")){
+			int[] outItems = aNBT.getIntArray("gt.waila.out.items");
+			StringBuilder sb = new StringBuilder(LH.get(LH.ITEM_OUTPUT)).append(" ");
+			List<ItemStack> stacks = new ArrayList<>();
+			for (int i = 0; i < outItems.length/3; i++) {
+				ItemStack stack = ST.make(outItems[i*3],outItems[i*3+1],outItems[i*3+2]);
+				if(stack != null)stacks.add(stack);
+			}
+			stacks.forEach(stack -> sb.append(Chat.WHITE).append(stack.getDisplayName()).append(Chat.CYAN).append("*").append(stack.stackSize));
+			if(!stacks.isEmpty())currentTip.add(sb.toString());
+		}
+
+		if(aNBT.hasKey("gt.waila.out.fluids")){
+			int[] outFluids = aNBT.getIntArray("gt.waila.out.fluids");
+			StringBuilder sb = new StringBuilder(LH.get(LH.FLUID_OUTPUT)).append(" ");
+			List<FluidStack> stacks = new ArrayList<>();
+			for (int i = 0; i < outFluids.length/2; i++) {
+				FluidStack stack = FL.make(outFluids[i*2],outFluids[i*2+1]);
+				if(stack == null)continue;
+				stacks.add(stack);
+			}
+			stacks.forEach(stack->sb.append(Chat.WHITE).append(stack.amount).append(Chat.CYAN).append(" L ").append(Chat.WHITE).append(stack.getLocalizedName()).append(Chat.CYAN));
+			if(!stacks.isEmpty())currentTip.add(sb.toString());
+		}
+
+		return currentTip;
 	}
 }

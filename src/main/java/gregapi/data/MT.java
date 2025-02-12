@@ -2509,13 +2509,13 @@ public class MT {
 			DraconiumAwakened       .put(MD.DE, BETWEENLANDS, MAZEBREAKER).visDefault();
 			
 			
-			CrystalMatrix           .put(MD.AV).visDefault();
-			CosmicNeutronium        .put(MD.AV).visDefault();
-			Infinity                .put(MD.AV, BETWEENLANDS, MAZEBREAKER).visDefault();
+			CrystalMatrix           .put(MD.AV);
+			CosmicNeutronium        .put(MD.AV);
+			Infinity                .put(MD.AV, BETWEENLANDS, MAZEBREAKER);
 			
 			
-			DarkMatter              .put(MD.PE).visDefault();
-			RedMatter               .put(MD.PE).visDefault();
+			DarkMatter              .put(MD.PE);
+			RedMatter               .put(MD.PE);
 			
 			
 			Zr                      .put(MD.TROPIC);
@@ -2608,8 +2608,8 @@ public class MT {
 			Ectoplasm               .put(MD.RT);
 			
 			
-			Unstable                .put(MD.ExU, BETWEENLANDS).visDefault();
-			Bedrockium              .put(MD.ExU, BETWEENLANDS).visDefault();
+			Unstable                .put(MD.ExU, BETWEENLANDS);
+			Bedrockium              .put(MD.ExU, BETWEENLANDS);
 			
 			
 			CrimsonMiddle           .put(MD.BTL, BETWEENLANDS).visDefault();

@@ -20,6 +20,7 @@
 package gregapi.tileentity.energy;
 
 import cn.kuzuanpa.ktfruaddon.api.tile.IMeterDetectable;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.IL;
@@ -36,11 +37,14 @@ import gregapi.tileentity.machines.ITileEntitySwitchableMode;
 import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -51,7 +55,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityEnergyDataCapacitor, ITileEntityRunningActively, ITileEntitySwitchableOnOff, ITileEntitySwitchableMode, ITileEntityProgress, IMeterDetectable {
+public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityEnergyDataCapacitor, ITileEntityRunningActively, ITileEntitySwitchableOnOff, ITileEntitySwitchableMode, ITileEntityProgress, IMeterDetectable, IWailaTile {
 	public boolean mEmitsEnergy = F, mStopped = F, mActive = F;
 	public long mEnergy = 0, mInput = 32, mOutput = 32, mBatteryCount = -1, mChargeableCount = -1, mReceivablePower = 0, mAmperageLastEmitting = 0, mOutputLast=0;
 	public byte mActiveState = 0, mMode = 0;
@@ -250,4 +254,31 @@ public abstract class TileEntityBase10EnergyBatBox extends TileEntityBase09Facin
 	public boolean isOutput(byte aSide) {return aSide == mFacing;}
 	public String getLocalisedInputSide () {return LH.get(LH.FACE_ANYBUT_FRONT);}
 	public String getLocalisedOutputSide() {return LH.get(LH.FACE_FRONT);}
+
+	@Override
+	public IWailaInfoProvider[] getWailaInfos() {
+		return new IWailaInfoProvider[] {IWailaTile.instanceInfoState, IWailaTile.instanceInfoEnergyIORange};
+	}
+
+	@Override
+	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		IWailaTile.super.getWailaNBT(te, aNBT);
+		UT.NBT.setNumber(aNBT, "gt.energy.ampere", (mMode == 0 ? mBatteryCount : Math.min(mMode, mBatteryCount)));
+		UT.NBT.setNumber(aNBT, NBT_CAPACITY, getEnergyCapacity(mEnergyType, mFacing));
+		UT.NBT.setNumber(aNBT, NBT_ENERGY, getEnergyStored(mEnergyType, mFacing));
+		UT.NBT.setNumber(aNBT, NBT_ENERGY+".cache", mEnergy);
+		return aNBT;
+	}
+
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		IWailaTile.super.getWailaBody(currentTip, accessor, config);
+		NBTTagCompound aNBT = accessor.getNBTData();
+		currentTip.add("I/O Ampere "  + Chat.WHITE + aNBT.getLong("gt.energy.ampere") + Chat.CYAN + "A");
+		IWailaTile.addEnergyAmountDesc(currentTip, LH.get(LH.ENERGY_CACHED)   +" ", mEnergyType, aNBT.getLong(NBT_ENERGY+".cache"),"");
+		IWailaTile.addEnergyAmountDesc(currentTip, LH.get(LH.ENERGY_CONTAINED)+" ", mEnergyType, aNBT.getLong(NBT_ENERGY),"");
+		IWailaTile.addEnergyAmountDesc(currentTip, LH.get(LH.ENERGY_CAPACITY) +" ", mEnergyType, aNBT.getLong(NBT_CAPACITY),"");
+
+		return currentTip;
+	}
 }

@@ -19,17 +19,12 @@
 
 package gregtech.tileentity.energy.converters;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnEntityCollidedWithBlock;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_RemovedByPlayer;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.code.TagData;
 import gregapi.data.BI;
-import gregapi.data.CS.GarbageGT;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -48,12 +43,15 @@ import gregapi.tileentity.data.ITileEntityGibbl;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.energy.ITileEntityEnergyDataCapacitor;
 import gregapi.util.UT;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
@@ -62,10 +60,15 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
 
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityFunnelAccessible, ITileEntityGibbl, ITileEntityEnergyDataCapacitor, IFluidHandler, IMTE_RemovedByPlayer, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock {
+public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityFunnelAccessible, ITileEntityGibbl, ITileEntityEnergyDataCapacitor, IFluidHandler, IMTE_RemovedByPlayer, IMTE_GetCollisionBoundingBoxFromPool, IMTE_OnEntityCollidedWithBlock, IWailaTile {
 	protected byte mBarometer = 0, oBarometer = 0, inDanger =0;
 	protected short mEfficiency = 10000, mCoolDownResetTimer = 128;
 	protected long mEnergy = 0, mCapacity = 640000, mOutput = 6400;
@@ -147,10 +150,8 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 			if (mEnergy > mCapacity || mTanks[1].isFull()) {
 				explode(F);
 			}
-			if (inDanger ==0&&mTanks[1].amount()*10>mTanks[1].capacity()*9){
-				inDanger =1;updateClientData();}
-			if (inDanger ==1&&mTanks[1].amount()*10<mTanks[1].capacity()*9){
-				inDanger =0;updateClientData();}
+			if (inDanger ==0&&mTanks[1].amount()*10>mTanks[1].capacity()*9){inDanger =1;updateClientData();}
+			if (inDanger ==1&&mTanks[1].amount()*10<mTanks[1].capacity()*9){inDanger =0;updateClientData();}
 		}else {
 			if (inDanger ==1) spawnDangerParticles();
 		}
@@ -303,6 +304,31 @@ public class MultiTileEntityBoilerTank extends TileEntityBase09FacingSingle impl
 		new Textures.BlockIcons.CustomIcon("machines/tanks/boiler_steam/overlay/top"),
 		new Textures.BlockIcons.CustomIcon("machines/tanks/boiler_steam/overlay/side")
 	};
-	
+	@Override
+	public IWailaInfoProvider[] getWailaInfos() {
+		return IWailaTile.instanceInfoEnergyIORec.asArray();
+	}
+
+	@Override
+	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		IWailaTile.super.getWailaNBT(te, aNBT);
+		UT.NBT.setNumber(aNBT, NBT_EFFICIENCY, mEfficiency);
+		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
+		for (int i = 0; i < mTanks.length; i++) mTanks[i].writeToNBT(aNBT, NBT_TANK+"."+i);
+		return aNBT;
+	}
+
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		currentTip.add("Efficiency "+Chat.WHITE+accessor.getNBTData().getShort(NBT_EFFICIENCY)/100F+"%");
+
+		IWailaTile.super.getWailaBody(currentTip, accessor, config);
+		IWailaTile.addEnergyAmountDesc(currentTip, LH.get(LH.ENERGY_CONTAINED), mEnergyTypeAccepted, accessor.getNBTData().getLong(NBT_ENERGY),"");
+
+		for (int i = 0; i < mTanks.length; i++) mTanks[i].readFromNBT(accessor.getNBTData(), NBT_TANK+"."+i);
+		for (int i = 0; i < mTanks.length; i++) IWailaTile.addTankDesc(currentTip,LH.get(LH.CONTENT)+(i+1)+" ",mTanks[i],"");
+		return currentTip;
+	}
+
 	@Override public String getTileEntityName() {return "gt.multitileentity.tank.boiler_steam";}
 }

@@ -21,6 +21,7 @@ package gregtech.tileentity.tools;
 
 import gregapi.GT_API_Proxy;
 import gregapi.block.multitileentity.IMultiTileEntity.*;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.code.TagData;
 import gregapi.data.*;
@@ -43,6 +44,8 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -71,7 +74,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityMold extends TileEntityBase07Paintable implements ITileEntityEnergy, IFluidHandler, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_SetBlockBoundsBasedOnState, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced {
+public class MultiTileEntityMold extends TileEntityBase07Paintable implements ITileEntityEnergy, IFluidHandler, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_SetBlockBoundsBasedOnState, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced, IWailaTile {
 	private static double HEAT_RESISTANCE_BONUS = 1.25;
 	
 	public static final Map<Integer, OreDictPrefix> MOLD_RECIPES = new HashMap<>();
@@ -624,7 +627,26 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 	@Override public FluidTankInfo[] getTankInfo(ForgeDirection aDirection) {return L1_FLUIDTANKINFO_DUMMY;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.mold";}
-	
+
+	@Override
+	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		IWailaTile.super.getWailaNBT(te, aNBT);
+
+		UT.NBT.setNumber(aNBT, NBT_TEMPERATURE,mTemperature);
+		return aNBT;
+	}
+
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		IWailaTile.super.getWailaBody(currentTip, accessor, config);
+		NBTTagCompound aNBT = accessor.getNBTData();
+
+		currentTip.add(LH.get(LH.TEMPERATURE) +" "+Chat.WHITE+ aNBT.getLong(NBT_TEMPERATURE) +"/"+ getMoldMaxTemperature() +Chat.RED+" K");
+		OreDictPrefix tPrefix = getMoldRecipe(mShape);
+		if(tPrefix != null)currentTip.add(LH.get(LH.PRODUCING) +" "+Chat.WHITE+ LH.get("itemGroup."+tPrefix.mNameInternal));
+		return currentTip;
+	}
+
 	static {
 		Map<Integer, OreDictPrefix> TEMP_MOLD_RECIPES = new HashMap<>();
 		

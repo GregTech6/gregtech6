@@ -20,7 +20,7 @@
 package gregtech.tileentity.energy.generators;
 
 import cn.kuzuanpa.ktfruaddon.api.tile.IMeterDetectable;
-import gregapi.block.multitileentity.IMultiTileEntity;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.code.TagData;
 import gregapi.data.LH;
 import gregapi.data.TD;
@@ -36,8 +36,6 @@ import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.util.UT;
 import gregapi.util.WD;
-import mcp.mobius.waila.api.IWailaConfigHandler;
-import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
@@ -50,7 +48,7 @@ import java.util.List;
 
 import static gregapi.data.CS.*;
 
-public class MultiTileEntitySolarPanelElectric extends TileEntityBase09FacingSingle implements ITileEntityEnergyElectricityEmitter, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMultiTileEntity.IMTE_WailaDetectable, IMeterDetectable {
+public class MultiTileEntitySolarPanelElectric extends TileEntityBase09FacingSingle implements ITileEntityEnergyElectricityEmitter, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IWailaTile, IMeterDetectable{
 	protected boolean mEmitsEnergy = F, mStopped = F, mActive = F, oActive = F, mCheck = T, mSky = F;
 	protected long mEnergy = 0, mOutput = 8, mOutputLast = 0;
 	protected TagData mEnergyTypeEmitted = TD.Energy.QU;
@@ -229,9 +227,8 @@ public class MultiTileEntitySolarPanelElectric extends TileEntityBase09FacingSin
 
 
 	@Override
-	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-		IMTE_WailaDetectable.addEnergyFlowDesc(currentTip, LH.get(LH.ENERGY_OUTPUT)+" ", mEnergyTypeEmitted, mOutput, 1, "");
-		return currentTip;
+	public IWailaInfoProvider[] getWailaInfos() {
+		return new IWailaInfoProvider[] {IWailaTile.instanceInfoState, IWailaTile.instanceInfoEnergyIORange};
 	}
 
 	@Override public String getTileEntityName() {return "gt.multitileentity.solarpanel.electric_8eu";}

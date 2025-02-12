@@ -76,7 +76,14 @@ public abstract class TileEntityBase11BidirectionalConverter extends TileEntityB
 		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 		if (rReturn > 0) return rReturn;
 		
-		if (isClientSide()) return 0;
+		if (isClientSide()) {
+			//add reverse logic at client to show if Reversed
+			if (aTool.equals(TOOL_monkeywrench)) {
+				mReversed = !mReversed;
+				TE_Behavior_Energy_Converter tConverter = mConverter; mConverter = mConRevert; mConRevert = tConverter;
+			}
+			return 0;
+		}
 		if (aTool.equals(TOOL_monkeywrench)) {
 			mStorage.mEnergy = 0; // Makes it less likely to cause overcharge when switching Modes by accident.
 			mReversed = !mReversed;

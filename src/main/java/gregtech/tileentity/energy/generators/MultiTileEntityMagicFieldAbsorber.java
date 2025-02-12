@@ -19,7 +19,7 @@
 
 package gregtech.tileentity.energy.generators;
 
-import gregapi.block.multitileentity.IMultiTileEntity;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.code.TagData;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -46,7 +46,7 @@ import java.util.List;
 
 import static gregapi.data.CS.*;
 
-public class MultiTileEntityMagicFieldAbsorber extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMultiTileEntity.IMTE_WailaDetectable {
+public class MultiTileEntityMagicFieldAbsorber extends TileEntityBase09FacingSingle implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IWailaTile {
 	protected boolean mStopped = F, mActive = F, mCheck = T;
 	protected long mOutput = 64;
 	protected TagData mEnergyTypeEmitted = TD.Energy.TU;
@@ -98,7 +98,7 @@ public class MultiTileEntityMagicFieldAbsorber extends TileEntityBase09FacingSin
 					case  4: mActive = T; mOutput = 64; mEnergyTypeEmitted = TD.Energy.CU; break; // Snow Queen
 					}
 				}
-				if (tActive != mActive) updateClientData();
+				if (aIsServerSide && tActive != mActive) updateClientData();
 			}
 			
 			if (aIsServerSide && mActive) {
@@ -167,8 +167,14 @@ public class MultiTileEntityMagicFieldAbsorber extends TileEntityBase09FacingSin
 	};
 
 	@Override
+	public IWailaInfoProvider[] getWailaInfos() {
+		return instanceInfoState.asArray();
+	}
+
+	@Override
 	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-		IMTE_WailaDetectable.addEnergyFlowDesc(currentTip, LH.get(LH.ENERGY_OUTPUT)+" ", mEnergyTypeEmitted, mOutput, 1, "");
+		IWailaTile.super.getWailaBody(currentTip, accessor, config);
+		if(mActive) IWailaTile.addEnergyFlowDesc(currentTip, LH.get(LH.ENERGY_OUTPUT)+" ", mEnergyTypeEmitted, mOutput, 1, LH.get(LH.FACES[mFacing]));
 		return currentTip;
 	}
 	@Override public String getTileEntityName() {return "gt.multitileentity.magicenergyabsorber";}

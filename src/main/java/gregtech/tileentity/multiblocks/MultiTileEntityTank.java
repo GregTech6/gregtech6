@@ -19,7 +19,7 @@
 
 package gregtech.tileentity.multiblocks;
 
-import gregapi.block.multitileentity.IMultiTileEntity;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -29,7 +29,6 @@ import gregapi.tileentity.ITileEntityTapAccessible;
 import gregapi.tileentity.multiblocks.IMultiBlockFluidHandler;
 import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockBase;
-import gregapi.util.UT;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.entity.Entity;
@@ -48,7 +47,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase implements IMultiBlockFluidHandler, IFluidHandler, ITileEntityFunnelAccessible, ITileEntityTapAccessible, IMultiTileEntity.IMTE_WailaDetectable {
+public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase implements IMultiBlockFluidHandler, IFluidHandler, ITileEntityFunnelAccessible, ITileEntityTapAccessible, IWailaTile {
 	public FluidTankGT mTank = new FluidTankGT(432000);
 	public short mTankWalls = 18002;
 	public boolean mGasProof = F, mAcidProof = F, mPlasmaProof = F, mMagicProof = F;
@@ -136,7 +135,7 @@ public abstract class MultiTileEntityTank extends TileEntityBase10MultiBlockBase
 
 		mTank.readFromNBT(aNBT, NBT_TANK);
 
-		IMTE_WailaDetectable.addTankDesc(currentTip,LH.get(LH.CONTENT)+" ",mTank,"");
+		IWailaTile.addTankDesc(currentTip,LH.get(LH.CONTENT)+" ",mTank,"");
 		return currentTip;
 	}
 

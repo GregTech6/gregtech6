@@ -61,6 +61,7 @@ public class LH {
 	, RECIPES_QUALITY = "gt.lang.recipes.quality"
 	, STRUCTURE = "gt.lang.structure"
 	, ENERGY_CONTAINED = "gt.lang.energy.contained"
+	, ENERGY_CACHED = "gt.lang.energy.cached"
 	, ENERGY_CAPACITY = "gt.lang.energy.capacity"
 	, ENERGY_OUTPUT = "gt.lang.energy.output"
 	, ENERGY_INPUT = "gt.lang.energy.input"
@@ -258,7 +259,20 @@ public class LH {
 	, WIP = "gt.lang.work.in.progress"
 	, FORMED = "gt.lang.formed"
 	, CONTENT = "gt.lang.content"
-
+	, STATE = "gt.lang.state"
+	, STATE_STOPPED_FORCE = "gt.lang.state.stopped.force"
+	, STATE_STOPPED   = "gt.lang.state.stopped"
+	, STATE_READY     = "gt.lang.state.ready"
+	, STATE_PASSIVE   = "gt.lang.state.passive"
+	, STATE_ACTIVE    = "gt.lang.state.active"
+	, PARALLEL    = "gt.lang.parallel"
+	, REMAIN    = "gt.lang.remain"
+	, ENERGY_REQUIRED_CHARGE = "gt.lang.energy.required.charge"
+	, ENERGY_REQUIRED    = "gt.lang.energy.required"
+	, PROGRESS    = "gt.lang.progress"
+	, TEMPERATURE = "gt.lang.temperature"
+	, PRODUCING = "gt.lang.producing"
+	, WEIGHT = "gt.lang.weight"
 	;
 	
 	public static final String add(String aKey, String aEnglish) {LanguageHandler.add(aKey, aEnglish); return aKey;}
@@ -446,6 +460,7 @@ public class LH {
 		add(RECIPES_QUALITY                             , "This has a Tool Quality of");
 		add(STRUCTURE                                   , "Structure");
 		add(ENERGY_CONTAINED                            , "Stored Energy");
+		add(ENERGY_CACHED                               , "Cached Energy");
 		add(ENERGY_CAPACITY                             , "Capacity");
 		add(ENERGY_OUTPUT                               , "Energy OUT");
 		add(ENERGY_INPUT                                , "Energy IN");
@@ -642,8 +657,22 @@ public class LH {
 		add(WIP                                         , Chat.RESET + Chat.WHITE + Chat.BOLD + "WIP" + Chat.RESET_TOOLTIP + ", This may not be as functional as you expect it to be!");
 		add(FORMED                                      , "Formed");
 		add(CONTENT                                     , "Content");
+		add(STATE                                       , "State");
+		add(STATE_STOPPED_FORCE                         , "Force Stopped");
+		add(STATE_STOPPED                               , "Stopped");
+		add(STATE_READY                                 , "Ready");
+		add(STATE_PASSIVE                               , "Passively");
+		add(STATE_ACTIVE                                , "Active");
+		add(PARALLEL                                    , "up to %sx processed per run");
+		add(REMAIN                                      , "Remain");
+		add(ENERGY_REQUIRED_CHARGE                      , "Energy Charged");
+		add(ENERGY_REQUIRED                             , "Energy Required");
+		add(PROGRESS                                    , "Progress");
+		add(TEMPERATURE                                 , "Temperature");
+		add(PRODUCING                                   , "Producing");
+		add(WEIGHT                                      , "Weight");
 	}
-	
+
 	public static class Chat {
 		public static final String
 		   BLACK          = EnumChatFormatting.BLACK.toString()

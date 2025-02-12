@@ -21,6 +21,7 @@ package gregapi.tileentity.tank;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetMaxStackSize;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.data.*;
 import gregapi.data.LH.Chat;
 import gregapi.fluid.FluidTankGT;
@@ -35,11 +36,14 @@ import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.*;
 
@@ -50,7 +54,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable implements IMTE_AddToolTips, IMTE_GetMaxStackSize, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntityProgress, ITileEntityConnectedTank, IFluidHandler, IFluidContainerItem, IItemRottable {
+public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable implements IMTE_AddToolTips, IMTE_GetMaxStackSize, ITileEntityFunnelAccessible, ITileEntityTapAccessible, ITileEntityProgress, ITileEntityConnectedTank, IFluidHandler, IFluidContainerItem, IItemRottable, IWailaTile {
 	public FluidTankGT mTank = new FluidTankGTRateLimitedPowerConducting(16000);
 	public byte mMode = 0;
 	public long mSealedTime = 0, mMaxSealedTime = 0, mMeltingPoint = Long.MAX_VALUE;
@@ -312,5 +316,21 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 	@Override
 	public long getAmountOfFluidInConnectedTank(byte aSide, FluidStack aFluid) {
 		return (mMode & B[1]) == 0 && mTank.contains(aFluid) ? mTank.amount() : 0;
+	}
+
+	@Override
+	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		mTank.writeToNBT(aNBT, NBT_TANK);
+		return aNBT;
+	}
+
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		NBTTagCompound aNBT = accessor.getNBTData();
+
+		mTank.readFromNBT(aNBT, NBT_TANK);
+
+		IWailaTile.addTankDesc(currentTip,LH.get(LH.CONTENT)+" ",mTank,"");
+		return currentTip;
 	}
 }
