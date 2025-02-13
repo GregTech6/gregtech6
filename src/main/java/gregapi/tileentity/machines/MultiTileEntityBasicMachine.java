@@ -1158,7 +1158,8 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 
 
 		for (int i = 0; i < mTanksOutput.length; i++) {mTanksOutput[i].readFromNBT(aNBT, NBT_TANK+".o."+i);}
-		for (int i = 0; i < mTanksOutput.length; i++) IWailaTile.addTankDesc(currentTip,LH.get(LH.CONTENT)+"O"+(i+1)+" ",mTanksOutput[i],"");
+		//only display fluid amount
+		for (int i = 0; i < mTanksOutput.length; i++) IWailaTile.addFluidStackDesc(currentTip,LH.get(LH.CONTENT)+"O"+(i+1)+" ",mTanksOutput[i].get(),"");
 
 		float progress = ((aNBT.getShort("gt.waila.progress")+32767)*100F/65536F);
 		if(aNBT.hasKey("gt.waila.charge.req"))currentTip.add(LH.get(LH.ENERGY_REQUIRED_CHARGE)+" "+ LH.Chat.WHITE+ aNBT.getLong("gt.waila.charge.req") + mEnergyTypeCharged.getLocalisedChatNameShort());

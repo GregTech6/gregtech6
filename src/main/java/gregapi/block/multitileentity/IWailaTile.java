@@ -13,6 +13,7 @@ import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Arrays;
 import java.util.List;
@@ -67,6 +68,13 @@ public interface IWailaTile {
     public static List<String> addTankDesc(List<String> current, String prefix, FluidTankGT mTank, String suffix) {
         if (mTank == null || mTank.isEmpty()) return current;
         current.add(prefix + LH.Chat.WHITE + mTank.getFluid().amount + "/" + mTank.getCapacity() + LH.Chat.CYAN + " L " + LH.Chat.WHITE + mTank.getFluid().getLocalizedName() + suffix);
+        return current;
+    }
+
+
+    public static List<String> addFluidStackDesc(List<String> current, String prefix, FluidStack stack, String suffix) {
+        if (stack == null || stack.amount <= 0) return current;
+        current.add(prefix + LH.Chat.WHITE + stack.amount + LH.Chat.CYAN + " L " + LH.Chat.WHITE + stack.getLocalizedName() + suffix);
         return current;
     }
 

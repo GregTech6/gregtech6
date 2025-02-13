@@ -20,6 +20,7 @@
 package gregtech.tileentity.multiblocks;
 
 import gregapi.GT_API_Proxy;
+import gregapi.block.multitileentity.IWailaTile;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.HashSetNoNulls;
@@ -48,6 +49,8 @@ import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -58,6 +61,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.fluids.FluidStack;
@@ -73,7 +77,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityGibbl, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockInventory, IMultiBlockFluidHandler, IFluidHandler {
+public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityGibbl, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockInventory, IMultiBlockFluidHandler, IFluidHandler, IWailaTile {
 	private static int GAS_RANGE = 5, FLAME_RANGE = 5;
 	private static long MAX_AMOUNT = 16*3*3*3*U, KG_PER_ENERGY = 100;
 	private static double HEAT_RESISTANCE_BONUS = 1.10;
@@ -708,4 +712,42 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return ENERGYTYPES;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.multiblock.crucible";}
+
+	@Override
+	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
+		IWailaTile.super.getWailaNBT(te, aNBT);
+
+		UT.NBT.setNumber(aNBT, "gt.waila.weight", (long)((mMaterial.getWeight(U*7)/*myself weight*/ + getWeightValue(SIDE_INSIDE))*10));
+		UT.NBT.setNumber(aNBT, NBT_TEMPERATURE,mTemperature);
+
+		NBTTagCompound contents = new NBTTagCompound();
+		for (int i = 0; i < mContent.size(); i++) {
+			if(mContent.get(i) == null)continue;
+			UT.NBT.setNumber(contents, i+"i", mContent.get(i).mMaterial.mID);
+			UT.NBT.setNumber(contents, i+"a", mContent.get(i).mAmount);
+		}
+		if(!mContent.isEmpty())aNBT.setTag("gt.waila.content", contents);
+		return aNBT;
+	}
+
+	@Override
+	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		IWailaTile.super.getWailaBody(currentTip, accessor, config);
+		NBTTagCompound aNBT = accessor.getNBTData();
+
+		if(aNBT.hasKey("gt.waila.content")){
+			StringBuilder sb = new StringBuilder(LH.get(LH.CONTENT)).append(" ");
+			int i = 0;
+			NBTTagCompound tag = aNBT.getCompoundTag("gt.waila.content");
+			while (tag.hasKey(i+"i")){
+				float amount = tag.getLong(i+"a")*1F/U;
+				sb.append(Chat.WHITE).append(LH.get("gt.material."+OreDictMaterial.get(tag.getShort(i+"i")).mNameInternal)).append(Chat.CYAN).append(" * ").append(Chat.WHITE).append(String.format("%.3f",amount).replaceAll("0*$", "").replaceAll("\\.$", "")).append(tag.hasKey((i+1)+"i")? " , ":"");
+				i++;
+			}
+			currentTip.add(sb.toString());
+		}
+		currentTip.add(LH.get(LH.TEMPERATURE) +" "+Chat.WHITE+ aNBT.getLong(NBT_TEMPERATURE) +"/"+ getMoldMaxTemperature() +Chat.RED+" K");
+		currentTip.add(LH.get(LH.WEIGHT) +" "+Chat.WHITE+ aNBT.getLong("gt.waila.weight")/10f +Chat.YELLOW+" kg");
+		return currentTip;
+	}
 }
