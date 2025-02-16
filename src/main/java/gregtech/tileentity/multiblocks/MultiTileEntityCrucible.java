@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -74,9 +74,9 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityGibbl, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, ITileEntityEnergyDataCapacitor, IMultiBlockEnergy, IMultiBlockInventory, IMultiBlockFluidHandler, IFluidHandler {
-	private static int GAS_RANGE = 5, FLAME_RANGE = 5;
-	private static long MAX_AMOUNT = 16*3*3*3*U, KG_PER_ENERGY = 100;
-	private static double HEAT_RESISTANCE_BONUS = 1.10;
+	public static int GAS_RANGE = 5, FLAME_RANGE = 5;
+	public static long MAX_AMOUNT = 16*3*3*3*U, KG_PER_ENERGY = 100;
+	public static double HEAT_RESISTANCE_BONUS = 1.10;
 	
 	protected boolean mAcidProof = F, mMeltDown = F;
 	protected byte mDisplayedHeight = 0, mCooldown = 100;

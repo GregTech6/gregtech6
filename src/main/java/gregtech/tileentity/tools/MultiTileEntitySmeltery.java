@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -73,9 +73,9 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implements ITileEntityCrucible, ITileEntityEnergy, ITileEntityGibbl, ITileEntityWeight, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_RemovedByPlayer, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced {
-	private static int GAS_RANGE = 3, FLAME_RANGE = 3;
-	private static long MAX_AMOUNT = 16*U, KG_PER_ENERGY = 100;
-	private static double HEAT_RESISTANCE_BONUS = 1.25;
+	public static int GAS_RANGE = 3, FLAME_RANGE = 3;
+	public static long MAX_AMOUNT = 16*U, KG_PER_ENERGY = 100;
+	public static double HEAT_RESISTANCE_BONUS = 1.25;
 	
 	protected boolean mAcidProof = F, mMeltDown = F;
 	protected byte mDisplayedHeight = 0, oDisplayedHeight = 0, mCooldown = 100;

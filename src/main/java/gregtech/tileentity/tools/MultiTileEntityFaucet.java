@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -53,7 +53,7 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements ITileEntityMold, IMTE_IgnorePlayerCollisionWhenPlacing {
-	private static double HEAT_RESISTANCE_BONUS = 1.25;
+	public static double HEAT_RESISTANCE_BONUS = 1.25;
 	
 	protected boolean mAcidProof = F, mAutoPull = F;
 	

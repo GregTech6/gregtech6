@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -72,7 +72,7 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityMold extends TileEntityBase07Paintable implements ITileEntityEnergy, IFluidHandler, ITileEntityTemperature, ITileEntityMold, ITileEntityServerTickPost, IMTE_SetBlockBoundsBasedOnState, IMTE_OnEntityCollidedWithBlock, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_AddToolTips, IMTE_OnPlaced {
-	private static double HEAT_RESISTANCE_BONUS = 1.25;
+	public static double HEAT_RESISTANCE_BONUS = 1.25;
 	
 	public static final Map<Integer, OreDictPrefix> MOLD_RECIPES = new HashMap<>();
 	
