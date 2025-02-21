@@ -413,6 +413,7 @@ public class GT_API extends Abstract_Mod {
 			MT.Fireleaf.setLocal("Burn Leave");
 			MT.Knightmetal.setLocal("Night Metal");
 			MT.FierySteel.setLocal("Fury Style");
+			MT.SteelGalvanized.setLocal("Galvanized Square Steel");
 			MT.Thaumium.setLocal("Thaumanominum");
 			MT.DarkThaumium.setLocal("Dank Thaumanominum");
 			MT.VoidMetal.setLocal("Warranty Void Metal");
