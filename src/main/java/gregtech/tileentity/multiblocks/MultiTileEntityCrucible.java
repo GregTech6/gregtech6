@@ -717,7 +717,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
 		IWailaTile.super.getWailaNBT(te, aNBT);
 
-		UT.NBT.setNumber(aNBT, "gt.waila.weight", (long)((mMaterial.getWeight(U*7)/*myself weight*/ + getWeightValue(SIDE_INSIDE))*10));
+		UT.NBT.setNumber(aNBT, "gt.waila.weight", (long)((mMaterial.getWeight(U*100)/*myself weight*/ + getWeightValue(SIDE_INSIDE))*10));
 		UT.NBT.setNumber(aNBT, NBT_TEMPERATURE,mTemperature);
 
 		NBTTagCompound contents = new NBTTagCompound();

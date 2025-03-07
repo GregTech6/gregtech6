@@ -266,6 +266,7 @@ public class LH {
 	, STATE_PASSIVE   = "gt.lang.state.passive"
 	, STATE_ACTIVE    = "gt.lang.state.active"
 	, PARALLEL    = "gt.lang.parallel"
+	, PARALLEL_DURATION    = "gt.lang.parallel.duration"
 	, REMAIN    = "gt.lang.remain"
 	, ENERGY_REQUIRED_CHARGE = "gt.lang.energy.required.charge"
 	, ENERGY_REQUIRED    = "gt.lang.energy.required"
@@ -663,7 +664,8 @@ public class LH {
 		add(STATE_READY                                 , "Ready");
 		add(STATE_PASSIVE                               , "Passively");
 		add(STATE_ACTIVE                                , "Active");
-		add(PARALLEL                                    , "up to %sx processed per run");
+		add(PARALLEL                                    , "parallel process max %sx per run");
+		add(PARALLEL_DURATION                           , "max %sx processed per run");
 		add(REMAIN                                      , "Remain");
 		add(ENERGY_REQUIRED_CHARGE                      , "Energy Charged");
 		add(ENERGY_REQUIRED                             , "Energy Required");

@@ -285,7 +285,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(Chat.CYAN + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal) + (mParallel > 1 ? " ("+ String.format(LH.get(LH.PARALLEL), mParallel) +")": ""));
+		aList.add(Chat.CYAN + LH.get(LH.RECIPES) + ": " + Chat.WHITE + LH.get(mRecipes.mNameInternal) + (mParallel > 1 ? " ("+ String.format(LH.get(mParallelDuration?LH.PARALLEL_DURATION:LH.PARALLEL), mParallel) +")": ""));
 		
 		if (mCheapOverclocking)
 		aList.add(Chat.YELLOW + LH.get(LH.CHEAP_OVERCLOCKING));
@@ -683,19 +683,16 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		
 		for (int i = 0; i < getOutputItemsCount() && i < aRecipe.mOutputs.length; i++) {
 			int rMaxTimesi = 0;
-			for(int j = getInputItemsCount(); j< getInputItemsCount()+ getOutputItemsCount(); j++)if (ST.valid(aRecipe.mOutputs[i])) {
+			for(int j = getInputItemsCount(); j < getInputItemsCount() + getOutputItemsCount() ; j++)if (ST.valid(aRecipe.mOutputs[i])) {
 				if (slotHas(j)) {
 					if ((mMode & 1) != 0 || aRecipe.mNeedsEmptyOutput) {
 						mOutputBlocked++;
 						return 0;
 					}
-					if (!ST.equal(slot(j), aRecipe.mOutputs[i], F)) {
-						mOutputBlocked++;
-						return 0;
-					}
-					rMaxTimesi += Math.min(rMaxTimes, (slot(j).getMaxStackSize() - slot(j).stackSize) / aRecipe.mOutputs[i].stackSize);
+					if (!ST.equal(slot(j), aRecipe.mOutputs[i], F)) continue;
+					rMaxTimesi += (slot(j).getMaxStackSize() - slot(j).stackSize) / aRecipe.mOutputs[i].stackSize;
 				} else {
-					rMaxTimesi += Math.min(rMaxTimes, Math.max(1, 64 / aRecipe.mOutputs[i].stackSize));
+					rMaxTimesi += Math.max(1, 64 / aRecipe.mOutputs[i].stackSize);
 				}
 			}
 			rMaxTimes = Math.min(rMaxTimes, rMaxTimesi);
@@ -866,8 +863,10 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				mProgress += aEnergy;
 			}
 			if (mProgress >= mMaxProgress && (mStateOld&&!mStateNew || !TD.Energy.ALL_ALTERNATING.contains(mEnergyTypeAccepted))) {
-				for (int i = 0, j=0; i < mOutputItems .length && getInputItemsCount() + (i % getOutputItemsCount()) + j < getSizeInventory(); j++ ) if (mOutputItems [i] != null) {
-					if(mOutputItems[i].stackSize <= 64 && addStackToSlot(getInputItemsCount()+(i % getOutputItemsCount()) + j, mOutputItems[i])) {
+				for (int i = 0, j=0; i < mOutputItems.length && getInputItemsCount() + j < getSizeInventory(); j++ ) {
+					while (i < mOutputItems.length - 1 && mOutputItems [i] == null)i++;
+					if(mOutputItems[i] == null)break;//the entire array is empty, return.
+					if(mOutputItems[i].stackSize <= 64 && addStackToSlot(getInputItemsCount() + j, mOutputItems[i])) {
 						mSuccessful = T;
 						mIgnited = 40;
 						mOutputItems[i] = null;
@@ -877,7 +876,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 					if(mOutputItems[i].stackSize > 64){
 						ItemStack stack = mOutputItems[i].copy();
 						stack.stackSize = 64;
-						if(addStackToSlot(getInputItemsCount()+(i % getOutputItemsCount()) + j, stack)) {
+						if(addStackToSlot(getInputItemsCount() + j, stack)) {
 							mSuccessful = T;
 							mIgnited = 40;
 							mOutputItems[i].stackSize -= 64;
@@ -1174,8 +1173,11 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				ItemStack stack = ST.make(outItems[i*3],outItems[i*3+1],outItems[i*3+2]);
 				if(stack != null)stacks.add(stack);
 			}
-			stacks.forEach(stack -> sb.append(Chat.WHITE).append(stack.getDisplayName()).append(Chat.CYAN).append("*").append(stack.stackSize));
-			if(!stacks.isEmpty())currentTip.add(sb.toString());
+            for (int i = 0; i < stacks.size(); i++) {
+                ItemStack stack = stacks.get(i);
+                sb.append(Chat.WHITE).append(stack.getDisplayName()).append(Chat.CYAN).append("*").append(stack.stackSize).append(i==stacks.size()-1?"":Chat.WHITE+", ");
+            }
+            if(!stacks.isEmpty())currentTip.add(sb.toString());
 		}
 
 		if(aNBT.hasKey("gt.waila.out.fluids")){
@@ -1187,8 +1189,11 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				if(stack == null)continue;
 				stacks.add(stack);
 			}
-			stacks.forEach(stack->sb.append(Chat.WHITE).append(stack.amount).append(Chat.CYAN).append(" L ").append(Chat.WHITE).append(stack.getLocalizedName()).append(Chat.CYAN));
-			if(!stacks.isEmpty())currentTip.add(sb.toString());
+            for (int i = 0; i < stacks.size(); i++) {
+                FluidStack stack = stacks.get(i);
+                sb.append(Chat.WHITE).append(stack.amount).append(Chat.CYAN).append(" L ").append(Chat.WHITE).append(stack.getLocalizedName()).append(Chat.CYAN).append(i==stacks.size()-1?"":Chat.WHITE+",");
+            }
+            if(!stacks.isEmpty())currentTip.add(sb.toString());
 		}
 
 		return currentTip;

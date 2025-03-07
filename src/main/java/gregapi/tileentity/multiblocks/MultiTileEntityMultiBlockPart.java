@@ -691,13 +691,15 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	@Override
 	public NBTTagCompound getWailaNBT(TileEntity te, NBTTagCompound aNBT) {
 		if (mTargetPos != null) {
+			ITileEntityMultiBlockController tTileEntity = getTarget(F);
+			if(!tTileEntity.checkStructure(F))return aNBT;
+
 			UT.NBT.setBoolean(aNBT, "part."+NBT_TARGET, T);
 			UT.NBT.setNumber (aNBT, "part."+NBT_TARGET_X, mTargetPos.posX);
 			UT.NBT.setNumber (aNBT, "part."+NBT_TARGET_Y, mTargetPos.posY);
 			UT.NBT.setNumber (aNBT, "part."+NBT_TARGET_Z, mTargetPos.posZ);
-			ITileEntityMultiBlockController tTileEntity = getTarget(T);
-			if(!(tTileEntity instanceof IWailaTile))return aNBT;
 
+			if(!(tTileEntity instanceof IWailaTile))return aNBT;
 			((IWailaTile)tTileEntity).getWailaNBT((TileEntity) tTileEntity, aNBT);
 		}
 		return aNBT;
@@ -707,7 +709,8 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	public List<String> getWailaBody(List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 		NBTTagCompound aNBT = accessor.getNBTData();
 		if (aNBT.hasKey("part."+NBT_TARGET)) {mTargetPos = new ChunkCoordinates(UT.Code.bindInt(aNBT.getLong("part."+NBT_TARGET_X)), UT.Code.bindInt(aNBT.getLong("part."+NBT_TARGET_Y)), UT.Code.bindInt(aNBT.getLong("part."+NBT_TARGET_Z)));}
-		ITileEntityMultiBlockController tTileEntity = getTarget(T);
+		else mTargetPos = null;
+		ITileEntityMultiBlockController tTileEntity = getTarget(F);
 		if(tTileEntity instanceof TileEntityBase01Root) currentTip.add(LH.get(LH.FORMED)+ " " + LH.Chat.WHITE + LH.get(((TileEntityBase01Root) tTileEntity).getTileEntityName()));
 		if(tTileEntity instanceof IWailaTile) ((IWailaTile)tTileEntity).getWailaBody(currentTip, accessor, config);
 		return currentTip;
