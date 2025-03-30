@@ -1005,7 +1005,13 @@ public class ST {
 	public static final Collection<ItemStack> REVERT_TO_BOOK_TO_FIX_STUPID = ST.arraylist();
 	public static void fixBookStacks() {for (ItemStack tStack : REVERT_TO_BOOK_TO_FIX_STUPID) ST.set(tStack, ST.make(Items.book, 1, 0), T, T);}
 	
-	public static final List<String> LOOT_TABLES = new ArrayList<>();
+	public static final List<String>
+	LOOT_TABLES         = new ArrayListNoNulls<>(F, "dungeonChest", "villageBlacksmith", "mineshaftCorridor", "strongholdLibrary", "strongholdCrossing", "strongholdCorridor", "pyramidDesertyChest", "pyramidJungleChest", "pyramidJungleDispenser", "bonusChest"),
+	LOOT_TABLES_VANILLA = new ArrayListNoNulls<>(F, "dungeonChest", "villageBlacksmith", "mineshaftCorridor", "strongholdLibrary", "strongholdCrossing", "strongholdCorridor", "pyramidDesertyChest", "pyramidJungleChest", "pyramidJungleDispenser", "bonusChest");
+	
+	public static ItemStack generateOneVanillaLoot() {
+		return ChestGenHooks.getOneItem(UT.Code.select("dungeonChest", ST.LOOT_TABLES_VANILLA), RNGSUS);
+	}
 	
 	public static boolean generateLoot(Random aRandom, String aLoot, IInventory aInventory) {
 		try {

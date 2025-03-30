@@ -43,6 +43,10 @@ public class RecipeMapUnboxinator extends RecipeMap {
 	@Override
 	public Recipe findRecipe(IHasWorldAndCoords aTileEntity, Recipe aRecipe, boolean aNotUnificated, long aSize, ItemStack aSpecialSlot, FluidStack[] aFluids, ItemStack... aInputs) {
 		if (aInputs == null || aInputs.length <= 0 || aInputs[0] == null) return super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
+		if (IL.Crate_Loot.equal(aInputs[0], F, T)) {
+			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
+			return new Recipe(F, F, F, ST.array(IL.Crate_Loot.get(1)), ST.array(ST.generateOneVanillaLoot(), IL.Crate.get(1)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
+		}
 		if (COMPAT_IC2 != null && IL.IC2_Scrapbox.equal(aInputs[0], F, T)) {
 			ItemStack tOutput = COMPAT_IC2.scrapbox(aInputs[0]);
 			// If API Failure, return the whole stack of Scrapboxes, don't waste any time or items.

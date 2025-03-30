@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -53,6 +53,7 @@ public enum OD {
 	, craftingWireIron
 	, craftingWireTin
 	, craftingDuctTape
+	, crateGtEmpty
 	, lever
 	, button
 	, buttonWood

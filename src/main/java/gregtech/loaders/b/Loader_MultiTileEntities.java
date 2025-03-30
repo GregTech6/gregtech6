@@ -2007,6 +2007,7 @@ public class Loader_MultiTileEntities implements Runnable {
 		aRegistry.add("Miniature Last Millenium Portal"                     , "Portals"                             , 32004, 32766, MultiTileEntityMiniPortalEndOfTime.class                ,                 2, 16, aStone         , UT.NBT.make(NBT_HIDDEN, !(MD.ExU.mLoaded || MD.ExS.mLoaded)), MD.ExS.mLoaded ? new Object[] {"SSS", "SXS", "SSS", 'S', OP.stickLong.dat(MT.Obsidian), 'X', ST.make(MD.ExS, "deepPortal", 1, 2)} : MD.ExU.mLoaded ? new Object[] {"SSS", "SXS", "SSS", 'S', OP.stickLong.dat(MT.Obsidian), 'X', ST.make(MD.ExU, "dark_portal", 1, 2)} : ZL);
 		
 		aRegistry.add("C-Foam Block"                                        , "C-Foam"                              , 32765, 32765, MultiTileEntityCFoam.class                              ,                 1, 64, aStone         , null);
+		aRegistry.add("Loot Crate"                                          , "Untyped"                             , 32110, 32764, MultiTileEntityLootCrate.class                          ,                 0, 64, aUtilWood      , null, "wrd", "FGT", "SLC", 'L', OD.crateGtEmpty, 'G', OP.gearGtSmall.dat(MT.Au), 'S', OP.spring.dat(MT.Au), 'T', OP.screw.dat(MT.Au), 'C', OP.casingSmall.dat(MT.Au), 'F', OP.foil.dat(MT.Au)); IL.Crate_Loot.set(aRegistry.getItem());
 		aRegistry.add("Supporter Certificate"                               , "Untyped"                             , 32764, 32764, MultiTileEntityCertificate.class                        ,                 0, 64, aUtilMetal     , UT.NBT.make(NBT_HARDNESS, 0.5F, NBT_RESISTANCE, 0.3F));
 		aRegistry.add("Fluid Spring"                                        , "Untyped"                             , 32763, 32764, MultiTileEntityFluidSpring.class                        ,                 0, 64, aStone         , null);
 		aRegistry.add("Rubber Resin Hole"                                   , "Untyped"                             , 32762, 32764, MultiTileEntityResinHoleRubber.class                    ,                 0,  1, aWooden        , null);
@@ -2067,7 +2068,7 @@ public class Loader_MultiTileEntities implements Runnable {
 			}
 		}
 		
-		// 32110 is next, up to 32251
+		// 32111 is next, up to 32251
 		
 		aMat = MT.Brown;            aRegistry.add("Rope"                                                , "Ropes"                               , 32011, 32011, MultiTileEntityRope.class                               ,                 0, 64, aUtilWool      , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   1.0F, NBT_FLAMMABILITY,100),  " S",  "SS",  "Sq", 'S', "cropHemp");                   IL.Rope        .set(aRegistry.getItem(), null, "rope");
 		aMat = MT.White;            aRegistry.add("Silk Rope"                                           , "Ropes"                               , 32012, 32011, MultiTileEntityRope.class                               ,                 0, 64, aUtilWool      , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   0.5F, NBT_RESISTANCE,   1.0F                      ),  " S",  "SS",  "Sq", 'S', Items.string);                 IL.Rope_Silk   .set(aRegistry.getItem(), null, "rope");

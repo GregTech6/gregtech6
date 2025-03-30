@@ -1475,6 +1475,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.setAutomaticItemData("logAnyWood", new OreDictItemData(ANY.Wood, U*8, MT.Bark, U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.logWood, new OreDictItemData(ANY.Wood, U*8, MT.Bark, U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.logRubber, new OreDictItemData(MT.WoodRubber, U*8, MT.Bark, U));
+		OreDictManager.INSTANCE.setAutomaticItemData(OD.crateGtEmpty, new OreDictItemData(ANY.Wood, U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.plankWood, new OreDictItemData(ANY.Wood, U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.plankAnyWood, new OreDictItemData(ANY.Wood, U));
 		OreDictManager.INSTANCE.setAutomaticItemData(OD.plankWeedwood, new OreDictItemData(MT.Weedwood, U));

@@ -268,7 +268,7 @@ public enum IL implements IItemContainer {
 	Antler, Antler_Deer,
 	Cerublossom, DesertNova, Resin, Sticky_Goo,
 	Comb_Honey, Comb_Water, Comb_Magic, Comb_Nether, Comb_End, Comb_Rock, Comb_Jungle, Comb_Frozen, Comb_Shroom, Comb_Sandy, Comb_Clay, Comb_Sticky, Comb_Royal, Comb_Soul, Comb_Amnesic, Comb_Military, Comb_Pyro, Comb_Cryo, Comb_Aero, Comb_Tera,
-	PlasticCan, Crate, Crate_Fireproof,
+	PlasticCan, Crate, Crate_Fireproof, Crate_Loot,
 	ThermosCan_Empty,
 	ThermosCan_Dark_Coffee, ThermosCan_Dark_Cafe_au_lait, ThermosCan_Coffee, ThermosCan_Cafe_au_lait, ThermosCan_Lait_au_cafe, ThermosCan_Dark_Chocolate_Milk,
 	ThermosCan_Chocolate_Milk,

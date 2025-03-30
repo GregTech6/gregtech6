@@ -1675,15 +1675,15 @@ public class CS {
 		;
 		
 		public static final Set<Object> stoneOverridable      = new HashSetNoNulls<>(F);
-		public static final Set<Object> instaharvest          = new HashSetNoNulls<Object>(F, Blocks.torch, Blocks.redstone_torch, Blocks.unlit_redstone_torch, Blocks.redstone_wire, Blocks.powered_comparator, Blocks.unpowered_comparator, Blocks.powered_repeater, Blocks.unpowered_repeater, Blocks.skull, Blocks.monster_egg);
-		public static final Set<Object> breakableGlass        = new HashSetNoNulls<Object>(F, Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane);
-		public static final Set<Object> openableCrowbar       = new HashSetNoNulls<Object>(F, Blocks.iron_block, Blocks.gold_block, Blocks.lapis_block, Blocks.diamond_block, Blocks.emerald_block, Blocks.redstone_block, Blocks.coal_block);
-		public static final Set<Object> drillableDynamite     = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.mycelium, Blocks.clay, Blocks.snow, Blocks.gravel, Blocks.sandstone, Blocks.cobblestone, Blocks.mossy_cobblestone, Blocks.netherrack, Blocks.end_stone, Blocks.hardened_clay, Blocks.stained_hardened_clay, Blocks.iron_ore, Blocks.gold_ore, Blocks.lapis_ore, Blocks.diamond_ore, Blocks.emerald_ore, Blocks.redstone_ore, Blocks.lit_redstone_ore, Blocks.coal_ore, Blocks.quartz_ore, Blocks.monster_egg);
-		public static final Set<Object> harvestableJackhammer = new HashSetNoNulls<Object>(F, Blocks.stone, Blocks.sandstone, Blocks.cobblestone, Blocks.mossy_cobblestone, Blocks.netherrack, Blocks.end_stone, Blocks.hardened_clay, Blocks.stained_hardened_clay, Blocks.monster_egg);
-		public static final Set<Object> harvestableSpade      = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.mycelium, Blocks.clay, Blocks.snow, Blocks.gravel);
-		public static final Set<Object> plantableGreens       = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt, Blocks.farmland);
-		public static final Set<Object> plantableTrees        = new HashSetNoNulls<Object>(F, Blocks.grass, Blocks.dirt);
-		public static final Set<Object> plantableGrass        = new HashSetNoNulls<Object>(F, Blocks.grass);
+		public static final Set<Object> instaharvest          = new HashSetNoNulls<>(F, Blocks.torch, Blocks.redstone_torch, Blocks.unlit_redstone_torch, Blocks.redstone_wire, Blocks.powered_comparator, Blocks.unpowered_comparator, Blocks.powered_repeater, Blocks.unpowered_repeater, Blocks.skull, Blocks.monster_egg);
+		public static final Set<Object> breakableGlass        = new HashSetNoNulls<>(F, Blocks.glass, Blocks.glass_pane, Blocks.stained_glass, Blocks.stained_glass_pane);
+		public static final Set<Object> openableCrowbar       = new HashSetNoNulls<>(F, Blocks.iron_block, Blocks.gold_block, Blocks.lapis_block, Blocks.diamond_block, Blocks.emerald_block, Blocks.redstone_block, Blocks.coal_block);
+		public static final Set<Object> drillableDynamite     = new HashSetNoNulls<>(F, Blocks.grass, Blocks.dirt, Blocks.mycelium, Blocks.clay, Blocks.snow, Blocks.gravel, Blocks.sandstone, Blocks.cobblestone, Blocks.mossy_cobblestone, Blocks.netherrack, Blocks.end_stone, Blocks.hardened_clay, Blocks.stained_hardened_clay, Blocks.iron_ore, Blocks.gold_ore, Blocks.lapis_ore, Blocks.diamond_ore, Blocks.emerald_ore, Blocks.redstone_ore, Blocks.lit_redstone_ore, Blocks.coal_ore, Blocks.quartz_ore, Blocks.monster_egg);
+		public static final Set<Object> harvestableJackhammer = new HashSetNoNulls<>(F, Blocks.stone, Blocks.sandstone, Blocks.cobblestone, Blocks.mossy_cobblestone, Blocks.netherrack, Blocks.end_stone, Blocks.hardened_clay, Blocks.stained_hardened_clay, Blocks.monster_egg);
+		public static final Set<Object> harvestableSpade      = new HashSetNoNulls<>(F, Blocks.grass, Blocks.dirt, Blocks.mycelium, Blocks.clay, Blocks.snow, Blocks.gravel);
+		public static final Set<Object> plantableGreens       = new HashSetNoNulls<>(F, Blocks.grass, Blocks.dirt, Blocks.farmland);
+		public static final Set<Object> plantableTrees        = new HashSetNoNulls<>(F, Blocks.grass, Blocks.dirt);
+		public static final Set<Object> plantableGrass        = new HashSetNoNulls<>(F, Blocks.grass);
 		
 		/** Blocks to not generate Ores in. */
 		public static ItemStackSet<ItemStackContainer> sDontGenerateOresIn = ST.hashset();

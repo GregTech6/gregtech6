@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,8 @@
 
 package gregtech.loaders.a;
 
-import static gregapi.data.CS.*;
-
 import gregapi.block.metatype.BlockMetaType;
-import gregapi.data.ANY;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.IL;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.TC;
+import gregapi.data.*;
 import gregapi.oredict.OreDictManager;
 import gregapi.util.CR;
 import gregapi.util.OM;
@@ -36,6 +28,8 @@ import gregapi.util.ST;
 import gregtech.blocks.tree.*;
 import gregtech.blocks.wood.*;
 import net.minecraft.init.Blocks;
+
+import static gregapi.data.CS.*;
 
 public class Loader_Woods implements Runnable {
 	@Override
@@ -81,8 +75,8 @@ public class Loader_Woods implements Runnable {
 		IL.Treated_Planks_Slab.set(ST.make(((BlockMetaType)BlocksGT.Planks).mSlabs[0], 1, 10));
 		IL.Treated_Planks     .set(ST.make(BlocksGT.Planks, 1, 10));
 		IL.Beam               .set(ST.make(BlocksGT.Beam2 , 1,  3));
-		IL.Crate              .set(ST.make(BlocksGT.Planks, 1, 11));
-		IL.Crate_Fireproof    .set(ST.make(BlocksGT.PlanksFireProof, 1, 11));
+		IL.Crate              .set(ST.make(BlocksGT.Planks, 1, 11), null, OD.crateGtEmpty);
+		IL.Crate_Fireproof    .set(ST.make(BlocksGT.PlanksFireProof, 1, 11), null, OD.crateGtEmpty);
 		
 		CR.shaped(IL.Crate.get(1), CR.DEF_NCC, "Ts", "Pd", 'P', OD.plankAnyWood, 'T', OP.screw.dat(MT.HSLA));
 		CR.shaped(IL.Crate.get(1), CR.DEF_NCC, "Ts", "Pd", 'P', OD.plankAnyWood, 'T', OP.screw.dat(ANY.Iron));

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -50,17 +50,6 @@ public class Loader_Loot implements Runnable {
 		new ChestGenHooksChestReplacer(ChestGenHooks.PYRAMID_JUNGLE_CHEST,   502);
 		if (!MD.VN4.mLoaded)
 		new ChestGenHooksChestReplacer(ChestGenHooks.VILLAGE_BLACKSMITH  ,    24);
-		
-		ST.LOOT_TABLES.add(ChestGenHooks.DUNGEON_CHEST           );
-		ST.LOOT_TABLES.add(ChestGenHooks.VILLAGE_BLACKSMITH      );
-		ST.LOOT_TABLES.add(ChestGenHooks.MINESHAFT_CORRIDOR      );
-		ST.LOOT_TABLES.add(ChestGenHooks.STRONGHOLD_LIBRARY      );
-		ST.LOOT_TABLES.add(ChestGenHooks.STRONGHOLD_CROSSING     );
-		ST.LOOT_TABLES.add(ChestGenHooks.STRONGHOLD_CORRIDOR     );
-		ST.LOOT_TABLES.add(ChestGenHooks.PYRAMID_DESERT_CHEST    );
-		ST.LOOT_TABLES.add(ChestGenHooks.PYRAMID_JUNGLE_CHEST    );
-		ST.LOOT_TABLES.add(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER);
-		ST.LOOT_TABLES.add(ChestGenHooks.BONUS_CHEST             );
 		
 		if (MD.TF.mLoaded) {
 			TFTreasure.hill1             = TwilightTreasureReplacer.create(TFTreasure.hill1            ,  1, "hill1"            , ChestGenHooks.MINESHAFT_CORRIDOR      ,   509);

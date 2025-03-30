@@ -24,6 +24,14 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Roasters of higher Tiers no longer have overclocking penalty.
 [CHANGED] Zirconium now has durability and speed identical to Diamonds.
 [CHANGED] Rock Salt is mostly named Sylvite now, except in its Dust form.
+[ADDED]
+Loot Crates, which can be made from about 3 Units of tediously crafted Gold, and look exactly like all the other Wooden Crates.
+Each Loot Crate will net you 1 random Stack of Vanilla Loot Table Loot when Unboxinated or rightclicked with a Crowbar.
+The primary purpose is to ensure you dont need to constantly explore to get certain things, while not making it too easy.
+Also this does serve as a more complicated version of IC2s Scrapbox Mechanic, where here you need Gold instead of Garbage to do this.
+I chose Gold because it is the most common useless Metal in Modded Minecraft, especially since you can melt down Notch Apples and such.
+I made sure all its ingredients are automatable without the Crucible, but it still requires a big Setup if you really want to automate this.
+Yes, it is possible for Loot Crates to drop a stack of GregTech Crates. See it like buying a bunch of cheaper Metal for Gold or so.
 
 
 6.17.01:
