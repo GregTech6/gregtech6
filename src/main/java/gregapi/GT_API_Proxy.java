@@ -560,7 +560,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				// Big Animals break regular tall Grass, but not super tall Grass.
 				if (aEvent.entityLiving instanceof EntityPig || aEvent.entityLiving instanceof EntitySheep || aEvent.entityLiving instanceof EntityCow || aEvent.entityLiving instanceof EntityHorse) {
 					if (aEvent.entityLiving.worldObj.getBlock(tX, tY+1, tZ) == Blocks.tallgrass) {
-						aEvent.entityLiving.worldObj.setBlock(tX, tY+4, tZ, NB, 0, 3);
+						aEvent.entityLiving.worldObj.setBlock(tX, tY+1, tZ, NB, 0, 3);
 						UT.Sounds.send(aEvent.entityLiving.worldObj, SFX.MC_DIG_GRASS, 0.5F, 0.5F, tX, tY, tZ);
 					}
 				}
