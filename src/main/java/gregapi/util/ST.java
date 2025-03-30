@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -339,6 +339,7 @@ public class ST {
 	public static ItemStackSet<ItemStackContainer> hashset(ItemStack... aStacks) {return new ItemStackSet<>(aStacks);}
 	public static ArrayListNoNulls<ItemStack> arraylist(ItemStack... aStacks) {return new ArrayListNoNulls<>(F, aStacks);}
 	public static ItemStack[] array(ItemStack... aStacks) {return aStacks;}
+	public static ItemStack[] array(int aLength) {return new ItemStack[aLength];}
 	
 	public static ItemStack make_(Item  aItem , long aSize, long aMeta) {return new ItemStack(aItem , UT.Code.bindInt(aSize), UT.Code.bindShort(aMeta));}
 	public static ItemStack make_(Block aBlock, long aSize, long aMeta) {return new ItemStack(aBlock, UT.Code.bindInt(aSize), UT.Code.bindShort(aMeta));}

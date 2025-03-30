@@ -45,9 +45,17 @@ public class RecipeMapUnboxinator extends RecipeMap {
 		if (aInputs == null || aInputs.length <= 0 || aInputs[0] == null) return super.findRecipe(aTileEntity, aRecipe, aNotUnificated, aSize, aSpecialSlot, aFluids, aInputs);
 		if (COMPAT_IC2 != null && IL.IC2_Scrapbox.equal(aInputs[0], F, T)) {
 			ItemStack tOutput = COMPAT_IC2.scrapbox(aInputs[0]);
+			// If API Failure, return the whole stack of Scrapboxes, don't waste any time or items.
 			if (tOutput == null) return new Recipe(F, F, F, aInputs, aInputs, null, null, null, null, 1, 1, 0);
 			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
 			return new Recipe(F, F, F, ST.array(IL.IC2_Scrapbox.get(1)), ST.array(tOutput), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
+		}
+		if (COMPAT_TC != null && IL.TC_Loot_Common.equal(aInputs[0], T, T)) {
+			ItemStack[] tOutputs = COMPAT_TC.lootbag(ST.meta(aInputs[0]));
+			// If Compat Failure, return the whole stack of Lootbags, don't waste any time or items.
+			if (!ST.hasValid(tOutputs)) return new Recipe(F, F, F, aInputs, aInputs, null, null, null, null, 1, 1, 0);
+			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
+			return new Recipe(F, F, F, ST.array(ST.amount(1, aInputs[0])), tOutputs, null, null, null, null, 16, 16, 0).setNeedEmptyOut();
 		}
 		if (IL.LOOTBAGS_Bag_0.equal(aInputs[0], T, T)) {
 			ItemStack tBag = ST.amount(1, aInputs[0]);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -49,6 +49,7 @@ import thaumcraft.api.research.ResearchCategoryList;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.items.equipment.ItemElementalAxe;
+import thaumcraft.common.lib.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -196,6 +197,13 @@ public class CompatTC extends CompatBase implements ICompatTC {
 		ThaumcraftApi.registerEntityTag("TwilightForest.Knight Phantom"              , new AspectList().add(Aspect.SOUL, 20).add(Aspect.ARMOR, 20).add(Aspect.WEAPON, 20));
 		ThaumcraftApi.registerEntityTag("TwilightForest.Yeti"                        , new AspectList().add(Aspect.BEAST, 4).add(Aspect.MAN, 4).add(Aspect.COLD, 2));
 		ThaumcraftApi.registerEntityTag("TwilightForest.Yeti Boss"                   , new AspectList().add(Aspect.BEAST, 20).add(Aspect.MAN, 20).add(Aspect.COLD, 20));
+	}
+	
+	@Override
+	public ItemStack[] lootbag(long aMeta) {
+		ItemStack[] rStacks = ST.array(8+RNGSUS.nextInt(5));
+		for (int i = 0; i < rStacks.length; i++) rStacks[i] = Utils.generateLoot(UT.Code.bind2(aMeta), RNGSUS);
+		return rStacks;
 	}
 	
 	@Override
