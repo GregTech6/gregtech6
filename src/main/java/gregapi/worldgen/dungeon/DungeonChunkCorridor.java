@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,9 +19,9 @@
 
 package gregapi.worldgen.dungeon;
 
-import static gregapi.data.CS.*;
-
 import gregapi.util.WD;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -50,7 +50,34 @@ public class DungeonChunkCorridor extends DungeonChunkPillar {
 				}
 			}
 		}
-
+		
+		if (aData.next1in3()) switch(aData.next(4)) {
+		case  0:
+			if (aData.next1in2()) {aData.set( 6, 1,  9, SIDE_UNKNOWN, 32110, null, T, T);
+			if (aData.next2in3())  aData.set( 6, 2,  9, SIDE_UNKNOWN, 32110, null, T, T);}
+			if (aData.next1in2())  aData.set( 7, 1,  9, SIDE_UNKNOWN, 32110, null, T, T);
+			if (aData.next1in2())  aData.set( 6, 1,  8, SIDE_UNKNOWN, 32110, null, T, T);
+			break;
+		case  1:
+			if (aData.next1in2()) {aData.set( 9, 1,  9, SIDE_UNKNOWN, 32110, null, T, T);
+			if (aData.next2in3())  aData.set( 9, 2,  9, SIDE_UNKNOWN, 32110, null, T, T);}
+			if (aData.next1in2())  aData.set( 8, 1,  9, SIDE_UNKNOWN, 32110, null, T, T);
+			if (aData.next1in2())  aData.set( 9, 1,  8, SIDE_UNKNOWN, 32110, null, T, T);
+			break;
+		case  2:
+			if (aData.next1in2()) {aData.set( 6, 1,  6, SIDE_UNKNOWN, 32110, null, T, T);
+			if (aData.next2in3())  aData.set( 6, 2,  6, SIDE_UNKNOWN, 32110, null, T, T);}
+			if (aData.next1in2())  aData.set( 7, 1,  6, SIDE_UNKNOWN, 32110, null, T, T);
+			if (aData.next1in2())  aData.set( 6, 1,  7, SIDE_UNKNOWN, 32110, null, T, T);
+			break;
+		default:
+			if (aData.next1in2()) {aData.set( 9, 1,  6, SIDE_UNKNOWN, 32110, null, T, T);
+			if (aData.next2in3())  aData.set( 9, 2,  6, SIDE_UNKNOWN, 32110, null, T, T);}
+			if (aData.next1in2())  aData.set( 8, 1,  6, SIDE_UNKNOWN, 32110, null, T, T);
+			if (aData.next1in2())  aData.set( 9, 1,  7, SIDE_UNKNOWN, 32110, null, T, T);
+			break;
+		}
+		
 		if (WD.liquid(aData.mWorld, aData.mX+ 7, aData.mY+4, aData.mZ+ 7) || WD.liquid(aData.mWorld, aData.mX+ 7, aData.mY+4, aData.mZ+ 8)
 		 || WD.liquid(aData.mWorld, aData.mX+ 8, aData.mY+4, aData.mZ+ 7) || WD.liquid(aData.mWorld, aData.mX+ 8, aData.mY+4, aData.mZ+ 8)
 		 || aData.mWorld.canBlockSeeTheSky(aData.mX+ 7, aData.mY+4, aData.mZ+ 7) || aData.mWorld.canBlockSeeTheSky(aData.mX+ 7, aData.mY+4, aData.mZ+ 8)
