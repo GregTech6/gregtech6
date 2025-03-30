@@ -110,36 +110,48 @@ public class DungeonChunkBarracks extends DungeonChunkRoomEmpty {
 		
 		NBTTagList
 		tList = new NBTTagList();
-		short tKeySlot = (short)aData.next(28);
-		if (!aData.mGeneratedKeys[0]) {aData.mGeneratedKeys[0] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[0]), "s", tKeySlot));}
+		if (!aData.mGeneratedKeys[0]) {
+			aData.mGeneratedKeys[0] = T;
+			short tKeySlot = (short)aData.next(28);
+			tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[0]), "s", tKeySlot));
+			// Hint that there is something behind the Shelf.
+			if (tKeySlot >= 14) {aData.cobble( 3, 1, 0); aData.cobble( 3, 2, 0); aData.cobble( 3, 3, 0);}
+		}
 		aData.set( 4, 1,  1, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mKeyIDs[0]), T, T);
 		aData.set( 3, 1,  1, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tList), T, T);
-		// Hint that there is something behind the Shelf.
-		if (tKeySlot >= 14) {aData.cobble( 3, 1, 0); aData.cobble( 3, 2, 0); aData.cobble( 3, 3, 0);}
 		
 		tList = new NBTTagList();
-		tKeySlot = (short)aData.next(28);
-		if (!aData.mGeneratedKeys[1]) {aData.mGeneratedKeys[1] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[1]), "s", tKeySlot));}
+		if (!aData.mGeneratedKeys[1]) {
+			aData.mGeneratedKeys[1] = T;
+			short tKeySlot = (short)aData.next(28);
+			tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[1]), "s", tKeySlot));
+			// Hint that there is something behind the Shelf.
+			if (tKeySlot >= 14) {aData.cobble( 3, 1,15); aData.cobble( 3, 2,15); aData.cobble( 3, 3,15);}
+		}
 		aData.set( 4, 1, 14, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mKeyIDs[1]), T, T);
 		aData.set( 3, 1, 14, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tList), T, T);
-		// Hint that there is something behind the Shelf.
-		if (tKeySlot >= 14) {aData.cobble( 3, 1,15); aData.cobble( 3, 2,15); aData.cobble( 3, 3,15);}
 		
 		tList = new NBTTagList();
-		tKeySlot = (short)aData.next(28);
-		if (!aData.mGeneratedKeys[3]) {aData.mGeneratedKeys[3] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[3]), "s", tKeySlot));}
+		if (!aData.mGeneratedKeys[3]) {
+			aData.mGeneratedKeys[3] = T;
+			short tKeySlot = (short)aData.next(28);
+			tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[3]), "s", tKeySlot));
+			// Hint that there is something behind the Shelf.
+			if (tKeySlot >= 14) {aData.cobble(12, 1, 0); aData.cobble(12, 2, 0); aData.cobble(12, 3, 0);}
+		}
 		aData.set(11, 1,  1, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_KEY, aData.mKeyIDs[3]), T, T);
 		aData.set(12, 1,  1, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_POS, NBT_INV_LIST, tList), T, T);
-		// Hint that there is something behind the Shelf.
-		if (tKeySlot >= 14) {aData.cobble(12, 1, 0); aData.cobble(12, 2, 0); aData.cobble(12, 3, 0);}
 		
 		tList = new NBTTagList();
-		tKeySlot = (short)aData.next(28);
-		if (!aData.mGeneratedKeys[4]) {aData.mGeneratedKeys[4] = T; tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[4]), "s", tKeySlot));}
+		if (!aData.mGeneratedKeys[4]) {
+			aData.mGeneratedKeys[4] = T;
+			short tKeySlot = (short)aData.next(28);
+			tList.appendTag(UT.NBT.makeShort(ST.save(aData.mKeyStacks[4]), "s", tKeySlot));
+			// Hint that there is something behind the Shelf.
+			if (tKeySlot >= 14) {aData.cobble(12, 1,15); aData.cobble(12, 2,15); aData.cobble(12, 3,15);}
+		}
 		aData.set(11, 1, 14, SIDE_UNKNOWN,  3010, UT.NBT.make("gt.dungeonloot"      , UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_KEY, aData.mKeyIDs[4]), T, T);
 		aData.set(12, 1, 14, SIDE_UNKNOWN,  7110, UT.NBT.make("gt.dungeonloot.front", UT.Code.select("", tLoots), NBT_FACING, SIDE_Z_NEG, NBT_INV_LIST, tList), T, T);
-		// Hint that there is something behind the Shelf.
-		if (tKeySlot >= 14) {aData.cobble(12, 1,15); aData.cobble(12, 2,15); aData.cobble(12, 3,15);}
 		
 		if (aData.next1in2()) aData.coins( 4, 2,  1);
 		if (aData.next1in2()) aData.coins( 4, 2, 14);

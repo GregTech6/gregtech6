@@ -1852,12 +1852,26 @@ public class LoaderItemData implements Runnable {
 		
 		OM.data(MD.BB, "boneShard"                          , 1,   W, MT.Bone               ,  U * 2);
 		
+		
+		OM.dat2(MD.MoCr, "silversword"                      , 1     , MT.Ag                 ,  U * 2, ANY.Wood, U2);
+		
+		
 		OM.data(MD.EtFu, "red_sandstone_slab"               , 1,   0, MT.RedSand            ,  U2* 9);
 		OM.data(MD.EtFu, "red_sandstone"                    , 1,   W, MT.RedSand            ,  U * 9);
 		OM.data(MD.EtFu, "rabbit_raw"                       , 1,   W, MT.MeatRaw            ,  U * 2, MT.Bone, U4);
 		OM.data(MD.EtFu, "rabbit_cooked"                    , 1,   W, MT.MeatCooked         ,  U * 2, MT.Bone, U4);
 		OM.data(MD.EtFu, "mutton_raw"                       , 1,   W, MT.MeatRaw            ,  U * 2, MT.Bone, U4);
 		OM.data(MD.EtFu, "mutton_cooked"                    , 1,   W, MT.MeatCooked         ,  U * 2, MT.Bone, U4);
+		OM.dat2(MD.EtFu, "netherite_sword"                  , 1     , MT.NetherizedDiamond  ,  U * 2, ANY.Wood, U2);
+		OM.dat2(MD.EtFu, "netherite_pickaxe"                , 1     , MT.NetherizedDiamond  ,  U * 3, ANY.Wood, U );
+		OM.dat2(MD.EtFu, "netherite_spade"                  , 1     , MT.NetherizedDiamond  ,  U * 1, ANY.Wood, U );
+		OM.dat2(MD.EtFu, "netherite_axe"                    , 1     , MT.NetherizedDiamond  ,  U * 3, ANY.Wood, U );
+		OM.dat2(MD.EtFu, "netherite_hoe"                    , 1     , MT.NetherizedDiamond  ,  U * 2, ANY.Wood, U );
+		OM.dat2(MD.EtFu, "netherite_helmet"                 , 1     , MT.NetherizedDiamond  ,  U * 5);
+		OM.dat2(MD.EtFu, "netherite_chestplate"             , 1     , MT.NetherizedDiamond  ,  U * 8);
+		OM.dat2(MD.EtFu, "netherite_leggings"               , 1     , MT.NetherizedDiamond  ,  U * 7);
+		OM.dat2(MD.EtFu, "netherite_boots"                  , 1     , MT.NetherizedDiamond  ,  U * 4);
+		
 		
 		OM.data(MD.GaSu, "mutton_raw"                       , 1,   W, MT.MeatRaw            ,  U * 2, MT.Bone, U4);
 		OM.data(MD.GaSu, "mutton_cooked"                    , 1,   W, MT.MeatCooked         ,  U * 2, MT.Bone, U4);
