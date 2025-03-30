@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -2020,6 +2020,8 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.HaC, "rabbitcookedItem"                  , 1,   W, MT.MeatCooked         ,  U * 1, MT.Bone,  U4);
 		OM.data(MD.HaC, "venisonrawItem"                    , 1,   W, MT.MeatRaw            ,  U * 2, MT.Bone,  U9);
 		OM.data(MD.HaC, "venisoncookedItem"                 , 1,   W, MT.MeatCooked         ,  U * 2, MT.Bone,  U9);
+		OM.data(MD.HaC, "muttonrawItem"                     , 1,   W, MT.MeatRaw            ,  U * 2, MT.Bone,  U9);
+		OM.data(MD.HaC, "muttoncookedItem"                  , 1,   W, MT.MeatCooked         ,  U * 2, MT.Bone,  U9);
 		
 		
 		OM.data(MD.FSP, "steamedBeef"                       , 1,   W, MT.MeatCooked         ,  U * 2, MT.Bone, U9);
