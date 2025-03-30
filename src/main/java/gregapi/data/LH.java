@@ -645,6 +645,12 @@ public class LH {
 		public static final Set<String> BASICALLY_EMPTY_STRINGS = new HashSetNoNulls<>(F, "", " ", "  ", "   ", "    ");
 		
 		static {
+			// Do not contain relevant Info whatsoever...
+			BASICALLY_EMPTY_STRINGS.add(EnumChatFormatting.RED +"No Ore Dict data!");
+			BASICALLY_EMPTY_STRINGS.add(EnumChatFormatting.BLUE+"Ore Dict:");
+			BASICALLY_EMPTY_STRINGS.add(EnumChatFormatting.GRAY+"Ore dictionary names:");
+			
+			// Literally just formatting without Text in it.
 			for (EnumChatFormatting tEnum1 : EnumChatFormatting.values()) {
 				BASICALLY_EMPTY_STRINGS.add(    tEnum1.toString()    );
 				BASICALLY_EMPTY_STRINGS.add(    tEnum1.toString()+" ");
