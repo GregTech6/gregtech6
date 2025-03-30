@@ -485,7 +485,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			// Remove all Nulls and fix eventual Formatting mistakes.
 			for (int i = 1, j = aEvent.toolTip.size(); i < j; i++) {
 				String tTooltip = aEvent.toolTip.get(i);
-				if (tTooltip == null) {aEvent.toolTip.remove(i--); j--;} else aEvent.toolTip.set(i, tTooltip + LH.Chat.RESET_TOOLTIP);
+				if (tTooltip == null || LH.Chat.BASICALLY_EMPTY_STRINGS.contains(tTooltip)) {aEvent.toolTip.remove(i--); j--;} else aEvent.toolTip.set(i, tTooltip + LH.Chat.RESET_TOOLTIP);
 			}
 		} catch(Throwable e) {
 			e.printStackTrace(ERR);

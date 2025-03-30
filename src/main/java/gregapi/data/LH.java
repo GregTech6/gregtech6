@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,6 +19,7 @@
 
 package gregapi.data;
 
+import gregapi.code.HashSetNoNulls;
 import gregapi.code.TagData;
 import gregapi.lang.LanguageHandler;
 import gregapi.tileentity.behavior.TE_Behavior_Energy_Converter;
@@ -31,6 +32,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 
 import java.util.List;
+import java.util.Set;
 
 import static gregapi.data.CS.*;
 
@@ -640,6 +642,30 @@ public class LH {
 	}
 	
 	public static class Chat {
+		public static final Set<String> BASICALLY_EMPTY_STRINGS = new HashSetNoNulls<>(F, "", " ", "  ", "   ", "    ");
+		
+		static {
+			for (EnumChatFormatting tEnum1 : EnumChatFormatting.values()) {
+				BASICALLY_EMPTY_STRINGS.add(    tEnum1.toString()    );
+				BASICALLY_EMPTY_STRINGS.add(    tEnum1.toString()+" ");
+				BASICALLY_EMPTY_STRINGS.add(" "+tEnum1.toString()    );
+				for (EnumChatFormatting tEnum2 : EnumChatFormatting.values()) {
+					BASICALLY_EMPTY_STRINGS.add(    tEnum1.toString()+     tEnum2.toString()    );
+					BASICALLY_EMPTY_STRINGS.add(    tEnum1.toString()+     tEnum2.toString()+" ");
+					BASICALLY_EMPTY_STRINGS.add(" "+tEnum1.toString()+     tEnum2.toString()    );
+					BASICALLY_EMPTY_STRINGS.add(" "+tEnum1.toString()+     tEnum2.toString()+" ");
+					BASICALLY_EMPTY_STRINGS.add(    tEnum1.toString()+" " +tEnum2.toString()    );
+					BASICALLY_EMPTY_STRINGS.add(    tEnum1.toString()+" " +tEnum2.toString()+" ");
+					BASICALLY_EMPTY_STRINGS.add(" "+tEnum1.toString()+" " +tEnum2.toString()    );
+					BASICALLY_EMPTY_STRINGS.add(" "+tEnum1.toString()+" " +tEnum2.toString()+" ");
+					BASICALLY_EMPTY_STRINGS.add(    tEnum1.toString()+"  "+tEnum2.toString()    );
+					BASICALLY_EMPTY_STRINGS.add(    tEnum1.toString()+"  "+tEnum2.toString()+" ");
+					BASICALLY_EMPTY_STRINGS.add(" "+tEnum1.toString()+"  "+tEnum2.toString()    );
+					BASICALLY_EMPTY_STRINGS.add(" "+tEnum1.toString()+"  "+tEnum2.toString()+" ");
+				}
+			}
+		}
+		
 		public static final String
 		   BLACK          = EnumChatFormatting.BLACK.toString()
 		,  DBLUE          = EnumChatFormatting.DARK_BLUE.toString()
