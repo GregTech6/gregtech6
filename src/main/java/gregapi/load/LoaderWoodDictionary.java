@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -39,7 +39,7 @@ import static gregapi.data.CS.W;
 public class LoaderWoodDictionary implements Runnable {
 	@Override
 	public void run() {
-		// 257 is next! There is no Gaps in this List!
+		// 260 is next! There is no Gaps in this List!
 		
 		// Vanilla Trees
 		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 0));
@@ -878,10 +878,17 @@ public class LoaderWoodDictionary implements Runnable {
 		}
 		// Et Futurum Logs/Beams
 		if (MD.EtFu.mLoaded) {
+			// TODO CHERRY, BAMBOO AND MANGROVE AND STUFF
 			OreDictionary.registerOre(OD.beamWood.toString(), ST.make(MD.EtFu, "log_stripped", 1, W));
 			OreDictionary.registerOre(OD.beamWood.toString(), ST.make(MD.EtFu, "log2_stripped", 1, W));
 			OreDictionary.registerOre(OD.beamWood.toString(), ST.make(MD.EtFu, "wood_stripped", 1, W));
 			OreDictionary.registerOre(OD.beamWood.toString(), ST.make(MD.EtFu, "wood2_stripped", 1, W));
+			
+			PlankEntry tCherry = new PlankEntry(ST.make(MD.EtFu, "wood_planks", 1, 3), ST.make(MD.EtFu, "wood_slab", 1, 3), ST.make(MD.EtFu, "cherry_stairs", 1, W), MT.WOODS.Sakura, 257);
+			new SaplingEntry(ST.make(MD.EtFu, "sapling", 1, 1), new WoodEntry(ST.make(MD.EtFu, "cherry_log", 1, 0), new BeamEntry(ST.make(MD.EtFu, "cherry_log", 1, 2), tCherry)), ST.make(MD.EtFu, "leaves", 1, 1));
+			new WoodEntry(ST.make(MD.EtFu, "cherry_log", 1, 1), new BeamEntry(ST.make(MD.EtFu, "cherry_log", 1, 3), tCherry));
+			
+			new SaplingEntry(ST.make(MD.EtFu, "bamboo", 1, 0), new WoodEntry(ST.make(MD.EtFu, "bamboo_block", 1, 0), new BeamEntry(ST.make(MD.EtFu, "bamboo_block", 1, 1), new PlankEntry(ST.make(MD.EtFu, "bamboo_mosaic", 1, 0), ST.make(MD.EtFu, "bamboo_mosaic_slab", 1, 0), ST.make(MD.EtFu, "bamboo_mosaic_stairs", 1, W), MT.Bamboo, 259, ST.make(MD.EtFu, "bamboo", 1, 0), 1, 1, 1), 1, 100, 2, 3, 4), new PlankEntry(ST.make(MD.EtFu, "wood_planks", 1, 4), ST.make(MD.EtFu, "wood_slab", 1, 4), ST.make(MD.EtFu, "bamboo_stairs", 1, W), MT.Bamboo, 258, ST.make(MD.EtFu, "bamboo", 1, 0), 1, 1, 1), 1, 100, 2, 3, 4), ST.make(MD.EtFu, "bamboo", 1, 0));
 			
 			new WoodEntry(ST.make(MD.EtFu, "bark"          , 1, 0), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 0));
 			new WoodEntry(ST.make(MD.EtFu, "bark"          , 1, 1), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 1));

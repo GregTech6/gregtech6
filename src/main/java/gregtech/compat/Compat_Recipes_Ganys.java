@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -44,14 +44,16 @@ public class Compat_Recipes_Ganys extends CompatMods {
 			RM.sawing(16, 16, F, 100,               tEtFuturumPurpur, ST.make(MD.EtFu, "purpur_slab", 2, 0));
 			RM.sawing(16, 16, F, 100,               tEtFuturumPurpurPillar, ST.make(MD.EtFu, "purpur_slab", 2, 0));
 			CR.shapeless(                           tEtFuturumPurpur, new Object[] {tEtFuturumPurpurPillar});
+			CR.shaped(                              IL.EtFu_Block_Honey.get(1), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES | CR.DEL_OTHER_NATIVE_RECIPES, "XX", "XX", 'X', OD.container250honey);
+			CR.shapeless(                           IL.EtFu_Block_Honey.get(1), new Object[] {OD.container1000honey});
 			CR.shaped(                              ST.make(MD.EtFu, "slime", 1, 0), CR.DEF | CR.DEL_OTHER_SHAPED_RECIPES | CR.DEL_OTHER_NATIVE_RECIPES, "XXX", "XXX", "XXX", 'X', ST.make(Items.slime_ball, 1, W));
 			RM.ic2_compressor(                      ST.make(Items.slime_ball, 9, 0), ST.make(MD.EtFu, "slime", 1, 0));
 			RM.Compressor.addRecipe1(T, 16, 16,     ST.make(Items.slime_ball, 9, W), ST.make(MD.EtFu, "slime", 1, 0));
 			RM.Boxinator.addRecipe2(T, 16, 16,      ST.make(Items.slime_ball, 9, W), ST.tag(9), ST.make(MD.EtFu, "slime", 1, 0));
 			RM.Unboxinator.addRecipe1(T, 16, 16,    ST.make(MD.EtFu, "slime", 1, 0), ST.make(Items.slime_ball, 9, 0));
 			RM.ic2_extractor(                       ST.make(MD.EtFu, "slime", 1, 0), ST.make(Items.slime_ball, 9, 0));
-			RM.Squeezer.addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "sponge", 1, 1), ST.make(MD.EtFu, "sponge", 1, 0));
-			RM.Drying.addRecipe1(T, 16, 16,         ST.make(MD.EtFu, "sponge", 1, 1), ST.make(MD.EtFu, "sponge", 1, 0));
+			RM.Squeezer.addRecipe1(T, 16, 16,       ST.make(MD.EtFu, "sponge", 1, 1), NF, FL.Water.make(125), ST.make(MD.EtFu, "sponge", 1, 0));
+			RM.Drying.addRecipe1(T, 16, 16,         ST.make(MD.EtFu, "sponge", 1, 1), NF, FL.DistW.make(125), ST.make(MD.EtFu, "sponge", 1, 0));
 			RM.smash(                               ST.make(MD.EtFu, "red_sandstone", 1, W), ST.make(Blocks.sand, 1, 1));
 			RM.sawing(16, 16, F, 100,               ST.make(MD.EtFu, "red_sandstone", 1, W), ST.make(MD.EtFu, "red_sandstone_slab", 2, 0));
 			RM.Compressor.addRecipe1(T, 16, 32,     ST.make(Blocks.sand, 4, 1), ST.make(MD.EtFu, "red_sandstone", 1, 0));

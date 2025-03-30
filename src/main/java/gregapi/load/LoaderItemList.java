@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -1417,6 +1417,7 @@ public class LoaderItemList implements Runnable {
 		IL.EtFu_Beet_Seeds                      .set(ST.make(MD.EtFu, "beetroot_seeds"                      , 1, 0), null, "seedBeet");
 		IL.EtFu_Sus_Stew                        .set(ST.make(MD.EtFu, "suspicious_stew"                     , 1, 0));
 		IL.EtFu_Bottle_Honey                    .set(ST.make(MD.EtFu, "honey_bottle"                        , 1, 0), null, OD.container250honey);
+		IL.EtFu_Block_Honey                     .set(ST.make(MD.EtFu, "honey_block"                         , 1, 0));
 		IL.EtFu_Dragon_Breath                   .set(ST.make(MD.EtFu, "dragon_breath"                       , 1, 0));
 		IL.EtFu_Lingering_Potion                .set(ST.make(MD.EtFu, "lingering_potion"                    , 1, 0));
 		IL.EtFu_Wither_Rose                     .set(ST.make(MD.EtFu, "wither_rose"                         , 1, 0), null, OD.flower, OD.flowerWither);

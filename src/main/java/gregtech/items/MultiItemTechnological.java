@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -92,8 +92,8 @@ public class MultiItemTechnological extends MultiItemRandomWithCompat {
 		IL.Cover_Retriever_Item                  .set(addItem(tLastID =  1031, "Item Retriever Cover"                  , "Pulls Items from the attached Pipe Network"      , new CoverRetrieverItem()                                   , TC.stack(TC.MACHINA, 2), TC.stack(TC.COGNITIO, 1), TC.stack(TC.VACUOS, 1), TC.stack(TC.ITER, 1)));
 		
 		
-		RM.DidYouKnow.addFakeRecipe(F, ST.array(IL.Cover_Vent .get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Air.make(0), FL.Air_Nether.make(0), FL.Air_End.make(0)), 0, 0, 0);
-		RM.DidYouKnow.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Water.make(0), FL.Ocean.make(0), FL.Dirty_Water.make(0)), 0, 0, 0);
+		RM.DidYouKnow.addFakeRecipe(F, ST.array(IL.Cover_Vent .get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Air.make(1), FL.Air_Nether.make(1), FL.Air_End.make(1)), 0, 0, 0);
+		RM.DidYouKnow.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.Water.make(1), FL.Ocean.make(1), FL.Dirty_Water.make(1)), 0, 0, 0);
 		if (FL.XP.exists() || FL.Mob.exists())
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(IL.Cover_Drain.get(1)), ZL_IS, null, ZL_LONG, ZL_FS, FL.array(FL.XP.make(20), FL.Mob.make(66)), 0, 0, 0);
 		if (FL.Sewage.exists())

@@ -3272,6 +3272,11 @@ public class UT {
 			return aPlayer instanceof EntityPlayerMP && !(aPlayer instanceof FakePlayer);
 		}
 		
+		/** only works serverside for now */
+		public static boolean isSpectator(Object aPlayer) {
+			return aPlayer instanceof EntityPlayerMP && ((EntityPlayerMP)aPlayer).theItemInWorldManager.getGameType().getName().equalsIgnoreCase("spectator");
+		}
+		
 		public static boolean isCreative(Object aPlayer) {
 			return aPlayer instanceof EntityPlayer && ((EntityPlayer)aPlayer).capabilities.isCreativeMode;
 		}
