@@ -19,6 +19,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [FIXED] Air vents were collecting Air even when submerged in Liquids or other Gasses.
 [FIXED] Something that made Mass Storages jam somehow, I think. I dont know how to replicate it, so I dont know if it's fixed.
 [FIXED] Potion Fluids now use the Potion's getLiquidColor() instead of a hardcoded Texture.
+[CHANGED] Cows, Sheep, Pigs and Horses break Tall Grass that they walk through.
 [CHANGED] Platinum Group Metals, their Sludge and Rare Earth now have better Thaumcraft Aspects.
 [CHANGED] Roasters of higher Tiers no longer have overclocking penalty.
 [CHANGED] Zirconium now has durability and speed identical to Diamonds.
