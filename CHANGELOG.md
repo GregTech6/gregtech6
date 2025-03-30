@@ -1,13 +1,18 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.17.04: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.17.03: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.02: (Not released yet)
-[COMPAT] More Et Futurum Wood Data (Cherry/Bamboo)
+[COMPAT] Et Futurum Wood Data for Cherry and Bamboo.
 [COMPAT] Unboxinator can now unbox Thaumcraft Loot Bags. I am glad Azanor arbitrarily decided to have a maximum of 12 Items outputted by those, otherwise I would've had trouble fitting it into the Unboxinators output slots.
+[FIXED] Thaumcraft Loot Bags are now actually randomizing the Enchantments on the Books they drop instead of repeating the exact same Enchantment over and over until you relaunch the Game.
 [FIXED] A bunch of Bugs related to saving and loading Worlds, in regards to GT6 Specific Data.
 [FIXED] Some Bug with Bukkit/Cauldron/etc. where things like Mini Portals and Ender Garbage Bins did not work correctly because of certain Events being thrown with weird Paths, triggering "loaded a different Save File" detection, which for Servers should flat out not be possible in the first place.
 [FIXED] Rivers, Lakes, Oceans and Beaches do no longer dry placed Grass Bales.

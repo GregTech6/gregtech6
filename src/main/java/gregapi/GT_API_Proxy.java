@@ -708,8 +708,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					if (ADVENTURE_MODE_KIT) {
 						if (MD.GT.mLoaded) {
 							UT.Entities.sendchat(aEvent.player, CHAT_GREG + "Thank you for choosing the GregTech-6 Adventure Mode Starter Kit.");
-							ST.drop(aEvent.player, IL.Bottle_Purple_Drink.get(6));
-							ST.drop(aEvent.player, IL.Grass_Dry.get(8));
+							
+							MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
+							ST.drop(aEvent.player, tRegistry == null ? IL.Bottle_Purple_Drink.get(6) : tRegistry.getItem(8762, 1, UT.NBT.make(NBT_INV_LIST, UT.NBT.makeInv(IL.Bottle_Purple_Drink.get(1), IL.Bottle_Empty.get(1), IL.Bottle_Purple_Drink.get(1), IL.Bottle_Purple_Drink.get(1), IL.Bottle_Empty.get(1), IL.Bottle_Purple_Drink.get(1), IL.Bottle_Purple_Drink.get(1), IL.Bottle_Purple_Drink.get(1), IL.Bottle_Empty.get(1)))));
+							ST.drop(aEvent.player, IL.Grass_Dry.get(9));
 							ST.drop(aEvent.player, IL.Stick.get(16));
 							ST.drop(aEvent.player, Items.flint, 12, 0);
 							ST.drop(aEvent.player, Blocks.dirt, 16, 0);
@@ -965,6 +967,10 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		if (aEvent.entityPlayer == null || aEvent.entityPlayer.worldObj == null || aEvent.action == null || aEvent.world.provider == null) return;
 		
 		PLAYER_LAST_CLICKED.put(aEvent.entityPlayer, new ChunkCoordinates(aEvent.x, aEvent.y, aEvent.z));
+		
+		// If a Player rightclicks something, then that Chunk gotta be marked as modified, even if nothing happens.
+		// There has been plenty of Bugs in various Mods, because of forgetting to mark things.
+		WD.mark(aEvent.world, aEvent.x, aEvent.z);
 		
 		ItemStack aStack = aEvent.entityPlayer.inventory.getCurrentItem();
 		Block aBlock = WD.block(aEvent.world, aEvent.x, aEvent.y, aEvent.z);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -175,7 +175,7 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 			}
 		}
 		for (int i = 0; i < mTanksOutput.length && i < aRecipe.mFluidOutputs.length; i++) if (mTanksOutput[i].has()) {
-			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!mTanksOutput[i].contains(aRecipe.mFluidOutputs[i]) || FL.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || FL.lighter(aRecipe.mFluidOutputs[i]) || mTanksOutput[i].has(Math.max(1000, 1+aRecipe.mFluidOutputs[i].amount))))) {
+			if (aRecipe.mNeedsEmptyOutput || (aRecipe.mFluidOutputs[i] != null && (!mTanksOutput[i].contains(aRecipe.mFluidOutputs[i]) || FL.temperature(aRecipe.mFluidOutputs[i]) >= mMaterial.mMeltingPoint - 100 || FL.lighter(aRecipe.mFluidOutputs[i]) || FL.gas(aRecipe.mFluidOutputs[i]) || mTanksOutput[i].has(Math.max(1000, 1+aRecipe.mFluidOutputs[i].amount))))) {
 				return F;
 			}
 		}

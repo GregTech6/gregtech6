@@ -344,6 +344,8 @@ public class Loader_Recipes_Other implements Runnable {
 		CR.remove(x = dust.mat(MT.S, 1), x, x, x, ST.make(Items.coal, 1, 0), x, x, x, x);
 		CR.remove(x, x, x, x, ST.make(Items.coal, 1, 1), x, x, x, x);
 		CR.remove(y = dust.mat(MT.KNO3, 1), y, x, dust.mat(MT.Charcoal, 1));
+		CR.remove(x, y, ST.make(Items.coal, 1, 0));
+		CR.remove(x, y, ST.make(Items.coal, 1, 1));
 		CR.remove(y, x, y, y, ST.make(Items.coal, 1, 1), y, y, y, y);
 		CR.remove(y, y, y, y, ST.make(Items.coal, 1, 1), y, y, y, y);
 		CR.remove(y, y, x, dust.mat(MT.Coal, 1));
@@ -503,6 +505,24 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.Coal            ), tGem, OM.dust(MT.BlackQuartz));
 		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.Charcoal        ), tGem, OM.dust(MT.BlackQuartz));
 		}}
+		
+		
+		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.C       ,2*U ), OM.dust(MT.SoulSand     ), OM.dust(MT.Blaze,   U9)), OM.dust(MT.Gunpowder, 3*U ));
+		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Charcoal,2*U ), OM.dust(MT.SoulSand     ), OM.dust(MT.Blaze,   U9)), OM.dust(MT.Gunpowder, 3*U ));
+		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Coal         ), OM.dust(MT.SoulSand     ), OM.dust(MT.Blaze,   U9)), OM.dust(MT.Gunpowder, 3*U ));
+		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.CoalCoke     ), OM.dust(MT.SoulSand     ), OM.dust(MT.Blaze,   U9)), OM.dust(MT.Gunpowder, 3*U ));
+		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.C       ,2*U ), OM.dust(MT.SoulSand     ), OM.dust(MT.S          )), OM.dust(MT.Gunpowder, 3*U ));
+		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Charcoal,2*U ), OM.dust(MT.SoulSand     ), OM.dust(MT.S          )), OM.dust(MT.Gunpowder, 3*U ));
+		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Coal         ), OM.dust(MT.SoulSand     ), OM.dust(MT.S          )), OM.dust(MT.Gunpowder, 3*U ));
+		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.CoalCoke     ), OM.dust(MT.SoulSand     ), OM.dust(MT.S          )), OM.dust(MT.Gunpowder, 3*U ));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.C       ,2*U4), OM.dust(MT.SoulSand,  U4), OM.dust(MT.S    ,   U4)), OM.dust(MT.Gunpowder, 3*U4));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Charcoal,2*U4), OM.dust(MT.SoulSand,  U4), OM.dust(MT.S    ,   U4)), OM.dust(MT.Gunpowder, 3*U4));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Coal    ,  U4), OM.dust(MT.SoulSand,  U4), OM.dust(MT.S    ,   U4)), OM.dust(MT.Gunpowder, 3*U4));
+		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.CoalCoke,  U4), OM.dust(MT.SoulSand,  U4), OM.dust(MT.S    ,   U4)), OM.dust(MT.Gunpowder, 3*U4));
+		RM.Mixer            .addRecipeX(T, 16,    8, ST.array(OM.dust(MT.C       ,2*U9), OM.dust(MT.SoulSand,  U9), OM.dust(MT.S    ,   U9)), OM.dust(MT.Gunpowder, 3*U9));
+		RM.Mixer            .addRecipeX(T, 16,    8, ST.array(OM.dust(MT.Charcoal,2*U9), OM.dust(MT.SoulSand,  U9), OM.dust(MT.S    ,   U9)), OM.dust(MT.Gunpowder, 3*U9));
+		RM.Mixer            .addRecipeX(T, 16,    8, ST.array(OM.dust(MT.Coal    ,  U9), OM.dust(MT.SoulSand,  U9), OM.dust(MT.S    ,   U9)), OM.dust(MT.Gunpowder, 3*U9));
+		RM.Mixer            .addRecipeX(T, 16,    8, ST.array(OM.dust(MT.CoalCoke,  U9), OM.dust(MT.SoulSand,  U9), OM.dust(MT.S    ,   U9)), OM.dust(MT.Gunpowder, 3*U9));
 		for (OreDictMaterial tNiter : new OreDictMaterial[] {MT.NaNO3, MT.KNO3, MT.Niter}) {
 		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.C       ,2*U ), OM.dust(tNiter     ), OM.dust(MT.Blaze,   U9)), OM.dust(MT.Gunpowder, 4*U ));
 		RM.Mixer            .addRecipeX(T, 16,   64, ST.array(OM.dust(MT.Charcoal,2*U ), OM.dust(tNiter     ), OM.dust(MT.Blaze,   U9)), OM.dust(MT.Gunpowder, 4*U ));
