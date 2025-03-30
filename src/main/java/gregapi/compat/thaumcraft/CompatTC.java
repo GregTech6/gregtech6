@@ -52,7 +52,6 @@ import thaumcraft.api.research.ResearchCategoryList;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.items.equipment.ItemElementalAxe;
-import thaumcraft.common.lib.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,20 +68,19 @@ public class CompatTC extends CompatBase implements ICompatTC {
 		LH.add("tc.aspect.radio"    , "Radiation");
 //      LH.add("tc.aspect.reflexio" , "Reflection");
 		
-		ThaumcraftApi            .class.getCanonicalName();
-		ThaumcraftApiHelper      .class.getCanonicalName();
-		Aspect                   .class.getCanonicalName();
-		AspectList               .class.getCanonicalName();
-		CrucibleRecipe           .class.getCanonicalName();
-		IArcaneRecipe            .class.getCanonicalName();
-		InfusionEnchantmentRecipe.class.getCanonicalName();
-		InfusionRecipe           .class.getCanonicalName();
-		ResearchCategories       .class.getCanonicalName();
-		ResearchCategoryList     .class.getCanonicalName();
-		ResearchItem             .class.getCanonicalName();
-		ResearchPage             .class.getCanonicalName();
-		
-		lootbag(0);
+		ThaumcraftApi                    .class.getCanonicalName();
+		ThaumcraftApiHelper              .class.getCanonicalName();
+		Aspect                           .class.getCanonicalName();
+		AspectList                       .class.getCanonicalName();
+		CrucibleRecipe                   .class.getCanonicalName();
+		IArcaneRecipe                    .class.getCanonicalName();
+		InfusionEnchantmentRecipe        .class.getCanonicalName();
+		InfusionRecipe                   .class.getCanonicalName();
+		ResearchCategories               .class.getCanonicalName();
+		ResearchCategoryList             .class.getCanonicalName();
+		ResearchItem                     .class.getCanonicalName();
+		ResearchPage                     .class.getCanonicalName();
+		thaumcraft.common.lib.utils.Utils.class.getCanonicalName();
 		
 		TC.AER              .mAspect = Aspect.AIR;
 		TC.ALIENIS          .mAspect = Aspect.ELDRITCH;
@@ -218,7 +216,7 @@ public class CompatTC extends CompatBase implements ICompatTC {
 		ST.fixBookStacks();
 		ItemStack[] rStacks = ST.array(8+RNGSUS.nextInt(5));
 		for (int i = 0; i < rStacks.length; i++) {
-			rStacks[i] = Utils.generateLoot(UT.Code.bind2(aMeta), RNGSUS);
+			rStacks[i] = thaumcraft.common.lib.utils.Utils.generateLoot(UT.Code.bind2(aMeta), RNGSUS);
 			ST.fixBookStacks();
 		}
 		return rStacks;
