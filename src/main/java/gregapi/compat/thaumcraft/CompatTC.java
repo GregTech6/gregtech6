@@ -20,6 +20,7 @@
 package gregapi.compat.thaumcraft;
 
 import cpw.mods.fml.common.event.FMLModIdMappingEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.compat.CompatBase;
@@ -33,6 +34,7 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.wooddict.WoodDictionary;
 import net.minecraft.block.Block;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
@@ -44,6 +46,7 @@ import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.IArcaneRecipe;
 import thaumcraft.api.crafting.InfusionEnchantmentRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
+import thaumcraft.api.internal.WeightedRandomLoot;
 import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchCategoryList;
 import thaumcraft.api.research.ResearchItem;
@@ -78,6 +81,8 @@ public class CompatTC extends CompatBase implements ICompatTC {
 		ResearchCategoryList     .class.getCanonicalName();
 		ResearchItem             .class.getCanonicalName();
 		ResearchPage             .class.getCanonicalName();
+		
+		lootbag(0);
 		
 		TC.AER              .mAspect = Aspect.AIR;
 		TC.ALIENIS          .mAspect = Aspect.ELDRITCH;
@@ -199,10 +204,23 @@ public class CompatTC extends CompatBase implements ICompatTC {
 		ThaumcraftApi.registerEntityTag("TwilightForest.Yeti Boss"                   , new AspectList().add(Aspect.BEAST, 20).add(Aspect.MAN, 20).add(Aspect.COLD, 20));
 	}
 	
+	@Override public void onServerStarting(FMLServerStartingEvent aEvent) {
+		// These ItemStacks are Enchanted BEFORE being copied in Thaumcraft, which leads to them always having the SAME Enchantment...
+		for (WeightedRandomLoot tLoot : WeightedRandomLoot.lootBagCommon) {
+			if (tLoot != null && (ST.equal(tLoot.item, Items.book) || ST.equal(tLoot.item, Items.enchanted_book))) {
+				ST.REVERT_TO_BOOK_TO_FIX_STUPID.add(tLoot.item);
+			}
+		}
+	}
+	
 	@Override
 	public ItemStack[] lootbag(long aMeta) {
+		ST.fixBookStacks();
 		ItemStack[] rStacks = ST.array(8+RNGSUS.nextInt(5));
-		for (int i = 0; i < rStacks.length; i++) rStacks[i] = Utils.generateLoot(UT.Code.bind2(aMeta), RNGSUS);
+		for (int i = 0; i < rStacks.length; i++) {
+			rStacks[i] = Utils.generateLoot(UT.Code.bind2(aMeta), RNGSUS);
+			ST.fixBookStacks();
+		}
 		return rStacks;
 	}
 	

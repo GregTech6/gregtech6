@@ -1894,12 +1894,12 @@ public class CS {
 		bendingcylinder = "craftingToolBendingCylinder",
 		bendingcylindersmall = "craftingToolBendingCylinderSmall";
 	}
-
+	
 	/** Contains TextureSet Indices for non OreDictPrefixed Stuff. */
 	public static class IconsGT {
 		public static int INDEX_BLOCK_MOLTEN = 0, INDEX_BLOCK_GAS = 0, INDEX_BLOCK_PLASMA = 0, INDEX_BLOCK_PIPE_SIDE = 0;
 	}
-
+	
 	/** Files */
 	public static class DirectoriesGT {
 		public static File
@@ -1909,7 +1909,7 @@ public class CS {
 		CONFIG_GT,
 		CONFIG_RECIPES;
 	}
-
+	
 	/** Configs */
 	public static class ConfigsGT {
 		public static Config
@@ -1923,7 +1923,7 @@ public class CS {
 		
 		@Deprecated public static Config SPECIAL, MACHINES, OVERPOWERED;
 	}
-
+	
 	/** Class Containing MOD ID Strings used in GT, since they are very common Parameters. */
 	public static class ModIDs {
 		/** MOD ID Strings */

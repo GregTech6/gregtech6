@@ -1002,6 +1002,9 @@ public class ST {
 		return T;
 	}
 	
+	public static final Collection<ItemStack> REVERT_TO_BOOK_TO_FIX_STUPID = ST.arraylist();
+	public static void fixBookStacks() {for (ItemStack tStack : REVERT_TO_BOOK_TO_FIX_STUPID) ST.set(tStack, ST.make(Items.book, 1, 0), T, T);}
+	
 	public static final List<String> LOOT_TABLES = new ArrayList<>();
 	
 	public static boolean generateLoot(Random aRandom, String aLoot, IInventory aInventory) {

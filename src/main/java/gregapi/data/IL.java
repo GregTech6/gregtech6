@@ -131,7 +131,7 @@ public enum IL implements IItemContainer {
 	TC_Loot_Common, TC_Loot_Uncommon, TC_Loot_Rare,
 	TC_Thaumonomicon, TC_Crimson_Rites, TC_Knowledge_Fragment,
 	TC_Block_Flesh, TC_Block_Tallow, TC_Block_Amber, TC_Block_Amber_Bricks,
-	TC_Nitor, TC_Alumentum, TC_Tallow, TC_Phial, TC_Gold_Coin, TC_Gold_Ring,
+	TC_Nitor, TC_Alumentum, TC_Tallow, TC_Phial, TC_Gold_Coin, TC_Gold_Ring, TC_Primordial_Pearl,
 	TC_Bucket_Death, TC_Bucket_Pure,
 	TC_Flux_Goo, TC_Flux_Gas,
 	TF_Roots, TF_Liveroots, TF_Firefly, TF_Firefly_Jar,
