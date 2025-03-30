@@ -1421,6 +1421,7 @@ public class LoaderItemList implements Runnable {
 		IL.EtFu_Dragon_Breath                   .set(ST.make(MD.EtFu, "dragon_breath"                       , 1, 0));
 		IL.EtFu_Lingering_Potion                .set(ST.make(MD.EtFu, "lingering_potion"                    , 1, 0));
 		IL.EtFu_Wither_Rose                     .set(ST.make(MD.EtFu, "wither_rose"                         , 1, 0), null, OD.flower, OD.flowerWither);
+		IL.EtFu_Bamboo                          .set(ST.make(MD.EtFu, "bamboo"                              , 1, 0), OP.stick.dat(MT.Bamboo), OD.bamboo);
 		IL.EtFu_Bark_Oak                        .set(ST.make(MD.EtFu, "bark"                                , 1, 0), new OreDictItemData(MT.WOODS.Oak    , U*8, MT.Bark, U), OD.logWood);
 		IL.EtFu_Bark_Spruce                     .set(ST.make(MD.EtFu, "bark"                                , 1, 1), new OreDictItemData(MT.WOODS.Spruce , U*8, MT.Bark, U), OD.logWood);
 		IL.EtFu_Bark_Birch                      .set(ST.make(MD.EtFu, "bark"                                , 1, 2), new OreDictItemData(MT.WOODS.Birch  , U*8, MT.Bark, U), OD.logWood);
