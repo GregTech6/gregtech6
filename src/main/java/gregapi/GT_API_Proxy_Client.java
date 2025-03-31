@@ -465,19 +465,32 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				} else {
 					aEvent.toolTip.add(LH.Chat.DGRAY + "Enable F3+H Mode for Info about contained Materials.");
 				}
-				if (ST.isGT(aItem) && tData.validData()) {
-					if (tData.mMaterial.mMaterial.mOriginalMod == null) {
-						aEvent.toolTip.add(LH.Chat.BLUE + "Material from an Unknown Mod");
-					} else if (tData.mMaterial.mMaterial.mOriginalMod == MD.MC) {
-						aEvent.toolTip.add(LH.Chat.BLUE + "Vanilla Material");
-					} else if (tData.mMaterial.mMaterial.mOriginalMod == MD.GAPI) {
-						if (tData.mMaterial.mMaterial.mID > 0 && tData.mMaterial.mMaterial.mID < 8000) {
-							aEvent.toolTip.add(LH.Chat.BLUE + "Material from the Periodic Table of Elements");
+				
+				if (tData.validData()) {
+					if (ST.isGT(aItem)) {
+						if (tData.mMaterial.mMaterial.mOriginalMod == null) {
+							aEvent.toolTip.add(LH.Chat.BLUE + "Material from an Unknown Mod");
+						} else if (tData.mMaterial.mMaterial.mOriginalMod == MD.MC) {
+							aEvent.toolTip.add(LH.Chat.BLUE + "Vanilla Material");
+						} else if (tData.mMaterial.mMaterial.mOriginalMod == MD.GAPI) {
+							if (tData.mMaterial.mMaterial.mID > 0 && tData.mMaterial.mMaterial.mID < 8000) {
+								aEvent.toolTip.add(LH.Chat.BLUE + "Material from the Periodic Table of Elements");
+							} else {
+								aEvent.toolTip.add(LH.Chat.BLUE + "Random Material handled by Greg API");
+							}
 						} else {
-							aEvent.toolTip.add(LH.Chat.BLUE + "Random Material handled by Greg API");
+							aEvent.toolTip.add(LH.Chat.BLUE + "Material from " + tData.mMaterial.mMaterial.mOriginalMod.mName);
 						}
 					} else {
-						aEvent.toolTip.add(LH.Chat.BLUE + "Material from " + tData.mMaterial.mMaterial.mOriginalMod.mName);
+						if (tData.mMaterial.mMaterial == MT.Fe && tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) {
+							aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Iron", MT.Fe2O3.mNameLocal));
+						}
+						if (tData.mMaterial.mMaterial == MT.Au && tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) {
+							aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Gold", "Native Gold"));
+						}
+						if (tData.mMaterial.mMaterial == MT.Cu && tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) {
+							aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Copper", "Native Copper"));
+						}
 					}
 				}
 			}
@@ -485,7 +498,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			// Remove all Nulls and fix eventual Formatting mistakes.
 			for (int i = 1, j = aEvent.toolTip.size(); i < j; i++) {
 				String tTooltip = aEvent.toolTip.get(i);
-				if (tTooltip == null || LH.Chat.BASICALLY_EMPTY_STRINGS.contains(tTooltip) || tTooltip.contains("re dict") || tTooltip.contains("re Dict")) {aEvent.toolTip.remove(i--); j--;} else aEvent.toolTip.set(i, tTooltip + LH.Chat.RESET_TOOLTIP);
+				if (tTooltip == null || LH.Chat.BASICALLY_EMPTY_STRINGS.contains(tTooltip)) {aEvent.toolTip.remove(i--); j--;} else aEvent.toolTip.set(i, tTooltip + LH.Chat.RESET_TOOLTIP);
 			}
 		} catch(Throwable e) {
 			e.printStackTrace(ERR);
