@@ -526,6 +526,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Basalt_Generator    .get(0), stickLong.mat(MT.STONES.Basalt, 1));
 		RM.Lathe        .addRecipe1(T, 16,  32, IL.Module_Blackstone_Generator.get(0), stickLong.mat(MT.STONES.Blackstone, 1));
 		
+		RM.Extruder     .addRecipe2(T, 16,  32, dust.mat(MT.Redstone, 1), IL.Module_Stone_Generator.get(0), ST.make(Blocks.obsidian, 1, 0));
+		
 		RM.smash(ST.make(Blocks.brown_mushroom_block , 1, W), ST.make(Blocks.brown_mushroom, 1, 0));
 		RM.smash(ST.make(Blocks.red_mushroom_block   , 1, W), ST.make(Blocks.red_mushroom, 1, 0));
 		RM.smash(ST.make(Blocks.quartz_block         , 1, W), gem.mat(MT.NetherQuartz, 4));

@@ -24,6 +24,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Roasters of higher Tiers no longer have overclocking penalty.
 [CHANGED] Zirconium now has durability and speed identical to Diamonds.
 [CHANGED] Rock Salt is mostly named Sylvite now, except in its Dust form.
+[ADDED] Extruder Recipe for Redstone Dust to Obsidian Block using the Cobble Generator Item. Yes this is a vanilla exploit I turned into a Recipe.
 [ADDED]
 Loot Crates, which can be made from about 3 Units of tediously crafted Gold, and look exactly like all the other Wooden Crates.
 Each Loot Crate will net you 1 random Stack of Vanilla Loot Table Loot when Unboxinated or rightclicked with a Crowbar.
