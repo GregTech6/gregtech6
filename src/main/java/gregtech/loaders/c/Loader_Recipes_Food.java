@@ -549,6 +549,9 @@ public class Loader_Recipes_Food implements Runnable {
 		
 		RM.Mixer        .addRecipe0(T, 16,   16, FL.array(FL.RoyalJelly.make(100), FL.Honeydew.make(200)), FL.array(FL.Ambrosia.make(400)), ZL_IS);
 		
+		// Go ahead and try it IRL!
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Milk), FL.Soda.make(500), FL.Milk_Spoiled.make(1000), ZL_IS);
+		
 		//----------------------------------------------------------------------------
 		
 		RM.Distillery   .addRecipe1(T        , 16,  16, ST.tag(0), FL.RoyalJelly  .make(  10), FL.DistW      .make( 1), OM.dust(MT.Sugar));
@@ -574,8 +577,8 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Distillery   .addRecipe1(T        , 64, 128, OM.dust(MT.Gunpowder), FL.Lemonade     .make(250), FL.Grenade_Juice  .make(250), ZL_IS);
 		
 		for (FluidStack tWater : FL.waters(1000)) {
-		RM.Distillery   .addRecipe1(T, 16,   48, OM.dust(MT.Coffee)    , FL.mul(tWater, 3, 4, T), FL.make("potion.darkcoffee", 750), ZL_IS);
-		RM.Distillery   .addRecipe1(T, 16,   16, OM.dust(MT.Coffee, U3), FL.mul(tWater, 1, 4, T), FL.make("potion.darkcoffee", 250), ZL_IS);
+		RM.Distillery   .addRecipe1(T, 16,   48, OM.dust(MT.Coffee      ), FL.mul(tWater, 3, 4, T), FL.make("potion.darkcoffee", 750), ZL_IS);
+		RM.Distillery   .addRecipe1(T, 16,   16, OM.dust(MT.Coffee  , U3), FL.mul(tWater, 1, 4, T), FL.make("potion.darkcoffee", 250), ZL_IS);
 		
 		for (OreDictMaterial tMat : ANY.Flour.mToThis)
 		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(tMat           ), FL.mul(tWater, 1, 4, T), NF, IL.Food_Dough.get(2));
