@@ -482,13 +482,13 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 							aEvent.toolTip.add(LH.Chat.BLUE + "Material from " + tData.mMaterial.mMaterial.mOriginalMod.mName);
 						}
 					} else {
-						if (tData.mMaterial.mMaterial == MT.Fe && tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) {
-							aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Iron", MT.Fe2O3.mNameLocal));
+						if ((tData.mMaterial.mMaterial == MT.Fe || tData.mMaterial.mMaterial == MT.Fe2O3) && tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED) && !aEvent.toolTip.get(0).contains("Native")) {
+							aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Banded Iron", MT.Fe2O3.mNameLocal).replaceAll("Iron", MT.Fe2O3.mNameLocal));
 						}
-						if (tData.mMaterial.mMaterial == MT.Au && tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) {
+						if (tData.mMaterial.mMaterial == MT.Au && tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED) && !aEvent.toolTip.get(0).contains("Native")) {
 							aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Gold", "Native Gold"));
 						}
-						if (tData.mMaterial.mMaterial == MT.Cu && tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED)) {
+						if (tData.mMaterial.mMaterial == MT.Cu && tData.mPrefix.containsAny(TD.Prefix.ORE, TD.Prefix.ORE_PROCESSING_BASED) && !aEvent.toolTip.get(0).contains("Native")) {
 							aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Copper", "Native Copper"));
 						}
 					}
