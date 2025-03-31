@@ -2,11 +2,11 @@ This is the most recent Changelog. It also contains some of the changes inside t
 
 
 6.17.04: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog)
+Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.03: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog)
+Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.02:
