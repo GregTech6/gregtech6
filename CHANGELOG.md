@@ -9,7 +9,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.17.02: (Not released yet)
+6.17.02:
 [COMPAT] Et Futurum Wood Data for Cherry and Bamboo.
 [COMPAT] Unboxinator can now unbox Thaumcraft Loot Bags. I am glad Azanor arbitrarily decided to have a maximum of 12 Items outputted by those, otherwise I would've had trouble fitting it into the Unboxinators output slots.
 [FIXED] Thaumcraft Loot Bags are now actually randomizing the Enchantments on the Books they drop instead of repeating the exact same Enchantment over and over until you relaunch the Game.
