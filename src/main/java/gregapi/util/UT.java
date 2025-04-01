@@ -76,6 +76,7 @@ import net.minecraft.stats.AchievementList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -1526,6 +1527,7 @@ public class UT {
 		
 		public static String stringValidate(Object aString) {
 			if (aString == null) return "";
+			if (aString instanceof BiomeGenBase) return ((BiomeGenBase)aString).biomeName;
 			String rString = aString.toString();
 			return rString == null ? "" : rString;
 		}

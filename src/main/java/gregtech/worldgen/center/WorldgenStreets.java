@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -98,49 +98,125 @@ public class WorldgenStreets extends WorldgenObject {
 					}
 				}
 				
+				
 				aWorld.setBlock(-32, mHeight+1, - 1, BlocksGT.Concrete, DYE_INDEX_Blue, 0);
 				aWorld.setBlock(-31, mHeight+1, - 1, BlocksGT.Concrete, DYE_INDEX_Blue, 0);
 				aWorld.setBlock(-32, mHeight+1,   0, BlocksGT.Concrete, DYE_INDEX_Blue, 0);
 				aWorld.setBlock(-31, mHeight+1,   0, BlocksGT.Concrete, DYE_INDEX_Blue, 0);
+				aWorld.setBlock(-32, mHeight+2, - 1, BlocksGT.Concrete, DYE_INDEX_Blue, 0);
+				aWorld.setBlock(-31, mHeight+2, - 1, BlocksGT.Concrete, DYE_INDEX_Blue, 0);
+				aWorld.setBlock(-32, mHeight+2,   0, BlocksGT.Concrete, DYE_INDEX_Blue, 0);
+				aWorld.setBlock(-31, mHeight+2,   0, BlocksGT.Concrete, DYE_INDEX_Blue, 0);
 				aWorld.setBlock(-32, mHeight+1, - 2, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_POS], DYE_INDEX_White, 0);
 				aWorld.setBlock(-31, mHeight+1, - 2, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_POS], DYE_INDEX_Red, 0);
 				aWorld.setBlock(-30, mHeight+1, - 1, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_NEG], DYE_INDEX_White, 0);
 				aWorld.setBlock(-30, mHeight+1,   0, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_NEG], DYE_INDEX_Red, 0);
 				aWorld.setBlock(-31, mHeight+1,   1, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_NEG], DYE_INDEX_White, 0);
 				aWorld.setBlock(-32, mHeight+1,   1, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_NEG], DYE_INDEX_Red, 0);
+				try {
+				WD.sign(aWorld, -30, mHeight + 3, 0, SIDE_X_POS, 0
+					, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-512, +95))
+					, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-1024, +95))
+					, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-1536, +95))
+					, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-2048, +95))
+				);
+				WD.sign(aWorld, -30, mHeight + 3, -1, SIDE_X_POS, 0
+					, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-512, -96))
+					, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-1024, -96))
+					, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-1536, -96))
+					, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-2048, -96))
+				);
+				} catch(Throwable e) {e.printStackTrace(ERR);}
+				
 				
 				aWorld.setBlock( 31, mHeight+1, - 1, BlocksGT.Concrete, DYE_INDEX_Red, 0);
 				aWorld.setBlock( 30, mHeight+1, - 1, BlocksGT.Concrete, DYE_INDEX_Red, 0);
 				aWorld.setBlock( 31, mHeight+1,   0, BlocksGT.Concrete, DYE_INDEX_Red, 0);
 				aWorld.setBlock( 30, mHeight+1,   0, BlocksGT.Concrete, DYE_INDEX_Red, 0);
+				aWorld.setBlock( 31, mHeight+2, - 1, BlocksGT.Concrete, DYE_INDEX_Red, 0);
+				aWorld.setBlock( 30, mHeight+2, - 1, BlocksGT.Concrete, DYE_INDEX_Red, 0);
+				aWorld.setBlock( 31, mHeight+2,   0, BlocksGT.Concrete, DYE_INDEX_Red, 0);
+				aWorld.setBlock( 30, mHeight+2,   0, BlocksGT.Concrete, DYE_INDEX_Red, 0);
 				aWorld.setBlock( 31, mHeight+1, - 2, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_POS], DYE_INDEX_Red, 0);
 				aWorld.setBlock( 30, mHeight+1, - 2, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_POS], DYE_INDEX_White, 0);
 				aWorld.setBlock( 29, mHeight+1, - 1, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_POS], DYE_INDEX_Red, 0);
 				aWorld.setBlock( 29, mHeight+1,   0, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_POS], DYE_INDEX_White, 0);
 				aWorld.setBlock( 30, mHeight+1,   1, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_NEG], DYE_INDEX_Red, 0);
 				aWorld.setBlock( 31, mHeight+1,   1, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_NEG], DYE_INDEX_White, 0);
+				try {
+				WD.sign(aWorld,  29, mHeight+3,   0, SIDE_X_NEG, 0
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+ 511, +95))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+1023, +95))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+1535, +95))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+2047, +95))
+				);
+				WD.sign(aWorld,  29, mHeight+3, - 1, SIDE_X_NEG, 0
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+ 511, -96))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+1023, -96))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+1535, -96))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+2047, -96))
+				);
+				} catch(Throwable e) {e.printStackTrace(ERR);}
+				
 				
 				aWorld.setBlock(- 1, mHeight+1, -32, BlocksGT.Concrete, DYE_INDEX_Yellow, 0);
 				aWorld.setBlock(- 1, mHeight+1, -31, BlocksGT.Concrete, DYE_INDEX_Yellow, 0);
 				aWorld.setBlock(  0, mHeight+1, -32, BlocksGT.Concrete, DYE_INDEX_Yellow, 0);
 				aWorld.setBlock(  0, mHeight+1, -31, BlocksGT.Concrete, DYE_INDEX_Yellow, 0);
+				aWorld.setBlock(- 1, mHeight+2, -32, BlocksGT.Concrete, DYE_INDEX_Yellow, 0);
+				aWorld.setBlock(- 1, mHeight+2, -31, BlocksGT.Concrete, DYE_INDEX_Yellow, 0);
+				aWorld.setBlock(  0, mHeight+2, -32, BlocksGT.Concrete, DYE_INDEX_Yellow, 0);
+				aWorld.setBlock(  0, mHeight+2, -31, BlocksGT.Concrete, DYE_INDEX_Yellow, 0);
 				aWorld.setBlock(- 2, mHeight+1, -32, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_POS], DYE_INDEX_White, 0);
 				aWorld.setBlock(- 2, mHeight+1, -31, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_POS], DYE_INDEX_Red, 0);
 				aWorld.setBlock(- 1, mHeight+1, -30, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_NEG], DYE_INDEX_White, 0);
 				aWorld.setBlock(  0, mHeight+1, -30, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_NEG], DYE_INDEX_Red, 0);
 				aWorld.setBlock(  1, mHeight+1, -31, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_NEG], DYE_INDEX_White, 0);
 				aWorld.setBlock(  1, mHeight+1, -32, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_NEG], DYE_INDEX_Red, 0);
+				try {
+				WD.sign(aWorld,   0, mHeight+3, -30, SIDE_Z_POS, 0
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+95, - 512))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+95, -1024))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+95, -1536))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+95, -2048))
+				);
+				WD.sign(aWorld, - 1, mHeight+3, -30, SIDE_Z_POS, 0
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-96, - 512))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-96, -1024))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-96, -1536))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-96, -2048))
+				);
+				} catch(Throwable e) {e.printStackTrace(ERR);}
+				
 				
 				aWorld.setBlock(- 1, mHeight+1,  31, BlocksGT.Concrete, DYE_INDEX_Green, 0);
 				aWorld.setBlock(- 1, mHeight+1,  30, BlocksGT.Concrete, DYE_INDEX_Green, 0);
 				aWorld.setBlock(  0, mHeight+1,  31, BlocksGT.Concrete, DYE_INDEX_Green, 0);
 				aWorld.setBlock(  0, mHeight+1,  30, BlocksGT.Concrete, DYE_INDEX_Green, 0);
+				aWorld.setBlock(- 1, mHeight+2,  31, BlocksGT.Concrete, DYE_INDEX_Green, 0);
+				aWorld.setBlock(- 1, mHeight+2,  30, BlocksGT.Concrete, DYE_INDEX_Green, 0);
+				aWorld.setBlock(  0, mHeight+2,  31, BlocksGT.Concrete, DYE_INDEX_Green, 0);
+				aWorld.setBlock(  0, mHeight+2,  30, BlocksGT.Concrete, DYE_INDEX_Green, 0);
 				aWorld.setBlock(- 2, mHeight+1,  31, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_POS], DYE_INDEX_Red, 0);
 				aWorld.setBlock(- 2, mHeight+1,  30, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_POS], DYE_INDEX_White, 0);
 				aWorld.setBlock(- 1, mHeight+1,  29, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_POS], DYE_INDEX_Red, 0);
 				aWorld.setBlock(  0, mHeight+1,  29, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_Z_POS], DYE_INDEX_White, 0);
 				aWorld.setBlock(  1, mHeight+1,  30, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_NEG], DYE_INDEX_Red, 0);
 				aWorld.setBlock(  1, mHeight+1,  31, ((BlockMetaType)BlocksGT.CFoam).mSlabs[SIDE_X_NEG], DYE_INDEX_White, 0);
+				try {
+				WD.sign(aWorld,   0, mHeight+3,  29, SIDE_Z_NEG, 0
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+95, + 511))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+95, +1023))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+95, +1535))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(+95, +2047))
+				);
+				WD.sign(aWorld, - 1, mHeight+3,  29, SIDE_Z_NEG, 0
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-96, + 511))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-96, +1023))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-96, +1535))
+				, UT.Code.stringValidate(aWorld.provider.worldChunkMgr.getBiomeGenAt(-96, +2047))
+				);
+				} catch(Throwable e) {e.printStackTrace(ERR);}
 				
 				if (GENERATE_BEACON) {
 					for (int i = -5; i < 5; i++) for (int j = -5; j < 5; j++) WD.set(aWorld, i, mHeight-3, j, Blocks.iron_block, 0, 0);
