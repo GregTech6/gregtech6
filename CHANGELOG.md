@@ -6,7 +6,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.03: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED] Signs to the Center Street Worldgen to indicate where which Biomes are.
 
 
 6.17.02:
