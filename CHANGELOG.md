@@ -6,7 +6,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.03: (Not released yet)
-[ADDED] Signs to the Center Street Worldgen to indicate where which Biomes are.
+[ADDED] Signs to the Center Street Worldgen to indicate where which Biomes are. Bottommost Biomes are closest (read it like Highway Street Signs), it looks at the Biomes roughly 100 blocks to the left and right sides of the Road.
 
 
 6.17.02:
