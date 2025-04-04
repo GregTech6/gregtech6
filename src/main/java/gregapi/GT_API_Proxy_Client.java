@@ -194,12 +194,18 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 	public void onTextureStitchedPre(TextureStitchEvent.Pre aEvent) {
 		// You should thank me for fixing this Fluid Bug. Seriously, some people just don't set the Icons of their registered Fluids...
 		for (Fluid aFluid : FluidRegistry.getRegisteredFluids().values()) {
-			if (aFluid.getIcon() == null || FluidsGT.BROKEN.contains(aFluid.getName())) try {
-				Block tBlock = aFluid.getBlock();
-				aFluid.setIcons((ST.valid(tBlock) ? tBlock : Blocks.water).getIcon(0, 0));
-			} catch(Throwable e) {
-				e.printStackTrace(ERR);
-				try {aFluid.setIcons(Blocks.water.getIcon(0, 0));} catch(Throwable f) {f.printStackTrace(ERR);}
+			// Check if it is whitelisted first, because those are not actually broken, they just behave like that early on.
+			if (!FluidsGT.BORKEN.contains(aFluid.getName())) {
+				// Fluids without an Icon or with a broken Icon need to be fixed.
+				if (aFluid.getIcon() == null || FluidsGT.BROKEN.contains(aFluid.getName())) try {
+					Block tBlock = aFluid.getBlock();
+					// set it to its Block's Icon, or Water if no Block exists.
+					aFluid.setIcons((ST.valid(tBlock) ? tBlock : Blocks.water).getIcon(0, 0));
+				} catch(Throwable e) {
+					// complete failure, set it to Water!
+					e.printStackTrace(ERR);
+					try {aFluid.setIcons(Blocks.water.getIcon(0, 0));} catch(Throwable f) {f.printStackTrace(ERR);}
+				}
 			}
 		}
 	}
