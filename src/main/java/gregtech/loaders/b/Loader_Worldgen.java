@@ -93,11 +93,12 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.OREMATS.Garnierite                      , F, U16,  0, 32, ST.block(MD.EtFu, "modded_deepslate_ore"), 4, BIOMES_SHROOM)
 		, new StoneLayerOres(MT.OREMATS.Pentlandite                     , F, U16,  0, 32, ST.block(MD.EtFu, "modded_deepslate_ore"), 4, BIOMES_SWAMP)
 		, new StoneLayerOres(MT.Coal                                    , F, U16,  0, 32, ST.block(MD.EtFu, "deepslate_coal_ore"), BIOMES_PLAINS, BIOMES_SHROOM)
-		, MD.Salt    .mLoaded ? new StoneLayerOres(MT.NaCl              , F, U32, 20, 32, ST.block(MD.Salt, "saltDeepslateOre")) : null
-		,!MT.Nikolite.mHidden ? new StoneLayerOres(MT.Nikolite          , F, U32,  0, 20, ST.block(MD.EtFu, "deepslate_projred_ore"), 3) : null
-		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumBlack     , F, U32,  0, 16) : null
-		, MD.HEX     .mLoaded ? new StoneLayerOres(MT.HexoriumWhite     , F, U32,  0, 16) : null
-		, MD.MET     .mLoaded ? new StoneLayerOres(MT.DeepIron          , F, U16,  0, 16) : null
+		, MD.Salt     .mLoaded ? new StoneLayerOres(MT.NaCl             , F, U32, 20, 32, ST.block(MD.Salt, "saltDeepslateOre")) : null
+		,!MT.Nikolite .mHidden ? new StoneLayerOres(MT.Nikolite         , F, U32,  0, 20, ST.block(MD.EtFu, "deepslate_projred_ore"), 3) : null
+		,!MT.Draconium.mHidden ? new StoneLayerOres(MT.Draconium        , F, U64,  0,  7, ST.block(MD.EtFu, "deepslate_draconium_ore"), 0) : null
+		, MD.HEX      .mLoaded ? new StoneLayerOres(MT.HexoriumBlack    , F, U32,  0, 16) : null
+		, MD.HEX      .mLoaded ? new StoneLayerOres(MT.HexoriumWhite    , F, U32,  0, 16) : null
+		, MD.MET      .mLoaded ? new StoneLayerOres(MT.DeepIron         , F, U16,  0, 16) : null
 		);
 		
 		

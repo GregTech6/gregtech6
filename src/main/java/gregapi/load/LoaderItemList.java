@@ -572,6 +572,9 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "modded_deepslate_ore"           , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_thaumcraft_ore"       , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_certus_quartz_ore"    , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_draconium_ore"        , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_projred_ore"          , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.EtFu, "deepslate_bop_ore"              , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.GaSu, "18Stones"                       , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.GaSu, "basalt"                         , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BOTA, "stone"                          , null));
@@ -636,6 +639,7 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.TE_FOUNDATION, "Ore"                   , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.ENVM, "flammablecoal"                  , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HaC, "salt"                            , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.DE, "draconiumOre"                     , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.Mek, "OreBlock"                        , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.VULPES, "libVulpesore0"                , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.MgC, "copper_ore"                      , null));
