@@ -1521,7 +1521,7 @@ public class CS {
 		, ENCHANTED_EFFECT = new HashSetNoNulls<>(F, "fluidpure")
 		, VOID_OVERFLOW    = new HashSetNoNulls<>()
 		, NONSTANDARD      = new HashSetNoNulls<>()
-		, BROKEN           = new HashSetNoNulls<>()
+		, BROKEN           = new HashSetNoNulls<>(F, "liquidessence")
 		, INFINITE         = new HashSetNoNulls<>() // Marks things that are stupidly easy to obtain, except Water and Milk.
 		, BATH             = new HashSetNoNulls<>()
 		, DYE              = new HashSetNoNulls<>()

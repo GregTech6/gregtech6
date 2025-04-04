@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -49,6 +49,7 @@ public class Enchantment_WerewolfDamage extends EnchantmentDamage {
 		MT.Ir                  .addEnchantmentForDamage(this, 6);
 		MT.Osmiridium          .addEnchantmentForDamage(this, 6);
 		MT.HSSS                .addEnchantmentForDamage(this, 6);
+		MT.Moonstone           .addEnchantmentForDamage(this, 5);
 		MT.Ag                  .addEnchantmentForDamage(this, 4);
 		MT.Electrum            .addEnchantmentForDamage(this, 3);
 		MT.BlackBronze         .addEnchantmentForDamage(this, 2);
