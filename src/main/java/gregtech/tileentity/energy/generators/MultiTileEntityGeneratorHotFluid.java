@@ -222,8 +222,8 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 		updateInventory();
 		return mTanks[mTanks[1].has() ? 1 : 0].drain(aMaxDrain, aDoDrain);
 	}
-	
-	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? SIDES_TOP[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa), BlockTextureDefault.get((mActivity.mState>0?sOverlaysActive:sOverlays)[1])) : aSide == mFacing ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[3], mRGBa), BlockTextureDefault.get((mActivity.mState>0?sOverlaysActive:sOverlays)[3])) : BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[2], mRGBa), BlockTextureDefault.get((mActivity.mState>0?sOverlaysActive:sOverlays)[2])) : null;}
+
+	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[FACING_ROTATIONS[mFacing][aSide]], mRGBa), BlockTextureDefault.get((mActivity.mState>0?sOverlaysActive:sOverlays)[FACING_ROTATIONS[mFacing][aSide]]), mActivity.mState>0? BlockTextureDefault.get(sOverlaysActiveGlowing[FACING_ROTATIONS[mFacing][aSide]],true):null): null;}
 	
 	@Override public void onEntityCollidedWithBlock(Entity aEntity) {if (mActivity.mState>0) UT.Entities.applyHeatDamage(aEntity, Math.min(10.0F, mRate / 10.0F));}
 	@Override public AxisAlignedBB getCollisionBoundingBoxFromPool() {return box(0, 0, 0, 1, 0.875, 1);}
@@ -265,6 +265,13 @@ public class MultiTileEntityGeneratorHotFluid extends TileEntityBase09FacingSing
 		new Textures.BlockIcons.CustomIcon("machines/generators/hot_fluid/overlay_active/front"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/hot_fluid/overlay_active/right"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/hot_fluid/overlay_active/back")
+	}, sOverlaysActiveGlowing = new IIconContainer[] {
+		new Textures.BlockIcons.CustomIcon("machines/generators/hot_fluid/overlay_active_glowing/bottom"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/hot_fluid/overlay_active_glowing/top"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/hot_fluid/overlay_active_glowing/left"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/hot_fluid/overlay_active_glowing/front"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/hot_fluid/overlay_active_glowing/right"),
+		new Textures.BlockIcons.CustomIcon("machines/generators/hot_fluid/overlay_active_glowing/back")
 	};
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.generator.hot_fluid";}
