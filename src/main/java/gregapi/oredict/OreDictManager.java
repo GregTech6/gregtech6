@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -492,6 +492,11 @@ public final class OreDictManager {
 		return setTarget_(aPrefix, aMaterial, aStack, F, F, F);
 	}
 	
+	public boolean setTarget(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ModData aMod, Object aName, long aMeta, ModData aMod2) {
+		ItemStack aStack = ST.make(aMod, aName.toString(), 1, aMeta);
+		if (aMod.mLoaded && aMod2.mLoaded && aStack == null) ERR.println("Item does not exist for Unification Target despite Mod being loaded: " + aMod.mID + ":" + aName);
+		return setTarget(aPrefix, aMaterial, aStack, T, F, T);
+	}
 	public boolean setTarget(OreDictPrefix aPrefix, OreDictMaterial aMaterial, ModData aMod, Object aName, long aMeta) {
 		ItemStack aStack = ST.make(aMod, aName.toString(), 1, aMeta);
 		if (aMod.mLoaded && aStack == null) ERR.println("Item does not exist for Unification Target despite Mod being loaded: " + aMod.mID + ":" + aName);
