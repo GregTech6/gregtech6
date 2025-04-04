@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -22,6 +22,7 @@ package gregapi.worldgen;
 import gregapi.code.BiomeNameSet;
 import gregapi.data.MT;
 import gregapi.oredict.OreDictMaterial;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
@@ -65,12 +66,17 @@ public class StoneLayerOres {
 	public StoneLayerOres(OreDictMaterial aMaterial, boolean aGenerateIndicators, long aChance, int aMinY, int aMaxY, Block aBlock, Collection... aBiomes) {
 		this(aMaterial, aGenerateIndicators, aChance, aMinY, aMaxY, aBlock, 0, aBiomes);
 	}
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings("rawtypes")
 	public StoneLayerOres(OreDictMaterial aMaterial, boolean aGenerateIndicators, long aChance, int aMinY, int aMaxY, Block aBlock, long aMeta, Collection... aBiomes) {
+		this(aMaterial, aGenerateIndicators, aChance, aMinY, aMaxY, aBlock, aMeta, NB, 0, aBiomes);
+	}
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public StoneLayerOres(OreDictMaterial aMaterial, boolean aGenerateIndicators, long aChance, int aMinY, int aMaxY, Block aBlock1, long aMeta1, Block aBlock2, long aMeta2, Collection... aBiomes) {
 		mMaterial = (aMaterial != null && aMaterial.mID > 0 ? aMaterial : MT.Empty);
 		mChance = UT.Code.bind(1, U, aChance);
-		mBlock = (aBlock == NB ? null : aBlock);
-		mMeta = UT.Code.bind4(aMeta);
+		if (!ST.valid(aBlock1)) {aBlock1 = aBlock2; aMeta1 = aMeta2;}
+		mBlock = (aBlock1 == NB ? null : aBlock1);
+		mMeta = UT.Code.bind4(aMeta1);
 		mGenerateIndicators = aGenerateIndicators;
 		for (Collection aBiome : aBiomes) mTargetBiomes.addAll(aBiome);
 		if (aMinY > aMaxY) {mMinY = aMaxY; mMaxY = aMinY;} else {mMinY = aMinY; mMaxY = aMaxY;}
