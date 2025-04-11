@@ -28,6 +28,7 @@ import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
+import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.api.Abstract_Mod;
 import gregapi.block.IBlockBase;
 import gregapi.block.ToolCompat;
@@ -234,6 +235,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			byte aBlockMeta = UT.Code.bind4(aMeta);
 			Block aBlock = ST.block(aEvent.itemStack);
 			Item aItem = ST.item(aEvent.itemStack);
+			OreDictItemData tData = OM.anydata_(aEvent.itemStack);
 			
 			if (aEvent.itemStack.getTagCompound() == null) {
 				if (aBlock == Blocks.dirt && aBlockMeta == 1) {
@@ -250,8 +252,26 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				}
 			}
 			
-			if (MD.Mek.owns(aRegName)) {
-				aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Osmium", MT.Ge.mNameLocal));
+			if (MD.Mek.owns(aRegName)                        ) aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Osmium", MT.Ge.mNameLocal));
+			if (MD.FMB.owns(aRegName) || MD.BP.owns(aRegName)) aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Infused Teslatite", MT.PurpleAlloy.mNameLocal).replaceAll("Teslatite", MT.Nikolite.mNameLocal));
+			
+			if (!(aItem instanceof ItemFluidDisplay) && SHOW_INTERNAL_NAMES) {
+				if (tData != null && tData.validData()) {
+					if (tData.mBlackListed) {
+						if (ST.isGT(aItem))
+						aEvent.toolTip.add(1, LH.Chat.ORANGE + tData.toString());
+						else
+						aEvent.toolTip.add(1, LH.Chat.DCYAN + aRegName + LH.Chat.WHITE + " - " + LH.Chat.CYAN + aMeta + LH.Chat.WHITE + " - " + LH.Chat.ORANGE + tData.toString());
+					} else {
+						if (ST.isGT(aItem))
+						aEvent.toolTip.add(1, LH.Chat.GREEN + tData.toString());
+						else
+						aEvent.toolTip.add(1, LH.Chat.DCYAN + aRegName + LH.Chat.WHITE + " - " + LH.Chat.CYAN + aMeta + LH.Chat.WHITE + " - " + LH.Chat.GREEN + tData.toString());
+					}
+				} else {
+					if (!ST.isGT(aItem))
+					aEvent.toolTip.add(1, LH.Chat.DCYAN + aRegName + LH.Chat.WHITE + " - " + LH.Chat.CYAN + aMeta);
+				}
 			}
 			
 			if (ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.contains(aEvent.itemStack, T)) {
@@ -293,26 +313,8 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				aEvent.toolTip.add(LH.Chat.DGRAY + LH.get(LH.TOOLTIP_BEACON_PAYMENT));
 			}
 			
-			OreDictItemData tData = OM.anydata_(aEvent.itemStack);
-			
-			if (!(aItem instanceof ItemFluidDisplay) && SHOW_INTERNAL_NAMES) {
-				if (tData != null && tData.validData()) {
-					if (tData.mBlackListed) {
-						if (ST.isGT(aItem))
-						aEvent.toolTip.add(LH.Chat.ORANGE + tData.toString());
-						else
-						aEvent.toolTip.add(LH.Chat.DCYAN + aRegName + LH.Chat.WHITE + " - " + LH.Chat.CYAN + aMeta + LH.Chat.WHITE + " - " + LH.Chat.ORANGE + tData.toString());
-					} else {
-						if (ST.isGT(aItem))
-						aEvent.toolTip.add(LH.Chat.GREEN + tData.toString());
-						else
-						aEvent.toolTip.add(LH.Chat.DCYAN + aRegName + LH.Chat.WHITE + " - " + LH.Chat.CYAN + aMeta + LH.Chat.WHITE + " - " + LH.Chat.GREEN + tData.toString());
-					}
-				} else {
-					if (!ST.isGT(aItem))
-					aEvent.toolTip.add(LH.Chat.DCYAN + aRegName + LH.Chat.WHITE + " - " + LH.Chat.CYAN + aMeta);
-				}
-			}
+			long tBurnValue = GameRegistry.getFuelValue(ST.amount(1, aEvent.itemStack));
+			if (tBurnValue > 0) aEvent.toolTip.add(LH.Chat.RED + LH.get(LH.TOOLTIP_FURNACE_FUEL) + LH.Chat.WHITE + tBurnValue + " ("+(tBurnValue*EU_PER_FURNACE_TICK)+LH.Chat._RED+"HU"+LH.Chat.WHITE+")");
 			
 			if (tData != null) {
 				if (tData.validPrefix()) {
@@ -321,10 +323,10 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 						if (tToolTip != null) aEvent.toolTip.add(tToolTip);
 					}
 				} else {
-					if (IL.RC_Firestone_Refined.equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Works in Burning Boxes ("+(800*EU_PER_LAVA)+" HU per Lava Block)"); else
-					if (IL.RC_Firestone_Cracked.equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Works in Burning Boxes ("+(600*EU_PER_LAVA)+" HU per Lava Block)"); else
-					if (IL.TF_Pick_Giant       .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be repaired with Knightmetal Ingots on the Anvil"); else
-					if (IL.TF_Sword_Giant      .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be repaired with Ironwood Ingots on the Anvil"); else
+					if (IL.RC_Firestone_Refined.equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "GT6 Burning Boxes: "+LH.Chat.WHITE+(800*EU_PER_LAVA)+LH.Chat._RED+"HU"+LH.Chat._CYAN+"per Lava Block"); else
+					if (IL.RC_Firestone_Cracked.equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "GT6 Burning Boxes: "+LH.Chat.WHITE+(600*EU_PER_LAVA)+LH.Chat._RED+"HU"+LH.Chat._CYAN+"per Lava Block"); else
+					if (IL.TF_Pick_Giant       .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Repairable with Knightmetal Ingots on the Vanilla Anvil"); else
+					if (IL.TF_Sword_Giant      .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Repairable with Ironwood Ingots on the Vanilla Anvil"); else
 					if (IL.TF_Lamp_of_Cinders  .equal(aEvent.itemStack, T, T)) aEvent.toolTip.add(LH.Chat.CYAN + "Can be used as a Lighter for GT6 things and TNT");
 				}
 				if (tData.validMaterial()) {

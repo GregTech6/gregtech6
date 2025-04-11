@@ -194,6 +194,7 @@ public class LH {
 	, TOOLTIP_BLASTRANGE = "gt.lang.blastrange"
 	, TOOLTIP_BLASTFORTUNE = "gt.lang.blastfortune"
 	, TOOLTIP_BLASTRESISTANCE = "gt.lang.blastresistance"
+	, TOOLTIP_FURNACE_FUEL = "gt.lang.furnacefuel"
 	, TOOLTIP_RAILSPEED = "gt.lang.railspeed"
 	, TOOLTIP_WALKSPEED = "gt.lang.walkspeed"
 	, TOOLTIP_GRAVITY = "gt.lang.gravity"
@@ -575,6 +576,7 @@ public class LH {
 		add(TOOLTIP_BLASTRANGE                          , "Blast Range: ");
 		add(TOOLTIP_BLASTFORTUNE                        , "Blast Fortune Level: ");
 		add(TOOLTIP_BLASTRESISTANCE                     , "Blast Resistance: ");
+		add(TOOLTIP_FURNACE_FUEL                        , "Fuel Value: ");
 		add(TOOLTIP_RAILSPEED                           , "Rail Speed: ");
 		add(TOOLTIP_WALKSPEED                           , "This Block alters the Walk Speed");
 		add(TOOLTIP_GRAVITY                             , "This Block is affected by Gravity");

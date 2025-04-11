@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,7 +27,6 @@ import codechicken.nei.guihook.GuiContainerManager;
 import codechicken.nei.guihook.IContainerInputHandler;
 import codechicken.nei.guihook.IContainerTooltipHandler;
 import codechicken.nei.recipe.*;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
@@ -72,7 +71,7 @@ public class NEI_RecipeMap extends TemplateRecipeHandler {
 	}
 	
 	public NEI_RecipeMap init() {
-		if (Loader.instance().getIndexedModList().get("NotEnoughItems").getVersion().contains("-GTNH")) {
+		if (NEI_NH) {
 			API.registerRecipeHandler(this);
 			API.registerUsageHandler(this);
 			
