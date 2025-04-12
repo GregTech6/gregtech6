@@ -252,8 +252,9 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				}
 			}
 			
-			if (MD.Mek.owns(aRegName)                        ) aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Osmium", MT.Ge.mNameLocal));
-			if (MD.FMB.owns(aRegName) || MD.BP.owns(aRegName)) aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Infused Teslatite", MT.PurpleAlloy.mNameLocal).replaceAll("Teslatite", MT.Nikolite.mNameLocal));
+			if (MD.Mek.owns(aRegName)) aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Osmium", MT.Ge.mNameLocal));
+			if (MD.BP .owns(aRegName)) aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Infused Teslatite", MT.PurpleAlloy.mNameLocal).replaceAll("Teslatite", MT.Nikolite.mNameLocal));
+			if (MD.BP.mLoaded) aEvent.toolTip.set(0, aEvent.toolTip.get(0).replaceAll("Teslatite", MT.Nikolite.mNameLocal));
 			
 			if (!(aItem instanceof ItemFluidDisplay) && SHOW_INTERNAL_NAMES) {
 				if (tData != null && tData.validData()) {
