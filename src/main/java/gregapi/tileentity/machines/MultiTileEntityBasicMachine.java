@@ -94,19 +94,19 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	public byte mFluidInputs  = 127, mFluidOutputs = 127, mFluidAutoInput = SIDE_UNDEFINED, mFluidAutoOutput = SIDE_UNDEFINED;
 	public short mEfficiency = 10000;
 	public int mParallel = 1;
-	public long mEnergy = 0, mInputMin = 16, mInput = 32, mInputMax = 64, mMinEnergy = 0, mOutputEnergy = 0, mChargeRequirement = 0;
+	public long mEnergy = 0, mInputMin = 16, mInput = 32, mInputMax = 64, mMinEnergy = 0, mOutputEnergy = 0, mOutputEnergyLast=0, mChargeRequirement = 0;
 	public TagData mEnergyTypeAccepted = TD.Energy.TU, mEnergyTypeEmitted = TD.Energy.QU, mEnergyTypeCharged = TD.Energy.TU;
 	public Recipe mLastRecipe = null, mCurrentRecipe = null;
 	public FluidTankGT[] mTanksInput = ZL_FT, mTanksOutput = ZL_FT;
 	public ItemStack[] mOutputItems = ZL_IS;
 	public FluidStack[] mOutputFluids = ZL_FS;
-	public IIconContainer[] mTexturesMaterial = L6_IICONCONTAINER, mTexturesInactive = L6_IICONCONTAINER, mTexturesActive = L6_IICONCONTAINER, mTexturesRunning = L6_IICONCONTAINER;
+	public IIconContainer[] mTexturesMaterial = L6_IICONCONTAINER, mTexturesInactive = L6_IICONCONTAINER, mTexturesActive = L6_IICONCONTAINER, mTexturesRunning = L6_IICONCONTAINER, mTexturesActiveGlow = L6_IICONCONTAINER, mTexturesRunningGlow = L6_IICONCONTAINER;
 	
 	public String mGUITexture = "";
 	public RecipeMap mRecipes = RM.Furnace;
 	public long mProgress = 0, mMaxProgress = 0;
 	public boolean mSuccessful = F, mActive = F, mRunning = F;
-	
+
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);
@@ -152,7 +152,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		if (aNBT.hasKey(NBT_ENERGY_EMITTED_SIDES)) mEnergyOutput = aNBT.getByte(NBT_ENERGY_EMITTED_SIDES);
 		if (aNBT.hasKey(NBT_OUTPUT)) mOutputEnergy = aNBT.getLong(NBT_OUTPUT);
 		if (aNBT.hasKey(NBT_INPUT_EU)) mChargeRequirement = aNBT.getLong(NBT_INPUT_EU);
-		
+
 		long tCapacity = 1000;
 		if (aNBT.hasKey(NBT_TANK_CAPACITY)) tCapacity = UT.Code.bindInt(aNBT.getLong(NBT_TANK_CAPACITY));
 		mTanksInput = new FluidTankGT[mRecipes.mInputFluidCount];
@@ -200,15 +200,35 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running/front"),
 				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running/right"),
 				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running/back")};
+
+				mTexturesActiveGlow = new IIconContainer[] {
+				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_active_glowing/bottom"),
+				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_active_glowing/top"),
+				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_active_glowing/left"),
+				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_active_glowing/front"),
+				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_active_glowing/right"),
+				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_active_glowing/back")};
+				mTexturesRunningGlow = new IIconContainer[] {
+				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running_glowing/bottom"),
+				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running_glowing/top"),
+				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running_glowing/left"),
+				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running_glowing/front"),
+				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running_glowing/right"),
+				new Textures.BlockIcons.CustomIcon("machines/basicmachines/"+tTextureName+"/overlay_running_glowing/back")};
+
 			} else {
 				TileEntity tCanonicalTileEntity = MultiTileEntityRegistry.getCanonicalTileEntity(getMultiTileEntityRegistryID(), getMultiTileEntityID());
 				if (tCanonicalTileEntity instanceof MultiTileEntityBasicMachine) {
-					mTexturesMaterial = ((MultiTileEntityBasicMachine)tCanonicalTileEntity).mTexturesMaterial;
-					mTexturesInactive = ((MultiTileEntityBasicMachine)tCanonicalTileEntity).mTexturesInactive;
-					mTexturesRunning  = ((MultiTileEntityBasicMachine)tCanonicalTileEntity).mTexturesRunning;
-					mTexturesActive   = ((MultiTileEntityBasicMachine)tCanonicalTileEntity).mTexturesActive;
+					mTexturesMaterial = ((MultiTileEntityBasicMachine) tCanonicalTileEntity).mTexturesMaterial;
+					mTexturesInactive = ((MultiTileEntityBasicMachine) tCanonicalTileEntity).mTexturesInactive;
+					mTexturesRunning = ((MultiTileEntityBasicMachine) tCanonicalTileEntity).mTexturesRunning;
+					mTexturesActive = ((MultiTileEntityBasicMachine) tCanonicalTileEntity).mTexturesActive;
+
+					mTexturesRunningGlow = ((MultiTileEntityBasicMachine) tCanonicalTileEntity).mTexturesRunningGlow;
+					mTexturesActiveGlow = ((MultiTileEntityBasicMachine) tCanonicalTileEntity).mTexturesActiveGlow;
+
 				} else {
-					mTexturesMaterial = mTexturesInactive = mTexturesRunning = mTexturesActive = L6_IICONCONTAINER;
+					mTexturesMaterial = mTexturesInactive = mTexturesRunning = mTexturesActive =mTexturesActiveGlow =mTexturesRunningGlow = L6_IICONCONTAINER;
 				}
 			}
 		}
@@ -458,7 +478,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 			doWork(aTimer);
 			
 			if (mTimer % 600 == 5 && mRunning) doDefaultStructuralChecks();
-			
+
 			for (int i = 0; i < mTanksInput .length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i                       , FL.display(mTanksInput [i], T, T));
 			for (int i = 0; i < mTanksOutput.length; i++) slot(mRecipes.mInputItemsCount + mRecipes.mOutputItemsCount + 1 + i + mTanksInput.length  , FL.display(mTanksOutput[i], T, T));
 		}
@@ -503,7 +523,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 		}
 		return 0;
 	}
-	
+
 	@Override public boolean isEnergyType                   (TagData aEnergyType, byte aSide, boolean aEmitting) {return aEmitting ? aEnergyType == mEnergyTypeEmitted : aEnergyType == mEnergyTypeAccepted || aEnergyType == mEnergyTypeCharged;}
 	@Override public boolean isEnergyAcceptingFrom          (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) &&                   FACE_CONNECTED[FACING_ROTATIONS[mFacing][aSide]][mEnergyInputs] && super.isEnergyAcceptingFrom(aEnergyType, aSide, aTheoretical);}
 	@Override public boolean isEnergyEmittingTo             (TagData aEnergyType, byte aSide, boolean aTheoretical) {return (aTheoretical || !mStopped) && (SIDES_INVALID[mEnergyOutput] || FACING_ROTATIONS[mFacing][aSide]==mEnergyOutput) && super.isEnergyEmittingTo   (aEnergyType, aSide, aTheoretical);}
@@ -853,7 +873,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 							((ITileEntityAdjacentInventoryUpdatable)tDelegator.mTileEntity).adjacentInventoryUpdated(tDelegator.mSideOfTileEntity, this);
 						}
 					}
-					
+
 					onProcessFinished();
 				}
 			}
@@ -1008,7 +1028,7 @@ public class MultiTileEntityBasicMachine extends TileEntityBase09FacingSingle im
 	@Override public void setVisualData(byte aData) {mRunning=((aData&2)!=0); mActive=((aData&1)!=0);}
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return mActive ? SIDES_THIS[mFacing] : SIDES_HORIZONTAL;}
-	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(mTexturesMaterial[FACING_ROTATIONS[mFacing][aSide]], mRGBa), BlockTextureDefault.get((mActive||worldObj==null?mTexturesActive:mRunning?mTexturesRunning:mTexturesInactive)[FACING_ROTATIONS[mFacing][aSide]])) : null;}
+	@Override public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {return aShouldSideBeRendered[aSide] ? BlockTextureMulti.get(BlockTextureDefault.get(mTexturesMaterial[FACING_ROTATIONS[mFacing][aSide]], mRGBa), BlockTextureDefault.get( (mActive||worldObj==null?mTexturesActive:mRunning?mTexturesRunning:mTexturesInactive) [FACING_ROTATIONS[mFacing][aSide]]), (mActive||mRunning) ? BlockTextureDefault.get( (mActive||worldObj==null?mTexturesActiveGlow:mTexturesRunningGlow)[FACING_ROTATIONS[mFacing][aSide]],true) : null ) : null;}
 	
 	@Override public boolean canSave(int aSlot) {return !IL.Display_Fluid.equal(slot(aSlot), T, T);}
 	@Override public boolean hasWork() {return mMaxProgress > 0 || mChargeRequirement > 0;}

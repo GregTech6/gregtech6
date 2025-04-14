@@ -56,19 +56,19 @@ public class MultiTileEntityHeaterElectric extends TileEntityBase10EnergyConvert
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		if (!aShouldSideBeRendered[aSide]) return null;
 		int aIndex = aSide==mFacing?0:aSide==OPOS[mFacing]?1:2;
-		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get((mActivity.mState>0?sOverlaysActive:sOverlays)[aIndex]));
+		return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[aIndex], mRGBa), BlockTextureDefault.get(sOverlays[aIndex]), mActivity.mState>0?BlockTextureDefault.get(sOverlaysActive[aIndex],true):null);
 	}
 	
 	// Icons
-	public static IIconContainer sColoreds[] = new IIconContainer[] {
+	public static IIconContainer[] sColoreds = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/heaters/heat_electric/colored/front"),
 		new Textures.BlockIcons.CustomIcon("machines/heaters/heat_electric/colored/back"),
 		new Textures.BlockIcons.CustomIcon("machines/heaters/heat_electric/colored/side"),
-	}, sOverlays[] = new IIconContainer[] {
+	}, sOverlays = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/heaters/heat_electric/overlay/front"),
 		new Textures.BlockIcons.CustomIcon("machines/heaters/heat_electric/overlay/back"),
 		new Textures.BlockIcons.CustomIcon("machines/heaters/heat_electric/overlay/side"),
-	}, sOverlaysActive[] = new IIconContainer[] {
+	}, sOverlaysActive = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/heaters/heat_electric/overlay_active/front"),
 		new Textures.BlockIcons.CustomIcon("machines/heaters/heat_electric/overlay_active/back"),
 		new Textures.BlockIcons.CustomIcon("machines/heaters/heat_electric/overlay_active/side"),
