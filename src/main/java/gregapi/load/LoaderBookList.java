@@ -253,6 +253,10 @@ public class LoaderBookList implements Runnable {
 		if (MD.AETHER.mLoaded) {
 			BooksGT.BOOK_REGISTER  .put(MD.AETHER, "bronzeKey"                        ,   W, (byte)  1);
 		}
+		if (MD.AETHEL.mLoaded) {
+			BooksGT.BOOK_REGISTER  .put(MD.AETHEL, "dungeon_key"                      ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER  .put(MD.AETHEL, "lore_book"                        ,   W, (byte)  3);
+		}
 		if (MD.IHL.mLoaded) {
 			BooksGT.BOOKS_NORMAL   .add(MD.IHL, "guidebook"                           ,   W);
 			BooksGT.BOOK_REGISTER  .put(MD.IHL, "guidebook"                           ,   W, (byte) 48);

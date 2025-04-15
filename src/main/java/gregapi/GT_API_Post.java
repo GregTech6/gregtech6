@@ -406,8 +406,12 @@ public class GT_API_Post extends Abstract_Mod {
 		}
 		
 		// Wow, Ars Magica too is on this List, at least for its Blocks...
-		IL.ARS_Cerublossom.set(ST.make(MD.ARS, "blueOrchid", 1, 0), null, "flowerCerublossom");
-		IL.ARS_DesertNova .set(ST.make(MD.ARS, "desertNova", 1, 0), null, "flowerDesertNova");
+		if (MD.ARS.mLoaded) {
+			IL.ARS_Cerublossom.set(ST.make(MD.ARS, "blueOrchid", 1, 0), null, "flowerCerublossom");
+			IL.ARS_DesertNova .set(ST.make(MD.ARS, "desertNova", 1, 0), null, "flowerDesertNova");
+			new SaplingEntry(ST.make(MD.ARS, "saplingWitchwood", 1, 0), new WoodEntry(ST.make(MD.ARS, "WitchwoodLog", 1, 0), new PlankEntry(ST.make(MD.ARS, "planksWitchwood", 1, 0), ST.make(MD.ARS, "witchwoodSingleSlab", 1, 0), ST.make(MD.ARS, "stairsWitchwood", 1, 0), MT.WOODS.Witchwood, 260), 1, 500), ST.make(MD.ARS, "WitchwoodLeaves", 1, 0));
+			CR.shaped(ST.make(MD.ARS, "planksWitchwood", 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.TC, "witchwoodSingleSlab", 1, 0));
+		}
 		
 		// Cooking for Blockheads is here too!...
 		if (MD.CookBook.mLoaded) {
@@ -549,9 +553,6 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.reg(OD.record, ST.make(MD.AETHEL, "welcoming_skies", 1, 0));
 			OM.reg(OD.record, ST.make(MD.AETHEL, "aether_tune"    , 1, 0));
 			OM.reg(OD.record, ST.make(MD.AETHEL, "legacy"         , 1, 0));
-			
-			BooksGT.BOOK_REGISTER  .put(MD.AETHEL, "dungeon_key"                      ,   W, (byte)  1);
-			BooksGT.BOOK_REGISTER  .put(MD.AETHEL, "lore_book"                        ,   W, (byte)  3);
 			
 			BeamEntry tSkyrootBeam = new BeamEntry(ST.make(BlocksGT.Beam3, 1, 2), new PlankEntry(IL.AETHER_Skyroot_Planks.get(1), ST.make(MD.AETHEL, "skyroot_slab", 1, 0), ST.make(MD.AETHEL, "skyroot_stairs", 1, 0), MT.Skyroot, 124), 1, 200);
 			new BeamEntry(ST.make(BlocksGT.Beam3FireProof, 1, 2), WoodDictionary.PLANKS.get(IL.AETHER_Skyroot_Planks));

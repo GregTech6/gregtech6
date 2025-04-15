@@ -222,12 +222,6 @@ public class LoaderWoodDictionary implements Runnable {
 			new SaplingEntry(ST.make(MD.CW2, "perverted_sapling", 1, 2), new WoodEntry(ST.make(MD.CW2, "perverted_log", 1, 2), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 2)), ST.make(MD.CW2, "perverted_leaves", 1, 2));
 			new SaplingEntry(ST.make(MD.CW2, "perverted_sapling", 1, 3), new WoodEntry(ST.make(MD.CW2, "perverted_log", 1, 3), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 3)), ST.make(MD.CW2, "perverted_leaves", 1, 3));
 		}
-		// Ars Magica Trees
-		if (MD.ARS.mLoaded) {
-			new SaplingEntry(ST.make(MD.ARS, "saplingWitchwood", 1, 0), new WoodEntry(ST.make(MD.ARS, "WitchwoodLog", 1, 0), new PlankEntry(ST.make(MD.ARS, "planksWitchwood", 1, 0), ST.make(MD.ARS, "witchwoodSingleSlab", 1, 0), ST.make(MD.ARS, "stairsWitchwood", 1, 0), MT.WOODS.Witchwood, 260), 1, 500), ST.make(MD.ARS, "WitchwoodLeaves", 1, 0));
-			
-			CR.shaped(ST.make(MD.ARS, "planksWitchwood", 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.TC, "witchwoodSingleSlab", 1, 0));
-		}
 		// Thaumcraft Trees
 		if (MD.TC.mLoaded) {
 			new SaplingEntry(ST.make(MD.TC, "blockCustomPlant", 1, 0), new WoodEntry(IL.TC_Greatwood_Log .get(1), new BeamEntry(ST.make(BlocksGT.Beam3, 1, 0), new PlankEntry(IL.TC_Greatwood_Planks .get(1), ST.make(MD.TC, "blockCosmeticSlabWood", 1, 0), ST.make(MD.TC, "blockStairsGreatwood" , 1, 0), MT.Greatwood , 46), 2,  450), 2,  500), ST.make(MD.TC, "blockMagicalLeaves", 1, 0));
