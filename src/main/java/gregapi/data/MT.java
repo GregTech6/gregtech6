@@ -1433,6 +1433,7 @@ public class MT {
 	Amethyst                = valgemelec    ( 8313, "Amethyst"              , SET_RUBY              , 166, 120, 241, 127, RANDOM_SMALL_GEM_ORE                                ).lens(DYE_INDEX_Pink       )                                                         .uumMcfg( 0, SiO2           , 4*U, Fe               , 1*U)                                                                                                  .aspects(TC.VITREUS, 4, TC.LUCRUM                   , 6).qual(3,  6.0,   128,  3),
 	Dioptase                = valgemelec    ( 8325, "Dioptase"              , SET_EMERALD           ,   0, 180, 180, 127, RANDOM_SMALL_GEM_ORE                                ).lens(DYE_INDEX_Cyan       )                                                         .uumMcfg( 0, SiO2           , 3*U, Cu               , 1*U, O                , 1*U, H2O              , 3*U)                                                  .aspects(TC.VITREUS, 3, TC.LUCRUM, 3, TC.PERMUTATIO , 2).qual(3,  7.0,   256,  2),
 	Amber                   = valgem        ( 8310, "Amber"                 , SET_RUBY              , 255, 180,   0, 127                      , MORTAR, CRYSTALLISABLE        ).lens(DYE_INDEX_Orange     )                                                                                                                                                                                                                     .aspects(TC.VITREUS, 1, TC.VINCULUM                 , 2).qual(3,  4.0,   256,  3).heat(473),
+	AmberGolden             = valgem        ( 8469, "Golden Amber"          , SET_RUBY              , 255, 230,  80, 127                      , MORTAR, CRYSTALLISABLE        ).lens(DYE_INDEX_Yellow     )                                                                                                                                                                                                                     .aspects(TC.VITREUS, 1, TC.VINCULUM, 2, TC.VOLATUS  , 2).qual(3,  5.0,   384,  3).heat(473),
 	AmberDominican          = valgem        ( 8422, "Dominican Amber"       , SET_RUBY              ,  80,  80, 240, 127                      , MORTAR, CRYSTALLISABLE        ).lens(DYE_INDEX_Blue       )                                                                                                                                                                                                                     .aspects(TC.VITREUS, 1, TC.VINCULUM, 2, TC.SENSUS   , 2).qual(3,  5.0,   384,  3).heat(473),
 	Craponite               = valgem        ( 8322, "Craponite"             , SET_FLINT             , 255, 170, 185, 127                      , MORTAR, CRYSTALLISABLE        ).lens(DYE_INDEX_Magenta    )                                                                                                                                                                                                                     .aspects(TC.VITREUS, 3, TC.LUCRUM, 3, TC.STRONTIO   , 2).qual(3,  7.0,   256,  2),
 	Jade                    = valgem        ( 8321, "Jade"                  , SET_LAPIS             , 100, 255, 125, 255, RANDOM_SMALL_GEM_ORE, MORTAR, CRYSTALLISABLE        ).lens(DYE_INDEX_Green      )                                                                                                                                                                                                                     .aspects(TC.VITREUS, 3, TC.LUCRUM                   , 6).qual(3,  8.0,   512,  2),
@@ -1982,6 +1983,8 @@ public class MT {
 			MeteoricIron            .setOreMultiplier( 2);
 			MeteoricSteel           .setOreMultiplier( 2);
 			Amber                   .setOreMultiplier( 2);
+			AmberGolden             .setOreMultiplier( 2);
+			AmberDominican          .setOreMultiplier( 2);
 			Zircon                  .setOreMultiplier( 2);
 			Draconium               .setOreMultiplier( 2);
 			OREMATS.Borax           .setOreMultiplier( 2);
@@ -2626,6 +2629,7 @@ public class MT {
 			Skyroot                 .put(MD.AETHER).visDefault();
 			STONES.Holystone        .put(MD.AETHER).visDefault();
 			Zanite                  .put(MD.AETHER, COMMON_ORE).visDefault();
+			AmberGolden             .put(MD.AETHER, COMMON_ORE).visDefault();
 			Ambrosium               .put(MD.AETHER, COMMON_ORE).visDefault();
 			Gravitite               .put(MD.AETHER, COMMON_ORE).visDefault();
 			Continuum               .put(MD.AETHER, COMMON_ORE).visDefault();
@@ -2763,6 +2767,7 @@ public class MT {
 			Adamantine              .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			Force                   .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			Amber                   .addEnchantmentForTools(Enchantment.silkTouch, 1);
+			AmberGolden             .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			AmberDominican          .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			Ambrosium               .addEnchantmentForTools(Enchantment.silkTouch, 1);
 			ManaQuartz              .addEnchantmentForTools(Enchantment.silkTouch, 1);

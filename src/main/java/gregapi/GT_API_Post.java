@@ -461,6 +461,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.oreHolystone   , MT.Gravitite              , MD.AETHEL, "gravitite_ore"  , 0);
 			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Zanite                 , MD.AETHEL, "zanite_gemstone", 0);
 			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Ambrosium              , MD.AETHEL, "ambrosium_shard", 0);
+			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.AmberGolden            , MD.AETHEL, "golden_amber"   , 0);
 			OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Zanite                 , MD.AETHEL, "zanite_block"   , 0);
 			OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Skyroot                , MD.AETHEL, "skyroot_stick"  , 0);
 			OreDictManager.INSTANCE.setTarget(OP.ring           , MT.Fe                     , MD.AETHEL, "iron_ring"      , 0);
@@ -471,6 +472,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.reg("cropBerry"                          , ST.make(MD.AETHEL, "enchanted_blueberry", 1, 0));
 			OM.reg("cropBlueberry"                      , ST.make(MD.AETHEL, "blue_berry", 1, 0));
 			OM.reg(OD.itemEgg                           , ST.make(MD.AETHEL, "moa_egg", 1, W));
+			OM.reg(OD.itemFeather                       , ST.make(MD.AETHEL, "golden_feather", 1, W));
 			OM.reg(OD.slimeball                         , ST.make(MD.AETHEL, "swet_ball", 1, 0));
 			OM.reg(OD.slimeballSwet                     , ST.make(MD.AETHEL, "swet_ball", 1, 0));
 			
@@ -517,7 +519,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.dat2(MD.AETHEL, "zanite_leggings"                , 1     , MT.Zanite             ,  U * 7);
 			OM.dat2(MD.AETHEL, "zanite_boots"                   , 1     , MT.Zanite             ,  U * 4);
 			
-			IL.AETHER_Skyroot_Planks                .set(ST.make(MD.AETHEL, "skyroot_plank"                     , 1, 0), new OreDictItemData(MT.Skyroot, U), OD.plankSkyroot);
+			IL.AETHER_Skyroot_Planks                .set(ST.make(MD.AETHEL, "skyroot_planks"                    , 1, 0), new OreDictItemData(MT.Skyroot, U), OD.plankSkyroot);
 			IL.AETHER_Skyroot_Log                   .set(ST.make(MD.AETHEL, "skyroot_log"                       , 1, 0), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U));
 			IL.AETHER_Skyroot_Log_Gold              .set(ST.make(MD.AETHEL, "golden_oak_log"                    , 1, 2), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U)); OM.reg(IL.AETHER_Skyroot_Log.wild(1), OD.logWood);
 			IL.AETHER_Bucket_Empty                  .set(ST.make(MD.AETHEL, "skyroot_bucket"                    , 1, 0), new OreDictItemData(MT.Skyroot, U*3));
@@ -543,11 +545,10 @@ public class GT_API_Post extends Abstract_Mod {
 			
 			if (IL.AETHER_Dirt.exists()) Textures.BlockIcons.DIRTS[1] = new IconContainerCopied(IL.AETHER_Dirt.block(), 0, SIDE_BOTTOM);
 			
-			OM.reg(OD.record, ST.make(MD.AETHEL, "", 1, 0));
-			OM.reg(OD.record, ST.make(MD.AETHEL, "", 1, 0));// TODO
-			OM.reg(OD.record, ST.make(MD.AETHEL, "", 1, 0));
-			OM.reg(OD.record, ST.make(MD.AETHEL, "", 1, 0));
-			OM.reg(OD.record, ST.make(MD.AETHEL, "", 1, 0));
+			OM.reg(OD.record, ST.make(MD.AETHEL, "ascending_dawn" , 1, 0));
+			OM.reg(OD.record, ST.make(MD.AETHEL, "welcoming_skies", 1, 0));
+			OM.reg(OD.record, ST.make(MD.AETHEL, "aether_tune"    , 1, 0));
+			OM.reg(OD.record, ST.make(MD.AETHEL, "legacy"         , 1, 0));
 			
 			BooksGT.BOOK_REGISTER  .put(MD.AETHEL, "dungeon_key"                      ,   W, (byte)  1);
 			BooksGT.BOOK_REGISTER  .put(MD.AETHEL, "lore_book"                        ,   W, (byte)  3);
@@ -556,13 +557,15 @@ public class GT_API_Post extends Abstract_Mod {
 			new BeamEntry(ST.make(BlocksGT.Beam3FireProof, 1, 2), WoodDictionary.PLANKS.get(IL.AETHER_Skyroot_Planks));
 			CR.shaped(IL.AETHER_Skyroot_Planks.get(1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.AETHEL, "skyroot_slab", 1, 0));
 			
-			WoodEntry tSkyrootWood = new WoodEntry(IL.AETHER_Skyroot_Log.wild(1), tSkyrootBeam, 1, 300);
 			//new SaplingEntry(IL.AETHER_Skyroot_Sapling_Blue     .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Blue   .wild(1));
 			//new SaplingEntry(IL.AETHER_Skyroot_Sapling_Dark     .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Dark   .wild(1));
-			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Green    .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Green  .wild(1));
-			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Gold     .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Gold   .wild(1));
+			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Green    .wild(1), new WoodEntry(IL.AETHER_Skyroot_Log     .wild(1), tSkyrootBeam, 1, 300), IL.AETHER_Skyroot_Leaves_Green  .wild(1));
+			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Gold     .wild(1), new WoodEntry(IL.AETHER_Skyroot_Log_Gold.wild(1), tSkyrootBeam, 2, 500), IL.AETHER_Skyroot_Leaves_Gold   .wild(1));
 			//new SaplingEntry(IL.AETHER_Skyroot_Sapling_Purple   .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Purple .wild(1));
 		}
+		
+		FL.reg(FL.Water.make(1000), IL.AETHER_Bucket_Water.get(1), IL.AETHER_Bucket_Empty.get(1));
+		FL.reg(FL.Milk .make(1000), IL.AETHER_Bucket_Milk .get(1), IL.AETHER_Bucket_Empty.get(1));
 		
 		// Those "On-Demand" Materials of VoltzEngine are registered late...
 		if (MD.VOLTZ.mLoaded) {
