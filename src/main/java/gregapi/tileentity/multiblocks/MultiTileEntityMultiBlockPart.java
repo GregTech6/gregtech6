@@ -20,12 +20,14 @@
 package gregapi.tileentity.multiblocks;
 
 import gregapi.GT_API;
+import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_BreakBlock;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnBlockAdded;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnWalkOver;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.TagData;
 import gregapi.data.FL;
+import gregapi.data.LH;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
@@ -70,7 +72,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable implements ITileEntityEnergy, ITileEntityCrucible, ITileEntityLogistics, IMTE_OnWalkOver, ITileEntityTemperature, ITileEntityGibbl, ITileEntityProgress, ITileEntityWeight, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityEnergyDataCapacitor, ITileEntityAdjacentInventoryUpdatable, IFluidHandler, IMTE_OnBlockAdded, IMTE_BreakBlock, ITileEntityRunningSuccessfully, ITileEntitySwitchableMode, ITileEntitySwitchableOnOff {
+public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable implements ITileEntityEnergy, ITileEntityCrucible, ITileEntityLogistics, IMTE_OnWalkOver, ITileEntityTemperature, ITileEntityGibbl, ITileEntityProgress, ITileEntityWeight, ITileEntityTapAccessible, ITileEntityFunnelAccessible, ITileEntityEnergyDataCapacitor, ITileEntityAdjacentInventoryUpdatable, IFluidHandler, IMTE_OnBlockAdded, IMTE_BreakBlock, IMTE_AddToolTips, ITileEntityRunningSuccessfully, ITileEntitySwitchableMode, ITileEntitySwitchableOnOff {
 	public ChunkCoordinates mTargetPos = null;
 	
 	public ITileEntityMultiBlockController mTarget = null;
@@ -162,6 +164,12 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 		UT.NBT.setNumber(aNBT, NBT_TARGET_Y, mTargetPos.posY);
 		UT.NBT.setNumber(aNBT, NBT_TARGET_Z, mTargetPos.posZ);
 		}
+	}
+	
+	@Override
+	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		aList.add(LH.Chat.DGRAY    + LH.get(LH.TOOL_TO_BUILD_BUILDER_WAND));
+		aList.add(LH.Chat.DGRAY    + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 	}
 	
 	@Override

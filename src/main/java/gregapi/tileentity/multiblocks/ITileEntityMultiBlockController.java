@@ -25,7 +25,6 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.entity.Entity;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -50,13 +49,18 @@ public interface ITileEntityMultiBlockController extends ITileEntityUnloadable, 
 			TileEntity tTileEntity = aController.getTileEntity(aX, aY, aZ);
 			if (tTileEntity == aController) return T;
 			
-			if ((aInventory != null || aPlayer != null) && (aClickedAt == null || (Math.abs(aX-aClickedAt.posX) < 2 && Math.abs(aY-aClickedAt.posY) < 2 && Math.abs(aZ-aClickedAt.posZ) < 2)) && WD.easyRep(aController.getWorld(), aX, aY, aZ) && UT.Entities.canEdit(aPlayer, aX, aY, aZ, ST.make(aRegistryID, 1, aRegistryMeta))) {
-				if (aInventory == null || UT.Entities.hasInfiniteItems(aPlayer)) {
-					// TODO Just place the thing.
-					WD.set(aController.getWorld(), aX, aY, aZ, Blocks.cobblestone, 0, 3);//TEST
-				} else {
-					// TODO scan Inventory for matching Item and place it from there.
-					WD.set(aController.getWorld(), aX, aY, aZ, Blocks.dirt, 0, 3);//TEST
+			if ((aInventory != null || aPlayer != null) && (aClickedAt == null || (Math.abs(aX-aClickedAt.posX) < 2 && Math.abs(aY-aClickedAt.posY) < 2 && Math.abs(aZ-aClickedAt.posZ) < 2))) {
+				ItemStack aStack = ST.make(aRegistryID, 1, aRegistryMeta);
+				if (WD.easyRep(aController.getWorld(), aX, aY, aZ) && UT.Entities.canEdit(aPlayer, aX, aY, aZ, aStack)) {
+					if (aInventory == null || UT.Entities.hasInfiniteItems(aPlayer)) {
+						WD.set(aController.getWorld(), aX, aY, aZ, ST.make(aRegistryID, 1, aRegistryMeta));
+					} else for (int i = aInventory.getSizeInventory()-1; i >= 0; i--) {
+						ItemStack tStack = aInventory.getStackInSlot(i);
+						if (ST.equal(aStack, tStack, T) && ST.use(aPlayer, T, T, tStack, 1)) {
+							WD.set(aController.getWorld(), aX, aY, aZ, tStack);
+							break;
+						}
+					}
 				}
 			}
 			

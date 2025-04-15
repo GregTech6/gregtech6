@@ -144,6 +144,7 @@ public class LH {
 	, TOOL_TO_OPEN_CROWBAR = "gt.lang.use.crowbar.to.open"
 	, TOOL_TO_UNCOVER_CROWBAR = "gt.lang.use.crowbar.to.uncover"
 	, TOOL_TO_DECALCIFY_CHISEL = "gt.lang.use.chisel.to.decalcify"
+	, TOOL_TO_BUILD_BUILDER_WAND = "gt.lang.use.builder.wand.to.ease.building"
 	, TOOL_TO_DETAIL_MAGNIFYINGGLASS = "gt.lang.use.magnifyingglass.to.detail"
 	, TOOL_TO_MEASURE_GEIGER_COUNTER = "gt.lang.use.geigercoutner.to.measure"
 	, TOOL_TO_MEASURE_THERMOMETER = "gt.lang.use.thermometer.to.measure"
@@ -511,6 +512,7 @@ public class LH {
 		add(TOOL_TO_OPEN_CROWBAR                        , "Use Crowbar to open this by harvesting");
 		add(TOOL_TO_UNCOVER_CROWBAR                     , "Use Crowbar to remove Covers");
 		add(TOOL_TO_DECALCIFY_CHISEL                    , "Use Chisel to decalcify");
+		add(TOOL_TO_BUILD_BUILDER_WAND                  , "Use Builder Wand to ease building");
 		add(TOOL_TO_DETAIL_MAGNIFYINGGLASS              , "Use Magnifying Glass to see Details");
 		add(TOOL_TO_MEASURE_GEIGER_COUNTER              , "Use Geiger Counter to Measure");
 		add(TOOL_TO_MEASURE_THERMOMETER                 , "Use Thermometer to Measure");
