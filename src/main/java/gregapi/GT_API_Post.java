@@ -560,7 +560,7 @@ public class GT_API_Post extends Abstract_Mod {
 			//new SaplingEntry(IL.AETHER_Skyroot_Sapling_Blue     .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Blue   .wild(1));
 			//new SaplingEntry(IL.AETHER_Skyroot_Sapling_Dark     .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Dark   .wild(1));
 			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Green    .wild(1), new WoodEntry(IL.AETHER_Skyroot_Log     .wild(1), tSkyrootBeam, 1, 300), IL.AETHER_Skyroot_Leaves_Green  .wild(1));
-			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Gold     .wild(1), new WoodEntry(IL.AETHER_Skyroot_Log_Gold.wild(1), tSkyrootBeam, 2, 500), IL.AETHER_Skyroot_Leaves_Gold   .wild(1));
+			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Gold     .wild(1), new WoodEntry(IL.AETHER_Skyroot_Log_Gold.wild(1), tSkyrootBeam, 2, 500, OP.gem.mat(MT.AmberGolden, 1), MT.AmberGolden), IL.AETHER_Skyroot_Leaves_Gold   .wild(1));
 			//new SaplingEntry(IL.AETHER_Skyroot_Sapling_Purple   .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Purple .wild(1));
 		}
 		

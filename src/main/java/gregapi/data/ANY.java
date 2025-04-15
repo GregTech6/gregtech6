@@ -43,6 +43,7 @@ public class ANY {
 	Jasper          = any("Any Jasper"          ),
 	TigerEye        = any("Any Tiger Eye"       ),
 	Aventurine      = any("Any Aventurine"      ),
+	Amber           = any("Any Amber"           ),
 	Fluorite        = any("Any Fluorite"        ), CaF2 = Fluorite,
 	Phosphorus      = any("Any Phosphorus"      ),
 	Blaze           = any("Any Blaze"           ),
@@ -101,6 +102,7 @@ public class ANY {
 		Jasper          .stealLooks(MT.Jasper         ).steal(MT.Jasper         ).setLocal("Jasper"                                                     ).put(CRYSTAL, VALUABLE                                      );
 		TigerEye        .stealLooks(MT.TigerEyeYellow ).steal(MT.TigerEyeYellow ).setLocal("Tiger Eye"                                                  ).put(CRYSTAL, VALUABLE                                      );
 		Aventurine      .stealLooks(MT.AventurineGreen).steal(MT.AventurineGreen).setLocal("Aventurine"                                                 ).put(CRYSTAL, VALUABLE                                      );
+		Amber           .stealLooks(MT.Amber          ).steal(MT.Amber          ).setLocal("Amber"                                                      ).put(CRYSTAL, VALUABLE                                      ).addReRegistrationToThis(MT.AmberGolden, MT.AmberDominican);
 		Fluorite        .stealLooks(MT.CaF2           ).steal(MT.CaF2           ).setLocal("Fluorite"           ).setAllToTheOutputOf(MT.CaF2           ).put(CRYSTAL, MORTAR, MELTING, BRITTLE, ACID                );
 		Phosphorus      .stealLooks(MT.Phosphorus     ).steal(MT.Phosphorus     ).setLocal("Phosphorus"         ).setAllToTheOutputOf(MT.Phosphorus     ).put(CRYSTAL, MORTAR, MELTING, BRITTLE, FLAMMABLE, EXPLOSIVE).addReRegistrationToThis(MT.Phosphorus, MT.PhosphorusBlue, MT.PhosphorusRed, MT.PhosphorusWhite);
 		Blaze           .stealLooks(MT.Blaze          ).steal(MT.Blaze          ).setLocal("Blaze"                                                      ).put(GLOWING, MAGICAL, BRITTLE, MORTAR                      );
