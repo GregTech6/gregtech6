@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -40,6 +40,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
@@ -77,7 +78,7 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 	}
 	
 	@Override
-	public boolean checkStructure2() {
+	public boolean checkStructure2(ChunkCoordinates aCoordinates, Entity aPlayer, IInventory aInventory) {
 		if (yCoord < 5) return F;
 		mList.clear();
 		boolean tSuccess = T, tBedrock = T, tOverride = F;
@@ -104,15 +105,15 @@ public class MultiTileEntityBedrockDrill extends TileEntityBase10MultiBlockBase 
 			} else if (!WD.bedrock(tBlock)) {
 				tBedrock = F;
 			}
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, -4, j, 18103, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, -3, j, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, -2, j, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, -4, j, 18103, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING       , aCoordinates, aPlayer, aInventory)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, -3, j, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN , aCoordinates, aPlayer, aInventory)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, -2, j, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN , aCoordinates, aPlayer, aInventory)) tSuccess = F;
 			if ((i == 0) != (j == 0)) {
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, -1, j, 18026, getMultiTileEntityRegistryID(), 3, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, -1, j, 18026, getMultiTileEntityRegistryID(), 3, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN, aCoordinates, aPlayer, aInventory)) tSuccess = F;
 			} else {
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, -1, j, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, -1, j, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN , aCoordinates, aPlayer, aInventory)) tSuccess = F;
 			}
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i,  0, j, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i,  0, j, 18026, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_FLUID_IN , aCoordinates, aPlayer, aInventory)) tSuccess = F;
 		}
 		return tSuccess && (tBedrock || tOverride);
 	}

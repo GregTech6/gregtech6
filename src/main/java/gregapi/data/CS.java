@@ -1064,6 +1064,7 @@ public class CS {
 	, TOOL_plasmatorch      = "plasmatorch"
 	, TOOL_solderingtool    = "solderingtool"
 	, TOOL_solderingmetal   = "solderingmetal"
+	, TOOL_builderwand      = "builderwand"
 	, TOOL_thermometer      = "thermometer"
 	, TOOL_magnifyingglass  = "magnifyingglass"
 	, TOOL_geigercounter    = "geigercounter"
@@ -1107,6 +1108,7 @@ public class CS {
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_plasmatorch     , "Plasma Torch");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_solderingtool   , "Soldering Tool");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_solderingmetal  , "Soldering Metal");
+		LH.add(TOOL_LOCALISER_PREFIX + TOOL_builderwand     , "Builder Wand");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_thermometer     , "Thermometer");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_magnifyingglass , "Magnifying Glass");
 		LH.add(TOOL_LOCALISER_PREFIX + TOOL_geigercounter   , "Geiger Counter");
@@ -1699,7 +1701,7 @@ public class CS {
 		
 		@Deprecated public static BlockBase Sapling = Saplings_AB, Leaves = Leaves_AB;
 	}
-
+	
 	public static class ArmorsGT {
 		/** The List of Hazmat Armors */
 		public static final ItemStackSet<ItemStackContainer>

@@ -3269,6 +3269,16 @@ public class UT {
 			return UT.Code.divup(aOriginalDurabilityUsed * (getPotionLevel(aEntity, Potion.digSlowdown)+2), getPotionLevel(aEntity, Potion.digSpeed)+2);
 		}
 		
+		public static boolean canEdit(Object aPlayer, int aX, int aY, int aZ) {
+			return !(aPlayer instanceof EntityPlayer) || ((EntityPlayer)aPlayer).canPlayerEdit(aX, aY, aZ, SIDE_TOP, NI);
+		}
+		public static boolean canEdit(Object aPlayer, int aX, int aY, int aZ, ItemStack aStack) {
+			return !(aPlayer instanceof EntityPlayer) || ((EntityPlayer)aPlayer).canPlayerEdit(aX, aY, aZ, SIDE_TOP, aStack);
+		}
+		public static boolean canEdit(Object aPlayer, int aX, int aY, int aZ, int aSide, ItemStack aStack) {
+			return !(aPlayer instanceof EntityPlayer) || ((EntityPlayer)aPlayer).canPlayerEdit(aX, aY, aZ, aSide, aStack);
+		}
+		
 		/** checks if a Player is actually a Player and not a FakePlayer or something. */
 		public static boolean isPlayer(Object aPlayer) {
 			return aPlayer instanceof EntityPlayerMP && !(aPlayer instanceof FakePlayer);

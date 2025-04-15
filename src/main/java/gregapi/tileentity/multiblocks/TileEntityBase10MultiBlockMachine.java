@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.tileentity.multiblocks;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.data.LH;
 import gregapi.data.TD;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
@@ -39,6 +35,10 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -62,9 +62,13 @@ public abstract class TileEntityBase10MultiBlockMachine extends MultiTileEntityB
 	
 	@Override
 	public long onToolClickMultiBlock(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ, ChunkCoordinates aFrom) {
-		long rReturn = super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
-		if (rReturn > 0) return rReturn;
-		return 0;
+		if (aTool.equals(TOOL_builderwand)) {
+			if (isClientSide()) return 0;
+			checkStructure2(aFrom, aPlayer, aPlayerInventory);
+			mStructureChanged = T;
+			return 10;
+		}
+		return onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 	}
 	
 	@Override
@@ -94,7 +98,7 @@ public abstract class TileEntityBase10MultiBlockMachine extends MultiTileEntityB
 	@Override
 	public boolean checkStructure(boolean aForceReset) {
 		if (isClientSide()) return mStructureOkay;
-		if ((mStructureChanged || aForceReset) && mStructureOkay != checkStructure2()) {
+		if ((mStructureChanged || aForceReset) && mStructureOkay != checkStructure2(null, null, null)) {
 			mStructureOkay = !mStructureOkay;
 			updateClientData();
 		}
@@ -117,7 +121,11 @@ public abstract class TileEntityBase10MultiBlockMachine extends MultiTileEntityB
 	
 	@Override public void onStructureChange() {mStructureChanged = T;}
 	
-	public abstract boolean checkStructure2();
+	/** New Version of the MultiBlock Structure Check, which can't be made abstract for backwards compat reasons. */
+	public boolean checkStructure2(ChunkCoordinates aCoordinates, Entity aPlayer, IInventory aInventory) {return checkStructure2();}
+	/** Previous Version of the MultiBlock Structure Check without Builder Wand Support. Overriding this formerly abstract function will still work for regular checks but is not recommended. */
+	@Deprecated public boolean checkStructure2() {return T;}
+	
 	public boolean refreshStructureOnActiveStateChange() {return F;}
 	
 	@Override public abstract DelegatorTileEntity<IInventory> getItemInputTarget(byte aSide);

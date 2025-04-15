@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,19 +19,20 @@
 
 package gregtech.items.tools.machine;
 
-import static gregapi.data.CS.*;
-
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
+import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.render.IIconContainer;
 import gregtech.items.behaviors.Behavior_Builderwand;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.*;
 
 public class GT_Tool_Builderwand extends ToolStats {
 	@Override public int getToolDamagePerBlockBreak()                                       {return 1;}
@@ -59,6 +60,7 @@ public class GT_Tool_Builderwand extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_builderwand, SFX.MC_XP, 100, !canBlock(), T));
 		aItem.addItemBehavior(aID, new Behavior_Builderwand());
 	}
 	
