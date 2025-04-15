@@ -33,7 +33,8 @@ import net.minecraft.util.ChunkCoordinates;
 
 import java.util.List;
 
-import static gregapi.data.CS.*;
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
 
 /**
  * @author Gregorius Techneticies
@@ -48,13 +49,6 @@ public interface ITileEntityMultiBlockController extends ITileEntityUnloadable, 
 		public static boolean checkAndSetTarget(ITileEntityMultiBlockController aController, int aX, int aY, int aZ, int aRegistryMeta, int aRegistryID, int aDesign, int aMode, ChunkCoordinates aClickedAt, Entity aPlayer, IInventory aInventory) {
 			TileEntity tTileEntity = aController.getTileEntity(aX, aY, aZ);
 			if (tTileEntity == aController) return T;
-			
-			DEB.println("TEST START");
-			DEB.println(aInventory != null || aPlayer != null);
-			DEB.println(aClickedAt == null || (Math.abs(aX-aClickedAt.posX) < 2 && Math.abs(aY-aClickedAt.posY) < 2 && Math.abs(aZ-aClickedAt.posZ) < 2));
-			DEB.println(WD.easyRep(aController.getWorld(), aX, aY, aZ));
-			DEB.println(UT.Entities.canEdit(aPlayer, aX, aY, aZ, ST.make(aRegistryID, 1, aRegistryMeta)));
-			DEB.println("TEST END");
 			
 			if ((aInventory != null || aPlayer != null) && (aClickedAt == null || (Math.abs(aX-aClickedAt.posX) < 2 && Math.abs(aY-aClickedAt.posY) < 2 && Math.abs(aZ-aClickedAt.posZ) < 2)) && WD.easyRep(aController.getWorld(), aX, aY, aZ) && UT.Entities.canEdit(aPlayer, aX, aY, aZ, ST.make(aRegistryID, 1, aRegistryMeta))) {
 				if (aInventory == null || UT.Entities.hasInfiniteItems(aPlayer)) {

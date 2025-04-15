@@ -243,7 +243,7 @@ public class MultiTileEntityMultiBlockPart extends TileEntityBase05Paintable imp
 	@Override
 	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aTool.equals(TOOL_wrench) || aTool.equals(TOOL_crowbar)) return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
-		ITileEntityMultiBlockController tTileEntity = getTarget(T);
+		ITileEntityMultiBlockController tTileEntity = getTarget(F);
 		if (tTileEntity == null) {
 			if (aTool.equals(TOOL_magnifyingglass) || aTool.equals(TOOL_builderwand)) {
 				aChatReturn.add("There is no Multiblock Controller for this Block.");
