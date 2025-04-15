@@ -29,15 +29,17 @@ import gregapi.api.Abstract_Mod;
 import gregapi.api.Abstract_Proxy;
 import gregapi.data.*;
 import gregapi.load.*;
+import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
+import gregapi.render.IconContainerCopied;
+import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
-import gregapi.wooddict.SaplingEntry;
-import gregapi.wooddict.WoodDictionary;
+import gregapi.wooddict.*;
 import gregapi.worldgen.StoneLayer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
@@ -450,6 +452,116 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.BlueTopaz        , MD.ARS, "itemOre", 5);
 			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Sunstone         , MD.ARS, "itemOre", 6);
 			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Moonstone        , MD.ARS, "itemOre", 7);
+		}
+		
+		// Aether Legacy is fucking this up as well, and the best part is, it once WAS working fine, but they fucking decided to break it!
+		if (MD.AETHEL.mLoaded) {
+			OreDictManager.INSTANCE.setTarget(OP.oreHolystone   , MT.Zanite                 , MD.AETHEL, "zanite_ore"     , 0);
+			OreDictManager.INSTANCE.setTarget(OP.oreHolystone   , MT.Ambrosium              , MD.AETHEL, "ambrosium_ore"  , 0);
+			OreDictManager.INSTANCE.setTarget(OP.oreHolystone   , MT.Gravitite              , MD.AETHEL, "gravitite_ore"  , 0);
+			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Zanite                 , MD.AETHEL, "zanite_gemstone", 0);
+			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Ambrosium              , MD.AETHEL, "ambrosium_shard", 0);
+			OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Zanite                 , MD.AETHEL, "zanite_block"   , 0);
+			OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Skyroot                , MD.AETHEL, "skyroot_stick"  , 0);
+			OreDictManager.INSTANCE.setTarget(OP.ring           , MT.Fe                     , MD.AETHEL, "iron_ring"      , 0);
+			OreDictManager.INSTANCE.setTarget(OP.ring           , MT.Au                     , MD.AETHEL, "golden_ring"    , 0);
+			// Just to force the unification Target to be this Ring instead.
+			OreDictManager.INSTANCE.setTarget(OP.ring           , MT.Au                     , MD.TC, "ItemBaubleBlanks"  ,  1);
+			
+			OM.reg("cropBerry"                          , ST.make(MD.AETHEL, "enchanted_blueberry", 1, 0));
+			OM.reg("cropBlueberry"                      , ST.make(MD.AETHEL, "blue_berry", 1, 0));
+			OM.reg(OD.itemEgg                           , ST.make(MD.AETHEL, "moa_egg", 1, W));
+			OM.reg(OD.slimeball                         , ST.make(MD.AETHEL, "swet_ball", 1, 0));
+			OM.reg(OD.slimeballSwet                     , ST.make(MD.AETHEL, "swet_ball", 1, 0));
+			
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "holystone"                , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "holystone"                , 1, 1));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "holystone"                , 1, 2));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "holystone"                , 1, 3));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "holystone_brick"          , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "mossy_holystone"          , 1, 0));
+			
+			BlocksGT.drillableDynamite.add(ST.block(MD.AETHEL, "aether_dirt"           , null));
+			BlocksGT.drillableDynamite.add(ST.block(MD.AETHEL, "aether_grass"          , null));
+			BlocksGT.drillableDynamite.add(ST.block(MD.AETHEL, "enchanted_aether_grass", null));
+			BlocksGT.harvestableSpade.add(ST.block(MD.AETHEL, "aether_dirt"            , null));
+			BlocksGT.harvestableSpade.add(ST.block(MD.AETHEL, "aether_grass"           , null));
+			BlocksGT.harvestableSpade.add(ST.block(MD.AETHEL, "enchanted_aether_grass" , null));
+			BlocksGT.plantableGreens.add(ST.block(MD.AETHEL, "aether_grass"            , null));
+			BlocksGT.plantableGreens.add(ST.block(MD.AETHEL, "aether_dirt"             , null));
+			BlocksGT.plantableGreens.add(ST.block(MD.AETHEL, "enchanted_aether_grass"  , null));
+			BlocksGT.plantableGrass.add(ST.block(MD.AETHEL, "aether_grass"             , null));
+			BlocksGT.plantableGrass.add(ST.block(MD.AETHEL, "enchanted_aether_grass"   , null));
+			BlocksGT.plantableTrees.add(ST.block(MD.AETHEL, "aether_grass"             , null));
+			BlocksGT.plantableTrees.add(ST.block(MD.AETHEL, "enchanted_aether_grass"   , null));
+			BlocksGT.breakableGlass.add(ST.block(MD.AETHEL, "quicksoil_glass"          , null));
+			
+			OM.data(MD.AETHEL, "skyroot_fence"                  , 1,   W, MT.Skyroot            ,  U * 1);
+			OM.data(MD.AETHEL, "skyroot_fence_gate"             , 1,   W, MT.Skyroot            ,  U * 4);
+			OM.data(MD.AETHEL, "skyroot_bed_item"               , 1,   W, MT.Skyroot            ,  U * 3);
+			OM.data(MD.AETHEL, "skyroot_bookshelf"              , 1,   W, MT.Skyroot            ,  U * 6, MT.Paper, U * 9);
+			OM.dat2(MD.AETHEL, "skyroot_sword"                  , 1     , MT.Skyroot            ,  OP.toolHeadSword  .mAmount + U2);
+			OM.dat2(MD.AETHEL, "skyroot_pickaxe"                , 1     , MT.Skyroot            ,  OP.toolHeadPickaxe.mAmount + U );
+			OM.dat2(MD.AETHEL, "skyroot_shovel"                 , 1     , MT.Skyroot            ,  OP.toolHeadShovel .mAmount + U );
+			OM.dat2(MD.AETHEL, "skyroot_axe"                    , 1     , MT.Skyroot            ,  OP.toolHeadAxe    .mAmount + U );
+			OM.dat2(MD.AETHEL, "holystone_sword"                , 1     , MT.STONES.Holystone   ,  OP.toolHeadSword  .mAmount, MT.Skyroot, U2);
+			OM.dat2(MD.AETHEL, "holystone_pickaxe"              , 1     , MT.STONES.Holystone   ,  OP.toolHeadPickaxe.mAmount, MT.Skyroot, U );
+			OM.dat2(MD.AETHEL, "holystone_shovel"               , 1     , MT.STONES.Holystone   ,  OP.toolHeadShovel .mAmount, MT.Skyroot, U );
+			OM.dat2(MD.AETHEL, "holystone_axe"                  , 1     , MT.STONES.Holystone   ,  OP.toolHeadAxe    .mAmount, MT.Skyroot, U );
+			OM.dat2(MD.AETHEL, "zanite_sword"                   , 1     , MT.Zanite             ,  OP.toolHeadSword  .mAmount, MT.Skyroot, U2);
+			OM.dat2(MD.AETHEL, "zanite_pickaxe"                 , 1     , MT.Zanite             ,  OP.toolHeadPickaxe.mAmount, MT.Skyroot, U );
+			OM.dat2(MD.AETHEL, "zanite_shovel"                  , 1     , MT.Zanite             ,  OP.toolHeadShovel .mAmount, MT.Skyroot, U );
+			OM.dat2(MD.AETHEL, "zanite_axe"                     , 1     , MT.Zanite             ,  OP.toolHeadAxe    .mAmount, MT.Skyroot, U );
+			OM.dat2(MD.AETHEL, "zanite_helmet"                  , 1     , MT.Zanite             ,  U * 5);
+			OM.dat2(MD.AETHEL, "zanite_chestplate"              , 1     , MT.Zanite             ,  U * 8);
+			OM.dat2(MD.AETHEL, "zanite_leggings"                , 1     , MT.Zanite             ,  U * 7);
+			OM.dat2(MD.AETHEL, "zanite_boots"                   , 1     , MT.Zanite             ,  U * 4);
+			
+			IL.AETHER_Skyroot_Planks                .set(ST.make(MD.AETHEL, "skyroot_plank"                     , 1, 0), new OreDictItemData(MT.Skyroot, U), OD.plankSkyroot);
+			IL.AETHER_Skyroot_Log                   .set(ST.make(MD.AETHEL, "skyroot_log"                       , 1, 0), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U));
+			IL.AETHER_Skyroot_Log_Gold              .set(ST.make(MD.AETHEL, "golden_oak_log"                    , 1, 2), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U)); OM.reg(IL.AETHER_Skyroot_Log.wild(1), OD.logWood);
+			IL.AETHER_Bucket_Empty                  .set(ST.make(MD.AETHEL, "skyroot_bucket"                    , 1, 0), new OreDictItemData(MT.Skyroot, U*3));
+			IL.AETHER_Bucket_Water                  .set(ST.make(MD.AETHEL, "skyroot_bucket"                    , 1, 1), new OreDictItemData(MT.Skyroot, U*3), OD.container1000water);
+			IL.AETHER_Bucket_Poison                 .set(ST.make(MD.AETHEL, "skyroot_bucket"                    , 1, 2), new OreDictItemData(MT.Skyroot, U*3), OD.container1000poison);
+			IL.AETHER_Bucket_Remedy                 .set(ST.make(MD.AETHEL, "skyroot_bucket"                    , 1, 3), new OreDictItemData(MT.Skyroot, U*3));
+			IL.AETHER_Bucket_Milk                   .set(ST.make(MD.AETHEL, "skyroot_bucket"                    , 1, 4), new OreDictItemData(MT.Skyroot, U*3), OD.container1000milk);
+			IL.AETHER_Torch_Ambrosium               .set(ST.make(MD.AETHEL, "ambrosium_torch"                   , 1, 0), new OreDictItemData(MT.Ambrosium, U8, MT.Skyroot, U16), OD.blockTorch);
+			IL.AETHER_Apple                         .set(ST.make(MD.AETHEL, "white_apple"                       , 1, 0), null, "cropAppleWhite");
+			IL.AETHER_Sand                          .set(ST.make(MD.AETHEL, "quicksoil"                         , 1, 0), new OreDictItemData(MT.Sand, U*9), OD.sand);
+			IL.AETHER_Glass                         .set(ST.make(MD.AETHEL, "quicksoil_glass"                   , 1, 0), null, OD.blockGlassColorless);
+			IL.AETHER_Dirt                          .set(ST.make(MD.AETHEL, "aether_dirt"                       , 1, 0));
+			IL.AETHER_Grass                         .set(ST.make(MD.AETHEL, "aether_grass"                      , 1, 0));
+			IL.AETHER_Grass_Enchanted               .set(ST.make(MD.AETHEL, "enchanted_aether_grass"            , 1, 0));
+			IL.AETHER_Skyroot_Sapling_Gold          .set(ST.make(MD.AETHEL, "golden_oak_sapling"                , 1, 0), null, OP.treeSapling);
+			IL.AETHER_Skyroot_Sapling_Green         .set(ST.make(MD.AETHEL, "skyroot_sapling"                   , 1, 0), null, OP.treeSapling);
+			IL.AETHER_Skyroot_Leaves_Gold           .set(ST.make(MD.AETHEL, "golden_oak_leaves"                 , 1, 0), null, OP.treeLeaves);
+			IL.AETHER_Skyroot_Leaves_Green          .set(ST.make(MD.AETHEL, "skyroot_leaves"                    , 1, 0), null, OP.treeLeaves);
+			IL.AETHER_Skyroot_Leaves_Blue           .set(ST.make(MD.AETHER, "holiday_leaves"                    , 1, 1), null, OP.treeLeaves);
+			IL.AETHER_Skyroot_Leaves_Dark           .set(ST.make(MD.AETHER, "decorated_holiday_leaves"          , 1, 1), null, OP.treeLeaves);
+			IL.AETHER_Skyroot_Leaves_Purple         .set(ST.make(MD.AETHEL, "crystal_leaves"                    , 1, 0), null, OP.treeLeaves);
+			IL.AETHER_Skyroot_Leaves_Apple          .set(ST.make(MD.AETHEL, "crystal_fruit_leaves"              , 1, 0), null, OP.treeLeaves);
+			
+			if (IL.AETHER_Dirt.exists()) Textures.BlockIcons.DIRTS[1] = new IconContainerCopied(IL.AETHER_Dirt.block(), 0, SIDE_BOTTOM);
+			
+			OM.reg(OD.record, ST.make(MD.AETHEL, "", 1, 0));
+			OM.reg(OD.record, ST.make(MD.AETHEL, "", 1, 0));// TODO
+			OM.reg(OD.record, ST.make(MD.AETHEL, "", 1, 0));
+			OM.reg(OD.record, ST.make(MD.AETHEL, "", 1, 0));
+			OM.reg(OD.record, ST.make(MD.AETHEL, "", 1, 0));
+			
+			BooksGT.BOOK_REGISTER  .put(MD.AETHEL, "dungeon_key"                      ,   W, (byte)  1);
+			BooksGT.BOOK_REGISTER  .put(MD.AETHEL, "lore_book"                        ,   W, (byte)  3);
+			
+			BeamEntry tSkyrootBeam = new BeamEntry(ST.make(BlocksGT.Beam3, 1, 2), new PlankEntry(IL.AETHER_Skyroot_Planks.get(1), ST.make(MD.AETHEL, "skyroot_slab", 1, 0), ST.make(MD.AETHEL, "skyroot_stairs", 1, 0), MT.Skyroot, 124), 1, 200);
+			new BeamEntry(ST.make(BlocksGT.Beam3FireProof, 1, 2), WoodDictionary.PLANKS.get(IL.AETHER_Skyroot_Planks));
+			CR.shaped(IL.AETHER_Skyroot_Planks.get(1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.AETHEL, "skyroot_slab", 1, 0));
+			
+			WoodEntry tSkyrootWood = new WoodEntry(IL.AETHER_Skyroot_Log.wild(1), tSkyrootBeam, 1, 300);
+			//new SaplingEntry(IL.AETHER_Skyroot_Sapling_Blue     .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Blue   .wild(1));
+			//new SaplingEntry(IL.AETHER_Skyroot_Sapling_Dark     .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Dark   .wild(1));
+			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Green    .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Green  .wild(1));
+			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Gold     .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Gold   .wild(1));
+			//new SaplingEntry(IL.AETHER_Skyroot_Sapling_Purple   .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Purple .wild(1));
 		}
 		
 		// Those "On-Demand" Materials of VoltzEngine are registered late...

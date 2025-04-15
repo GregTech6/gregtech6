@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,11 @@
 
 package gregtech.loaders.b;
 
-import static gregapi.data.CS.*;
-
 import gregapi.block.behaviors.Drops;
 import gregapi.block.behaviors.Drops_SmallOre;
 import gregapi.block.prefixblock.PrefixBlock;
 import gregapi.block.prefixblock.PrefixBlock_;
 import gregapi.code.ItemStackContainer;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.ItemsGT;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -37,6 +32,8 @@ import gregapi.render.BlockTextureCopied;
 import gregapi.util.ST;
 import gregtech.loaders.a.Loader_Ores;
 import net.minecraft.block.Block;
+
+import static gregapi.data.CS.*;
 
 public class Loader_Late_Items_And_Blocks implements Runnable {
 	@Override
@@ -79,6 +76,10 @@ public class Loader_Late_Items_And_Blocks implements Runnable {
 					GarbageGT.BLACKLIST.add((Block)BlocksGT.oreSmallAtumSand, i);
 				}
 			}
+		}
+		
+		if (MD.AETHEL.mLoaded) {
+		Loader_Ores.rockset(MD.AETHEL, "holystone", 1, 0, "holystone", 1, "aether.holystone", OP.oreHolystone, MT.STONES.Holystone);
 		}
 		
 		Loader_Ores.rockset(MD.PR_EXPLORATION, "projectred.exploration.stone", 3, 3, "projectred.exploration.stone", 2, "pr.basalt", OP.oreBasalt, MT.STONES.Basalt);

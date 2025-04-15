@@ -579,15 +579,6 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Zanite                 , MD.AETHER, "zaniteBlock"    , 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Continuum              , MD.AETHER, "continuumBomb"  , 0);
 		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Skyroot                , MD.AETHER, "skyrootStick"   , 0);
-		OreDictManager.INSTANCE.setTarget(OP.oreHolystone   , MT.Zanite                 , MD.AETHEL, "zanite_ore"     , 0);
-		OreDictManager.INSTANCE.setTarget(OP.oreHolystone   , MT.Ambrosium              , MD.AETHEL, "ambrosium_ore"  , 0);
-		OreDictManager.INSTANCE.setTarget(OP.oreHolystone   , MT.Gravitite              , MD.AETHEL, "gravitite_ore"  , 0);
-		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Zanite                 , MD.AETHEL, "zanite_gemstone", 0);
-		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Ambrosium              , MD.AETHEL, "ambrosium_shard", 0);
-		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Zanite                 , MD.AETHEL, "zanite_block"   , 0);
-		OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Skyroot                , MD.AETHEL, "skyroot_stick"  , 0);
-		OreDictManager.INSTANCE.setTarget(OP.ring           , MT.Fe                     , MD.AETHEL, "iron_ring"      , 0);
-		OreDictManager.INSTANCE.setTarget(OP.ring           , MT.Au                     , MD.AETHEL, "golden_ring"    , 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Cinnabar       , MD.TC, "blockCustomOre"    ,  0);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.InfusedAir             , MD.TC, "blockCustomOre"    ,  1);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.InfusedFire            , MD.TC, "blockCustomOre"    ,  2);
