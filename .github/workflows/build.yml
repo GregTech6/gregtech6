@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v2
       with:
@@ -52,7 +52,7 @@ jobs:
     #with:
       #workflow: release-completed
   regenerate-website:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     needs: [build]
     steps:
     - name: Regenerate website
@@ -62,7 +62,7 @@ jobs:
         MAVEN_PASSWORD: ${{ secrets.MAVEN_UPLOAD_PASSWORD }}
       run: curl -X PUT ${MAVEN_URL}/REGEN -u "${MAVEN_USERNAME}:${MAVEN_PASSWORD}" --data ''
   webhook-dispatch:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [build, regenerate-website]
     steps:
     - name: Webhook dispatch
@@ -71,7 +71,7 @@ jobs:
         webhook_url: ${{ secrets.WEBHOOK_URL }}
         webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
   post-to-forum:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     needs: [build, regenerate-website]
     steps:
     - uses: actions/checkout@v2
