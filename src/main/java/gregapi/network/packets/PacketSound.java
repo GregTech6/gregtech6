@@ -21,7 +21,6 @@ package gregapi.network.packets;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
-import gregapi.data.CS;
 import gregapi.network.INetworkHandler;
 import gregapi.util.UT;
 import net.minecraft.util.ChunkCoordinates;
@@ -72,10 +71,6 @@ public class PacketSound extends PacketCoordinates {
 	
 	@Override
 	public void process(IBlockAccess aWorld, INetworkHandler aNetworkHandler) {
-		UT.Sounds.play(mSound, 2, mVolume, mPitch == CS.SFX.RANDOM_PITCH ? _7_GRAND_DAD_[PITCH_INDEX=((PITCH_INDEX+1)%_7_GRAND_DAD_.length)] : mPitch, mX, mY, mZ);
+		UT.Sounds.play(mSound, 2, mVolume, mPitch, mX, mY, mZ);
 	}
-	
-	/** Certain Sounds need a bit of pitch variation to them, so I decided to put a <tt>High Quality Video Game Rip</tt> into them. */
-	public static final float[] _7_GRAND_DAD_ = {1.0F, 0.8F, 1.0F, 0.9F, 0.9F, 0.8F, 1.0F, 0.9F, 0.8F, 0.8F, 0.8F, 0.9F, 0.7F, 0.8F, 0.9F, 1.0F, 0.8F, 1.0F, 0.9F, 0.9F, 0.8F, 1.0F, 0.9F, 0.8F, 0.8F, 0.8F, 0.9F, 0.7F, 0.9F, 0.7F};
-	public static int PITCH_INDEX = -1;
 }

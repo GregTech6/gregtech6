@@ -2190,6 +2190,9 @@ public class CS {
 	/** Class Containing Sound Strings used in GT. */
 	public static class SFX {
 		public static float RANDOM_PITCH = Float.NaN;
+		/** Certain Sounds need a bit of pitch variation to them, so I decided to put a <tt>High Quality Video Game Rip</tt> into them. */
+		public static final float[] _7_GRAND_DAD_ = {1.0F, 0.8F, 1.0F, 0.9F, 0.9F, 0.8F, 1.0F, 0.9F, 0.8F, 0.8F, 0.8F, 0.9F, 0.7F, 0.8F, 0.9F, 1.0F, 0.8F, 1.0F, 0.9F, 0.9F, 0.8F, 1.0F, 0.9F, 0.8F, 0.8F, 0.8F, 0.9F, 0.7F, 0.9F, 0.7F};
+		public static int PITCH_INDEX = -1;
 		
 		/** Sound Strings */
 		public static final String

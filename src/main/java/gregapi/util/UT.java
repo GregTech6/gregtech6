@@ -2930,9 +2930,9 @@ public class UT {
 			EntityPlayer aPlayer = GT_API.api_proxy.getThePlayer();
 			if (aPlayer == null || !aPlayer.worldObj.isRemote || Code.stringInvalid(aSound)) return F;
 			if (MULTITHREADED)
-				new Thread(new ThreadedSound(aPlayer.worldObj, UT.Code.roundDown(aCoords.posX), UT.Code.roundDown(aCoords.posY), UT.Code.roundDown(aCoords.posZ), aTimeUntilNextSound, aSound, aVolume, aPitch), "Sound Effect").start();
+				new Thread(new ThreadedSound(aPlayer.worldObj, UT.Code.roundDown(aCoords.posX), UT.Code.roundDown(aCoords.posY), UT.Code.roundDown(aCoords.posZ), aTimeUntilNextSound, aSound, aVolume, Float.isNaN(aPitch) || aPitch == SFX.RANDOM_PITCH ? SFX._7_GRAND_DAD_[SFX.PITCH_INDEX=((SFX.PITCH_INDEX+1)%SFX._7_GRAND_DAD_.length)] : aPitch), "Sound Effect").start();
 			else
-				new ThreadedSound(aPlayer.worldObj, UT.Code.roundDown(aCoords.posX), UT.Code.roundDown(aCoords.posY), UT.Code.roundDown(aCoords.posZ), aTimeUntilNextSound, aSound, aVolume, aPitch).run();
+				new ThreadedSound(aPlayer.worldObj, UT.Code.roundDown(aCoords.posX), UT.Code.roundDown(aCoords.posY), UT.Code.roundDown(aCoords.posZ), aTimeUntilNextSound, aSound, aVolume, Float.isNaN(aPitch) || aPitch == SFX.RANDOM_PITCH ? SFX._7_GRAND_DAD_[SFX.PITCH_INDEX=((SFX.PITCH_INDEX+1)%SFX._7_GRAND_DAD_.length)] : aPitch).run();
 			return T;
 		}
 		
