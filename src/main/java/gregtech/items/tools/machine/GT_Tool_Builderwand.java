@@ -59,8 +59,8 @@ public class GT_Tool_Builderwand extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_builderwand, SFX.MC_XP, 100, !canBlock(), SFX.RANDOM_PITCH));
 		aItem.addItemBehavior(aID, new Behavior_Builderwand());
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_builderwand, SFX.MC_XP, 100, !canBlock(), SFX.RANDOM_PITCH));
 	}
 	
 	@Override
