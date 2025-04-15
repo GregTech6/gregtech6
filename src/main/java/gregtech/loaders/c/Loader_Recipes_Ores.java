@@ -170,8 +170,23 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000, 5000, 5000, 5000, 5000}, crushedPurified    .mat(MT.OREMATS.Cassiterite, 1), FL.array(MT.AquaRegia.fluid(13*U , T)), FL.array(MT.StannicChloride.fluid( 5*U2, F), MT.HCl.gas(4*U, F), MT.NO2.gas(3*U, F)/*, MT.NO2.gas(3* U2, F), MT.NO.gas(U, F), FL.Water.make(4500)*/), crushedCentrifuged.mat(MT.OREMATS.Cassiterite, 1), crushedCentrifugedTiny.mat(MT.Zn, 2), crushedCentrifugedTiny.mat(MT.Zn, 2), crushedCentrifugedTiny.mat(MT.Zn, 2), crushedCentrifugedTiny.mat(MT.Zn, 2), crushedCentrifugedTiny.mat(MT.Zn, 2));
 		RM.Bath         .addRecipe1(T,  0,  256, new long[] {10000, 5000, 5000, 5000, 5000, 5000}, crushedPurifiedTiny.mat(MT.OREMATS.Cassiterite, 9), FL.array(MT.AquaRegia.fluid(13*U , T)), FL.array(MT.StannicChloride.fluid( 5*U2, F), MT.HCl.gas(4*U, F), MT.NO2.gas(3*U, F)/*, MT.NO2.gas(3* U2, F), MT.NO.gas(U, F), FL.Water.make(4500)*/), crushedCentrifuged.mat(MT.OREMATS.Cassiterite, 1), crushedCentrifugedTiny.mat(MT.Zn, 2), crushedCentrifugedTiny.mat(MT.Zn, 2), crushedCentrifugedTiny.mat(MT.Zn, 2), crushedCentrifugedTiny.mat(MT.Zn, 2), crushedCentrifugedTiny.mat(MT.Zn, 2));
 		
-		RM.Bath         .addRecipe1(T,  0,  256, OP.crushed    .mat(MT.OREMATS.Cinnabar, 1), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(MT.OREMATS.Cinnabar, 1));
-		RM.Bath         .addRecipe1(T,  0,  256, OP.crushedTiny.mat(MT.OREMATS.Cinnabar, 9), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(MT.OREMATS.Cinnabar, 1));
+		
+		for (OreDictMaterial tMat : ANY.Amber.mToThis) {
+		RM.Bath.addRecipe1(T,  0,  256, OP.blockDust  .mat(tMat, 1), MT.Cryotheum.liquid(U , T), NF, gemExquisite  .mat(tMat, 1));
+		RM.Bath.addRecipe1(T,  0,  256, OP.crushed    .mat(tMat, 1), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
+		RM.Bath.addRecipe1(T,  0,  256, OP.crushedTiny.mat(tMat, 9), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
+		}
+		for (OreDictMaterial tMat : ANY.Glowstone.mToThis) {
+		RM.Bath.addRecipe1(T,  0,  256, OP.blockDust  .mat(tMat, 1), MT.Cryotheum.liquid(U , T), NF, gemExquisite  .mat(tMat, 1));
+		RM.Bath.addRecipe1(T,  0,  256, OP.crushed    .mat(tMat, 1), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
+		RM.Bath.addRecipe1(T,  0,  256, OP.crushedTiny.mat(tMat, 9), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
+		}
+		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Nikolite, MT.Redstone, MT.OREMATS.Cinnabar}) {
+		RM.Bath.addRecipe1(T,  0,  256, OP.blockDust  .mat(tMat, 1), MT.Cryotheum.liquid(U , T), NF, gemExquisite  .mat(tMat, 1));
+		RM.Bath.addRecipe1(T,  0,  256, OP.crushed    .mat(tMat, 1), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
+		RM.Bath.addRecipe1(T,  0,  256, OP.crushedTiny.mat(tMat, 9), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
+		}
+		
 		
 		ItemStack tStack;
 		FluidStack tPyrotheum = MT.Pyrotheum.liquid(U2, T);
