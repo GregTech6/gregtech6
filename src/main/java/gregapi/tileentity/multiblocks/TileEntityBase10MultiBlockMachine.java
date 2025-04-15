@@ -65,10 +65,21 @@ public abstract class TileEntityBase10MultiBlockMachine extends MultiTileEntityB
 		if (aTool.equals(TOOL_builderwand)) {
 			if (isClientSide()) return 0;
 			checkStructure2(aFrom, aPlayer, aPlayerInventory);
-			mStructureChanged = T;
+			checkStructure(T);
 			return 10;
 		}
 		return onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
+	}
+	
+	@Override
+	public long onToolClick2(String aTool, long aRemainingDurability, long aQuality, Entity aPlayer, List<String> aChatReturn, IInventory aPlayerInventory, boolean aSneaking, ItemStack aStack, byte aSide, float aHitX, float aHitY, float aHitZ) {
+		if (aTool.equals(TOOL_builderwand)) {
+			if (isClientSide()) return 0;
+			checkStructure2(getCoords(), aPlayer, aPlayerInventory);
+			checkStructure(T);
+			return 10;
+		}
+		return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);
 	}
 	
 	@Override

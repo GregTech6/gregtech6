@@ -54,7 +54,7 @@ public class NEI_GT_API_Config implements codechicken.nei.api.IConfigureNEI, Run
 					if (tObject == null
 					|| tObject.getClass().getName().contains("codechicken.nei.recipe.FuelRecipeHandler") // This one is just annoying clutter and badly designed too.
 					|| tObject.getClass().getName().contains("codechicken.nei.recipe.FurnaceRecipeHandler") // There is a more detailed GT6 Handler for this.
-					) tIterator.remove(); else DEB.println(tObject.getClass().getName());
+					) tIterator.remove();// else DEB.println(tObject.getClass().getName());
 				}
 			}
 		}
