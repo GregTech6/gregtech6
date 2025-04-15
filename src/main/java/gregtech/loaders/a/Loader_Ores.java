@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -262,6 +262,9 @@ public class Loader_Ores implements Runnable {
 		}
 		if (MD.AETHER.mLoaded) {
 		rockset(MD.AETHER, "holystone", 1, 0, "holystone"         , 1, "aether.holystone"       , OP.oreHolystone           , MT.STONES.Holystone);
+		}
+		if (MD.AETHEL.mLoaded) {
+		rockset(MD.AETHEL, "holystone", 1, 0, "holystone"         , 1, "aether.holystone"       , OP.oreHolystone           , MT.STONES.Holystone);
 		}
 		if (MD.ERE.mLoaded) {
 		rockset(MD.ERE, "umberstone", 0, 0, "umberstone"          , 1, "erebus.umberstone"      , OP.oreUmberstone          , MT.STONES.Umber);

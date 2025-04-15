@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregtech.tileentity.portals;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -36,6 +32,10 @@ import gregapi.util.WD;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -64,7 +64,7 @@ public class MultiTileEntityMiniPortalAether extends MultiTileEntityMiniPortal {
 	@Override
 	public void findTargetPortal() {
 		mTarget = null;
-		if (MD.AETHER.mLoaded && worldObj != null && isServerSide()) {
+		if ((MD.AETHER.mLoaded || MD.AETHEL.mLoaded) && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				long tShortestDistance = 128*128;
 				for (MultiTileEntityMiniPortal tTarget : sListAetherSide) if (tTarget != this && !tTarget.isDead()) {
@@ -95,7 +95,7 @@ public class MultiTileEntityMiniPortalAether extends MultiTileEntityMiniPortal {
 	
 	@Override
 	public void addThisPortalToLists() {
-		if (MD.AETHER.mLoaded && worldObj != null && isServerSide()) {
+		if ((MD.AETHER.mLoaded || MD.AETHEL.mLoaded) && worldObj != null && isServerSide()) {
 			if (worldObj.provider.dimensionId == DIM_OVERWORLD) {
 				if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
 				for (MultiTileEntityMiniPortal tPortal : sListAetherSide) tPortal.findTargetPortal();
@@ -129,7 +129,7 @@ public class MultiTileEntityMiniPortalAether extends MultiTileEntityMiniPortal {
 	@Override public float getBlockHardness() {return Blocks.glowstone.getBlockHardness(worldObj, xCoord, yCoord, zCoord);}
 	@Override public float getExplosionResistance2() {return Blocks.glowstone.getExplosionResistance(null);}
 	
-	public ITexture sAetherPortal = BlockTextureCopied.get(ST.block(MD.AETHER, "aetherPortal", Blocks.portal), SIDE_ANY, 0, UNCOLOURED, F, T, T), sAetherPortalFrame = BlockTextureCopied.get(Blocks.glowstone, SIDE_ANY, 0, UNCOLOURED, F, F, F);
+	public ITexture sAetherPortal = BlockTextureCopied.get(ST.block(MD.AETHEL.mLoaded ? MD.AETHEL : MD.AETHER, MD.AETHEL.mLoaded ? "aether_portal" : "aetherPortal", Blocks.portal), SIDE_ANY, 0, UNCOLOURED, F, T, T), sAetherPortalFrame = BlockTextureCopied.get(Blocks.glowstone, SIDE_ANY, 0, UNCOLOURED, F, F, F);
 	@Override public ITexture getPortalTexture() {return sAetherPortal;}
 	@Override public ITexture getFrameTexture() {return sAetherPortalFrame;}
 	

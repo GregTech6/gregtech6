@@ -8,6 +8,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.17.03: (Not released yet)
 [COMPAT] Removed the annoying Vanilla NEI Usage Handlers for Furnace Fuel and Furnace Smelting, as there is better NEI Handlers and Tooltips. (Does not target NEI-NH)
 [COMPAT] Et Futurum Ore Data for many Deepslate Ores.
+[COMPAT] Aether Legacy should now have a similar level of Compat as the other Version of Aether, I am compatible with.
 [ADDED] Signs to the Center Street Worldgen to indicate where which Biomes are. Bottommost Biomes are closest (read it like Highway Street Signs), it looks at the Biomes roughly 100 blocks to the left and right sides of the Road.
 [ADDED] The GT6 Builder Wand can now place GT6 Multiblock Parts from your Inventory in a 3x3x3 around the clicked Multiblock Part (range limit so you dont build behind walls).
 [FIXED] Ars Magicka had a broken Fluid Block.

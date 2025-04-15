@@ -402,8 +402,11 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.drillableDynamite.add(ST.block(MD.BTL, "genericStone"                       , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.BOTA, "altGrass"                          , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.AETHER, "aetherDirt"                      , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.AETHEL, "aether_dirt"                     , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.AETHER, "aetherGrass"                     , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.AETHEL, "aether_grass"                    , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.AETHER, "enchantedAetherGrass"            , null));
+		BlocksGT.drillableDynamite.add(ST.block(MD.AETHEL, "enchanted_aether_grass"          , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.AETHER, "enchantedGrass"                  , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.ABYSSAL, "darkgrass"                      , null));
 		BlocksGT.drillableDynamite.add(ST.block(MD.ABYSSAL, "dreadgrass"                     , null));
@@ -440,8 +443,11 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.harvestableSpade.add(ST.block(MD.BTL, "slimyGrass"                          , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.BOTA, "altGrass"                           , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.AETHER, "aetherDirt"                       , null));
+		BlocksGT.harvestableSpade.add(ST.block(MD.AETHEL, "aether_dirt"                      , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.AETHER, "aetherGrass"                      , null));
+		BlocksGT.harvestableSpade.add(ST.block(MD.AETHEL, "aether_grass"                     , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.AETHER, "enchantedAetherGrass"             , null));
+		BlocksGT.harvestableSpade.add(ST.block(MD.AETHEL, "enchanted_aether_grass"           , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.AETHER, "enchantedGrass"                   , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.ABYSSAL, "darkgrass"                       , null));
 		BlocksGT.harvestableSpade.add(ST.block(MD.ABYSSAL, "dreadgrass"                      , null));
@@ -463,8 +469,11 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.plantableGreens.add(ST.block(MD.BTL, "slimyGrass"                           , null));
 		BlocksGT.plantableGreens.add(ST.block(MD.BOTA, "altGrass"                            , null));
 		BlocksGT.plantableGreens.add(ST.block(MD.AETHER, "aetherDirt"                        , null));
+		BlocksGT.plantableGreens.add(ST.block(MD.AETHEL, "aether_dirt"                       , null));
 		BlocksGT.plantableGreens.add(ST.block(MD.AETHER, "aetherGrass"                       , null));
+		BlocksGT.plantableGreens.add(ST.block(MD.AETHEL, "aether_grass"                      , null));
 		BlocksGT.plantableGreens.add(ST.block(MD.AETHER, "enchantedAetherGrass"              , null));
+		BlocksGT.plantableGreens.add(ST.block(MD.AETHEL, "enchanted_aether_grass"            , null));
 		BlocksGT.plantableGreens.add(ST.block(MD.AETHER, "enchantedGrass"                    , null));
 		
 		
@@ -477,7 +486,9 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.plantableGrass.add(ST.block(MD.BTL, "slimyGrass"                            , null));
 		BlocksGT.plantableGrass.add(ST.block(MD.BOTA, "altGrass"                             , null));
 		BlocksGT.plantableGrass.add(ST.block(MD.AETHER, "aetherGrass"                        , null));
+		BlocksGT.plantableGrass.add(ST.block(MD.AETHEL, "aether_grass"                       , null));
 		BlocksGT.plantableGrass.add(ST.block(MD.AETHER, "enchantedAetherGrass"               , null));
+		BlocksGT.plantableGrass.add(ST.block(MD.AETHEL, "enchanted_aether_grass"             , null));
 		BlocksGT.plantableGrass.add(ST.block(MD.AETHER, "enchantedGrass"                     , null));
 		
 		
@@ -490,7 +501,9 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.plantableTrees.add(ST.block(MD.BTL, "slimyGrass"                            , null));
 		BlocksGT.plantableTrees.add(ST.block(MD.BOTA, "altGrass"                             , null));
 		BlocksGT.plantableTrees.add(ST.block(MD.AETHER, "aetherGrass"                        , null));
+		BlocksGT.plantableTrees.add(ST.block(MD.AETHEL, "aether_grass"                       , null));
 		BlocksGT.plantableTrees.add(ST.block(MD.AETHER, "enchantedAetherGrass"               , null));
+		BlocksGT.plantableTrees.add(ST.block(MD.AETHEL, "enchanted_aether_grass"             , null));
 		BlocksGT.plantableTrees.add(ST.block(MD.AETHER, "enchantedGrass"                     , null));
 		
 		
@@ -512,6 +525,7 @@ public class LoaderItemList implements Runnable {
 		BlocksGT.breakableGlass.add(ST.block(MD.CHSL, "stained_glass_forestry"               , null));
 		BlocksGT.breakableGlass.add(ST.block(MD.AETHER, "quicksoilGlass"                     , null));
 		BlocksGT.breakableGlass.add(ST.block(MD.AETHER, "quicksoilGlassPane"                 , null));
+		BlocksGT.breakableGlass.add(ST.block(MD.AETHEL, "quicksoil_glass"                    , null));
 		BlocksGT.breakableGlass.add(ST.block(MD.AE, "tile.BlockQuartzGlass"                  , null));
 		BlocksGT.breakableGlass.add(ST.block(MD.AE, "tile.BlockQuartzLamp"                   , null));
 		
@@ -1161,6 +1175,31 @@ public class LoaderItemList implements Runnable {
 		IL.BTL_Dry_Bark                         .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,16), null, OD.itemBarkDry);
 		
 		
+		if (MD.AETHEL.mLoaded) {
+		IL.AETHER_Skyroot_Planks                .set(ST.make(MD.AETHEL, "skyroot_plank"                     , 1, 0), new OreDictItemData(MT.Skyroot, U), OD.plankSkyroot);
+		IL.AETHER_Skyroot_Log                   .set(ST.make(MD.AETHEL, "skyroot_log"                       , 1, 0), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U));
+		IL.AETHER_Skyroot_Log_Gold              .set(ST.make(MD.AETHEL, "golden_oak_log"                    , 1, 2), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U)); OM.reg(IL.AETHER_Skyroot_Log.wild(1), OD.logWood);
+		IL.AETHER_Bucket_Empty                  .set(ST.make(MD.AETHEL, "skyroot_bucket"                    , 1, 0), new OreDictItemData(MT.Skyroot, U*3));
+		IL.AETHER_Bucket_Water                  .set(ST.make(MD.AETHEL, "skyroot_bucket"                    , 1, 1), new OreDictItemData(MT.Skyroot, U*3), OD.container1000water);
+		IL.AETHER_Bucket_Poison                 .set(ST.make(MD.AETHEL, "skyroot_bucket"                    , 1, 2), new OreDictItemData(MT.Skyroot, U*3), OD.container1000poison);
+		IL.AETHER_Bucket_Remedy                 .set(ST.make(MD.AETHEL, "skyroot_bucket"                    , 1, 3), new OreDictItemData(MT.Skyroot, U*3));
+		IL.AETHER_Bucket_Milk                   .set(ST.make(MD.AETHEL, "skyroot_bucket"                    , 1, 4), new OreDictItemData(MT.Skyroot, U*3), OD.container1000milk);
+		IL.AETHER_Torch_Ambrosium               .set(ST.make(MD.AETHEL, "ambrosium_torch"                   , 1, 0), new OreDictItemData(MT.Ambrosium, U8, MT.Skyroot, U16), OD.blockTorch);
+		IL.AETHER_Apple                         .set(ST.make(MD.AETHEL, "white_apple"                       , 1, 0), null, "cropAppleWhite");
+		IL.AETHER_Sand                          .set(ST.make(MD.AETHEL, "quicksoil"                         , 1, 0), new OreDictItemData(MT.Sand, U*9), OD.sand);
+		IL.AETHER_Glass                         .set(ST.make(MD.AETHEL, "quicksoil_glass"                   , 1, 0), null, OD.blockGlassColorless);
+		IL.AETHER_Dirt                          .set(ST.make(MD.AETHEL, "aether_dirt"                       , 1, 0));
+		IL.AETHER_Grass                         .set(ST.make(MD.AETHEL, "aether_grass"                      , 1, 0));
+		IL.AETHER_Grass_Enchanted               .set(ST.make(MD.AETHEL, "enchanted_aether_grass"            , 1, 0));
+		IL.AETHER_Skyroot_Sapling_Gold          .set(ST.make(MD.AETHEL, "golden_oak_sapling"                , 1, 0), null, OP.treeSapling);
+		IL.AETHER_Skyroot_Sapling_Green         .set(ST.make(MD.AETHEL, "skyroot_sapling"                   , 1, 0), null, OP.treeSapling);
+		IL.AETHER_Skyroot_Leaves_Gold           .set(ST.make(MD.AETHEL, "golden_oak_leaves"                 , 1, 0), null, OP.treeLeaves);
+		IL.AETHER_Skyroot_Leaves_Green          .set(ST.make(MD.AETHEL, "skyroot_leaves"                    , 1, 0), null, OP.treeLeaves);
+		IL.AETHER_Skyroot_Leaves_Blue           .set(ST.make(MD.AETHER, "holiday_leaves"                    , 1, 1), null, OP.treeLeaves);
+		IL.AETHER_Skyroot_Leaves_Dark           .set(ST.make(MD.AETHER, "decorated_holiday_leaves"          , 1, 1), null, OP.treeLeaves);
+		IL.AETHER_Skyroot_Leaves_Purple         .set(ST.make(MD.AETHEL, "crystal_leaves"                    , 1, 0), null, OP.treeLeaves);
+		IL.AETHER_Skyroot_Leaves_Apple          .set(ST.make(MD.AETHEL, "crystal_fruit_leaves"              , 1, 0), null, OP.treeLeaves);
+		} else {
 		IL.AETHER_Chest                         .set(ST.make(MD.AETHER, "skyrootChest"                      , 1, 0), new OreDictItemData(MT.Skyroot, 8*U), OD.craftingChest);
 		IL.AETHER_Skyroot_Planks                .set(ST.make(MD.AETHER, "skyrootPlank"                      , 1, 0), new OreDictItemData(MT.Skyroot, U), OD.plankSkyroot);
 		IL.AETHER_Skyroot_Log                   .set(ST.make(MD.AETHER, "aetherLog"                         , 1, 0), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U));
@@ -1169,8 +1208,8 @@ public class LoaderItemList implements Runnable {
 		IL.AETHER_Bowl                          .set(ST.make(MD.AETHER, "shoyrootBowl"                      , 1, 0), new OreDictItemData(MT.Skyroot, U));
 		IL.AETHER_Bucket_Empty                  .set(ST.make(MD.AETHER, "skyrootBucket"                     , 1, 0), new OreDictItemData(MT.Skyroot, U*3));
 		IL.AETHER_Bucket_Water                  .set(ST.make(MD.AETHER, "skyrootWaterBucket"                , 1, 0), new OreDictItemData(MT.Skyroot, U*3), OD.container1000water);
-		IL.AETHER_Bucket_Milk                   .set(ST.make(MD.AETHER, "skyrootMilkBucket"                 , 1, 0), new OreDictItemData(MT.Skyroot, U*3), OD.container1000milk);
 		IL.AETHER_Bucket_Poison                 .set(ST.make(MD.AETHER, "skyrootPoisonBucket"               , 1, 0), new OreDictItemData(MT.Skyroot, U*3), OD.container1000poison);
+		IL.AETHER_Bucket_Milk                   .set(ST.make(MD.AETHER, "skyrootMilkBucket"                 , 1, 0), new OreDictItemData(MT.Skyroot, U*3), OD.container1000milk);
 		IL.AETHER_Torch_Ambrosium               .set(ST.make(MD.AETHER, "ambrosiumTorch"                    , 1, 0), new OreDictItemData(MT.Ambrosium, U8, MT.Skyroot, U16), OD.blockTorch);
 		IL.AETHER_Apple                         .set(ST.make(MD.AETHER, "whiteApple"                        , 1, 0), null, "cropAppleWhite");
 		IL.AETHER_Tall_Grass                    .set(ST.make(MD.AETHER, "tallAetherGrass"                   , 1, 0), null, OD.itemGrassTall);
@@ -1193,10 +1232,11 @@ public class LoaderItemList implements Runnable {
 		IL.AETHER_Skyroot_Leaves_Purple         .set(ST.make(MD.AETHER, "purpleCrystalLeaves"               , 1, 1), null, OP.treeLeaves);
 		IL.AETHER_Skyroot_Leaves_Apple          .set(ST.make(MD.AETHER, "purpleFruitLeaves"                 , 1, 1), null, OP.treeLeaves);
 		
-		if (IL.AETHER_Dirt         .exists()) Textures.BlockIcons.DIRTS[1] = new IconContainerCopied(IL.AETHER_Dirt.block(), 0, SIDE_BOTTOM);
 		if (IL.AETHER_Bucket_Water .exists()) IL.AETHER_Bucket_Water .item().setContainerItem(IL.AETHER_Bucket_Empty.getItem());
-		if (IL.AETHER_Bucket_Milk  .exists()) IL.AETHER_Bucket_Milk  .item().setContainerItem(IL.AETHER_Bucket_Empty.getItem());
 		if (IL.AETHER_Bucket_Poison.exists()) IL.AETHER_Bucket_Poison.item().setContainerItem(IL.AETHER_Bucket_Empty.getItem());
+		if (IL.AETHER_Bucket_Milk  .exists()) IL.AETHER_Bucket_Milk  .item().setContainerItem(IL.AETHER_Bucket_Empty.getItem());
+		}
+		if (IL.AETHER_Dirt         .exists()) Textures.BlockIcons.DIRTS[1] = new IconContainerCopied(IL.AETHER_Dirt.block(), 0, SIDE_BOTTOM);
 		
 		
 		IL.GrC_Honey_Jar                        .set(ST.make(MD.GrC_Bees, "grc.honeyJar"                    , 1, 0), null, OD.container1000honey, CR.DELATE);

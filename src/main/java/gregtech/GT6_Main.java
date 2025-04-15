@@ -258,6 +258,7 @@ public class GT6_Main extends Abstract_Mod {
 		new Compat_Recipes_ArsMagica            (MD.ARS           , this);
 		new Compat_Recipes_Botania              (MD.BOTA          , this);
 		new Compat_Recipes_Aether               (MD.AETHER        , this);
+		new Compat_Recipes_Aether_Legacy        (MD.AETHEL        , this);
 		new Compat_Recipes_RandomThings         (MD.RT            , this);
 		new Compat_Recipes_ActuallyAdditions    (MD.AA            , this);
 		new Compat_Recipes_ExtraUtilities       (MD.ExU           , this);

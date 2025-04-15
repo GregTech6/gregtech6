@@ -807,14 +807,19 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OD.flower                            , ST.make(MD.HiL, "tile.hl_cotton", 1, W));
 		OM.reg("cropBerry"                          , ST.make(MD.HiL, "hl_berries", 1, W));
 		OM.reg("cropBerry"                          , ST.make(MD.AETHER, "enchantedBerry", 1, 0));
+		OM.reg("cropBerry"                          , ST.make(MD.AETHEL, "enchanted_blueberry", 1, 0));
+		OM.reg("cropBlueberry"                      , ST.make(MD.AETHER, "blueBerry", 1, 0));
+		OM.reg("cropBlueberry"                      , ST.make(MD.AETHEL, "blue_berry", 1, 0));
 		OM.reg("cropStrawberry"                     , ST.make(MD.AETHER, "rainbowStrawberry", 1, 0));
 		OM.reg("cropWyndberry"                      , ST.make(MD.AETHER, "wyndberry", 1, 0));
-		OM.reg("cropBlueberry"                      , ST.make(MD.AETHER, "blueBerry", 1, 0));
 		OM.reg("cropOrange"                         , ST.make(MD.AETHER, "orange", 1, 0));
 		OM.reg(OD.itemEgg                           , ST.make(MD.AETHER, "moaEgg", 1, W));
+		OM.reg(OD.itemEgg                           , ST.make(MD.AETHEL, "moa_egg", 1, W));
+		OM.reg(OD.slimeball                         , ST.make(MD.AETHEL, "swet_ball", 1, 0));
 		OM.reg(OD.slimeball                         , ST.make(MD.AETHER, "swetJelly", 1, 0));
 		OM.reg(OD.slimeball                         , ST.make(MD.AETHER, "swetJelly", 1, 1));
 		OM.reg(OD.slimeball                         , ST.make(MD.AETHER, "swetJelly", 1, 2));
+		OM.reg(OD.slimeballSwet                     , ST.make(MD.AETHEL, "swet_ball", 1, 0));
 		OM.reg(OD.slimeballSwet                     , ST.make(MD.AETHER, "swetJelly", 1, 0));
 		OM.reg(OD.slimeballSwet                     , ST.make(MD.AETHER, "swetJelly", 1, 1));
 		OM.reg(OD.slimeballSwet                     , ST.make(MD.AETHER, "swetJelly", 1, 2));
@@ -1220,6 +1225,14 @@ public class LoaderItemData implements Runnable {
 			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHER, "holystoneKeystone"        , 1, 0));
 			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHER, "holystoneHeadstone"       , 1, 0));
 			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHER, "holystoneHighlight"       , 1, 0));
+		}
+		if (MD.AETHEL.mLoaded) {
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "holystone"                , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "holystone"                , 1, 1));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "holystone"                , 1, 2));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "holystone"                , 1, 3));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "holystone_brick"          , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "mossy_holystone"          , 1, 0));
 		}
 		
 		if (MD.HBM.mLoaded) {
@@ -2027,6 +2040,26 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.AETHER, "skyrootBookshelf"               , 1,   W, MT.Skyroot            ,  U * 6, MT.Paper, U * 9);
 		OM.data(MD.AETHER, "skyrootChest"                   , 1,   W, MT.Skyroot            ,  U * 8);
 		
+		OM.data(MD.AETHEL, "skyroot_fence"                  , 1,   W, MT.Skyroot            ,  U * 1);
+		OM.data(MD.AETHEL, "skyroot_fence_gate"             , 1,   W, MT.Skyroot            ,  U * 4);
+		OM.data(MD.AETHEL, "skyroot_bed_item"               , 1,   W, MT.Skyroot            ,  U * 3);
+		OM.data(MD.AETHEL, "skyroot_bookshelf"              , 1,   W, MT.Skyroot            ,  U * 6, MT.Paper, U * 9);
+		OM.dat2(MD.AETHEL, "skyroot_sword"                  , 1     , MT.Skyroot            ,  OP.toolHeadSword  .mAmount + U2);
+		OM.dat2(MD.AETHEL, "skyroot_pickaxe"                , 1     , MT.Skyroot            ,  OP.toolHeadPickaxe.mAmount + U );
+		OM.dat2(MD.AETHEL, "skyroot_shovel"                 , 1     , MT.Skyroot            ,  OP.toolHeadShovel .mAmount + U );
+		OM.dat2(MD.AETHEL, "skyroot_axe"                    , 1     , MT.Skyroot            ,  OP.toolHeadAxe    .mAmount + U );
+		OM.dat2(MD.AETHEL, "holystone_sword"                , 1     , MT.STONES.Holystone   ,  OP.toolHeadSword  .mAmount, MT.Skyroot, U2);
+		OM.dat2(MD.AETHEL, "holystone_pickaxe"              , 1     , MT.STONES.Holystone   ,  OP.toolHeadPickaxe.mAmount, MT.Skyroot, U );
+		OM.dat2(MD.AETHEL, "holystone_shovel"               , 1     , MT.STONES.Holystone   ,  OP.toolHeadShovel .mAmount, MT.Skyroot, U );
+		OM.dat2(MD.AETHEL, "holystone_axe"                  , 1     , MT.STONES.Holystone   ,  OP.toolHeadAxe    .mAmount, MT.Skyroot, U );
+		OM.dat2(MD.AETHEL, "zanite_sword"                   , 1     , MT.Zanite             ,  OP.toolHeadSword  .mAmount, MT.Skyroot, U2);
+		OM.dat2(MD.AETHEL, "zanite_pickaxe"                 , 1     , MT.Zanite             ,  OP.toolHeadPickaxe.mAmount, MT.Skyroot, U );
+		OM.dat2(MD.AETHEL, "zanite_shovel"                  , 1     , MT.Zanite             ,  OP.toolHeadShovel .mAmount, MT.Skyroot, U );
+		OM.dat2(MD.AETHEL, "zanite_axe"                     , 1     , MT.Zanite             ,  OP.toolHeadAxe    .mAmount, MT.Skyroot, U );
+		OM.dat2(MD.AETHEL, "zanite_helmet"                  , 1     , MT.Zanite             ,  U * 5);
+		OM.dat2(MD.AETHEL, "zanite_chestplate"              , 1     , MT.Zanite             ,  U * 8);
+		OM.dat2(MD.AETHEL, "zanite_leggings"                , 1     , MT.Zanite             ,  U * 7);
+		OM.dat2(MD.AETHEL, "zanite_boots"                   , 1     , MT.Zanite             ,  U * 4);
 		
 		OM.data(MD.HaC, "turkeyrawItem"                     , 1,   W, MT.MeatRaw            ,  U * 3, MT.Bone,  U4);
 		OM.data(MD.HaC, "turkeycookedItem"                  , 1,   W, MT.MeatCooked         ,  U * 3, MT.Bone,  U4);

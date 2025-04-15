@@ -168,7 +168,7 @@ public enum IL implements IItemContainer {
 	AETHER_Skyroot_Planks, AETHER_Skyroot_Log, AETHER_Skyroot_Log_Gold, AETHER_Skyroot_Log_Small, AETHER_Torch_Ambrosium, AETHER_Bowl, AETHER_Apple, AETHER_Tall_Grass, AETHER_Sand, AETHER_Glass, AETHER_Glass_Pane, AETHER_Dirt, AETHER_Grass, AETHER_Grass_Enchanted, AETHER_Grass_Enchanted_Vanilla, AETHER_Chest,
 	AETHER_Skyroot_Sapling_Gold, AETHER_Skyroot_Sapling_Green, AETHER_Skyroot_Sapling_Blue, AETHER_Skyroot_Sapling_Dark, AETHER_Skyroot_Sapling_Purple,
 	AETHER_Skyroot_Leaves_Gold, AETHER_Skyroot_Leaves_Green, AETHER_Skyroot_Leaves_Blue, AETHER_Skyroot_Leaves_Dark, AETHER_Skyroot_Leaves_Purple, AETHER_Skyroot_Leaves_Apple,
-	AETHER_Bucket_Empty, AETHER_Bucket_Water, AETHER_Bucket_Milk, AETHER_Bucket_Poison,
+	AETHER_Bucket_Empty, AETHER_Bucket_Water, AETHER_Bucket_Milk, AETHER_Bucket_Poison, AETHER_Bucket_Remedy,
 	Salt_Mud_Ball, Salt_Mud, Salt_Mud_Bricks, Salt_Dirt_1, Salt_Dirt_2, Salt_Dirt_3, Salt_Grass,
 	GrC_Honey_Jar, GrC_Honey_Bucket, GrC_Honey_Bottle, GrC_Milk_Bucket, GrC_Milk_Bottle,
 	GrC_Applecore, GrC_Grape_Purple, GrC_Grape_Green, GrC_Grape_Red,

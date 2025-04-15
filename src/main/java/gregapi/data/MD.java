@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -67,6 +67,7 @@ public class MD {
 	, ATUM              = new ModData(ModIDs.ATUM               , "Atum")
 	, BTL               = new ModData(ModIDs.BTL                , "The Betweenlands")
 	, AETHER            = new ModData(ModIDs.AETHER             , "The Aether")
+	, AETHEL            = new ModData(ModIDs.AETHEL             , "The Aether")
 	, TROPIC            = new ModData(ModIDs.TROPIC             , "Tropicraft")
 	, MYST              = new ModData(ModIDs.MYST               , "Mystcraft")
 	, WARPBOOK          = new ModData(ModIDs.WARPBOOK           , "Warpbook")

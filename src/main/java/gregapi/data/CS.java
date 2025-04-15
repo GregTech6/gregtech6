@@ -1967,6 +1967,7 @@ public class CS {
 		, ATUM              = "atum"
 		, BTL               = "thebetweenlands"
 		, AETHER            = "aether"
+		, AETHEL            = "aether_legacy"
 		, TROPIC            = "tropicraft"
 		, MYST              = "Mystcraft"
 		, WARPBOOK          = "warpbook"
