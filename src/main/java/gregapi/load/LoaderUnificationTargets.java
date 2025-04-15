@@ -456,8 +456,8 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.EnderAmethyst          , MD.BoP, "gemOre", 1);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Ruby                   , MD.BoP, "gemOre", 2);
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Ruby                   , MD.BoP, "gemOre", 3);
-		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Olivine                , MD.BoP, "gemOre", 4);
-		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Olivine                , MD.BoP, "gemOre", 5);
+		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Peridot                , MD.BoP, "gemOre", 4);
+		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Peridot                , MD.BoP, "gemOre", 5);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Topaz                  , MD.BoP, "gemOre", 6);
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Topaz                  , MD.BoP, "gemOre", 7);
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Tanzanite              , MD.BoP, "gemOre", 8);
@@ -470,7 +470,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Amber                  , MD.BoP, "gemOre",15);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.EnderAmethyst          , MD.BoP, "gems"  , 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Ruby                   , MD.BoP, "gems"  , 1);
-		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Olivine                , MD.BoP, "gems"  , 2);
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Peridot                , MD.BoP, "gems"  , 2);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Topaz                  , MD.BoP, "gems"  , 3);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Tanzanite              , MD.BoP, "gems"  , 4);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.OREMATS.Malachite      , MD.BoP, "gems"  , 5);
@@ -1229,14 +1229,14 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.ChargedCertusQuartz    , MD.EtFu, "deepslate_certus_quartz_ore", 1, MD.AE);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Ruby                   , MD.EtFu, "deepslate_projred_ore", 0, MD.PR);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.BlueSapphire           , MD.EtFu, "deepslate_projred_ore", 1, MD.PR);
-		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Olivine                , MD.EtFu, "deepslate_projred_ore", 2, MD.PR);
+		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Peridot                , MD.EtFu, "deepslate_projred_ore", 2, MD.PR);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Nikolite               , MD.EtFu, "deepslate_projred_ore", 3, MD.PR);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Nikolite               , MD.EtFu, "deepslate_bluepower_ore", 0, MD.BP);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Ruby                   , MD.EtFu, "deepslate_bluepower_ore", 1, MD.BP);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.BlueSapphire           , MD.EtFu, "deepslate_bluepower_ore", 2, MD.BP);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Amethyst               , MD.EtFu, "deepslate_bluepower_ore", 3, MD.BP);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Ruby                   , MD.EtFu, "deepslate_bop_ore", 0, MD.BoP);
-		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Olivine                , MD.EtFu, "deepslate_bop_ore", 1, MD.BoP);
+		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Peridot                , MD.EtFu, "deepslate_bop_ore", 1, MD.BoP);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Topaz                  , MD.EtFu, "deepslate_bop_ore", 2, MD.BoP);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.Tanzanite              , MD.EtFu, "deepslate_bop_ore", 3, MD.BoP);
 		OreDictManager.INSTANCE.setTarget(OP.oreDeepslate   , MT.OREMATS.Malachite      , MD.EtFu, "deepslate_bop_ore", 4, MD.BoP);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -577,7 +577,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 			
 			
 			RM.Sifting          .addRecipe1(T, 16, 128, new long[] {10000, 10, 40, 150, 200, 400, 500} , IL.PFAA_Sands.getWithMeta(1, 1), crushedCentrifuged.mat(MT.OREMATS.Cassiterite, 2), gemExquisite.mat(MT.Zircon, 2), gemFlawless.mat(MT.Zircon, 2), gem.mat(MT.Zircon, 2), gemFlawed.mat(MT.Zircon, 2), gemChipped.mat(MT.Zircon, 2), dust.mat(MT.Zircon, 2));
-			RM.Sifting          .addRecipe1(T, 16, 128, new long[] {10000, 10, 40, 150, 200, 400, 500} , IL.PFAA_Sands.getWithMeta(1, 5), dust.mat(MT.VolcanicAsh, 1), gemExquisite.mat(MT.Olivine, 1), gemFlawless.mat(MT.Olivine, 1), gem.mat(MT.Olivine, 1), gemFlawed.mat(MT.Olivine, 1), gemChipped.mat(MT.Olivine, 1), dust.mat(MT.Olivine, 1));
+			RM.Sifting          .addRecipe1(T, 16, 128, new long[] {10000, 10, 40, 150, 200, 400, 500} , IL.PFAA_Sands.getWithMeta(1, 5), dust.mat(MT.VolcanicAsh, 1), gemExquisite.mat(MT.Peridot, 1), gemFlawless.mat(MT.Peridot, 1), gem.mat(MT.Peridot, 1), gemFlawed.mat(MT.Peridot, 1), gemChipped.mat(MT.Peridot, 1), dust.mat(MT.Peridot, 1));
 			RM.Sifting          .addRecipe1(T, 16, 128, new long[] {3000, 3000, 3000, 3000, 3000, 3000}, IL.PFAA_Sands.getWithMeta(1, 2), crushedPurifiedTiny.mat(MT.Almandine, 8), crushedPurifiedTiny.mat(MT.Andradite, 8), crushedPurifiedTiny.mat(MT.Grossular, 8), crushedPurifiedTiny.mat(MT.Pyrope, 8), crushedPurifiedTiny.mat(MT.Spessartine, 8), crushedPurifiedTiny.mat(MT.Uvarovite, 8));
 			RM.Sifting          .addRecipe1(T, 16, 128, new long[] {8000, 8000, 8000, 3000, 3000, 3000}, IL.PFAA_Sands.getWithMeta(1, 4), dust.mat(MT.MilkyQuartz, 1), dust.mat(MT.CertusQuartz, 1), dust.mat(MT.BlackQuartz, 1), gem.mat(MT.MilkyQuartz, 1), gem.mat(MT.CertusQuartz, 1), gem.mat(MT.BlackQuartz, 1));
 			RM.Sifting          .addRecipe1(T, 16, 128                                                 , IL.PFAA_Sands.getWithMeta(1, 6), crushedPurified.mat(MT.OREMATS.Glauconite, 2));
@@ -585,7 +585,7 @@ public class Loader_Recipes_Temporary implements Runnable {
 		
 		
 		if (MD.RH.mLoaded) {
-			RM.Sifting          .addRecipe1(T, 16, 200, new long[] {5000, 5000}, IL.RH_Sand_Olivine.get(1), OP.gem.mat(MT.Olivine, 1), OP.dust.mat(MT.Olivine, 1));
+			RM.Sifting          .addRecipe1(T, 16, 200, new long[] {5000, 5000}, IL.RH_Sand_Peridot.get(1), OP.gem.mat(MT.Peridot, 1), OP.dust.mat(MT.Peridot, 1));
 			RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9000, 1000}, IL.RH_Sand_Gypsum .get(1), OP.dust.mat(MT.Gypsum, 1), OP.dust.mat(MT.S, 1));
 			
 			RM.Sifting          .addRecipe1(T, 16, 200, new long[] {9900, 500, 500}     , IL.RH_Sand_Magnetite.get(1), dust.mat(MT.OREMATS.GraniticMineralSand, 1), rockGt.mat(MT.STONES.GraniteBlack, 1), nugget.mat(MT.Au, 1));

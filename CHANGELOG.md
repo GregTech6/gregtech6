@@ -8,6 +8,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 6.17.03: (Not released yet)
 [COMPAT] Removed the annoying Vanilla NEI Usage Handlers for Furnace Fuel and Furnace Smelting, as there is better NEI Handlers and Tooltips. (Does not target NEI-NH)
 [COMPAT] Et Futurum Ore Data for many Deepslate Ores.
+[COMPAT] Ars Magica Witchwood is now in the Wood Dictionary.
 [COMPAT] Aether Legacy should now have a similar level of Compat as the other Version of Aether I am compatible with. (dear whoever is responsible for this: Items and Blocks have to be registered during the preInit Phase in 1.7.10. Someone on the Aether Legacy Team must have decided to move the loading of Items from preInit to Init, which breaks quite a lot of shit in 1.7.10)
 [ADDED] Glowstone, Redstone, Cinnabar, Nikolite and Ambers can now be crystallized using Cryotheum in a Bath, either by using crushed Ores or by sacrificing about half of a Block of Dust.
 [ADDED] Signs to the Center Street Worldgen to indicate where which Biomes are. Bottommost Biomes are closest (read it like Highway Street Signs), it looks at the Biomes roughly 100 blocks to the left and right sides of the Road.

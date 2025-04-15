@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,7 +24,6 @@ import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.config.ConfigCategories;
-import gregapi.data.CS.*;
 import gregapi.data.*;
 import gregapi.util.CR;
 import gregapi.util.ST;
@@ -124,7 +123,7 @@ public class Compat_Recipes_IndustrialCraft_Scrap extends CompatMods {
 			COMPAT_IC2.scrapbox(0.20F, OP.scrapGt.mat(MT.Andradite          , 1));
 			COMPAT_IC2.scrapbox(0.15F, OP.scrapGt.mat(MT.Grossular          , 1));
 			COMPAT_IC2.scrapbox(0.10F, OP.scrapGt.mat(MT.Uvarovite          , 1));
-			COMPAT_IC2.scrapbox(0.05F, OP.scrapGt.mat(MT.Olivine            , 1));
+			COMPAT_IC2.scrapbox(0.05F, OP.scrapGt.mat(MT.Peridot            , 1));
 			COMPAT_IC2.scrapbox(0.05F, OP.scrapGt.mat(MT.Ruby               , 1));
 			COMPAT_IC2.scrapbox(0.05F, OP.scrapGt.mat(MT.BlueSapphire       , 1));
 			COMPAT_IC2.scrapbox(0.05F, OP.scrapGt.mat(MT.PurpleSapphire     , 1));

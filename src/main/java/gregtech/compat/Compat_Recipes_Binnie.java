@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -125,7 +125,7 @@ public class Compat_Recipes_Binnie extends CompatMods {
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 1250,1250,1250,1250,1250,1250}, IL.BINNIE_Comb_Emerald    .get(1), NF, FL.Honey.make(20), OP.gemChipped.mat(MT.Maxixe, 1), OP.gemChipped.mat(MT.Aquamarine, 1), OP.gemChipped.mat(MT.Morganite, 1), OP.gemChipped.mat(MT.Heliodor, 1), OP.gemChipped.mat(MT.Goshenite, 1), OP.gemChipped.mat(MT.Bixbite, 1));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Ruby       .get(1), NF, FL.Honey.make(20), OP.gemChipped.mat(MT.Ruby, 1));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 1500, 1500, 1500, 1500, 1500} , IL.BINNIE_Comb_Sapphire   .get(1), NF, FL.Honey.make(20), OP.gemChipped.mat(MT.BlueSapphire, 1), OP.gemChipped.mat(MT.GreenSapphire, 1), OP.gemChipped.mat(MT.YellowSapphire, 1), OP.gemChipped.mat(MT.OrangeSapphire, 1), OP.gemChipped.mat(MT.PurpleSapphire, 1));
-			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Olivine    .get(1), NF, FL.Honey.make(20), OP.gemChipped.mat(MT.Olivine, 1));
+			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Olivine    .get(1), NF, FL.Honey.make(20), OP.gemChipped.mat(MT.Peridot, 1));
 			RM.Centrifuge   .addRecipe1(T, 16,   64, new long[] { 7500}                         , IL.BINNIE_Comb_Diamond    .get(1), NF, FL.Honey.make(20), OP.gemChipped.mat(MT.Diamond, 1));
 			
 			RM.Centrifuge   .addRecipe1(T, 16,   64                                             , IL.BINNIE_Comb_Mucous     .get(1), ZL_FS, FL.Honey.make(20), FL.Slime_Green.make(FL.Slime_Blue.exists() ? 100 : 200), FL.Slime_Pink.make(50), FL.Slime_Blue.make(100));

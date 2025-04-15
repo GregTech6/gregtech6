@@ -39,7 +39,7 @@ import static gregapi.data.CS.W;
 public class LoaderWoodDictionary implements Runnable {
 	@Override
 	public void run() {
-		// 260 is next! There is no Gaps in this List!
+		// 261 is next! There is no Gaps in this List!
 		
 		// Vanilla Trees
 		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 0));
@@ -221,6 +221,12 @@ public class LoaderWoodDictionary implements Runnable {
 			new SaplingEntry(ST.make(MD.CW2, "perverted_sapling", 1, 1), new WoodEntry(ST.make(MD.CW2, "perverted_log", 1, 1), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 1)), ST.make(MD.CW2, "perverted_leaves", 1, 1));
 			new SaplingEntry(ST.make(MD.CW2, "perverted_sapling", 1, 2), new WoodEntry(ST.make(MD.CW2, "perverted_log", 1, 2), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 2)), ST.make(MD.CW2, "perverted_leaves", 1, 2));
 			new SaplingEntry(ST.make(MD.CW2, "perverted_sapling", 1, 3), new WoodEntry(ST.make(MD.CW2, "perverted_log", 1, 3), WoodDictionary.BEAMS.get(BlocksGT.Beam1, 3)), ST.make(MD.CW2, "perverted_leaves", 1, 3));
+		}
+		// Ars Magica Trees
+		if (MD.ARS.mLoaded) {
+			new SaplingEntry(ST.make(MD.ARS, "saplingWitchwood", 1, 0), new WoodEntry(ST.make(MD.ARS, "WitchwoodLog", 1, 0), new PlankEntry(ST.make(MD.ARS, "planksWitchwood", 1, 0), ST.make(MD.ARS, "witchwoodSingleSlab", 1, 0), ST.make(MD.ARS, "stairsWitchwood", 1, 0), MT.WOODS.Witchwood, 260), 1, 500), ST.make(MD.ARS, "WitchwoodLeaves", 1, 0));
+			
+			CR.shaped(ST.make(MD.ARS, "planksWitchwood", 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.TC, "witchwoodSingleSlab", 1, 0));
 		}
 		// Thaumcraft Trees
 		if (MD.TC.mLoaded) {

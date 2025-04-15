@@ -42,7 +42,7 @@ public class Compat_Recipes_Aether_Legacy extends CompatMods {
 		ST.item(MD.AETHEL, "moa_egg").setMaxStackSize(64);
 		
 		RM.mortarize(ST.make(MD.AETHEL, "icestone", 1, 0), OP.dustTiny.mat(MT.Blizz, 8));
-		RM.smash    (ST.make(MD.AETHEL, "icestone", 1, 0), OP.dustTiny.mat(MT.Blizz, 8));
+		RM.smash    (ST.make(MD.AETHEL, "icestone", 1, 0), OP.dustTiny.mat(MT.Blizz, 6));
 		
 		RM.sawing(16,  32, F, 100, ST.make(MD.AETHEL, "skyroot_fence"     , 1, W), IL.AETHER_Skyroot_Planks.get(1));
 		RM.sawing(16,  32, F, 100, ST.make(MD.AETHEL, "skyroot_fence_gate", 1, W), IL.AETHER_Skyroot_Planks.get(2), OM.dust(MT.Skyroot, OP.stick.mAmount * 4));
