@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,9 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsLadder;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnBlockHarvested;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
+import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.BlockTextureMulti;
@@ -46,6 +39,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -67,7 +62,7 @@ public class MultiTileEntityRope extends TileEntityBase09FacingSingle implements
 				if (WD.air(worldObj, xCoord, tY, zCoord)) {
 					tRegistry.mBlock.placeBlock(worldObj, xCoord, tY, zCoord, SIDE_ANY, getMultiTileEntityID(), UT.NBT.make(aStack.hasTagCompound()?(NBTTagCompound)aStack.getTagCompound().copy():null, NBT_FACING, mFacing), T, F);
 					if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
-					UT.Sounds.send(SFX.MC_DIG_CLOTH, this);
+					UT.Sounds.send(SFX.MC_DIG_CLOTH, this, F);
 				}
 				return T;
 			}

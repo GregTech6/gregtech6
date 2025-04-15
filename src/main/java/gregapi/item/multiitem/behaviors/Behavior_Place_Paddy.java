@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.item.multiitem.behaviors;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.data.CS.SFX;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -35,6 +31,11 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.util.List;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
+
 public class Behavior_Place_Paddy extends AbstractBehaviorDefault {
 	private final int mCosts;
 	
@@ -46,7 +47,7 @@ public class Behavior_Place_Paddy extends AbstractBehaviorDefault {
 	public boolean onItemUse(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (aWorld.isRemote || !IL.GrC_Paddy.exists() || aPlayer == null || !aPlayer.canPlayerEdit(aX, aY, aZ, aSide, aStack)) return F;
 		if (aWorld.getBlock(aX, aY, aZ) == Blocks.farmland && ((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer, F)) {
-			UT.Sounds.send(aWorld, SFX.MC_DIG_GRAVEL, 1.0F, 1.25F, aX, aY, aZ);
+			UT.Sounds.send(SFX.MC_DIG_GRAVEL, aWorld, aX, aY, aZ);
 			aWorld.setBlock(aX, aY, aZ, IL.GrC_Paddy.block(), aWorld.getBlockMetadata(aX, aY, aZ), 3);
 			return T;
 		}

@@ -177,7 +177,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 		
 		if (mContent != null) {
 			if (mTemperature > mContent.mMaterial.mBoilingPoint || mTemperature > getMoldMaxTemperature()) {
-				UT.Sounds.send(SFX.MC_FIZZ, this);
+				UT.Sounds.send(SFX.MC_FIZZ, this, F);
 				mContent = null;
 				mDisplay = 0;
 				slotTrash(0);
@@ -328,7 +328,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 		if (aTool.equals(TOOL_chisel) && mContent == null && slot(0) == null && aHitX > PX_P[2] && aHitX < PX_N[2] && aHitZ > PX_P[2] && aHitZ < PX_N[2]) {
 			int tBit = B[((int)(5 * (aHitX - PX_P[2]) / PX_P[12]))*5+(int)(5 * (aHitZ - PX_P[2]) / PX_P[12])];
 			if ((mShape & tBit) == 0) {
-				UT.Sounds.send(SFX.MC_DIG_ROCK, 1.0F, -1.0F, this);
+				UT.Sounds.send(SFX.MC_DIG_ROCK, 1.0F, -1.0F, this, F);
 				mShape |= tBit;
 				updateClientData();
 				return 10000;

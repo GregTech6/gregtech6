@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -32,7 +32,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 
-import static gregapi.data.CS.T;
 import static gregapi.data.CS.TOOL_softhammer;
 
 public class GT_Tool_SoftHammer extends ToolStats {
@@ -128,7 +127,7 @@ public class GT_Tool_SoftHammer extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_softhammer, SFX.IC_TRAMPOLINE, 100, !canBlock(), T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_softhammer, SFX.IC_TRAMPOLINE, 100, !canBlock(), SFX.RANDOM_PITCH));
 	}
 	
 	@Override

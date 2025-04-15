@@ -21,6 +21,7 @@ package gregapi.network.packets;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
+import gregapi.data.CS;
 import gregapi.network.INetworkHandler;
 import gregapi.util.UT;
 import net.minecraft.util.ChunkCoordinates;
@@ -30,25 +31,25 @@ import net.minecraft.world.IBlockAccess;
  * @author Gregorius Techneticies
  */
 public class PacketSound extends PacketCoordinates {
-	private String mSoundName;
-	private float mSoundStrength, mSoundPitch;
+	private String mSound;
+	private float mVolume, mPitch;
 	
 	public PacketSound(int aDecoderType) {
 		super(aDecoderType);
 	}
 	
-	public PacketSound(String aSoundName, float aSoundStrength, float aSoundPitch, ChunkCoordinates aCoords) {
+	public PacketSound(String aSound, float aVolume, float aPitch, ChunkCoordinates aCoords) {
 		super(aCoords);
-		mSoundName = aSoundName;
-		mSoundStrength = aSoundStrength;
-		mSoundPitch = aSoundPitch;
+		mSound = aSound;
+		mVolume = aVolume;
+		mPitch = aPitch;
 	}
 	
-	public PacketSound(String aSoundName, float aSoundStrength, float aSoundPitch, int aX, int aY, int aZ) {
+	public PacketSound(String aSound, float aVolume, float aPitch, int aX, int aY, int aZ) {
 		super(aX, aY, aZ);
-		mSoundName = aSoundName;
-		mSoundStrength = aSoundStrength;
-		mSoundPitch = aSoundPitch;
+		mSound = aSound;
+		mVolume = aVolume;
+		mPitch = aPitch;
 	}
 	
 	@Override
@@ -58,9 +59,9 @@ public class PacketSound extends PacketCoordinates {
 	
 	@Override
 	public ByteArrayDataOutput encode2(ByteArrayDataOutput aData) {
-		aData.writeUTF(mSoundName);
-		aData.writeFloat(mSoundStrength);
-		aData.writeFloat(mSoundPitch);
+		aData.writeUTF(mSound);
+		aData.writeFloat(mVolume);
+		aData.writeFloat(mPitch);
 		return aData;
 	}
 	
@@ -71,6 +72,10 @@ public class PacketSound extends PacketCoordinates {
 	
 	@Override
 	public void process(IBlockAccess aWorld, INetworkHandler aNetworkHandler) {
-		UT.Sounds.play(mSoundName, 2, mSoundStrength, mSoundPitch, mX, mY, mZ);
+		UT.Sounds.play(mSound, 2, mVolume, mPitch == CS.SFX.RANDOM_PITCH ? _7_GRAND_DAD_[PITCH_INDEX=((PITCH_INDEX+1)%_7_GRAND_DAD_.length)] : mPitch, mX, mY, mZ);
 	}
+	
+	/** Certain Sounds need a bit of pitch variation to them, so I decided to put a <tt>High Quality Video Game Rip</tt> into them. */
+	public static final float[] _7_GRAND_DAD_ = {1.0F, 0.8F, 1.0F, 0.9F, 0.9F, 0.8F, 1.0F, 0.9F, 0.8F, 0.8F, 0.8F, 0.9F, 0.7F, 0.8F, 0.9F, 1.0F, 0.8F, 1.0F, 0.9F, 0.9F, 0.8F, 1.0F, 0.9F, 0.8F, 0.8F, 0.8F, 0.9F, 0.7F, 0.9F, 0.7F};
+	public static int PITCH_INDEX = -1;
 }

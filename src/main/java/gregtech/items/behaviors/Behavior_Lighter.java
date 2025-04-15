@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,8 @@
 
 package gregtech.items.behaviors;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.IBlockToolable;
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
@@ -37,6 +32,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class Behavior_Lighter extends AbstractBehaviorDefault {
 	private final ItemStack mEmptyLighter, mUsedLighter, mFullLighter;
@@ -68,7 +67,7 @@ public class Behavior_Lighter extends AbstractBehaviorDefault {
 			prepare(aStack);
 			long tFuelAmount = UT.NBT.getLighterFuel(aStack);
 			if (ST.equal(aStack, mUsedLighter, T)) {
-				UT.Sounds.send(aPlayer.worldObj, SFX.MC_IGNITE, 1.0F, 1.0F, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ));
+				UT.Sounds.send(SFX.MC_IGNITE, aEntity);
 				((EntityCreeper)aEntity).func_146079_cb();
 				if (!UT.Entities.hasInfiniteItems(aPlayer)) tFuelAmount--;
 				rOutput = T;
@@ -85,7 +84,7 @@ public class Behavior_Lighter extends AbstractBehaviorDefault {
 		
 		prepare(aStack);
 		if (ST.invalid(mUsedLighter)) {
-			UT.Sounds.send(aWorld, SFX.MC_IGNITE, 1.0F, 1.0F, aX, aY, aZ);
+			UT.Sounds.send(SFX.MC_IGNITE, aWorld, aX, aY, aZ);
 			long tDamage = 0;
 			if (RNGSUS.nextInt(10000) < mChance) {
 				List<String> tChatReturn = new ArrayListNoNulls<>();
@@ -99,7 +98,7 @@ public class Behavior_Lighter extends AbstractBehaviorDefault {
 				return T;
 			}
 		} else if (ST.equal(aStack, mUsedLighter, T)) {
-			UT.Sounds.send(aWorld, SFX.MC_IGNITE, 1.0F, 1.0F, aX, aY, aZ);
+			UT.Sounds.send(SFX.MC_IGNITE, aWorld, aX, aY, aZ);
 			long tDamage = 0;
 			if (RNGSUS.nextInt(10000) < mChance) {
 				List<String> tChatReturn = new ArrayListNoNulls<>();

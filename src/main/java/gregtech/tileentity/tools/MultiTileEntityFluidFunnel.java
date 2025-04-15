@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,8 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -46,6 +42,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidContainerItem;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -77,13 +77,13 @@ public class MultiTileEntityFluidFunnel extends TileEntityBase10Attachment imple
 					if (tDelegator.mTileEntity instanceof ITileEntityFunnelAccessible) {
 						int tAmount = ((ITileEntityFunnelAccessible)tDelegator.mTileEntity).funnelFill(tDelegator.mSideOfTileEntity, tFluid, F);
 						if (tAmount >= tFluid.amount && ((ITileEntityFunnelAccessible)tDelegator.mTileEntity).funnelFill(tDelegator.mSideOfTileEntity, tFluid, T) > 0) {
-							UT.Sounds.send(SFX.MC_LIQUID_WATER, 1.0F, 1.0F, this);
+							UT.Sounds.send(SFX.MC_LIQUID_WATER, this, F);
 							aStack.stackSize--;
 							UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.container(ST.amount(1, aStack), T), T);
 							return T;
 						}
 						if (aStack.getItem() instanceof IFluidContainerItem && aStack.stackSize == 1) {
-							UT.Sounds.send(SFX.MC_LIQUID_WATER, 1.0F, 1.0F, this);
+							UT.Sounds.send(SFX.MC_LIQUID_WATER, this, F);
 							((IFluidContainerItem)aStack.getItem()).drain(aStack, ((ITileEntityFunnelAccessible)tDelegator.mTileEntity).funnelFill(tDelegator.mSideOfTileEntity, tFluid, T), T);
 							return T;
 						}

@@ -278,7 +278,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 					UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 					if (tDamage > 0) {
 						aEvent.setCanceled(T);
-						UT.Sounds.send(aEvent.world, SFX.MC_IGNITE, 1.0F, 1.0F, aEvent.x, aEvent.y, aEvent.z);
+						UT.Sounds.send(SFX.MC_IGNITE, aEvent.world, aEvent.x, aEvent.y, aEvent.z);
 						if (!UT.Entities.hasInfiniteItems(aEvent.entityPlayer)) {
 							aStack.damageItem(UT.Code.bindInt(UT.Code.units(tDamage, 10000, 1, T)), aEvent.entityPlayer);
 							if (aStack.getItemDamage() >= aStack.getMaxDamage()) ST.use(aEvent.entityPlayer, aStack);
@@ -338,7 +338,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 					long tDamage = IBlockToolable.Util.onToolClick(TOOL_igniter, Long.MAX_VALUE, 1, aEvent.entityPlayer, tChatReturn, aEvent.entityPlayer.inventory, aEvent.entityPlayer.isSneaking(), NI, aEvent.world, (byte)aEvent.face, aEvent.x, aEvent.y, aEvent.z, 0.5F, 0.5F, 0.5F);
 					UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 					if (tDamage > 0) {
-						UT.Sounds.send(aEvent.world, SFX.MC_IGNITE, 1.0F, 1.0F, aEvent.x, aEvent.y, aEvent.z);
+						UT.Sounds.send(SFX.MC_IGNITE, aEvent.world, aEvent.x, aEvent.y, aEvent.z);
 						aEvent.setCanceled(T);
 					}
 				}

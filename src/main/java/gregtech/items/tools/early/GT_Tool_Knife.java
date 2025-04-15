@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregtech.items.tools.early;
 
-import static gregapi.data.CS.*;
-
 import gregapi.data.CS.SFX;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Tool;
@@ -29,6 +27,9 @@ import gregapi.render.IIconContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.AchievementList;
+
+import static gregapi.data.CS.T;
+import static gregapi.data.CS.TOOL_knife;
 
 public class GT_Tool_Knife extends GT_Tool_Sword {
 	@Override
@@ -80,7 +81,7 @@ public class GT_Tool_Knife extends GT_Tool_Sword {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_knife, SFX.MC_DIG_CLOTH, getToolDamagePerContainerCraft(), !canBlock(), T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_knife, SFX.MC_DIG_CLOTH, getToolDamagePerContainerCraft(), !canBlock(), SFX.RANDOM_PITCH));
 	}
 	
 	@Override

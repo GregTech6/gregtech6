@@ -40,6 +40,7 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.oredict.configurations.IOreDictConfigurationComponent;
 import gregapi.player.EntityFoodTracker;
+import gregapi.random.IHasWorldAndCoords;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.render.IIconContainer;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
@@ -2900,76 +2901,110 @@ public class UT {
 		public static boolean MULTITHREADED = F;
 		public static List<PlayedSound> sPlayedSounds = new ArrayListNoNulls<>();
 		
-		public static boolean play(String aSoundName, int aTimeUntilNextSound, float aSoundStrength) {
+		public static boolean play(String aSound, int aTimeUntilNextSound, float aVolume) {
 			if (!CODE_CLIENT || cpw.mods.fml.common.FMLCommonHandler.instance().getEffectiveSide().isServer()) return F;
-			return play(aSoundName, aTimeUntilNextSound, aSoundStrength, GT_API.api_proxy.getThePlayer());
+			return play(aSound, aTimeUntilNextSound, aVolume, GT_API.api_proxy.getThePlayer());
 		}
 		
-		public static boolean play(String aSoundName, int aTimeUntilNextSound, float aSoundStrength, Entity aEntity) {
+		public static boolean play(String aSound, int aTimeUntilNextSound, float aVolume, Entity aEntity) {
 			if (!CODE_CLIENT || aEntity == null || cpw.mods.fml.common.FMLCommonHandler.instance().getEffectiveSide().isServer()) return F;
-			return play(aSoundName, aTimeUntilNextSound, aSoundStrength, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ));
+			return play(aSound, aTimeUntilNextSound, aVolume, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ));
 		}
 		
-		public static boolean play(String aSoundName, int aTimeUntilNextSound, float aSoundStrength, int aX, int aY, int aZ) {
-			return play(aSoundName, aTimeUntilNextSound, aSoundStrength, new ChunkCoordinates(aX, aY, aZ));
+		public static boolean play(String aSound, int aTimeUntilNextSound, float aVolume, int aX, int aY, int aZ) {
+			return play(aSound, aTimeUntilNextSound, aVolume, new ChunkCoordinates(aX, aY, aZ));
 		}
 		
-		public static boolean play(String aSoundName, int aTimeUntilNextSound, float aSoundStrength, ChunkCoordinates aCoords) {
-			if (aCoords == null) return play(aSoundName, aTimeUntilNextSound, aSoundStrength);
+		public static boolean play(String aSound, int aTimeUntilNextSound, float aVolume, ChunkCoordinates aCoords) {
+			if (aCoords == null) return play(aSound, aTimeUntilNextSound, aVolume);
 			if (!CODE_CLIENT || cpw.mods.fml.common.FMLCommonHandler.instance().getEffectiveSide().isServer()) return F;
-			return play(aSoundName, aTimeUntilNextSound, aSoundStrength, 0.9F + RNGSUS.nextFloat() * 0.2F, aCoords.posX, aCoords.posY, aCoords.posZ);
+			return play(aSound, aTimeUntilNextSound, aVolume, 0.9F + RNGSUS.nextFloat() * 0.2F, aCoords.posX, aCoords.posY, aCoords.posZ);
 		}
 		
-		public static boolean play(String aSoundName, int aTimeUntilNextSound, float aSoundStrength, float aSoundModulation, int aX, int aY, int aZ) {
-			return play(aSoundName, aTimeUntilNextSound, aSoundStrength, aSoundModulation, new ChunkCoordinates(aX, aY, aZ));
+		public static boolean play(String aSound, int aTimeUntilNextSound, float aVolume, float aPitch, int aX, int aY, int aZ) {
+			return play(aSound, aTimeUntilNextSound, aVolume, aPitch, new ChunkCoordinates(aX, aY, aZ));
 		}
 		
-		public static boolean play(String aSoundName, int aTimeUntilNextSound, float aSoundStrength, float aSoundModulation, ChunkCoordinates aCoords) {
+		public static boolean play(String aSound, int aTimeUntilNextSound, float aVolume, float aPitch, ChunkCoordinates aCoords) {
 			if (!CODE_CLIENT || cpw.mods.fml.common.FMLCommonHandler.instance().getEffectiveSide().isServer()) return F;
 			EntityPlayer aPlayer = GT_API.api_proxy.getThePlayer();
-			if (aPlayer == null || !aPlayer.worldObj.isRemote || Code.stringInvalid(aSoundName)) return F;
+			if (aPlayer == null || !aPlayer.worldObj.isRemote || Code.stringInvalid(aSound)) return F;
 			if (MULTITHREADED)
-				new Thread(new ThreadedSound(aPlayer.worldObj, UT.Code.roundDown(aCoords.posX), UT.Code.roundDown(aCoords.posY), UT.Code.roundDown(aCoords.posZ), aTimeUntilNextSound, aSoundName, aSoundStrength, aSoundModulation), "Sound Effect").start();
+				new Thread(new ThreadedSound(aPlayer.worldObj, UT.Code.roundDown(aCoords.posX), UT.Code.roundDown(aCoords.posY), UT.Code.roundDown(aCoords.posZ), aTimeUntilNextSound, aSound, aVolume, aPitch), "Sound Effect").start();
 			else
-				new ThreadedSound(aPlayer.worldObj, UT.Code.roundDown(aCoords.posX), UT.Code.roundDown(aCoords.posY), UT.Code.roundDown(aCoords.posZ), aTimeUntilNextSound, aSoundName, aSoundStrength, aSoundModulation).run();
+				new ThreadedSound(aPlayer.worldObj, UT.Code.roundDown(aCoords.posX), UT.Code.roundDown(aCoords.posY), UT.Code.roundDown(aCoords.posZ), aTimeUntilNextSound, aSound, aVolume, aPitch).run();
 			return T;
 		}
 		
-		public static boolean send(World aWorld, String aSoundName, float aSoundStrength, float aSoundModulation, int aX, int aY, int aZ) {
-			return send(aWorld, aSoundName, aSoundStrength, aSoundModulation, new ChunkCoordinates(aX, aY, aZ));
+		public static boolean send(String aSound, IHasWorldAndCoords aTileEntity) {
+			return send(aSound, 1.0F, SFX.RANDOM_PITCH, aTileEntity.getWorld(), aTileEntity.getCoords());
 		}
-		public static boolean send(String aSoundName, World aWorld, ChunkCoordinates aCoords) {
-			return send(aWorld, aSoundName, 1.0F, 1.0F, aCoords);
+		public static boolean send(String aSound, IHasWorldAndCoords aTileEntity, boolean aIDontWannaFuckingCastThisShitAllTheTime) {
+			return send(aSound, 1.0F, SFX.RANDOM_PITCH, aTileEntity.getWorld(), aTileEntity.getCoords());
 		}
-		public static boolean send(String aSoundName, TileEntity aTileEntity) {
-			return send(aTileEntity.getWorldObj(), aSoundName, 1.0F, 1.0F, aTileEntity.xCoord, aTileEntity.yCoord, aTileEntity.zCoord);
+		public static boolean send(String aSound, TileEntity aTileEntity) {
+			return send(aSound, 1.0F, SFX.RANDOM_PITCH, aTileEntity.getWorldObj(), new ChunkCoordinates(aTileEntity.xCoord, aTileEntity.yCoord, aTileEntity.zCoord));
 		}
-		public static boolean send(String aSoundName, float aSoundStrength, float aSoundModulation, TileEntity aTileEntity) {
-			return send(aTileEntity.getWorldObj(), aSoundName, aSoundStrength, aSoundModulation, aTileEntity.xCoord, aTileEntity.yCoord, aTileEntity.zCoord);
+		public static boolean send(String aSound, Entity aEntity) {
+			return send(aSound, 1.0F, SFX.RANDOM_PITCH, aEntity.worldObj, new ChunkCoordinates(UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ)));
 		}
-		public static boolean send(String aSoundName, Entity aEntity) {
-			return send(aEntity.worldObj, aSoundName, 1.0F, 1.0F, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ));
+		public static boolean send(String aSound, World aWorld, int aX, int aY, int aZ) {
+			return send(aSound, 1.0F, SFX.RANDOM_PITCH, aWorld, new ChunkCoordinates(aX, aY, aZ));
 		}
-		public static boolean send(String aSoundName, float aSoundStrength, float aSoundModulation, Entity aEntity) {
-			return send(aEntity.worldObj, aSoundName, aSoundStrength, aSoundModulation, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ));
+		public static boolean send(String aSound, World aWorld, ChunkCoordinates aCoords) {
+			return send(aSound, 1.0F, SFX.RANDOM_PITCH, aWorld, aCoords);
 		}
-		public static boolean send(World aWorld, String aSoundName, float aSoundStrength, float aSoundModulation, Entity aEntity) {
-			return send(aWorld, aSoundName, aSoundStrength, aSoundModulation, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ));
+		public static boolean send(String aSound, float aVolume, IHasWorldAndCoords aTileEntity) {
+			return send(aSound, aVolume, SFX.RANDOM_PITCH, aTileEntity.getWorld(), aTileEntity.getCoords());
 		}
-		
-		public static boolean send(World aWorld, String aSoundName, float aSoundStrength, float aSoundModulation, ChunkCoordinates aCoords) {
-			if (Code.stringInvalid(aSoundName) || aWorld == null || aWorld.isRemote) return F;
-			NW_API.sendToAllPlayersInRange(new PacketSound(aSoundName, aSoundStrength, aSoundModulation, aCoords), aWorld, aCoords);
+		public static boolean send(String aSound, float aVolume, IHasWorldAndCoords aTileEntity, boolean aIDontWannaFuckingCastThisShitAllTheTime) {
+			return send(aSound, aVolume, SFX.RANDOM_PITCH, aTileEntity.getWorld(), aTileEntity.getCoords());
+		}
+		public static boolean send(String aSound, float aVolume, TileEntity aTileEntity) {
+			return send(aSound, aVolume, SFX.RANDOM_PITCH, aTileEntity.getWorldObj(), new ChunkCoordinates(aTileEntity.xCoord, aTileEntity.yCoord, aTileEntity.zCoord));
+		}
+		public static boolean send(String aSound, float aVolume, Entity aEntity) {
+			return send(aSound, aVolume, SFX.RANDOM_PITCH, aEntity.worldObj, new ChunkCoordinates(UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ)));
+		}
+		public static boolean send(String aSound, float aVolume, World aWorld, int aX, int aY, int aZ) {
+			return send(aSound, aVolume, SFX.RANDOM_PITCH, aWorld, new ChunkCoordinates(aX, aY, aZ));
+		}
+		public static boolean send(String aSound, float aVolume, World aWorld, ChunkCoordinates aCoords) {
+			return send(aSound, aVolume, SFX.RANDOM_PITCH, aWorld, aCoords);
+		}
+		public static boolean send(String aSound, float aVolume, float aPitch, IHasWorldAndCoords aTileEntity) {
+			return send(aSound, aVolume, aPitch, aTileEntity.getWorld(), aTileEntity.getCoords());
+		}
+		public static boolean send(String aSound, float aVolume, float aPitch, IHasWorldAndCoords aTileEntity, boolean aIDontWannaFuckingCastThisShitAllTheTime) {
+			return send(aSound, aVolume, aPitch, aTileEntity.getWorld(), aTileEntity.getCoords());
+		}
+		public static boolean send(String aSound, float aVolume, float aPitch, TileEntity aTileEntity) {
+			return send(aSound, aVolume, aPitch, aTileEntity.getWorldObj(), new ChunkCoordinates(aTileEntity.xCoord, aTileEntity.yCoord, aTileEntity.zCoord));
+		}
+		public static boolean send(String aSound, float aVolume, float aPitch, Entity aEntity) {
+			return send(aSound, aVolume, aPitch, aEntity.worldObj, new ChunkCoordinates(UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ)));
+		}
+		public static boolean send(String aSound, float aVolume, float aPitch, World aWorld, int aX, int aY, int aZ) {
+			return send(aSound, aVolume, aPitch, aWorld, new ChunkCoordinates(aX, aY, aZ));
+		}
+		public static boolean send(String aSound, float aVolume, float aPitch, World aWorld, ChunkCoordinates aCoords) {
+			if (Code.stringInvalid(aSound) || aWorld == null || aWorld.isRemote) return F;
+			NW_API.sendToAllPlayersInRange(new PacketSound(aSound, aVolume, aPitch, aCoords), aWorld, aCoords);
 			return T;
 		}
+		
+		@Deprecated public static boolean send(World aWorld, String aSound, int aX, int aY, int aZ) {return send(aSound, 1.0F, SFX.RANDOM_PITCH, aWorld, aX, aY, aZ);}
+		@Deprecated public static boolean send(World aWorld, String aSound, float aVolume, float aPitch, int aX, int aY, int aZ) {return send(aSound, aVolume, aPitch, aWorld, aX, aY, aZ);}
+		@Deprecated public static boolean send(World aWorld, String aSound, float aVolume, float aPitch, Entity aEntity) {return send(aSound, aVolume, aPitch, aEntity);}
+		@Deprecated public static boolean send(World aWorld, String aSound, float aVolume, float aPitch, ChunkCoordinates aCoords) {return send(aSound, aVolume, aPitch, aWorld, aCoords);}
 		
 		public static class PlayedSound {
 			public final String mSoundName;
 			public final int mX, mY, mZ;
 			public int mTimer = 0;
 			
-			public PlayedSound(String aSoundName, int aX, int aY, int aZ, int aTimer) {
-				mSoundName = aSoundName==null?"":aSoundName;
+			public PlayedSound(String aSound, int aX, int aY, int aZ, int aTimer) {
+				mSoundName = aSound==null?"":aSound;
 				mTimer = aTimer;
 				mX = aX;
 				mY = aY;
@@ -2978,9 +3013,7 @@ public class UT {
 			
 			@Override
 			public boolean equals(Object aObject) {
-				if (aObject != null && aObject instanceof PlayedSound) {
-					return ((PlayedSound)aObject).mX == mX && ((PlayedSound)aObject).mY == mY && ((PlayedSound)aObject).mZ == mZ && ((PlayedSound)aObject).mSoundName.equals(mSoundName);
-				}
+				if (aObject instanceof PlayedSound) return ((PlayedSound)aObject).mX == mX && ((PlayedSound)aObject).mY == mY && ((PlayedSound)aObject).mZ == mZ && ((PlayedSound)aObject).mSoundName.equals(mSoundName);
 				return F;
 			}
 			
@@ -2996,8 +3029,8 @@ public class UT {
 			private final String mSoundName;
 			private final float mSoundStrength, mSoundModulation;
 			
-			public ThreadedSound(World aWorld, int aX, int aY, int aZ, int aTimeUntilNextSound, String aSoundName, float aSoundStrength, float aSoundModulation) {
-				mWorld = aWorld; mX = aX; mY = aY; mZ = aZ; mTimeUntilNextSound = aTimeUntilNextSound; mSoundName = aSoundName; mSoundStrength = aSoundStrength; mSoundModulation = aSoundModulation;
+			public ThreadedSound(World aWorld, int aX, int aY, int aZ, int aTimeUntilNextSound, String aSound, float aVolume, float aPitch) {
+				mWorld = aWorld; mX = aX; mY = aY; mZ = aZ; mTimeUntilNextSound = aTimeUntilNextSound; mSoundName = aSound; mSoundStrength = aVolume; mSoundModulation = aPitch;
 			}
 			
 			@Override

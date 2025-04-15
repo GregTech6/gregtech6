@@ -123,7 +123,7 @@ public class MultiTileEntityAxle extends TileEntityBase11ConnectorStraight imple
 		// Yes Rotation Speed only becomes a problem when it is actually being transferred,
 		// If the Axle just Rotates Idle then it can spin at ludicrous Speeds.
 		if (Math.abs(aSpeed) > mSpeed || mTransferredPower > mPower) {
-			UT.Sounds.send(SFX.MC_BREAK, this);
+			UT.Sounds.send(SFX.MC_BREAK, this, F);
 			popOff();
 			return aOriginalPower;
 		}

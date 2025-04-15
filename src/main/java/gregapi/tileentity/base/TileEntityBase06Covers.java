@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -209,7 +209,7 @@ public abstract class TileEntityBase06Covers extends TileEntityBase05Inventories
 			ItemStack tStack = getCoverItem(tSide);
 			if (setCoverItem(tSide, null, null, T, T)) {
 				ST.place(worldObj, getOffset(tSide, 1), tStack);
-				UT.Sounds.send(worldObj, SFX.MC_BREAK, 1.0F, -1.0F, getCoords());
+				UT.Sounds.send(SFX.MC_BREAK, 1.0F, -1.0F, this, F);
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -162,27 +162,27 @@ public abstract class TileEntityBase08Barrel extends TileEntityBase07Paintable i
 				if (FL.temperature(tFluid) >= mMeltingPoint && meltdown()) return;
 				
 				if (!mMagicProof && FL.magic(tFluid)) {
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
+					UT.Sounds.send(SFX.MC_FIZZ, this, F);
 					GarbageGT.trash(mTank);
 					WD.set(worldObj, xCoord, yCoord, zCoord, FL.gas(tFluid) ? IL.TC_Flux_Gas.block() : IL.TC_Flux_Goo.block(), IL.TC_Flux_Goo.exists() ? 7 : 0, 3);
 					return;
 				}
 				if (!mAcidProof && FL.acid(tFluid)) {
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
+					UT.Sounds.send(SFX.MC_FIZZ, this, F);
 					GarbageGT.trash(mTank);
 					setToAir();
 					return;
 				}
 				if (!mPlasmaProof && FL.plasma(tFluid)) {
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
+					UT.Sounds.send(SFX.MC_FIZZ, this, F);
 					GarbageGT.trash(mTank);
 				} else
 				if (!mGasProof && FL.gas(tFluid)) {
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
+					UT.Sounds.send(SFX.MC_FIZZ, this, F);
 					GarbageGT.trash(mTank);
 				} else
 				if (!allowFluid(tFluid)) {
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
+					UT.Sounds.send(SFX.MC_FIZZ, this, F);
 					GarbageGT.trash(mTank);
 				} else {
 					if ((mMode & B[1]) != 0) {

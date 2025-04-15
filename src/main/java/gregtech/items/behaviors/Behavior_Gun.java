@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -340,17 +340,17 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				return aGun;
 			}
 			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, aBullet);
-			UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
+			UT.Sounds.send(SFX.MC_CLICK, 16, aPlayer);
 			ST.save(aNBT, NBT_AMMO, NI);
 			return aGun;
 		}
 		if (ST.invalid(aBullet) || aBullet.stackSize <= 0) {
-			UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
+			UT.Sounds.send(SFX.MC_CLICK, 16, aPlayer);
 			ST.save(aNBT, NBT_AMMO, NI);
 			return aGun;
 		}
 		shoot(aGun, ST.amount(1, aBullet), aPlayer);
-		UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, 1.0F, aPlayer);
+		UT.Sounds.send(SFX.MC_FIREWORK_BLAST_FAR, 128, aPlayer);
 		if (!UT.Entities.hasInfiniteItems(aPlayer) && RNGSUS.nextInt(1+UT.NBT.getEnchantmentLevel(Enchantment.infinity, aGun)) == 0) {
 			OreDictItemData tData = OM.anydata(aBullet);
 			aBullet.stackSize--;
@@ -379,7 +379,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		if (ST.valid(aBullet) && aBullet.stackSize > 0) return F;
 		if (isProjectile(aPlayer.inventory.mainInventory[aPlayer.inventory.currentItem])) {
 			int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[aPlayer.inventory.currentItem].stackSize);
-			UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
+			UT.Sounds.send(SFX.MC_CLICK, 16, aPlayer);
 			ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[aPlayer.inventory.currentItem]));
 			aPlayer.inventory.decrStackSize(aPlayer.inventory.currentItem, tConsumed);
 			ST.update(aPlayer);
@@ -391,21 +391,21 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			if (i < 18 && isProjectile(aPlayer.inventory.mainInventory[i+18])) {
 			if (i <  9 && isProjectile(aPlayer.inventory.mainInventory[i+ 9])) {
 				int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i+ 9].stackSize);
-				UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
+				UT.Sounds.send(SFX.MC_CLICK, 16, aPlayer);
 				ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i+ 9]));
 				aPlayer.inventory.decrStackSize(i+ 9, tConsumed);
 				ST.update(aPlayer);
 				return T;
 			}
 				int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i+18].stackSize);
-				UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
+				UT.Sounds.send(SFX.MC_CLICK, 16, aPlayer);
 				ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i+18]));
 				aPlayer.inventory.decrStackSize(i+18, tConsumed);
 				ST.update(aPlayer);
 				return T;
 			}
 				int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i+27].stackSize);
-				UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
+				UT.Sounds.send(SFX.MC_CLICK, 16, aPlayer);
 				ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i+27]));
 				aPlayer.inventory.decrStackSize(i+27, tConsumed);
 				ST.update(aPlayer);
@@ -415,7 +415,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 		}
 		for (int i = aPlayer.inventory.mainInventory.length-1; i >= 0; i--) if (isProjectile(aPlayer.inventory.mainInventory[i])) {
 			int tConsumed = Math.min(mAmmoPerMag, aPlayer.inventory.mainInventory[i].stackSize);
-			UT.Sounds.send(SFX.MC_CLICK, 16, 1.0F, aPlayer);
+			UT.Sounds.send(SFX.MC_CLICK, 16, aPlayer);
 			ST.save(aNBT, NBT_AMMO, ST.amount(tConsumed, aPlayer.inventory.mainInventory[i]));
 			aPlayer.inventory.decrStackSize(i, tConsumed);
 			ST.update(aPlayer);

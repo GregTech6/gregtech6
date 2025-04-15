@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,8 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -49,6 +45,10 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.fluids.FluidStack;
 import openblocks.common.LiquidXpUtils;
 import openmods.utils.EnchantmentUtils;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -114,7 +114,7 @@ public class MultiTileEntityFluidNozzle extends TileEntityBase10Attachment imple
 					FluidStack tNewFluid = aFluid.copy();
 					ItemStack tStack = FL.fill(tNewFluid, ST.amount(1, aStack), T, T, T, T);
 					if (aFluid.amount > tNewFluid.amount && ((ITileEntityTapAccessible)tDelegator.mTileEntity).nozzleDrain(tDelegator.mSideOfTileEntity, aFluid.amount - tNewFluid.amount, T) != null) {
-						UT.Sounds.send(SFX.MC_FIZZ, 1.0F, 2.0F, this);
+						UT.Sounds.send(SFX.MC_FIZZ, 1.0F, 2.0F, this, F);
 						aStack.stackSize--;
 						UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 						return T;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -160,8 +160,8 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 			if (aStack == null) return T;
 			if (UT.Entities.isCreative(aPlayer) || aPlayer.getFoodStats().needFood() || FoodStatFluid.INSTANCE.alwaysEdible(aStack.getItem(), aStack, aPlayer)) {
 				switch(FoodStatFluid.INSTANCE.getFoodAction(aStack.getItem(), aStack)) {
-				case eat: UT.Sounds.send(worldObj, SFX.MC_EAT  , 1.0F, 1.0F, getCoords()); break;
-				default : UT.Sounds.send(worldObj, SFX.MC_DRINK, 1.0F, 1.0F, getCoords()); break;
+				case eat: UT.Sounds.send(SFX.MC_EAT  , this, F); break;
+				default : UT.Sounds.send(SFX.MC_DRINK, this, F); break;
 				}
 				mTank.remove(250);
 				aStack.getItem().onEaten(aStack, worldObj, aPlayer);
@@ -220,7 +220,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 						aItem.drain(aStack, 334, T);
 						WD.set(aWorld, aX, aY, aZ, aBlock, aMeta+1, 3);
 					}
-					UT.Sounds.send(worldObj, SFX.MC_LIQUID_WATER, 1.0F, 1.0F, getCoords());
+					UT.Sounds.send(SFX.MC_LIQUID_WATER, worldObj, getCoords());
 					return T;
 				}
 				
@@ -230,7 +230,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 						if (tIncrement > 0) {
 							aItem.drain(aStack, tIncrement*10, T);
 							aWorld.setBlockMetadataWithNotify(aX, aY, aZ, aMeta+tIncrement, 3);
-							UT.Sounds.send(aWorld, SFX.MC_LIQUID_WATER, 1.0F, 1.0F, aX, aY, aZ);
+							UT.Sounds.send(SFX.MC_LIQUID_WATER, aWorld, aX, aY, aZ);
 						}
 						return T;
 					}
@@ -240,7 +240,7 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 						if (tIncrement > 0) {
 							aItem.drain(aStack, tIncrement*10, T);
 							aWorld.setBlockMetadataWithNotify(aX, aY-1, aZ, tMeta+tIncrement, 3);
-							UT.Sounds.send(aWorld, SFX.MC_LIQUID_WATER, 1.0F, 1.0F, aX, aY-1, aZ);
+							UT.Sounds.send(SFX.MC_LIQUID_WATER, aWorld, aX, aY-1, aZ);
 						}
 						return T;
 					}
@@ -254,14 +254,14 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 					if (tDrained > 0) {
 						aItem.drain(aStack, tDrained, T);
 						((ICropTile)tTileEntity).setHydrationStorage(tHydration + tDrained*10);
-						UT.Sounds.send(aWorld, SFX.MC_LIQUID_WATER, 1.0F, 1.0F, aX, aY, aZ);
+						UT.Sounds.send(SFX.MC_LIQUID_WATER, aWorld, aX, aY, aZ);
 					}
 					return T;
 				}} catch(Throwable e) {/**/}
 				
 				try {if (tTileEntity instanceof TileCrucible) {
 					if (FL.water(mFluid) && FL.nonzero(aItem.drain(aStack, (int)FL.fill((IFluidHandler)tTileEntity, SIDE_TOP, FL.Water.make(mFluid.amount), T), T))) {
-						UT.Sounds.send(aWorld, SFX.MC_LIQUID_WATER, 1.0F, 1.0F, aX, aY, aZ);
+						UT.Sounds.send(SFX.MC_LIQUID_WATER, aWorld, aX, aY, aZ);
 					}
 					return T;
 				}} catch(Throwable e) {/**/}

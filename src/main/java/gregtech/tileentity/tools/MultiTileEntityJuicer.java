@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,7 +24,6 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingB
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.data.BI;
-import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -145,7 +144,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 					FluidStack[] tOutputFluids = tRecipe.getFluidOutputs();
 					for (int i = 0; i < mTanks.length && i < tOutputFluids.length; i++) mTanks[i].fill(tOutputFluids[i], T);
 					aPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 10000.0F);
-					UT.Sounds.send(worldObj, SFX.MC_SLIME_BIG, 1.0F, 1.0F, getCoords());
+					UT.Sounds.send(SFX.MC_SLIME_BIG, this, F);
 					updateInventory();
 					updateAdjacentInventories();
 					return T;

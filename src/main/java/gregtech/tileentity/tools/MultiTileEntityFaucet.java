@@ -112,7 +112,7 @@ public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements
 	public long fillMold(OreDictMaterialStack aMaterial, long aTemperature, byte aSide) {
 		if (aSide != mFacing || aMaterial == null || aMaterial.mMaterial == null || (!mAcidProof && aMaterial.mMaterial.contains(TD.Properties.ACID))) return 0;
 		if (aTemperature > getMoldMaxTemperature()) {
-			UT.Sounds.send(SFX.MC_FIZZ, this);
+			UT.Sounds.send(SFX.MC_FIZZ, this, F);
 			worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.flowing_lava, 1, 3);
 		}
 		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(SIDE_BOTTOM);

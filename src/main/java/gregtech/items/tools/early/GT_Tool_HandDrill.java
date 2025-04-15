@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,7 +19,6 @@
 
 package gregtech.items.tools.early;
 
-import gregapi.data.CS.*;
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Tool;
@@ -72,7 +71,7 @@ public class GT_Tool_HandDrill extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_drill, SFX.GT_SCREWDRIVER, 100, !canBlock(), T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_drill, SFX.GT_SCREWDRIVER, 100, !canBlock(), SFX.RANDOM_PITCH));
 	}
 	
 	@Override

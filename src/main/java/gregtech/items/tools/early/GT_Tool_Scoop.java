@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,7 +19,6 @@
 
 package gregtech.items.tools.early;
 
-import gregapi.data.CS.*;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItem;
@@ -99,7 +98,7 @@ public class GT_Tool_Scoop extends ToolStats {
 	@Override
 	@SuppressWarnings("unchecked")
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_scoop, SFX.MC_DIG_CLOTH, getToolDamagePerContainerCraft(), !canBlock(), T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_scoop, SFX.MC_DIG_CLOTH, getToolDamagePerContainerCraft(), !canBlock(), SFX.RANDOM_PITCH));
 		try {
 			Object tObject = UT.Reflection.callConstructor("gregtech.items.behaviors.Behavior_Scoop", 0, null, F, 200);
 			if (tObject instanceof IBehavior<?>) aItem.addItemBehavior(aID, (IBehavior<MultiItem>)tObject);

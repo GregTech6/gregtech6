@@ -2186,9 +2186,11 @@ public class CS {
 		, MD8               = "Micdoodlecore"
 		;
 	}
-
+	
 	/** Class Containing Sound Strings used in GT. */
 	public static class SFX {
+		public static float RANDOM_PITCH = Float.NaN;
+		
 		/** Sound Strings */
 		public static final String
 		  MC_BREAK              = "random.break"

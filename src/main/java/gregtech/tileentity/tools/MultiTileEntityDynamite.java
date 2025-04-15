@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,18 +19,12 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
-import java.util.Iterator;
-import java.util.List;
-
 import gregapi.block.metatype.BlockStones;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.old.Textures;
 import gregapi.render.BlockTextureDefault;
@@ -55,6 +49,11 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+
+import java.util.Iterator;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -98,8 +97,8 @@ public class MultiTileEntityDynamite extends TileEntityBase09FacingSingle implem
 		
 		if (isClientSide()) return 0;
 		
-		if (aTool.equals(TOOL_igniter       ) && mCountDown == 0 && WD.oxygen(worldObj, xCoord, yCoord, zCoord) ) {mCountDown = 100; updateClientData(); causeBlockUpdate(); UT.Sounds.send(worldObj, SFX.MC_TNT_IGNITE , 1.0F, 0.5F, getCoords()); return 10000;}
-		if (aTool.equals(TOOL_extinguisher  ) && mCountDown != 0                                                ) {mCountDown =   0; updateClientData(); causeBlockUpdate(); UT.Sounds.send(worldObj, SFX.MC_FIZZ       , 1.0F, 0.5F, getCoords()); return 10000;}
+		if (aTool.equals(TOOL_igniter       ) && mCountDown == 0 && WD.oxygen(worldObj, xCoord, yCoord, zCoord) ) {mCountDown = 100; updateClientData(); causeBlockUpdate(); UT.Sounds.send(SFX.MC_TNT_IGNITE , 1.0F, 0.5F, this, F); return 10000;}
+		if (aTool.equals(TOOL_extinguisher  ) && mCountDown != 0                                                ) {mCountDown =   0; updateClientData(); causeBlockUpdate(); UT.Sounds.send(SFX.MC_FIZZ       , 1.0F, 0.5F, this, F); return 10000;}
 		return 0;
 	}
 	

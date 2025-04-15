@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -93,16 +93,16 @@ public class CoverFilterItem extends AbstractCoverAttachment {
 				ItemStack tFilter = ST.load(aData.mNBTs[aCoverSide], "gt.filter.item");
 				if (ST.invalid(tFilter)) {
 					aData.mNBTs[aCoverSide] = ST.save("gt.filter.item", ST.make(ST.item_(tStack), 1, ST.meta_(tStack)));
-					UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_CLICK, 1, 1, aData.mTileEntity.getCoords());
+					UT.Sounds.send(SFX.MC_CLICK, aData.mTileEntity);
 					UT.Entities.sendchat(aPlayer, "Filters for: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.CYAN + ST.meta_(tStack));
 				} else if (ST.equal(tFilter, tStack, T)) {
 					if (ST.meta_(tFilter) == W) {
 						aData.mNBTs[aCoverSide] = ST.save("gt.filter.item", ST.make(ST.item_(tStack), 1, ST.meta_(tStack)));
-						UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_CLICK, 1, 1, aData.mTileEntity.getCoords());
+						UT.Sounds.send(SFX.MC_CLICK, aData.mTileEntity);
 						UT.Entities.sendchat(aPlayer, "Filters for: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.CYAN + ST.meta_(tStack));
 					} else {
 						aData.mNBTs[aCoverSide] = ST.save("gt.filter.item", ST.make(ST.item_(tStack), 1, W));
-						UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_CLICK, 1, 1, aData.mTileEntity.getCoords());
+						UT.Sounds.send(SFX.MC_CLICK, aData.mTileEntity);
 						UT.Entities.sendchat(aPlayer, "Filters for: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.GREEN + "Wildcard");
 					}
 				}

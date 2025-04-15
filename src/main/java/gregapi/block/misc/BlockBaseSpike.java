@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,28 +19,16 @@
 
 package gregapi.block.misc;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.BlockBaseSealable;
 import gregapi.block.IBlockOnWalkOver;
 import gregapi.block.IBlockToolable;
 import gregapi.block.ToolCompat;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.OP;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
-import gregapi.render.BlockTextureDefault;
-import gregapi.render.IRenderedBlock;
-import gregapi.render.IRenderedBlockObject;
-import gregapi.render.ITexture;
-import gregapi.render.RendererBlockTextured;
-import gregapi.util.CR;
-import gregapi.util.OM;
-import gregapi.util.ST;
-import gregapi.util.UT;
-import gregapi.util.WD;
+import gregapi.render.*;
+import gregapi.util.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -61,6 +49,10 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlockOnWalkOver, IBlockToolable, IRenderedBlock {
 	public final OreDictMaterial mMat1, mMat2;
@@ -110,7 +102,7 @@ public abstract class BlockBaseSpike extends BlockBaseSealable implements IBlock
 	
 	@Override public void onWalkOver(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {if ((WD.meta(aWorld, aX, aY, aZ) & 7) != SIDE_UP) {aEntity.motionX *= 0.1; aEntity.motionZ *= 0.1;}}
 	@Override public int onBlockPlaced(World aWorld, int aX, int aY, int aZ, int aSide, float aHitX, float aHitY, float aHitZ, int aMeta) {return (aMeta & 7) < 6 ? (aMeta & 8) | OPOS[aSide] : aMeta;}
-	@Override public void onBlockAdded2(World aWorld, int aX, int aY, int aZ) {if (useGravity(WD.meta(aWorld, aX, aY, aZ))) UT.Sounds.send(aWorld, SFX.MC_ANVIL_LAND, 1, 2, aX, aY, aZ);}
+	@Override public void onBlockAdded2(World aWorld, int aX, int aY, int aZ) {if (useGravity(WD.meta(aWorld, aX, aY, aZ))) UT.Sounds.send(SFX.MC_ANVIL_LAND, 1, 2, aWorld, aX, aY, aZ);}
 	
 	@Override public String getHarvestTool(int aMeta) {return TOOL_pickaxe;}
 	@Override public int getHarvestLevel(int aMeta) {return aMeta < 8 ? mMat1.mToolQuality : mMat2.mToolQuality;}

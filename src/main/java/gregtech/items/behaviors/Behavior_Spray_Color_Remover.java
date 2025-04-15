@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregtech.items.behaviors;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.IBlockDecolorable;
 import gregapi.data.CS.BlocksGT;
 import gregapi.data.CS.SFX;
@@ -41,6 +37,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import java.util.List;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
 
 public class Behavior_Spray_Color_Remover extends AbstractBehaviorDefault {
 	private final ItemStack mEmpty, mUsed, mFull;
@@ -72,7 +73,7 @@ public class Behavior_Spray_Color_Remover extends AbstractBehaviorDefault {
 		}
 		if (ST.equal(aStack, mUsed, T)) {
 			if (decolorize(aWorld, aX, aY, aZ, aSide)) {
-				UT.Sounds.send(aWorld, SFX.IC_SPRAY, 1.0F, 1.0F, aX, aY, aZ);
+				UT.Sounds.send(SFX.IC_SPRAY, aWorld, aX, aY, aZ);
 				if (!UT.Entities.hasInfiniteItems(aPlayer)) tUses-=10;
 				rOutput = T;
 			}

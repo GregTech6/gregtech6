@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,7 +23,6 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingB
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.network.INetworkHandler;
@@ -189,7 +188,7 @@ public class MultiTileEntityButtonAdvanced extends TileEntityBase09FacingSingle 
 				mActive = !mActive;
 			}
 			causeBlockUpdate();
-			UT.Sounds.send(worldObj, SFX.MC_CLICK, 1.0F, mActive?1.5F:1.3F, getCoords());
+			UT.Sounds.send(SFX.MC_CLICK, 1.0F, mActive?1.5F:1.3F, this, F);
 			mDoUnclickSound = T;
 		}
 		return !mLampMode;
@@ -218,7 +217,7 @@ public class MultiTileEntityButtonAdvanced extends TileEntityBase09FacingSingle 
 			} else if (mActive != mInverted && mMaxLength > 0 && --mLength<0) {
 				mActive = mInverted;
 				causeBlockUpdate();
-				if (mDoUnclickSound) UT.Sounds.send(worldObj, SFX.MC_CLICK, 1.0F, mActive?1.5F:1.3F, getCoords());
+				if (mDoUnclickSound) UT.Sounds.send(SFX.MC_CLICK, 1.0F, mActive?1.5F:1.3F, this, F);
 			}
 		}
 	}

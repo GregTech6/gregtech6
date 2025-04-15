@@ -555,13 +555,13 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				// Zombies trample Farmland.
 				if (tBlock == Blocks.farmland && aEvent.entityLiving instanceof EntityZombie) {
 					aEvent.entityLiving.worldObj.setBlock(tX, tY, tZ, Blocks.dirt, 0, 3);
-					UT.Sounds.send(aEvent.entityLiving.worldObj, SFX.MC_DIG_GRAVEL, 1.0F, 1.0F, tX, tY, tZ);
+					UT.Sounds.send(SFX.MC_DIG_GRAVEL, aEvent.entityLiving.worldObj, tX, tY, tZ);
 				}
 				// Big Animals break regular tall Grass, but not super tall Grass.
 				if (aEvent.entityLiving instanceof EntityPig || aEvent.entityLiving instanceof EntitySheep || aEvent.entityLiving instanceof EntityCow || aEvent.entityLiving instanceof EntityHorse) {
 					if (aEvent.entityLiving.worldObj.getBlock(tX, tY+1, tZ) == Blocks.tallgrass) {
 						aEvent.entityLiving.worldObj.setBlock(tX, tY+1, tZ, NB, 0, 3);
-						UT.Sounds.send(aEvent.entityLiving.worldObj, SFX.MC_DIG_GRASS, 0.5F, 0.5F, tX, tY, tZ);
+						UT.Sounds.send(SFX.MC_DIG_GRASS, 0.5F, 0.5F, aEvent.entityLiving.worldObj, tX, tY, tZ);
 					}
 				}
 				// Area of Effect Block Destruction Ability of certain Mobs.
@@ -575,7 +575,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							if (aEvent.entityLiving.worldObj.getBlock(iX, iY, iZ) == Blocks.fence) {
 								aEvent.entityLiving.worldObj.setBlock(iX, iY, iZ, NB, 0, 3);
 								ST.drop(aEvent.entityLiving.worldObj, iX, iY, iZ, IL.Stick.get(1));
-								UT.Sounds.send(aEvent.entityLiving.worldObj, SFX.MC_DIG_WOOD, 1.0F, 1.0F, iX, iY, iZ);
+								UT.Sounds.send(SFX.MC_DIG_WOOD, aEvent.entityLiving.worldObj, iX, iY, iZ);
 							}
 						}
 					}
@@ -1048,7 +1048,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							ST.use(aEvent.entityPlayer, aStack);
-							UT.Sounds.send(aEvent.world, SFX.MC_BREAK, 1.0F, 1.0F, aEvent.x, aEvent.y, aEvent.z);
+							UT.Sounds.send(SFX.MC_BREAK, aEvent.world, aEvent.x, aEvent.y, aEvent.z);
 							aEvent.setCanceled(T);
 						}
 						return;
@@ -1060,7 +1060,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							ST.use(aEvent.entityPlayer, aStack);
-							UT.Sounds.send(aEvent.world, SFX.MC_BREAK, 1.0F, 1.0F, aEvent.x, aEvent.y, aEvent.z);
+							UT.Sounds.send(SFX.MC_BREAK, aEvent.world, aEvent.x, aEvent.y, aEvent.z);
 							aEvent.setCanceled(T);
 						}
 						return;
@@ -1072,7 +1072,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						UT.Entities.sendchat(aEvent.entityPlayer, tChatReturn, F);
 						if (tDamage > 0) {
 							ST.use(aEvent.entityPlayer, aStack);
-							UT.Sounds.send(aEvent.world, SFX.MC_BREAK, 1.0F, 1.0F, aEvent.x, aEvent.y, aEvent.z);
+							UT.Sounds.send(SFX.MC_BREAK, aEvent.world, aEvent.x, aEvent.y, aEvent.z);
 							aEvent.setCanceled(T);
 						}
 						return;
@@ -1109,7 +1109,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						if (tDamage > 0) {
 							aStack.damageItem((int)UT.Code.units(tDamage, 10000, 1, T), aEvent.entityPlayer);
 							if (aStack.getItemDamage() >= aStack.getMaxDamage()) ST.use(aEvent.entityPlayer, aStack);
-							UT.Sounds.send(aEvent.world, SFX.MC_IGNITE, 1.0F, 1.0F, aEvent.x, aEvent.y, aEvent.z);
+							UT.Sounds.send(SFX.MC_IGNITE, aEvent.world, aEvent.x, aEvent.y, aEvent.z);
 							aEvent.setCanceled(T);
 						}
 						return;

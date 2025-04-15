@@ -209,7 +209,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 			OreDictItemData tData = OM.anydata_(tStack);
 			if (tData == null) {
 				slotTrash(0);
-				UT.Sounds.send(SFX.MC_FIZZ, this);
+				UT.Sounds.send(SFX.MC_FIZZ, this, F);
 			} else if (tData.mPrefix == null) {
 				List<OreDictMaterialStack> tList = new ArrayListNoNulls<>();
 				for (OreDictMaterialStack tMaterial : tData.getAllMaterialStacks()) if (tMaterial.mAmount > 0) tList.add(tMaterial.clone());
@@ -300,10 +300,10 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 				mContent.remove(i--);
 			} else if (tMaterial.mMaterial.mGramPerCubicCentimeter <= WEIGHT_AIR_G_PER_CUBIC_CENTIMETER) {
 				GarbageGT.trash(mContent.remove(i--));
-				UT.Sounds.send(SFX.MC_FIZZ, this);
+				UT.Sounds.send(SFX.MC_FIZZ, this, F);
 			} else if (mTemperature >= tMaterial.mMaterial.mBoilingPoint || (mTemperature > C + 40 && tMaterial.mMaterial.contains(TD.Properties.FLAMMABLE) && !tMaterial.mMaterial.containsAny(TD.Properties.UNBURNABLE, TD.Processing.MELTING))) {
 				GarbageGT.trash(mContent.remove(i--));
-				UT.Sounds.send(SFX.MC_FIZZ, this);
+				UT.Sounds.send(SFX.MC_FIZZ, this, F);
 				if (tMaterial.mMaterial.mBoilingPoint >=  320) try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyTemperatureDamage(tLiving, tMaterial.mMaterial.mBoilingPoint, 4);} catch(Throwable e) {e.printStackTrace(ERR);}
 				if (tMaterial.mMaterial.mBoilingPoint >= 2000) for (int j = 0, k = Math.max(1, UT.Code.bindInt((9 * tMaterial.mAmount) / U)); j < k; j++) WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), rng(3) != 0);
 				if (tMaterial.mMaterial.contains(TD.Properties.EXPLOSIVE)) {
@@ -315,7 +315,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 			} else if (!mAcidProof && tMaterial.mMaterial.contains(TD.Properties.ACID)) {
 				GarbageGT.trash(mContent);
 				GarbageGT.trash(tToBeAdded);
-				UT.Sounds.send(SFX.MC_FIZZ, this);
+				UT.Sounds.send(SFX.MC_FIZZ, this, F);
 				setToAir();
 				return;
 			} else if (mTemperature >= tMaterial.mMaterial.mMeltingPoint && (oTemperature <  tMaterial.mMaterial.mMeltingPoint || tNewContent)) {
@@ -365,7 +365,7 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 		mTemperature = Math.max(mTemperature, Math.min(200, tTemperature));
 		
 		if (mTemperature > getTemperatureMax(SIDE_INSIDE)) {
-			UT.Sounds.send(SFX.MC_FIZZ, this);
+			UT.Sounds.send(SFX.MC_FIZZ, this, F);
 			GarbageGT.trash(mContent);
 			if (mTemperature >=  320) try {for (EntityLivingBase tLiving : (List<EntityLivingBase>)worldObj.getEntitiesWithinAABB(EntityLivingBase.class, box(-GAS_RANGE, -1, -GAS_RANGE, GAS_RANGE+1, GAS_RANGE+1, GAS_RANGE+1))) UT.Entities.applyTemperatureDamage(tLiving, mTemperature, 4);} catch(Throwable e) {e.printStackTrace(ERR);}
 			for (int j = 0, k = UT.Code.bindInt(mTemperature / 25); j < k; j++) WD.fire(worldObj, xCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), yCoord-1+rng(2+FLAME_RANGE), zCoord-FLAME_RANGE+rng(2*FLAME_RANGE+1), rng(3) != 0);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.item.multiitem.behaviors;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.IBlockToolable;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.LH;
@@ -34,27 +30,26 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import java.util.List;
+
+import static gregapi.data.CS.*;
+
 public class Behavior_Tool extends AbstractBehaviorDefault {
 	public final String mToolName, mSoundName;
 	public final long mDamage;
-	public final boolean mOnItemUseReturn, mRandomPitch;
+	public final boolean mOnItemUseReturn;
 	public final float mPitch;
 	
-	/** Certain Sounds need a bit of pitch variation to them, so I decided to put a <tt>High Quality Video Game Rip</tt> into my Tools. */
-	public static final float[] _7_GRAND_DAD_ = {1.0F, 0.8F, 1.0F, 0.9F, 0.9F, 0.8F, 1.0F, 0.9F, 0.8F, 0.8F, 0.8F, 0.9F, 0.7F, 0.8F, 0.9F, 1.0F, 0.8F, 1.0F, 0.9F, 0.9F, 0.8F, 1.0F, 0.9F, 0.8F, 0.8F, 0.8F, 0.9F, 0.7F, 0.9F, 0.7F};
-	public int PITCH_INDEX = -1;
-	
-	public Behavior_Tool(String aToolName) {this(aToolName, null, 0, T, F, 1.0F);}
-	public Behavior_Tool(String aToolName, boolean aOnItemUseReturn) {this(aToolName, null, 0, aOnItemUseReturn, F, 1.0F);}
-	public Behavior_Tool(String aToolName, long aDamage, boolean aOnItemUseReturn) {this(aToolName, null, aDamage, aOnItemUseReturn, F, 1.0F);}
-	public Behavior_Tool(String aToolName, String aSoundName, long aDamage, boolean aOnItemUseReturn) {this(aToolName, aSoundName, aDamage, aOnItemUseReturn, F, 1.0F);}
-	public Behavior_Tool(String aToolName, String aSoundName, long aDamage, boolean aOnItemUseReturn, boolean aRandomPitch) {this(aToolName, aSoundName, aDamage, aOnItemUseReturn, aRandomPitch, 1.0F);}
-	public Behavior_Tool(String aToolName, String aSoundName, long aDamage, boolean aOnItemUseReturn, boolean aRandomPitch, float aPitch) {
+	public Behavior_Tool(String aToolName) {this(aToolName, null, 0, T, 1.0F);}
+	public Behavior_Tool(String aToolName, boolean aOnItemUseReturn) {this(aToolName, null, 0, aOnItemUseReturn, 1.0F);}
+	public Behavior_Tool(String aToolName, long aDamage, boolean aOnItemUseReturn) {this(aToolName, null, aDamage, aOnItemUseReturn, 1.0F);}
+	public Behavior_Tool(String aToolName, String aSoundName, long aDamage, boolean aOnItemUseReturn) {this(aToolName, aSoundName, aDamage, aOnItemUseReturn, 1.0F);}
+	public Behavior_Tool(String aToolName, String aSoundName, long aDamage, boolean aOnItemUseReturn, boolean aRandomPitch) {this(aToolName, aSoundName, aDamage, aOnItemUseReturn, aRandomPitch ? SFX.RANDOM_PITCH : 1.0F);}
+	public Behavior_Tool(String aToolName, String aSoundName, long aDamage, boolean aOnItemUseReturn, float aPitch) {
 		mToolName = aToolName;
 		mSoundName = aSoundName;
 		mDamage = aDamage;
 		mOnItemUseReturn = aOnItemUseReturn;
-		mRandomPitch = aRandomPitch;
 		mPitch = aPitch;
 	}
 	
@@ -66,7 +61,7 @@ public class Behavior_Tool extends AbstractBehaviorDefault {
 		UT.Entities.sendchat(aPlayer, tChatReturn, F);
 		if (tDamage > 0) {
 			if (mDamage > 0) ((MultiItemTool)aItem).doDamage(aStack, UT.Code.units(tDamage, 10000, mDamage, T), aPlayer, F);
-			if (mSoundName != null) UT.Sounds.send(aWorld, mSoundName, 1.0F, mRandomPitch ? _7_GRAND_DAD_[PITCH_INDEX = ((PITCH_INDEX + 1) % _7_GRAND_DAD_.length)] : mPitch, aX, aY, aZ);
+			if (mSoundName != null) UT.Sounds.send(mSoundName, 1.0F, mPitch, aWorld, aX, aY, aZ);
 			return !aWorld.isRemote;
 		}
 		return F;

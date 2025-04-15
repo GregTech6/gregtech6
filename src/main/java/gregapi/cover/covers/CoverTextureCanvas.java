@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -21,7 +21,6 @@ package gregapi.cover.covers;
 
 import gregapi.cover.CoverData;
 import gregapi.cover.ITileEntityCoverable;
-import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.render.BlockTextureCopied;
 import gregapi.render.BlockTextureDefault;
@@ -50,10 +49,10 @@ public class CoverTextureCanvas extends AbstractCoverDefault {
 	@Override
 	public void onCoverPlaced(byte aSide, CoverData aData, Entity aPlayer, ItemStack aCover) {
 		if (aCover != null && aCover.hasTagCompound()) aData.visual(aSide, (short)((aCover.getTagCompound().getInteger(NBT_CANVAS_BLOCK) << 4) | (aCover.getTagCompound().getInteger(NBT_CANVAS_META) & 15)));
-		if (aPlayer != null) UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_DIG_CLOTH, 1.0F, -1.0F, aData.mTileEntity.getCoords());
+		if (aPlayer != null) UT.Sounds.send(SFX.MC_DIG_CLOTH, 1.0F, -1.0F, aData.mTileEntity);
 	}
 	
-	@Override public void onAfterCrowbar(ITileEntityCoverable aTileEntity) {UT.Sounds.send(aTileEntity.getWorld(), SFX.MC_DIG_CLOTH, 1.0F, -1.0F, aTileEntity.getCoords());}
+	@Override public void onAfterCrowbar(ITileEntityCoverable aTileEntity) {UT.Sounds.send(SFX.MC_DIG_CLOTH, 1.0F, -1.0F, aTileEntity);}
 	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return T;}
 	
 	@Override

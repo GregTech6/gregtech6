@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.item.multiitem.behaviors;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.item.multiitem.MultiItem;
@@ -33,6 +29,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import java.util.List;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
 
 public class Behavior_TripwireCutting extends AbstractBehaviorDefault {
 	private final int mCosts;
@@ -51,7 +52,7 @@ public class Behavior_TripwireCutting extends AbstractBehaviorDefault {
 				if (Blocks.tripwire.removedByPlayer(aWorld, aPlayer, aX, aY, aZ, T)) {
 					Blocks.tripwire.onBlockDestroyedByPlayer(aWorld, aX, aY, aZ, aMeta);
 					Blocks.tripwire.harvestBlock(aWorld, aPlayer, aX, aY, aZ, aMeta);
-					UT.Sounds.send(aWorld, SFX.MC_SHEARS, 1.0F, 1.0F, aX, aY, aZ);
+					UT.Sounds.send(SFX.MC_SHEARS, aWorld, aX, aY, aZ);
 				}
 			}
 			return T;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -50,7 +50,7 @@ public abstract class AbstractCoverDefault implements ICover {
 	@Override public boolean interceptCoverPlacement(byte aCoverSide, CoverData aData, Entity aPlayer) {return F;}
 	@Override public boolean interceptCoverRemoval(byte aCoverSide, CoverData aData, Entity aPlayer) {return F;}
 	@Override public void onCoverLoaded(byte aCoverSide, CoverData aData) {/**/}
-	@Override public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {if (aPlayer != null) UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.GT_SCREWDRIVER, 1.0F, 1.0F, aData.mTileEntity.getCoords());}
+	@Override public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {if (aPlayer != null) UT.Sounds.send(SFX.GT_SCREWDRIVER, aData.mTileEntity);}
 	@Override public void onCoverRemove(byte aCoverSide, CoverData aData, Entity aPlayer) {/**/}
 	@Override public void onTickPre (byte aCoverSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {/**/}
 	@Override public void onTickPost(byte aCoverSide, CoverData aData, long aTimer, boolean aIsServerSide, boolean aReceivedBlockUpdate, boolean aReceivedInventoryUpdate) {/**/}
@@ -71,7 +71,7 @@ public abstract class AbstractCoverDefault implements ICover {
 	@Override public boolean showsConnectorFront(byte aCoverSide, CoverData aData) {return T;}
 	@Override public boolean needsVisualsSaved(byte aCoverSide, CoverData aData) {return F;}
 	@Override public boolean onWalkOver(byte aCoverSide, CoverData aData, Entity aEntity) {return T;}
-	@Override public void onAfterCrowbar(ITileEntityCoverable aTileEntity) {UT.Sounds.send(aTileEntity.getWorld(), SFX.MC_BREAK, 1.0F, -1.0F, aTileEntity.getCoords());}
+	@Override public void onAfterCrowbar(ITileEntityCoverable aTileEntity) {UT.Sounds.send(SFX.MC_BREAK, 1.0F, -1.0F, aTileEntity);}
 	@Override public void onBlockUpdate(byte aCoverSide, CoverData aData) {/**/}
 	@Override public void onStoppedUpdate(byte aCoverSide, CoverData aData, boolean aStopped) {/**/}
 	@Override public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {aList.add(LH.Chat.DGRAY + LH.get(LH.COVER_TOOLTIP));}

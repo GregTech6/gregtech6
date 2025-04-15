@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -50,8 +50,8 @@ public class CoverTextureSimple extends AbstractCoverDefault {
 	@Override public ITexture getCoverTextureAttachment(byte aSide, CoverData aData, byte aTextureSide) {return aSide != aTextureSide ? BACKGROUND_COVER : BlockTextureMulti.get(BACKGROUND_COVER, getCoverTextureSurface(aSide, aData));}
 	@Override public ITexture getCoverTextureHolder(byte aSide, CoverData aData, byte aTextureSide) {return BACKGROUND_COVER;}
 	
-	@Override public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {if (aPlayer != null) UT.Sounds.send(aData.mTileEntity.getWorld(), mSound == null ? SFX.GT_SCREWDRIVER : mSound, 1.0F, 1.0F, aData.mTileEntity.getCoords());}
-	@Override public void onAfterCrowbar(ITileEntityCoverable aTileEntity) {UT.Sounds.send(aTileEntity.getWorld(), mSound == null ? SFX.MC_BREAK : mSound, 1.0F, -1.0F, aTileEntity.getCoords());}
+	@Override public void onCoverPlaced(byte aCoverSide, CoverData aData, Entity aPlayer, ItemStack aCover) {if (aPlayer != null) UT.Sounds.send(mSound == null ? SFX.GT_SCREWDRIVER : mSound, aData.mTileEntity);}
+	@Override public void onAfterCrowbar(ITileEntityCoverable aTileEntity) {UT.Sounds.send(mSound == null ? SFX.MC_BREAK : mSound, 1.0F, -1.0F, aTileEntity);}
 	@Override public boolean isDecorative(byte aCoverSide, CoverData aData) {return T;}
 	@Override public boolean needsVisualsSaved(byte aSide, CoverData aData) {return F;}
 }

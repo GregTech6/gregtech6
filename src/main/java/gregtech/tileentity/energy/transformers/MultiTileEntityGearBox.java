@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -354,7 +354,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		
 		if (tSpeed > mMaxThroughPut) {
 			if (mTimer < 10) return aPower;
-			UT.Sounds.send(SFX.MC_BREAK, this);
+			UT.Sounds.send(SFX.MC_BREAK, this, F);
 			byte tCount = FACE_CONNECTION_COUNT[mAxleGear & 63];
 			if (tCount > 0) {
 				ST.drop(getWorld(), getCoords(), OP.scrapGt.mat(mMaterial, 9+rng(27)));
@@ -380,7 +380,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			byte tRotationData = getRotations(aSide, aSpeed < 0);
 			if (tRotationData != mRotationData) {
 				// Gears are jamming!
-				UT.Sounds.send(SFX.MC_BREAK, this);
+				UT.Sounds.send(SFX.MC_BREAK, this, F);
 				mRotationData = 0;
 				mJammed = T;
 				return aPower;

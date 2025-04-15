@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,8 @@
 
 package gregtech.items.behaviors;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.IBlockToolable;
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.data.TD;
 import gregapi.item.multiitem.MultiItem;
@@ -40,6 +35,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class Behavior_FlintAndTinder extends AbstractBehaviorDefault {
 	@Override
@@ -57,7 +56,7 @@ public class Behavior_FlintAndTinder extends AbstractBehaviorDefault {
 		UT.Entities.sendchat(aPlayer, tChatReturn, F);
 		if (aWorld.isRemote) return F;
 		((MultiItemTool)aItem).doDamage(aStack, UT.Code.units(Math.max(10000, tDamage), 10000, 100, T), aPlayer, F);
-		UT.Sounds.send(aWorld, SFX.MC_IGNITE, 1.0F, 1.0F, aX, aY, aZ);
+		UT.Sounds.send(SFX.MC_IGNITE, aWorld, aX, aY, aZ);
 		return T;
 	}
 	
@@ -71,7 +70,7 @@ public class Behavior_FlintAndTinder extends AbstractBehaviorDefault {
 		if (aPlayer.worldObj.isRemote) return F;
 		if (aEntity instanceof EntityCreeper) {
 			((MultiItemTool)aItem).doDamage(aStack, 100, aPlayer, F);
-			UT.Sounds.send(aPlayer.worldObj, SFX.MC_IGNITE, 1.0F, 1.0F, UT.Code.roundDown(aEntity.posX), UT.Code.roundDown(aEntity.posY), UT.Code.roundDown(aEntity.posZ));
+			UT.Sounds.send(SFX.MC_IGNITE, aEntity);
 			((EntityCreeper)aEntity).func_146079_cb();
 			return T;
 		}

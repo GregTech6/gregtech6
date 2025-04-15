@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -20,7 +20,6 @@
 package gregtech.items.tools.early;
 
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.*;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.data.RM;
@@ -131,8 +130,8 @@ public class GT_Tool_HardHammer extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_hammer    , SFX.MC_ANVIL_LAND, 100, T, T));
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_prospector, SFX.MC_ANVIL_USE ,  10, T, T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_hammer    , SFX.MC_ANVIL_LAND, 100, T, SFX.RANDOM_PITCH));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_prospector, SFX.MC_ANVIL_USE ,  10, T, SFX.RANDOM_PITCH));
 	}
 	
 	@Override

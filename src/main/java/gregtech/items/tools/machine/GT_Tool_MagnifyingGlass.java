@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,9 +19,7 @@
 
 package gregtech.items.tools.machine;
 
-import static gregapi.data.CS.*;
-
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Tool;
@@ -31,6 +29,8 @@ import gregapi.render.IIconContainer;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.*;
 
 public class GT_Tool_MagnifyingGlass extends ToolStats {
 	@Override
@@ -85,7 +85,7 @@ public class GT_Tool_MagnifyingGlass extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_magnifyingglass, SFX.MC_AHA, 100, !canBlock(), T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_magnifyingglass, SFX.MC_AHA, 100, !canBlock(), SFX.RANDOM_PITCH));
 	}
 	
 	@Override

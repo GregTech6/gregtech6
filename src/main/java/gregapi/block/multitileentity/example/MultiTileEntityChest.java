@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -223,7 +223,7 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 			// Nothing was done.
 			if (rCount <= 0) return 1;
 			// Make Sound and update Player Inventory if Items got transferred.
-			UT.Sounds.send(SFX.MC_COLLECT, this);
+			UT.Sounds.send(SFX.MC_COLLECT, this, F);
 			ST.update(aPlayer);
 			return rCount;
 		}

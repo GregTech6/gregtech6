@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -284,7 +284,7 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				
 				if (!mMagicProof && FL.magic(tFluid)) {
 					mTransferredAmount += GarbageGT.trash(tTank, FL.gas(tFluid) ? 16 : 4);
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
+					UT.Sounds.send(SFX.MC_FIZZ, this, F);
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-3, -3, -3, +4, +4, +4))) UT.Entities.applyPotion(tEntity, Potion.poison, 1200, 1, F);} catch(Throwable e) {e.printStackTrace(ERR);}
 					if (rng(100) == 0) {
 						GarbageGT.trash(mTanks);
@@ -295,19 +295,19 @@ public class MultiTileEntityPipeFluid extends TileEntityBase10ConnectorRendered 
 				
 				if (!mGasProof && FL.gas(tFluid)) {
 					mTransferredAmount += GarbageGT.trash(tTank, 8);
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
+					UT.Sounds.send(SFX.MC_FIZZ, this, F);
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F, 10.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
 				}
 				
 				if (!mPlasmaProof && FL.plasma(tFluid)) {
 					mTransferredAmount += GarbageGT.trash(tTank, 64);
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
+					UT.Sounds.send(SFX.MC_FIZZ, this, F);
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, mTemperature, 2.0F, 10.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
 				}
 				
 				if (!mAcidProof && FL.acid(tFluid)) {
 					mTransferredAmount += GarbageGT.trash(tTank, 16);
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
+					UT.Sounds.send(SFX.MC_FIZZ, this, F);
 					try {for (Entity tEntity : (List<Entity>)worldObj.getEntitiesWithinAABB(Entity.class, box(-1, -1, -1, +2, +2, +2))) UT.Entities.applyChemDamage(tEntity, 2);} catch(Throwable e) {e.printStackTrace(ERR);}
 					if (rng(100) == 0) {
 						GarbageGT.trash(mTanks);

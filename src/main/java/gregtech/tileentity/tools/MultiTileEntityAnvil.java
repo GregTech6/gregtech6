@@ -124,7 +124,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 				long tDurability = UT.Entities.getDurabilityUse(aPlayer, Math.max(10000, UT.Code.divup(Math.max(1, tRecipe.getAbsoluteTotalPower()), 4)));
 				mDurability -= tDurability;
 				if (mDurability <= 0) {
-					UT.Sounds.send(SFX.MC_BREAK, this);
+					UT.Sounds.send(SFX.MC_BREAK, this, F);
 					ST.drop(worldObj, getCoords(), OP.scrapGt.mat(mMaterial.mTargetSmashing.mMaterial, 48+rng(16))); // Drops up to 63 Scraps, so 7 Units.
 					setToAir();
 				}

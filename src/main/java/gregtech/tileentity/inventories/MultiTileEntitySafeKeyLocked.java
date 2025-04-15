@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,11 +19,7 @@
 
 package gregtech.tileentity.inventories;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.TD;
@@ -42,6 +38,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -83,7 +83,7 @@ public class MultiTileEntitySafeKeyLocked extends MultiTileEntitySafe implements
 			if (mID != 0 && tID == mID) {
 				mOpened = !mOpened;
 				updateClientData();
-				UT.Sounds.send(SFX.MC_CLICK, 1.0F, 0.25F, this);
+				UT.Sounds.send(SFX.MC_CLICK, 1.0F, 0.25F, this, F);
 				return T;
 			}
 		}

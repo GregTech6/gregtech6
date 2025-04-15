@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,21 +19,13 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.data.ANY;
-import gregapi.data.BI;
-import gregapi.data.CS.SFX;
-import gregapi.data.LH;
+import gregapi.data.*;
+import gregapi.data.CS.*;
 import gregapi.data.LH.Chat;
-import gregapi.data.MT;
-import gregapi.data.RM;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.recipes.Recipe;
@@ -51,6 +43,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -93,7 +89,7 @@ public class MultiTileEntityMortar extends TileEntityBase07Paintable implements 
 				if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, aStack)) {
 					for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
 					aPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 250.0F);
-					UT.Sounds.send(worldObj, SFX.MC_DIG_ROCK, 1.0F, 1.0F, getCoords());
+					UT.Sounds.send(SFX.MC_DIG_ROCK, this, F);
 					return T;
 				}
 			}

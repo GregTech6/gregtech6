@@ -89,7 +89,7 @@ public abstract class MultiTileEntityTank5x5x5 extends MultiTileEntityTank {
 				if (FL.temperature(mTank) >= mMaterial.mMeltingPoint && meltdown()) return;
 				
 				if (!mMagicProof && FL.magic(tFluid)) {
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
+					UT.Sounds.send(SFX.MC_FIZZ, this, F);
 					GarbageGT.trash(mTank);
 					int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
 					for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) for (int k = -2; k <= 2; k++) {
@@ -99,7 +99,7 @@ public abstract class MultiTileEntityTank5x5x5 extends MultiTileEntityTank {
 					return;
 				}
 				if (!mAcidProof && FL.acid(mTank)) {
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 0.5F, getCoords());
+					UT.Sounds.send(SFX.MC_FIZZ, this, F);
 					GarbageGT.trash(mTank);
 					int tX = getOffsetXN(mFacing, 2), tY = getOffsetYN(mFacing, 2), tZ = getOffsetZN(mFacing, 2);
 					for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) for (int k = -2; k <= 2; k++) {
@@ -110,15 +110,15 @@ public abstract class MultiTileEntityTank5x5x5 extends MultiTileEntityTank {
 				}
 				if (!mPlasmaProof && FL.plasma(mTank)) {
 					GarbageGT.trash(mTank);
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
+					UT.Sounds.send(SFX.MC_FIZZ, this, F);
 				} else
 				if (!mGasProof && FL.gas(mTank)) {
 					GarbageGT.trash(mTank);
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
+					UT.Sounds.send(SFX.MC_FIZZ, this, F);
 				} else
 				if (!allowFluid(tFluid)) {
 					GarbageGT.trash(mTank);
-					UT.Sounds.send(worldObj, SFX.MC_FIZZ, 1.0F, 1.0F, getCoords());
+					UT.Sounds.send(SFX.MC_FIZZ, this, F);
 				} else
 				if (SIDES_HORIZONTAL[mFacing] || FL.gas(mTank) || (FL.lighter(mTank)?SIDES_TOP:SIDES_BOTTOM)[mFacing]) {
 					if (FL.move(mTank, getAdjacentTileEntity(mFacing)) > 0) updateInventory();

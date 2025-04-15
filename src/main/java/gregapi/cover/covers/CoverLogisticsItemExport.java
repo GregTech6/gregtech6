@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,8 @@
 
 package gregapi.cover.covers;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.cover.CoverData;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
@@ -34,6 +30,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -91,7 +91,7 @@ public class CoverLogisticsItemExport extends AbstractCoverAttachmentLogistics {
 				ItemStack tStack = ST.make(((EntityPlayer)aPlayer).getCurrentEquippedItem(), null, null);
 				if (ST.valid(tStack)) {
 					aData.mNBTs[aCoverSide] = ST.save("gt.filter.item", tStack);
-					UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_CLICK, 1, 1, aData.mTileEntity.getCoords());
+					UT.Sounds.send(SFX.MC_CLICK, aData.mTileEntity);
 					UT.Entities.sendchat(aPlayer, "Exports: " + LH.Chat.CYAN + ST.regName(tStack) + LH.Chat.GRAY + " ; " + LH.Chat.CYAN + ST.meta_(tStack));
 				}
 			}

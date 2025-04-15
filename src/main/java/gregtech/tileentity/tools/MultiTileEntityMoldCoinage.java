@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,8 @@
 
 package gregtech.tileentity.tools;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SyncDataShort;
-import gregapi.data.CS.SFX;
+import gregapi.block.multitileentity.IMultiTileEntity.*;
+import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.OP;
@@ -55,6 +47,10 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -121,7 +117,7 @@ public class MultiTileEntityMoldCoinage extends TileEntityBase07Paintable implem
 				if (tData != null && tData.mPrefix == OP.plateTiny) {
 					if (!UT.Entities.hasInfiniteItems(aPlayer)) aStack.stackSize--;
 					slot(0, ST.amount(1, aStack));
-					UT.Sounds.send(SFX.MC_CLICK, this);
+					UT.Sounds.send(SFX.MC_CLICK, this, F);
 					return T;
 				}
 			} else {
@@ -143,7 +139,7 @@ public class MultiTileEntityMoldCoinage extends TileEntityBase07Paintable implem
 				}
 				return 0;
 			}
-			UT.Sounds.send(SFX.MC_BREAK, this);
+			UT.Sounds.send(SFX.MC_BREAK, this, F);
 			return aRemainingDurability;
 		}
 		return super.onToolClick2(aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aSide, aHitX, aHitY, aHitZ);

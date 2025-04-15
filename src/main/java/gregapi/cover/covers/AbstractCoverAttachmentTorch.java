@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,15 +19,14 @@
 
 package gregapi.cover.covers;
 
-import static gregapi.data.CS.*;
-
 import gregapi.cover.CoverData;
 import gregapi.cover.ITileEntityCoverable;
-import gregapi.data.CS.SFX;
 import gregapi.tileentity.connectors.MultiTileEntityWireRedstoneInsulated;
 import gregapi.util.UT;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -39,12 +38,12 @@ public abstract class AbstractCoverAttachmentTorch extends AbstractCoverAttachme
 	@Override
 	public void onCoverPlaced(byte aSide, CoverData aData, Entity aPlayer, ItemStack aCover) {
 		if (((MultiTileEntityWireRedstoneInsulated)aData.mTileEntity).connected(aSide)) ((MultiTileEntityWireRedstoneInsulated)aData.mTileEntity).disconnect(aSide, T);
-		if (aPlayer != null) UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_DIG_WOOD, 1.0F, -1.0F, aData.mTileEntity.getCoords());
+		if (aPlayer != null) UT.Sounds.send(SFX.MC_DIG_WOOD, 1.0F, -1.0F, aData.mTileEntity);
 	}
 	
 	@Override
 	public void onAfterCrowbar(ITileEntityCoverable aTileEntity) {
-		UT.Sounds.send(aTileEntity.getWorld(), SFX.MC_DIG_WOOD, 1.0F, -1.0F, aTileEntity.getCoords());
+		UT.Sounds.send(SFX.MC_DIG_WOOD, 1.0F, -1.0F, aTileEntity);
 	}
 	
 	@Override

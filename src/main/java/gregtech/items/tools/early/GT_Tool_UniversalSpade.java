@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -129,8 +129,8 @@ public class GT_Tool_UniversalSpade extends ToolStats {
 		aItem.addItemBehavior(aID, Behavior_Plug_Leak.INSTANCE);
 		aItem.addItemBehavior(aID, new Behavior_Place_Path(50));
 		aItem.addItemBehavior(aID, new Behavior_Place_Paddy(50));
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_crowbar, SFX.MC_BREAK, 200, F, T));
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_shovel, SFX.MC_DIG_GRAVEL, 100, F, T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_crowbar, SFX.MC_BREAK, 200, F, SFX.RANDOM_PITCH));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_shovel, SFX.MC_DIG_GRAVEL, 100, F, SFX.RANDOM_PITCH));
 		aItem.addItemBehavior(aID, Behavior_Place_Torch.INSTANCE);
 	}
 	

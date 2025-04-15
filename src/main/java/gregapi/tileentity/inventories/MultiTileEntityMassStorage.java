@@ -143,7 +143,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 			// Nothing was done.
 			if (rCount <= 0) return 1;
 			// Make Sound and update Player Inventory if Items got transferred.
-			UT.Sounds.send(SFX.MC_COLLECT, this);
+			UT.Sounds.send(SFX.MC_COLLECT, this, F);
 			ST.update(aPlayer);
 			// Update Mass Storage itself too.
 			updateClientData();

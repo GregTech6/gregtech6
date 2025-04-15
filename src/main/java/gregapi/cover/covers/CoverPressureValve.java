@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,7 @@
 
 package gregapi.cover.covers;
 
-import static gregapi.data.CS.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import gregapi.cover.CoverData;
-import gregapi.data.CS.GarbageGT;
-import gregapi.data.CS.SFX;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.fluid.FluidTankGT;
@@ -38,6 +31,11 @@ import gregapi.util.UT;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.IFluidHandler;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -57,7 +55,7 @@ public class CoverPressureValve extends AbstractCoverAttachment {
 				if (tDelegator.mTileEntity != null) {
 					FL.move(tTank, tDelegator);
 				} else if (FL.gas(tTank) && !tDelegator.hasCollisionBox()) {
-					UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_FIZZ, 1.0F, 1.0F, aData.mTileEntity.getCoords());
+					UT.Sounds.send(SFX.MC_FIZZ, aData.mTileEntity);
 					try {for (Entity tEntity : (ArrayList<Entity>)aData.mTileEntity.getWorld().getEntitiesWithinAABB(Entity.class, aData.box(-2, -2, -2, +3, +3, +3))) UT.Entities.applyTemperatureDamage(tEntity, FL.temperature(tTank.getFluid()), 2.0F, 10.0F);} catch(Throwable e) {e.printStackTrace(ERR);}
 					GarbageGT.trash(tTank);
 				}

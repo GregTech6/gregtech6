@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -20,7 +20,6 @@
 package gregapi.cover.covers;
 
 import gregapi.cover.CoverData;
-import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.TD;
@@ -98,7 +97,7 @@ public class CoverLogisticsFluidExport extends AbstractCoverAttachmentLogistics 
 					}
 					if (FL.valid(tFluid)) {
 						aData.mNBTs[aCoverSide] = FL.save(null, "gt.filter.fluid", tFluid);
-						UT.Sounds.send(aData.mTileEntity.getWorld(), SFX.MC_CLICK, 1, 1, aData.mTileEntity.getCoords());
+						UT.Sounds.send(SFX.MC_CLICK, aData.mTileEntity);
 						UT.Entities.sendchat(aPlayer, "Exports: " + LH.Chat.CYAN + tFluid.getFluid().getName());
 					}
 				}

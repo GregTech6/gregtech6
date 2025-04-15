@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,7 +19,6 @@
 
 package gregtech.items.tools.machine;
 
-import gregapi.data.CS.*;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
@@ -124,7 +123,7 @@ public class GT_Tool_Screwdriver extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_screwdriver, SFX.GT_SCREWDRIVER, 100, !canBlock(), T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_screwdriver, SFX.GT_SCREWDRIVER, 100, !canBlock(), SFX.RANDOM_PITCH));
 	}
 	
 	@Override

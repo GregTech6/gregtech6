@@ -19,7 +19,6 @@
 
 package gregtech.items.tools.machine;
 
-import gregapi.data.CS.*;
 import gregapi.data.IL;
 import gregapi.data.MT;
 import gregapi.data.OP;
@@ -60,7 +59,7 @@ public class GT_Tool_Builderwand extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_builderwand, SFX.MC_XP, 100, !canBlock(), T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_builderwand, SFX.MC_XP, 100, !canBlock(), SFX.RANDOM_PITCH));
 		aItem.addItemBehavior(aID, new Behavior_Builderwand());
 	}
 	

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -220,7 +220,7 @@ public abstract class TileEntityBase04Covers extends TileEntityBase03MultiTileEn
 			ItemStack tStack = getCoverItem(tSide);
 			if (tStack != null && setCoverItem(tSide, null, null, T, T)) {
 				ST.place(worldObj, getOffsetX(tSide)+0.5, getOffsetY(tSide)+0.5, getOffsetZ(tSide)+0.5, tStack);
-				UT.Sounds.send(worldObj, SFX.MC_BREAK, 1.0F, -1.0F, getCoords());
+				UT.Sounds.send(SFX.MC_BREAK, 1.0F, -1.0F, this, F);
 			}
 		}
 	}

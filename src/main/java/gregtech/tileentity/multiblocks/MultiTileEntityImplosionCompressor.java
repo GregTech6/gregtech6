@@ -59,7 +59,7 @@ public class MultiTileEntityImplosionCompressor extends TileEntityBase10MultiBlo
 		return mStructureOkay;
 	}
 	
-	@Override public void onProcessStarted() {UT.Sounds.send(SFX.MC_EXPLODE, this); super.onProcessStarted();}
+	@Override public void onProcessStarted() {UT.Sounds.send(SFX.MC_EXPLODE, this, F); super.onProcessStarted();}
 	
 	static {
 		LH.add("gt.tooltip.multiblock.implosioncompressor.1", "3x3x3 Hollow of 25 Dense Tungstensteel Walls filled with Air");

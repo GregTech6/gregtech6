@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,14 +19,7 @@
 
 package gregtech.items.behaviors;
 
-import static gregapi.data.CS.*;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-
-import gregapi.data.CS.BlocksGT;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.item.multiitem.MultiItem;
@@ -43,6 +36,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class Behavior_Spray_Color extends AbstractBehaviorDefault {
 	private final ItemStack mEmpty, mUsed, mFull;
@@ -76,7 +75,7 @@ public class Behavior_Spray_Color extends AbstractBehaviorDefault {
 		}
 		if (ST.equal(aStack, mUsed, T)) {
 			if (colorize(aWorld, aX, aY, aZ, aSide)) {
-				UT.Sounds.send(aWorld, SFX.IC_SPRAY, 1.0F, 1.0F, aX, aY, aZ);
+				UT.Sounds.send(SFX.IC_SPRAY, aWorld, aX, aY, aZ);
 				if (!UT.Entities.hasInfiniteItems(aPlayer)) tUses-=10;
 				rOutput = T;
 			}

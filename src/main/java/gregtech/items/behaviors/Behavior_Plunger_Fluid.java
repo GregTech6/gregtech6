@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregtech.items.behaviors;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
 import gregapi.item.multiitem.MultiItem;
@@ -36,6 +32,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.IFluidHandler;
+
+import java.util.List;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
 
 public class Behavior_Plunger_Fluid extends AbstractBehaviorDefault {
 	private final int mCosts;
@@ -52,7 +53,7 @@ public class Behavior_Plunger_Fluid extends AbstractBehaviorDefault {
 			for (ForgeDirection tDirection : ForgeDirection.VALID_DIRECTIONS) if (((IFluidHandler)aTileEntity).drain(tDirection, 1000, F) != null) {
 				if (((MultiItemTool)aItem).doDamage(aStack, mCosts, aPlayer, F)) {
 					((IFluidHandler)aTileEntity).drain(tDirection, 1000, T);
-					UT.Sounds.send(aWorld, SFX.IC_TRAMPOLINE, 1.0F, -1, aX, aY, aZ);
+					UT.Sounds.send(SFX.IC_TRAMPOLINE, 1.0F, -1, aTileEntity);
 					return T;
 				}
 			}

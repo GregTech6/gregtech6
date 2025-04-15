@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -198,7 +198,7 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 					// TODO proper explosion.
 					// explode(10); // TODO Keep commented out until Reactor System has been tested well enough.
 					slotKill(0); slotKill(1); slotKill(2); slotKill(3);
-					UT.Sounds.send(SFX.MC_EXPLODE, this);
+					UT.Sounds.send(SFX.MC_EXPLODE, this, F);
 					tCalc *= 2;
 					for (Object tEntity : worldObj.loadedEntityList) if (tEntity instanceof EntityLivingBase) {
 						if (Math.abs(xCoord - ((EntityLivingBase)tEntity).posX) > 500) continue;
@@ -285,7 +285,7 @@ public class MultiTileEntityReactorCore2x2 extends MultiTileEntityReactorCore im
 				if (!slotHas(tSlot) && ST.use(aPlayer, aStack)) {
 					slot(tSlot, ST.amount(1, aStack));
 					mStopped = T;
-					UT.Sounds.send(SFX.MC_CLICK, this);
+					UT.Sounds.send(SFX.MC_CLICK, this, F);
 					updateClientData();
 				}
 			}

@@ -32,8 +32,7 @@ import net.minecraft.util.ChunkCoordinates;
 
 import java.util.List;
 
-import static gregapi.data.CS.F;
-import static gregapi.data.CS.T;
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -53,11 +52,15 @@ public interface ITileEntityMultiBlockController extends ITileEntityUnloadable, 
 				ItemStack aStack = ST.make(aRegistryID, 1, aRegistryMeta);
 				if (WD.easyRep(aController.getWorld(), aX, aY, aZ) && UT.Entities.canEdit(aPlayer, aX, aY, aZ, aStack)) {
 					if (aInventory == null || UT.Entities.hasInfiniteItems(aPlayer)) {
-						WD.set(aController.getWorld(), aX, aY, aZ, ST.make(aRegistryID, 1, aRegistryMeta));
+						if (WD.set(aController.getWorld(), aX, aY, aZ, ST.make(aRegistryID, 1, aRegistryMeta)) && aPlayer != null) {
+							UT.Sounds.send(SFX.MC_XP, aController.getWorld(), aX, aY, aZ);
+						}
 					} else for (int i = aInventory.getSizeInventory()-1; i >= 0; i--) {
 						ItemStack tStack = aInventory.getStackInSlot(i);
 						if (ST.equal(aStack, tStack, T) && ST.use(aPlayer, T, T, tStack, 1)) {
-							WD.set(aController.getWorld(), aX, aY, aZ, tStack);
+							if (WD.set(aController.getWorld(), aX, aY, aZ, tStack) && aPlayer != null) {
+								UT.Sounds.send(SFX.MC_XP, aController.getWorld(), aX, aY, aZ);
+							}
 							break;
 						}
 					}

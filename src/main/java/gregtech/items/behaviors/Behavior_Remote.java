@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregtech.items.behaviors;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.code.ArrayListNoNulls;
 import gregapi.data.CS.SFX;
 import gregapi.data.LH;
@@ -39,6 +35,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 
+import java.util.List;
+
+import static gregapi.data.CS.F;
+import static gregapi.data.CS.T;
+
 public class Behavior_Remote extends AbstractBehaviorDefault {
 	public static final IBehavior<MultiItem> INSTANCE = new Behavior_Remote();
 	
@@ -50,20 +51,20 @@ public class Behavior_Remote extends AbstractBehaviorDefault {
 		ChunkCoordinates tCoords = new ChunkCoordinates(aX, aY, aZ);
 		if (tList.contains(tCoords)) {
 			UT.Entities.sendchat(aPlayer, "Coordinates removed!");
-			UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 1.0F, tCoords);
+			UT.Sounds.send(SFX.GT_BEEP, 0.5F, 1.0F, aWorld, tCoords);
 			tList.remove(tCoords);
 		} else if (tList.size() >= 64) {
 			UT.Entities.sendchat(aPlayer, "Cant hold more than 64 Coordinates per Dimension!");
-			UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 0.5F, tCoords);
+			UT.Sounds.send(SFX.GT_BEEP, 0.5F, 0.5F, aWorld, tCoords);
 		} else {
 			TileEntity tTileEntity = WD.te(aWorld, tCoords, F);
 			if (tTileEntity instanceof ITileEntityRemoteActivateable) {
 				UT.Entities.sendchat(aPlayer, "Coordinates added!");
-				UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 1.0F, tCoords);
+				UT.Sounds.send(SFX.GT_BEEP, 0.5F, 1.0F, aWorld, tCoords);
 				tList.add(tCoords);
 			} else {
 				UT.Entities.sendchat(aPlayer, "This cannot be added!");
-				UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 0.5F, tCoords);
+				UT.Sounds.send(SFX.GT_BEEP, 0.5F, 0.5F, aWorld, tCoords);
 			}
 		}
 		setCoords(aNBT, aWorld.provider.dimensionId, tList);
@@ -84,7 +85,7 @@ public class Behavior_Remote extends AbstractBehaviorDefault {
 			}
 		}
 		setCoords(aStack.getTagCompound(), aWorld.provider.dimensionId, tToBeKept);
-		UT.Sounds.send(aWorld, SFX.MC_CLICK, 1.0F, 1.0F, aPlayer);
+		UT.Sounds.send(SFX.MC_CLICK, aPlayer);
 		return aStack;
 	}
 	
@@ -96,13 +97,13 @@ public class Behavior_Remote extends AbstractBehaviorDefault {
 		if (tList.contains(tCoords)) return T;
 		TileEntity tTileEntity = WD.te(aWorld, tCoords, F);
 		if (tTileEntity instanceof ITileEntityRemoteActivateable) {
-			UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 1.0F, tCoords);
+			UT.Sounds.send(SFX.GT_BEEP, 0.5F, 1.0F, aWorld, tCoords);
 			tList.add(tCoords);
 			setCoords(aNBT, aWorld.provider.dimensionId, tList);
 			UT.NBT.set(aStack, aNBT);
 			return T;
 		}
-		UT.Sounds.send(aWorld, SFX.GT_BEEP, 0.5F, 0.5F, tCoords);
+		UT.Sounds.send(SFX.GT_BEEP, 0.5F, 0.5F, aWorld, tCoords);
 		return F;
 	}
 	

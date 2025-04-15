@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,9 @@
 
 package gregtech.items.behaviors;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.IBlockToolable;
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.SFX;
+import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
@@ -37,6 +33,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 public class Behavior_Duct_Tape extends AbstractBehaviorDefault {
 	private final ItemStack mEmpty, mUsed, mFull;
@@ -68,7 +68,7 @@ public class Behavior_Duct_Tape extends AbstractBehaviorDefault {
 		if (ST.equal(aStack, mUsed, T)) {
 			long tUsed = tape(aWorld, aX, aY, aZ, aSide, UT.Entities.hasInfiniteItems(aPlayer)?mUses:tUses, aPlayer, aStack, aHitX, aHitY, aHitZ);
 			if (tUsed > 0) {
-				UT.Sounds.send(aWorld, SFX.MC_DIG_CLOTH, 1.0F, 1.0F, aX, aY, aZ);
+				UT.Sounds.send(SFX.MC_DIG_CLOTH, aWorld, aX, aY, aZ);
 				if (!UT.Entities.hasInfiniteItems(aPlayer)) tUses -= tUsed;
 				rOutput = T;
 			}

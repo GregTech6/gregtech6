@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -64,6 +64,7 @@ public class Behavior_Builderwand extends AbstractBehaviorDefault {
 					
 					int tOldSize = tStack.stackSize;
 					if (tStack.tryPlaceItemIntoWorld(aPlayer, aWorld, aX + tX, aY + tY, aZ + tZ, SIDE_TOP, 0.5F, 0.25F, 0.5F)) {
+						UT.Sounds.send(SFX.MC_XP, aWorld, aX + tX, aY + tY, aZ + tZ);
 						if (UT.Entities.hasInfiniteItems(aPlayer)) {
 							tStack.stackSize = tOldSize;
 						} else {

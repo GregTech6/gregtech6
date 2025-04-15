@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,7 +19,6 @@
 
 package gregtech.items.tools.machine;
 
-import gregapi.data.CS.*;
 import gregapi.data.MT;
 import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.MultiItemTool;
@@ -83,7 +82,7 @@ public class GT_Tool_Plunger extends ToolStats {
 	@Override
 	@SuppressWarnings("unchecked")
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_plunger, SFX.IC_TRAMPOLINE, 100, !canBlock(), T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_plunger, SFX.IC_TRAMPOLINE, 100, !canBlock(), SFX.RANDOM_PITCH));
 		aItem.addItemBehavior(aID, new Behavior_Plunger_Item(getToolDamagePerDropConversion()));
 		aItem.addItemBehavior(aID, new Behavior_Plunger_Fluid(getToolDamagePerDropConversion()));
 		try {

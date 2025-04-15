@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,6 +19,7 @@
 
 package gregtech.items.tools.early;
 
+import gregapi.data.CS;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.item.multiitem.MultiItemTool;
@@ -32,7 +33,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.AchievementList;
 
-import static gregapi.data.CS.T;
 import static gregapi.data.CS.TOOL_hoe;
 
 public class GT_Tool_Hoe extends ToolStats {
@@ -98,7 +98,7 @@ public class GT_Tool_Hoe extends ToolStats {
 	
 	@Override
 	public void onStatsAddedToTool(MultiItemTool aItem, int aID) {
-		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_hoe, null, 100, !canBlock(), T));
+		aItem.addItemBehavior(aID, new Behavior_Tool(TOOL_hoe, null, 100, !canBlock(), CS.SFX.RANDOM_PITCH));
 	}
 	
 	@Override
