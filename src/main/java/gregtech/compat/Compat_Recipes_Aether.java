@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,27 +19,20 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-import static gregapi.util.CR.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.ANY;
-import gregapi.data.CS.OreDictToolNames;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.util.CR;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+
+import static gregapi.data.CS.*;
+import static gregapi.util.CR.DEF;
+import static gregapi.util.CR.DEL_OTHER_SHAPED_RECIPES;
 
 public class Compat_Recipes_Aether extends CompatMods {
 	public Compat_Recipes_Aether(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -52,6 +45,16 @@ public class Compat_Recipes_Aether extends CompatMods {
 		RM.generify(IL.AETHER_Bowl.get(1), ST.make(Items.bowl, 1, 0));
 		
 		CR.shapeless(ST.make(MD.AETHER, "cornstarchBowl", 1, 0), CR.DEF_NCC, new Object[] {IL.AETHER_Bowl, OP.dust.dat(ANY.Flour)});
+		
+		RM.moss    (ST.make(MD.AETHER, "holystoneWall"           , 1, 0), ST.make(MD.AETHER, "mossyHolystoneWall"           , 1, 0));
+		RM.moss    (ST.make(MD.AETHER, "tile.holystoneSingleSlab", 1, 0), ST.make(MD.AETHER, "tile.mossyHolystoneSingleSlab", 1, 0));
+		RM.moss    (ST.make(MD.AETHER, "holystoneStairs"         , 1, 0), ST.make(MD.AETHER, "mossyHolystoneStairs"         , 1, 0));
+		RM.moss    (ST.make(MD.AETHER, "tile.holystoneDoubleSlab", 1, 0), ST.make(MD.AETHER, "tile.mossyHolystoneDoubleSlab", 1, 0));
+		RM.moss    (ST.make(MD.AETHER, "holystone"               , 1, 1), ST.make(MD.AETHER, "holystone"                    , 1, 3));
+		RM.growmoss(ST.make(MD.AETHER, "holystone"               , 1, 0), ST.make(MD.AETHER, "holystone"                    , 1, 3));
+		
+		RM.mortarize(ST.make(MD.AETHER, "icestone", 1, 0), OP.dustTiny.mat(MT.Blizz, 8));
+		RM.smash    (ST.make(MD.AETHER, "icestone", 1, 0), OP.dustTiny.mat(MT.Blizz, 6));
 		
 		RM.sawing(16,  32, F, 100, ST.make(MD.AETHER, "skyrootSignItem"     , 1, W), IL.AETHER_Skyroot_Planks.get(2), OM.dust(MT.Skyroot, OP.stick.mAmount / 3));
 		RM.sawing(16,  32, F, 100, ST.make(MD.AETHER, "skyrootFenceGate"    , 1, W), IL.AETHER_Skyroot_Planks.get(2), OM.dust(MT.Skyroot, OP.stick.mAmount * 4));

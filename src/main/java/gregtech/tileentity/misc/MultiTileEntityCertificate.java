@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -127,7 +127,7 @@ public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle imp
 		if (isServerSide()) {
 			// This is simply a helper Function for quickly getting Registry Names of Items.
 			if (D1) for (ItemStack tStack : aPlayer.inventory.mainInventory) if (ST.valid(tStack)) {
-				DEB.println("ST.make(\"" + ST.regName(tStack) + "\"      , 1, " + ST.meta_(tStack) + ");       " + ST.namesAndSizes(tStack));
+				DEB.println("ST.make(\"" + ST.regName(tStack) + "\"      , 1, " + ST.meta_(tStack) + ");                            // " + ST.namesAndSizes(tStack));
 			}
 			// Now for the actual thing that this needs to do on Rightclick.
 			if (mGold  ) {UT.Entities.sendchat(aPlayer, "This Certificate is owned by" + LH.Chat._YELLOW + getCustomName()); return T;}
