@@ -479,12 +479,12 @@ public class GT_API_Post extends Abstract_Mod {
 			OM.reg(OD.slimeball                         , ST.make(MD.AETHEL, "swet_ball", 1, 0));
 			OM.reg(OD.slimeballSwet                     , ST.make(MD.AETHEL, "swet_ball", 1, 0));
 			
-			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "holystone"                , 1, 0));
-			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "holystone"                , 1, 1));
-			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "holystone"                , 1, 2));
-			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "holystone"                , 1, 3));
-			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "holystone_brick"          , 1, 0));
-			OM.reg(OP.stone, MT.STONES.Holystone                , ST.make(MD.AETHEL, "mossy_holystone"          , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Holystone        , ST.make(MD.AETHEL, "holystone"      , 1, 0));
+			OM.reg(OP.stone, MT.STONES.Holystone        , ST.make(MD.AETHEL, "holystone"      , 1, 1));
+			OM.reg(OP.stone, MT.STONES.Holystone        , ST.make(MD.AETHEL, "holystone"      , 1, 2));
+			OM.reg(OP.stone, MT.STONES.Holystone        , ST.make(MD.AETHEL, "holystone"      , 1, 3));
+			OM.reg(OP.stone, MT.STONES.Holystone        , ST.make(MD.AETHEL, "holystone_brick", 1, 0));
+			OM.reg(OP.stone, MT.STONES.Holystone        , ST.make(MD.AETHEL, "mossy_holystone", 1, 0));
 			
 			BlocksGT.drillableDynamite.add(ST.block(MD.AETHEL, "aether_dirt"           , null));
 			BlocksGT.drillableDynamite.add(ST.block(MD.AETHEL, "aether_grass"          , null));
