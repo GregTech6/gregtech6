@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -125,6 +125,8 @@ public class TwilightTreasureReplacer extends TFTreasure {
 			// Nametags and Leashes.
 			rare     .add(Items.name_tag, 4);
 			rare     .add(Items.lead, 2);
+			// A way to obtain Breeze Rods, even if not many.
+			rare     .add(OP.stick.mat(MT.Breeze, 4));
 		}
 		
 		// Labyrinth Room

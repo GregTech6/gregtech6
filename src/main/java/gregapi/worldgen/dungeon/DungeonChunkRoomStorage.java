@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2024 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -39,7 +39,7 @@ public class DungeonChunkRoomStorage extends DungeonChunkRoomVault {
 	public static OreDictMaterial[]
 	  sHexoriums = {MT.HexoriumRed, MT.HexoriumGreen, MT.HexoriumBlue, MT.HexoriumWhite, MT.HexoriumBlack}
 	, sInfused   = {MT.InfusedFire, MT.InfusedAir, MT.InfusedWater, MT.InfusedEarth, MT.InfusedEntropy, MT.InfusedOrder}
-	, sDusts     = {MT.NaCl, MT.NaCl, MT.KCl, MT.KCl, MT.Gunpowder, MT.Gunpowder, MT.Gunpowder, MT.Bone, MT.Bone, MT.Asphalt, MT.Asphalt, MT.Clay, MT.ClayBrown, MT.ClayRed, MT.Bentonite, MT.Palygorskite, MT.Kaolinite, MT.Porcelain, MT.RareEarth, MT.Sugar, MT.Cocoa, MT.Coffee, MT.Vanilla, MT.PepperBlack, MT.Curry, MT.Wheat, MT.Barley, MT.Rye, MT.Rice, MT.Oat, MT.OatAbyssal, MT.Corn, MT.Potato, MT.WaxBee, MT.WaxRefractory, MT.Blaze, MT.Blizz, MT.Blitz, MT.Basalz}
+	, sDusts     = {MT.NaCl, MT.NaCl, MT.KCl, MT.KCl, MT.Gunpowder, MT.Gunpowder, MT.Gunpowder, MT.Bone, MT.Bone, MT.Asphalt, MT.Asphalt, MT.Clay, MT.ClayBrown, MT.ClayRed, MT.Bentonite, MT.Palygorskite, MT.Kaolinite, MT.Porcelain, MT.RareEarth, MT.Sugar, MT.Cocoa, MT.Coffee, MT.Vanilla, MT.PepperBlack, MT.Curry, MT.Wheat, MT.Barley, MT.Rye, MT.Rice, MT.Oat, MT.OatAbyssal, MT.Corn, MT.Potato, MT.WaxBee, MT.WaxRefractory, MT.Blaze, MT.Breeze, MT.Blizz, MT.Blitz, MT.Basalz}
 	, sWoods     = {MT.WOODS.Oak, MT.WOODS.Birch, MT.WOODS.Spruce, MT.WOODS.Jungle, MT.WOODS.Acacia, MT.WOODS.DarkOak, MT.WOODS.Crimson, MT.WOODS.Warped, MT.WOODS.Compressed, MT.WoodRubber, MT.WOODS.Maple, MT.WOODS.Willow, MT.WOODS.BlueMahoe, MT.WOODS.Hazel, MT.WOODS.Cinnamon, MT.WOODS.Coconut, MT.WOODS.Rainbowood, MT.WOODS.BlueSpruce, MT.Livingwood, MT.Greatwood, MT.Silverwood, MT.WoodTreated, MT.Weedwood, MT.Skyroot}
 	, sGems      = {MT.EnderPearl, MT.EnderPearl, MT.EnderEye, MT.Diamond, MT.DiamondPink, MT.Emerald, MT.Aquamarine, MT.Ruby, MT.GreenSapphire, MT.BlueSapphire, MT.Amethyst, MT.Craponite, MT.Amber, MT.VoidQuartz, MT.NetherQuartz, MT.NetherQuartz, MT.MilkyQuartz, MT.MilkyQuartz, MT.CertusQuartz, MT.ChargedCertusQuartz, MT.Lapis, MT.Lapis, MT.Lapis, MT.Redstone, MT.Redstone, MT.Redstone, MT.Glowstone, MT.Glowstone, MT.Gloomstone, MT.Apatite, MT.Apatite, MT.Apatite, MT.Coal, MT.Coal, MT.Coal, MT.Coal, MT.Coal, MT.Charcoal, MT.Charcoal, MT.Charcoal, MT.Charcoal, MT.Charcoal, MT.Lignite, MT.Lignite, MT.Lignite, MT.Lignite, MT.Lignite}
 	, sMetals    = {MT.Cu, MT.Cu, MT.Sn, MT.Bronze, MT.Fe, MT.Fe, MT.Fe, MT.Steel, MT.Steel, MT.StainlessSteel, MT.StainlessSteel, MT.DamascusSteel}

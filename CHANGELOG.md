@@ -6,10 +6,15 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.03: (Not released yet)
+[COMPAT] Aether Legacy should now have a similar level of Compat as Aether 2. (dear whoever is responsible for this: Items and Blocks have to be registered during the preInit Phase in 1.7.10. Someone on the Aether Legacy Team must have decided to move the loading of Items from preInit to Init, which breaks quite a lot of shit in 1.7.10)
+Zanite now electrolyzes into the same Stuff that Tazanite does.
+Gravitite is now considered a Type of Diamond in most of my Recipes.
+Golden Amber can now be used like regular Amber, and is also available through debarking Golden Oak.
+Skyroot Poison Buckets now contain 1000L of Poison 2 Potion, to give it another way of obtaining.
+Mossy Holystone got Moss Crafting Support now.
 [COMPAT] Removed the annoying Vanilla NEI Usage Handlers for Furnace Fuel and Furnace Smelting, as there is better NEI Handlers and Tooltips. (Does not target NEI-NH)
 [COMPAT] Et Futurum Ore Data for many Deepslate Ores.
 [COMPAT] Ars Magica Witchwood is now in the Wood Dictionary.
-[COMPAT] Aether Legacy should now have a similar level of Compat as the other Version of Aether I am compatible with. (dear whoever is responsible for this: Items and Blocks have to be registered during the preInit Phase in 1.7.10. Someone on the Aether Legacy Team must have decided to move the loading of Items from preInit to Init, which breaks quite a lot of shit in 1.7.10)
 [ADDED] Glowstone, Redstone, Cinnabar, Nikolite and Ambers can now be crystallized using Cryotheum in a Bath, either by using crushed Ores or by sacrificing about half of a Block of Dust.
 [ADDED] Signs to the Center Street Worldgen to indicate where which Biomes are. Bottommost Biomes are closest (read it like Highway Street Signs), it looks at the Biomes roughly 100 blocks to the left and right sides of the Road.
 [ADDED] The GT6 Builder Wand can now place GT6 Multiblock Parts from your Inventory in a 3x3x3 around the clicked Multiblock Part (range limit so you dont build behind walls).

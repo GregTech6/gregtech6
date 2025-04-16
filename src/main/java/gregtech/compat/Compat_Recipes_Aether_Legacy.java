@@ -38,8 +38,8 @@ public class Compat_Recipes_Aether_Legacy extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Aether Recipes.");
 		ST.item(MD.AETHEL, "moa_egg").setMaxStackSize(64);
 		
-		RM.moss(ST.make(MD.AETHEL, "holystone", 1, 0), ST.make(MD.AETHEL, "mossy_holystone", 1, 0));
-		RM.moss(ST.make(MD.AETHEL, "holystone", 1, 1), ST.make(MD.AETHEL, "mossy_holystone", 1, 1));
+		RM.moss    (ST.make(MD.AETHEL, "holystone", 1, 1), ST.make(MD.AETHEL, "mossy_holystone", 1, 0));
+		RM.growmoss(ST.make(MD.AETHEL, "holystone", 1, 0), ST.make(MD.AETHEL, "mossy_holystone", 1, 0));
 		
 		RM.mortarize(ST.make(MD.AETHEL, "icestone", 1, 0), OP.dustTiny.mat(MT.Blizz, 8));
 		RM.smash    (ST.make(MD.AETHEL, "icestone", 1, 0), OP.dustTiny.mat(MT.Blizz, 6));
