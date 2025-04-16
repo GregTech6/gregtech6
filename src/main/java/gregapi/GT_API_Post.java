@@ -407,10 +407,30 @@ public class GT_API_Post extends Abstract_Mod {
 		
 		// Wow, Ars Magica too is on this List, at least for its Blocks...
 		if (MD.ARS.mLoaded) {
+			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Vinteum          , MD.ARS, "vinteumOre", 0);
+			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Chimerite        , MD.ARS, "vinteumOre", 1);
+			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.BlueTopaz        , MD.ARS, "vinteumOre", 2);
+			OreDictManager.INSTANCE.setTarget(OP.ore            , MT.Sunstone         , MD.ARS, "vinteumOre", 3);
+			OreDictManager.INSTANCE.setTarget(OP.oreMoon        , MT.Moonstone        , MD.ARS, "vinteumOre", 4);
+			OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Moonstone        , MD.ARS, "vinteumOre", 5);
+			OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Vinteum          , MD.ARS, "vinteumOre", 6);
+			OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.BlueTopaz        , MD.ARS, "vinteumOre", 7);
+			OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Sunstone         , MD.ARS, "vinteumOre", 8);
+			OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Chimerite        , MD.ARS, "vinteumOre", 9);
+			OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Vinteum          , MD.ARS, "itemOre", 0);
+			OreDictManager.INSTANCE.setTarget(OP.dust           , MT.ArcaneCompound   , MD.ARS, "itemOre", 1);
+			OreDictManager.INSTANCE.setTarget(OP.dust           , MT.ArcaneAsh        , MD.ARS, "itemOre", 2);
+			OreDictManager.INSTANCE.setTarget(OP.dust           , MT.VinteumPurified  , MD.ARS, "itemOre", 3);
+			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Chimerite        , MD.ARS, "itemOre", 4);
+			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.BlueTopaz        , MD.ARS, "itemOre", 5);
+			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Sunstone         , MD.ARS, "itemOre", 6);
+			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Moonstone        , MD.ARS, "itemOre", 7);
+			
 			IL.ARS_Cerublossom.set(ST.make(MD.ARS, "blueOrchid", 1, 0), null, "flowerCerublossom");
 			IL.ARS_DesertNova .set(ST.make(MD.ARS, "desertNova", 1, 0), null, "flowerDesertNova");
+			
 			new SaplingEntry(ST.make(MD.ARS, "saplingWitchwood", 1, 0), new WoodEntry(ST.make(MD.ARS, "WitchwoodLog", 1, 0), new PlankEntry(ST.make(MD.ARS, "planksWitchwood", 1, 0), ST.make(MD.ARS, "witchwoodSingleSlab", 1, 0), ST.make(MD.ARS, "stairsWitchwood", 1, 0), MT.WOODS.Witchwood, 260), 1, 500), ST.make(MD.ARS, "WitchwoodLeaves", 1, 0));
-			CR.shaped(ST.make(MD.ARS, "planksWitchwood", 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.TC, "witchwoodSingleSlab", 1, 0));
+			CR.shaped(ST.make(MD.ARS, "planksWitchwood", 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.ARS, "witchwoodSingleSlab", 1, 0));
 		}
 		
 		// Cooking for Blockheads is here too!...
@@ -434,28 +454,6 @@ public class GT_API_Post extends Abstract_Mod {
 		if (MD.BETTER_RECORDS.mLoaded) {
 			OM.reg(OD.record, ST.make(MD.BETTER_RECORDS, "urlrecord", 1, 0));
 			OM.reg(OD.record, ST.make(MD.BETTER_RECORDS, "urlmultirecord", 1, 0));
-		}
-		
-		// Oh look what Ars Magica 2 does late too...
-		if (MD.ARS.mLoaded) {
-			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Vinteum          , MD.ARS, "vinteumOre", 0);
-			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Chimerite        , MD.ARS, "vinteumOre", 1);
-			OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.BlueTopaz        , MD.ARS, "vinteumOre", 2);
-			OreDictManager.INSTANCE.setTarget(OP.ore            , MT.Sunstone         , MD.ARS, "vinteumOre", 3);
-			OreDictManager.INSTANCE.setTarget(OP.oreMoon        , MT.Moonstone        , MD.ARS, "vinteumOre", 4);
-			OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Moonstone        , MD.ARS, "vinteumOre", 5);
-			OreDictManager.INSTANCE.setTarget(OP.blockDust      , MT.Vinteum          , MD.ARS, "vinteumOre", 6);
-			OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.BlueTopaz        , MD.ARS, "vinteumOre", 7);
-			OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Sunstone         , MD.ARS, "vinteumOre", 8);
-			OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Chimerite        , MD.ARS, "vinteumOre", 9);
-			OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Vinteum          , MD.ARS, "itemOre", 0);
-			OreDictManager.INSTANCE.setTarget(OP.dust           , MT.ArcaneCompound   , MD.ARS, "itemOre", 1);
-			OreDictManager.INSTANCE.setTarget(OP.dust           , MT.ArcaneAsh        , MD.ARS, "itemOre", 2);
-			OreDictManager.INSTANCE.setTarget(OP.dust           , MT.VinteumPurified  , MD.ARS, "itemOre", 3);
-			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Chimerite        , MD.ARS, "itemOre", 4);
-			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.BlueTopaz        , MD.ARS, "itemOre", 5);
-			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Sunstone         , MD.ARS, "itemOre", 6);
-			OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Moonstone        , MD.ARS, "itemOre", 7);
 		}
 		
 		// Aether Legacy is fucking this up as well, and the best part is, it once WAS working fine, but they fucking decided to break it!
@@ -713,6 +711,14 @@ public class GT_API_Post extends Abstract_Mod {
 		}
 		if (MD.ARS.mLoaded) {
 			BlocksGT.FLOWERS.add(ST.block(MD.ARS , "blueOrchid"        ));
+		}
+		if (MD.AETHER.mLoaded) {
+			BlocksGT.FLOWERS.add(ST.block(MD.AETHER , "purpleFlower"   ));
+			BlocksGT.FLOWERS.add(ST.block(MD.AETHER , "whiteRose"      ));
+		}
+		if (MD.AETHEL.mLoaded) {
+			BlocksGT.FLOWERS.add(ST.block(MD.AETHEL , "purple_flower"  ));
+			BlocksGT.FLOWERS.add(ST.block(MD.AETHEL , "white_flower"   ));
 		}
 		if (MD.BOTA.mLoaded) {
 			BlocksGT.FLOWERS.add(ST.block(MD.BOTA, "flower"            ));
