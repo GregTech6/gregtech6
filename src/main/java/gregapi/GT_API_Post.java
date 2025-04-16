@@ -468,6 +468,7 @@ public class GT_API_Post extends Abstract_Mod {
 			OreDictManager.INSTANCE.setTarget(OP.stick          , MT.Skyroot                , MD.AETHEL, "skyroot_stick"  , 0);
 			OreDictManager.INSTANCE.setTarget(OP.ring           , MT.Fe                     , MD.AETHEL, "iron_ring"      , 0);
 			OreDictManager.INSTANCE.setTarget(OP.ring           , MT.Au                     , MD.AETHEL, "golden_ring"    , 0);
+			OreDictManager.INSTANCE.setTarget(OP.ring           , MT.Zanite                 , MD.AETHEL, "zanite_ring"    , 0);
 			// Just to force the unification Target to be this Ring instead.
 			OreDictManager.INSTANCE.setTarget(OP.ring           , MT.Au                     , MD.TC, "ItemBaubleBlanks"  ,  1);
 			
@@ -563,8 +564,10 @@ public class GT_API_Post extends Abstract_Mod {
 			//new SaplingEntry(IL.AETHER_Skyroot_Sapling_Purple   .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Purple .wild(1));
 		}
 		
-		FL.reg(FL.Water.make(1000), IL.AETHER_Bucket_Water.get(1), IL.AETHER_Bucket_Empty.get(1));
-		FL.reg(FL.Milk .make(1000), IL.AETHER_Bucket_Milk .get(1), IL.AETHER_Bucket_Empty.get(1));
+		// Needs to be done here for all Aether Mods, because I don't want duplicate Code.
+		FL.reg(FL.Water          .make(1000), IL.AETHER_Bucket_Water .get(1), IL.AETHER_Bucket_Empty.get(1));
+		FL.reg(FL.Milk           .make(1000), IL.AETHER_Bucket_Milk  .get(1), IL.AETHER_Bucket_Empty.get(1));
+		FL.reg(FL.Potion_Poison_2.make(1000), IL.AETHER_Bucket_Poison.get(1), IL.AETHER_Bucket_Empty.get(1));
 		
 		// Those "On-Demand" Materials of VoltzEngine are registered late...
 		if (MD.VOLTZ.mLoaded) {
