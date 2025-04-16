@@ -274,17 +274,16 @@ public class LoaderWoodDictionary implements Runnable {
 			CR.shaped(IL.AETHER_Skyroot_Planks.get(1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.AETHER, "tile.skyrootSingleSlab", 1, 0));
 			
 			new WoodEntry(IL.AETHER_Skyroot_Log_Small.wild(1), tSkyrootBeam, 1, 200);
+			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Gold  .wild(1), new WoodEntry(IL.AETHER_Skyroot_Log_Gold.get(1), tSkyrootBeam, 1, 300, OP.gem.mat(MT.AmberGolden, 1), MT.AmberGolden), IL.AETHER_Skyroot_Leaves_Gold  .wild(1));
 			
 			WoodEntry tSkyrootWood = 
 			new WoodEntry(IL.AETHER_Skyroot_Log.getWithMeta(1, 0), tSkyrootBeam, 1, 300);
 			new WoodEntry(IL.AETHER_Skyroot_Log.getWithMeta(1, 1), tSkyrootBeam, 1, 300);
-			new WoodEntry(IL.AETHER_Skyroot_Log_Gold      .get(1), tSkyrootBeam, 1, 300, OP.gem.mat(MT.AmberGolden, 1), MT.AmberGolden);
 			new WoodEntry(IL.AETHER_Skyroot_Log.getWithMeta(1, 3), tSkyrootBeam, 1, 300);
 			
 			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Blue  .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Blue  .wild(1));
 			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Dark  .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Dark  .wild(1));
 			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Green .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Green .wild(1));
-			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Gold  .wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Gold  .wild(1));
 			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Purple.wild(1), tSkyrootWood, IL.AETHER_Skyroot_Leaves_Purple.wild(1));
 		}
 		// Botania Planks

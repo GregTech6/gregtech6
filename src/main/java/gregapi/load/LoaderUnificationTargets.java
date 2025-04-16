@@ -575,6 +575,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreHolystone   , MT.Continuum              , MD.AETHER, "continuumOre"   , 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Zanite                 , MD.AETHER, "zaniteGemstone" , 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Ambrosium              , MD.AETHER, "ambrosiumShard" , 0);
+		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.AmberGolden            , MD.AETHER, "goldenAmber"    , 0);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.Continuum              , MD.AETHER, "continuumOrb"   , 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Zanite                 , MD.AETHER, "zaniteBlock"    , 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockGem       , MT.Continuum              , MD.AETHER, "continuumBomb"  , 0);
