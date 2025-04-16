@@ -138,6 +138,9 @@ public class ToolCompat {
 				if (IL.TC_Greatwood_Log.equal(aBlock)) {
 					if ((aMeta & 3) < 2)
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam3, aMeta, 3);
+				} else if (IL.AETHER_Skyroot_Log_Gold.equal(aBlock)) {
+					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam3, (aMeta&12)|2, 3);
+					if (rReturn && (MD.AETHEL.mLoaded || (aMeta & 3) == 2)) tBark = OP.gem.mat(MT.AmberGolden, 1);
 				} else if (IL.AETHER_Skyroot_Log.equal(aBlock)) {
 					rReturn = aWorld.setBlock(aX, aY, aZ, BlocksGT.Beam3, (aMeta&12)|2, 3);
 				} else if (IL.AETHER_Skyroot_Log_Small.equal(aBlock)) {

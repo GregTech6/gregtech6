@@ -523,7 +523,7 @@ public class GT_API_Post extends Abstract_Mod {
 			
 			IL.AETHER_Skyroot_Planks                .set(ST.make(MD.AETHEL, "skyroot_planks"                    , 1, 0), new OreDictItemData(MT.Skyroot, U), OD.plankSkyroot);
 			IL.AETHER_Skyroot_Log                   .set(ST.make(MD.AETHEL, "skyroot_log"                       , 1, 0), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U));
-			IL.AETHER_Skyroot_Log_Gold              .set(ST.make(MD.AETHEL, "golden_oak_log"                    , 1, 2), new OreDictItemData(MT.Skyroot, U*8, MT.Bark, U)); OM.reg(IL.AETHER_Skyroot_Log.wild(1), OD.logWood);
+			IL.AETHER_Skyroot_Log_Gold              .set(ST.make(MD.AETHEL, "golden_oak_log"                    , 1, 2), new OreDictItemData(MT.Skyroot, U*8, MT.AmberGolden, U)); OM.reg(IL.AETHER_Skyroot_Log.wild(1), OD.logWood);
 			IL.AETHER_Bucket_Empty                  .set(ST.make(MD.AETHEL, "skyroot_bucket"                    , 1, 0), new OreDictItemData(MT.Skyroot, U*3));
 			IL.AETHER_Bucket_Water                  .set(ST.make(MD.AETHEL, "skyroot_bucket"                    , 1, 1), new OreDictItemData(MT.Skyroot, U*3), OD.container1000water);
 			IL.AETHER_Bucket_Poison                 .set(ST.make(MD.AETHEL, "skyroot_bucket"                    , 1, 2), new OreDictItemData(MT.Skyroot, U*3), OD.container1000poison);

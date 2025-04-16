@@ -274,7 +274,7 @@ public class LoaderWoodDictionary implements Runnable {
 			CR.shaped(IL.AETHER_Skyroot_Planks.get(1), CR.DEF_NCC, "S", "S", 'S', ST.make(MD.AETHER, "tile.skyrootSingleSlab", 1, 0));
 			
 			new WoodEntry(IL.AETHER_Skyroot_Log_Small.wild(1), tSkyrootBeam, 1, 200);
-			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Gold  .wild(1), new WoodEntry(IL.AETHER_Skyroot_Log_Gold.get(1), tSkyrootBeam, 1, 300, OP.gem.mat(MT.AmberGolden, 1), MT.AmberGolden), IL.AETHER_Skyroot_Leaves_Gold  .wild(1));
+			new SaplingEntry(IL.AETHER_Skyroot_Sapling_Gold.wild(1), new WoodEntry(IL.AETHER_Skyroot_Log_Gold.get(1), tSkyrootBeam, 1, 300, OP.gem.mat(MT.AmberGolden, 1), MT.AmberGolden), IL.AETHER_Skyroot_Leaves_Gold  .wild(1));
 			
 			WoodEntry tSkyrootWood = 
 			new WoodEntry(IL.AETHER_Skyroot_Log.getWithMeta(1, 0), tSkyrootBeam, 1, 300);
