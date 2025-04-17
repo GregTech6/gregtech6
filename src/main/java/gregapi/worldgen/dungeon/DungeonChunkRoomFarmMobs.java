@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,15 +19,14 @@
 
 package gregapi.worldgen.dungeon;
 
-import static gregapi.data.CS.*;
-
-import gregapi.data.CS.BlocksGT;
 import gregapi.data.MT;
 import gregapi.data.OP;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -38,19 +37,49 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		if (aData.mTags.contains(WorldgenDungeonGT.TAG_FARM_MOBS) || !super.generate(aData)) return F;
 		aData.mTags.add(WorldgenDungeonGT.TAG_FARM_MOBS);
 		
-		// Roof, two Blocks thick due to Sunlight glitches.
-		for (int tX = 0; tX < 16; tX++) for (int tZ = 0; tZ < 16; tZ++) {
-			aData.tiles     (tX, 43, tZ);
-			aData.smalltiles(tX, 42, tZ);
-		}
+		// Check if we have space for a large Setup or not.
+		boolean tSpaceous = 
+		(aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ-1] == 0 || aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ-1] == -128) &&
+		(aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ  ] == 0 || aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ  ] == -128) &&
+		(aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ+1] == 0 || aData.mRoomLayout[aData.mRoomX-1][aData.mRoomZ+1] == -128) &&
+		(aData.mRoomLayout[aData.mRoomX  ][aData.mRoomZ-1] == 0 || aData.mRoomLayout[aData.mRoomX  ][aData.mRoomZ-1] == -128) &&
+		(aData.mRoomLayout[aData.mRoomX  ][aData.mRoomZ+1] == 0 || aData.mRoomLayout[aData.mRoomX  ][aData.mRoomZ+1] == -128) &&
+		(aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ-1] == 0 || aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ-1] == -128) &&
+		(aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ  ] == 0 || aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ  ] == -128) &&
+		(aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ+1] == 0 || aData.mRoomLayout[aData.mRoomX+1][aData.mRoomZ+1] == -128);
 		
-		// Outer Walls.
-		for (int tY = 9; tY < 42; tY++) {
+		if (tSpaceous && F) {// TODO remove this flag
+			// Roof, two Blocks thick due to Sunlight glitches.
+			for (int tX = -16; tX < 32; tX++) for (int tZ = -16; tZ < 32; tZ++) {
+				aData.tiles     (tX, 43, tZ);
+				aData.smalltiles(tX, 42, tZ);
+			}
+			
+			// Outer Walls.
+			for (int tY = 9; tY < 42; tY++) {
+				for (int tX = -16; tX < 32; tX++) for (int tZ = -16; tZ < 32; tZ++) {
+					if (tX == -16 || tX == 31 || tZ == -16 || tZ == 31) {
+						aData.bricks(tX, tY, tZ);
+					} else {
+						aData.air(tX, tY, tZ);
+					}
+				}
+			}
+		} else {
+			// Roof, two Blocks thick due to Sunlight glitches.
 			for (int tX = 0; tX < 16; tX++) for (int tZ = 0; tZ < 16; tZ++) {
-				if (tX == 0 || tX == 15 || tZ == 0 || tZ == 15) {
-					aData.bricks(tX, tY, tZ);
-				} else {
-					aData.air(tX, tY, tZ);
+				aData.tiles     (tX, 43, tZ);
+				aData.smalltiles(tX, 42, tZ);
+			}
+			
+			// Outer Walls.
+			for (int tY = 9; tY < 42; tY++) {
+				for (int tX = 0; tX < 16; tX++) for (int tZ = 0; tZ < 16; tZ++) {
+					if (tX == 0 || tX == 15 || tZ == 0 || tZ == 15) {
+						aData.bricks(tX, tY, tZ);
+					} else {
+						aData.air(tX, tY, tZ);
+					}
 				}
 			}
 		}
@@ -115,7 +144,7 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		aData.set     ( 9,  2,  8, SIDE_UNKNOWN,  6009, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T, NBT_INV_LIST, UT.NBT.makeInv(OP.arrowGtWood.mat(MT.Empty , 1+aData.next(8)   ))), T, T);
 		aData.chiseled( 9,  2,  9);
 		
-		// Water Placement
+		// Water Placement in center Area.
 		aData.smooth( 1,  9,  1); aData.smooth( 2,  9,  1); aData.smooth( 3,  9,  1); aData.smooth( 4,  9,  1);
 		aData.smooth( 1,  9,  2); aData.smooth( 2,  9,  2); aData.smooth( 3,  9,  2);
 		aData.smooth( 1,  9,  3); aData.smooth( 2,  9,  3);
@@ -137,7 +166,7 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		aData.set(14, 10,  1, Blocks.flowing_water, 0, 3);
 		aData.set(14, 10, 14, Blocks.flowing_water, 0, 3);
 		
-		// Platforms for Mobs to spawn on.
+		// Platforms for Mobs to spawn on in center Area.
 		final int[] tPlatforms = { 3, 4, 5, 6, 9,10,11,12};
 		for (int tY = 12; tY < 42; tY++) if (tY % 3 == 0) {
 			for (int i : tPlatforms) for (int j : tPlatforms) aData.cobbles( i, tY,  j);

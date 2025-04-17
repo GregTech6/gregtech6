@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -39,6 +39,8 @@ public class Compat_Recipes_Aether extends CompatMods {
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Aether Recipes.");
 		ST.item(MD.AETHER, "moaEgg").setMaxStackSize(64);
+		
+		CR.shaped(ST.make(MD.AETHER, "zaniteRing", 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, " X ", "X X", " X ", 'X', OP.gem.dat(MT.Zanite));
 		
 		CR.shaped(IL.AETHER_Bowl.get(1), DEF | DEL_OTHER_SHAPED_RECIPES, "k", "X", 'X', OD.plankSkyroot);
 		CR.shapeless(ST.make(Items.bowl, 1, 0), CR.DEF_NCC, new Object[] {IL.AETHER_Bowl});

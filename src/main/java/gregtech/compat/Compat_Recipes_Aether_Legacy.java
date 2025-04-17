@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -31,12 +31,16 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 
 import static gregapi.data.CS.*;
+import static gregapi.util.CR.DEF;
+import static gregapi.util.CR.DEL_OTHER_SHAPED_RECIPES;
 
 public class Compat_Recipes_Aether_Legacy extends CompatMods {
 	public Compat_Recipes_Aether_Legacy(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Aether Recipes.");
 		ST.item(MD.AETHEL, "moa_egg").setMaxStackSize(64);
+		
+		CR.shaped(ST.make(MD.AETHER, "zanite_ring", 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, " X ", "X X", " X ", 'X', OP.gem.dat(MT.Zanite));
 		
 		RM.moss    (ST.make(MD.AETHEL, "holystone", 1, 1), ST.make(MD.AETHEL, "mossy_holystone", 1, 0));
 		RM.growmoss(ST.make(MD.AETHEL, "holystone", 1, 0), ST.make(MD.AETHEL, "mossy_holystone", 1, 0));
