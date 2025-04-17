@@ -161,24 +161,24 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		aData.chiseled(aX+ 8,  7, aZ+ 7);
 		aData.set     (aX+ 8,  7, aZ+ 8, SIDE_Y_NEG, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_U, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		if (aX > 0) {
-		aData.set     (aX+ 7,  7, aZ+ 8, SIDE_X_POS, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_W | SBIT_E, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     (aX+ 7,  7, aZ+ 8, SIDE_X_NEG, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_W | SBIT_E, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		for (int tX = aX- 7, eX = aX+ 6; tX <= eX; tX++)
-		aData.set     (tX   ,  7, aZ+ 8, SIDE_X_NEG, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_W | SBIT_E, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
-		}
-		if (aX < 0) {
-		aData.set     (aX+ 9,  7, aZ+ 8, SIDE_X_NEG, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_W | SBIT_E, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
-		for (int tX = aX+10, eX = aX+23; tX <= eX; tX++)
 		aData.set     (tX   ,  7, aZ+ 8, SIDE_X_POS, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_W | SBIT_E, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		}
+		if (aX < 0) {
+		aData.set     (aX+ 9,  7, aZ+ 8, SIDE_X_POS, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_W | SBIT_E, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		for (int tX = aX+10, eX = aX+23; tX <= eX; tX++)
+		aData.set     (tX   ,  7, aZ+ 8, SIDE_X_NEG, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_W | SBIT_E, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		}
 		if (aZ > 0) {
-		aData.set     (aX+ 8,  7, aZ+ 7, SIDE_Z_POS, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_N | SBIT_S, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     (aX+ 8,  7, aZ+ 7, SIDE_Z_NEG, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_N | SBIT_S, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		for (int tZ = aZ- 7, eZ = aZ+ 6; tZ <= eZ; tZ++)
-		aData.set     (aX+ 8,  7, tZ   , SIDE_Z_NEG, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_N | SBIT_S, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     (aX+ 8,  7, tZ   , SIDE_Z_POS, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_N | SBIT_S, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		}
 		if (aZ < 0) {
-		aData.set     (aX+ 8,  7, aZ+ 9, SIDE_Z_NEG, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_N | SBIT_S, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     (aX+ 8,  7, aZ+ 9, SIDE_Z_POS, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_N | SBIT_S, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		for (int tZ = aZ+10, eZ = aZ+23; tZ <= eZ; tZ++)
-		aData.set     (aX+ 8,  7, tZ   , SIDE_Z_POS, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_N | SBIT_S, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		aData.set     (aX+ 8,  7, tZ   , SIDE_Z_NEG, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_N | SBIT_S, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		}
 		
 		// Water Placement in center Area.
