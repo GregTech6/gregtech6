@@ -85,7 +85,6 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		aData.lamp(12, 6, 12, +1);
 		
 		// Item Pipes and Mass Storages.
-		aData.set     ( 8,  7,  8, SIDE_DOWN   , 25377, UT.NBT.make(NBT_CONNECTION    ,  3, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		aData.set     ( 8,  6,  8, SIDE_DOWN   , 25377, UT.NBT.make(NBT_CONNECTION    ,  3, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		aData.set     ( 8,  5,  8, SIDE_DOWN   , 25377, UT.NBT.make(NBT_CONNECTION    ,  3, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		aData.set     ( 8,  4,  8, SIDE_DOWN   , 25377, UT.NBT.make(NBT_CONNECTION    ,  3, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
