@@ -70,6 +70,20 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		if (tXNZP) makePlatForms(aData,-16,+16);
 		if (tXPZP) makePlatForms(aData,+16,+16);
 		
+		// Lamps need to be replaced.
+		aData.lamp( 3, 6,  3, +1);
+		aData.lamp( 3, 6,  6, +1);
+		aData.lamp( 3, 6,  9, +1);
+		aData.lamp( 3, 6, 12, +1);
+		aData.lamp( 6, 6,  3, +1);
+		aData.lamp( 9, 6,  3, +1);
+		aData.lamp( 6, 6, 12, +1);
+		aData.lamp( 9, 6, 12, +1);
+		aData.lamp(12, 6,  3, +1);
+		aData.lamp(12, 6,  6, +1);
+		aData.lamp(12, 6,  9, +1);
+		aData.lamp(12, 6, 12, +1);
+		
 		// Item Pipes and Mass Storages.
 		aData.set     ( 8,  7,  8, SIDE_DOWN   , 25377, UT.NBT.make(NBT_CONNECTION    ,  3, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		aData.set     ( 8,  6,  8, SIDE_DOWN   , 25377, UT.NBT.make(NBT_CONNECTION    ,  3, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
@@ -118,8 +132,10 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 			// Roof, two Blocks thick due to Sunlight glitches.
 			aData.tiles     (tX, 43, tZ);
 			aData.smalltiles(tX, 42, tZ);
-			// Floor for the Water to flow on.
+			// Floor for the Water to flow on without dripping beneath.
 			aData.smalltiles(tX,  8, tZ);
+			aData.tiles     (tX,  7, tZ);
+			aData.tiles     (tX,  6, tZ);
 			// Outer Walls filled with Air.
 			for (int tY = 9; tY < 42; tY++) {
 				if (tX == aX || tX == eX || tZ == aZ || tZ == eZ) {
@@ -159,27 +175,15 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		aData.chiseled(aX+ 7,  7, aZ+ 7);
 		aData.chiseled(aX+ 7,  7, aZ+ 8);
 		aData.chiseled(aX+ 8,  7, aZ+ 7);
-		aData.set     (aX+ 8,  7, aZ+ 8, SIDE_Y_NEG, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_U, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
-		if (aX > 0) {
-		aData.set     (aX+ 7,  7, aZ+ 8, SIDE_X_NEG, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_W | SBIT_E, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
-		for (int tX = aX- 7, eX = aX+ 6; tX <= eX; tX++)
-		aData.set     (tX   ,  7, aZ+ 8, SIDE_X_POS, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_W | SBIT_E, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
-		}
-		if (aX < 0) {
-		aData.set     (aX+ 9,  7, aZ+ 8, SIDE_X_POS, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_W | SBIT_E, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
-		for (int tX = aX+10, eX = aX+23; tX <= eX; tX++)
+		aData.set     (aX+ 8,  7, aZ+ 8, SIDE_Y_NEG, 25377, UT.NBT.make(NBT_CONNECTION,              63, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		if (aX > 0) for (int tX = aX- 7, eX = aX+ 7; tX <= eX; tX++)
 		aData.set     (tX   ,  7, aZ+ 8, SIDE_X_NEG, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_W | SBIT_E, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
-		}
-		if (aZ > 0) {
-		aData.set     (aX+ 8,  7, aZ+ 7, SIDE_Z_NEG, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_N | SBIT_S, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
-		for (int tZ = aZ- 7, eZ = aZ+ 6; tZ <= eZ; tZ++)
-		aData.set     (aX+ 8,  7, tZ   , SIDE_Z_POS, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_N | SBIT_S, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
-		}
-		if (aZ < 0) {
-		aData.set     (aX+ 8,  7, aZ+ 9, SIDE_Z_POS, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_N | SBIT_S, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
-		for (int tZ = aZ+10, eZ = aZ+23; tZ <= eZ; tZ++)
+		if (aX < 0) for (int tX = aX+ 9, eX = aX+23; tX <= eX; tX++)
+		aData.set     (tX   ,  7, aZ+ 8, SIDE_X_POS, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_W | SBIT_E, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
+		if (aZ > 0) for (int tZ = aZ- 7, eZ = aZ+ 7; tZ <= eZ; tZ++)
 		aData.set     (aX+ 8,  7, tZ   , SIDE_Z_NEG, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_N | SBIT_S, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
-		}
+		if (aZ < 0) for (int tZ = aZ+ 9, eZ = aZ+23; tZ <= eZ; tZ++)
+		aData.set     (aX+ 8,  7, tZ   , SIDE_Z_POS, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_N | SBIT_S, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		
 		// Water Placement in center Area.
 		aData.smooth(aX+ 1,  9, aZ+ 1); aData.smooth(aX+ 2,  9, aZ+ 1); aData.smooth(aX+ 3,  9, aZ+ 1); aData.smooth(aX+ 4,  9, aZ+ 1);
