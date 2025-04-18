@@ -71,13 +71,13 @@ public class Compat_Recipes_Aether_Legacy extends CompatMods {
 		RM.Injector.addRecipe2(T, 16, 16, OP.gem.mat(MT.Ambrosium, 9), OP.gemExquisite.mat(MT.Gravitite, 1), ST.make(MD.AETHEL, "enchanted_gravitite", 4, 0));
 		RM.Injector.addRecipe2(T, 16, 16, OP.gem.mat(MT.Ambrosium,16), OP.gemLegendary.mat(MT.Gravitite, 1), ST.make(MD.AETHEL, "enchanted_gravitite", 8, 0));
 		
-		RM.biomass(ST.make(MD.AETHEL, "purple_flower", 16, W));
-		RM.biomass(ST.make(MD.AETHEL, "white_flower" , 16, W));
-		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.AETHEL, "purple_flower", 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], 2), ST.make(Items.dye, 1, DYE_INDEX_Purple));
-		RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.AETHEL, "white_flower" , 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_White ], 2), OM.dust(MT.White));
-		RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.AETHEL, "purple_flower", 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], 2), ST.make(Items.dye, 1, DYE_INDEX_Purple));
-		RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.AETHEL, "white_flower" , 1, W), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_White ], 2), OM.dust(MT.White));
-		RM.ic2_extractor(ST.make(MD.AETHEL, "purple_flower", 1, W), ST.make(Items.dye, 3, DYE_INDEX_Purple));
-		RM.ic2_extractor(ST.make(MD.AETHEL, "white_flower" , 1, W), OM.dust(MT.White, U*3));
+		RM.biomass(IL.AETHER_Flower_Purple.wild(16));
+		RM.biomass(IL.AETHER_Flower_White .wild(16));
+		RM.Squeezer.addRecipe1(T, 16, 16, IL.AETHER_Flower_Purple.wild(1), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], 2), ST.make(Items.dye, 1, DYE_INDEX_Purple));
+		RM.Squeezer.addRecipe1(T, 16, 16, IL.AETHER_Flower_White .wild(1), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_White ], 2), OM.dust(MT.White));
+		RM.Juicer  .addRecipe1(T, 16, 16, IL.AETHER_Flower_Purple.wild(1), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], 2), ST.make(Items.dye, 1, DYE_INDEX_Purple));
+		RM.Juicer  .addRecipe1(T, 16, 16, IL.AETHER_Flower_White .wild(1), NF, FL.mul(DYE_FLUIDS_FLOWER[DYE_INDEX_White ], 2), OM.dust(MT.White));
+		RM.ic2_extractor(IL.AETHER_Flower_Purple.wild(1), ST.make(Items.dye, 3, DYE_INDEX_Purple));
+		RM.ic2_extractor(IL.AETHER_Flower_White .wild(1), OM.dust(MT.White, U*3));
 	}
 }

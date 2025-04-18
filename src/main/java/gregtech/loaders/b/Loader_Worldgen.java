@@ -648,7 +648,7 @@ public class Loader_Worldgen implements Runnable {
 		new WorldgenBeacon          ("center.beacon"           , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
 		new WorldgenTesting         ("center.testing"          , F, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
 		
-		new WorldgenDungeonGT("overworld.structure.dungeon.large", T, 100, 3, 7, 20, 20, 6, T, F, F, T, T, T, T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
+		new WorldgenDungeonGT("overworld.structure.dungeon.large", T, 100, 3, 7, 20, 20, 6, T, F, F, T, T, T, T, T, GEN_OVERWORLD, GEN_GT, GEN_PFAA, GEN_TFC);
 		
 		for (BlockBase tStone : BlocksGT.stones) if (tStone != BlocksGT.PrismarineDark && tStone != BlocksGT.PrismarineLight) {
 		new WorldgenStone("overworld.stone."+ ((BlockStones)tStone).mMaterial.mNameInternal.toLowerCase(), F, tStone,  0,  1, 200, 100, 0, 120, null, F, GEN_OVERWORLD, GEN_PFAA, GEN_A97, GEN_TFC, GEN_ENVM, GEN_CW2_AquaCavern, GEN_CW2_Caveland, GEN_CW2_Cavenia, GEN_CW2_Cavern, GEN_CW2_Caveworld);

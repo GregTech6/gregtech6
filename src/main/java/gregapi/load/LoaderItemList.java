@@ -1178,6 +1178,8 @@ public class LoaderItemList implements Runnable {
 		IL.AETHER_Sand                          .set(ST.make(MD.AETHER, "quicksoil"                         , 1, 0), new OreDictItemData(MT.Sand, U*9), OD.sand);
 		IL.AETHER_Glass                         .set(ST.make(MD.AETHER, "quicksoilGlass"                    , 1, 0), null, OD.blockGlassColorless);
 		IL.AETHER_Glass_Pane                    .set(ST.make(MD.AETHER, "quicksoilGlassPane"                , 1, 0), null, OD.paneGlassColorless);
+		IL.AETHER_Flower_Purple                 .set(ST.make(MD.AETHER, "purpleFlower"                      , 1, 0), null, OD.flower);
+		IL.AETHER_Flower_White                  .set(ST.make(MD.AETHER, "whiteRose"                         , 1, 0), null, OD.flower);
 		IL.AETHER_Dirt                          .set(ST.make(MD.AETHER, "aetherDirt"                        , 1, 0));
 		IL.AETHER_Grass                         .set(ST.make(MD.AETHER, "aetherGrass"                       , 1, 0));
 		IL.AETHER_Grass_Enchanted               .set(ST.make(MD.AETHER, "enchantedAetherGrass"              , 1, 0));

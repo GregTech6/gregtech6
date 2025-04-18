@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -69,6 +69,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	  TAG_PORTAL_NETHER   = TagData.createTagData("gt.dungeon.portal.nether")
 	, TAG_PORTAL_END      = TagData.createTagData("gt.dungeon.portal.end")
 	, TAG_PORTAL_TWILIGHT = TagData.createTagData("gt.dungeon.portal.twilight")
+	, TAG_PORTAL_AETHER   = TagData.createTagData("gt.dungeon.portal.aether")
 	, TAG_PORTAL_MYST     = TagData.createTagData("gt.dungeon.portal.myst")
 	, TAG_WORKSHOP        = TagData.createTagData("gt.dungeon.workshop")
 	, TAG_MINING_BEDROCK  = TagData.createTagData("gt.dungeon.mining.bedrock")
@@ -97,15 +98,16 @@ public class WorldgenDungeonGT extends WorldgenObject {
 	, new DungeonChunkRoomPortalNether()
 	, new DungeonChunkRoomPortalEnd()
 	, new DungeonChunkRoomPortalTwilight()
+	, new DungeonChunkRoomPortalAether()
 	, new DungeonChunkRoomPortalMyst()
 	);
 	
 	public int mProbability, mMinSize, mMaxSize, mMinY, mMaxY, mRoomChance;
-	public boolean mPortalNether, mPortalEnd, mPortalTwilight, mPortalMyst, mZPM;
+	public boolean mPortalNether, mPortalEnd, mPortalTwilight, mPortalAether, mPortalMyst, mZPM;
 	public HashSetNoNulls<TagData> mTags = new HashSetNoNulls<>();
 	
 	@SafeVarargs
-	public WorldgenDungeonGT(String aName, boolean aDefault, int aProbability, int aMinSize, int aMaxSize, int aMinY, int aMaxY, int aRoomChance, boolean aOverworld, boolean aNether, boolean aEnd, boolean aPortalNether, boolean aPortalEnd, boolean aPortalTwilight, boolean aPortalMyst, List<WorldgenObject>... aLists) {
+	public WorldgenDungeonGT(String aName, boolean aDefault, int aProbability, int aMinSize, int aMaxSize, int aMinY, int aMaxY, int aRoomChance, boolean aOverworld, boolean aNether, boolean aEnd, boolean aPortalNether, boolean aPortalEnd, boolean aPortalTwilight, boolean aPortalAether, boolean aPortalMyst, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
 		mProbability        = Math.max(1,           getConfigFile().get(mCategory, "Probability"      , aProbability   ));
 		mMinSize            = Math.max(2,           getConfigFile().get(mCategory, "MinSize"          , aMinSize       ));
@@ -116,6 +118,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		mPortalNether       =                       getConfigFile().get(mCategory, "PortalNether"     , aPortalNether  );
 		mPortalEnd          =                       getConfigFile().get(mCategory, "PortalEnd"        , aPortalEnd     );
 		mPortalTwilight     =                       getConfigFile().get(mCategory, "PortalTwilight"   , aPortalTwilight);
+		mPortalAether       =                       getConfigFile().get(mCategory, "PortalAether"     , aPortalAether  );
 		mPortalMyst         =                       getConfigFile().get(mCategory, "PortalMyst"       , aPortalMyst    );
 		mZPM                =                       getConfigFile().get(mCategory, "ZPMs"             , T);
 		
@@ -129,7 +132,7 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		if (!getConfigFile().get(mCategory, "Room.Farming.Fish"      , T)) mTags.add(TAG_FARM_FISH);
 	}
 	
-	public WorldgenDungeonGT() {this(null, F, 100, 3, 7, 20, 20, 6, F, F, F, F, F, F, F);}
+	public WorldgenDungeonGT() {this(null, F, 100, 3, 7, 20, 20, 6, F, F, F, F, F, F, F, F);}
 	
 	public static final int ROOM_ID_COUNT = 1, IMPORTANT_ROOM_COUNT = 2;
 	
@@ -157,10 +160,11 @@ public class WorldgenDungeonGT extends WorldgenObject {
 		
 		boolean[] tGeneratedKeys = new boolean[5];
 		
-		if (!(mPortalNether                      && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_NETHER))) tTags.add(TAG_PORTAL_NETHER);
-		if (!(mPortalEnd                         && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_END   ))) tTags.add(TAG_PORTAL_END);
-		if (!(mPortalTwilight && MD.TF  .mLoaded && (aWorld.provider.dimensionId == DIM_OVERWORLD || WD.dimTF(aWorld)                         ))) tTags.add(TAG_PORTAL_TWILIGHT);
-		if (!(mPortalMyst     && MD.MYST.mLoaded )) tTags.add(TAG_PORTAL_MYST);
+		if (!(mPortalNether                                               && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_NETHER))) tTags.add(TAG_PORTAL_NETHER);
+		if (!(mPortalEnd                                                  && (aWorld.provider.dimensionId == DIM_OVERWORLD || aWorld.provider.dimensionId == DIM_END   ))) tTags.add(TAG_PORTAL_END);
+		if (!(mPortalTwilight && MD.TF.mLoaded                            && (aWorld.provider.dimensionId == DIM_OVERWORLD || WD.dimTF(aWorld)                         ))) tTags.add(TAG_PORTAL_TWILIGHT);
+		if (!(mPortalAether   && (MD.AETHER.mLoaded || MD.AETHEL.mLoaded) && (aWorld.provider.dimensionId == DIM_OVERWORLD || WD.dimAETHER(aWorld)                     ))) tTags.add(TAG_PORTAL_AETHER);
+		if (!(mPortalMyst     && MD.MYST.mLoaded)) tTags.add(TAG_PORTAL_MYST);
 		
 		long[] tKeyIDs = new long[tGeneratedKeys.length];
 		tKeyIDs[0] = 1+Math.max(RNGSUS.nextInt(1000000), System.nanoTime());

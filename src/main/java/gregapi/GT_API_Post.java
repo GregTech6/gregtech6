@@ -534,6 +534,8 @@ public class GT_API_Post extends Abstract_Mod {
 			IL.AETHER_Apple                         .set(ST.make(MD.AETHEL, "white_apple"                       , 1, 0), null, "cropAppleWhite");
 			IL.AETHER_Sand                          .set(ST.make(MD.AETHEL, "quicksoil"                         , 1, 0), new OreDictItemData(MT.Sand, U*9), OD.sand);
 			IL.AETHER_Glass                         .set(ST.make(MD.AETHEL, "quicksoil_glass"                   , 1, 0), null, OD.blockGlassColorless);
+			IL.AETHER_Flower_Purple                 .set(ST.make(MD.AETHEL, "purple_flower"                     , 1, 0), null, OD.flower);
+			IL.AETHER_Flower_White                  .set(ST.make(MD.AETHEL, "white_flower"                      , 1, 0), null, OD.flower);
 			IL.AETHER_Dirt                          .set(ST.make(MD.AETHEL, "aether_dirt"                       , 1, 0));
 			IL.AETHER_Grass                         .set(ST.make(MD.AETHEL, "aether_grass"                      , 1, 0));
 			IL.AETHER_Grass_Enchanted               .set(ST.make(MD.AETHEL, "enchanted_aether_grass"            , 1, 0));
