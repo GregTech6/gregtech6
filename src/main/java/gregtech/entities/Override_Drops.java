@@ -446,11 +446,16 @@ public class Override_Drops {
 			tReplaceIron = T;
 		} else if (aClass.equalsIgnoreCase("EntityStrider")) {
 			tReplaceIron = T;
+		} else if (aClass.equalsIgnoreCase("EntityAerwhale")) {
+			tReplaceIron = T;
+			int tAmount = RNGSUS.nextInt(4);
+			if (aLooting > 0) tAmount += RNGSUS.nextInt(2*aLooting+3);
+			while (tAmount-->0) aDrops.add(ST.entity(aDead, OP.stick.mat(MT.Breeze, 1)));
 		} else if (aClass.equalsIgnoreCase("EntityZephyr")) {
 			tReplaceIron = T;
-			int tAmount = RNGSUS.nextInt(2);
-			if (aLooting > 0) tAmount += RNGSUS.nextInt(aLooting+1);
-			while (tAmount-->0) aDrops.add(ST.entity(aDead, OP.stick.mat(MT.Breeze, 1)));
+			int tAmount = RNGSUS.nextInt(4);
+			if (aLooting > 0) tAmount += RNGSUS.nextInt(2*aLooting+3);
+			while (tAmount-->0) aDrops.add(ST.entity(aDead, OP.stick.mat(MT.Blitz, 1)));
 		} else if (aClass.equalsIgnoreCase("EntityTFIceCrystal")) {
 			tReplaceIron = T;
 			int tAmount = RNGSUS.nextInt(2);
