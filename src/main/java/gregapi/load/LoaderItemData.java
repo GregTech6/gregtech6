@@ -2278,12 +2278,6 @@ public class LoaderItemData implements Runnable {
 		OM.data(MD.TC, "WandCap"                            , 1,   8, MT.VoidMetal          ,  5* U9);
 		OM.data(MD.TC, "ItemBaubleBlanks"                   , 1,   0, MT.Au                 ,  U    );
 		OM.data(MD.TC, "ItemBaubleBlanks"                   , 1,   2, MT.Au                 ,  U    , MT.Leather, U * 3);
-		OM.data(MD.TC, "ItemBaubleBlanks"                   , 1,   3, MT.Au                 ,  OP.ring.mAmount, MT.InfusedAir     , U4);
-		OM.data(MD.TC, "ItemBaubleBlanks"                   , 1,   4, MT.Au                 ,  OP.ring.mAmount, MT.InfusedEarth   , U4);
-		OM.data(MD.TC, "ItemBaubleBlanks"                   , 1,   5, MT.Au                 ,  OP.ring.mAmount, MT.InfusedFire    , U4);
-		OM.data(MD.TC, "ItemBaubleBlanks"                   , 1,   6, MT.Au                 ,  OP.ring.mAmount, MT.InfusedWater   , U4);
-		OM.data(MD.TC, "ItemBaubleBlanks"                   , 1,   7, MT.Au                 ,  OP.ring.mAmount, MT.InfusedOrder   , U4);
-		OM.data(MD.TC, "ItemBaubleBlanks"                   , 1,   8, MT.Au                 ,  OP.ring.mAmount, MT.InfusedEntropy , U4);
 		OM.data(MD.TC, "blockCandle"                        , 1,   W, MT.Tallow             ,  2* U3);
 		OM.data(MD.TC, "ItemZombieBrain"                    , 1,   W, MT.MeatRotten         ,  U * 1);
 		OM.data(MD.TC, "ItemGolemPlacer"                    , 1,   0, MT.Wheat              ,  U * 9);

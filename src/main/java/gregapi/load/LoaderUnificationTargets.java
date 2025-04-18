@@ -600,6 +600,12 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.InfusedEntropy         , MD.TC, "ItemShard"         ,  5);
 		OreDictManager.INSTANCE.setTarget(OP.gem            , MT.InfusedBalance         , MD.TC, "ItemShard"         ,  6);
 		OreDictManager.INSTANCE.setTarget(OP.ring           , MT.Au                     , MD.TC, "ItemBaubleBlanks"  ,  1);
+		OreDictManager.INSTANCE.setTarget(OP.ring           , MT.InfusedAir             , MD.TC, "ItemBaubleBlanks"  ,  3);
+		OreDictManager.INSTANCE.setTarget(OP.ring           , MT.InfusedEarth           , MD.TC, "ItemBaubleBlanks"  ,  4);
+		OreDictManager.INSTANCE.setTarget(OP.ring           , MT.InfusedFire            , MD.TC, "ItemBaubleBlanks"  ,  5);
+		OreDictManager.INSTANCE.setTarget(OP.ring           , MT.InfusedWater           , MD.TC, "ItemBaubleBlanks"  ,  6);
+		OreDictManager.INSTANCE.setTarget(OP.ring           , MT.InfusedOrder           , MD.TC, "ItemBaubleBlanks"  ,  7);
+		OreDictManager.INSTANCE.setTarget(OP.ring           , MT.InfusedEntropy         , MD.TC, "ItemBaubleBlanks"  ,  8);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Hg                     , MD.TC, "ItemNugget"        ,  5);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Thaumium               , MD.TC, "ItemNugget"        ,  6);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.VoidMetal              , MD.TC, "ItemNugget"        ,  7);
