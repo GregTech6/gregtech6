@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -163,6 +163,7 @@ public class Loader_OreProcessing implements Runnable {
 		stick                       .addListener(new OreProcessing_CraftFrom( 8, tCategory + "gem2stick"                , new String[][] {{"s " , "fX"        }}, gemLegendary      , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
 		bolt                        .addListener(new OreProcessing_CraftFrom( 2, tCategory + "stick2bolt"               , new String[][] {{"s " , " S"        }}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT, MT.Wood.NOT)));
 		screw                       .addListener(new OreProcessing_CraftFrom( 1, tCategory + "bolt2screw"               , new String[][] {{"fX" , "X "        }}, bolt              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
+		ring                        .addListener(new OreProcessing_CraftFrom( 1, tCategory + "gem2ring"                 , new String[][] {{"f " , " X"        }}, gem               , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
 		round                       .addListener(new OreProcessing_CraftFrom( 1, tCategory + "chunk2round"              , new String[][] {{"f " , " X"        }}, chunkGt           , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
 		wireFine                    .addListener(new OreProcessing_CraftFrom( 1, tCategory + "foil2wireFine"            , new String[][] {{"Xx"               }}, foil              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));
 		wireGt01                    .addListener(new OreProcessing_CraftFrom( 1, tCategory + "plate2wire"               , new String[][] {{"Px"               }}, null              , null          , null          , null                          , null                          , new And(ANTIMATTER.NOT, COATED.NOT)));

@@ -41,9 +41,9 @@ public class DungeonChunkRoomPortalAether extends DungeonChunkRoomPortal {
 		aData.mTags.add(WorldgenDungeonGT.TAG_PORTAL_AETHER);
 		
 		NBTTagList tInventory = new NBTTagList();
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(ST.make(Blocks.glowstone      , 16, 0)), "s", (short) 4));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(IL.Bottle_Holy_Water          .get(16)), "s", (short) 4));
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(IL.AETHER_Skyroot_Log         .get(64)), "s", (short)11));
-		tInventory.appendTag(UT.NBT.makeShort(ST.save(IL.Bottle_Holy_Water          .get(16)), "s", (short)15));
+		tInventory.appendTag(UT.NBT.makeShort(ST.save(ST.make(Blocks.glowstone      , 16, 0)), "s", (short)15));
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(ST.make(MD.AETHEL, "lore_book",  1, 0)), "s", (short)22));
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.gem  .mat(MT.Ambrosium     , 16   )), "s", (short)29));
 		tInventory.appendTag(UT.NBT.makeShort(ST.save(OP.stick.mat(MT.Breeze        ,  4   )), "s", (short)33));

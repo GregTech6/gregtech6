@@ -12,6 +12,7 @@ Gravitite is now considered a Type of Diamond in most of my Recipes.
 Golden Amber can now be used like regular Amber, and is also available through debarking Golden Oak.
 Skyroot Poison Buckets now contain 1000L of Poison 2 Potion, to give it another way of obtaining.
 Mossy Holystone got Moss Crafting Support now.
+There now is an Aether Portal Room in some GT6 Dungeons.
 [COMPAT] Removed the annoying Vanilla NEI Usage Handlers for Furnace Fuel and Furnace Smelting, as there is better NEI Handlers and Tooltips. (Does not target NEI-NH)
 [COMPAT] Et Futurum Ore Data for many Deepslate Ores.
 [COMPAT] Ars Magica Witchwood is now in the Wood Dictionary.
