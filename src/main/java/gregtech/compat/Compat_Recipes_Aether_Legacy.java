@@ -42,8 +42,23 @@ public class Compat_Recipes_Aether_Legacy extends CompatMods {
 		
 		CR.shaped(ST.make(MD.AETHER, "zanite_ring", 1, 0), DEF | DEL_OTHER_SHAPED_RECIPES, " X ", "X X", " X ", 'X', OP.gem.dat(MT.Zanite));
 		
-		RM.moss    (ST.make(MD.AETHEL, "holystone", 1, 1), ST.make(MD.AETHEL, "mossy_holystone", 1, 0));
-		RM.growmoss(ST.make(MD.AETHEL, "holystone", 1, 0), ST.make(MD.AETHEL, "mossy_holystone", 1, 0));
+		RM.moss(ST.make(MD.AETHEL, "holystone_stairs", 1, 0), ST.make(MD.AETHEL, "mossy_holystone_stairs", 1, 0));
+		RM.moss(ST.make(MD.AETHEL, "holystone_slab"  , 1, 0), ST.make(MD.AETHEL, "mossy_holystone_slab"  , 1, 0));
+		RM.moss(ST.make(MD.AETHEL, "holystone_wall"  , 1, 0), ST.make(MD.AETHEL, "mossy_holystone_wall"  , 1, 0));
+		RM.moss(ST.make(MD.AETHEL, "holystone"       , 1, 1), ST.make(MD.AETHEL, "mossy_holystone"       , 1, 1));
+		RM.moss(ST.make(MD.AETHEL, "holystone"       , 1, 0), ST.make(MD.AETHEL, "mossy_holystone"       , 1, 0));
+		
+		RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.AETHEL, "mossy_holystone", 1, 1), ST.make(MD.AETHEL, "mossy_holystone_stairs", 1, 0), ST.make(MD.AETHEL, "mossy_holystone_slab", 1, 0), ST.make(MD.AETHEL, "mossy_holystone_wall", 1, 0), NI);
+		RM.stonetypes(MT.STONES.Holystone, T, OP.rockGt.mat(MT.STONES.Holystone, 4), OP.blockDust.mat(MT.STONES.Holystone, 1)
+		, ST.make(MD.AETHEL, "holystone"      , 1, 0)
+		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.AETHEL, "holystone"      , 1, 1), ST.make(MD.AETHEL, "holystone_stairs"      , 1, 0), ST.make(MD.AETHEL, "holystone_slab"      , 1, 0), ST.make(MD.AETHEL, "holystone_wall"      , 1, 0), NI)
+		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.AETHEL, "holystone_brick", 1, 0), ST.make(MD.AETHEL, "holystone_brick_stairs", 1, 0), ST.make(MD.AETHEL, "holystone_brick_slab", 1, 0), ST.make(MD.AETHEL, "holystone_brick_wall", 1, 0), NI)
+		, NI
+		, NI
+		, NI
+		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.AETHEL, "angelic_stone" , 1, 0), ST.make(MD.AETHEL, "angelic_stairs" , 1, 0), ST.make(MD.AETHEL, "angelic_slab" , 1, 0), ST.make(MD.AETHEL, "angelic_wall" , 1, 0), NI)
+		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.AETHEL, "hellfire_stone", 1, 0), ST.make(MD.AETHEL, "hellfire_stairs", 1, 0), ST.make(MD.AETHEL, "hellfire_slab", 1, 0), ST.make(MD.AETHEL, "hellfire_wall", 1, 0), NI)
+		);
 		
 		RM.mortarize(ST.make(MD.AETHEL, "icestone", 1, 0), OP.dustTiny.mat(MT.Blizz, 8));
 		RM.smash    (ST.make(MD.AETHEL, "icestone", 1, 0), OP.dustTiny.mat(MT.Blizz, 6));

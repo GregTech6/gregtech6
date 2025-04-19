@@ -54,7 +54,18 @@ public class Compat_Recipes_Aether extends CompatMods {
 		RM.moss    (ST.make(MD.AETHER, "tile.holystoneDoubleSlab", 1, 0), ST.make(MD.AETHER, "tile.mossyHolystoneDoubleSlab", 1, 0));
 		RM.moss    (ST.make(MD.AETHER, "holystone"               , 1, 1), ST.make(MD.AETHER, "holystone"                    , 1, 3));
 		RM.growmoss(ST.make(MD.AETHER, "holystone"               , 1, 0), ST.make(MD.AETHER, "holystone"                    , 1, 3));
-		
+		/**
+		RM.stonetypes(MT.STONES.Holystone, T, OP.rockGt.mat(MT.STONES.Holystone, 4), OP.blockDust.mat(MT.STONES.Holystone, 1)
+		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.ERE, "umberstone", 1, 0), ST.make(MD.ERE, "umbercobbleStairs0", 1, 0), ST.make(MD.ERE, "slab-umberstone0"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 0), NI)
+		, RM.stoneshapes(MT.STONES.Holystone, T, ST.make(MD.ERE, "umberstone", 1, 1), ST.make(MD.ERE, "umbercobbleStairs1", 1, 0), ST.make(MD.ERE, "slab-umberstone1"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 1), NI)
+		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.ERE, "umberstone", 1, 4), ST.make(MD.ERE, "umbercobbleStairs4", 1, 0), ST.make(MD.ERE, "slab-umberstone4"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 4), NI)
+		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.ERE, "umberPaver", 1, 0), NI                                         , ST.make(MD.ERE, "slab-umberPaver0"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 5), NI)
+		, NI
+		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.ERE, "umberstone", 1, 5), ST.make(MD.ERE, "umbercobbleStairs5", 1, 0), NI                                          , NI                                          , ST.make(MD.ERE, "umberstonePillar"   , 1, 0))
+		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.ERE, "umberstone", 1, 6), ST.make(MD.ERE, "umbercobbleStairs6", 1, 0), NI                                          , NI                                          , NI)
+		, NI
+		);
+				*/
 		RM.mortarize(ST.make(MD.AETHER, "icestone", 1, 0), OP.dustTiny.mat(MT.Blizz, 8));
 		RM.smash    (ST.make(MD.AETHER, "icestone", 1, 0), OP.dustTiny.mat(MT.Blizz, 6));
 		

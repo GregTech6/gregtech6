@@ -456,6 +456,11 @@ public class Override_Drops {
 			int tAmount = RNGSUS.nextInt(4);
 			if (aLooting > 0) tAmount += RNGSUS.nextInt(2*aLooting+3);
 			while (tAmount-->0) aDrops.add(ST.entity(aDead, OP.stick.mat(MT.Blitz, 1)));
+		} else if (aClass.equalsIgnoreCase("EntityFireMinion")) {
+			tReplaceIron = T;
+			int tAmount = RNGSUS.nextInt(4);
+			if (aLooting > 0) tAmount += RNGSUS.nextInt(2*aLooting+3);
+			while (tAmount-->0) aDrops.add(ST.entity(aDead, OP.stick.mat(MT.Blaze, 1)));
 		} else if (aClass.equalsIgnoreCase("EntityTFIceCrystal")) {
 			tReplaceIron = T;
 			int tAmount = RNGSUS.nextInt(2);
