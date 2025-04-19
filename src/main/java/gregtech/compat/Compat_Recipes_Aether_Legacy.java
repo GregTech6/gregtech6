@@ -50,8 +50,8 @@ public class Compat_Recipes_Aether_Legacy extends CompatMods {
 		
 		RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.AETHEL, "mossy_holystone", 1, 1), ST.make(MD.AETHEL, "mossy_holystone_stairs", 1, 0), ST.make(MD.AETHEL, "mossy_holystone_slab", 1, 0), ST.make(MD.AETHEL, "mossy_holystone_wall", 1, 0), NI);
 		RM.stonetypes(MT.STONES.Holystone, T, OP.rockGt.mat(MT.STONES.Holystone, 4), OP.blockDust.mat(MT.STONES.Holystone, 1)
-		, ST.make(MD.AETHEL, "holystone"      , 1, 0)
 		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.AETHEL, "holystone"      , 1, 1), ST.make(MD.AETHEL, "holystone_stairs"      , 1, 0), ST.make(MD.AETHEL, "holystone_slab"      , 1, 0), ST.make(MD.AETHEL, "holystone_wall"      , 1, 0), NI)
+		, NI
 		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.AETHEL, "holystone_brick", 1, 0), ST.make(MD.AETHEL, "holystone_brick_stairs", 1, 0), ST.make(MD.AETHEL, "holystone_brick_slab", 1, 0), ST.make(MD.AETHEL, "holystone_brick_wall", 1, 0), NI)
 		, NI
 		, NI

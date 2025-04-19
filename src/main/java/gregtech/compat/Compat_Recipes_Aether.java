@@ -54,18 +54,21 @@ public class Compat_Recipes_Aether extends CompatMods {
 		RM.moss    (ST.make(MD.AETHER, "tile.holystoneDoubleSlab", 1, 0), ST.make(MD.AETHER, "tile.mossyHolystoneDoubleSlab", 1, 0));
 		RM.moss    (ST.make(MD.AETHER, "holystone"               , 1, 1), ST.make(MD.AETHER, "holystone"                    , 1, 3));
 		RM.growmoss(ST.make(MD.AETHER, "holystone"               , 1, 0), ST.make(MD.AETHER, "holystone"                    , 1, 3));
-		/**
+		
+		RM.stoneshapes(null, F, ST.make(MD.AETHER, "icestone", 1, 0), ST.make(MD.AETHER, "icestoneStairs", 1, 0), ST.make(MD.AETHER, "tile.icestoneSingleSlab", 1, 0), ST.make(MD.AETHER, "icestoneWall", 1, 0), NI);
+		
+		RM.stoneshapes(  MT.STONES.Holystone, F, ST.make(MD.AETHER, "holystone"                       , 1, 3), ST.make(MD.AETHER, "tile.mossyHolystoneSingleSlab"   , 1, 0), ST.make(MD.AETHER, "mossyHolystoneStairs"            , 1, 0), ST.make(MD.AETHER, "mossyHolystoneWall"              , 1, 0), NI);// Mossy Holystone Wall 1;
 		RM.stonetypes(MT.STONES.Holystone, T, OP.rockGt.mat(MT.STONES.Holystone, 4), OP.blockDust.mat(MT.STONES.Holystone, 1)
-		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.ERE, "umberstone", 1, 0), ST.make(MD.ERE, "umbercobbleStairs0", 1, 0), ST.make(MD.ERE, "slab-umberstone0"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 0), NI)
-		, RM.stoneshapes(MT.STONES.Holystone, T, ST.make(MD.ERE, "umberstone", 1, 1), ST.make(MD.ERE, "umbercobbleStairs1", 1, 0), ST.make(MD.ERE, "slab-umberstone1"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 1), NI)
-		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.ERE, "umberstone", 1, 4), ST.make(MD.ERE, "umbercobbleStairs4", 1, 0), ST.make(MD.ERE, "slab-umberstone4"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 4), NI)
-		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.ERE, "umberPaver", 1, 0), NI                                         , ST.make(MD.ERE, "slab-umberPaver0"   , 1, 0), ST.make(MD.ERE, "wallErebus"         , 1, 5), NI)
+		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.AETHER, "holystone"                       , 1, 1), ST.make(MD.AETHER, "tile.holystoneSingleSlab"        , 1, 0), ST.make(MD.AETHER, "holystoneStairs"                 , 1, 0), ST.make(MD.AETHER, "holystoneWall"                   , 1, 0), ST.make(MD.AETHER, "holystoneHighlight"              , 1, 0))
 		, NI
-		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.ERE, "umberstone", 1, 5), ST.make(MD.ERE, "umbercobbleStairs5", 1, 0), NI                                          , NI                                          , ST.make(MD.ERE, "umberstonePillar"   , 1, 0))
-		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.ERE, "umberstone", 1, 6), ST.make(MD.ERE, "umbercobbleStairs6", 1, 0), NI                                          , NI                                          , NI)
+		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.AETHER, "holystoneBrick"                  , 1, 0), ST.make(MD.AETHER, "tile.holystoneBrickSingleSlab"   , 1, 0), ST.make(MD.AETHER, "holystoneBrickStairs"            , 1, 0), ST.make(MD.AETHER, "holystoneBrickWall"              , 1, 0), ST.make(MD.AETHER, "holystoneHeadstone"              , 1, 0))
 		, NI
+		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.AETHER, "divineCarvedStone"               , 1, 0), ST.make(MD.AETHER, "divineCarvedStoneStairs"         , 1, 0), ST.make(MD.AETHER, "tile.divineCarvedStoneSingleSlab", 1, 0), ST.make(MD.AETHER, "divineCarvedStoneWall"           , 1, 0), NI)
+		, NI
+		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.AETHER, "divineSentryStone"               , 1, 0), ST.make(MD.AETHER, "divineSentryStoneStairs"         , 1, 0), ST.make(MD.AETHER, "tile.divineSentryStoneSingleSlab", 1, 0), ST.make(MD.AETHER, "divineSentryStoneWall"           , 1, 0), NI)
+		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.AETHER, "sentryStone"                     , 1, 0), ST.make(MD.AETHER, "sentryStoneStairs"               , 1, 0), ST.make(MD.AETHER, "tile.sentryStoneSingleSlab"      , 1, 0), ST.make(MD.AETHER, "sentryStoneWall"                 , 1, 0), ST.make(MD.AETHER, "holystoneKeystone"               , 1, 0))
 		);
-				*/
+		
 		RM.mortarize(ST.make(MD.AETHER, "icestone", 1, 0), OP.dustTiny.mat(MT.Blizz, 8));
 		RM.smash    (ST.make(MD.AETHER, "icestone", 1, 0), OP.dustTiny.mat(MT.Blizz, 6));
 		
