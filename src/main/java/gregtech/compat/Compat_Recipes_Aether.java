@@ -55,9 +55,8 @@ public class Compat_Recipes_Aether extends CompatMods {
 		RM.moss    (ST.make(MD.AETHER, "holystone"               , 1, 1), ST.make(MD.AETHER, "holystone"                    , 1, 3));
 		RM.growmoss(ST.make(MD.AETHER, "holystone"               , 1, 0), ST.make(MD.AETHER, "holystone"                    , 1, 3));
 		
-		RM.stoneshapes(null, F, ST.make(MD.AETHER, "icestone", 1, 0), ST.make(MD.AETHER, "icestoneStairs", 1, 0), ST.make(MD.AETHER, "tile.icestoneSingleSlab", 1, 0), ST.make(MD.AETHER, "icestoneWall", 1, 0), NI);
 		
-		RM.stoneshapes(  MT.STONES.Holystone, F, ST.make(MD.AETHER, "holystone"                       , 1, 3), ST.make(MD.AETHER, "tile.mossyHolystoneSingleSlab"   , 1, 0), ST.make(MD.AETHER, "mossyHolystoneStairs"            , 1, 0), ST.make(MD.AETHER, "mossyHolystoneWall"              , 1, 0), NI);// Mossy Holystone Wall 1;
+		RM.stoneshapes(  MT.STONES.Holystone, F, ST.make(MD.AETHER, "holystone"                       , 1, 3), ST.make(MD.AETHER, "tile.mossyHolystoneSingleSlab"   , 1, 0), ST.make(MD.AETHER, "mossyHolystoneStairs"            , 1, 0), ST.make(MD.AETHER, "mossyHolystoneWall"              , 1, 0), NI);
 		RM.stonetypes(MT.STONES.Holystone, T, OP.rockGt.mat(MT.STONES.Holystone, 4), OP.blockDust.mat(MT.STONES.Holystone, 1)
 		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.AETHER, "holystone"                       , 1, 1), ST.make(MD.AETHER, "tile.holystoneSingleSlab"        , 1, 0), ST.make(MD.AETHER, "holystoneStairs"                 , 1, 0), ST.make(MD.AETHER, "holystoneWall"                   , 1, 0), ST.make(MD.AETHER, "holystoneHighlight"              , 1, 0))
 		, NI
@@ -69,8 +68,16 @@ public class Compat_Recipes_Aether extends CompatMods {
 		, RM.stoneshapes(MT.STONES.Holystone, F, ST.make(MD.AETHER, "sentryStone"                     , 1, 0), ST.make(MD.AETHER, "sentryStoneStairs"               , 1, 0), ST.make(MD.AETHER, "tile.sentryStoneSingleSlab"      , 1, 0), ST.make(MD.AETHER, "sentryStoneWall"                 , 1, 0), ST.make(MD.AETHER, "holystoneKeystone"               , 1, 0))
 		);
 		
-		RM.mortarize(ST.make(MD.AETHER, "icestone", 1, 0), OP.dustTiny.mat(MT.Blizz, 8));
-		RM.smash    (ST.make(MD.AETHER, "icestone", 1, 0), OP.dustTiny.mat(MT.Blizz, 6));
+		RM.stoneshapes(null, F, ST.make(MD.AETHER, "icestone", 1, 0), ST.make(MD.AETHER, "icestoneStairs", 1, 0), ST.make(MD.AETHER, "tile.icestoneSingleSlab", 1, 0), ST.make(MD.AETHER, "icestoneWall", 1, 0), NI);
+		
+		RM.mortarize(ST.make(MD.AETHER, "icestone"               , 1, W), OP.dustTiny.mat(MT.Blizz, 8));
+		RM.mortarize(ST.make(MD.AETHER, "icestoneStairs"         , 1, W), OP.dustTiny.mat(MT.Blizz, 6));
+		RM.mortarize(ST.make(MD.AETHER, "tile.icestoneSingleSlab", 1, W), OP.dustTiny.mat(MT.Blizz, 4));
+		RM.mortarize(ST.make(MD.AETHER, "icestoneWall"           , 1, W), OP.dustTiny.mat(MT.Blizz, 8));
+		RM.smash    (ST.make(MD.AETHER, "icestone"               , 1, W), OP.dustTiny.mat(MT.Blizz, 6));
+		RM.smash    (ST.make(MD.AETHER, "icestoneStairs"         , 1, W), OP.dustTiny.mat(MT.Blizz, 4));
+		RM.smash    (ST.make(MD.AETHER, "tile.icestoneSingleSlab", 1, W), OP.dustTiny.mat(MT.Blizz, 3));
+		RM.smash    (ST.make(MD.AETHER, "icestoneWall"           , 1, W), OP.dustTiny.mat(MT.Blizz, 6));
 		
 		RM.sawing(16,  32, F, 100, ST.make(MD.AETHER, "skyrootSignItem"     , 1, W), IL.AETHER_Skyroot_Planks.get(2), OM.dust(MT.Skyroot, OP.stick.mAmount / 3));
 		RM.sawing(16,  32, F, 100, ST.make(MD.AETHER, "skyrootFenceGate"    , 1, W), IL.AETHER_Skyroot_Planks.get(2), OM.dust(MT.Skyroot, OP.stick.mAmount * 4));
