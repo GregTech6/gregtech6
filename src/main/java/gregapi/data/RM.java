@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -128,6 +128,7 @@ public class RM {
 	, CrucibleAlloying          = new RecipeMap                     (null, "gt.recipe.cruciblealloying"             , "Combination Smelting"            , null, 0, 1, RES_PATH_GUI+"machines/Alloying"                  ,/*IN-OUT-MIN-ITEM=*/12,12, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, "Temperature: "       ,    1, " K"    , T, T, F, T, F, T, T)
 	, CrucibleSmelting          = new RecipeMapCrucible             (null, "gt.recipe.cruciblesmelting"             , "Crucible Smelting"               , null, 0, 1, RES_PATH_GUI+"machines/Default"                   ,/*IN-OUT-MIN-ITEM=*/ 6, 6, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, "Temperature: "       ,    1, " K"    , T, T, F, T, F, T, T)
 	, Cutter                    = new RecipeMap                     (null, "gt.recipe.cutter"                       , "Cutter"                          , null, 0, 1, RES_PATH_GUI+"machines/Cutter"                    ,/*IN-OUT-MIN-ITEM=*/ 1, 3, 1,/*IN-OUT-MIN-FLUID=*/ 1, 0, 1,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
+	, Melter                    = new RecipeMap                     (null, "gt.recipe.melter"                       , "Melter"                          , null, 0, 1, RES_PATH_GUI+"machines/Melter"                    ,/*IN-OUT-MIN-ITEM=*/ 1, 1, 0,/*IN-OUT-MIN-FLUID=*/ 1, 1, 0,/*MIN*/ 1,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
 	, Smelter                   = new RecipeMap                     (null, "gt.recipe.smelter"                      , "Smelter"                         , null, 0, 1, RES_PATH_GUI+"machines/Smelter"                   ,/*IN-OUT-MIN-ITEM=*/ 1, 1, 0,/*IN-OUT-MIN-FLUID=*/ 1, 1, 0,/*MIN*/ 1,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
 	, Mortar                    = new RecipeMap                     (null, "gt.recipe.mortar"                       , "Mortar"                          , null, 0, 1, RES_PATH_GUI+"machines/Mortar"                    ,/*IN-OUT-MIN-ITEM=*/ 1, 2, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)
 	, Shredder                  = new RecipeMapShredder             (null, "gt.recipe.shredder"                     , "Shredder"                        , null, 0, 1, RES_PATH_GUI+"machines/Shredder"                  ,/*IN-OUT-MIN-ITEM=*/ 1,12, 1,/*IN-OUT-MIN-FLUID=*/ 0, 0, 0,/*MIN*/ 0,/*AMP=*/ 1, ""                    ,    1, ""      , T, T, T, T, F, T, T)

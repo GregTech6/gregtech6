@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -85,6 +85,7 @@ public class Compat_Recipes_Steamcraft2 extends CompatMods {
 		CR.shaped(ST.make(MD.SC2, "BlockBrickGreySlateStairs"      , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockLightSlate", 1, 7));
 		CR.shaped(ST.make(MD.SC2, "BlockBrickLightRedSlateStairs"  , 4, 0), CR.DEF_MIR, " S", "SS", 'S', ST.make(MD.SC2, "BlockLightSlate", 1, 8));
 		
+		RM.Melter .addRecipe1(T, 16, 64, ST.make(MD.SC2, "ItemWhaleBlubber", 1, 0), NF, FL.Oil_Whale.make(1000), ZL_IS);
 		RM.Smelter.addRecipe1(T, 16, 64, ST.make(MD.SC2, "ItemWhaleBlubber", 1, 0), NF, FL.Oil_Whale.make(1000), ZL_IS);
 		
 		RM.packunpack(ST.make(MD.SC2, "ItemSlimeRubber", 9, 0), ST.make(MD.SC2, "BlockCongealedSlime", 1, 0));

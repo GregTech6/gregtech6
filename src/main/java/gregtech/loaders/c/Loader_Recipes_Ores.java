@@ -380,7 +380,7 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Centrifuge   .addRecipe1(T,1536,2304, new long[] {10000, 2700      }, crushedCentrifuged    .mat(MT.Fl       , 1), dust    .mat(MT.Fl       , 1), dustTiny.mat(MT.Fl_298   , 8));
 		
 		
-		final long[] tSluice = {10000, 300, 300, 300, 300, 300, 300, 300, 300}, tMagnet = {10000, 600, 600, 600, 600, 600}, tCentrifuge = {10000, 1000, 1000, 1000};
+		final long[] tSluice = {10000, 300, 300, 300, 300, 300, 300, 300, 300}, tMagnet = {10000, 600, 600, 600, 600, 600}, tCentrifuge = {10000, 1000, 1000, 1000}, tWaxCracking = {10000, 4000, 4000};
 		
 		for (OreDictMaterial aMat : OreDictMaterial.MATERIAL_ARRAY) if (aMat != null && !aMat.contains(ANTIMATTER) && aMat != MT.Bedrock) {
 			ItemStack tDust = dust.mat(aMat, 1);
@@ -468,6 +468,18 @@ public class Loader_Recipes_Ores implements Runnable {
 				if (FL.zero(tFluid3)) tFluid3 = null;
 				RM.Centrifuge.addRecipe1(T, 16, 144 + 144 * aMat.mToolQuality, tCentrifuge, tPurified    , ZL_FS, FL.array(FL.mul(tFluid1, 9), FL.mul(tFluid2, 9), FL.mul(tFluid3, 9)), OM.crushedCentrifugedTiny(aMat, 9), tFluid1==null?OM.crushedCentrifugedTiny(tMat1, 9):null, tFluid2==null?OM.crushedCentrifugedTiny(tMat2, 9):null, tFluid3==null?OM.crushedCentrifugedTiny(tMat3, 9):null);
 				RM.Centrifuge.addRecipe1(T, 16,  16 +  16 * aMat.mToolQuality, tCentrifuge, tPurifiedTiny, ZL_FS, FL.array(       tFluid1    ,        tFluid2    ,        tFluid3    ), OM.crushedCentrifugedTiny(aMat, 1), tFluid1==null?OM.crushedCentrifugedTiny(tMat1, 1):null, tFluid2==null?OM.crushedCentrifugedTiny(tMat2, 1):null, tFluid3==null?OM.crushedCentrifugedTiny(tMat3, 1):null);
+			}
+			
+			ItemStack tRefined = crushedCentrifuged.mat(aMat, 1), tRefinedTiny = crushedCentrifugedTiny.mat(aMat, 1);
+			if (ST.valid(tRefined) && ST.valid(tRefinedTiny)) {
+				for (OreDictMaterial tWax : ANY.Wax.mToThis) if (FL.valid(tWax.mLiquid)) {
+				OreDictMaterial tMat1 = UT.Code.select(0, aMat, aMat.mByProducts), tMat2 = UT.Code.select(1, aMat, aMat.mByProducts);
+				FluidStack tFluid1 = tMat1.fluid(DEF_ENV_TEMP, U18, T), tFluid2 = tMat2.fluid(DEF_ENV_TEMP, U18, T);
+				if (FL.zero(tFluid1)) tFluid1 = null;
+				if (FL.zero(tFluid2)) tFluid2 = null;
+				RM.SteamCracking.addRecipe1(T, 16, 144, tWaxCracking, tRefined    , FL.array(FL.Steam.make(100), tWax.liquid(U , T)), FL.array(FL.Water.make(900), FL.mul(tFluid1, 9), FL.mul(tFluid2, 9)), OP.dustTiny.mat(aMat, 9), tFluid1==null?OP.dustTiny.mat(tMat1, 9):null, tFluid2==null?OP.dustTiny.mat(tMat2, 9):null);
+				RM.SteamCracking.addRecipe1(T, 16,  16, tWaxCracking, tRefinedTiny, FL.array(FL.Steam.make(100), tWax.liquid(U9, T)), FL.array(FL.Water.make(100),        tFluid1    ,        tFluid2    ), OP.dustTiny.mat(aMat, 1), tFluid1==null?OP.dustTiny.mat(tMat1, 1):null, tFluid2==null?OP.dustTiny.mat(tMat2, 1):null);
+				}
 			}
 		}
 	}

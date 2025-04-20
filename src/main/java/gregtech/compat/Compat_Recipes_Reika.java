@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,19 +19,11 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
-import gregapi.data.ANY;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.event.IOreDictListenerEvent;
 import gregapi.oredict.event.OreDictListenerEvent_Names;
@@ -42,6 +34,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
 
 public class Compat_Recipes_Reika extends CompatMods {
 	public Compat_Recipes_Reika(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -94,7 +88,9 @@ public class Compat_Recipes_Reika extends CompatMods {
 			RM.Freezer          .addRecipe1(T, 16,   16, IL.RoC_Ethanol_Extract.get(1), IL.RoC_Ethanol_Crystal.get(1));
 			
 			
+			RM.Melter           .addRecipe1(T, 16,   16, IL.RoC_Ethanol_Extract.get(1), NF, FL.Reikanol.make(1000), ZL_IS);
 			RM.Smelter          .addRecipe1(T, 16,   16, IL.RoC_Ethanol_Extract.get(1), NF, FL.Reikanol.make(1000), ZL_IS);
+			RM.Melter           .addRecipe1(T, 16,   16, IL.RoC_Ethanol_Crystal.get(1), NF, FL.Reikanol.make(1000), ZL_IS);
 			RM.Smelter          .addRecipe1(T, 16,   16, IL.RoC_Ethanol_Crystal.get(1), NF, FL.Reikanol.make(1000), ZL_IS);
 			
 			

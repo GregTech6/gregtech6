@@ -697,6 +697,16 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Coagulator       .addRecipe0(T,  0, 1024, FL.MilkSoy.make(250), NF, OM.dust(MT.Tofu));
 		
 		
+		RM.Melter           .addRecipe0(T, 16,    1, FL.Oil_Sunflower.make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Melter           .addRecipe0(T, 16,    1, FL.Oil_Olive    .make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Melter           .addRecipe0(T, 16,    1, FL.Oil_Nut      .make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Melter           .addRecipe0(T, 16,    1, FL.Oil_Hemp     .make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Melter           .addRecipe0(T, 16,    1, FL.Oil_Lin      .make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Melter           .addRecipe0(T, 16,    1, FL.Oil_Seed     .make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Melter           .addRecipe0(T, 16,    1, FL.Oil_Fish     .make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Melter           .addRecipe0(T, 16,    1, FL.Oil_Whale    .make(1), FL.Oil_Frying.make(1), ZL_IS);
+		RM.Melter           .addRecipe0(T, 16,    1, FL.Ice          .make(1), FL.Water     .make(1), ZL_IS);
+		
 		RM.Smelter          .addRecipe0(T, 16,    1, FL.Oil_Sunflower.make(1), FL.Oil_Frying.make(1), ZL_IS);
 		RM.Smelter          .addRecipe0(T, 16,    1, FL.Oil_Olive    .make(1), FL.Oil_Frying.make(1), ZL_IS);
 		RM.Smelter          .addRecipe0(T, 16,    1, FL.Oil_Nut      .make(1), FL.Oil_Frying.make(1), ZL_IS);
