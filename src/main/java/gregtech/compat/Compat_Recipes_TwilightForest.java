@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -108,7 +108,7 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		RM.Boxinator.addRecipe2(T,128,128, ST.make(BlocksGT.Leaves_AB      , 64, W), IL.TF_Pick_Giant.getWildcard(0), IL.TF_Giant_Leaves  .get(1));
 		RM.Boxinator.addRecipe2(T,128,128, ST.make(BlocksGT.Leaves_CD      , 64, W), IL.TF_Pick_Giant.getWildcard(0), IL.TF_Giant_Leaves  .get(1));
 		
-		RM.Mixer.addRecipeX(T, 16, 64, ST.array(OM.dust(MT.Redstone, 4*U), IL.TF_BorerEssence.get(4), ST.make(Items.ghast_tear, 1, W)), IL.TF_Carminite.get(1));
+		RM.Mixer.addRecipeX(T, 16, 64, ST.array(OM.dust(MT.Redstone, 4*U), IL.TF_BorerEssence.get(4), ST.make(Items.ghast_tear, 1, W)), OP.dust.mat(MT.Carminite, 4));
 		
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(4), ST.make(MD.TF, "item.arcticFur", 5), ST.make(MD.TF, "item.arcticHelm" , 1));
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(5), ST.make(MD.TF, "item.arcticFur", 8), ST.make(MD.TF, "item.arcticPlate", 1));

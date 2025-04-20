@@ -181,7 +181,7 @@ public class Loader_Recipes_Ores implements Runnable {
 		RM.Bath.addRecipe1(T,  0,  256, OP.crushed    .mat(tMat, 1), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
 		RM.Bath.addRecipe1(T,  0,  256, OP.crushedTiny.mat(tMat, 9), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
 		}
-		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Nikolite, MT.Redstone, MT.OREMATS.Cinnabar}) {
+		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Carminite, MT.Nikolite, MT.Redstone, MT.OREMATS.Cinnabar}) {
 		RM.Bath.addRecipe1(T,  0,  256, OP.blockDust  .mat(tMat, 1), MT.Cryotheum.liquid(U , T), NF, gemExquisite  .mat(tMat, 1));
 		RM.Bath.addRecipe1(T,  0,  256, OP.crushed    .mat(tMat, 1), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
 		RM.Bath.addRecipe1(T,  0,  256, OP.crushedTiny.mat(tMat, 9), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
