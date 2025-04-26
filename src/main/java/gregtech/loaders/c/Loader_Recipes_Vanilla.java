@@ -635,7 +635,11 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		CR.shapeless(IL.Plank.get(8), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Blocks.noteblock            });
 		CR.shapeless(IL.Plank.get(8), CR.DEF_NCC, new Object[] {OreDictToolNames.saw, Blocks.jukebox              });
 		
-		RM.Slicer       .addRecipe2(T, 16,   16, ST.make(Blocks.melon_block, 1, W), IL.Shape_Slicer_Eigths.get(0), ST.make(Items.melon, 8, 0), ST.make(Items.melon_seeds, 1, 0));
+		RM.Slicer       .addRecipe2(T, 16,   16, ST.make(Items.leather_helmet    , 1, W), IL.Shape_Slicer_Split .get(0), ST.make(Items.leather, 1, 0));
+		RM.Slicer       .addRecipe2(T, 16,   16, ST.make(Items.leather_chestplate, 1, W), IL.Shape_Slicer_Split .get(0), ST.make(Items.leather, 2, 0));
+		RM.Slicer       .addRecipe2(T, 16,   16, ST.make(Items.leather_leggings  , 1, W), IL.Shape_Slicer_Split .get(0), ST.make(Items.leather, 2, 0));
+		RM.Slicer       .addRecipe2(T, 16,   16, ST.make(Items.leather_boots     , 1, W), IL.Shape_Slicer_Split .get(0), ST.make(Items.leather, 1, 0));
+		RM.Slicer       .addRecipe2(T, 16,   16, ST.make(Blocks.melon_block      , 1, W), IL.Shape_Slicer_Eigths.get(0), ST.make(Items.melon, 8, 0), ST.make(Items.melon_seeds, 1, 0));
 		
 		RM.Compressor   .addRecipe1(T, 64,   32, ST.make(Blocks.ice, 2, W), ST.make(Blocks.packed_ice, 1, 0));
 		RM.Compressor   .addRecipe1(T, 16,   32, OM.dust(MT.Ice), ST.make(Blocks.ice, 1, 0));

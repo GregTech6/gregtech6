@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -94,6 +94,9 @@ public class Loader_Recipes_OreDict extends OreDictListenerEvent_Names {
 		addListener("stoneEndstone", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.Hammer       .addRecipe1(T, 16,   16, aEvent.mStack, OP.rockGt.mat(MT.Endstone, 4));
 			RM.Crusher      .addRecipe1(T, 16,   16, aEvent.mStack, OP.rockGt.mat(MT.Endstone, 4));
+		}});
+		addListener(OD.craftingFur, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
+			RM.Slicer       .addRecipe2(T, 16,   16, aEvent.mStack, IL.Shape_Slicer_Flat.get(0), ST.make(Items.leather, 1, 0)); // shave off the Fur
 		}});
 		addListener(OD.itemTar, new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (!ST.ingredable(aEvent.mStack)) return;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -111,6 +111,8 @@ public abstract class MultiItemRandom extends MultiItem implements Runnable {
 	protected short mLastID = W;
 	public ItemStack last() {return last(1);}
 	public ItemStack last(int aAmount) {return ST.make(this, aAmount, mLastID);}
+	public ItemStack prev() {return prev(1);}
+	public ItemStack prev(int aAmount) {return ST.make(this, aAmount, mLastID-1);}
 	public ItemStack next() {return next(1);}
 	public ItemStack next(int aAmount) {return ST.make(this, aAmount, mLastID+1);}
 	
