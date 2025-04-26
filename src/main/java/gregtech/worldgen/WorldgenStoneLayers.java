@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -66,6 +66,7 @@ public class WorldgenStoneLayers extends WorldgenObject {
 		final byte tScanMinusOne = (byte)(tScan.length-1);
 		
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
+		Block tLastReplaced = Blocks.stone;
 		
 		for (int i = 0; i < 16; i++) for (int j = 0; j < 16; j++) {
 			final int tX = aMinX+i, tZ = aMinZ+j;
@@ -141,7 +142,8 @@ public class WorldgenStoneLayers extends WorldgenObject {
 						}
 					}
 				// Stone and Ore Generation in replaceable Blocks.
-				} else if (StoneLayer.REPLACEABLE_BLOCKS.contains(aBlock)) {
+				} else if (aBlock == tLastReplaced || StoneLayer.REPLACEABLE_BLOCKS.contains(aBlock)) {
+					tLastReplaced = aBlock;
 					tCanPlaceRocks = T;
 					boolean temp = T;
 					if (tScan[5] == tScan[1]) {

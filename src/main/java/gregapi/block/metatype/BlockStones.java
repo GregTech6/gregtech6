@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -672,5 +672,5 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	@Override public boolean isFlammable(byte aMeta) {return MOSSY[aMeta];}
 	@Override public int getFlammability(byte aMeta) {return 0;}
 	@Override public int getFireSpreadSpeed(byte aMeta) {return MOSSY[aMeta]?3000:0;}
-	@Override public boolean isReplaceableOreGen(World aWorld, int aX, int aY, int aZ, Block aTarget) {return (aTarget == this || (aY <= 6 && aTarget == Blocks.stone)) && WD.meta(aWorld, aX, aY, aZ) == STONE;}
+	@Override public boolean isReplaceableOreGen(World aWorld, int aX, int aY, int aZ, Block aTarget) {return aTarget == this && WD.meta(aWorld, aX, aY, aZ) == STONE;}// No longer pretend to be Vanilla Stone at Y<=6, as all the special cases (Draconium) have been resolved.
 }
