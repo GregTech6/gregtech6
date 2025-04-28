@@ -23,6 +23,7 @@ import gregapi.data.IL;
 import gregapi.data.MD;
 import gregapi.data.MT;
 import gregapi.data.OP;
+import gregapi.oredict.OreDictMaterial;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregtech.tileentity.placeables.MultiTileEntityCoin;
@@ -36,6 +37,7 @@ import net.minecraftforge.common.ChestGenHooks;
 import twilightforest.TFTreasure;
 
 import static gregapi.data.CS.*;
+import static gregapi.data.TD.Properties.RANDOM_SMALL_GEM_ORE;
 
 
 public class Loader_Loot implements Runnable {
@@ -75,6 +77,50 @@ public class Loader_Loot implements Runnable {
 			TFTreasure.troll_garden      = TwilightTreasureReplacer.create(TFTreasure.troll_garden     , 21, "troll_garden"     , ChestGenHooks.DUNGEON_CHEST           ,   524);
 			TFTreasure.troll_vault       = TwilightTreasureReplacer.create(TFTreasure.troll_vault      , 22, "troll_vault"      , ChestGenHooks.VILLAGE_BLACKSMITH      ,    24);
 		}
+		
+		
+		ST.LOOT_TABLES.add("gt.loot.flawless");
+		addLoot("gt.loot.flawless",15, 1, 1, OP.gemFlawless.mat(MT.Diamond       , 1));
+		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.DiamondPink   , 1));
+		addLoot("gt.loot.flawless", 8, 1, 1, OP.gemFlawless.mat(MT.Emerald       , 1));
+		addLoot("gt.loot.flawless", 3, 1, 1, OP.gemFlawless.mat(MT.Aquamarine    , 1));
+		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.Morganite     , 1));
+		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.Heliodor      , 1));
+		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.Goshenite     , 1));
+		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.Bixbite       , 1));
+		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.Maxixe        , 1));
+		addLoot("gt.loot.flawless", 5, 1, 1, OP.gemFlawless.mat(MT.Ruby          , 1));
+		addLoot("gt.loot.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.BlueSapphire  , 1));
+		addLoot("gt.loot.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.GreenSapphire , 1));
+		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.PurpleSapphire, 1));
+		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.YellowSapphire, 1));
+		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.OrangeSapphire, 1));
+		addLoot("gt.loot.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.Craponite     , 1));
+		addLoot("gt.loot.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.Amethyst      , 1));
+		addLoot("gt.loot.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.Amber         , 1));
+		addLoot("gt.loot.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.Jade          , 1));
+		
+		
+		ST.LOOT_TABLES.add("gt.loot.gems");
+		addLoot("gt.loot.gems",64, 1, 4, OP.gem       .mat(MT.Emerald    , 1));
+		addLoot("gt.loot.gems",15, 1, 4, OP.gem       .mat(MT.Diamond    , 1));
+		addLoot("gt.loot.gems",15, 2, 8, OP.gemFlawed .mat(MT.Diamond    , 1));
+		addLoot("gt.loot.gems",15, 4,16, OP.gemChipped.mat(MT.Diamond    , 1));
+		addLoot("gt.loot.gems", 1, 1, 4, OP.gem       .mat(MT.DiamondPink, 1));
+		addLoot("gt.loot.gems", 1, 2, 8, OP.gemFlawed .mat(MT.DiamondPink, 1));
+		addLoot("gt.loot.gems", 1, 4,16, OP.gemChipped.mat(MT.DiamondPink, 1));
+		addLoot("gt.loot.gems", 1, 1, 4, OP.gem       .mat(MT.Craponite  , 1));
+		addLoot("gt.loot.gems", 1, 2, 8, OP.gemFlawed .mat(MT.Craponite  , 1));
+		addLoot("gt.loot.gems", 1, 4,16, OP.gemChipped.mat(MT.Craponite  , 1));
+		addLoot("gt.loot.gems", 1, 1, 4, OP.gem       .mat(MT.Amber      , 1));
+		addLoot("gt.loot.gems", 1, 2, 8, OP.gemFlawed .mat(MT.Amber      , 1));
+		addLoot("gt.loot.gems", 1, 4,16, OP.gemChipped.mat(MT.Amber      , 1));
+		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial.contains(RANDOM_SMALL_GEM_ORE)) {
+		addLoot("gt.loot.gems", 1, 1, 4, OP.gem       .mat(tMaterial     , 1));
+		addLoot("gt.loot.gems", 1, 2, 8, OP.gemFlawed .mat(tMaterial     , 1));
+		addLoot("gt.loot.gems", 1, 4,16, OP.gemChipped.mat(tMaterial     , 1));
+		}
+		
 		
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   2, 8,16, IL.Bottle_Purple_Drink.get(1));
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 8,16, IL.Bottle_Glue.get(1));
@@ -134,21 +180,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  12, 4,24, OP.toolHeadArrow.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  12, 4,24, OP.toolHeadArrow.mat(MT.Brass, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   2, 4,24, OP.toolHeadArrow.mat(MT.DamascusSteel, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  16, 1, 6, OP.gemFlawless.mat(MT.Amethyst, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  16, 1, 6, OP.gemFlawless.mat(MT.Diamond, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  16, 1, 6, OP.gemFlawless.mat(MT.Ruby, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   8, 1, 6, OP.gemFlawless.mat(MT.BlueSapphire, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   8, 1, 6, OP.gemFlawless.mat(MT.GreenSapphire, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   8, 1, 6, OP.gemFlawless.mat(MT.PurpleSapphire, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   8, 1, 6, OP.gemFlawless.mat(MT.YellowSapphire, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   8, 1, 6, OP.gemFlawless.mat(MT.OrangeSapphire, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 6, OP.gemFlawless.mat(MT.Emerald, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 6, OP.gemFlawless.mat(MT.Aquamarine, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 6, OP.gemFlawless.mat(MT.Morganite, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 6, OP.gemFlawless.mat(MT.Heliodor, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 6, OP.gemFlawless.mat(MT.Goshenite, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 6, OP.gemFlawless.mat(MT.Bixbite, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 6, OP.gemFlawless.mat(MT.Maxixe, 1));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           , 100, 1, 4, IL.Bag_Loot_Gems.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 6, OP.ingot.mat(MT.Nd, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 3, OP.ingot.mat(MT.Cr, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 3, OP.ingot.mat(MT.Mn, 1));
@@ -199,13 +231,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   3,16,64, OP.toolHeadArrow.mat(MT.Ag, 1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 8,32, OP.toolHeadArrow.mat(MT.Pt, 1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 4,16, OP.toolHeadArrow.mat(MT.Nq, 1));
-		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   2, 2, 8, OP.gemFlawless.mat(MT.Diamond, 1));
-		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   2, 2, 8, OP.gemFlawless.mat(MT.Ruby, 1));
-		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 2, 8, OP.gemFlawless.mat(MT.BlueSapphire, 1));
-		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 2, 8, OP.gemFlawless.mat(MT.GreenSapphire, 1));
-		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 2, 8, OP.gemFlawless.mat(MT.PurpleSapphire, 1));
-		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 2, 8, OP.gemFlawless.mat(MT.YellowSapphire, 1));
-		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 2, 8, OP.gemFlawless.mat(MT.OrangeSapphire, 1));
+		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   5, 4, 8, IL.Bag_Loot_Gems.get(1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   3, 1, 1, ST.book("Manual_Random"));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   6, 1, 1, ST.book("Manual_Elements"));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 1, 1, IL.Tool_Lighter_Platinum_Full.get(1));
@@ -217,15 +243,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3, 4,16, OP.plate.mat(MT.ArsenicCopper, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3,16,64, OP.toolHeadArrow.mat(MT.ArsenicCopper, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1, 4,16, OP.toolHeadArrow.mat(MT.Ke, 1));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   2, 2, 8, OP.gemFlawless.mat(MT.Amethyst, 1));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   2, 2, 8, OP.gemFlawless.mat(MT.Diamond, 1));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1, 2, 8, OP.gemFlawless.mat(MT.DiamondPink, 1));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   2, 2, 8, OP.gemFlawless.mat(MT.Ruby, 1));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1, 2, 8, OP.gemFlawless.mat(MT.BlueSapphire, 1));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1, 2, 8, OP.gemFlawless.mat(MT.GreenSapphire, 1));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1, 2, 8, OP.gemFlawless.mat(MT.PurpleSapphire, 1));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1, 2, 8, OP.gemFlawless.mat(MT.YellowSapphire, 1));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1, 2, 8, OP.gemFlawless.mat(MT.OrangeSapphire, 1));
+		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   5, 4, 8, IL.Bag_Loot_Gems.get(1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Au));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Ke));
 		for (int i = 0; i < 16; i++)
@@ -268,21 +286,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 4,16, ST.make(Blocks.diamond_ore , 1, 0));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 4,16, ST.make(Blocks.emerald_ore , 1, 0));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 2, 6, OP.dust.mat(MT.OREMATS.Zeolite, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 1, 4, OP.gemFlawless.mat(MT.Amethyst, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 1, 4, OP.gemFlawless.mat(MT.Diamond, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 1, 4, OP.gemFlawless.mat(MT.Ruby, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.BlueSapphire, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.GreenSapphire, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.PurpleSapphire, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.YellowSapphire, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.OrangeSapphire, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.Emerald, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.Aquamarine, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.Morganite, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.Heliodor, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.Goshenite, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.Bixbite, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.gemFlawless.mat(MT.Maxixe, 1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  10, 1, 4, IL.Bag_Loot_Gems.get(1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   5, 1, 4, OP.toolHeadShovel.mat(MT.ArsenicBronze, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   3, 1, 4, OP.toolHeadShovel.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.toolHeadShovel.mat(MT.DamascusSteel, 1));
