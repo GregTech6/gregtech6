@@ -599,7 +599,7 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		addItemBehavior(12009, tBehaviour);
 		
 		
-		IL.Bag_Loot_Sapling                .set(addItem(13000, "Bagged Sapling", "Loot: A Sapling"                  , TC.stack(TC.LUCRUM, 1), TC.stack(TC.ARBOR  , 2)));
+		IL.Bag_Loot_Sapling                .set(addItem(13000, "Bagged Sapling", "Loot: A Sapling"  , OP.treeSapling, TC.stack(TC.LUCRUM, 1), TC.stack(TC.ARBOR  , 2)));
 		IL.Bag_Loot_Seeds                  .set(addItem(13001, "Seed Pouch"    , "Loot: Random Seeds"               , TC.stack(TC.LUCRUM, 1), TC.stack(TC.HERBA  , 2)));
 		IL.Bag_Loot_Gems                   .set(addItem(13002, "Gem Pouch"     , "Loot: Gems, one of which Flawless", TC.stack(TC.LUCRUM, 3), TC.stack(TC.VITREUS, 3)));
 		
