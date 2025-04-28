@@ -82,8 +82,8 @@ public class Loader_Loot implements Runnable {
 		
 		
 		ST.LOOT_TABLES.add("gt.flawless");
-		ChestGenHooks.getInfo("gt.flawless").setMin(27);
-		ChestGenHooks.getInfo("gt.flawless").setMax(27);
+		ChestGenHooks.getInfo("gt.flawless").setMin( 8);
+		ChestGenHooks.getInfo("gt.flawless").setMax(24);
 		addLoot("gt.flawless",15, 1, 1, OP.gemFlawless.mat(MT.Diamond       , 1));
 		addLoot("gt.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.DiamondPink   , 1));
 		addLoot("gt.flawless", 8, 1, 1, OP.gemFlawless.mat(MT.Emerald       , 1));
@@ -106,8 +106,8 @@ public class Loader_Loot implements Runnable {
 		
 		
 		ST.LOOT_TABLES.add("gt.gems");
-		ChestGenHooks.getInfo("gt.gems").setMin(27);
-		ChestGenHooks.getInfo("gt.gems").setMax(27);
+		ChestGenHooks.getInfo("gt.gems").setMin( 8);
+		ChestGenHooks.getInfo("gt.gems").setMax(24);
 		addLoot("gt.gems",64, 1, 4, OP.gem       .mat(MT.Emerald    , 1));
 		addLoot("gt.gems",15, 1, 4, OP.gem       .mat(MT.Diamond    , 1));
 		addLoot("gt.gems",15, 2, 8, OP.gemFlawed .mat(MT.Diamond    , 1));
@@ -129,8 +129,8 @@ public class Loader_Loot implements Runnable {
 		
 		
 		ST.LOOT_TABLES.add("gt.saplings");
-		ChestGenHooks.getInfo("gt.saplings").setMin(27);
-		ChestGenHooks.getInfo("gt.saplings").setMax(27);
+		ChestGenHooks.getInfo("gt.saplings").setMin( 8);
+		ChestGenHooks.getInfo("gt.saplings").setMax(24);
 		for (SaplingEntry tEntry : WoodDictionary.LIST_SAPLINGS) {
 		if (MD.MC  .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
 		if (MD.EtFu.owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
@@ -150,8 +150,8 @@ public class Loader_Loot implements Runnable {
 		
 		
 		ST.LOOT_TABLES.add("gt.seeds");
-		ChestGenHooks.getInfo("gt.seeds").setMin(27);
-		ChestGenHooks.getInfo("gt.seeds").setMax(27);
+		ChestGenHooks.getInfo("gt.seeds").setMin( 8);
+		ChestGenHooks.getInfo("gt.seeds").setMax(24);
 		addLoot("gt.seeds", 1, 16, 48, ST.make(Items.wheat_seeds, 1, 0));
 		addLoot("gt.seeds", 1, 16, 48, ST.make(Items.pumpkin_seeds, 1, 0));
 		addLoot("gt.seeds", 1, 16, 48, ST.make(Items.melon_seeds, 1, 0));
@@ -263,8 +263,8 @@ public class Loader_Loot implements Runnable {
 		
 		
 		ST.LOOT_TABLES.add("gt.books");
-		ChestGenHooks.getInfo("gt.books").setMin(27);
-		ChestGenHooks.getInfo("gt.books").setMax(27);
+		ChestGenHooks.getInfo("gt.books").setMin( 8);
+		ChestGenHooks.getInfo("gt.books").setMax(24);
 		addLoot("gt.books", 1, 1, 1, ST.book("Manual_Hunting_Creeper"));
 		addLoot("gt.books", 1, 1, 1, ST.book("Manual_Hunting_Skeleton"));
 		addLoot("gt.books", 1, 1, 1, ST.book("Manual_Hunting_Zombie"));
@@ -285,9 +285,12 @@ public class Loader_Loot implements Runnable {
 		
 		
 		ST.LOOT_TABLES.add("gt.matdicts");
-		ChestGenHooks.getInfo("gt.matdicts").setMin(27);
-		ChestGenHooks.getInfo("gt.matdicts").setMax(27);
-		addLoot("gt.matdicts", 1, 1, 1, ST.make(ItemsGT.BOOKS, 1, 32002));
+		ChestGenHooks.getInfo("gt.matdicts").setMin( 8);
+		ChestGenHooks.getInfo("gt.matdicts").setMax(24);
+		// Spam a ton of these so they don't get copypasted when making a Loot Chest.
+		for (int i = 0; i < 256; i++) addLoot("gt.matdicts", 1, 1, 1, ST.make(ItemsGT.BOOKS, 1, 32002));
+		
+		
 		
 		
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   2, 8,16, IL.Bottle_Purple_Drink.get(1));
@@ -373,7 +376,7 @@ public class Loader_Loot implements Runnable {
 		for (int i = 0; i < 16; i++)
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1,16,64, ST.make(BlocksGT.Glowtus, 1, i));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 4, IL.Bag_Loot_Sapling.get(1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           , 100, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32002));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           , 100, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32766));
 		
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   2, 4, 8, IL.Bottle_Holy_Water.get(1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   4,16,64, OP.rockGt.mat(MT.STONES.SkyStone, 1));
@@ -447,7 +450,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  20, 1, 1, IL.Tool_MatchBox_Full.get(1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Cu));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   6, 1, 4, IL.Bag_Loot_Sapling.get(1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   6, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32002));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   6, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32766));
 		
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   4, 8,16, IL.Bottle_Glue.get(1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   4, 8,16, IL.Bottle_Lubricant.get(1));
@@ -482,7 +485,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   3, 1, 1, IL.Tool_Lighter_Invar_Full.get(1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Cu));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  10, 2, 8, IL.Bag_Loot_Sapling.get(1));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  20, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32002));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  20, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32766));
 		
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Hunting_Creeper"));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Hunting_Skeleton"));
@@ -501,7 +504,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Steam"));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Random"));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Reactors"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,  20, 1,10, ST.make(ItemsGT.BOOKS, 1, 32002));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,  20, 1,10, ST.make(ItemsGT.BOOKS, 1, 32766));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   1, 1, 9, IL.Paper_Magic_Research_0.get(1));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   1, 1, 8, IL.Paper_Magic_Research_1.get(1));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   1, 1, 7, IL.Paper_Magic_Research_2.get(1));
@@ -535,7 +538,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   6, 2, 4, OP.crateGtDust.mat(MT.Mn, 1));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Ag));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   6, 2, 8, IL.Bag_Loot_Sapling.get(1));
-		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   2, 1, 4, ST.make(ItemsGT.BOOKS, 1, 32002));
+		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   2, 1, 4, ST.make(ItemsGT.BOOKS, 1, 32766));
 		
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,  12, 1, 4, OP.toolHeadSword.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   6, 1, 4, OP.toolHeadSword.mat(MT.DamascusSteel, 1));
