@@ -26,6 +26,8 @@ import gregapi.data.OP;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregapi.wooddict.SaplingEntry;
+import gregapi.wooddict.WoodDictionary;
 import gregtech.tileentity.placeables.MultiTileEntityCoin;
 import gregtech.worldgen.ChestGenHooksChestReplacer;
 import gregtech.worldgen.TwilightTreasureReplacer;
@@ -79,51 +81,145 @@ public class Loader_Loot implements Runnable {
 		}
 		
 		
-		ST.LOOT_TABLES.add("gt.loot.flawless");
-		ChestGenHooks.getInfo("gt.loot.flawless").setMin(27);
-		ChestGenHooks.getInfo("gt.loot.flawless").setMax(27);
-		addLoot("gt.loot.flawless",15, 1, 1, OP.gemFlawless.mat(MT.Diamond       , 1));
-		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.DiamondPink   , 1));
-		addLoot("gt.loot.flawless", 8, 1, 1, OP.gemFlawless.mat(MT.Emerald       , 1));
-		addLoot("gt.loot.flawless", 3, 1, 1, OP.gemFlawless.mat(MT.Aquamarine    , 1));
-		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.Morganite     , 1));
-		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.Heliodor      , 1));
-		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.Goshenite     , 1));
-		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.Bixbite       , 1));
-		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.Maxixe        , 1));
-		addLoot("gt.loot.flawless", 5, 1, 1, OP.gemFlawless.mat(MT.Ruby          , 1));
-		addLoot("gt.loot.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.BlueSapphire  , 1));
-		addLoot("gt.loot.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.GreenSapphire , 1));
-		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.PurpleSapphire, 1));
-		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.YellowSapphire, 1));
-		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.OrangeSapphire, 1));
-		addLoot("gt.loot.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.Craponite     , 1));
-		addLoot("gt.loot.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.Amethyst      , 1));
-		addLoot("gt.loot.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.Amber         , 1));
-		addLoot("gt.loot.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.Jade          , 1));
+		ST.LOOT_TABLES.add("gt.flawless");
+		ChestGenHooks.getInfo("gt.flawless").setMin(27);
+		ChestGenHooks.getInfo("gt.flawless").setMax(27);
+		addLoot("gt.flawless",15, 1, 1, OP.gemFlawless.mat(MT.Diamond       , 1));
+		addLoot("gt.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.DiamondPink   , 1));
+		addLoot("gt.flawless", 8, 1, 1, OP.gemFlawless.mat(MT.Emerald       , 1));
+		addLoot("gt.flawless", 3, 1, 1, OP.gemFlawless.mat(MT.Aquamarine    , 1));
+		addLoot("gt.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.Morganite     , 1));
+		addLoot("gt.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.Heliodor      , 1));
+		addLoot("gt.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.Goshenite     , 1));
+		addLoot("gt.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.Bixbite       , 1));
+		addLoot("gt.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.Maxixe        , 1));
+		addLoot("gt.flawless", 5, 1, 1, OP.gemFlawless.mat(MT.Ruby          , 1));
+		addLoot("gt.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.BlueSapphire  , 1));
+		addLoot("gt.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.GreenSapphire , 1));
+		addLoot("gt.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.PurpleSapphire, 1));
+		addLoot("gt.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.YellowSapphire, 1));
+		addLoot("gt.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.OrangeSapphire, 1));
+		addLoot("gt.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.Craponite     , 1));
+		addLoot("gt.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.Amethyst      , 1));
+		addLoot("gt.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.Amber         , 1));
+		addLoot("gt.flawless", 4, 1, 1, OP.gemFlawless.mat(MT.Jade          , 1));
 		
 		
-		ST.LOOT_TABLES.add("gt.loot.gems");
-		ChestGenHooks.getInfo("gt.loot.gems").setMin(27);
-		ChestGenHooks.getInfo("gt.loot.gems").setMax(27);
-		addLoot("gt.loot.gems",64, 1, 4, OP.gem       .mat(MT.Emerald    , 1));
-		addLoot("gt.loot.gems",15, 1, 4, OP.gem       .mat(MT.Diamond    , 1));
-		addLoot("gt.loot.gems",15, 2, 8, OP.gemFlawed .mat(MT.Diamond    , 1));
-		addLoot("gt.loot.gems",15, 4,16, OP.gemChipped.mat(MT.Diamond    , 1));
-		addLoot("gt.loot.gems", 1, 1, 4, OP.gem       .mat(MT.DiamondPink, 1));
-		addLoot("gt.loot.gems", 1, 2, 8, OP.gemFlawed .mat(MT.DiamondPink, 1));
-		addLoot("gt.loot.gems", 1, 4,16, OP.gemChipped.mat(MT.DiamondPink, 1));
-		addLoot("gt.loot.gems", 1, 1, 4, OP.gem       .mat(MT.Craponite  , 1));
-		addLoot("gt.loot.gems", 1, 2, 8, OP.gemFlawed .mat(MT.Craponite  , 1));
-		addLoot("gt.loot.gems", 1, 4,16, OP.gemChipped.mat(MT.Craponite  , 1));
-		addLoot("gt.loot.gems", 1, 1, 4, OP.gem       .mat(MT.Amber      , 1));
-		addLoot("gt.loot.gems", 1, 2, 8, OP.gemFlawed .mat(MT.Amber      , 1));
-		addLoot("gt.loot.gems", 1, 4,16, OP.gemChipped.mat(MT.Amber      , 1));
+		ST.LOOT_TABLES.add("gt.gems");
+		ChestGenHooks.getInfo("gt.gems").setMin(27);
+		ChestGenHooks.getInfo("gt.gems").setMax(27);
+		addLoot("gt.gems",64, 1, 4, OP.gem       .mat(MT.Emerald    , 1));
+		addLoot("gt.gems",15, 1, 4, OP.gem       .mat(MT.Diamond    , 1));
+		addLoot("gt.gems",15, 2, 8, OP.gemFlawed .mat(MT.Diamond    , 1));
+		addLoot("gt.gems",15, 4,16, OP.gemChipped.mat(MT.Diamond    , 1));
+		addLoot("gt.gems", 1, 1, 4, OP.gem       .mat(MT.DiamondPink, 1));
+		addLoot("gt.gems", 1, 2, 8, OP.gemFlawed .mat(MT.DiamondPink, 1));
+		addLoot("gt.gems", 1, 4,16, OP.gemChipped.mat(MT.DiamondPink, 1));
+		addLoot("gt.gems", 1, 1, 4, OP.gem       .mat(MT.Craponite  , 1));
+		addLoot("gt.gems", 1, 2, 8, OP.gemFlawed .mat(MT.Craponite  , 1));
+		addLoot("gt.gems", 1, 4,16, OP.gemChipped.mat(MT.Craponite  , 1));
+		addLoot("gt.gems", 1, 1, 4, OP.gem       .mat(MT.Amber      , 1));
+		addLoot("gt.gems", 1, 2, 8, OP.gemFlawed .mat(MT.Amber      , 1));
+		addLoot("gt.gems", 1, 4,16, OP.gemChipped.mat(MT.Amber      , 1));
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && tMaterial.contains(RANDOM_SMALL_GEM_ORE)) {
-		addLoot("gt.loot.gems", 1, 1, 4, OP.gem       .mat(tMaterial     , 1));
-		addLoot("gt.loot.gems", 1, 2, 8, OP.gemFlawed .mat(tMaterial     , 1));
-		addLoot("gt.loot.gems", 1, 4,16, OP.gemChipped.mat(tMaterial     , 1));
+		addLoot("gt.gems", 1, 1, 4, OP.gem       .mat(tMaterial, 1), T);
+		addLoot("gt.gems", 1, 2, 8, OP.gemFlawed .mat(tMaterial, 1), F);
+		addLoot("gt.gems", 1, 4,16, OP.gemChipped.mat(tMaterial, 1), F);
 		}
+		
+		
+		ST.LOOT_TABLES.add("gt.saplings");
+		ChestGenHooks.getInfo("gt.saplings").setMin(27);
+		ChestGenHooks.getInfo("gt.saplings").setMax(27);
+		for (SaplingEntry tEntry : WoodDictionary.LIST_SAPLINGS) {
+		if (MD.MC  .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
+		if (MD.EtFu.owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
+		if (MD.GT  .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
+		if (MD.IC2 .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
+		if (MD.IC2C.owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
+		if (MD.MFR .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
+		if (MD.TC  .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
+		if (MD.WTCH.owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
+		if (MD.EBXL.owns(tEntry.mSapling)) {addLoot("gt.saplings", 1,             4,             4, ST.validMeta(tEntry.mSapling)); continue;}
+		if (MD.EB  .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1,             4,             4, ST.validMeta(tEntry.mSapling)); continue;}
+		if (MD.BoP .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1,             4,             4, ST.validMeta(tEntry.mSapling)); continue;}
+		if (MD.HiL .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
+		if (MD.HaC .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
+		if (MD.MF2 .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
+		}
+		
+		
+		ST.LOOT_TABLES.add("gt.seeds");
+		ChestGenHooks.getInfo("gt.seeds").setMin(27);
+		ChestGenHooks.getInfo("gt.seeds").setMax(27);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(Items.wheat_seeds, 1, 0));
+		addLoot("gt.seeds", 1, 16, 48, ST.make(Items.pumpkin_seeds, 1, 0));
+		addLoot("gt.seeds", 1, 16, 48, ST.make(Items.melon_seeds, 1, 0));
+		addLoot("gt.seeds", 1, 16, 48, IL.EtFu_Beet_Seeds.get(1), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "artichokeseedItem"    , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "asparagusseedItem"    , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "bambooshootseedItem"  , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "barleyseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "beanseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "beetseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "bellpepperseedItem"   , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "blackberryseedItem"   , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "blueberryseedItem"    , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "broccoliseedItem"     , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "brusselsproutseedItem", 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "cabbageseedItem"      , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "cactusfruitseedItem"  , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "candleberryseedItem"  , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "cantaloupeseedItem"   , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "cauliflowerseedItem"  , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "celeryseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "chilipepperseedItem"  , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "coffeeseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "cornseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "cottonseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "cranberryseedItem"    , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "cucumberseedItem"     , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "curryleafseedItem"    , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "eggplantseedItem"     , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "garlicseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "gingerseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "grapeseedItem"        , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "kiwiseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "leekseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "lettuceseedItem"      , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "mustardseedItem"      , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "oatsseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "okraseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "onionseedItem"        , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "parsnipseedItem"      , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "peanutseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "peasseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "pineappleseedItem"    , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "radishseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "raspberryseedItem"    , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "rhubarbseedItem"      , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "riceseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "rutabagaseedItem"     , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "ryeseedItem"          , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "scallionseedItem"     , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "seaweedseedItem"      , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "sesameseedsseedItem"  , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "soybeanseedItem"      , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "spiceleafseedItem"    , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "spinachseedItem"      , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "strawberryseedItem"   , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "sweetpotatoseedItem"  , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "teaseedItem"          , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "tomatoseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "turnipseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "waterchestnutseedItem", 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "whitemushroomseedItem", 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "wintersquashseedItem" , 1, 0), F);
+		addLoot("gt.seeds", 1, 16, 48, ST.make(MD.HaC, "zucchiniseedItem"     , 1, 0), F);
+		
+		
+		//"gt.books"
+		//"gt.matdicts"
 		
 		
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   2, 8,16, IL.Bottle_Purple_Drink.get(1));
@@ -144,14 +240,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 1, 1, MT.Cu.mDictionaryBook);
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 1, 1, MT.Sn.mDictionaryBook);
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 1, 1, MT.Bronze.mDictionaryBook);
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 0));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 1));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 2));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 3));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 4));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 5));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 6));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 2, 8, ST.make(BlocksGT.Saplings_CD, 1, 0));
+		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 4, 8, IL.Bag_Loot_Sapling.get(1));
 		
 //      addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 1, ItemList.Spray_Ice.get(1));
 //      addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 1, ItemList.Spray_Pepper.get(1));
@@ -215,15 +304,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  10,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Au));
 		for (int i = 0; i < 16; i++)
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1,16,64, ST.make(BlocksGT.Glowtus, 1, i));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  10, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 0));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  10, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  10, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 2));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  10, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 3));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  10, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 4));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  10, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 5));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  10, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 6));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 7));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  10, 2, 8, ST.make(BlocksGT.Saplings_CD, 1, 0));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 4, IL.Bag_Loot_Sapling.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           , 100, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32002));
 		
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   2, 4, 8, IL.Bottle_Holy_Water.get(1));
@@ -252,9 +333,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Ke));
 		for (int i = 0; i < 16; i++)
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1,32,64, ST.make(BlocksGT.Glowtus, 1, i));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   6, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 3));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   6, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 5));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 7));
+		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,  10, 2, 8, IL.Bag_Loot_Sapling.get(1));
 		
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER,  30, 2, 8, ST.make(Items.fire_charge,  1, 0));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER,  20, 8,16, ST.update(OP.arrowGtWood.mat(MT.DamascusSteel, 1)));
@@ -299,7 +378,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.toolHeadPickaxe.mat(MT.DamascusSteel, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  20, 1, 1, IL.Tool_MatchBox_Full.get(1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Cu));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   6, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 0));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   6, 1, 4, IL.Bag_Loot_Sapling.get(1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   6, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32002));
 		
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   4, 8,16, IL.Bottle_Glue.get(1));
@@ -334,8 +413,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  10, 1, 1, IL.Tool_MatchBox_Full.get(1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   3, 1, 1, IL.Tool_Lighter_Invar_Full.get(1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Cu));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   6, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 0));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   6, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 1));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  10, 2, 8, IL.Bag_Loot_Sapling.get(1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  20, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32002));
 		
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Hunting_Creeper"));
@@ -388,7 +466,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   6, 2, 4, OP.crateGtDust.mat(MT.Cr, 1));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   6, 2, 4, OP.crateGtDust.mat(MT.Mn, 1));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Ag));
-		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   6, 2, 8, ST.make(BlocksGT.Saplings_AB, 1, 2));
+		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   6, 2, 8, IL.Bag_Loot_Sapling.get(1));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   2, 1, 4, ST.make(ItemsGT.BOOKS, 1, 32002));
 		
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,  12, 1, 4, OP.toolHeadSword.mat(MT.Steel, 1));
@@ -410,9 +488,10 @@ public class Loader_Loot implements Runnable {
 		return T;
 	}
 	
-	public static boolean addLoot(String aType, int aChance, int aMin, int aMax, ItemStack aLoot) {
+	public static boolean addLoot(String aType, int aChance, int aMin, int aMax, ItemStack aLoot) {return addLoot(aType, aChance, aMin, aMax, aLoot, T);}
+	public static boolean addLoot(String aType, int aChance, int aMin, int aMax, ItemStack aLoot, boolean aLogMissing) {
 		if (ST.invalid(aLoot) || aMin <= 0 || aMax <= 0 || UT.Code.stringInvalid(aType)) {
-			ERR.println("Failed to add Loot: " + aLoot + " to " + aType);
+			if (aLogMissing) ERR.println("Failed to add Loot: " + aLoot + " to " + aType);
 			return F;
 		}
 		if (ConfigsGT.WORLDGEN.get("loot." + aType, aLoot, T)) {

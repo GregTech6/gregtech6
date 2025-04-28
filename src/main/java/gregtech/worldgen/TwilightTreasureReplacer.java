@@ -24,8 +24,6 @@ import gregapi.data.*;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
-import gregapi.wooddict.SaplingEntry;
-import gregapi.wooddict.WoodDictionary;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -233,14 +231,8 @@ public class TwilightTreasureReplacer extends TFTreasure {
 			if (IL.TC_Silverwood_Sapling.exists())
 			ultrarare.add(IL.TC_Silverwood_Sapling.get(1));
 			// All the Variety Saplings.
-			for (SaplingEntry tEntry : WoodDictionary.LIST_SAPLINGS) {
-			if (MD.EBXL.owns(tEntry.mSapling)) {useless .add(ST.validMeta(16, tEntry.mSapling)); continue;}
-			if (MD.EB  .owns(tEntry.mSapling)) {useless .add(ST.validMeta(16, tEntry.mSapling)); continue;}
-			if (MD.BoP .owns(tEntry.mSapling)) {useless .add(ST.validMeta(16, tEntry.mSapling)); continue;}
-			if (MD.HiL .owns(tEntry.mSapling)) {uncommon.add(ST.validMeta( 4, tEntry.mSapling)); continue;}
-			if (MD.HaC .owns(tEntry.mSapling)) {uncommon.add(ST.validMeta( 4, tEntry.mSapling)); continue;}
-			if (MD.MF2 .owns(tEntry.mSapling)) {uncommon.add(ST.validMeta( 4, tEntry.mSapling)); continue;}
-			}
+			useless  .add(IL.Bag_Loot_Sapling.get(4));
+			uncommon .add(IL.Bag_Loot_Sapling.get(8));
 		}
 		
 		// Stronghold Cache

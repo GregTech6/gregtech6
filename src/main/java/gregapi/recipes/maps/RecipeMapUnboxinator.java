@@ -48,9 +48,25 @@ public class RecipeMapUnboxinator extends RecipeMap {
 			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
 			return new Recipe(F, F, F, ST.array(IL.Crate_Loot.get(1)), ST.array(ST.generateOneVanillaLoot(), IL.Crate.get(1)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
 		}
+		if (IL.Book_Loot_Guide.equal(aInputs[0], F, T)) {
+			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
+			return new Recipe(F, F, F, ST.array(IL.Book_Loot_Guide.get(1)), ST.array(ChestGenHooks.getOneItem("gt.books", RNGSUS)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
+		}
+		if (IL.Book_Loot_MatDict.equal(aInputs[0], F, T)) {
+			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
+			return new Recipe(F, F, F, ST.array(IL.Book_Loot_MatDict.get(1)), ST.array(ChestGenHooks.getOneItem("gt.matdicts", RNGSUS)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
+		}
 		if (IL.Bag_Loot_Gems.equal(aInputs[0], F, T)) {
 			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
-			return new Recipe(F, F, F, ST.array(IL.Bag_Loot_Gems.get(1)), ST.array(ChestGenHooks.getOneItem("gt.loot.flawless", RNGSUS), ChestGenHooks.getOneItem("gt.loot.gems", RNGSUS), ChestGenHooks.getOneItem("gt.gems", RNGSUS)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
+			return new Recipe(F, F, F, ST.array(IL.Bag_Loot_Gems.get(1)), ST.array(ChestGenHooks.getOneItem("gt.flawless", RNGSUS), ChestGenHooks.getOneItem("gt.gems", RNGSUS), ChestGenHooks.getOneItem("gt.gems", RNGSUS)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
+		}
+		if (IL.Bag_Loot_Seeds.equal(aInputs[0], F, T)) {
+			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
+			return new Recipe(F, F, F, ST.array(IL.Bag_Loot_Seeds.get(1)), ST.array(ChestGenHooks.getOneItem("gt.seeds", RNGSUS)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
+		}
+		if (IL.Bag_Loot_Sapling.equal(aInputs[0], F, T)) {
+			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
+			return new Recipe(F, F, F, ST.array(IL.Bag_Loot_Sapling.get(1)), ST.array(ChestGenHooks.getOneItem("gt.saplings", RNGSUS)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
 		}
 		if (COMPAT_IC2 != null && IL.IC2_Scrapbox.equal(aInputs[0], F, T)) {
 			ItemStack tOutput = COMPAT_IC2.scrapbox(aInputs[0]);

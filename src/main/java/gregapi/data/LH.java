@@ -394,6 +394,12 @@ public class LH {
 		add("enchantment.level.29"                      , "XXIX");
 		add("enchantment.level.30"                      , "XXX");
 		
+		add("loot.gt.books"                             , "+Random Books+");
+		add("loot.gt.matdicts"                          , "-Random Material Dictionaries-");
+		add("loot.gt.saplings"                          , "-Random Saplings-");
+		add("loot.gt.seeds"                             , "-Random Seeds-");
+		add("loot.gt.gems"                              , "+Random Gems+");
+		add("loot.gt.flawless"                          , "*Flawless Gems*");
 		add("loot.mineshaftCorridor"                    , "+Mineshaft+");
 		add("loot.pyramidDesertyChest"                  , "*Desert Pyramid*");
 		add("loot.pyramidJungleChest"                   , "*Jungle Temple*");
