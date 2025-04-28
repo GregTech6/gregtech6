@@ -80,6 +80,8 @@ public class Loader_Loot implements Runnable {
 		
 		
 		ST.LOOT_TABLES.add("gt.loot.flawless");
+		ChestGenHooks.getInfo("gt.loot.flawless").setMin(27);
+		ChestGenHooks.getInfo("gt.loot.flawless").setMax(27);
 		addLoot("gt.loot.flawless",15, 1, 1, OP.gemFlawless.mat(MT.Diamond       , 1));
 		addLoot("gt.loot.flawless", 1, 1, 1, OP.gemFlawless.mat(MT.DiamondPink   , 1));
 		addLoot("gt.loot.flawless", 8, 1, 1, OP.gemFlawless.mat(MT.Emerald       , 1));
@@ -102,6 +104,8 @@ public class Loader_Loot implements Runnable {
 		
 		
 		ST.LOOT_TABLES.add("gt.loot.gems");
+		ChestGenHooks.getInfo("gt.loot.gems").setMin(27);
+		ChestGenHooks.getInfo("gt.loot.gems").setMax(27);
 		addLoot("gt.loot.gems",64, 1, 4, OP.gem       .mat(MT.Emerald    , 1));
 		addLoot("gt.loot.gems",15, 1, 4, OP.gem       .mat(MT.Diamond    , 1));
 		addLoot("gt.loot.gems",15, 2, 8, OP.gemFlawed .mat(MT.Diamond    , 1));
@@ -115,7 +119,7 @@ public class Loader_Loot implements Runnable {
 		addLoot("gt.loot.gems", 1, 1, 4, OP.gem       .mat(MT.Amber      , 1));
 		addLoot("gt.loot.gems", 1, 2, 8, OP.gemFlawed .mat(MT.Amber      , 1));
 		addLoot("gt.loot.gems", 1, 4,16, OP.gemChipped.mat(MT.Amber      , 1));
-		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial.contains(RANDOM_SMALL_GEM_ORE)) {
+		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && tMaterial.contains(RANDOM_SMALL_GEM_ORE)) {
 		addLoot("gt.loot.gems", 1, 1, 4, OP.gem       .mat(tMaterial     , 1));
 		addLoot("gt.loot.gems", 1, 2, 8, OP.gemFlawed .mat(tMaterial     , 1));
 		addLoot("gt.loot.gems", 1, 4,16, OP.gemChipped.mat(tMaterial     , 1));
