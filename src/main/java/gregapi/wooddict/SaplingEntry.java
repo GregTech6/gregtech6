@@ -25,6 +25,8 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.item.ItemStack;
 
+import static gregapi.data.CS.F;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -33,6 +35,7 @@ public class SaplingEntry {
 	public WoodEntry mWoodEntry;
 	public LeafEntry mLeafEntry;
 	public OreDictMaterial mMaterialSapling = MT.Wood;
+	public boolean mBaggedSaplingLoot = F;
 	public int mCount = 1;
 	
 	public SaplingEntry(ItemStack aSapling, WoodEntry aWood) {

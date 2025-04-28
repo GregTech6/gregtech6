@@ -809,23 +809,6 @@ public class GT_API_Post extends Abstract_Mod {
 			}
 		}
 		
-		for (SaplingEntry tTree : WoodDictionary.LIST_SAPLINGS) {
-		RM.Trees.addFakeRecipe(F, ST.array(tTree.mSapling, tTree.mLeafEntry == null ? NI : tTree.mLeafEntry.mLeaf), tTree.mWoodEntry == null ? tTree.mLeafEntry == null ? ZL_IS : ST.array(tTree.mLeafEntry.mLeaf) : ST.array(
-		  tTree.mLeafEntry == null ? NI : tTree.mLeafEntry.mLeaf
-		, tTree.mWoodEntry.mLog
-		, tTree.mWoodEntry.mBeamEntry  == null ? NI : tTree.mWoodEntry.mBeamEntry .mBeam
-		, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mSlab
-		, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mStair
-		, tTree.mWoodEntry.mPlankEntry == null ? NI : tTree.mWoodEntry.mPlankEntry.mPlank
-		, tTree.mWoodEntry.mPlankEntry == null ? NI : ST.validMeta_(tTree.mWoodEntry.mPlankEntry.mStickCountLathe, tTree.mWoodEntry.mPlankEntry.mStick)
-		, tTree.mWoodEntry.mBeamEntry  == null ? NI : ST.validMeta_(tTree.mWoodEntry.mBeamEntry .mStickCountLathe, tTree.mWoodEntry.mBeamEntry .mStick)
-		, tTree.mWoodEntry.mPlankEntry == null ? NI : OP.crateGt64Plate.mat(tTree.mWoodEntry.mPlankEntry.mMaterialPlank, 1)
-		, OM.dust(tTree.mWoodEntry.mMaterialWood.mTargetPulver, tTree.mWoodEntry.mPlankCountBuzz+2, 1)
-		, tTree.mWoodEntry.mBark
-		, tTree.mWoodEntry.mCharcoalCount <= 0 ? NI : OP.gem.mat(MT.Charcoal, tTree.mWoodEntry.mCharcoalCount)
-		), null, null, null, null, 0, 0, 0);
-		}
-		
 		new LoaderBookList().run();
 		
 		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_MAP.values()) {

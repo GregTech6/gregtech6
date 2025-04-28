@@ -54,16 +54,17 @@ public class MultiItemBooks extends MultiItemRandomWithCompat {
 			BooksGT.BOOK_REGISTER.put(addItem(1000+i, "Large Book" , "", OD.bookWrittenBig  , TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6)), (byte)(i>8?39+i:i==8?1:3+i)); BooksGT.BOOKS_NORMAL.add(last());
 		}
 		
-		BooksGT.BOOK_REGISTER.put(addItem(32000, "Book"                     , "With a Bronze Emblem on it"      , OD.bookWrittenSmall, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3, MT.Bronze, U9)), (byte)12); BooksGT.BOOKS_NORMAL.add(last());
-		BooksGT.BOOK_REGISTER.put(addItem(32001, "Large Book"               , "With a Bronze Emblem on it"      , OD.bookWrittenBig  , TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6, MT.Bronze, U9)), (byte)12); BooksGT.BOOKS_NORMAL.add(last());
-		BooksGT.BOOK_REGISTER.put(addItem(32765, "Dusty Book"               , "With a Bronze Emblem on it"      , OD.bookWrittenSmall, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3, MT.Bronze, U9)), (byte)53); BooksGT.BOOKS_NORMAL.add(last()); IL.Book_Loot_Guide.set(last());
+		BooksGT.BOOK_REGISTER.put(addItem(32000, "Book"                     , "With a Bronze Emblem on it"        , OD.bookWrittenSmall, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3, MT.Bronze, U9)), (byte)12); BooksGT.BOOKS_NORMAL.add(last());
+		BooksGT.BOOK_REGISTER.put(addItem(32001, "Large Book"               , "With a Bronze Emblem on it"        , OD.bookWrittenBig  , TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6, MT.Bronze, U9)), (byte)12); BooksGT.BOOKS_NORMAL.add(last());
 		
-		BooksGT.BOOK_REGISTER.put(addItem(32002, "Material Dictionary"      , "Contains Data about a Material"  , OD.bookWrittenSmall, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3)), (byte)11); BooksGT.BOOKS_NORMAL.add(last());
-		BooksGT.BOOK_REGISTER.put(addItem(32003, "Material Dictionary"      , "Contains Data about a Material"  , OD.bookWrittenBig  , TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6)), (byte)11); BooksGT.BOOKS_NORMAL.add(last());
-		BooksGT.BOOK_REGISTER.put(addItem(32766, "Dusty Material Dictionary", "Contains Data about a Material"  , OD.bookWrittenSmall, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3)), (byte)53); BooksGT.BOOKS_NORMAL.add(last()); IL.Book_Loot_MatDict.set(last());
+		BooksGT.BOOK_REGISTER.put(addItem(32002, "Material Dictionary"      , "Book about a Material"             , OD.bookWrittenSmall, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 2), TICKS_PER_SMELT  , new OreDictItemData(MT.Paper, U * 3)), (byte)11); BooksGT.BOOKS_NORMAL.add(last());
+		BooksGT.BOOK_REGISTER.put(addItem(32003, "Material Dictionary"      , "Book about a Material"             , OD.bookWrittenBig  , TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6)), (byte)11); BooksGT.BOOKS_NORMAL.add(last());
 		
-		BooksGT.BOOK_REGISTER.put(addItem(32004, "Book"                     , "With a Radiation Symbol on it"   , OD.bookWrittenSmall, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 3, MT.Tc, U9)), (byte)10); BooksGT.BOOKS_NORMAL.add(last());
-		BooksGT.BOOK_REGISTER.put(addItem(32005, "Large Book"               , "With a Radiation Symbol on it"   , OD.bookWrittenBig  , TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6, MT.Tc, U9)), (byte)10); BooksGT.BOOKS_NORMAL.add(last());
+		BooksGT.BOOK_REGISTER.put(addItem(32004, "Book"                     , "With a Radiation Symbol on it"     , OD.bookWrittenSmall, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 3, MT.Tc, U9)), (byte)10); BooksGT.BOOKS_NORMAL.add(last());
+		BooksGT.BOOK_REGISTER.put(addItem(32005, "Large Book"               , "With a Radiation Symbol on it"     , OD.bookWrittenBig  , TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6, MT.Tc, U9)), (byte)10); BooksGT.BOOKS_NORMAL.add(last());
+		
+		BooksGT.BOOK_REGISTER.put(addItem(32765, "Dusty Guide Book"         , "Loot: Some random Manual or so"    , OD.bookWrittenSmall, TC.stack(TC.COGNITIO, 3), TICKS_PER_SMELT, new OreDictItemData(MT.Paper, U * 3)), (byte)53); BooksGT.BOOKS_NORMAL.add(last()); IL.Book_Loot_Guide.set(last());
+		BooksGT.BOOK_REGISTER.put(addItem(32766, "Dusty Material Dictionary", "Loot: Book about a random Material", OD.bookWrittenSmall, TC.stack(TC.COGNITIO, 3), TICKS_PER_SMELT, new OreDictItemData(MT.Paper, U * 3)), (byte)53); BooksGT.BOOKS_NORMAL.add(last()); IL.Book_Loot_MatDict.set(last());
 		
 		
 		RM.generify(ST.make(this, 1, W), ST.make(Items.written_book, 1, 0));

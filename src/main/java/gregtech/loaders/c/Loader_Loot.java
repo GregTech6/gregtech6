@@ -132,20 +132,20 @@ public class Loader_Loot implements Runnable {
 		ChestGenHooks.getInfo("gt.saplings").setMin( 8);
 		ChestGenHooks.getInfo("gt.saplings").setMax(24);
 		for (SaplingEntry tEntry : WoodDictionary.LIST_SAPLINGS) {
-		if (MD.MC  .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
-		if (MD.EtFu.owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
-		if (MD.GT  .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
-		if (MD.IC2 .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
-		if (MD.IC2C.owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
-		if (MD.MFR .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
-		if (MD.TC  .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
-		if (MD.WTCH.owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
-		if (MD.EBXL.owns(tEntry.mSapling)) {addLoot("gt.saplings", 1,             4,             4, ST.validMeta(tEntry.mSapling)); continue;}
-		if (MD.EB  .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1,             4,             4, ST.validMeta(tEntry.mSapling)); continue;}
-		if (MD.BoP .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1,             4,             4, ST.validMeta(tEntry.mSapling)); continue;}
-		if (MD.HiL .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
-		if (MD.HaC .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
-		if (MD.MF2 .owns(tEntry.mSapling)) {addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling)); continue;}
+		if (MD.MC  .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.EtFu.owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.GT  .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.IC2 .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.IC2C.owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.MFR .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.TC  .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.WTCH.owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.EBXL.owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 1,             4,             4, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.EB  .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 1,             4,             4, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.BoP .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 1,             4,             4, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.HiL .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.HaC .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.MF2 .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 1, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
 		}
 		
 		
@@ -348,23 +348,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 6, OP.ingot.mat(MT.Nd, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 3, OP.ingot.mat(MT.Cr, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 3, OP.ingot.mat(MT.Mn, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Hunting_Creeper"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Hunting_Skeleton"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Hunting_Zombie"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Hunting_Spider"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Hunting_End"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Hunting_Blaze"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Hunting_Witch"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Elements"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Alloys"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Smeltery"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Extenders"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Printer"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Steam"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Random"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Tools"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, ST.book("Manual_Enchantments"));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, ST.book("Manual_Reactors"));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  50, 2, 8, IL.Book_Loot_Guide.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 4, IL.Tool_MatchBox_Full.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, IL.Tool_Lighter_Invar_Full.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, IL.Tool_Lighter_Platinum_Full.get(1));
@@ -376,7 +360,7 @@ public class Loader_Loot implements Runnable {
 		for (int i = 0; i < 16; i++)
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1,16,64, ST.make(BlocksGT.Glowtus, 1, i));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 4, IL.Bag_Loot_Sapling.get(1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           , 100, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32766));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           , 100, 1, 2, IL.Book_Loot_MatDict.get(1));
 		
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   2, 4, 8, IL.Bottle_Holy_Water.get(1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   4,16,64, OP.rockGt.mat(MT.STONES.SkyStone, 1));
@@ -450,7 +434,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  20, 1, 1, IL.Tool_MatchBox_Full.get(1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Cu));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   6, 1, 4, IL.Bag_Loot_Sapling.get(1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   6, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32766));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   6, 1, 2, IL.Book_Loot_MatDict.get(1));
 		
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   4, 8,16, IL.Bottle_Glue.get(1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   4, 8,16, IL.Bottle_Lubricant.get(1));
@@ -485,26 +469,10 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   3, 1, 1, IL.Tool_Lighter_Invar_Full.get(1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Cu));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  10, 2, 8, IL.Bag_Loot_Sapling.get(1));
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  20, 1, 2, ST.make(ItemsGT.BOOKS, 1, 32766));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  20, 1, 2, IL.Book_Loot_MatDict.get(1));
 		
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Hunting_Creeper"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Hunting_Skeleton"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Hunting_Zombie"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Hunting_Spider"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Hunting_End"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Hunting_Blaze"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Hunting_Witch"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Elements"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Alloys"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Tools"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Enchantments"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Smeltery"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Extenders"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Printer"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Steam"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Random"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   3, 1, 1, ST.book("Manual_Reactors"));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,  20, 1,10, ST.make(ItemsGT.BOOKS, 1, 32766));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,  40, 4, 8, IL.Book_Loot_Guide.get(1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,  20, 4,16, IL.Book_Loot_MatDict.get(1));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   1, 1, 9, IL.Paper_Magic_Research_0.get(1));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   1, 1, 8, IL.Paper_Magic_Research_1.get(1));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   1, 1, 7, IL.Paper_Magic_Research_2.get(1));
@@ -538,7 +506,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   6, 2, 4, OP.crateGtDust.mat(MT.Mn, 1));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Ag));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   6, 2, 8, IL.Bag_Loot_Sapling.get(1));
-		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   2, 1, 4, ST.make(ItemsGT.BOOKS, 1, 32766));
+		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   2, 1, 4, IL.Book_Loot_MatDict.get(1));
 		
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,  12, 1, 4, OP.toolHeadSword.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   6, 1, 4, OP.toolHeadSword.mat(MT.DamascusSteel, 1));
