@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -598,6 +598,10 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		addItemBehavior(12008, tBehaviour);
 		addItemBehavior(12009, tBehaviour);
 		
+		
+		IL.Bag_Loot_Sapling                .set(addItem(13000, "Bagged Sapling", "Loot: A Sapling"                  , TC.stack(TC.LUCRUM, 1), TC.stack(TC.ARBOR  , 2)));
+		IL.Bag_Loot_Seeds                  .set(addItem(13001, "Seed Pouch"    , "Loot: Random Seeds"               , TC.stack(TC.LUCRUM, 1), TC.stack(TC.HERBA  , 2)));
+		IL.Bag_Loot_Gems                   .set(addItem(13002, "Gem Pouch"     , "Loot: Gems, one of which Flawless", TC.stack(TC.LUCRUM, 3), TC.stack(TC.VITREUS, 3)));
 		
 		
 		IL.Key_Iron                        .set(addItem(30000, "Iron Key"    , "", OD.itemKey, new OreDictItemData(ANY.Iron   , U4), Behavior_Key.INSTANCE, TC.stack(TC.MACHINA, 1))); CR.shaped(IL.Key_Iron    .get(3), CR.DEF_NCC, "fPx", 'P', OP.plate.dat(ANY.Iron));
