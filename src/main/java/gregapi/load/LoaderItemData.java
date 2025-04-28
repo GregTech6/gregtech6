@@ -428,7 +428,7 @@ public class LoaderItemData implements Runnable {
 		OM.reg("seedCanola"                         , ST.make(MD.RoC, "rotarycraft_item_canola", 1, 0));
 		OM.reg("seedThistle"                        , ST.make(MD.GrC_Milk, "grcmilk.SeedThistle", 1, 0));
 		OM.reg("seedCabbage"                        , ST.make(MD.ERE, "cabbageSeeds", 1, 0));
-		OM.reg("seedDarkFruit"                      , ST.make(MD.ERE, "materials", 1, 33));
+		OM.reg("seedDarkFruit"                      , ST.make(MD.ERE, "materials", 1,33));
 		OM.reg("seedWheat"                          , ST.make(Items.wheat_seeds, 1, 0));
 		OM.reg("seedMelon"                          , ST.make(Items.melon_seeds, 1, 0));
 		OM.reg("seedPumpkin"                        , ST.make(Items.pumpkin_seeds, 1, 0));
