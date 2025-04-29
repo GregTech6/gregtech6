@@ -577,22 +577,24 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Distillery   .addRecipe1(T        , 64, 128, OM.dust(MT.Gunpowder), FL.Lemonade     .make(250), FL.Grenade_Juice  .make(250), ZL_IS);
 		
 		for (FluidStack tWater : FL.waters(1000)) {
-		RM.Distillery   .addRecipe1(T, 16,   48, OM.dust(MT.Coffee      ), FL.mul(tWater, 3, 4, T), FL.make("potion.darkcoffee", 750), ZL_IS);
-		RM.Distillery   .addRecipe1(T, 16,   16, OM.dust(MT.Coffee  , U3), FL.mul(tWater, 1, 4, T), FL.make("potion.darkcoffee", 250), ZL_IS);
+		RM.Distillery   .addRecipe1(T, 16,   48, OM.dust(MT.Coffee          ), FL.mul(tWater, 3, 4, T), FL.make("potion.darkcoffee", 750), ZL_IS);
+		RM.Distillery   .addRecipe1(T, 16,   16, OM.dust(MT.Coffee      , U3), FL.mul(tWater, 1, 4, T), FL.make("potion.darkcoffee", 250), ZL_IS);
 		
 		for (OreDictMaterial tMat : ANY.Flour.mToThis)
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(tMat           ), FL.mul(tWater, 1, 4, T), NF, IL.Food_Dough.get(2));
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(tMat               ), FL.mul(tWater, 1, 4, T), NF, IL.Food_Dough.get(2));
 		
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Milk        ), FL.mul(tWater, 1, 2, T), FL.Milk.make(1000), ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Honey       ), FL.mul(tWater, 1, 2, T), FL.Honey.make(1000), ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Honeydew    ), FL.mul(tWater, 1, 2, T), FL.Honeydew.make(1000), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Milk            ), FL.mul(tWater, 1, 2, T), FL.Milk.make(1000), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Honey           ), FL.mul(tWater, 1, 2, T), FL.Honey.make(1000), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Honeydew        ), FL.mul(tWater, 1, 2, T), FL.Honeydew.make(1000), ZL_IS);
 		
-		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Tea     , U9), FL.mul(tWater,   750, 1000, T), FL.Tea.make( 750), ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,   36, OM.dust(MT.Tea     , U4), FL.mul(tWater,  1687, 1000, T), FL.Tea.make(1687), ZL_IS);
-		RM.Mixer        .addRecipe1(T, 16,  144, OM.dust(MT.Tea         ), FL.mul(tWater,  6750, 1000, T), FL.Tea.make(6750), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   16, OM.dust(MT.Tea         , U9), FL.mul(tWater,   750, 1000, T), FL.Tea.make( 750), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,   36, OM.dust(MT.Tea         , U4), FL.mul(tWater,  1687, 1000, T), FL.Tea.make(1687), ZL_IS);
+		RM.Mixer        .addRecipe1(T, 16,  144, OM.dust(MT.Tea             ), FL.mul(tWater,  6750, 1000, T), FL.Tea.make(6750), ZL_IS);
 		
-		RM.Injector     .addRecipe1(T, 16,   16, OM.dust(MT.Mg          ), tWater, FL.MnWtr.make(1000), ZL_IS);
-		RM.Injector     .addRecipe1(T, 16,   16, OM.dust(MT.Ca          ), tWater, FL.MnWtr.make(1000), ZL_IS);
+		RM.Injector     .addRecipe1(T, 16,   16, OM.dust(MT.Mg              ), tWater, FL.MnWtr.make(1000), ZL_IS);
+		RM.Injector     .addRecipe1(T, 16,   16, OM.dust(MT.Ca              ), tWater, FL.MnWtr.make(1000), ZL_IS);
+		RM.Injector     .addRecipe1(T, 16,   16, OM.dust(MT.Ambrosium    ,U9), tWater, FL.Holywater.make(1000), ZL_IS);
+		RM.Injector     .addRecipe1(T, 16,   16, OM.dust(MT.STONES.Holystone), tWater, FL.Holywater.make(1000), ZL_IS);
 		
 		RM.Injector     .addRecipe0(T, 16,   16, FL.array(FL.mul(tWater, 1, 4, T), MT.CO2.gas(U4, T)), FL.Soda.make(250), ZL_IS);
 		}

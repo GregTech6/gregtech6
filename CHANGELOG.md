@@ -10,6 +10,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 Zanite now electrolyzes into the same Stuff that Tazanite does.
 Gravitite is now considered a Type of Diamond in most of my Recipes.
 Golden Amber can now be used like regular Amber, and is also available through debarking Golden Oak.
+Holystone or Ambrosium can now be used to make Holy Water.
 Skyroot Poison Buckets now contain 1000L of Poison 2 Potion, to give it another way of obtaining.
 Mossy Holystone got Moss Crafting Support now, and various Holystone shapes can now be crafted.
 There now is an Aether Portal Room in some GT6 Dungeons.

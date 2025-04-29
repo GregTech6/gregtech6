@@ -670,8 +670,10 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.NetherQuartz           , FL.Mana_TE        .make(   1)     ,   0, 144, NF, MT.CertusQuartz         , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.VoidQuartz             , FL.Mana_TE        .make(   1)     ,   0, 144, NF, MT.CertusQuartz         , NI, T, tConditionP));
 		}
-		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Pb                     , MT.Midasium       .liquid(U4, T)  ,   0, 144, NF, MT.Au                   , NI, T, tConditionP));
-		
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Pb                     , MT.Midasium       .liquid(U8, T)  ,   0, 144, NF, MT.Au                   , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Ni                     , MT.HolyWater      .liquid(U4, T)  ,   0, 144, NF, MT.Ardite               , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Amber                  , MT.HolyWater      .liquid(U4, T)  ,   0, 144, NF, MT.AmberGolden          , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Tanzanite              , MT.HolyWater      .liquid(U4, T)  ,   0, 144, NF, MT.Zanite               , NI, T, tConditionP));
 		
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Steeleaf               , FL.FieryBlood     .make(   L)     ,   0, 144, NF, MT.Fireleaf             , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Steeleaf               , FL.FieryTears     .make(   L)     ,   0, 144, NF, MT.Fireleaf             , NI, T, tConditionP));
