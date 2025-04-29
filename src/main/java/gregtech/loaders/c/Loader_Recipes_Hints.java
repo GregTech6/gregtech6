@@ -232,7 +232,7 @@ public class Loader_Recipes_Hints implements Runnable {
 		), ZL_IS, null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
 		
 		for (SaplingEntry tTree : WoodDictionary.LIST_SAPLINGS) {
-		RM.Trees.addFakeRecipe(F, ST.array(ST.amount(tTree.mCount, tTree.mSapling), tTree.mLeafEntry == null ? NI : tTree.mLeafEntry.mLeaf, tTree.mBaggedSaplingLoot ? IL.Bag_Loot_Sapling.get(1) : NI), tTree.mWoodEntry == null ? tTree.mLeafEntry == null ? ZL_IS : ST.array(tTree.mLeafEntry.mLeaf) : ST.array(
+		RM.Trees.addFakeRecipe(F, ST.array(ST.amount(tTree.mCount, tTree.mSapling), tTree.mLeafEntry == null ? NI : tTree.mLeafEntry.mLeaf, tTree.mBaggedSaplingLoot ? IL.Bag_Loot_Sapling.getWithName(1, "Is in its Drop Table") : NI), tTree.mWoodEntry == null ? tTree.mLeafEntry == null ? ZL_IS : ST.array(tTree.mLeafEntry.mLeaf) : ST.array(
 		  tTree.mLeafEntry == null ? NI : tTree.mLeafEntry.mLeaf
 		, tTree.mWoodEntry.mLog
 		, tTree.mWoodEntry.mBeamEntry  == null ? NI : tTree.mWoodEntry.mBeamEntry .mBeam

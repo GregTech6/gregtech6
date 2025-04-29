@@ -63,8 +63,8 @@ public class MultiItemBooks extends MultiItemRandomWithCompat {
 		BooksGT.BOOK_REGISTER.put(addItem(32004, "Book"                     , "With a Radiation Symbol on it"     , OD.bookWrittenSmall, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 3, MT.Tc, U9)), (byte)10); BooksGT.BOOKS_NORMAL.add(last());
 		BooksGT.BOOK_REGISTER.put(addItem(32005, "Large Book"               , "With a Radiation Symbol on it"     , OD.bookWrittenBig  , TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6, MT.Tc, U9)), (byte)10); BooksGT.BOOKS_NORMAL.add(last());
 		
-		BooksGT.BOOK_REGISTER.put(addItem(32765, "Dusty Guide Book"         , "Loot: Some random Manual or so"    , OD.bookWrittenSmall, TC.stack(TC.COGNITIO, 3), TICKS_PER_SMELT, new OreDictItemData(MT.Paper, U * 3)), (byte)53); BooksGT.BOOKS_NORMAL.add(last()); IL.Book_Loot_Guide.set(last());
-		BooksGT.BOOK_REGISTER.put(addItem(32766, "Dusty Material Dictionary", "Loot: Book about a random Material", OD.bookWrittenSmall, TC.stack(TC.COGNITIO, 3), TICKS_PER_SMELT, new OreDictItemData(MT.Paper, U * 3)), (byte)53); BooksGT.BOOKS_NORMAL.add(last()); IL.Book_Loot_MatDict.set(last());
+		BooksGT.BOOK_REGISTER.put(addItem(32765, "Dusty Guide Book"         , "Loot: Some random Manual or so"    , TC.stack(TC.COGNITIO, 3), TICKS_PER_SMELT, new OreDictItemData(MT.Paper, U * 3)), (byte)53); BooksGT.BOOKS_NORMAL.add(last()); IL.Book_Loot_Guide.set(last());
+		BooksGT.BOOK_REGISTER.put(addItem(32766, "Dusty Material Dictionary", "Loot: Book about a random Material", TC.stack(TC.COGNITIO, 3), TICKS_PER_SMELT, new OreDictItemData(MT.Paper, U * 3)), (byte)53); BooksGT.BOOKS_NORMAL.add(last()); IL.Book_Loot_MatDict.set(last());
 		
 		
 		RM.generify(ST.make(this, 1, W), ST.make(Items.written_book, 1, 0));
@@ -183,6 +183,7 @@ public class MultiItemBooks extends MultiItemRandomWithCompat {
 	@Override
 	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addAdditionalToolTips(aList, aStack, aF3_H);
+		if (ST.meta(aStack) >= 32700) return; // assume higher meta than this is the loot books.
 		String tTitle = UT.NBT.getBookTitle(aStack);
 		if (UT.Code.stringValid(tTitle)) {
 			aList.add(LH.Chat.CYAN + tTitle);
