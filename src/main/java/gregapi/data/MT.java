@@ -2827,6 +2827,7 @@ public class MT {
 			NetherizedDiamond       .addEnchantmentForDamage(Enchantment.fireAspect, 3).addEnchantmentForRanged(Enchantment.flame, 3).addEnchantmentForTools(Enchantment.fireAspect, 3);
 			Infinity                .addEnchantmentForDamage(Enchantment.fireAspect,10).addEnchantmentForRanged(Enchantment.flame,10).addEnchantmentForTools(Enchantment.fireAspect,10);
 			
+			Skyroot                 .addEnchantmentForDamage(Enchantment.smite, 2);
 			Hepatizon               .addEnchantmentForDamage(Enchantment.smite, 2);
 			BlackBronze             .addEnchantmentForDamage(Enchantment.smite, 2);
 			RedSteel                .addEnchantmentForDamage(Enchantment.smite, 3);
@@ -2841,6 +2842,8 @@ public class MT {
 			EnergeticAlloy          .addEnchantmentForDamage(Enchantment.smite, 4);
 			SpectreIron             .addEnchantmentForDamage(Enchantment.smite, 5);
 			VibrantAlloy            .addEnchantmentForDamage(Enchantment.smite, 5);
+			AmberGolden             .addEnchantmentForDamage(Enchantment.smite, 5);
+			Zanite                  .addEnchantmentForDamage(Enchantment.smite, 5);
 			Mauftrium               .addEnchantmentForDamage(Enchantment.smite, 5);
 			Carmot                  .addEnchantmentForDamage(Enchantment.smite, 5);
 			Pt                      .addEnchantmentForDamage(Enchantment.smite, 5);

@@ -434,11 +434,11 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Autoclave    .add(new RecipeMapHandlerPrefix(dust                            , 8, FL.Steam.make(  819200), 0,  25600, 0, FL.DistW.make(3840), gemLegendary           , 1, ST.tag(5), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
 		
 		
-		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(arrowGtWood                     , 1, NF,  16,16,     0, NF, toolHeadArrow           , 1, NI, arrowGtWood    .mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(arrowGtPlastic                  , 1, NF,  16,16,     0, NF, toolHeadArrow           , 1, NI, arrowGtPlastic .mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(bulletGtSmall                   , 1, NF,  16,16,     0, NF, round                   , 1, NI, bulletGtSmall  .mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(bulletGtMedium                  , 1, NF,  16,16,     0, NF, round                   , 2, NI, bulletGtMedium .mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
-		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(bulletGtLarge                   , 1, NF,  16,16,     0, NF, round                   , 3, NI, bulletGtLarge  .mat(MT.Empty, 1), F, F, F, ANTIMATTER.NOT));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(arrowGtWood                     , 1, NF,  16,16,     0, NF, toolHeadArrow           , 1, NI, arrowGtWood    .mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(arrowGtPlastic                  , 1, NF,  16,16,     0, NF, toolHeadArrow           , 1, NI, arrowGtPlastic .mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(bulletGtSmall                   , 1, NF,  16,16,     0, NF, dustTiny                , 1, NI, bulletGtSmall  .mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(bulletGtMedium                  , 1, NF,  16,16,     0, NF, dustTiny                , 2, NI, bulletGtMedium .mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(bulletGtLarge                   , 1, NF,  16,16,     0, NF, dustTiny                , 3, NI, bulletGtLarge  .mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
 		
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(pipeQuadruple                   , 1, NF,  16,16,     0, NF, pipeMedium              , 4, NI, NI, F, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(pipeNonuple                     , 1, NF,  16,16,     0, NF, pipeSmall               , 9, NI, NI, F, F, F, ANTIMATTER.NOT));
@@ -671,9 +671,11 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.VoidQuartz             , FL.Mana_TE        .make(   1)     ,   0, 144, NF, MT.CertusQuartz         , NI, T, tConditionP));
 		}
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Pb                     , MT.Midasium       .liquid(U8, T)  ,   0, 144, NF, MT.Au                   , NI, T, tConditionP));
-		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Ni                     , MT.HolyWater      .liquid(U4, T)  ,   0, 144, NF, MT.Ardite               , NI, T, tConditionP));
-		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Amber                  , MT.HolyWater      .liquid(U4, T)  ,   0, 144, NF, MT.AmberGolden          , NI, T, tConditionP));
-		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Tanzanite              , MT.HolyWater      .liquid(U4, T)  ,   0, 144, NF, MT.Zanite               , NI, T, tConditionP));
+		
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.WOODS.Oak              , FL.Holywater      .make(  50)     ,   0, 144, NF, MT.Skyroot              , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Ni                     , FL.Holywater      .make( 250)     ,   0, 144, NF, MT.Ardite               , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Amber                  , FL.Holywater      .make( 250)     ,   0, 144, NF, MT.AmberGolden          , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Tanzanite              , FL.Holywater      .make( 250)     ,   0, 144, NF, MT.Zanite               , NI, T, tConditionP));
 		
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Steeleaf               , FL.FieryBlood     .make(   L)     ,   0, 144, NF, MT.Fireleaf             , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Steeleaf               , FL.FieryTears     .make(   L)     ,   0, 144, NF, MT.Fireleaf             , NI, T, tConditionP));
