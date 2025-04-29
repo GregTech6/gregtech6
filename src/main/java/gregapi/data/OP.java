@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -709,7 +709,7 @@ public class OP {
 		oreNormal               .mByProducts.add(OM.stack(MT.Stone               , dust.mAmount * 2));
 		oreRich                 .mByProducts.add(OM.stack(MT.Stone               , dust.mAmount * 2));
 		crushed                 .mByProducts.add(OM.stack(MT.Stone               , dust.mAmount));
-		toolHeadPickaxeGem      .mByProducts.add(OM.stack(ANY.Steel              , toolHeadPickaxe.mAmount));
+		toolHeadPickaxeGem      .mByProducts.add(OM.stack(ANY.Iron               , toolHeadPickaxe.mAmount));
 		toolHeadDrill           .mByProducts.add(OM.stack(ANY.Steel              , plate.mAmount * 4));
 		toolHeadChainsaw        .mByProducts.add(OM.stack(ANY.Steel              , plate.mAmount * 4 + ring.mAmount * 2));
 		toolHeadWrench          .mByProducts.add(OM.stack(ANY.Steel              , ring.mAmount + screw.mAmount * 2));

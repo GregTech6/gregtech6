@@ -15,7 +15,8 @@ Mossy Holystone got Moss Crafting Support now, and various Holystone shapes can 
 There now is an Aether Portal Room in some GT6 Dungeons.
 [COMPAT] Removed the annoying Vanilla NEI Usage Handlers for Furnace Fuel and Furnace Smelting, as there is better NEI Handlers and Tooltips. (Does not target NEI-NH)
 [COMPAT] Et Futurum Ore Data for many Deepslate Ores.
-[COMPAT] Ars Magica Witchwood is now in the Wood Dictionary.
+[COMPAT] Ars Magica Witchwood is now in the Wood Dictionary. Also Ars Magicka had a broken Fluid Block.
+[FIXED] Gem tipped Pickaxe Heads can be made with Iron too now, also you can use pre-sharpened Pickaxe Heads too.
 [ADDED] The Melter, which is just an earlier Version of the Smelter. Works on most Furnace-able Materials.
 [ADDED] Wax Cracking, what is Wax Cracking? It is the "final" Ore Processing Step that involves Steam and Molten Wax, and exists purely because of needing some productive way to get rid of Wax.
 [ADDED] Glowstone, Redstone, Cinnabar, Nikolite, Carminite and Ambers can now be crystallized using Cryotheum in a Bath, either by using crushed Ores or by sacrificing about half of a Block of Dust.
@@ -23,7 +24,6 @@ There now is an Aether Portal Room in some GT6 Dungeons.
 [ADDED] Various Grabbag Items for Books, Saplings, Seeds and Gems. Maybe more. They will clutter the Inventory less than the current Loots.
 [ADDED] Signs to the Center Street Worldgen to indicate where which Biomes are. Bottommost Biomes are closest (read it like Highway Street Signs), it looks at the Biomes roughly 100 blocks to the left and right sides of the Road.
 [ADDED] The GT6 Builder Wand can now place GT6 Multiblock Parts from your Inventory in a 3x3x3 around the clicked Multiblock Part (range limit so you dont build behind walls).
-[FIXED] Ars Magicka had a broken Fluid Block.
 
 
 6.17.02:
