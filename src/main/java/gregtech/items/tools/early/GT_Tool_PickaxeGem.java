@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,6 +27,7 @@ import net.minecraft.item.ItemStack;
 
 public class GT_Tool_PickaxeGem extends GT_Tool_Pickaxe {
 	@Override public float getMaxDurabilityMultiplier() {return super.getMaxDurabilityMultiplier() / 2;}
+	@Override public ItemStack getBrokenItem(ItemStack aStack) {return OP.toolHeadPickaxeGem.mat(MT.Empty, 1);}
 	
 	@Override
 	public IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack) {

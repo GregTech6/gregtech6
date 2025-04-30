@@ -248,7 +248,7 @@ public class OP {
 	toolHeadScrewdriver         = create("toolHeadScrewdriver"          , "Screwdriver Tips"                , ""                                , " Screwdriver Tip"                ).setMaterialStats(U    )     .setCondition(typemin(2))                                                                                   .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, SCANNABLE, TOOL_HEAD, NEEDS_HANDLE).setStacksize(16).aspects(TC.INSTRUMENTUM, 1, TC.MOTUS, 1),
 	toolHeadBuilderwand         = create("toolHeadBuilderwand"          , "Builder's Wand Caps"             , ""                                , " Builder's Wand Cap"             ).setMaterialStats(U * 1)     .setCondition(typemin(2))                                                                                   .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, SCANNABLE, TOOL_HEAD, NEEDS_HANDLE).setStacksize(16).aspects(TC.INSTRUMENTUM, 1, TC.ORDO, 1, TC.PRAECANTIO, 1),
 	toolHeadConstructionPickaxe = create("toolHeadConstructionPickaxe"  , "Construction Pickaxe Heads"      , ""                                , " Construction Pickaxe Head"      ).setMaterialStats(U * 3 -U9) .setCondition(new And(toolHeadPickaxe, typemin(2)))                                                         .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, SCANNABLE, TOOL_HEAD, NEEDS_HANDLE).setStacksize(16).aspects(TC.INSTRUMENTUM, 2, TC.PERFODIO, 1),
-	toolHeadPickaxeGem          = create("toolHeadPickaxeGem"           , "Gem tipped Pickaxe Heads"        , ""                                , " tipped Pickaxe Head"            ).setMaterialStats(U * 1)     .setCondition(new And(toolHeadPickaxe, gemFlawed, typemin(2)))                                              .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, SCANNABLE, TOOL_HEAD, NEEDS_HANDLE).setStacksize(16).aspects(TC.INSTRUMENTUM, 2, TC.PERFODIO, 1, TC.VITREUS, 1),
+	toolHeadPickaxeGem          = create("toolHeadPickaxeGem"           , "Gem tipped Pickaxe Heads"        , ""                                , " tipped Pickaxe Head"            ).setMaterialStats(U * 1)     .setCondition(new And(gemFlawed, typemin(2)))                                                               .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, SCANNABLE, TOOL_HEAD, NEEDS_HANDLE).setStacksize(16).aspects(TC.INSTRUMENTUM, 2, TC.PERFODIO, 1, TC.VITREUS, 1),
 	toolHeadAxeDouble           = create("toolHeadAxeDouble"            , "Double Axe Heads"                , ""                                , " Double Axe Head"                ).setMaterialStats(U*5-2 *U9) .setCondition(new And(toolHeadAxe, typemin(2)))                                                             .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, SCANNABLE, TOOL_HEAD, NEEDS_HANDLE).setStacksize(16).aspects(TC.INSTRUMENTUM, 3, TC.TELUM, 1),
 	toolHeadUniversalSpade      = create("toolHeadUniversalSpade"       , "Universal Spade Heads"           , ""                                , " Universal Spade Head"           ).setMaterialStats(U  -2 *U9) .setCondition(new And(toolHeadShovel, toolHeadSaw))                                                         .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, SCANNABLE, TOOL_HEAD              ).setStacksize(16).aspects(TC.INSTRUMENTUM, 1, TC.TELUM, 1),
 	toolHeadArrow               = create("toolHeadArrow"                , "Arrow Heads"                     , ""                                , " Arrow Head"                     ).setMaterialStats(U9   )     .setCondition(new And(PROJECTILES, typemin(1)))                                                             .add(UNIFICATABLE, BURNABLE, TOOLTIP_ENCHANTS, RECYCLABLE, SCANNABLE, TOOL_HEAD              ).setStacksize(64).aspects(TC.TELUM, 1),
@@ -596,25 +596,29 @@ public class OP {
 		}
 		
 		// Items which are already there in vanilla MC, or cause Issues like with Mekanism.
-		blockDust  .disableItemGeneration(MT.Stone, MT.Sand, MT.RedSand);
-		gem        .disableItemGeneration(MT.Coal, MT.Charcoal, MT.NetherStar, MT.Diamond, MT.Emerald, MT.NetherQuartz, MT.EnderPearl, MT.EnderEye, MT.Flint, MT.Lapis);
-		dust       .disableItemGeneration(MT.Bone, MT.Redstone, MT.Glowstone, MT.Gunpowder, MT.Sugar);
-		dustTiny   .disableItemGeneration(MT.Blaze);
-		dustRefined.disableItemGeneration(MT.Obsidian, MT.Glowstone);
-		stick      .disableItemGeneration(MT.Wood, MT.Bone, MT.Blaze);
-		ingot      .disableItemGeneration(MT.Unstable, MT.Fe, MT.Au, MT.NetherBrick);
-		nugget     .disableItemGeneration(MT.Unstable, MT.Au);
-		plate      .disableItemGeneration(MT.Glass, MT.Paper);
-		plateGem   .disableItemGeneration(MT.Glass);
-		bucket     .disableItemGeneration(MT.Empty, MT.H2O, MT.Lava, MT.Milk);
-		bottle     .disableItemGeneration(MT.Empty, MT.H2O);
+		blockDust         .disableItemGeneration(MT.Stone, MT.Sand, MT.RedSand);
+		gem               .disableItemGeneration(MT.Coal, MT.Charcoal, MT.NetherStar, MT.Diamond, MT.Emerald, MT.NetherQuartz, MT.EnderPearl, MT.EnderEye, MT.Flint, MT.Lapis);
+		dust              .disableItemGeneration(MT.Bone, MT.Redstone, MT.Glowstone, MT.Gunpowder, MT.Sugar);
+		dustTiny          .disableItemGeneration(MT.Blaze);
+		dustRefined       .disableItemGeneration(MT.Obsidian, MT.Glowstone);
+		stick             .disableItemGeneration(MT.Wood, MT.Bone, MT.Blaze);
+		ingot             .disableItemGeneration(MT.Unstable, MT.Fe, MT.Au, MT.NetherBrick);
+		nugget            .disableItemGeneration(MT.Unstable, MT.Au);
+		plate             .disableItemGeneration(MT.Glass, MT.Paper);
+		plateGem          .disableItemGeneration(MT.Glass);
+		bucket            .disableItemGeneration(MT.Empty, MT.H2O, MT.Lava, MT.Milk);
+		bottle            .disableItemGeneration(MT.Empty, MT.H2O);
 		
 		
-		gemChipped .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone, MT.Sugar);
-		gemFlawed  .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone);
-		gem        .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone, MT.Ta);
-		bouleGt    .forceItemGeneration(MT.Si, MT.Ge, MT.RedstoneAlloy, MT.NikolineAlloy);
-		plateTiny  .forceItemGeneration(MT.Paper);
+		gemChipped        .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone, MT.Sugar);
+		gemFlawed         .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone);
+		gem               .forceItemGeneration(MT.Ice, MT.NaCl, MT.KCl, MT.KIO3, MT.Firestone, MT.Ta);
+		bouleGt           .forceItemGeneration(MT.Si, MT.Ge, MT.RedstoneAlloy, MT.NikolineAlloy);
+		plateTiny         .forceItemGeneration(MT.Paper);
+		toolHeadDrill     .forceItemGeneration(MT.Empty);
+		toolHeadChainsaw  .forceItemGeneration(MT.Empty);
+		toolHeadWrench    .forceItemGeneration(MT.Empty);
+		toolHeadPickaxeGem.forceItemGeneration(MT.Empty);
 		
 		
 		for (OreDictMaterial tMat : ANY.Sapphire.mToThis) bouleGt.forceItemGeneration(tMat);

@@ -567,27 +567,42 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		if (aStack.stackSize <= 0) return F;
 		
 		NBTTagCompound aNBT = aStack.getTagCompound();
+		// The Tool has no Data? Treat it like a single use Creative Tool.
 		if (aNBT == null) return T;
 		
+		// Invalid Tool Index?
 		if (!isUsableMeta(aStack)) {
 			aNBT.removeTag("ench");
 			return F;
 		}
 		
 		IToolStats tStats = getToolStatsInternal(aStack);
-		if (tStats == null || !super.isItemStackUsable(aStack)) {
+		// No Tool Data?
+		if (tStats == null) {
 			aNBT.removeTag("ench");
 			return F;
 		}
 		
+		OreDictMaterial aMaterial = getPrimaryMaterial(aStack);
+		// "Empty" Toolheads should not be able to do things.
+		if (aMaterial == MT.Empty) {
+			aNBT.removeTag("ench");
+			return F;
+		}
+		
+		// Some Behavior declaring this unusable?
+		if (!super.isItemStackUsable(aStack)) {
+			aNBT.removeTag("ench");
+			return F;
+		}
+		
+		// If no Enchantments, checks ends successfully early.
 		if (aNBT.hasKey("ench")) return T;
 		
 		// Abuse a potentially empty List as a boolean to see if a Tool already has enchants or not.
 		aNBT.setTag("ench", new NBTTagList());
 		
-		OreDictMaterial aMaterial = getPrimaryMaterial(aStack);
 		List<ObjectStack<Enchantment>> tEnchantments = new ArrayListNoNulls<>();
-		
 		// Get Material Specific Enchantments for applicable Tool Classes.
 		if (tStats.isMiningTool  ()) for (ObjectStack<Enchantment> tEnchantment : aMaterial.mEnchantmentTools  ) tEnchantments.add(new ObjectStack<>(tEnchantment.mObject, tEnchantment.mAmount));
 		if (tStats.isWeapon      ()) for (ObjectStack<Enchantment> tEnchantment : aMaterial.mEnchantmentWeapons) tEnchantments.add(new ObjectStack<>(tEnchantment.mObject, tEnchantment.mAmount));

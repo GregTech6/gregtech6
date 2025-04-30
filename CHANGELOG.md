@@ -17,8 +17,8 @@ There now is an Aether Portal Room in some GT6 Dungeons.
 [COMPAT] Removed the annoying Vanilla NEI Usage Handlers for Furnace Fuel and Furnace Smelting, as there is better NEI Handlers and Tooltips. (Does not target NEI-NH)
 [COMPAT] Et Futurum Ore Data for many Deepslate Ores.
 [COMPAT] Ars Magica Witchwood is now in the Wood Dictionary. Also Ars Magicka had a broken Fluid Block.
-[FIXED] Gem tipped Pickaxe Heads can be made with Iron too now, also you can use pre-sharpened Pickaxe Heads too.
 [FIXED] Unboxinating Bullets did not work if Rounds did not exist for that Material (there is an alternate Recipe with Bolts). Now it will return tiny piles of Dust instead, which makes the funny Recipe chain to turn Bolts into Rounds using the Press output Dust instead of Rounds.
+[CHANGED] Gem tipped Pickaxe Heads can be made with Iron too now, also you can use pre-sharpened Pickaxe Heads too. Also they break into empty Toolheads now.
 [ADDED] The Melter, which is just an earlier Version of the Smelter. Works on most Furnace-able Materials.
 [ADDED] Wax Cracking, what is Wax Cracking? It is the "final" Ore Processing Step that involves Steam and Molten Wax, and exists purely because of needing some productive way to get rid of Wax.
 [ADDED] Glowstone, Redstone, Cinnabar, Nikolite, Carminite and Ambers can now be crystallized using Cryotheum in a Bath, either by using crushed Ores or by sacrificing about half of a Block of Dust.

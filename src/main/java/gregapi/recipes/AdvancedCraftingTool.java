@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,16 +19,8 @@
 
 package gregapi.recipes;
 
-import static gregapi.data.CS.*;
-
 import gregapi.code.ICondition;
-import gregapi.data.ANY;
-import gregapi.data.CS.ToolsGT;
-import gregapi.data.IL;
-import gregapi.data.MT;
-import gregapi.data.OP;
-import gregapi.data.RM;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.item.multiitem.MultiItemTool;
 import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictMaterial;
@@ -41,6 +33,8 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -71,7 +65,7 @@ public class AdvancedCraftingTool extends ShapelessOreRecipe implements ICraftin
 	
 	@Override
 	public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-		if (mCondition.isTrue(aEvent.mMaterial)) {
+		if (aEvent.mMaterial != MT.Empty && mCondition.isTrue(aEvent.mMaterial)) {
 			if (aEvent.mMaterial.mHandleMaterial == ANY.Wood || aEvent.mMaterial.mHandleMaterial == ANY.WoodPlastic) {
 				RM.ToolHeads.addRecipeX(F,F,T,F,F, 0, 0, ST.array(aEvent.mStack, NI, IL.Stick.get(1)), mTool.getToolWithStats(mToolID, aEvent.mMaterial, aEvent.mMaterial.mHandleMaterial));
 			} else {
@@ -108,7 +102,7 @@ public class AdvancedCraftingTool extends ShapelessOreRecipe implements ICraftin
 				}
 			}
 		}
-		return rHead != null && rRod != null && mCondition.isTrue(rHead) && (rHead.mHandleMaterial == rRod || rRod.mReRegistrations.contains(rHead.mHandleMaterial));
+		return rHead != null && rRod != null && rHead != MT.Empty && mCondition.isTrue(rHead) && (rHead.mHandleMaterial == rRod || rRod.mReRegistrations.contains(rHead.mHandleMaterial));
 	}
 	
 	@Override
@@ -127,7 +121,7 @@ public class AdvancedCraftingTool extends ShapelessOreRecipe implements ICraftin
 				}
 			}
 		}
-		return mTool.getToolWithStats(mToolID, rHead, rRod);
+		return rHead == MT.Empty ? NI : mTool.getToolWithStats(mToolID, rHead, rRod);
 	}
 	
 	@Override public boolean isRemovableByGT() {return F;}
