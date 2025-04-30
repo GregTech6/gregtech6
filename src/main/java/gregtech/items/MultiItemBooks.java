@@ -30,12 +30,9 @@ import gregapi.util.UT;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ChestGenHooks;
 
 import java.util.List;
-import java.util.Random;
 
 import static gregapi.data.CS.*;
 
@@ -168,26 +165,27 @@ public class MultiItemBooks extends MultiItemRandomWithCompat {
 	}
 	
 	@Override
-	public WeightedRandomChestContent getChestGenBase(ChestGenHooks aChestGenHook, Random aRandom, WeightedRandomChestContent aOriginal) {
-		if (aOriginal.theItemId.hasTagCompound()) return aOriginal;
-		if (ST.meta_(aOriginal.theItemId) == 32002 || ST.meta_(aOriginal.theItemId) == 32003) return new WeightedRandomChestContent(ST.book(UT.Books.MATERIAL_DICTIONARIES.get(aRandom.nextInt(UT.Books.MATERIAL_DICTIONARIES.size()))), aOriginal.theMinimumChanceToGenerateItem, aOriginal.theMaximumChanceToGenerateItem, aOriginal.itemWeight);
-		return aOriginal;
-	}
-	
-	@Override
 	public ItemStack onItemRightClick(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {
-		UT.Books.display(aPlayer, aStack);
+		// assume higher meta than this is the loot books.
+		if (ST.meta(aStack) < 32700) UT.Books.display(aPlayer, aStack);
+		// Do normal Rightclick Behaviors.
 		return super.onItemRightClick(aStack, aWorld, aPlayer);
 	}
 	
 	@Override
 	public void addAdditionalToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		super.addAdditionalToolTips(aList, aStack, aF3_H);
-		if (ST.meta(aStack) >= 32700) return; // assume higher meta than this is the loot books.
-		String tTitle = UT.NBT.getBookTitle(aStack);
-		if (UT.Code.stringValid(tTitle)) {
-			aList.add(LH.Chat.CYAN + tTitle);
-			aList.add(LH.Chat.CYAN + "by " + UT.NBT.getBookAuthor(aStack));
+		// assume higher meta than this is the loot books.
+		if (ST.meta(aStack) >= 32700) return;
+		// add Title and Author of the Book.
+		String
+		tString = UT.NBT.getBookTitle(aStack);
+		if (UT.Code.stringValid(tString)) {
+			aList.add(LH.Chat.CYAN + tString);
+			tString = UT.NBT.getBookAuthor(aStack);
+			if (UT.Code.stringValid(tString)) {
+				aList.add(LH.Chat.CYAN + "by " + UT.NBT.getBookAuthor(aStack));
+			}
 		} else {
 			aList.add(LH.Chat.CYAN + "This Book is Empty");
 		}

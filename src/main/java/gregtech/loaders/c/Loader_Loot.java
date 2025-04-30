@@ -287,8 +287,11 @@ public class Loader_Loot implements Runnable {
 		ST.LOOT_TABLES.add("gt.matdicts");
 		ChestGenHooks.getInfo("gt.matdicts").setMin( 8);
 		ChestGenHooks.getInfo("gt.matdicts").setMax(24);
-		// Spam a ton of these so they don't get copypasted when making a Loot Chest.
-		for (int i = 0; i < 256; i++) addLoot("gt.matdicts", 1, 1, 1, ST.make(ItemsGT.BOOKS, 1, 32002));
+		// Dedicated Loot Table for ALL Material Dictionaries, so I can get rid of special case code in my Books.
+		for (OreDictMaterial tMaterial : OreDictMaterial.MATERIAL_ARRAY) if (tMaterial != null && tMaterial.mDictionaryBook != null)
+		addLoot("gt.matdicts", 1, 1, 1, tMaterial.mDictionaryBook);
+		
+		
 		
 		
 		
