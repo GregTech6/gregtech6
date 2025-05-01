@@ -56,6 +56,10 @@ public class RecipeMapUnboxinator extends RecipeMap {
 			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
 			return new Recipe(F, F, F, ST.array(IL.Book_Loot_MatDict.get(1)), ST.array(ChestGenHooks.getOneItem("gt.matdicts", RNGSUS)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
 		}
+		if (IL.Bottle_Loot.equal(aInputs[0], F, T)) {
+			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
+			return new Recipe(F, F, F, ST.array(IL.Bottle_Loot.get(1)), ST.array(ChestGenHooks.getOneItem("gt.bottles", RNGSUS)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
+		}
 		if (IL.Bag_Loot_Gems.equal(aInputs[0], F, T)) {
 			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
 			return new Recipe(F, F, F, ST.array(IL.Bag_Loot_Gems.get(1)), ST.array(ChestGenHooks.getOneItem("gt.flawless", RNGSUS), ChestGenHooks.getOneItem("gt.gems", RNGSUS), ChestGenHooks.getOneItem("gt.gems", RNGSUS)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();

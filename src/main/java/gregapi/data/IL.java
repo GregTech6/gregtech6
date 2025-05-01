@@ -272,6 +272,7 @@ public enum IL implements IItemContainer {
 	Crate, Crate_Fireproof, Crate_Loot,
 	Bag_Loot_Seeds, Bag_Loot_Sapling, Bag_Loot_Gems,
 	Book_Loot_Guide, Book_Loot_MatDict,
+	Bottle_Loot,
 	ThermosCan_Empty,
 	ThermosCan_Dark_Coffee, ThermosCan_Dark_Cafe_au_lait, ThermosCan_Coffee, ThermosCan_Cafe_au_lait, ThermosCan_Lait_au_cafe, ThermosCan_Dark_Chocolate_Milk,
 	ThermosCan_Chocolate_Milk,

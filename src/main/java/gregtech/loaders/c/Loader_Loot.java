@@ -19,10 +19,7 @@
 
 package gregtech.loaders.c;
 
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OP;
+import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -292,8 +289,36 @@ public class Loader_Loot implements Runnable {
 		addLoot("gt.matdicts", 1, 1, 1, tMaterial.mDictionaryBook);
 		
 		
-		
-		
+		ST.LOOT_TABLES.add("gt.bottles");
+		ChestGenHooks.getInfo("gt.bottles").setMin( 8);
+		ChestGenHooks.getInfo("gt.bottles").setMax(24);
+		addLoot("gt.bottles", 1, 1, 1, ST.make(Items.experience_bottle, 1, 0));
+		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Empty                .get(1));
+		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Blood                .get(1));
+		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Milk                 .get(1));
+		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Milk_Spoiled         .get(1));
+		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Honey                .get(1));
+		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Tar                  .get(1));
+		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Glue                 .get(1));
+		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Lubricant            .get(1));
+		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Mercury              .get(1));
+		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Holy_Water           .get(1));
+		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Ink                  .get(1));
+		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Indigo               .get(1));
+		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Beer                 .get(1));
+		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Purple_Drink         .get(1));
+		addLoot("gt.bottles", 1, 1, 1, FL.Potion_Speed_1         .fill(IL.Bottle_Empty.get(1)));
+		addLoot("gt.bottles", 1, 1, 1, FL.Potion_Slowness_1S     .fill(IL.Bottle_Empty.get(1)));
+		addLoot("gt.bottles", 1, 1, 1, FL.Potion_Strength_1      .fill(IL.Bottle_Empty.get(1)));
+		addLoot("gt.bottles", 1, 1, 1, FL.Potion_Weakness_1S     .fill(IL.Bottle_Empty.get(1)));
+		addLoot("gt.bottles", 1, 1, 1, FL.Potion_Regen_1         .fill(IL.Bottle_Empty.get(1)));
+		addLoot("gt.bottles", 1, 1, 1, FL.Potion_Heal_1S         .fill(IL.Bottle_Empty.get(1)));
+		addLoot("gt.bottles", 1, 1, 1, FL.Potion_Poison_1S       .fill(IL.Bottle_Empty.get(1)));
+		addLoot("gt.bottles", 1, 1, 1, FL.Potion_Harm_1S         .fill(IL.Bottle_Empty.get(1)));
+		addLoot("gt.bottles", 1, 1, 1, FL.Potion_FireResistance_1.fill(IL.Bottle_Empty.get(1)));
+		addLoot("gt.bottles", 1, 1, 1, FL.Potion_NightVision_1   .fill(IL.Bottle_Empty.get(1)));
+		addLoot("gt.bottles", 1, 1, 1, FL.Potion_WaterBreathing_1.fill(IL.Bottle_Empty.get(1)));
+		addLoot("gt.bottles", 1, 1, 1, FL.Potion_Invisibility_1  .fill(IL.Bottle_Empty.get(1)));
 		
 		
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   2, 8,16, IL.Bottle_Purple_Drink.get(1));

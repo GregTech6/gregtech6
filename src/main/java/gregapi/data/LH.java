@@ -396,6 +396,7 @@ public class LH {
 		
 		add("loot.gt.books"                             , "+Random Books+");
 		add("loot.gt.matdicts"                          , "-Random Material Dictionaries-");
+		add("loot.gt.bottles"                           , "+Bottles+");
 		add("loot.gt.saplings"                          , "-Random Saplings-");
 		add("loot.gt.seeds"                             , "-Random Seeds-");
 		add("loot.gt.gems"                              , "+Random Gems+");
