@@ -297,11 +297,11 @@ public class Loader_Loot implements Runnable {
 		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Blood                .get(1));
 		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Milk                 .get(1));
 		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Milk_Spoiled         .get(1));
-		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Honey                .get(1));
+		addLoot("gt.bottles", 1, 1, 1, IL.EtFu_Bottle_Honey           .get(1, IL.Bottle_Honey.get(1)));
 		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Tar                  .get(1));
 		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Glue                 .get(1));
 		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Lubricant            .get(1));
-		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Mercury              .get(1));
+		addLoot("gt.bottles", 1, 1, 1, IL.HBM_Bottle_Mercury          .get(1, IL.Bottle_Mercury.get(1)));
 		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Holy_Water           .get(1));
 		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Ink                  .get(1));
 		addLoot("gt.bottles", 1, 1, 1, IL.Bottle_Indigo               .get(1));
