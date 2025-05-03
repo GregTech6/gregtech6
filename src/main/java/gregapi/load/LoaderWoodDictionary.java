@@ -49,7 +49,7 @@ public class LoaderWoodDictionary implements Runnable {
 		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 4));
 		OreDictionary.registerOre(OD.plankWood.toString(), ST.make(Blocks.planks, 1, 5));
 		new SaplingEntry(ST.make(Blocks.sapling, 1, 0), new WoodEntry(ST.make(Blocks.log , 1, 0), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 0), new PlankEntry(ST.make(Blocks.planks, 1, 0), ST.make(Blocks.wooden_slab, 1, 0), ST.make(Blocks.oak_stairs     , 1, W), MT.WOODS.Oak    , 0))), ST.make(Blocks.leaves , 1, 0));
-		new SaplingEntry(ST.make(Blocks.sapling, 1, 1), new WoodEntry(ST.make(Blocks.log , 1, 1), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 1), new PlankEntry(ST.make(Blocks.planks, 1, 1), ST.make(Blocks.wooden_slab, 1, 1), ST.make(Blocks.spruce_stairs  , 1, W), MT.WOODS.Spruce , 1))), ST.make(Blocks.leaves , 1, 1));
+		new SaplingEntry(ST.make(Blocks.sapling, 4, 1), new WoodEntry(ST.make(Blocks.log , 1, 1), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 1), new PlankEntry(ST.make(Blocks.planks, 1, 1), ST.make(Blocks.wooden_slab, 1, 1), ST.make(Blocks.spruce_stairs  , 1, W), MT.WOODS.Spruce , 1))), ST.make(Blocks.leaves , 1, 1));
 		new SaplingEntry(ST.make(Blocks.sapling, 1, 2), new WoodEntry(ST.make(Blocks.log , 1, 2), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 2), new PlankEntry(ST.make(Blocks.planks, 1, 2), ST.make(Blocks.wooden_slab, 1, 2), ST.make(Blocks.birch_stairs   , 1, W), MT.WOODS.Birch  , 2))), ST.make(Blocks.leaves , 1, 2));
 		new SaplingEntry(ST.make(Blocks.sapling, 4, 3), new WoodEntry(ST.make(Blocks.log , 1, 3), new BeamEntry(ST.make(BlocksGT.Beam1, 1, 3), new PlankEntry(ST.make(Blocks.planks, 1, 3), ST.make(Blocks.wooden_slab, 1, 3), ST.make(Blocks.jungle_stairs  , 1, W), MT.WOODS.Jungle , 3))), ST.make(Blocks.leaves , 1, 3));
 		new SaplingEntry(ST.make(Blocks.sapling, 1, 4), new WoodEntry(ST.make(Blocks.log2, 1, 0), new BeamEntry(ST.make(BlocksGT.Beam2, 1, 0), new PlankEntry(ST.make(Blocks.planks, 1, 4), ST.make(Blocks.wooden_slab, 1, 4), ST.make(Blocks.acacia_stairs  , 1, W), MT.WOODS.Acacia , 4))), ST.make(Blocks.leaves2, 1, 0));
@@ -323,6 +323,20 @@ public class LoaderWoodDictionary implements Runnable {
 			
 			CR.shaped(ST.make(MD.ABYSSAL, "dltplank", 1, 0), CR.DEF_NCC, "S", "S", 'S', ST.item(MD.ABYSSAL, "dltslab1"));
 		}
+		// Steamcraft 2 Trees, weirdly none seem to have Saplings.
+		if (MD.SC2.mLoaded) {
+			new LeafEntry(ST.make(MD.SC2, "BlockBrassLeaves"    , 1, W));
+			new LeafEntry(ST.make(MD.SC2, "BlockWillowLeaves"   , 1, W));
+			new LeafEntry(ST.make(MD.SC2, "BlockRedwoodLeaves"  , 1, W));
+			new LeafEntry(ST.make(MD.SC2, "BlockMangroveLeaves" , 1, W));
+			new LeafEntry(ST.make(MD.SC2, "BlockDeadLeaves"     , 1, W));
+			
+			new WoodEntry(ST.make(MD.SC2, "BlockBrassLog"    , 1, W));
+			new WoodEntry(ST.make(MD.SC2, "BlockWillowLog"   , 1, W), new PlankEntry(ST.make(MD.SC2, "BlockWillowPlanks"   , 1, W), ST.make(MD.SC2, "BlockWillowSlab"   , 1, W), ST.make(MD.SC2, "BlockWillowStairs"   , 1, W), MT.WOODS.Willow  , 247), 2, 500);
+			new WoodEntry(ST.make(MD.SC2, "BlockRedwoodLog"  , 1, W), new PlankEntry(ST.make(MD.SC2, "BlockRedwoodPlanks"  , 1, W), ST.make(MD.SC2, "BlockRedwoodSlab"  , 1, W), ST.make(MD.SC2, "BlockRedwoodStairs"  , 1, W), MT.WOODS.Redwood , 248));
+			new WoodEntry(ST.make(MD.SC2, "BlockMangroveLog" , 1, W), new PlankEntry(ST.make(MD.SC2, "BlockMangrovePlanks" , 1, W), ST.make(MD.SC2, "BlockMangroveSlab" , 1, W), ST.make(MD.SC2, "BlockMangroveStairs" , 1, W), MT.WOODS.Mangrove, 249));
+			new WoodEntry(ST.make(MD.SC2, "BlockPetrifiedLog", 1, W), new PlankEntry(ST.make(MD.SC2, "BlockPetrifiedPlanks", 1, W), ST.make(MD.SC2, "BlockPetrifiedSlab", 1, W), ST.make(MD.SC2, "BlockPetrifiedStairs", 1, W), MT.PetrifiedWood , 250), 0, 0);
+		}
 		// Extra Biomes Trees
 		if (MD.EBXL.mLoaded) {
 			Block tPlank = ST.block(MD.EBXL, "planks"), tSlab = ST.block(MD.EBXL, "woodslab");
@@ -362,28 +376,14 @@ public class LoaderWoodDictionary implements Runnable {
 			new SaplingEntry(ST.make(MD.EBXL, "saplings_1", 1, 1), WoodDictionary.WOODS.get(MD.EBXL, "log2", 1), ST.make(MD.EBXL, "leaves_1", 1, 1));
 			new SaplingEntry(ST.make(MD.EBXL, "saplings_1", 1, 2), WoodDictionary.WOODS.get(MD.EBXL, "log2", 1), ST.make(MD.EBXL, "leaves_1", 1, 2));
 			new SaplingEntry(ST.make(MD.EBXL, "saplings_1", 1, 3), WoodDictionary.WOODS.get(MD.EBXL, "log2", 1), ST.make(MD.EBXL, "leaves_1", 1, 3));
-			new SaplingEntry(ST.make(MD.EBXL, "saplings_1", 1, 4), WoodDictionary.WOODS.get(MD.EBXL, "log1", 0), ST.make(MD.EBXL, "leaves_4", 1, 0));
-			new SaplingEntry(ST.make(MD.EBXL, "saplings_1", 1, 5), WoodDictionary.WOODS.get(MD.EBXL, "log2", 3), ST.make(MD.EBXL, "leaves_4", 1, 1));
+			new SaplingEntry(ST.make(MD.EBXL, "saplings_1", 4, 4), WoodDictionary.WOODS.get(MD.EBXL, "log1", 0), ST.make(MD.EBXL, "leaves_4", 1, 0));
+			new SaplingEntry(ST.make(MD.EBXL, "saplings_1", 4, 5), WoodDictionary.WOODS.get(MD.EBXL, "log2", 3), ST.make(MD.EBXL, "leaves_4", 1, 1));
 			new SaplingEntry(ST.make(MD.EBXL, "saplings_1", 1, 6), WoodDictionary.WOODS.get(MD.EBXL, "log1", 1), ST.make(MD.EBXL, "leaves_4", 1, 2));
 			new SaplingEntry(ST.make(MD.EBXL, "saplings_1", 1, 7), WoodDictionary.WOODS.get(MD.EBXL, "log1", 2), ST.make(MD.EBXL, "leaves_4", 1, 3));
-			new SaplingEntry(ST.make(MD.EBXL, "saplings_2", 1, 0), WoodDictionary.WOODS.get(MD.EBXL, "log2", 2), ST.make(MD.EBXL, "leaves_2", 1, 0));
+			new SaplingEntry(ST.make(MD.EBXL, "saplings_2", 4, 0), WoodDictionary.WOODS.get(MD.EBXL, "log2", 2), ST.make(MD.EBXL, "leaves_2", 1, 0));
 			new SaplingEntry(ST.make(MD.EBXL, "saplings_2", 1, 1), WoodDictionary.WOODS.get(MD.EBXL, "log1", 3), ST.make(MD.EBXL, "leaves_2", 1, 1));
 			new SaplingEntry(ST.make(MD.EBXL, "saplings_2", 1, 2), WoodDictionary.WOODS.get(MD.EBXL, "log1", 3), ST.make(MD.EBXL, "leaves_2", 1, 2));
-			new SaplingEntry(ST.make(MD.EBXL, "saplings_2", 1, 3), WoodDictionary.WOODS.get(MD.EBXL, "log2", 0), ST.make(MD.EBXL, "leaves_2", 1, 3));
-		}
-		// Steamcraft 2 Trees, weirdly none seem to have Saplings.
-		if (MD.SC2.mLoaded) {
-			new LeafEntry(ST.make(MD.SC2, "BlockBrassLeaves"    , 1, W));
-			new LeafEntry(ST.make(MD.SC2, "BlockWillowLeaves"   , 1, W));
-			new LeafEntry(ST.make(MD.SC2, "BlockRedwoodLeaves"  , 1, W));
-			new LeafEntry(ST.make(MD.SC2, "BlockMangroveLeaves" , 1, W));
-			new LeafEntry(ST.make(MD.SC2, "BlockDeadLeaves"     , 1, W));
-			
-			new WoodEntry(ST.make(MD.SC2, "BlockBrassLog"    , 1, W));
-			new WoodEntry(ST.make(MD.SC2, "BlockWillowLog"   , 1, W), new PlankEntry(ST.make(MD.SC2, "BlockWillowPlanks"   , 1, W), ST.make(MD.SC2, "BlockWillowSlab"   , 1, W), ST.make(MD.SC2, "BlockWillowStairs"   , 1, W), MT.WOODS.Willow  , 247), 2, 500);
-			new WoodEntry(ST.make(MD.SC2, "BlockRedwoodLog"  , 1, W), new PlankEntry(ST.make(MD.SC2, "BlockRedwoodPlanks"  , 1, W), ST.make(MD.SC2, "BlockRedwoodSlab"  , 1, W), ST.make(MD.SC2, "BlockRedwoodStairs"  , 1, W), MT.WOODS.Redwood , 248));
-			new WoodEntry(ST.make(MD.SC2, "BlockMangroveLog" , 1, W), new PlankEntry(ST.make(MD.SC2, "BlockMangrovePlanks" , 1, W), ST.make(MD.SC2, "BlockMangroveSlab" , 1, W), ST.make(MD.SC2, "BlockMangroveStairs" , 1, W), MT.WOODS.Mangrove, 249));
-			new WoodEntry(ST.make(MD.SC2, "BlockPetrifiedLog", 1, W), new PlankEntry(ST.make(MD.SC2, "BlockPetrifiedPlanks", 1, W), ST.make(MD.SC2, "BlockPetrifiedSlab", 1, W), ST.make(MD.SC2, "BlockPetrifiedStairs", 1, W), MT.PetrifiedWood , 250), 0, 0);
+			new SaplingEntry(ST.make(MD.EBXL, "saplings_2", 4, 3), WoodDictionary.WOODS.get(MD.EBXL, "log2", 0), ST.make(MD.EBXL, "leaves_2", 1, 3));
 		}
 		// Biomes o' Plenty Trees
 		if (MD.BoP.mLoaded) {

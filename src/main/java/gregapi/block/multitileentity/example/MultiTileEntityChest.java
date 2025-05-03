@@ -149,10 +149,10 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 			oLidAngle = mLidAngle;
 			if (mUsingPlayers > 0) {
 				mLidAngle = Math.min(1, mLidAngle+0.1F);
-				if (mLidAngle > 0.1F && oLidAngle <= 0.1F) UT.Sounds.play("random.chestopen"  , 10, 0.5F, RNGSUS.nextFloat() * 0.1F + 0.9F, getCoords());
+				if (mLidAngle > 0.1F && oLidAngle <= 0.1F) UT.Sounds.play("random.chestopen"  , 2, 0.5F, RNGSUS.nextFloat() * 0.1F + 0.9F, getCoords());
 			} else {
 				mLidAngle = Math.max(0, mLidAngle-0.1F);
-				if (mLidAngle < 0.5F && oLidAngle >= 0.5F) UT.Sounds.play("random.chestclosed", 10, 0.5F, RNGSUS.nextFloat() * 0.1F + 0.9F, getCoords());
+				if (mLidAngle < 0.5F && oLidAngle >= 0.5F) UT.Sounds.play("random.chestclosed", 2, 0.5F, RNGSUS.nextFloat() * 0.1F + 0.9F, getCoords());
 			}
 		}
 	}
