@@ -55,6 +55,8 @@ public class Loader_Recipes_Handlers implements Runnable {
 	@Override
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public void run() {
+		ItemStack tStack = null;
+		
 		RM.Sifting              .add(new RecipeMapHandlerPrefix(pebbles                         , 1, null           , 0, NF,  16, 0,   512, NF, dust                    , 3, null       , 0, NI, NI, T, F, F, ANTIMATTER.NOT));
 		
 		RM.Crusher              .add(new RecipeMapHandlerPrefix(rockGt                          , 1, null           , 0, NF,  16, 0,    16, NF, null                    , 0, null       , 0, NI, NI, T, T, F, ANTIMATTER.NOT));
@@ -240,14 +242,19 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Compressor           .add(new RecipeMapHandlerPrefix(plantGtWart                     , 8, NF,  16,16,     0, NF, null, 0, NI, IL.HBM_Biomass.get(1), F, F, F, ANTIMATTER.NOT));
 		}
 		
-		RM.Press                .add(new RecipeMapHandlerPrefix(toolHeadArrow                   , 1, NF,  16,16,     0, NF, arrowGtWood     , 1, OP.arrowGtWood     .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
-		RM.Press                .add(new RecipeMapHandlerPrefix(toolHeadArrow                   , 1, NF,  16,16,     0, NF, arrowGtPlastic  , 1, OP.arrowGtPlastic  .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
-		RM.Press                .add(new RecipeMapHandlerPrefix(round                           , 1, NF,  16,16,     0, NF, bulletGtSmall   , 1, OP.bulletGtSmall   .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
-		RM.Press                .add(new RecipeMapHandlerPrefix(bolt                            , 1, NF,  16,16,     0, NF, bulletGtSmall   , 1, OP.bulletGtSmall   .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
-		RM.Press                .add(new RecipeMapHandlerPrefix(round                           , 2, NF,  16,32,     0, NF, bulletGtMedium  , 1, OP.bulletGtMedium  .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
-		RM.Press                .add(new RecipeMapHandlerPrefix(bolt                            , 2, NF,  16,32,     0, NF, bulletGtMedium  , 1, OP.bulletGtMedium  .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
-		RM.Press                .add(new RecipeMapHandlerPrefix(round                           , 3, NF,  16,64,     0, NF, bulletGtLarge   , 1, OP.bulletGtLarge   .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
-		RM.Press                .add(new RecipeMapHandlerPrefix(bolt                            , 3, NF,  16,64,     0, NF, bulletGtLarge   , 1, OP.bulletGtLarge   .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		for (OreDictMaterial tMat : ANY.Iron.mToThis) if (ST.valid(tStack = OP.toolHeadRawPickaxe.mat(tMat, 1)))
+		RM.Press                .add(new RecipeMapHandlerPrefix(gemFlawed                       , 2, NF,  16,16,     0, NF, toolHeadPickaxeGem, 1, tStack                                , NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		for (OreDictMaterial tMat : ANY.Iron.mToThis) if (ST.valid(tStack = OP.toolHeadPickaxe.mat(tMat, 1)))
+		RM.Press                .add(new RecipeMapHandlerPrefix(gemFlawed                       , 2, NF,  16,16,     0, NF, toolHeadPickaxeGem, 1, tStack                                , NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Press                .add(new RecipeMapHandlerPrefix(gemFlawed                       , 2, NF,  16,16,     0, NF, toolHeadPickaxeGem, 1, OP.toolHeadPickaxeGem.mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Press                .add(new RecipeMapHandlerPrefix(toolHeadArrow                   , 1, NF,  16,16,     0, NF, arrowGtWood       , 1, OP.arrowGtWood       .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Press                .add(new RecipeMapHandlerPrefix(toolHeadArrow                   , 1, NF,  16,16,     0, NF, arrowGtPlastic    , 1, OP.arrowGtPlastic    .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Press                .add(new RecipeMapHandlerPrefix(round                           , 1, NF,  16,16,     0, NF, bulletGtSmall     , 1, OP.bulletGtSmall     .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Press                .add(new RecipeMapHandlerPrefix(bolt                            , 1, NF,  16,16,     0, NF, bulletGtSmall     , 1, OP.bulletGtSmall     .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Press                .add(new RecipeMapHandlerPrefix(round                           , 2, NF,  16,32,     0, NF, bulletGtMedium    , 1, OP.bulletGtMedium    .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Press                .add(new RecipeMapHandlerPrefix(bolt                            , 2, NF,  16,32,     0, NF, bulletGtMedium    , 1, OP.bulletGtMedium    .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Press                .add(new RecipeMapHandlerPrefix(round                           , 3, NF,  16,64,     0, NF, bulletGtLarge     , 1, OP.bulletGtLarge     .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Press                .add(new RecipeMapHandlerPrefix(bolt                            , 3, NF,  16,64,     0, NF, bulletGtLarge     , 1, OP.bulletGtLarge     .mat(MT.Empty, 1), NI, T, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
 		
 		
 		RM.RollingMill          .add(new RecipeMapHandlerPrefix(nugget                          , 1, NF,  16, 0,   256, NF, plateTiny       , 1, NI, NI, T, F, F, new And(ANTIMATTER.NOT, COATED.NOT, SMITHABLE, FURNACE.NOT)));
@@ -439,11 +446,12 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Autoclave    .add(new RecipeMapHandlerPrefix(dust                            , 8, FL.Steam.make(  819200), 0,  25600, 0, FL.DistW.make(3840), gemLegendary           , 1, ST.tag(5), NI, T, F, F, new And(ANTIMATTER.NOT, CRYSTALLISABLE)));
 		
 		
-		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(arrowGtWood                     , 1, NF,  16,16,     0, NF, toolHeadArrow           , 1, NI, arrowGtWood    .mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
-		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(arrowGtPlastic                  , 1, NF,  16,16,     0, NF, toolHeadArrow           , 1, NI, arrowGtPlastic .mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
-		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(bulletGtSmall                   , 1, NF,  16,16,     0, NF, dustTiny                , 1, NI, bulletGtSmall  .mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
-		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(bulletGtMedium                  , 1, NF,  16,16,     0, NF, dustTiny                , 2, NI, bulletGtMedium .mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
-		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(bulletGtLarge                   , 1, NF,  16,16,     0, NF, dustTiny                , 3, NI, bulletGtLarge  .mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(toolHeadPickaxeGem              , 1, NF,  16,16,     0, NF, gemFlawed               , 2, NI, toolHeadPickaxeGem.mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(arrowGtWood                     , 1, NF,  16,16,     0, NF, toolHeadArrow           , 1, NI, arrowGtWood       .mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(arrowGtPlastic                  , 1, NF,  16,16,     0, NF, toolHeadArrow           , 1, NI, arrowGtPlastic    .mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(bulletGtSmall                   , 1, NF,  16,16,     0, NF, dustTiny                , 1, NI, bulletGtSmall     .mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(bulletGtMedium                  , 1, NF,  16,16,     0, NF, dustTiny                , 2, NI, bulletGtMedium    .mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
+		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(bulletGtLarge                   , 1, NF,  16,16,     0, NF, dustTiny                , 3, NI, bulletGtLarge     .mat(MT.Empty, 1), F, F, F, new And(ANTIMATTER.NOT, MT.Empty.NOT)));
 		
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(pipeQuadruple                   , 1, NF,  16,16,     0, NF, pipeMedium              , 4, NI, NI, F, F, F, ANTIMATTER.NOT));
 		RM.Unboxinator  .add(new RecipeMapHandlerPrefix(pipeNonuple                     , 1, NF,  16,16,     0, NF, pipeSmall               , 9, NI, NI, F, F, F, ANTIMATTER.NOT));
