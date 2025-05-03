@@ -2898,8 +2898,8 @@ public class UT {
 	}
 	
 	public static class Sounds {
-		public static boolean MULTITHREADED = F;
 		public static List<PlayedSound> sPlayedSounds = new ArrayListNoNulls<>();
+		public static List<SoundWithLocation> sSoundsToPlay = new ArrayListNoNulls<>();
 		
 		public static boolean play(String aSound, int aTimeUntilNextSound, float aVolume) {
 			if (!CODE_CLIENT || cpw.mods.fml.common.FMLCommonHandler.instance().getEffectiveSide().isServer()) return F;
@@ -2929,10 +2929,7 @@ public class UT {
 			if (!CODE_CLIENT || cpw.mods.fml.common.FMLCommonHandler.instance().getEffectiveSide().isServer()) return F;
 			EntityPlayer aPlayer = GT_API.api_proxy.getThePlayer();
 			if (aPlayer == null || !aPlayer.worldObj.isRemote || Code.stringInvalid(aSound)) return F;
-			if (MULTITHREADED)
-				new Thread(new ThreadedSound(aPlayer.worldObj, UT.Code.roundDown(aCoords.posX), UT.Code.roundDown(aCoords.posY), UT.Code.roundDown(aCoords.posZ), aTimeUntilNextSound, aSound, aVolume, Float.isNaN(aPitch) || aPitch == SFX.RANDOM_PITCH ? SFX._7_GRAND_DAD_[SFX.PITCH_INDEX=((SFX.PITCH_INDEX+1)%SFX._7_GRAND_DAD_.length)] : aPitch), "Sound Effect").start();
-			else
-				new ThreadedSound(aPlayer.worldObj, UT.Code.roundDown(aCoords.posX), UT.Code.roundDown(aCoords.posY), UT.Code.roundDown(aCoords.posZ), aTimeUntilNextSound, aSound, aVolume, Float.isNaN(aPitch) || aPitch == SFX.RANDOM_PITCH ? SFX._7_GRAND_DAD_[SFX.PITCH_INDEX=((SFX.PITCH_INDEX+1)%SFX._7_GRAND_DAD_.length)] : aPitch).run();
+			sSoundsToPlay.add(new SoundWithLocation(aPlayer.worldObj, UT.Code.roundDown(aCoords.posX), UT.Code.roundDown(aCoords.posY), UT.Code.roundDown(aCoords.posZ), aTimeUntilNextSound, aSound, aVolume, Float.isNaN(aPitch) || aPitch == SFX.RANDOM_PITCH ? SFX._7_GRAND_DAD_[SFX.PITCH_INDEX=((SFX.PITCH_INDEX+1)%SFX._7_GRAND_DAD_.length)] : aPitch));
 			return T;
 		}
 		
@@ -3023,23 +3020,21 @@ public class UT {
 			}
 		}
 		
-		public static class ThreadedSound implements Runnable {
-			private final int mX, mY, mZ, mTimeUntilNextSound;
-			private final World mWorld;
-			private final String mSoundName;
-			private final float mSoundStrength, mSoundModulation;
+		public static class SoundWithLocation {
+			public final int mX, mY, mZ, mTimeUntilNextSound;
+			public final World mWorld;
+			public final String mSound;
+			public final float mVolume, mPitch;
 			
-			public ThreadedSound(World aWorld, int aX, int aY, int aZ, int aTimeUntilNextSound, String aSound, float aVolume, float aPitch) {
-				mWorld = aWorld; mX = aX; mY = aY; mZ = aZ; mTimeUntilNextSound = aTimeUntilNextSound; mSoundName = aSound; mSoundStrength = aVolume; mSoundModulation = aPitch;
+			public SoundWithLocation(World aWorld, int aX, int aY, int aZ, int aTimeUntilNextSound, String aSound, float aVolume, float aPitch) {
+				mWorld = aWorld; mX = aX; mY = aY; mZ = aZ; mTimeUntilNextSound = aTimeUntilNextSound; mSound = aSound; mVolume = aVolume; mPitch = aPitch;
 			}
 			
-			@Override
-			public void run() {
-				try {
-					PlayedSound tSound = new PlayedSound(mSoundName, mX, mY, mZ, mTimeUntilNextSound);
-					if (sPlayedSounds.contains(tSound)) return;
-					mWorld.playSound(mX+0.5, mY+0.5, mZ+0.5, mSoundName, mSoundStrength, mSoundModulation, T);
+			public void play() {
+				PlayedSound tSound = new PlayedSound(mSound, mX, mY, mZ, mTimeUntilNextSound);
+				if (!sPlayedSounds.contains(tSound)) try {
 					sPlayedSounds.add(tSound);
+					mWorld.playSound(mX+0.5, mY+0.5, mZ+0.5, mSound, mVolume, mPitch, T);
 				} catch(Throwable e) {/**/}
 			}
 		}
