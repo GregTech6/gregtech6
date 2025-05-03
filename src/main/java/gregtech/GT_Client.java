@@ -21,9 +21,7 @@ package gregtech;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import gregapi.GT_API;
@@ -31,7 +29,6 @@ import gregapi.api.Abstract_Mod;
 import gregapi.config.ConfigCategories;
 import gregapi.data.LH;
 import gregapi.data.MD;
-import gregapi.util.UT;
 import gregtech.entities.projectiles.EntityArrow_Material;
 import gregtech.entities.projectiles.EntityArrow_Potion;
 import gregtech.render.GT_Renderer_Entity_Arrow;
@@ -64,18 +61,6 @@ public class GT_Client extends GT_Proxy {
 	}
 	
 	private boolean FIRST_CLIENT_PLAYER_TICK = T;
-	
-	@SubscribeEvent(priority = EventPriority.LOWEST) 
-	public void onWorldTick(TickEvent.WorldTickEvent aEvent) {
-		if (aEvent.side.isClient() && aEvent.phase == Phase.END) {
-			// Countdown the Timeout of Sounds that play in rapid succession.
-			for (int i = 0; i < UT.Sounds.sPlayedSounds.size(); i++) if (UT.Sounds.sPlayedSounds.get(i).mTimer-- < 0) UT.Sounds.sPlayedSounds.remove(i--);
-			// Mute Sounds for the first second so people wont get blasted with nonsense.
-			if (CLIENT_TIME > 20) for (UT.Sounds.SoundWithLocation tSound : UT.Sounds.sSoundsToPlay) if (aEvent.world == tSound.mWorld) tSound.play();
-			// Regardless of whether all the Sounds actually played, clear the List, we dont want any randomly delayed junk showing up.
-			UT.Sounds.sSoundsToPlay.clear();
-		}
-	}
 	
 	@SubscribeEvent
 	public void onPlayerTickEventClient(PlayerTickEvent aEvent) {

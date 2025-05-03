@@ -531,6 +531,14 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 				}
 			}
 			
+			// Countdown the Timeout of Sounds that play in rapid succession.
+			for (int i = 0; i < UT.Sounds.sPlayedSounds.size(); i++) if (UT.Sounds.sPlayedSounds.get(i).mTimer-- < 0) UT.Sounds.sPlayedSounds.remove(i--);
+			// Mute Sounds for the first second so people wont get blasted with nonsense.
+			if (CLIENT_TIME > 20) for (UT.Sounds.SoundWithLocation tSound : UT.Sounds.sSoundsToPlay) tSound.play();
+			// Regardless of whether all the Sounds actually played, clear the List, we don't want any randomly delayed junk showing up.
+			UT.Sounds.sSoundsToPlay.clear();
+			
+			
 			switch((int)(CLIENT_TIME % 10)) {
 			case   0: LH.Chat.RAINBOW_FAST = LH.Chat.RED; LH.Chat.BLINKING_CYAN = LH.Chat.CYAN; LH.Chat.BLINKING_RED = LH.Chat.RED; LH.Chat.BLINKING_ORANGE = LH.Chat.ORANGE; break;
 			case   1: LH.Chat.RAINBOW_FAST = LH.Chat.ORANGE; break;
