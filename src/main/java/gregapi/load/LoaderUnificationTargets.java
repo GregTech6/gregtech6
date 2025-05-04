@@ -1055,7 +1055,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.Ag                     , MD.Mek, "DirtyDust", 5);
 		OreDictManager.INSTANCE.setTarget(OP.dustImpure     , MT.Pb                     , MD.Mek, "DirtyDust", 6);
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Graphene               , MD.Mek, "CompressedCarbon", 0);
-		OreDictManager.INSTANCE.setTarget(OP.plateGem       , MT.Diamond                , MD.Mek, "CompressedDiamond", 0);
+		OreDictManager.INSTANCE.setTarget(OP.plateGem       , MT.DiamondIndustrial      , MD.Mek, "CompressedDiamond", 0);
 		OreDictManager.INSTANCE.setTarget(OP.plateGem       , MT.Redstone               , MD.Mek, "CompressedRedstone", 0);
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.RefinedObsidian        , MD.Mek, "CompressedObsidian", 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.RefinedObsidian        , MD.Mek, "OtherDust", 5);
