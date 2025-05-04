@@ -1782,9 +1782,9 @@ public class MT {
 	NiobiumNitride          = alloy         ( 8688, "Niobium Nitride"       , SET_DULL              ,  29,  41,  29     , BRITTLE, ELECTROLYSER)                                                                                                                    .uumMcfg( 0, Nb             , 1*U, N                , 1*U)                                                                                                  .heat(2573), // Anti-Reflective Material
 	NiobiumTitanium         = alloy         ( 8689, "Niobium Titanium"      , SET_DULL              ,  29,  29,  41     , BRITTLE)                                                                                                                                  .uumAloy( 0, Nb             , 1*U, Ti               , 1*U)                                                                                                  ,
 	AluminiumBrass          = clloymachine  ( 8700, "Aluminium Brass"                               , 220, 220, 130     , FURNACE, EXTRUDER_SIMPLE, MORTAR, MOLTEN, "AluminumBrass").qual(2, 6.0,  64,  2)                                                          .uumAloy( 0, Al             , 3*U, Cu               , 1*U)                                                                                                  .aspects(TC.STRONTIO, 1),
-	Ardite                  = cetalore      ( 8707, "Ardite"                                        , 200, 120,  20     , MOLTEN).qual(2, 6.0,   64,  2)                                                                                                                                                                                                                                                                        .aspects(TC.STRONTIO, 1),
-	Alumite                 = clloymachine  ( 8702, "Alumite"                                       , 230, 100, 230     , MOLTEN).qual(2, 1.5,   64,  0)                                                                                                            .setAloy( 9, Al             , 5*U, WroughtIron      , 2*U, Obsidian         ,18*U)                                                                          .aspects(TC.STRONTIO, 2),
-	Manyullyn               = clloymachine  ( 8703, "Manyullyn"                                     , 175, 100, 175     , MOLTEN).qual(2, 2.0,   96,  1)                                                                                                            .setAloy( 0, Co             , 1*U, Ardite           , 1*U)                                                                                                  .aspects(TC.STRONTIO, 2),
+	Ardite                  = cetalore      ( 8707, "Ardite"                                        , 200, 120,  20     , MOLTEN).qual(2, 6.0,   64,  3)                                                                                                                                                                                                                                                                        .aspects(TC.STRONTIO, 1),
+	Alumite                 = clloymachine  ( 8702, "Alumite"                                       , 230, 100, 230     , MOLTEN).qual(2, 1.5,   64,  3)                                                                                                            .setAloy( 9, Al2O3          , 5*U, WroughtIron      , 2*U, Obsidian         ,18*U)                                                                          .aspects(TC.STRONTIO, 2),
+	Manyullyn               = clloymachine  ( 8703, "Manyullyn"                                     , 175, 100, 175     , MOLTEN).qual(2, 2.0,   96,  3)                                                                                                            .setAloy( 0, Co             , 1*U, Ardite           , 1*U)                                                                                                  .aspects(TC.STRONTIO, 2),
 	VibraniumSteel          = slloymachine  ( 8704, "Vibranium Steel"                               ,  40,  24,  50     , CENTRIFUGE, UNBURNABLE, MAGNETIC_PASSIVE).qual(3,   50.0, 2048, 10)                                                                       .uumAloy( 0, Vb             , 1*U, Steel            , 3*U)                                                                                                  .aspects(TC.SENSUS, 1, TC.VITREUS, 1, TC.METALLUM, 1),
 	VibraniumSilver         = slloy         ( 8705, "Vibranium Silver"                              , 240, 240, 255     , CENTRIFUGE, UNBURNABLE, ENDER_DRAGON_PROOF).qual(3,  100.0,  512,  9)                                                                     .uumAloy( 0, Vb             , 1*U, Ag               , 3*U)                                                                                                  .aspects(TC.SENSUS, 1, TC.VITREUS, 1, TC.LUCRUM, 1),
 	Vibramantium            = slloymachine  ( 8706, "Vibramantium"                                  , 250, 250, 250     , CENTRIFUGE, UNBURNABLE, MAGNETIC_PASSIVE).qual(3, 1000.0, 5120, 15)                                                                       .uumAloy( 0, Vb             , 1*U, Ad               , 3*U)                                                                                                  .aspects(TC.SENSUS, 1, TC.VITREUS, 1, TC.PRAECANTIO, 1, TC.METALLUM, 1),
@@ -2356,7 +2356,7 @@ public class MT {
 			Co                      .put(MD.TiC, COMMON_ORE);
 			Ardite                  .put(MD.TiC, COMMON_ORE).visDefault();
 			Alumite                 .put(MD.TiC);
-			Manyullyn               .put(MD.TiC).visDefault(Ardite);
+			Manyullyn               .put(MD.TiC, BETWEENLANDS).visDefault(Ardite);
 			AluminiumBrass          .put(MD.TiC);
 			
 			
@@ -2432,7 +2432,7 @@ public class MT {
 			AluminiumAlloy          .put(MD.RoC).visDefault();
 			TungstenAlloy           .put(MD.RoC).visDefault();
 			TungstenSintered        .put(MD.RoC).visDefault();
-			Bedrock_HSLA_Alloy      .put(MD.RoC).visDefault(HSLA);
+			Bedrock_HSLA_Alloy      .put(MD.RoC, BETWEENLANDS, MAZEBREAKER).visDefault(HSLA);
 			
 			
 			RefinedGlowstone        .put(MD.Mek).visDefault();
@@ -2445,8 +2445,8 @@ public class MT {
 			InfusedVis              .put(MD.TC).visDefault();
 			Silverwood              .put(MD.TC).visDefault();
 			Greatwood               .put(MD.TC).visDefault();
-			VoidMetal               .put(MD.TC).visDefault();
 			Tallow                  .put(MD.TC).visDefault();
+			VoidMetal               .put(MD.TC, BETWEENLANDS, MAZEBREAKER).visDefault();
 			Thaumium                .put(MD.TC, COMMON_ORE).visDefault();
 			Amber                   .put(MD.TC, COMMON_ORE);
 			Hg                      .put(MD.TC, COMMON_ORE);
@@ -2460,12 +2460,6 @@ public class MT {
 			STONES.Livingrock       .put(MD.BOTA).visDefault();
 			Dreamwood               .put(MD.BOTA).visDefault();
 			Shimmerwood             .put(MD.BOTA).visDefault();
-			Manasteel               .put(MD.BOTA).visDefault();
-			ManaDiamond             .put(MD.BOTA).visDefault();
-			ElvenElementium         .put(MD.BOTA).visDefault();
-			ElvenDragonstone        .put(MD.BOTA).visDefault();
-			GaiaSpirit              .put(MD.BOTA).visDefault();
-			Terrasteel              .put(MD.BOTA).visDefault();
 			SunnyQuartz             .put(MD.BOTA).visDefault();
 			LavenderQuartz          .put(MD.BOTA).visDefault();
 			RedQuartz               .put(MD.BOTA).visDefault();
@@ -2473,6 +2467,12 @@ public class MT {
 			SmokeyQuartz            .put(MD.BOTA).visDefault();
 			ManaQuartz              .put(MD.BOTA).visDefault();
 			ElvenQuartz             .put(MD.BOTA).visDefault();
+			Manasteel               .put(MD.BOTA).visDefault();
+			ManaDiamond             .put(MD.BOTA).visDefault();
+			ElvenElementium         .put(MD.BOTA).visDefault();
+			ElvenDragonstone        .put(MD.BOTA).visDefault();
+			Terrasteel              .put(MD.BOTA).visDefault();
+			GaiaSpirit              .put(MD.BOTA, BETWEENLANDS, MAZEBREAKER).visDefault();
 			
 			
 			Mauftrium               .put(MD.ALF).visDefault();
@@ -2516,8 +2516,8 @@ public class MT {
 			Infinity                .put(MD.AV, BETWEENLANDS, MAZEBREAKER).visDefault();
 			
 			
-			DarkMatter              .put(MD.PE).visDefault();
-			RedMatter               .put(MD.PE).visDefault();
+			DarkMatter              .put(MD.PE, BETWEENLANDS, MAZEBREAKER).visDefault();
+			RedMatter               .put(MD.PE, BETWEENLANDS, MAZEBREAKER).visDefault();
 			
 			
 			Zr                      .put(MD.TROPIC);
