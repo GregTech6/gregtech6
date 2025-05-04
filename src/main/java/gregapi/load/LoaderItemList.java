@@ -1614,7 +1614,7 @@ public class LoaderItemList implements Runnable {
 		IL.BoP_GhastlySoul                      .set(ST.make(MD.BoP, "misc"                                 , 1,10));
 		IL.BoP_PixieDust                        .set(ST.make(MD.BoP, "misc"                                 , 1,11));
 		IL.BoP_Ichor                            .set(ST.make(MD.BoP, "misc"                                 , 1,12));
-		IL.BoP_Vines                            .set(ST.make(MD.BoP, "flower_vines"                         , 1, 0));
+		IL.BoP_Vines                            .set(ST.make(MD.BoP, "flowerVine"                           , 1, 0));
 		IL.BoP_Pinecone                         .set(ST.make(MD.BoP, "misc"                                 , 1,13));
 		IL.BoP_Bamboo                           .set(ST.make(MD.BoP, "bamboo"                               , 1, 0), OP.stick.dat(MT.Bamboo), OD.bamboo);
 		IL.BoP_Hard_Ice                         .set(ST.make(MD.BoP, "hardIce"                              , 1, 0), new OreDictItemData(MT.Ice, U*2));
