@@ -89,6 +89,10 @@ public class GT_Tool_Scissors extends ToolStats {
 			aDrops.clear();
 			aDrops.add(ST.make(Blocks.vine, 1, 0));
 		}
+		if (IL.EBXL_Vines.equal(aBlock)) {
+			aDrops.clear();
+			aDrops.add(IL.EBXL_Vines.get(1));
+		}
 		return 0;
 	}
 	

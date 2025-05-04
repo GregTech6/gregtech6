@@ -1555,6 +1555,7 @@ public class LoaderItemList implements Runnable {
 		IL.BOTA_Prismarine_Dark                 .set(ST.make(MD.BOTA, "prismarine"                          , 1, 2), new OreDictItemData(MT.PrismarineDark , U), OP.stone.dat(MT.PrismarineDark ));
 		
 		
+		IL.EBXL_Vines                           .set(ST.make(MD.EBXL, "vines"                               , 1, 0));
 		IL.EBXL_Cactus_Paste                    .set(ST.make(MD.EBXL, "extrabiomes.paste"                   , 1, 0));
 		IL.EBXL_Dye_Black                       .set(ST.make(MD.EBXL, "extrabiomes.dye"                     , 1, 0), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_Black]);
 		IL.EBXL_Dye_Blue                        .set(ST.make(MD.EBXL, "extrabiomes.dye"                     , 1, 1), null, DYE_OREDICTS_MIXABLE[DYE_INDEX_Blue]);
