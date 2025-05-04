@@ -93,13 +93,17 @@ public class GT_Tool_Scissors extends ToolStats {
 			aDrops.clear();
 			aDrops.add(IL.EBXL_Vines.get(1));
 		}
+		if (IL.BoP_Vines.equal(aBlock)) {
+			aDrops.clear();
+			aDrops.add(IL.BoP_Vines.get(1));
+		}
 		return 0;
 	}
 	
 	@Override
 	public boolean isMinableBlock(Block aBlock, byte aMetaData) {
 		String tTool = aBlock.getHarvestTool(aMetaData);
-		return (tTool != null && (tTool.equalsIgnoreCase(TOOL_scissors) || tTool.equalsIgnoreCase(TOOL_shears))) || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.web || aBlock == Blocks.vine || IL.TF_Mazehedge.equal(aBlock);
+		return (tTool != null && (tTool.equalsIgnoreCase(TOOL_scissors) || tTool.equalsIgnoreCase(TOOL_shears))) || aBlock.getMaterial() == Material.cloth || aBlock.getMaterial() == Material.web || aBlock == Blocks.vine || IL.TF_Mazehedge.equal(aBlock) || IL.EBXL_Vines.equal(aBlock) || IL.BoP_Vines.equal(aBlock);
 	}
 	
 	@Override
