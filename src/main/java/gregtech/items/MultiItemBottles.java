@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -24,6 +24,7 @@ import gregapi.item.CreativeTab;
 import gregapi.item.IItemRottable;
 import gregapi.item.multiitem.MultiItemRandomWithCompat;
 import gregapi.item.multiitem.behaviors.Behavior_CureZombie;
+import gregapi.item.multiitem.behaviors.Behavior_Drop_Loot;
 import gregapi.item.multiitem.food.FoodStatFluid;
 import gregapi.oredict.OreDictItemData;
 import gregapi.util.CR;
@@ -349,6 +350,9 @@ public class MultiItemBottles extends MultiItemRandomWithCompat implements IItem
 		addItem(32116+i, "Bottled Chemical Dye" , "Color: " + DYE_NAMES[i               ], DYE_OREDICTS[i               ], TC.stack(TC.VITREUS, 1), TC.stack(TC.SENSUS, 1), DYE_FLUIDS_CHEMICAL[i]);
 		addItem(32132+i, "Bottled Flower Dye"   , "Color: " + DYE_NAMES[i               ], DYE_OREDICTS[i               ], TC.stack(TC.VITREUS, 1), TC.stack(TC.SENSUS, 1), DYE_FLUIDS_FLOWER[i]);
 		}
+		
+		IL.Bottle_Loot.set(
+		addItem(32761, "Clouded Bottle", "Loot: A random Bottle", TC.stack(TC.VITREUS, 1), TC.stack(TC.LUCRUM, 1), new Behavior_Drop_Loot("gt.bottles")));
 		
 		IL.Bottle_Tar.set(
 		addItem(32762, "Tar Bottle", "Can be used as Glue too", "bottleTar", DYE_OREDICTS[DYE_INDEX_Black ], FL.Tar.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.LIMUS, 1), TC.stack(TC.IGNIS, 1), FoodStatFluid.INSTANCE));

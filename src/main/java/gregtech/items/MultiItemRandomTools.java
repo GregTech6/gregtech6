@@ -599,9 +599,9 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		addItemBehavior(12009, tBehaviour);
 		
 		
-		IL.Bag_Loot_Sapling                .set(addItem(13000, "Bagged Sapling", "Loot: A Sapling"  , OP.treeSapling, TC.stack(TC.LUCRUM, 1), TC.stack(TC.ARBOR  , 2)));
-		IL.Bag_Loot_Seeds                  .set(addItem(13001, "Seed Pouch"    , "Loot: Random Seeds"               , TC.stack(TC.LUCRUM, 1), TC.stack(TC.HERBA  , 2)));
-		IL.Bag_Loot_Gems                   .set(addItem(13002, "Gem Pouch"     , "Loot: Gems, one of which Flawless", TC.stack(TC.LUCRUM, 3), TC.stack(TC.VITREUS, 3)));
+		IL.Bag_Loot_Sapling                .set(addItem(13000, "Bagged Sapling", "Loot: A Sapling"  , OP.treeSapling, TC.stack(TC.LUCRUM, 1), TC.stack(TC.ARBOR  , 2), new Behavior_Drop_Loot("gt.saplings")));
+		IL.Bag_Loot_Seeds                  .set(addItem(13001, "Seed Pouch"    , "Loot: Some random Seeds"          , TC.stack(TC.LUCRUM, 1), TC.stack(TC.HERBA  , 2), new Behavior_Drop_Loot("gt.seeds")));
+		IL.Bag_Loot_Gems                   .set(addItem(13002, "Gem Pouch"     , "Loot: Gems, one of which Flawless", TC.stack(TC.LUCRUM, 3), TC.stack(TC.VITREUS, 3), new Behavior_Drop_Loot("gt.flawless", "gt.gems", "gt.gems")));
 		
 		
 		IL.Key_Iron                        .set(addItem(30000, "Iron Key"    , "", OD.itemKey, new OreDictItemData(ANY.Iron   , U4), Behavior_Key.INSTANCE, TC.stack(TC.MACHINA, 1))); CR.shaped(IL.Key_Iron    .get(3), CR.DEF_NCC, "fPx", 'P', OP.plate.dat(ANY.Iron));

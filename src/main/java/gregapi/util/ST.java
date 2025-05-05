@@ -290,6 +290,7 @@ public class ST {
 	}
 	public static boolean use(Entity aPlayer, boolean aRemove, boolean aTriggerEvent, ItemStack aStack, long aAmount) {
 		if (UT.Entities.hasInfiniteItems(aPlayer)) return T;
+		if (ST.invalid(aStack)) return F;
 		if (aStack.stackSize < aAmount) return F;
 		aStack.stackSize -= aAmount;
 		if (!(aPlayer instanceof EntityPlayer)) return T;

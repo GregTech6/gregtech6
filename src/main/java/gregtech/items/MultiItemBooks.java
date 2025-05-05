@@ -22,6 +22,7 @@ package gregtech.items;
 import gregapi.data.*;
 import gregapi.item.CreativeTab;
 import gregapi.item.multiitem.MultiItemRandomWithCompat;
+import gregapi.item.multiitem.behaviors.Behavior_Drop_Loot;
 import gregapi.oredict.OreDictItemData;
 import gregapi.util.CR;
 import gregapi.util.OM;
@@ -60,8 +61,8 @@ public class MultiItemBooks extends MultiItemRandomWithCompat {
 		BooksGT.BOOK_REGISTER.put(addItem(32004, "Book"                     , "With a Radiation Symbol on it"     , OD.bookWrittenSmall, TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 3, MT.Tc, U9)), (byte)10); BooksGT.BOOKS_NORMAL.add(last());
 		BooksGT.BOOK_REGISTER.put(addItem(32005, "Large Book"               , "With a Radiation Symbol on it"     , OD.bookWrittenBig  , TD.Creative.HIDDEN, TC.stack(TC.COGNITIO, 4), TICKS_PER_SMELT*2, new OreDictItemData(MT.Paper, U * 6, MT.Tc, U9)), (byte)10); BooksGT.BOOKS_NORMAL.add(last());
 		
-		BooksGT.BOOK_REGISTER.put(addItem(32765, "Dusty Guide Book"         , "Loot: Some random Manual or so"    , TC.stack(TC.COGNITIO, 3), TICKS_PER_SMELT, new OreDictItemData(MT.Paper, U * 3)), (byte)53); BooksGT.BOOKS_NORMAL.add(last()); IL.Book_Loot_Guide.set(last());
-		BooksGT.BOOK_REGISTER.put(addItem(32766, "Dusty Material Dictionary", "Loot: Book about a random Material", TC.stack(TC.COGNITIO, 3), TICKS_PER_SMELT, new OreDictItemData(MT.Paper, U * 3)), (byte)53); BooksGT.BOOKS_NORMAL.add(last()); IL.Book_Loot_MatDict.set(last());
+		BooksGT.BOOK_REGISTER.put(addItem(32765, "Dusty Guide Book"         , "Loot: Some random Manual or so"    , TC.stack(TC.COGNITIO, 3), TICKS_PER_SMELT, new OreDictItemData(MT.Paper, U * 3), new Behavior_Drop_Loot("gt.books"   )), (byte)53); BooksGT.BOOKS_NORMAL.add(last()); IL.Book_Loot_Guide.set(last());
+		BooksGT.BOOK_REGISTER.put(addItem(32766, "Dusty Material Dictionary", "Loot: Book about a random Material", TC.stack(TC.COGNITIO, 3), TICKS_PER_SMELT, new OreDictItemData(MT.Paper, U * 3), new Behavior_Drop_Loot("gt.matdicts")), (byte)11); BooksGT.BOOKS_NORMAL.add(last()); IL.Book_Loot_MatDict.set(last());
 		
 		
 		RM.generify(ST.make(this, 1, W), ST.make(Items.written_book, 1, 0));
