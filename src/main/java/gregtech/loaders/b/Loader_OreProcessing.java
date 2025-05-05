@@ -286,7 +286,7 @@ public class Loader_OreProcessing implements Runnable {
 				}
 			}
 			if (tFluid != null && tFluid.amount > 0 && tMaterial != null) {
-				if (tMaterial.mMaterial.contains(FURNACE))
+				if (tMaterial.mMaterial.contains(FURNACE) || tMaterial.mMaterial.mTargetSmelting.mMaterial == MT.CaCO3)
 				RM.Melter .addRecipe1(T, 16, (long)Math.max(FL.Lava.is(tFluid)?UT.Code.divup(tFluid.amount*(long)EU_PER_LAVA, 16):16, (OM.weight(aEvent.mItemData.getAllMaterialStacks()) * (Math.max(tMaterial.mMaterial.mMeltingPoint, tFluid.getFluid().getTemperature())-DEF_ENV_TEMP))/1600), aEvent.mStack, NF, tFluid, ZL_IS);
 				RM.Smelter.addRecipe1(T, 16, (long)Math.max(FL.Lava.is(tFluid)?UT.Code.divup(tFluid.amount*(long)EU_PER_LAVA, 16):16, (OM.weight(aEvent.mItemData.getAllMaterialStacks()) * (Math.max(tMaterial.mMaterial.mMeltingPoint, tFluid.getFluid().getTemperature())-DEF_ENV_TEMP))/1600), aEvent.mStack, NF, tFluid, ZL_IS);
 			}

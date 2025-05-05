@@ -20,7 +20,7 @@ There now is an Aether Portal Room in some GT6 Dungeons.
 [FIXED] Unboxinating Bullets did not work if Rounds did not exist for that Material (there is an alternate Recipe with Bolts). Now it will return tiny piles of Dust instead, which makes the funny Recipe chain to turn Bolts into Rounds using the Press output Dust instead of Rounds.
 [CHANGED] I messed with the way GT6 handles Sounds, lets hope this fixes one of those esoteric Vanilla Sound Crashes and does not cause any additional ones.
 [CHANGED] Gem tipped Pickaxe Heads can be made with Iron too now, also you can use pre-sharpened Pickaxe Heads too. Also they break into empty Toolheads now, which means I need to halve their Durability again, so they dont outclass Full-Gem Pickaxes. Also there is Press and Unboxinator Recipes for their Tool Heads now.
-[ADDED] The Melter, which is just an earlier Version of the Smelter. Works on most Furnace-able Materials.
+[ADDED] The Melter, which is just an earlier Version of the Smelter. Works on most Furnace-able Materials and Calcite.
 [ADDED] Wax Cracking, what is Wax Cracking? It is the "final" Ore Processing Step that involves Steam and Molten Wax, and exists purely because of needing some productive way to get rid of Wax.
 [ADDED] Glowstone, Redstone, Cinnabar, Nikolite, Carminite and Ambers can now be crystallized using Cryotheum in a Bath, either by using crushed Ores or by sacrificing about half of a Block of Dust.
 [ADDED] The Slicer can now recycle Leather Armor and turn Fur into Leather, like the Knife based Crafting Recipe can.
