@@ -49,7 +49,7 @@ public class Behavior_Drop_Loot extends AbstractBehaviorDefault {
 	public boolean onItemUseFirst(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (!aWorld.isRemote && ST.use(aPlayer, T, aStack, 1)) {
 			for (String tLoot : mLoots)
-			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ChestGenHooks.getOneItem(tLoot, RNGSUS), F, aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]);
+			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ChestGenHooks.getOneItem(tLoot, RNGSUS), F, aWorld, aX+OFFX[aSide]+0.5, aY+OFFY[aSide]+0.5, aZ+OFFZ[aSide]+0.5);
 			if (aPlayer != null) UT.Sounds.send(SFX.MC_DIG_CLOTH, aPlayer);
 			return T;
 		}
