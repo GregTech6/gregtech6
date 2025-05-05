@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -22,7 +22,6 @@ package gregapi.item.multiitem;
 import cpw.mods.fml.common.Optional;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
-import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.MD;
@@ -80,12 +79,12 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	 * 
 	 * Note: the boolean Behaviours sometimes won't be executed if another boolean Behaviour returned true before.
 	 * 
-	 * @param aMetaValue the Meta Value of the Item you want to add it to. [0 - 32765]
+	 * @param aMetaValue the Meta Value of the Item you want to add it to. [0 - 32766]
 	 * @param aBehavior the Click Behavior you want to add.
 	 * @return the Item itself for convenience in constructing.
 	 */
 	public MultiItem addItemBehavior(int aMetaValue, IBehavior<MultiItem> aBehavior) {
-		if (aMetaValue < 0 || aMetaValue >= 32766 || aBehavior == null) return this;
+		if (aMetaValue < 0 || aMetaValue >= 32767 || aBehavior == null) return this;
 		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)aMetaValue);
 		if (tList == null) {
 			tList = new ArrayListNoNulls<>();
