@@ -146,9 +146,10 @@ public class GT_API_Post extends Abstract_Mod {
 			MT.Efrine                     .addOreByProducts(MT.ShadowIron     );
 		}
 		if (MD.TiC.mLoaded) {
-			MT.Ge.addOreByProducts(MT.Ardite);
-			MT.Co.addOreByProducts(MT.Ardite);
-			MT.OREMATS.Cobaltite.addOreByProducts(MT.Ardite);
+			MT.Pb.addOreByProducts(MT.Ardite);
+			MT.Sb.addOreByProducts(MT.Ardite);
+			MT.OREMATS.Galena.addOreByProducts(MT.Ardite); // I found Ardaite on Wikipedia, which is a Galena Type of Material.
+			MT.OREMATS.Stibnite.addOreByProducts(MT.Ardite);
 			MT.Aredrite.addOreByProducts(MT.Ardite);
 		}
 		if (MD.RP.mLoaded || MD.PR.mLoaded || MD.BP.mLoaded || !MT.Nikolite.mHidden) {

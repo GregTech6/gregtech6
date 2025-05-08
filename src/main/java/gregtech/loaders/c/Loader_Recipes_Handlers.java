@@ -676,6 +676,7 @@ public class Loader_Recipes_Handlers implements Runnable {
 		for (OreDictMaterial tMat : ANY.Iron.mToThis)
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMat                      , FL.Mana_TE        .make( 250)     ,   0, 144, NF, MT.Thaumium             , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Ag                     , FL.Mana_TE        .make( 125)     ,   0, 144, NF, MT.AstralSilver         , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Brass                  , FL.Mana_TE        .make( 125)     ,   0, 144, NF, MT.Orichalcum           , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Au                     , FL.Mana_TE        .make( 125)     ,   0, 144, NF, MT.Midasium             , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Pt                     , FL.Mana_TE        .make( 125)     ,   0, 144, NF, MT.Mithril              , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Ni                     , FL.Mana_TE        .make(  50)     ,   0, 144, NF, MT.Ardite               , NI, T, tConditionP));
