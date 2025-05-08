@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -80,6 +80,7 @@ public class Loader_Recipes_Alloys implements Runnable {
 		mix("molten.gold"           ,  1, "molten.redstone"       ,  1                                                            , "molten.goldinductive"    ,  2);
 		mix("molten.tin"            ,  9, "molten.antimony"       ,  1                                                            , "molten.solderingalloy"   , 10);
 		mix("molten.lead"           ,  4, "molten.antimony"       ,  1                                                            , "molten.batteryalloy"     ,  5);
+		mix("molten.orichalcum"     ,  1, "molten.platinum"       ,  1                                                            , "molten.celenegil"        ,  2);
 		mix("molten.ardite"         ,  1, "molten.cobalt"         ,  1                                                            , "molten.manyullyn"        ,  2);
 		mix("molten.magnesium"      ,  1, "molten.aluminium"      ,  2                                                            , "molten.magnalium"        ,  3);
 		mix("molten.brass"          ,  7, "molten.aluminium"      ,  1, "molten.cobalt"         ,  1                              , "molten.cobaltbrass"      ,  9);

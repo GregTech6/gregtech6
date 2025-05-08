@@ -672,14 +672,17 @@ public class Loader_Recipes_Handlers implements Runnable {
 		
 		if (FL.Mana_TE.exists()) {
 		OreDictManager.INSTANCE.triggerVisibility("ingotThaumium");
+		OreDictManager.INSTANCE.triggerVisibility("ingotManasteel");
 		OreDictManager.INSTANCE.triggerVisibility("ingotArdite");
-		for (OreDictMaterial tMat : ANY.Iron.mToThis)
+		for (OreDictMaterial tMat : ANY.Fe.mToThis)
 		RM.Bath         .add(new RecipeMapHandlerMaterial(tMat                      , FL.Mana_TE        .make( 250)     ,   0, 144, NF, MT.Thaumium             , NI, T, tConditionP));
+		for (OreDictMaterial tMat : ANY.Steel.mToThis)
+		RM.Bath         .add(new RecipeMapHandlerMaterial(tMat                      , FL.Mana_TE        .make( 125)     ,   0, 144, NF, MT.Manasteel            , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Ag                     , FL.Mana_TE        .make( 125)     ,   0, 144, NF, MT.AstralSilver         , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Brass                  , FL.Mana_TE        .make( 125)     ,   0, 144, NF, MT.Orichalcum           , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Au                     , FL.Mana_TE        .make( 125)     ,   0, 144, NF, MT.Midasium             , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Pt                     , FL.Mana_TE        .make( 125)     ,   0, 144, NF, MT.Mithril              , NI, T, tConditionP));
-		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Ni                     , FL.Mana_TE        .make(  50)     ,   0, 144, NF, MT.Ardite               , NI, T, tConditionP));
+		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Sb                     , FL.Mana_TE        .make(  50)     ,   0, 144, NF, MT.Ardite               , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.MilkyQuartz            , FL.Mana_TE        .make(   1)     ,   0, 144, NF, MT.NetherQuartz         , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.NetherQuartz           , FL.Mana_TE        .make(   1)     ,   0, 144, NF, MT.CertusQuartz         , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.VoidQuartz             , FL.Mana_TE        .make(   1)     ,   0, 144, NF, MT.CertusQuartz         , NI, T, tConditionP));
@@ -687,7 +690,6 @@ public class Loader_Recipes_Handlers implements Runnable {
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Pb                     , MT.Midasium       .liquid(U8, T)  ,   0, 144, NF, MT.Au                   , NI, T, tConditionP));
 		
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.WOODS.Oak              , FL.Holywater      .make(  50)     ,   0, 144, NF, MT.Skyroot              , NI, T, tConditionP));
-		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Ni                     , FL.Holywater      .make( 250)     ,   0, 144, NF, MT.Ardite               , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Amber                  , FL.Holywater      .make( 250)     ,   0, 144, NF, MT.AmberGolden          , NI, T, tConditionP));
 		RM.Bath         .add(new RecipeMapHandlerMaterial(MT.Tanzanite              , FL.Holywater      .make( 250)     ,   0, 144, NF, MT.Zanite               , NI, T, tConditionP));
 		

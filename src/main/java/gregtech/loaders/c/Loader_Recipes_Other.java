@@ -552,7 +552,7 @@ public class Loader_Recipes_Other implements Runnable {
 		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone), OM.dust(MT.Coal), OM.dust(MT.S)), FL.Blaze.make(L), NF, OM.dust(MT.Pyrotheum, 2*U));
 		RM.Mixer            .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Redstone), OM.dust(MT.Blaze, U9), OM.dust(MT.Coal), OM.dust(MT.S)), OM.dust(MT.Pyrotheum, 2*U));
 		if (FL.Mana_TE.exists())
-		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(FL.Pyrotheum.make(1), FL.Cryotheum.make(1), FL.Petrotheum.make(1), FL.Aerotheum.make(1)), FL.array(FL.Mana_TE.make(4)), ZL_IS);
+		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(FL.Pyrotheum.make(1), FL.Cryotheum.make(1), FL.Petrotheum.make(1), FL.Aerotheum.make(1)), FL.array(FL.Mana_TE.make(10)), ZL_IS);
 		
 		// Ironwood should be roughly the same difficulty as Iron itself.
 		RM.Mixer            .addRecipe2(T, 16,   32,          OM.dust(MT.GildedIron                      ), OM.dust(MT.LiveRoot     )                       , OM.dust(MT.IronWood, U*2));
