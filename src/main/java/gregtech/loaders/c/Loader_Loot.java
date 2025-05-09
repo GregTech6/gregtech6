@@ -354,10 +354,6 @@ public class Loader_Loot implements Runnable {
 		
 //      addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 1, ItemList.Spray_Ice.get(1));
 //      addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 1, ItemList.Spray_Pepper.get(1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 4, 8, IL.Bottle_Holy_Water.get(1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  60, 8,16, IL.Bottle_Purple_Drink.get(1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  10, 8,16, IL.Bottle_Glue.get(1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 8,16, IL.Bottle_Lubricant.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   6, 2, 6, OP.dust.mat(MT.OREMATS.Zeolite, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  24, 1, 6, OP.ingot.mat(MT.Ag, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   6, 1, 6, OP.ingot.mat(MT.Pb, 1));
@@ -383,11 +379,9 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  12, 4,24, OP.toolHeadArrow.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  12, 4,24, OP.toolHeadArrow.mat(MT.Brass, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   2, 4,24, OP.toolHeadArrow.mat(MT.DamascusSteel, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           , 100, 1, 4, IL.Bag_Loot_Gems.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 6, OP.ingot.mat(MT.Nd, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 3, OP.ingot.mat(MT.Cr, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40, 1, 3, OP.ingot.mat(MT.Mn, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  50, 2, 8, IL.Book_Loot_Guide.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 4, IL.Tool_MatchBox_Full.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   5, 1, 1, IL.Tool_Lighter_Invar_Full.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, IL.Tool_Lighter_Platinum_Full.get(1));
@@ -399,6 +393,10 @@ public class Loader_Loot implements Runnable {
 		for (int i = 0; i < 16; i++)
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1,16,64, ST.make(BlocksGT.Glowtus, 1, i));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 4, IL.Bag_Loot_Sapling.get(1));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  30, 1, 4, IL.Bag_Loot_Seeds.get(1));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           , 100, 1, 4, IL.Bag_Loot_Gems.get(1));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           , 120, 8,16, IL.Bottle_Loot.get(1));
+		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  50, 2, 8, IL.Book_Loot_Guide.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           , 100, 1, 2, IL.Book_Loot_MatDict.get(1));
 		
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   2, 4, 8, IL.Bottle_Holy_Water.get(1));
@@ -410,24 +408,25 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   3,16,64, OP.toolHeadArrow.mat(MT.Ag, 1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 8,32, OP.toolHeadArrow.mat(MT.Pt, 1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 4,16, OP.toolHeadArrow.mat(MT.Nq, 1));
-		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   5, 4, 8, IL.Bag_Loot_Gems.get(1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   3, 1, 1, ST.book("Manual_Random"));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   6, 1, 1, ST.book("Manual_Elements"));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 1, 1, IL.Tool_Lighter_Platinum_Full.get(1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Au));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Nq));
+		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   5, 4, 8, IL.Bag_Loot_Gems.get(1));
 		
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   4,16,64, OP.rockGt.mat(MT.STONES.SkyStone, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3, 4,16, OP.ingot.mat(MT.ArsenicCopper, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3, 4,16, OP.plate.mat(MT.ArsenicCopper, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   3,16,64, OP.toolHeadArrow.mat(MT.ArsenicCopper, 1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1, 4,16, OP.toolHeadArrow.mat(MT.Ke, 1));
-		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   5, 4, 8, IL.Bag_Loot_Gems.get(1));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Au));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Ke));
 		for (int i = 0; i < 16; i++)
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   1,32,64, ST.make(BlocksGT.Glowtus, 1, i));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,  10, 2, 8, IL.Bag_Loot_Sapling.get(1));
+		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,  15, 2, 8, IL.Bag_Loot_Seeds.get(1));
+		addLoot(ChestGenHooks.PYRAMID_JUNGLE_CHEST    ,   5, 4, 8, IL.Bag_Loot_Gems.get(1));
 		
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER,  30, 2, 8, ST.make(Items.fire_charge,  1, 0));
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER,  20, 8,16, ST.update(OP.arrowGtWood.mat(MT.DamascusSteel, 1)));
@@ -463,7 +462,6 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 4,16, ST.make(Blocks.diamond_ore , 1, 0));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 4,16, ST.make(Blocks.emerald_ore , 1, 0));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 2, 6, OP.dust.mat(MT.OREMATS.Zeolite, 1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  10, 1, 4, IL.Bag_Loot_Gems.get(1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   5, 1, 4, OP.toolHeadShovel.mat(MT.ArsenicBronze, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   3, 1, 4, OP.toolHeadShovel.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   1, 1, 4, OP.toolHeadShovel.mat(MT.DamascusSteel, 1));
@@ -473,6 +471,8 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  20, 1, 1, IL.Tool_MatchBox_Full.get(1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Cu));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   6, 1, 4, IL.Bag_Loot_Sapling.get(1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   9, 1, 4, IL.Bag_Loot_Seeds.get(1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  10, 1, 4, IL.Bag_Loot_Gems.get(1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   6, 1, 2, IL.Book_Loot_MatDict.get(1));
 		
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   4, 8,16, IL.Bottle_Glue.get(1));
@@ -508,10 +508,10 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   3, 1, 1, IL.Tool_Lighter_Invar_Full.get(1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Cu));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  10, 2, 8, IL.Bag_Loot_Sapling.get(1));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  15, 2, 8, IL.Bag_Loot_Seeds.get(1));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  10, 1, 4, IL.Bag_Loot_Gems.get(1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,  20, 1, 2, IL.Book_Loot_MatDict.get(1));
 		
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,  40, 4, 8, IL.Book_Loot_Guide.get(1));
-		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,  20, 4,16, IL.Book_Loot_MatDict.get(1));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   1, 1, 9, IL.Paper_Magic_Research_0.get(1));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   1, 1, 8, IL.Paper_Magic_Research_1.get(1));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   1, 1, 7, IL.Paper_Magic_Research_2.get(1));
@@ -521,6 +521,8 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   1, 1, 3, IL.Paper_Magic_Research_6.get(1));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   1, 1, 2, IL.Paper_Magic_Research_7.get(1));
 		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,   1, 1, 1, IL.Paper_Magic_Research_8.get(1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,  40, 4, 8, IL.Book_Loot_Guide.get(1));
+		addLoot(ChestGenHooks.STRONGHOLD_LIBRARY      ,  20, 4,16, IL.Book_Loot_MatDict.get(1));
 		
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   6, 4, 8, IL.Bottle_Holy_Water.get(1));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   4, 8,16, IL.Bottle_Glue.get(1));
@@ -545,7 +547,8 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   6, 2, 4, OP.crateGtDust.mat(MT.Mn, 1));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Ag));
 		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   6, 2, 8, IL.Bag_Loot_Sapling.get(1));
-		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   2, 1, 4, IL.Book_Loot_MatDict.get(1));
+		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,   9, 2, 8, IL.Bag_Loot_Seeds.get(1));
+		addLoot(ChestGenHooks.STRONGHOLD_CROSSING     ,  12, 8,16, IL.Bottle_Loot.get(1));
 		
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,  12, 1, 4, OP.toolHeadSword.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   6, 1, 4, OP.toolHeadSword.mat(MT.DamascusSteel, 1));
@@ -554,7 +557,6 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   6,16,48, ST.update(OP.arrowGtWood.mat(MT.DamascusSteel, 1)));
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   6, 8,24, ST.update(OP.arrowGtWood.mat(MT.SterlingSilver, 1)));
 		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Ag));
-		addLoot(ChestGenHooks.STRONGHOLD_CORRIDOR     ,   3, 1, 1, ST.book("Manual_Random"));
 	}
 	
 	public static boolean addLoot(String aType, WeightedRandomChestContent aLoot) {

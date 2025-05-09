@@ -41,16 +41,14 @@ public class Behavior_Drop_Loot extends AbstractBehaviorDefault {
 	
 	@Override
 	public List<String> getAdditionalToolTips(MultiItem aItem, List<String> aList, ItemStack aStack) {
-		aList.add("Rightclick to loot");
+		aList.add("Rightclick this on a Block to loot");
 		return aList;
 	}
 	
 	@Override
 	public boolean onItemUseFirst(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
-		if (!aWorld.isRemote && ST.use(aPlayer, F, aStack)) {
-			for (String tLoot : mLoots)
-			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ChestGenHooks.getOneItem(tLoot, RNGSUS), F, aWorld, aX+OFFX[aSide]+0.5, aY+OFFY[aSide]+0.5, aZ+OFFZ[aSide]+0.5);
-			UT.Inventories.removeNullStacksFromInventory(aPlayer.inventory);
+		if (!aWorld.isRemote && ST.use(aPlayer, T, aStack)) {
+			for (String tLoot : mLoots) ST.drop(aWorld, aX+OFFX[aSide]+0.5, aY+OFFY[aSide]+0.5, aZ+OFFZ[aSide]+0.5, ChestGenHooks.getOneItem(tLoot, RNGSUS));
 			if (aPlayer != null) UT.Sounds.send(SFX.MC_DIG_CLOTH, aPlayer);
 			return T;
 		}
