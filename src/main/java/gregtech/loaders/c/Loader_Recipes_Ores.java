@@ -172,19 +172,19 @@ public class Loader_Recipes_Ores implements Runnable {
 		
 		
 		for (OreDictMaterial tMat : ANY.Amber.mToThis) {
-		RM.Bath.addRecipe1(T,  0,  256, OP.blockDust  .mat(tMat, 1), MT.Cryotheum.liquid(U , T), NF, gemExquisite  .mat(tMat, 1));
-		RM.Bath.addRecipe1(T,  0,  256, OP.crushed    .mat(tMat, 1), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
-		RM.Bath.addRecipe1(T,  0,  256, OP.crushedTiny.mat(tMat, 9), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
+		RM.Bath.addRecipe1(T,  0,  256, OP.blockDust  .mat(tMat, 1), MT.Cryotheum.liquid(U10, T), NF, gemExquisite  .mat(tMat, 1));
+		RM.Bath.addRecipe1(T,  0,  256, OP.crushed    .mat(tMat, 1), MT.Cryotheum.liquid(U20, T), NF, OP.gemFlawless.mat(tMat, 1));
+		RM.Bath.addRecipe1(T,  0,  256, OP.crushedTiny.mat(tMat, 9), MT.Cryotheum.liquid(U20, T), NF, OP.gemFlawless.mat(tMat, 1));
 		}
 		for (OreDictMaterial tMat : ANY.Glowstone.mToThis) {
-		RM.Bath.addRecipe1(T,  0,  256, OP.blockDust  .mat(tMat, 1), MT.Cryotheum.liquid(U , T), NF, gemExquisite  .mat(tMat, 1));
-		RM.Bath.addRecipe1(T,  0,  256, OP.crushed    .mat(tMat, 1), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
-		RM.Bath.addRecipe1(T,  0,  256, OP.crushedTiny.mat(tMat, 9), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
+		RM.Bath.addRecipe1(T,  0,  256, OP.blockDust  .mat(tMat, 1), MT.Cryotheum.liquid(U10, T), NF, gemExquisite  .mat(tMat, 1));
+		RM.Bath.addRecipe1(T,  0,  256, OP.crushed    .mat(tMat, 1), MT.Cryotheum.liquid(U20, T), NF, OP.gemFlawless.mat(tMat, 1));
+		RM.Bath.addRecipe1(T,  0,  256, OP.crushedTiny.mat(tMat, 9), MT.Cryotheum.liquid(U20, T), NF, OP.gemFlawless.mat(tMat, 1));
 		}
 		for (OreDictMaterial tMat : new OreDictMaterial[] {MT.Carminite, MT.Nikolite, MT.Redstone, MT.OREMATS.Cinnabar}) {
-		RM.Bath.addRecipe1(T,  0,  256, OP.blockDust  .mat(tMat, 1), MT.Cryotheum.liquid(U , T), NF, gemExquisite  .mat(tMat, 1));
-		RM.Bath.addRecipe1(T,  0,  256, OP.crushed    .mat(tMat, 1), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
-		RM.Bath.addRecipe1(T,  0,  256, OP.crushedTiny.mat(tMat, 9), MT.Cryotheum.liquid(U2, T), NF, OP.gemFlawless.mat(tMat, 1));
+		RM.Bath.addRecipe1(T,  0,  256, OP.blockDust  .mat(tMat, 1), MT.Cryotheum.liquid(U10, T), NF, gemExquisite  .mat(tMat, 1));
+		RM.Bath.addRecipe1(T,  0,  256, OP.crushed    .mat(tMat, 1), MT.Cryotheum.liquid(U20, T), NF, OP.gemFlawless.mat(tMat, 1));
+		RM.Bath.addRecipe1(T,  0,  256, OP.crushedTiny.mat(tMat, 9), MT.Cryotheum.liquid(U20, T), NF, OP.gemFlawless.mat(tMat, 1));
 		}
 		
 		
@@ -477,8 +477,8 @@ public class Loader_Recipes_Ores implements Runnable {
 				FluidStack tFluid1 = tMat1.fluid(DEF_ENV_TEMP, U18, T), tFluid2 = tMat2.fluid(DEF_ENV_TEMP, U18, T);
 				if (FL.zero(tFluid1)) tFluid1 = null;
 				if (FL.zero(tFluid2)) tFluid2 = null;
-				RM.SteamCracking.addRecipe1(T, 16, 144, tWaxCracking, tRefined    , FL.array(FL.Steam.make(100), tWax.liquid(U , T)), FL.array(FL.Water.make(900), FL.mul(tFluid1, 9), FL.mul(tFluid2, 9)), OP.dustTiny.mat(aMat, 9), tFluid1==null?OP.dustTiny.mat(tMat1, 9):null, tFluid2==null?OP.dustTiny.mat(tMat2, 9):null);
-				RM.SteamCracking.addRecipe1(T, 16,  16, tWaxCracking, tRefinedTiny, FL.array(FL.Steam.make(100), tWax.liquid(U9, T)), FL.array(FL.Water.make(100),        tFluid1    ,        tFluid2    ), OP.dustTiny.mat(aMat, 1), tFluid1==null?OP.dustTiny.mat(tMat1, 1):null, tFluid2==null?OP.dustTiny.mat(tMat2, 1):null);
+				RM.SteamCracking.addRecipe1(T, 16, 144, tWaxCracking, tRefined    , FL.array(FL.Steam.make(STEAM_PER_WATER*9), tWax.liquid(U , T)), FL.array(FL.Water.make(9), FL.mul(tFluid1, 9), FL.mul(tFluid2, 9)), OP.dustTiny.mat(aMat, 9), tFluid1==null?OP.dustTiny.mat(tMat1, 9):null, tFluid2==null?OP.dustTiny.mat(tMat2, 9):null);
+				RM.SteamCracking.addRecipe1(T, 16,  16, tWaxCracking, tRefinedTiny, FL.array(FL.Steam.make(STEAM_PER_WATER*1), tWax.liquid(U9, T)), FL.array(FL.Water.make(1),        tFluid1    ,        tFluid2    ), OP.dustTiny.mat(aMat, 1), tFluid1==null?OP.dustTiny.mat(tMat1, 1):null, tFluid2==null?OP.dustTiny.mat(tMat2, 1):null);
 				}
 			}
 		}

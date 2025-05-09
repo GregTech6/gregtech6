@@ -371,8 +371,8 @@ public class Override_Drops {
 			tReplaceIron = T;
 			
 			if (aPlayerKill) {
-				if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, IL.Bag_Loot_Sapling.get(1)));
-				if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, IL.Bag_Loot_Seeds.get(1)));
+				if (RNGSUS.nextInt(50) == 0) aDrops.add(ST.entity(aDead, IL.Bag_Loot_Sapling.get(1)));
+				if (RNGSUS.nextInt(50) == 0) aDrops.add(ST.entity(aDead, IL.Bag_Loot_Seeds.get(1)));
 				
 				if (MOBS_DROP_JUNK) {
 					if (RNGSUS.nextInt( 2) == 0) aDrops.add(ST.entity(aDead, RNGSUS.nextBoolean()?OP.rockGt.mat(aSpace?MT.STONES.SpaceRock:MT.Stone, 1):aSpace?OP.rockGt.mat(MT.MeteoricIron, 1):ST.make(Items.flint, 1, 0)));

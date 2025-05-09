@@ -110,6 +110,15 @@ public class Compat_Recipes_TwilightForest extends CompatMods {
 		
 		RM.Mixer.addRecipeX(T, 16, 64, ST.array(OM.dust(MT.Redstone, 4*U), IL.TF_BorerEssence.get(4), ST.make(Items.ghast_tear, 1, W)), OP.dust.mat(MT.Carminite, 4));
 		
+		RM.Slicer.addRecipe2(T, 16, 16, ST.make(MD.TF, "item.arcticHelm" , 1, W), IL.Shape_Slicer_Split.get(0), ST.make(MD.TF, "item.arcticFur", 1));
+		RM.Slicer.addRecipe2(T, 16, 16, ST.make(MD.TF, "item.arcticPlate", 1, W), IL.Shape_Slicer_Split.get(0), ST.make(MD.TF, "item.arcticFur", 2));
+		RM.Slicer.addRecipe2(T, 16, 16, ST.make(MD.TF, "item.arcticLegs" , 1, W), IL.Shape_Slicer_Split.get(0), ST.make(MD.TF, "item.arcticFur", 2));
+		RM.Slicer.addRecipe2(T, 16, 16, ST.make(MD.TF, "item.arcticBoots", 1, W), IL.Shape_Slicer_Split.get(0), ST.make(MD.TF, "item.arcticFur", 1));
+		RM.Slicer.addRecipe2(T, 16, 16, ST.make(MD.TF, "item.yetiHelm"   , 1, W), IL.Shape_Slicer_Split.get(0), ST.make(MD.TF, "item.alphaFur" , 1));
+		RM.Slicer.addRecipe2(T, 16, 16, ST.make(MD.TF, "item.yetiPlate"  , 1, W), IL.Shape_Slicer_Split.get(0), ST.make(MD.TF, "item.alphaFur" , 2));
+		RM.Slicer.addRecipe2(T, 16, 16, ST.make(MD.TF, "item.yetiLegs"   , 1, W), IL.Shape_Slicer_Split.get(0), ST.make(MD.TF, "item.alphaFur" , 2));
+		RM.Slicer.addRecipe2(T, 16, 16, ST.make(MD.TF, "item.yetiBoots"  , 1, W), IL.Shape_Slicer_Split.get(0), ST.make(MD.TF, "item.alphaFur" , 1));
+		
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(4), ST.make(MD.TF, "item.arcticFur", 5), ST.make(MD.TF, "item.arcticHelm" , 1));
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(5), ST.make(MD.TF, "item.arcticFur", 8), ST.make(MD.TF, "item.arcticPlate", 1));
 		RM.Loom.addRecipe2(T, 16,  128, ST.tag(6), ST.make(MD.TF, "item.arcticFur", 7), ST.make(MD.TF, "item.arcticLegs" , 1));
