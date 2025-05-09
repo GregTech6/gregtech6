@@ -26,10 +26,7 @@ import gregapi.util.UT;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityPigZombie;
-import net.minecraft.entity.monster.EntitySkeleton;
-import net.minecraft.entity.monster.EntitySpider;
-import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -61,6 +58,8 @@ public class Override_Drops {
 			if (RNGSUS.nextInt( 3) == 0) aDrops.add(ST.entity(aDead, RNGSUS.nextBoolean()?ST.copy(tGrass):IL.Stick.get(1)));
 			if (RNGSUS.nextInt( 5) == 0) aDrops.add(ST.entity(aDead, RNGSUS.nextBoolean()?ST.copy(tGrass):IL.Mud_Ball.get(1)));
 			if (RNGSUS.nextInt(10) == 0) aDrops.add(ST.entity(aDead, RNGSUS.nextBoolean()?ST.copy(tGrass):IL.Tool_Matches.get(1)));
+			if (RNGSUS.nextInt(10) == 0) aDrops.add(ST.entity(aDead, IL.Bag_Loot_Sapling.get(1)));
+			if (RNGSUS.nextInt(10) == 0) aDrops.add(ST.entity(aDead, IL.Bag_Loot_Seeds.get(1)));
 			
 			if (tRandomNumber == 0) {
 			aDrops.add(ST.entity(aDead, UT.Code.select(OP.toolHeadHoe.mat(MT.Bronze, 1)
@@ -91,6 +90,7 @@ public class Override_Drops {
 			if (RNGSUS.nextInt( 3) == 0) aDrops.add(ST.entity(aDead, IL.Stick.get(1)));
 			if (RNGSUS.nextInt( 5) == 0) aDrops.add(ST.entity(aDead, OP.rockGt.mat(RNGSUS.nextBoolean()?MT.Ag:MT.Au, 1)));
 			if (RNGSUS.nextInt(10) == 0) aDrops.add(ST.entity(aDead, IL.Tool_Matches.get(1)));
+			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, IL.Bag_Loot_Gems.get(1)));
 			
 			if (tRandomNumber == 0) {
 			aDrops.add(ST.entity(aDead, UT.Code.select(OP.toolHeadPickaxe.mat(MT.Bronze, 1)
@@ -229,6 +229,7 @@ public class Override_Drops {
 			if (RNGSUS.nextInt( 3) == 0) aDrops.add(ST.entity(aDead, IL.Stick.get(1)));
 			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, IL.Tool_Matches.get(1)));
 			if (RNGSUS.nextInt(10) == 0) aDrops.add(ST.entity(aDead, OP.bulletGtSmall.mat(MT.Steel, 1+RNGSUS.nextInt(2))));
+			if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, IL.Bag_Loot_Gems.get(1)));
 			
 			if (tRandomNumber == 0) {
 			aDrops.add(ST.entity(aDead, UT.Code.select(ST.make(Items.name_tag, 1, 0)
@@ -370,13 +371,14 @@ public class Override_Drops {
 			tReplaceIron = T;
 			
 			if (aPlayerKill) {
+				if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, IL.Bag_Loot_Sapling.get(1)));
+				if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, IL.Bag_Loot_Seeds.get(1)));
+				
 				if (MOBS_DROP_JUNK) {
 					if (RNGSUS.nextInt( 2) == 0) aDrops.add(ST.entity(aDead, RNGSUS.nextBoolean()?OP.rockGt.mat(aSpace?MT.STONES.SpaceRock:MT.Stone, 1):aSpace?OP.rockGt.mat(MT.MeteoricIron, 1):ST.make(Items.flint, 1, 0)));
 					if (RNGSUS.nextInt( 5) == 0) aDrops.add(ST.entity(aDead, aSpace?OP.stick.mat(MT.Plastic, 1):IL.Stick.get(1)));
 					if (RNGSUS.nextInt(10) == 0) aDrops.add(ST.entity(aDead, aSpace?OP.scrapGt.mat(MT.Plastic, 1):IL.Mud_Ball.get(1)));
 					if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, aSpace?OP.nugget.mat(MT.MeteoricIron, 1):IL.Tool_Matches.get(1)));
-					if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, IL.Bag_Loot_Sapling.get(1)));
-					if (RNGSUS.nextInt(20) == 0) aDrops.add(ST.entity(aDead, IL.Bag_Loot_Seeds.get(1)));
 					
 					if (tRandomNumber == 0) {
 					aDrops.add(ST.entity(aDead, UT.Code.select(IL.Food_Pomeraisins
@@ -423,6 +425,11 @@ public class Override_Drops {
 			)));
 			}
 			
+			}
+		} else if (aDead instanceof EntityWitch) {
+			tReplaceIron = T;
+			if (aPlayerKill || tRandomNumber == 0) {
+				aDrops.add(ST.entity(aDead, IL.Bottle_Loot.get(1+RNGSUS.nextInt(aLooting+1))));
 			}
 		} else if (aClass.equalsIgnoreCase("EntityHoglin")) {
 			for (int i = 0; i < 2; i++) if (RNGSUS.nextInt(100) <= 25 + aLooting * 5) {
