@@ -277,7 +277,7 @@ public enum IL implements IItemContainer {
 	ThermosCan_Dark_Coffee, ThermosCan_Dark_Cafe_au_lait, ThermosCan_Coffee, ThermosCan_Cafe_au_lait, ThermosCan_Lait_au_cafe, ThermosCan_Dark_Chocolate_Milk,
 	ThermosCan_Chocolate_Milk,
 	ThermosCan_Tea, ThermosCan_Sweet_Tea, ThermosCan_Ice_Tea,
-	Bottle_Empty, Bottle_Milk, Bottle_Milk_Spoiled, Bottle_Honey, Bottle_Blood, Bottle_Rotten_Drink, Bottle_Tar, Bottle_Ink, Bottle_Indigo, Bottle_Glue, Bottle_Lubricant, Bottle_Mercury, Bottle_Holy_Water, Bottle_Beer, Bottle_Purple_Drink,
+	Bottle_Empty, Bottle_Milk, Bottle_Milk_Soy, Bottle_Milk_Spoiled, Bottle_Honey, Bottle_Blood, Bottle_Rotten_Drink, Bottle_Slime_Green, Bottle_Slime_Pink, Bottle_Slime_Blue, Bottle_Tar, Bottle_Ink, Bottle_Indigo, Bottle_Glue, Bottle_Lubricant, Bottle_Mercury, Bottle_Holy_Water, Bottle_Beer, Bottle_Purple_Drink,
 	Pill_Empty,
 	Pill_Mint, Pill_Red, Pill_Blue,
 	Pill_Iodine,

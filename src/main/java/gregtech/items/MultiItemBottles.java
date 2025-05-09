@@ -145,8 +145,8 @@ public class MultiItemBottles extends MultiItemRandomWithCompat implements IItem
 		CR.shapeless(make(2, 1100), CR.DEF, new Object[] {OD.container1000milk, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
 		CR.shapeless(make(1, 1100), CR.DEF, new Object[] {OD.container1000milk, OP.bottle.dat(MT.Empty)});
 		
-		
-		addItem( 1200, "Soy Milk"                     , "", "foodSoymilk"                     , FL.MilkSoy                .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.HERBA          , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE);
+		IL.Bottle_Milk_Soy.set(
+		addItem( 1200, "Soy Milk"                     , "", "foodSoymilk"                     , FL.MilkSoy                .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.HERBA          , 1), TC.stack(TC.SANO      , 1), FoodStatFluid.INSTANCE));
 		
 		CR.shapeless(make(4, 1200), CR.DEF, new Object[] {OD.container1000soymilk, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
 		CR.shapeless(make(3, 1200), CR.DEF, new Object[] {OD.container1000soymilk, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
@@ -200,9 +200,12 @@ public class MultiItemBottles extends MultiItemRandomWithCompat implements IItem
 		addItem( 2100, "Banana Juice"                 , "", "foodBananajuice"                 , FL.Juice_Banana           .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.HERBA     , 1), FoodStatFluid.INSTANCE, OD.container250juice);
 		addItem( 2105, "Banana Smoothie"              , "", "foodBananasmoothie"              , FL.Smoothie_Banana        .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.GELUM          , 1), TC.stack(TC.HERBA     , 1), FoodStatFluid.INSTANCE);
 		
-		addItem( 2200, "Green Slime Bottle"         , "Can be used as Glue too", OD.container250slimegreen, FL.Slime_Green.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.LIMUS     , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Lime);
-		addItem( 2201, "Pink Slime Bottle"          , "Can be used as Glue too", OD.container250slimepink , FL.Slime_Pink .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.CORPUS         , 1), TC.stack(TC.LIMUS     , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Pink);
-		addItem( 2202, "Blue Slime Bottle"          , "Can be used as Glue too", OD.container250slimeblue , FL.Slime_Blue .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.LIMUS     , 1), FoodStatFluid.INSTANCE); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Blue);
+		IL.Bottle_Slime_Green.set(
+		addItem( 2200, "Green Slime Bottle"         , "Can be used as Glue too", OD.container250slimegreen, FL.Slime_Green.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.LIMUS     , 1), FoodStatFluid.INSTANCE)); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Lime);
+		IL.Bottle_Slime_Pink.set(
+		addItem( 2201, "Pink Slime Bottle"          , "Can be used as Glue too", OD.container250slimepink , FL.Slime_Pink .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.CORPUS         , 1), TC.stack(TC.LIMUS     , 1), FoodStatFluid.INSTANCE)); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Pink);
+		IL.Bottle_Slime_Blue.set(
+		addItem( 2202, "Blue Slime Bottle"          , "Can be used as Glue too", OD.container250slimeblue , FL.Slime_Blue .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.AQUA           , 1), TC.stack(TC.LIMUS     , 1), FoodStatFluid.INSTANCE)); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Blue);
 		addItem( 2210, "BAWLS"                      , ""                                                  , FL.BAWLS      .make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.TEMPESTAS      , 1), TC.stack(TC.LIMUS     , 1), FoodStatFluid.INSTANCE);
 		
 		CR.shapeless(make(4, 2200), CR.DEF, new Object[] {OD.container1000slimegreen, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
