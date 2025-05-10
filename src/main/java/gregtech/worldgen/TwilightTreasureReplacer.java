@@ -359,7 +359,7 @@ public class TwilightTreasureReplacer extends TFTreasure {
 	public boolean addToInventory(IInventory aInventory, ItemStack aStack) {
 		int tSlot = findEmptySlot(aInventory);
 		if (tSlot == -1) return F;
-		aInventory.setInventorySlotContents(tSlot, IL.TF_Uncrafting.equal(aStack, T, T) ? IL.TF_Transformation_Powder.get(12+RNGSUS.nextInt(13)) : ST.item(aStack) == Items.potionitem ? IL.Bottle_Loot.get(1) : aStack);
+		aInventory.setInventorySlotContents(tSlot, IL.TF_Uncrafting.equal(aStack, T, T) ? IL.TF_Transformation_Powder.get(12+RNGSUS.nextInt(13)) : ST.item(aStack) == Items.potionitem ? IL.Bottle_Loot.get(2) : aStack);
 		return T;
 	}
 	
