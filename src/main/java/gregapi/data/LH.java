@@ -400,6 +400,7 @@ public class LH {
 		add("loot.gt.saplings"                          , "-Random Saplings-");
 		add("loot.gt.seeds"                             , "-Random Seeds-");
 		add("loot.gt.gems"                              , "+Random Gems+");
+		add("loot.gt.misc"                              , "*Miscellaneous Items*");
 		add("loot.gt.flawless"                          , "*Flawless Gems*");
 		add("loot.mineshaftCorridor"                    , "+Mineshaft+");
 		add("loot.pyramidDesertyChest"                  , "*Desert Pyramid*");

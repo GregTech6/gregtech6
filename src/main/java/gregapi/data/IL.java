@@ -270,7 +270,7 @@ public enum IL implements IItemContainer {
 	Comb_Honey, Comb_Water, Comb_Magic, Comb_Nether, Comb_End, Comb_Rock, Comb_Jungle, Comb_Frozen, Comb_Shroom, Comb_Sandy, Comb_Clay, Comb_Sticky, Comb_Royal, Comb_Soul, Comb_Amnesic, Comb_Military, Comb_Pyro, Comb_Cryo, Comb_Aero, Comb_Tera,
 	PlasticCan,
 	Crate, Crate_Fireproof, Crate_Loot,
-	Bag_Loot_Seeds, Bag_Loot_Sapling, Bag_Loot_Gems,
+	Bag_Loot_Seeds, Bag_Loot_Sapling, Bag_Loot_Gems, Bag_Loot_Misc,
 	Book_Loot_Guide, Book_Loot_MatDict,
 	Bottle_Loot,
 	ThermosCan_Empty,

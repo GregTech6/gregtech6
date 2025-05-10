@@ -20,6 +20,9 @@
 package gregapi.recipes.maps;
 
 import gregapi.data.IL;
+import gregapi.item.multiitem.MultiItem;
+import gregapi.item.multiitem.behaviors.Behavior_Drop_Loot;
+import gregapi.item.multiitem.behaviors.IBehavior;
 import gregapi.random.IHasWorldAndCoords;
 import gregapi.recipes.Recipe;
 import gregapi.recipes.Recipe.RecipeMap;
@@ -30,6 +33,7 @@ import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Collection;
+import java.util.List;
 
 import static gregapi.data.CS.*;
 
@@ -48,29 +52,15 @@ public class RecipeMapUnboxinator extends RecipeMap {
 			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
 			return new Recipe(F, F, F, ST.array(IL.Crate_Loot.get(1)), ST.array(ST.generateOneVanillaLoot(), IL.Crate.get(1)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
 		}
-		if (IL.Book_Loot_Guide.equal(aInputs[0], F, T)) {
-			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
-			return new Recipe(F, F, F, ST.array(IL.Book_Loot_Guide.get(1)), ST.array(ChestGenHooks.getOneItem("gt.books", RNGSUS)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
-		}
-		if (IL.Book_Loot_MatDict.equal(aInputs[0], F, T)) {
-			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
-			return new Recipe(F, F, F, ST.array(IL.Book_Loot_MatDict.get(1)), ST.array(ChestGenHooks.getOneItem("gt.matdicts", RNGSUS)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
-		}
-		if (IL.Bottle_Loot.equal(aInputs[0], F, T)) {
-			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
-			return new Recipe(F, F, F, ST.array(IL.Bottle_Loot.get(1)), ST.array(ChestGenHooks.getOneItem("gt.bottles", RNGSUS)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
-		}
-		if (IL.Bag_Loot_Gems.equal(aInputs[0], F, T)) {
-			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
-			return new Recipe(F, F, F, ST.array(IL.Bag_Loot_Gems.get(1)), ST.array(ChestGenHooks.getOneItem("gt.flawless", RNGSUS), ChestGenHooks.getOneItem("gt.gems", RNGSUS), ChestGenHooks.getOneItem("gt.gems", RNGSUS)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
-		}
-		if (IL.Bag_Loot_Seeds.equal(aInputs[0], F, T)) {
-			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
-			return new Recipe(F, F, F, ST.array(IL.Bag_Loot_Seeds.get(1)), ST.array(ChestGenHooks.getOneItem("gt.seeds", RNGSUS)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
-		}
-		if (IL.Bag_Loot_Sapling.equal(aInputs[0], F, T)) {
-			// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
-			return new Recipe(F, F, F, ST.array(IL.Bag_Loot_Sapling.get(1)), ST.array(ChestGenHooks.getOneItem("gt.saplings", RNGSUS)), null, null, null, null, 16, 16, 0).setNeedEmptyOut();
+		// For any GT6 Grabbag Items, so I don't have to add to this over and over. Still gotta manually add Fake Recipes for the Item Filter though.
+		if (ST.item(aInputs[0]) instanceof MultiItem) {
+			List<IBehavior<MultiItem>> tList = ((MultiItem)ST.item(aInputs[0])).mItemBehaviors.get(ST.meta(aInputs[0]));
+			if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) if (tBehavior instanceof Behavior_Drop_Loot) {
+				ItemStack[] tOutputs = ST.array(((Behavior_Drop_Loot)tBehavior).mLoots.length);
+				for (int i = 0; i < tOutputs.length; i++) tOutputs[i] = ChestGenHooks.getOneItem(((Behavior_Drop_Loot)tBehavior).mLoots[i], RNGSUS);
+				// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
+				return new Recipe(F, F, F, ST.array(ST.amount(1, aInputs[0])), tOutputs, null, null, null, null, 16, 16, 0).setNeedEmptyOut();
+			}
 		}
 		if (COMPAT_IC2 != null && IL.IC2_Scrapbox.equal(aInputs[0], F, T)) {
 			ItemStack tOutput = COMPAT_IC2.scrapbox(aInputs[0]);
