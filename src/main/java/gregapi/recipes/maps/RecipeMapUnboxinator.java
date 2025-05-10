@@ -58,6 +58,8 @@ public class RecipeMapUnboxinator extends RecipeMap {
 			if (tList != null) for (IBehavior<MultiItem> tBehavior : tList) if (tBehavior instanceof Behavior_Drop_Loot) {
 				ItemStack[] tOutputs = ST.array(((Behavior_Drop_Loot)tBehavior).mLoots.length);
 				for (int i = 0; i < tOutputs.length; i++) tOutputs[i] = ChestGenHooks.getOneItem(((Behavior_Drop_Loot)tBehavior).mLoots[i], RNGSUS);
+				// If somehow no Loot, return the whole stack of Lootbags, don't waste any time or items.
+				if (!ST.hasValid(tOutputs)) return new Recipe(F, F, F, aInputs, aInputs, null, null, null, null, 1, 1, 0);
 				// Due to the randomness it is not good if there are Items in the Output Slot, because those Items could manipulate the outcome.
 				return new Recipe(F, F, F, ST.array(ST.amount(1, aInputs[0])), tOutputs, null, null, null, null, 16, 16, 0).setNeedEmptyOut();
 			}
