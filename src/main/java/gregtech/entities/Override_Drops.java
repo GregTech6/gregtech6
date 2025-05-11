@@ -398,6 +398,11 @@ public class Override_Drops {
 		} else if (aDead instanceof EntitySpider) {
 			tReplaceIron = T;
 			
+			// Let a Spider Eye drop if not killed by a Player.
+			if (!aPlayerKill && aClass.contains("spider") && RNGSUS.nextInt(4) == 0) {
+				aDrops.add(ST.entity(aDead, ST.make(Items.spider_eye, 1, 0)));
+			}
+			
 			if (aPlayerKill && MOBS_DROP_JUNK) {
 			
 			if (tRandomNumber == 0) {

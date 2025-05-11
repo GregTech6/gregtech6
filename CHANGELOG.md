@@ -24,6 +24,7 @@ There now is an Aether Portal Room in some GT6 Dungeons.
 [ADDED] Wax Cracking, what is Wax Cracking? It is the "final" Ore Processing Step that involves Steam and Molten Wax, and exists purely because of needing some productive way to get rid of Wax.
 [ADDED] Glowstone, Redstone, Cinnabar, Nikolite, Carminite and Ambers can now be crystallized using Cryotheum in a Bath, either by using crushed Ores or by sacrificing about half of a Block of Dust.
 [ADDED] The Slicer can now recycle Leather Armor and turn Fur into Leather, like the Knife based Crafting Recipe can.
+[ADDED] Spiders now have a 25 percent chance of dropping Spider Eye, when killed by a Non-Player.
 [ADDED] Various Grabbag Items for Books, Saplings, Seeds and Gems. Maybe more. They will clutter the Inventory less than the current Loots. Certain Mobs will drop these too. Most notably the Books of the Villager Zombie, to reduce clutter.
 [ADDED] Signs to the Center Street Worldgen to indicate where which Biomes are. Bottom-most Biomes are closest (read it like Highway Street Signs), it looks at the Biomes roughly 100 blocks to the left and right sides of the Road.
 [ADDED] The GT6 Builder Wand can now place GT6 Multiblock Parts from your Inventory in a 3x3x3 around the clicked Multiblock Part (range limit so you dont build behind walls).
