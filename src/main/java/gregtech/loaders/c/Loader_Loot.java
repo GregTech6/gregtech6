@@ -129,6 +129,7 @@ public class Loader_Loot implements Runnable {
 		ST.LOOT_TABLES.add("gt.misc");
 		ChestGenHooks.getInfo("gt.misc").setMin( 8);
 		ChestGenHooks.getInfo("gt.misc").setMax(24);
+		addLoot("gt.misc", 144, 1, 6, ST.make(Items.name_tag, 1, 0));
 		addLoot("gt.misc", 144, 3,18, OP.billet    .mat(MT.Nd             , 1));
 		addLoot("gt.misc", 144, 3,18, OP.billet    .mat(MT.Cr             , 1));
 		addLoot("gt.misc", 144, 3,18, OP.billet    .mat(MT.Mn             , 1));
@@ -146,6 +147,18 @@ public class Loader_Loot implements Runnable {
 		addLoot("gt.misc", 144, 1, 2, OP.dust      .mat(MT.OREMATS.Zeolite, 1));
 		addLoot("gt.misc",  72, 1, 3, OP.rockGt    .mat(MT.MeteoricIron   , 1));
 		addLoot("gt.misc",  72, 1, 1, OP.oreRaw    .mat(MT.MeteoricIron   , 1));
+		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_13     , 1, 0));
+		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_cat    , 1, 0));
+		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_blocks , 1, 0));
+		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_chirp  , 1, 0));
+		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_far    , 1, 0));
+		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_mall   , 1, 0));
+		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_mellohi, 1, 0));
+		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_stal   , 1, 0));
+		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_strad  , 1, 0));
+		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_ward   , 1, 0));
+		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_11     , 1, 0));
+		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_wait   , 1, 0));
 		addLoot("gt.misc",  48, 2, 8, IL.Food_Can_Undefined_6.get(1));
 		addLoot("gt.misc",  48, 2, 8, IL.Food_Can_Bread_6.get(1));
 		addLoot("gt.misc",  48, 2, 8, IL.Food_Can_Chum_4.get(1));
@@ -161,7 +174,16 @@ public class Loader_Loot implements Runnable {
 		ST.LOOT_TABLES.add("gt.saplings");
 		ChestGenHooks.getInfo("gt.saplings").setMin( 8);
 		ChestGenHooks.getInfo("gt.saplings").setMax(24);
-		// Yes I count those as Saplings too, they are kinda Tree alike.
+		// Well, sometimes the Tree does not survive. XD
+		addLoot("gt.saplings", 288, 1, 4, ST.make(Blocks.deadbush, 1, 0));
+		addLoot("gt.saplings", 288, 1, 4, ST.make(Blocks.tallgrass, 1, 0));
+		// Yes I count those as Saplings too, they are kinda Tree alike. Better than putting these in the Seed Bags.
+		addLoot("gt.saplings", 144, 1, 1, ST.make(Blocks.double_plant, 1, 0));
+		addLoot("gt.saplings", 144, 1, 1, ST.make(Blocks.double_plant, 1, 1));
+		addLoot("gt.saplings", 144, 1, 1, ST.make(Blocks.double_plant, 1, 2));
+		addLoot("gt.saplings", 144, 1, 1, ST.make(Blocks.double_plant, 1, 3));
+		addLoot("gt.saplings", 144, 1, 1, ST.make(Blocks.double_plant, 1, 4));
+		addLoot("gt.saplings", 144, 1, 1, ST.make(Blocks.double_plant, 1, 5));
 		addLoot("gt.saplings", 144, 1, 1, ST.make(Blocks.brown_mushroom, 1, 0));
 		addLoot("gt.saplings", 144, 1, 1, ST.make(Blocks.red_mushroom, 1, 0));
 		addLoot("gt.saplings", 144, 1, 1, ST.make(Blocks.cactus, 1, 0));
@@ -188,6 +210,14 @@ public class Loader_Loot implements Runnable {
 		ST.LOOT_TABLES.add("gt.seeds");
 		ChestGenHooks.getInfo("gt.seeds").setMin( 8);
 		ChestGenHooks.getInfo("gt.seeds").setMax(24);
+		// These don't have Seeds, but what can I do when they are kinda needed in this List...
+		addLoot("gt.seeds", 144, 4,12, ST.make(Items.potato, 1, 0));
+		addLoot("gt.seeds", 144, 4,12, ST.make(Items.carrot, 1, 0));
+		addLoot("gt.seeds", 144, 4,12, IL.Dye_Cocoa.get(1));
+		for (int i = 0; i < 16; i++)
+		addLoot("gt.seeds",   9, 8,24, ST.make(BlocksGT.Glowtus, 1, i));
+		addLoot("gt.seeds", 144, 8,24, ST.make(Blocks.waterlily, 1, 0));
+		// Actual Seeds.
 		addLoot("gt.seeds", 144,16,48, ST.make(Items.wheat_seeds, 1, 0));
 		addLoot("gt.seeds", 144,16,48, ST.make(Items.pumpkin_seeds, 1, 0));
 		addLoot("gt.seeds", 144,16,48, ST.make(Items.melon_seeds, 1, 0));
@@ -296,8 +326,6 @@ public class Loader_Loot implements Runnable {
 		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "whitemushroomseedItem"   , 1, 0), F);
 		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "wintersquashseedItem"    , 1, 0), F);
 		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "zucchiniseedItem"        , 1, 0), F);
-		for (int i = 0; i < 16; i++)
-		addLoot("gt.seeds",   9,16,48, ST.make(BlocksGT.Glowtus, 1, i));
 		
 		
 		ST.LOOT_TABLES.add("gt.books");
