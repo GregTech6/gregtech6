@@ -1,11 +1,15 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.17.05: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.17.04: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.17.03: (Not released yet)
+6.17.03:
 [COMPAT] Aether Legacy should now have a similar level of Compat as Aether 2. (dear whoever is responsible for this: Items and Blocks have to be registered during the preInit Phase in 1.7.10. Someone on the Aether Legacy Team must have decided to move the loading of Items from preInit to Init, which breaks quite a lot of shit in 1.7.10)
 Zanite now electrolyzes into the same Stuff that Tanzanite does.
 Gravitite is now considered a Type of Diamond in most of my Recipes.
