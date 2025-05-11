@@ -151,7 +151,8 @@ public class Loader_Loot implements Runnable {
 		addLoot("gt.misc",  48, 2, 8, IL.Food_Can_Chum_4.get(1));
 		addLoot("gt.misc", 144, 3,18, IL.Dynamite.get(1));
 		addLoot("gt.misc", 144, 1, 4, IL.Tool_MatchBox_Full.get(1));
-		addLoot("gt.misc",  36, 1, 1, IL.Tool_Lighter_Invar_Full.get(1));
+		addLoot("gt.misc",  33, 1, 1, IL.Tool_Lighter_Invar_Full.get(1));
+		addLoot("gt.misc",   3, 1, 1, IL.Tool_Lighter_Platinum_Full.get(1));
 		addLoot("gt.misc",  36, 1, 1, IL.Porcelain_Cup.get(1));
 		addLoot("gt.misc",  36, 2, 4, IL.Pill_Cure_All.get(1));
 		addLoot("gt.misc",  36, 1, 2, OP.chemtube.mat(MT.Mcg, 1));
@@ -160,6 +161,12 @@ public class Loader_Loot implements Runnable {
 		ST.LOOT_TABLES.add("gt.saplings");
 		ChestGenHooks.getInfo("gt.saplings").setMin( 8);
 		ChestGenHooks.getInfo("gt.saplings").setMax(24);
+		// Yes I count those as Saplings too, they are kinda Tree alike.
+		addLoot("gt.saplings", 144, 1, 1, ST.make(Blocks.brown_mushroom, 1, 0));
+		addLoot("gt.saplings", 144, 1, 1, ST.make(Blocks.red_mushroom, 1, 0));
+		addLoot("gt.saplings", 144, 1, 1, ST.make(Blocks.cactus, 1, 0));
+		addLoot("gt.saplings", 144, 1, 1, ST.make(Items.reeds, 1, 0));
+		// Iterate the Entire List of Saplings and pick the ones from Mods that are Overworld focussed.
 		for (SaplingEntry tEntry : WoodDictionary.LIST_SAPLINGS) {
 		if (MD.MC  .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 144, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
 		if (MD.EtFu.owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 144, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
@@ -169,9 +176,9 @@ public class Loader_Loot implements Runnable {
 		if (MD.MFR .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 144, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
 		if (MD.TC  .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 144, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
 		if (MD.WTCH.owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 144, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
-		if (MD.EBXL.owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 144,             4,             4, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
-		if (MD.EB  .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 144,             4,             4, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
-		if (MD.BoP .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 144,             4,             4, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.EBXL.owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 144, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.EB  .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 144, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
+		if (MD.BoP .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 144, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
 		if (MD.HiL .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 144, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
 		if (MD.HaC .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 144, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
 		if (MD.MF2 .owns(tEntry.mSapling)) {if (addLoot("gt.saplings", 144, tEntry.mCount, tEntry.mCount, ST.validMeta(tEntry.mSapling))) tEntry.mBaggedSaplingLoot = T; continue;}
@@ -181,116 +188,116 @@ public class Loader_Loot implements Runnable {
 		ST.LOOT_TABLES.add("gt.seeds");
 		ChestGenHooks.getInfo("gt.seeds").setMin( 8);
 		ChestGenHooks.getInfo("gt.seeds").setMax(24);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(Items.wheat_seeds, 1, 0));
-		addLoot("gt.seeds", 144, 16, 48, ST.make(Items.pumpkin_seeds, 1, 0));
-		addLoot("gt.seeds", 144, 16, 48, ST.make(Items.melon_seeds, 1, 0));
-		addLoot("gt.seeds", 144, 16, 48, IL.EtFu_Beet_Seeds.get(1), F);
-		addLoot("gt.seeds", 144, 16, 48, IL.GaSu_Beet_Seeds.get(1), F);
-		addLoot("gt.seeds", 144, 16, 48, IL.BoP_Turnip_Seeds.get(1), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.GaSu, "camelliaSeeds"          , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.GaNe, "witherShrubSeeds"       , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.GaNe, "ghostSeeds"             , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.GaNe, "quarzBerrySeeds"        , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.GaNe, "hellBushSeeds"          , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.ChocoCraft, "Loverly_Gysahl"   , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.ChocoCraft, "Red_Gysahl"       , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.ChocoCraft, "Golden_Gysahl"    , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.RoC, "rotarycraft_item_canola" , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.GrC_Milk, "grcmilk.SeedThistle", 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.SC2, "ItemTeaSeed"             , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.ERE, "cabbageSeeds"            , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.Bamboo, "seedrice"             , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.EBXL, "extrabiomes.seed"       , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.WTCH, "seedsmandrake"          , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.WTCH, "seedswormwood"          , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.WTCH, "seedssnowbell"          , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.WTCH, "seedsartichoke"         , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.WTCH, "seedswolfsbane"         , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.WTCH, "seedsbelladonna"        , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.NeLi, "GhastlyGourdSeeds"      , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.NeLi, "AbyssalOatSeeds"        , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.NeLi, "DevilishMaizeSeeds"     , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.NeLi, "HellderBerrySeeds"      , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedBeet"                , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedBellPepperOrange"    , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedBellPepperRed"       , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedBellPepperYellow"    , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedBroccoli"            , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedCassava"             , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedCelery"              , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedCorn"                , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedCucumber"            , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedEggplant"            , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedGreenBean"           , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedLeek"                , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedLettuce"             , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedOnion"               , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedSorrel"              , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedSpinach"             , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "seedTomato"              , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.PMP, "foodQuinoaSeeds"         , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "artichokeseedItem"       , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "asparagusseedItem"       , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "bambooshootseedItem"     , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "barleyseedItem"          , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "beanseedItem"            , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "beetseedItem"            , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "bellpepperseedItem"      , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "blackberryseedItem"      , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "blueberryseedItem"       , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "broccoliseedItem"        , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "brusselsproutseedItem"   , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "cabbageseedItem"         , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "cactusfruitseedItem"     , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "candleberryseedItem"     , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "cantaloupeseedItem"      , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "cauliflowerseedItem"     , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "celeryseedItem"          , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "chilipepperseedItem"     , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "coffeeseedItem"          , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "cornseedItem"            , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "cottonseedItem"          , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "cranberryseedItem"       , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "cucumberseedItem"        , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "curryleafseedItem"       , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "eggplantseedItem"        , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "garlicseedItem"          , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "gingerseedItem"          , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "grapeseedItem"           , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "kiwiseedItem"            , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "leekseedItem"            , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "lettuceseedItem"         , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "mustardseedItem"         , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "oatsseedItem"            , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "okraseedItem"            , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "onionseedItem"           , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "parsnipseedItem"         , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "peanutseedItem"          , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "peasseedItem"            , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "pineappleseedItem"       , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "radishseedItem"          , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "raspberryseedItem"       , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "rhubarbseedItem"         , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "riceseedItem"            , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "rutabagaseedItem"        , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "ryeseedItem"             , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "scallionseedItem"        , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "seaweedseedItem"         , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "sesameseedsseedItem"     , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "soybeanseedItem"         , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "spiceleafseedItem"       , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "spinachseedItem"         , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "strawberryseedItem"      , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "sweetpotatoseedItem"     , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "teaseedItem"             , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "tomatoseedItem"          , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "turnipseedItem"          , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "waterchestnutseedItem"   , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "whitemushroomseedItem"   , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "wintersquashseedItem"    , 1, 0), F);
-		addLoot("gt.seeds", 144, 16, 48, ST.make(MD.HaC, "zucchiniseedItem"        , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(Items.wheat_seeds, 1, 0));
+		addLoot("gt.seeds", 144,16,48, ST.make(Items.pumpkin_seeds, 1, 0));
+		addLoot("gt.seeds", 144,16,48, ST.make(Items.melon_seeds, 1, 0));
+		addLoot("gt.seeds", 144,16,48, IL.EtFu_Beet_Seeds.get(1), F);
+		addLoot("gt.seeds", 144,16,48, IL.GaSu_Beet_Seeds.get(1), F);
+		addLoot("gt.seeds", 144,16,48, IL.BoP_Turnip_Seeds.get(1), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.GaSu, "camelliaSeeds"          , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.GaNe, "witherShrubSeeds"       , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.GaNe, "ghostSeeds"             , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.GaNe, "quarzBerrySeeds"        , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.GaNe, "hellBushSeeds"          , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.ChocoCraft, "Loverly_Gysahl"   , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.ChocoCraft, "Red_Gysahl"       , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.ChocoCraft, "Golden_Gysahl"    , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.RoC, "rotarycraft_item_canola" , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.GrC_Milk, "grcmilk.SeedThistle", 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.SC2, "ItemTeaSeed"             , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.ERE, "cabbageSeeds"            , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.Bamboo, "seedrice"             , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.EBXL, "extrabiomes.seed"       , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.WTCH, "seedsmandrake"          , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.WTCH, "seedswormwood"          , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.WTCH, "seedssnowbell"          , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.WTCH, "seedsartichoke"         , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.WTCH, "seedswolfsbane"         , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.WTCH, "seedsbelladonna"        , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.NeLi, "GhastlyGourdSeeds"      , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.NeLi, "AbyssalOatSeeds"        , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.NeLi, "DevilishMaizeSeeds"     , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.NeLi, "HellderBerrySeeds"      , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedBeet"                , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedBellPepperOrange"    , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedBellPepperRed"       , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedBellPepperYellow"    , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedBroccoli"            , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedCassava"             , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedCelery"              , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedCorn"                , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedCucumber"            , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedEggplant"            , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedGreenBean"           , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedLeek"                , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedLettuce"             , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedOnion"               , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedSorrel"              , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedSpinach"             , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "seedTomato"              , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.PMP, "foodQuinoaSeeds"         , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "artichokeseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "asparagusseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "bambooshootseedItem"     , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "barleyseedItem"          , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "beanseedItem"            , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "beetseedItem"            , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "bellpepperseedItem"      , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "blackberryseedItem"      , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "blueberryseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "broccoliseedItem"        , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "brusselsproutseedItem"   , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "cabbageseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "cactusfruitseedItem"     , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "candleberryseedItem"     , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "cantaloupeseedItem"      , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "cauliflowerseedItem"     , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "celeryseedItem"          , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "chilipepperseedItem"     , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "coffeeseedItem"          , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "cornseedItem"            , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "cottonseedItem"          , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "cranberryseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "cucumberseedItem"        , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "curryleafseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "eggplantseedItem"        , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "garlicseedItem"          , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "gingerseedItem"          , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "grapeseedItem"           , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "kiwiseedItem"            , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "leekseedItem"            , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "lettuceseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "mustardseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "oatsseedItem"            , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "okraseedItem"            , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "onionseedItem"           , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "parsnipseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "peanutseedItem"          , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "peasseedItem"            , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "pineappleseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "radishseedItem"          , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "raspberryseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "rhubarbseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "riceseedItem"            , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "rutabagaseedItem"        , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "ryeseedItem"             , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "scallionseedItem"        , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "seaweedseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "sesameseedsseedItem"     , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "soybeanseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "spiceleafseedItem"       , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "spinachseedItem"         , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "strawberryseedItem"      , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "sweetpotatoseedItem"     , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "teaseedItem"             , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "tomatoseedItem"          , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "turnipseedItem"          , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "waterchestnutseedItem"   , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "whitemushroomseedItem"   , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "wintersquashseedItem"    , 1, 0), F);
+		addLoot("gt.seeds", 144,16,48, ST.make(MD.HaC, "zucchiniseedItem"        , 1, 0), F);
 		for (int i = 0; i < 16; i++)
-		addLoot("gt.seeds",   9, 16, 48, ST.make(BlocksGT.Glowtus, 1, i));
+		addLoot("gt.seeds",   9,16,48, ST.make(BlocksGT.Glowtus, 1, i));
 		
 		
 		ST.LOOT_TABLES.add("gt.books");
@@ -404,7 +411,6 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  12, 4,24, OP.toolHeadArrow.mat(MT.Bronze, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  12, 4,24, OP.toolHeadArrow.mat(MT.Brass, 1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   2, 4,24, OP.toolHeadArrow.mat(MT.DamascusSteel, 1));
-		addLoot(ChestGenHooks.DUNGEON_CHEST           ,   1, 1, 1, IL.Tool_Lighter_Platinum_Full.get(1));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  40,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Cu));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Ag));
 		addLoot(ChestGenHooks.DUNGEON_CHEST           ,  10,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Au));
@@ -418,7 +424,6 @@ public class Loader_Loot implements Runnable {
 		
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   2, 4, 8, IL.Bottle_Holy_Water.get(1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 4,16, OP.toolHeadArrow.mat(MT.Nq, 1));
-		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1, 1, 1, IL.Tool_Lighter_Platinum_Full.get(1));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,  12,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Au));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   1,16,64, MultiTileEntityCoin.COIN_MAP.get(MT.Nq));
 		addLoot(ChestGenHooks.PYRAMID_DESERT_CHEST    ,   5, 4, 8, IL.Bag_Loot_Gems.get(1));
