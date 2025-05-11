@@ -129,24 +129,9 @@ public class Loader_Loot implements Runnable {
 		ST.LOOT_TABLES.add("gt.misc");
 		ChestGenHooks.getInfo("gt.misc").setMin( 8);
 		ChestGenHooks.getInfo("gt.misc").setMax(24);
-		addLoot("gt.misc", 144, 1, 6, ST.make(Items.name_tag, 1, 0));
-		addLoot("gt.misc", 144, 3,18, OP.billet    .mat(MT.Nd             , 1));
-		addLoot("gt.misc", 144, 3,18, OP.billet    .mat(MT.Cr             , 1));
-		addLoot("gt.misc", 144, 3,18, OP.billet    .mat(MT.Mn             , 1));
-		addLoot("gt.misc", 144, 3,18, OP.billet    .mat(MT.Ni             , 1));
-		addLoot("gt.misc", 144, 3,18, OP.billet    .mat(MT.Sb             , 1));
-		addLoot("gt.misc", 144, 3,18, OP.billet    .mat(MT.Sn             , 1));
-		addLoot("gt.misc", 144, 3,18, OP.billet    .mat(MT.Zn             , 1));
-		addLoot("gt.misc", 144, 3,18, OP.billet    .mat(MT.Cu             , 1));
-		addLoot("gt.misc", 144, 3,18, OP.billet    .mat(MT.Ag             , 1));
-		addLoot("gt.misc", 144, 3,18, OP.billet    .mat(MT.Au             , 1));
-		addLoot("gt.misc", 144, 3,18, OP.billet    .mat(MT.Pt             , 1));
-		addLoot("gt.misc", 144, 3,18, OP.billet    .mat(MT.Pb             , 1));
-		addLoot("gt.misc", 144, 3,18, OP.dust      .mat(MT.Redstone       , 1));
-		addLoot("gt.misc", 144, 3,18, OP.rockGt    .mat(MT.STONES.SkyStone, 1));
-		addLoot("gt.misc", 144, 1, 2, OP.dust      .mat(MT.OREMATS.Zeolite, 1));
-		addLoot("gt.misc",  72, 1, 3, OP.rockGt    .mat(MT.MeteoricIron   , 1));
-		addLoot("gt.misc",  72, 1, 1, OP.oreRaw    .mat(MT.MeteoricIron   , 1));
+		addLoot("gt.misc", 144, 1, 4, ST.make(Items.name_tag      , 1, 0));
+		addLoot("gt.misc", 144, 2, 8, ST.make(Items.leather       , 1, 0));
+		addLoot("gt.misc", 144, 2, 8, ST.make(Items.flint         , 1, 0));
 		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_13     , 1, 0));
 		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_cat    , 1, 0));
 		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_blocks , 1, 0));
@@ -159,10 +144,31 @@ public class Loader_Loot implements Runnable {
 		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_ward   , 1, 0));
 		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_11     , 1, 0));
 		addLoot("gt.misc",  13, 1, 1, ST.make(Items.record_wait   , 1, 0));
+		addLoot("gt.misc", 144, 3,12, OP.billet    .mat(MT.Nd             , 1));
+		addLoot("gt.misc", 144, 3,12, OP.billet    .mat(MT.Cr             , 1));
+		addLoot("gt.misc", 144, 3,12, OP.billet    .mat(MT.Mn             , 1));
+		addLoot("gt.misc", 144, 3,12, OP.billet    .mat(MT.Ni             , 1));
+		addLoot("gt.misc", 144, 3,12, OP.billet    .mat(MT.Sb             , 1));
+		addLoot("gt.misc", 144, 3,12, OP.billet    .mat(MT.Sn             , 1));
+		addLoot("gt.misc", 144, 3,12, OP.billet    .mat(MT.Zn             , 1));
+		addLoot("gt.misc", 144, 3,12, OP.billet    .mat(MT.Cu             , 1));
+		addLoot("gt.misc", 144, 3,12, OP.billet    .mat(MT.Ag             , 1));
+		addLoot("gt.misc", 144, 3,12, OP.billet    .mat(MT.Au             , 1));
+		addLoot("gt.misc", 144, 3,12, OP.billet    .mat(MT.Pt             , 1));
+		addLoot("gt.misc", 144, 3,12, OP.billet    .mat(MT.Pb             , 1));
+		addLoot("gt.misc", 144, 3,12, OP.dust      .mat(MT.Redstone       , 1));
+		addLoot("gt.misc", 144, 3,12, OP.rockGt    .mat(MT.STONES.SkyStone, 1));
+		addLoot("gt.misc", 144, 1, 2, OP.dust      .mat(MT.OREMATS.Zeolite, 1));
+		addLoot("gt.misc",  72, 1, 4, OP.rockGt    .mat(MT.MeteoricIron   , 1));
+		addLoot("gt.misc",  72, 1, 1, OP.oreRaw    .mat(MT.MeteoricIron   , 1));
+		addLoot("gt.misc",  36, 2, 8, OP.stick     .mat(MT.Blizz          , 1));
+		addLoot("gt.misc",  36, 2, 8, OP.stick     .mat(MT.Blitz          , 1));
+		addLoot("gt.misc",  36, 2, 8, OP.stick     .mat(MT.Basalz         , 1));
+		addLoot("gt.misc",  36, 2, 8, OP.stick     .mat(MT.Breeze         , 1));
 		addLoot("gt.misc",  48, 2, 8, IL.Food_Can_Undefined_6.get(1));
 		addLoot("gt.misc",  48, 2, 8, IL.Food_Can_Bread_6.get(1));
 		addLoot("gt.misc",  48, 2, 8, IL.Food_Can_Chum_4.get(1));
-		addLoot("gt.misc", 144, 3,18, IL.Dynamite.get(1));
+		addLoot("gt.misc", 144, 3,12, IL.Dynamite.get(1));
 		addLoot("gt.misc", 144, 1, 4, IL.Tool_MatchBox_Full.get(1));
 		addLoot("gt.misc",  33, 1, 1, IL.Tool_Lighter_Invar_Full.get(1));
 		addLoot("gt.misc",   3, 1, 1, IL.Tool_Lighter_Platinum_Full.get(1));
@@ -402,7 +408,7 @@ public class Loader_Loot implements Runnable {
 		
 		
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   2, 8,16, IL.Bottle_Purple_Drink.get(1));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 8,16, IL.Bottle_Glue.get(1));
+		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 8,16, IL.Bottle_Slime_Green.get(1));
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   2, 8,16, IL.Bottle_Lubricant.get(1));
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   2, 1, 1, ST.book("Manual_Elements"));
 		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 1, 1, ST.book("Manual_Alloys"));
@@ -473,7 +479,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.PYRAMID_JUNGLE_DISPENSER,   1, 8,16, ST.update(OP.arrowGtWood.mat(MT.Ke, 1)));
 		
 //      addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  10, 1, 1, ItemList.Spray_Ice.get(1));
-		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 8,16, IL.Bottle_Glue.get(1));
+		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 8,16, IL.Bottle_Slime_Green.get(1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   2, 8,16, IL.Bottle_Lubricant.get(1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4,16,64, ST.make(Blocks.coal_ore    , 1, 0));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   4,16,64, ST.make(Blocks.iron_ore    , 1, 0));
@@ -494,7 +500,7 @@ public class Loader_Loot implements Runnable {
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,  10, 1, 2, IL.Bag_Loot_Misc.get(1));
 		addLoot(ChestGenHooks.MINESHAFT_CORRIDOR      ,   6, 1, 2, IL.Book_Loot_MatDict.get(1));
 		
-		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   4, 8,16, IL.Bottle_Glue.get(1));
+		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   4, 8,16, IL.Bottle_Slime_Green.get(1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   4, 8,16, IL.Bottle_Lubricant.get(1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 4,12, OP.ingot.mat(MT.Steel, 1));
 		addLoot(ChestGenHooks.VILLAGE_BLACKSMITH      ,   2, 4,12, OP.plate.mat(MT.Steel, 1));
