@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -426,6 +426,8 @@ public class TD {
 		public static final TagData GLOWING                                 = TagData.createTagData("PROPERTIES.GLOWING", "Glowing");
 		/** If this Material is lighting up the area around it */
 		public static final TagData LIGHTING                                = TagData.createTagData("PROPERTIES.LIGHTING", "Lighting");
+		/** If this Material is soft, used for Metals. */
+		public static final TagData SOFT                                    = TagData.createTagData("PROPERTIES.SOFT", "Soft");
 		/** If this Material is brittle */
 		public static final TagData BRITTLE                                 = TagData.createTagData("PROPERTIES.BRITTLE", "Brittle");
 		/** If this Material is stretchable */
@@ -468,9 +470,9 @@ public class TD {
 		public static final TagData DONT_SHOW_THIS_COMPONENT                = TagData.createTagData("PROPERTIES.DONT_SHOW_THIS_COMPONENT", "Not shown as Component");
 		
 		/** Contains all known Property Tags. */
-		public static final List<TagData> ALL                               = new ArrayListNoNulls<>(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, COAL, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, WARPING, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, AUTO_COLLECTING, MAGNETIC_ACTIVE, MAGNETIC_PASSIVE, BETWEENLANDS, MAZEBREAKER, LIGHTING, BRITTLE, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF, EXPLODES_IN_NONVANILLA_CRAFTING_GRID, HAS_COLOR, AUTO_BLACKLIST, AUTO_MATERIAL, INVALID_MATERIAL, IGNORE_IN_COLOR_LOG, UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT));
+		public static final List<TagData> ALL                               = new ArrayListNoNulls<>(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, COAL, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, WARPING, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, AUTO_COLLECTING, MAGNETIC_ACTIVE, MAGNETIC_PASSIVE, BETWEENLANDS, MAZEBREAKER, LIGHTING, BRITTLE, SOFT, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF, EXPLODES_IN_NONVANILLA_CRAFTING_GRID, HAS_COLOR, AUTO_BLACKLIST, AUTO_MATERIAL, INVALID_MATERIAL, IGNORE_IN_COLOR_LOG, UNUSED_MATERIAL, DONT_SHOW_THIS_COMPONENT));
 		/** Contains all relevant Property Tags. */
-		public static final List<TagData> ALL_RELEVANTS                     = new ArrayListNoNulls<>(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, COAL, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, WARPING, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, AUTO_COLLECTING, MAGNETIC_ACTIVE, MAGNETIC_PASSIVE, BETWEENLANDS, MAZEBREAKER, BRITTLE, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF, EXPLODES_IN_NONVANILLA_CRAFTING_GRID));
+		public static final List<TagData> ALL_RELEVANTS                     = new ArrayListNoNulls<>(Arrays.asList(ACID, WOOD, FOOD, MEAT, ROTTEN, COAL, STONE, PEARL, QUARTZ, CRYSTAL, MAGICAL, WARPING, VALUABLE, BURNING, FLAMMABLE, UNBURNABLE, EXPLOSIVE, BOUNCY, GLOWING, AUTO_COLLECTING, MAGNETIC_ACTIVE, MAGNETIC_PASSIVE, BETWEENLANDS, MAZEBREAKER, BRITTLE, SOFT, STRETCHY, INVISIBLE, TRANSPARENT, ENDER_DRAGON_PROOF, WITHER_PROOF, EXPLODES_IN_NONVANILLA_CRAFTING_GRID));
 	}
 	
 	/** Describing the kind of binding the Compound Material is having */

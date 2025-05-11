@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -51,6 +51,7 @@ public interface ICondition<O> {
 	
 	public static class Or<O> implements ICondition<O> {
 		private final ICondition<O>[] mConditions;
+		public final Not<O> NOT = new Not<>(this);
 		
 		@SafeVarargs
 		public Or(ICondition<O>... aConditions) {
@@ -66,6 +67,7 @@ public interface ICondition<O> {
 	
 	public static class Nor<O> implements ICondition<O> {
 		private final ICondition<O>[] mConditions;
+		public final Not<O> NOT = new Not<>(this);
 		
 		@SafeVarargs
 		public Nor(ICondition<O>... aConditions) {
@@ -81,6 +83,7 @@ public interface ICondition<O> {
 	
 	public static class And<O> implements ICondition<O> {
 		private final ICondition<O>[] mConditions;
+		public final Not<O> NOT = new Not<>(this);
 		
 		@SafeVarargs
 		public And(ICondition<O>... aConditions) {
@@ -96,6 +99,7 @@ public interface ICondition<O> {
 	
 	public static class Nand<O> implements ICondition<O> {
 		private final ICondition<O>[] mConditions;
+		public final Not<O> NOT = new Not<>(this);
 		
 		@SafeVarargs
 		public Nand(ICondition<O>... aConditions) {
@@ -111,6 +115,7 @@ public interface ICondition<O> {
 	
 	public static class Xor<O> implements ICondition<O> {
 		private final ICondition<O> mCondition1, mCondition2;
+		public final Not<O> NOT = new Not<>(this);
 		
 		public Xor(ICondition<O> aCondition1, ICondition<O> aCondition2) {
 			mCondition1 = aCondition1;
@@ -125,6 +130,7 @@ public interface ICondition<O> {
 	
 	public static class Equal<O> implements ICondition<O> {
 		private final ICondition<O> mCondition1, mCondition2;
+		public final Not<O> NOT = new Not<>(this);
 		
 		public Equal(ICondition<O> aCondition1, ICondition<O> aCondition2) {
 			mCondition1 = aCondition1;
