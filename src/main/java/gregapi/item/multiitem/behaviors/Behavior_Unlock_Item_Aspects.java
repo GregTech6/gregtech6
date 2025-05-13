@@ -27,13 +27,12 @@ import gregapi.item.multiitem.behaviors.IBehavior.AbstractBehaviorDefault;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.ST;
 import gregapi.util.UT;
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import thaumcraft.api.ThaumcraftApi;
 
+import java.util.Iterator;
 import java.util.List;
 
 import static gregapi.data.CS.*;
@@ -81,13 +80,12 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 					// Prevent 16 Bit Integer Overflows because some Thaumcraft UIs use short instead of int...
 					COMPAT_TC.validate();
 					// Unlock all Aspects for Items that match the Mods for this Behavior.
-					for (List tList : ThaumcraftApi.objectTags.keySet()) if (!tList.isEmpty()) {
-						ItemStack tStack = null;
-						if (tList.get(0) instanceof Item) {
-							tStack = ST.make_((Item) tList.get(0), 1, tList.size() > 1 && tList.get(1) instanceof Number ? ((Number)tList.get(1)).shortValue() : 0);
-						} else if (tList.get(0) instanceof Block) {
-							tStack = ST.make_((Block)tList.get(0), 1, tList.size() > 1 && tList.get(1) instanceof Number ? ((Number)tList.get(1)).shortValue() : 0);
-						}
+					
+					@SuppressWarnings("rawtypes")
+					Iterator tIterator = Item.itemRegistry.iterator();
+					Object tObject;
+					while (tIterator.hasNext()) if ((tObject = tIterator.next()) instanceof Item) {
+						ItemStack tStack = ST.make((Item)tObject, 1, ((Item)tObject).getHasSubtypes() ? W : 0);
 						if (ST.valid(tStack)) {
 							String tRegName = ST.regName(tStack);
 							for (ModData tMod : mModIDs) if (tMod.owns(tRegName)) {
