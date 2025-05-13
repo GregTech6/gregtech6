@@ -54,7 +54,7 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 	public boolean onItemUse(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (!aWorld.isRemote) {
 			if (aPlayer != null) {
-				UT.Entities.sendchat(aPlayer, "This may lag a minute or two");
+				UT.Entities.sendchat(aPlayer, "This might lag for more than a minute");
 				UT.Sounds.send(SFX.MC_HMM, aPlayer);
 				if (COMPAT_TC != null && ST.use(aPlayer, T, aStack)) {
 					UT.Sounds.send(SFX.MC_XP, aPlayer);
