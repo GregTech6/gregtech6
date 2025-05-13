@@ -2077,6 +2077,7 @@ public class MT {
 			White                   .put(MD.MC);
 			
 			
+			Cu                      .put(MD.EtFu, COMMON_ORE);
 			STONES.Granite          .put(MD.EtFu);
 			STONES.Diorite          .put(MD.EtFu);
 			STONES.Andesite         .put(MD.EtFu);
@@ -2109,12 +2110,6 @@ public class MT {
 			
 			
 			Butter                  .put(MD.GrC);
-			
-			
-			PEZ                     .put(MD.CANDY);
-			Licorice                .put(MD.CANDY);
-			Nougat                  .put(MD.CANDY);
-			Marshmallow             .put(MD.CANDY);
 			
 			
 			Netherite               .put(MD.NePl, COMMON_ORE);
@@ -2208,7 +2203,6 @@ public class MT {
 			Os                      .put(COMMON_ORE).setOriginalMod("gravisuite", "Gravisuite (Old IC2 Addon)");
 			
 			
-			Cu                      .put(MD.IC2, COMMON_ORE);
 			Sn                      .put(MD.IC2, COMMON_ORE);
 			Bronze                  .put(MD.IC2);
 			RefinedIron             .put(MD.IC2);
@@ -2480,6 +2474,12 @@ public class MT {
 			MuspelheimPower         .put(MD.ALF).visDefault();
 			NiflheimPower           .put(MD.ALF).visDefault();
 			Iffesal                 .put(MD.ALF).visDefault();
+			
+			
+			PEZ                     .put(MD.CANDY);
+			Licorice                .put(MD.CANDY);
+			Nougat                  .put(MD.CANDY);
+			Marshmallow             .put(MD.CANDY);
 			
 			
 			Iritanium               .put(MD.GC_ADV_ROCKETRY);

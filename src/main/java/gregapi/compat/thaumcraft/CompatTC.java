@@ -34,6 +34,7 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.wooddict.WoodDictionary;
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -47,11 +48,9 @@ import thaumcraft.api.crafting.IArcaneRecipe;
 import thaumcraft.api.crafting.InfusionEnchantmentRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.internal.WeightedRandomLoot;
-import thaumcraft.api.research.ResearchCategories;
-import thaumcraft.api.research.ResearchCategoryList;
-import thaumcraft.api.research.ResearchItem;
-import thaumcraft.api.research.ResearchPage;
+import thaumcraft.api.research.*;
 import thaumcraft.common.items.equipment.ItemElementalAxe;
+import thaumcraft.common.lib.research.ScanManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -202,13 +201,25 @@ public class CompatTC extends CompatBase implements ICompatTC {
 		ThaumcraftApi.registerEntityTag("TwilightForest.Yeti Boss"                   , new AspectList().add(Aspect.BEAST, 20).add(Aspect.MAN, 20).add(Aspect.COLD, 20));
 	}
 	
-	@Override public void onServerStarting(FMLServerStartingEvent aEvent) {
+	@Override
+	public void onServerStarting(FMLServerStartingEvent aEvent) {
 		// These ItemStacks are Enchanted BEFORE being copied in Thaumcraft, which leads to them always having the SAME Enchantment...
 		for (WeightedRandomLoot tLoot : WeightedRandomLoot.lootBagCommon) {
 			if (tLoot != null && (ST.equal(tLoot.item, Items.book) || ST.equal(tLoot.item, Items.enchanted_book))) {
 				ST.REVERT_TO_BOOK_TO_FIX_STUPID.add(tLoot.item);
 			}
 		}
+	}
+	
+	@Override
+	public boolean scan(EntityPlayer aPlayer, ItemStack aStack) {
+		if (ST.meta(aStack) == W) {
+			for (int i = 0; i < 16; i++)
+			ScanManager.completeScan(aPlayer, new ScanResult((byte)2, ST.id(aStack), i, ST.entity(aPlayer, ST.make(ST.item(aStack), 1, i)), ""), "@");
+		} else {
+			ScanManager.completeScan(aPlayer, new ScanResult((byte)2, ST.id(aStack), ST.meta(aStack), ST.entity(aPlayer, aStack), ""), "@");
+		}
+		return T;
 	}
 	
 	@Override

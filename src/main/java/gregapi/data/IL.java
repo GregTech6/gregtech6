@@ -468,7 +468,7 @@ public enum IL implements IItemContainer {
 	Paper_Blueprint_Empty, Paper_Blueprint_Used,
 	Paper_Printed_Pages, Paper_Printed_Pages_Many,
 	Paper_Magic_Empty, Paper_Magic_Page, Paper_Magic_Pages,
-	Paper_Magic_Research_0, Paper_Magic_Research_1, Paper_Magic_Research_2, Paper_Magic_Research_3, Paper_Magic_Research_4, Paper_Magic_Research_5, Paper_Magic_Research_6, Paper_Magic_Research_7, Paper_Magic_Research_8,
+	Paper_Magic_Research_0, Paper_Magic_Research_1, Paper_Magic_Research_2, Paper_Magic_Research_3, Paper_Magic_Research_4, Paper_Magic_Research_5, Paper_Magic_Research_6, Paper_Magic_Research_7, Paper_Magic_Research_8, Book_Aspectonomicon,
 	Paper_Punch_Card_Empty, Paper_Punch_Card_Encoded,
 	Tool_Matches, Tool_MatchBox_Empty, Tool_MatchBox_Used, Tool_MatchBox_Full,
 	Tool_Lighter_Invar_Empty, Tool_Lighter_Invar_Used, Tool_Lighter_Invar_Full,
