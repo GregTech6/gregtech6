@@ -94,6 +94,8 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 							}
 						}
 					}
+					// Prevent 16 Bit Integer Overflows because some Thaumcraft UIs use short instead of int...
+					COMPAT_TC.validate();
 				}
 			}
 			return T;

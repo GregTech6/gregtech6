@@ -20,6 +20,7 @@
 package gregapi.compat.thaumcraft;
 
 import cpw.mods.fml.common.event.FMLModIdMappingEvent;
+import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
@@ -49,12 +50,14 @@ import thaumcraft.api.crafting.InfusionEnchantmentRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.internal.WeightedRandomLoot;
 import thaumcraft.api.research.*;
+import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.items.equipment.ItemElementalAxe;
 import thaumcraft.common.lib.research.ScanManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static gregapi.data.CS.*;
 
@@ -212,12 +215,28 @@ public class CompatTC extends CompatBase implements ICompatTC {
 	}
 	
 	@Override
+	public void onServerStarted(FMLServerStartedEvent aEvent) {
+		validate();
+	}
+	
+	@Override
 	public boolean scan(EntityPlayer aPlayer, ItemStack aStack) {
 		if (ST.meta(aStack) == W) {
 			for (int i = 0; i < 16; i++)
 			ScanManager.completeScan(aPlayer, new ScanResult((byte)2, ST.id(aStack), i, ST.entity(aPlayer, ST.make(ST.item(aStack), 1, i)), ""), "@");
 		} else {
-			ScanManager.completeScan(aPlayer, new ScanResult((byte)2, ST.id(aStack), ST.meta(aStack), ST.entity(aPlayer, aStack), ""), "@");
+			ScanManager.completeScan(aPlayer, new ScanResult((byte)2, ST.id(aStack), ST.meta(aStack), ST.entity(aPlayer, ST.copy(aStack)), ""), "@");
+		}
+		return T;
+	}
+	
+	@Override
+	public boolean validate() {
+		// Prevent 16 Bit Integer Overflows because some Thaumcraft UIs use short instead of int...
+		for (AspectList tList : Thaumcraft.proxy.getPlayerKnowledge().aspectsDiscovered.values()) if (tList != null) {
+			for (Map.Entry<Aspect, Integer> tEntry : tList.aspects.entrySet()) {
+				if (tEntry.getValue() > 30000 || tEntry.getValue() < -100) tEntry.setValue(30000);
+			}
 		}
 		return T;
 	}

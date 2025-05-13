@@ -64,6 +64,7 @@ public interface ICompatTC extends ICompat {
 	
 	public ItemStack[] lootbag(long aMeta);
 	public boolean scan(EntityPlayer aPlayer, ItemStack aStack);
+	public boolean validate();
 	
 	public Object addCrucibleRecipe(String aResearch, Object aInput, ItemStack aOutput, List<TC_AspectStack> aAspects);
 	public Object addCrucibleRecipe(String aResearch, Object aInput, ItemStack aOutput, TC_AspectStack... aAspects);
