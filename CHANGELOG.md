@@ -6,7 +6,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.04: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED] Aspectonomicon, a Book that when rightclicked, will count as having scanned most Vanilla-ish Items and Blocks with a Thaumometer. Does not contain Aspects for Thaumcraft Items. It is crafted using the 9 different Magic Research Papers, and I had to make it so the Book is used up because Thaumcraft does not properly check if you scanned certain things already.
 
 
 6.17.03:
