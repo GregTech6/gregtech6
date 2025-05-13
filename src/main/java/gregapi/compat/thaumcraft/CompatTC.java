@@ -241,7 +241,7 @@ public class CompatTC extends CompatBase implements ICompatTC {
 		// Prevent 16 Bit Integer Overflows because some Thaumcraft UIs use short instead of int...
 		for (AspectList tList : Thaumcraft.proxy.getPlayerKnowledge().aspectsDiscovered.values()) if (tList != null) {
 			for (Map.Entry<Aspect, Integer> tEntry : tList.aspects.entrySet()) {
-				if (tEntry.getValue() > 30000 || tEntry.getValue() < -100) tEntry.setValue(30000);
+				if (tEntry.getValue() > 20000 || tEntry.getValue() < -100) tEntry.setValue(20000);
 			}
 		}
 		return T;
