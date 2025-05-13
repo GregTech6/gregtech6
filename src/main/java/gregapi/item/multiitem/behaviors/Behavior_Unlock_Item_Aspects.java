@@ -19,6 +19,7 @@
 
 package gregapi.item.multiitem.behaviors;
 
+import cpw.mods.fml.common.registry.GameData;
 import gregapi.code.ItemStackContainer;
 import gregapi.code.ModData;
 import gregapi.data.IL;
@@ -80,12 +81,9 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 					// Prevent 16 Bit Integer Overflows because some Thaumcraft UIs use short instead of int...
 					COMPAT_TC.validate();
 					// Unlock all Aspects for Items that match the Mods for this Behavior.
-					
-					@SuppressWarnings("rawtypes")
-					Iterator tIterator = Item.itemRegistry.iterator();
-					Object tObject;
-					while (tIterator.hasNext()) if ((tObject = tIterator.next()) instanceof Item) {
-						ItemStack tStack = ST.make((Item)tObject, 1, ((Item)tObject).getHasSubtypes() ? W : 0);
+					Iterator<Item> tIterator = GameData.getItemRegistry().iterator();
+					while (tIterator.hasNext()) {
+						ItemStack tStack = ST.make(tIterator.next(), 1, W);
 						if (ST.valid(tStack)) {
 							String tRegName = ST.regName(tStack);
 							for (ModData tMod : mModIDs) if (tMod.owns(tRegName)) {

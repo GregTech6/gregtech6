@@ -227,8 +227,10 @@ public class CompatTC extends CompatBase implements ICompatTC {
 	
 	@Override
 	public boolean scan(EntityPlayer aPlayer, ItemStack aStack) {
+		if (aPlayer == null || ST.invalid(aStack)) return F;
 		if (ST.meta(aStack) == W) {
-			for (int i = 0; i < 16; i++)
+			ScanManager.completeScan(aPlayer, new ScanResult((byte)2, ST.id(aStack), 0, ST.entity(aPlayer, ST.make(ST.item(aStack), 1, 0)), ""), "@");
+			if (ST.item(aStack).getHasSubtypes()) for (int i = 1; i < 16; i++)
 			ScanManager.completeScan(aPlayer, new ScanResult((byte)2, ST.id(aStack), i, ST.entity(aPlayer, ST.make(ST.item(aStack), 1, i)), ""), "@");
 		} else {
 			ScanManager.completeScan(aPlayer, new ScanResult((byte)2, ST.id(aStack), ST.meta(aStack), ST.entity(aPlayer, ST.copy(aStack)), ""), "@");

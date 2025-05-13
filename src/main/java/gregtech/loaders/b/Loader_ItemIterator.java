@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,7 @@
 
 package gregtech.loaders.b;
 
-import static gregapi.data.CS.*;
-
-import java.util.Iterator;
-
+import cpw.mods.fml.common.registry.GameData;
 import gregapi.data.IL;
 import gregapi.data.OD;
 import gregapi.data.RM;
@@ -33,6 +30,11 @@ import net.minecraft.block.BlockSlab;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
+
+import java.util.Iterator;
+
+import static gregapi.data.CS.T;
+import static gregapi.data.CS.W;
 
 public class Loader_ItemIterator implements Runnable {
 	@Override
@@ -47,34 +49,33 @@ public class Loader_ItemIterator implements Runnable {
 		RM.Canner.addRecipe2(T, 16, 48, ST.make(Items.mushroom_stew, 1, W), IL.IC2_Food_Can_Empty.get( 6), IL.IC2_Food_Can_Filled   .get( 6), ST.make(Items.bowl, 1, 0));
 		}
 		
-		@SuppressWarnings("rawtypes")
-		Iterator tIterator = Item.itemRegistry.iterator();
-		
-		Object tObject;
-		String tName;
-		
-		while (tIterator.hasNext()) if ((tObject = tIterator.next()) instanceof Item && !ST.isGT((Item)tObject)) {
-			Item tItem = (Item)tObject;
+		Item tItem;
+		Iterator<Item> tIterator = GameData.getItemRegistry().iterator();
+		while (tIterator.hasNext()) if ((tItem = tIterator.next()) != null && !ST.isGT(tItem)) {
 			Block tBlock = ST.block(tItem);
 			
 			// Hide all those stupid Double Slabs from NEI...
 			if (tBlock instanceof BlockSlab && tBlock.isOpaqueCube()) ST.hide(tBlock);
 			
+			// IC2 Food Cans.
+			if (tCheckCans && tItem instanceof ItemFood && tItem != IL.IC2_Food_Can_Filled.item() && tItem != IL.IC2_Food_Can_Spoiled.item()) {
+				int tFoodValue = ((ItemFood)tItem).func_150905_g(ST.make(tItem, 1, 0));
+				if (tFoodValue > 0) RM.Canner.addRecipe2(T, 16, 16L*tFoodValue, ST.make(tItem, 1, W), IL.IC2_Food_Can_Empty.get(tFoodValue), IL.IC2_Food_Can_Filled.get(tFoodValue), ST.container(ST.make(tItem, 1, 0), T));
+			}
+			
+			// TODO: Gah, too lazy to install those Mods again to do it proper, and those are not Registry Names, that I could just plop in somewhere else, welp...
+			String tName;
 			if ((tName = tItem.getUnlocalizedName()) != null) {
-				if (tCheckCans && tItem instanceof ItemFood && tItem != IL.IC2_Food_Can_Filled.item() && tItem != IL.IC2_Food_Can_Spoiled.item()) {
-					int tFoodValue = ((ItemFood)tItem).func_150905_g(ST.make(tItem, 1, 0));
-					if (tFoodValue > 0) RM.Canner.addRecipe2(T, 16, 16*tFoodValue, ST.make(tItem, 1, W), IL.IC2_Food_Can_Empty.get(tFoodValue), IL.IC2_Food_Can_Filled.get(tFoodValue), ST.container(ST.make(tItem, 1, 0), T));
-				}
-				
-				// TODO: Gah, too lazy to install those Mods again to do it proper, and those are not Registry Names, that I could just plop in somewhere else, so welp...
-				
 				if (tName.equals("item.ItemSensorLocationCard") || tName.equals("item.ItemEnergySensorLocationCard") || tName.equals("item.ItemEnergyArrayLocationCard") || tName.equals("item.ItemTextCard")) {
+					// TODO: Also add Bookshelf Data
 					RM.unpack(ST.make(tItem, 1, W), IL.Circuit_Basic.get(2));
 				}
 				if (tName.equals("item.ItemTimeCard")) {
+					// TODO: Also add Bookshelf Data
 					RM.unpack(ST.make(tItem, 1, W), IL.Circuit_Basic.get(1));
 				}
 				if (tName.equals("item.ccprintout")) {
+					// TODO: Also add Bookshelf Data
 					OM.reg_(OD.paperWritten, ST.make(tItem, 1, 0));
 					OM.reg_(OD.paperWritten, ST.make(tItem, 1, 1));
 					OM.reg_(OD.bookWritten , ST.make(tItem, 1, 2));
