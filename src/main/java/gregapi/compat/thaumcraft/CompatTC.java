@@ -22,6 +22,7 @@ package gregapi.compat.thaumcraft;
 import cpw.mods.fml.common.event.FMLModIdMappingEvent;
 import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.ItemStackContainer;
 import gregapi.compat.CompatBase;
@@ -216,6 +217,11 @@ public class CompatTC extends CompatBase implements ICompatTC {
 	
 	@Override
 	public void onServerStarted(FMLServerStartedEvent aEvent) {
+		validate();
+	}
+	
+	@Override
+	public void onServerStopping(FMLServerStoppingEvent aEvent) {
 		validate();
 	}
 	

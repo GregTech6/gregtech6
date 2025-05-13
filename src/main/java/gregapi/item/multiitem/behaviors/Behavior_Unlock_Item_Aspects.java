@@ -69,8 +69,8 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 					COMPAT_TC.scan(aPlayer, IL.Paper_Magic_Research_6.get(1));
 					COMPAT_TC.scan(aPlayer, IL.Paper_Magic_Research_7.get(1));
 					COMPAT_TC.scan(aPlayer, IL.Paper_Magic_Research_8.get(1));
-					// Just in case you forgot to scan this Item first.
-					COMPAT_TC.scan(aPlayer, aStack);
+					// Prevent 16 Bit Integer Overflows because some Thaumcraft UIs use short instead of int...
+					COMPAT_TC.validate();
 					// Unlock all Aspects for Materials that match the Mods for this Behavior.
 					for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_ARRAY) if (tMat != null) {
 						for (ModData tMod : mModIDs) if (tMod == tMat.mOriginalMod) {
@@ -78,6 +78,8 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 							break;
 						}
 					}
+					// Prevent 16 Bit Integer Overflows because some Thaumcraft UIs use short instead of int...
+					COMPAT_TC.validate();
 					// Unlock all Aspects for Items that match the Mods for this Behavior.
 					for (List tList : ThaumcraftApi.objectTags.keySet()) if (!tList.isEmpty()) {
 						ItemStack tStack = null;
@@ -96,6 +98,8 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 					}
 					// Prevent 16 Bit Integer Overflows because some Thaumcraft UIs use short instead of int...
 					COMPAT_TC.validate();
+					// Just in case you forgot to scan this Item first.
+					COMPAT_TC.scan(aPlayer, aStack);
 				}
 			}
 			return T;
