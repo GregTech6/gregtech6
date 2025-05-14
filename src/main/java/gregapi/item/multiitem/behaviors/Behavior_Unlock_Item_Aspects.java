@@ -55,10 +55,9 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 	public boolean onItemUse(MultiItem aItem, ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (!aWorld.isRemote) {
 			if (aPlayer != null) {
-				UT.Entities.sendchat(aPlayer, "This might lag for more than a minute");
 				UT.Sounds.send(SFX.MC_HMM, aPlayer);
-				if (COMPAT_TC != null && ST.use(aPlayer, T, aStack)) {
-					UT.Sounds.send(SFX.MC_XP, aPlayer);
+				if (COMPAT_TC != null) {
+					boolean tHasntScannedAnything = T;
 					// Make sure all Aspects are discovered first.
 					COMPAT_TC.scan(aPlayer, IL.Paper_Magic_Research_0.get(1));
 					COMPAT_TC.scan(aPlayer, IL.Paper_Magic_Research_1.get(1));
@@ -74,7 +73,12 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 					// Unlock all Aspects for Materials that match the Mods for this Behavior.
 					for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_ARRAY) if (tMat != null) {
 						for (ModData tMod : mModIDs) if (tMod == tMat.mOriginalMod) {
-							for (ItemStackContainer tStack : tMat.mRegisteredItems) COMPAT_TC.scan(aPlayer, tStack.toStack());
+							for (ItemStackContainer tStack : tMat.mRegisteredItems) {
+								if (COMPAT_TC.scan(aPlayer, tStack.toStack()) && tHasntScannedAnything) {
+									UT.Entities.sendchat(aPlayer, "Unlocking Aspects will lag for a few minutes");
+									tHasntScannedAnything = F;
+								}
+							}
 							break;
 						}
 					}
@@ -87,7 +91,10 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 						if (ST.valid(tStack)) {
 							String tRegName = ST.regName(tStack);
 							for (ModData tMod : mModIDs) if (tMod.owns(tRegName)) {
-								COMPAT_TC.scan(aPlayer, tStack);
+								if (COMPAT_TC.scan(aPlayer, tStack) && tHasntScannedAnything) {
+									UT.Entities.sendchat(aPlayer, "Unlocking Aspects will lag for a few minutes");
+									tHasntScannedAnything = F;
+								}
 								break;
 							}
 						}
@@ -96,6 +103,8 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 					COMPAT_TC.validate();
 					// Just in case you forgot to scan this Item first.
 					COMPAT_TC.scan(aPlayer, aStack);
+					// Send a Sound to indicate it is over.
+					if (!tHasntScannedAnything) UT.Sounds.send(SFX.MC_XP, aPlayer);
 				}
 			}
 			return T;
