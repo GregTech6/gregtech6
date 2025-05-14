@@ -228,12 +228,13 @@ public class CompatTC extends CompatBase implements ICompatTC {
 	@Override
 	public boolean scan(EntityPlayer aPlayer, ItemStack aStack) {
 		if (aPlayer == null || ST.invalid(aStack)) return F;
+		ScanResult tScan;
 		if (ST.meta(aStack) == W) {
-			ScanManager.completeScan(aPlayer, new ScanResult((byte)2, ST.id(aStack), 0, ST.entity(aPlayer, ST.make(ST.item(aStack), 1, 0)), ""), "@");
+			if (!ScanManager.hasBeenScanned(aPlayer, tScan = new ScanResult((byte)2, ST.id(aStack), 0, ST.entity(aPlayer, ST.make(ST.item(aStack), 1, 0)), ""))) ScanManager.completeScan(aPlayer, tScan, "@");
 			if (ST.item(aStack).getHasSubtypes()) for (int i = 1; i < 16; i++)
-			ScanManager.completeScan(aPlayer, new ScanResult((byte)2, ST.id(aStack), i, ST.entity(aPlayer, ST.make(ST.item(aStack), 1, i)), ""), "@");
+			if (!ScanManager.hasBeenScanned(aPlayer, tScan = new ScanResult((byte)2, ST.id(aStack), i, ST.entity(aPlayer, ST.make(ST.item(aStack), 1, i)), ""))) ScanManager.completeScan(aPlayer, tScan, "@");
 		} else {
-			ScanManager.completeScan(aPlayer, new ScanResult((byte)2, ST.id(aStack), ST.meta(aStack), ST.entity(aPlayer, ST.copy(aStack)), ""), "@");
+			if (!ScanManager.hasBeenScanned(aPlayer, tScan = new ScanResult((byte)2, ST.id(aStack), ST.meta(aStack), ST.entity(aPlayer, ST.copy(aStack)), ""))) ScanManager.completeScan(aPlayer, tScan, "@");
 		}
 		return T;
 	}
