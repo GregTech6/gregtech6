@@ -57,7 +57,8 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 			if (aPlayer != null) {
 				UT.Sounds.send(SFX.MC_HMM, aPlayer);
 				if (COMPAT_TC != null) {
-					boolean tHasntScannedAnything = T;
+					UT.Entities.sendchat(aPlayer, "Unlocking this many Aspects will lag for a few minutes, if done for the first time");
+					boolean tScannedAnything = F;
 					// Make sure all Aspects are discovered first.
 					COMPAT_TC.scan(aPlayer, IL.Paper_Magic_Research_0.get(1));
 					COMPAT_TC.scan(aPlayer, IL.Paper_Magic_Research_1.get(1));
@@ -73,12 +74,7 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 					// Unlock all Aspects for Materials that match the Mods for this Behavior.
 					for (OreDictMaterial tMat : OreDictMaterial.MATERIAL_ARRAY) if (tMat != null) {
 						for (ModData tMod : mModIDs) if (tMod == tMat.mOriginalMod) {
-							for (ItemStackContainer tStack : tMat.mRegisteredItems) {
-								if (COMPAT_TC.scan(aPlayer, tStack.toStack()) && tHasntScannedAnything) {
-									UT.Entities.sendchat(aPlayer, "Unlocking Aspects will lag for a few minutes");
-									tHasntScannedAnything = F;
-								}
-							}
+							for (ItemStackContainer tStack : tMat.mRegisteredItems) tScannedAnything |= COMPAT_TC.scan(aPlayer, tStack.toStack());
 							break;
 						}
 					}
@@ -91,10 +87,7 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 						if (ST.valid(tStack)) {
 							String tRegName = ST.regName(tStack);
 							for (ModData tMod : mModIDs) if (tMod.owns(tRegName)) {
-								if (COMPAT_TC.scan(aPlayer, tStack) && tHasntScannedAnything) {
-									UT.Entities.sendchat(aPlayer, "Unlocking Aspects will lag for a few minutes");
-									tHasntScannedAnything = F;
-								}
+								tScannedAnything |= COMPAT_TC.scan(aPlayer, tStack);
 								break;
 							}
 						}
@@ -104,7 +97,7 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 					// Just in case you forgot to scan this Item first.
 					COMPAT_TC.scan(aPlayer, aStack);
 					// Send a Sound to indicate it is over.
-					if (!tHasntScannedAnything) UT.Sounds.send(SFX.MC_XP, aPlayer);
+					if (tScannedAnything) UT.Sounds.send(SFX.MC_XP, aPlayer);
 				}
 			}
 			return T;
