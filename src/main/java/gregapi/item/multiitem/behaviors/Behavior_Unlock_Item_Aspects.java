@@ -60,7 +60,7 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 				if (COMPAT_TC != null) {
 					boolean tScannedAnything = F;
 					// Notify the GT Log File that someone started using this Item. Just in case someone abuses this to Lag a Server.
-					OUT.print(aPlayer.getCommandSenderName() + " has used the Item '" + ST.make(aStack, (NBTTagCompound)null).getDisplayName() + "', which may or may not be lagging for a few minutes");
+					OUT.println(aPlayer.getCommandSenderName() + " has used the Item '" + ST.make(aStack, (NBTTagCompound)null).getDisplayName() + "', which may or may not be lagging for a few minutes");
 					// Tell the User that this is gonna Lag.
 					UT.Entities.sendchat(aPlayer, "Unlocking this many Aspects will lag for a few minutes, if done for the first time");
 					// Make sure all Aspects are discovered first.
@@ -103,7 +103,7 @@ public class Behavior_Unlock_Item_Aspects extends AbstractBehaviorDefault {
 					// Send a Sound to indicate it is over.
 					if (tScannedAnything) UT.Sounds.send(SFX.MC_XP, aPlayer);
 					// Notify the GT Log File that someone used this Item. Just in case someone abuses this to Lag a Server.
-					OUT.print(aPlayer.getCommandSenderName() + " is done using the Item '" + ST.make(aStack, (NBTTagCompound)null).getDisplayName() + "', the related Lag which may or may not have happened, is definitely over now");
+					OUT.println(aPlayer.getCommandSenderName() + " is done using the Item '" + ST.make(aStack, (NBTTagCompound)null).getDisplayName() + "', the related Lag which may or may not have happened, is definitely over now");
 				}
 			}
 			return T;
