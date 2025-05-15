@@ -166,7 +166,7 @@ public class ToolCompat {
 			}
 			if (rReturn) {
 				if (FAST_LEAF_DECAY) WD.leafdecay(aWorld, aX, aY, aZ, null, F, F);
-				UT.Inventories.addStackToPlayerInventoryOrDrop(aEntityPlayer, tBark, aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]);
+				ST.give(aEntityPlayer, tBark, aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]);
 				return aTool.equals(TOOL_axe) ? 500 : 1000;
 			}
 			return 0;
@@ -178,7 +178,7 @@ public class ToolCompat {
 					UT.Sounds.send(SFX.MC_COLLECT, 0.2F, ((RNGSUS.nextFloat()-RNGSUS.nextFloat())*0.7F+1.0F)*2.0F, aWorld, aX+i, aY+j, aZ+k);
 					tDamage += 10000;
 				}
-				if (aCanCollect) for (ItemStack tDrop : WD.suckAll(aWorld, aX-1.5, aY-0.5, aZ-1.5, 4, 2, 4)) UT.Inventories.addStackToPlayerInventoryOrDrop(aEntityPlayer, tDrop, aWorld, aX, aY, aZ);
+				if (aCanCollect) for (ItemStack tDrop : WD.suckAll(aWorld, aX-1.5, aY-0.5, aZ-1.5, 4, 2, 4)) ST.give(aEntityPlayer, tDrop, aWorld, aX, aY, aZ);
 				return tDamage;
 			}
 			if (aBlock instanceof IGrowable) {
@@ -194,7 +194,7 @@ public class ToolCompat {
 						UT.Sounds.send(SFX.MC_COLLECT, 0.2F, ((RNGSUS.nextFloat()-RNGSUS.nextFloat())*0.7F+1.0F)*2.0F, aWorld, aX+i, aY+j, aZ+k);
 					}
 				}
-				if (aCanCollect) for (ItemStack tDrop : WD.suckAll(aWorld, aX-1.5, aY-0.5, aZ-1.5, 4, 2, 4)) UT.Inventories.addStackToPlayerInventoryOrDrop(aEntityPlayer, tDrop, aWorld, aX, aY, aZ);
+				if (aCanCollect) for (ItemStack tDrop : WD.suckAll(aWorld, aX-1.5, aY-0.5, aZ-1.5, 4, 2, 4)) ST.give(aEntityPlayer, tDrop, aWorld, aX, aY, aZ);
 				return tDamage;
 			}
 		}
@@ -315,9 +315,9 @@ public class ToolCompat {
 						if (RNGSUS.nextInt(tDamage) < aRemainingDurability) {
 							for (ItemStack tStack : tDrops) {
 								if (tOutput == null) {
-									UT.Inventories.addStackToPlayerInventoryOrDrop(aEntityPlayer, tStack, F, aWorld, aX+0.5, aY+0.5, aZ+0.5);
+									ST.give(aEntityPlayer, tStack, F, aWorld, aX+0.5, aY+0.5, aZ+0.5);
 								} else {
-									UT.Inventories.addStackToPlayerInventoryOrDrop(aEntityPlayer, tOutput, F, aWorld, aX+0.5, aY+0.5, aZ+0.5);
+									ST.give(aEntityPlayer, tOutput, F, aWorld, aX+0.5, aY+0.5, aZ+0.5);
 									tOutput = null;
 								}
 							}

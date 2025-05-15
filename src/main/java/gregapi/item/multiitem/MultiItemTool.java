@@ -455,7 +455,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 						ST.use(aPlayer, T, aStack);
 					} else if (aPlayer instanceof EntityPlayer) {
 						if (tBroken.stackSize > 64) tBroken.stackSize = 64;
-						if (!aPlayer.worldObj.isRemote) UT.Inventories.addStackToPlayerInventoryOrDrop((EntityPlayer)aPlayer, tBroken, F);
+						if (!aPlayer.worldObj.isRemote) ST.give(aPlayer, tBroken, F);
 						ST.use(aPlayer, T, aStack);
 					} else {
 						if (tBroken.stackSize > 64) tBroken.stackSize = 64;
@@ -517,7 +517,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 				if (aMat1.contains(TD.Properties.MAZEBREAKER)) tDamage /= 40; else tDamage *= 16;
 				if (!aWorld.isRemote && UT.NBT.getEnchantmentLevel(Enchantment.silkTouch, aStack) <= 0) {
 					if (aPlayer instanceof EntityPlayer && canCollectDropsDirectly(aStack, aBlock, aMeta)) {
-						UT.Inventories.addStackToPlayerInventoryOrDrop((EntityPlayer)aPlayer, IL.TF_Mazehedge.get(1), aWorld, aX, aY, aZ);
+						ST.give(aPlayer, IL.TF_Mazehedge.get(1), aWorld, aX, aY, aZ);
 					} else {
 						ST.drop(aWorld, aX, aY, aZ, IL.TF_Mazehedge.get(1));
 					}

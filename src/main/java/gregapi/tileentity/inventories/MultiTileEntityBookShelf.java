@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -220,7 +220,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 					return T;
 				}
 			}
-			if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(aSlot), T)) {
+			if (ST.add(aPlayer, slot(aSlot), T)) {
 				slotKill(aSlot);
 				updateInventory();
 				playCollect();

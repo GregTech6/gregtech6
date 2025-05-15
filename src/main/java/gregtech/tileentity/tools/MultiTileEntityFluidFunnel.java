@@ -20,7 +20,6 @@
 package gregtech.tileentity.tools;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
-import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -79,7 +78,7 @@ public class MultiTileEntityFluidFunnel extends TileEntityBase10Attachment imple
 						if (tAmount >= tFluid.amount && ((ITileEntityFunnelAccessible)tDelegator.mTileEntity).funnelFill(tDelegator.mSideOfTileEntity, tFluid, T) > 0) {
 							UT.Sounds.send(SFX.MC_LIQUID_WATER, this, F);
 							aStack.stackSize--;
-							UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.container(ST.amount(1, aStack), T), T);
+							ST.give(aPlayer, ST.container(ST.amount(1, aStack), T), T);
 							return T;
 						}
 						if (aStack.getItem() instanceof IFluidContainerItem && aStack.stackSize == 1) {

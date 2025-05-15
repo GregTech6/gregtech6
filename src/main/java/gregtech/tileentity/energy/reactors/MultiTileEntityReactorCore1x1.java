@@ -231,7 +231,7 @@ public class MultiTileEntityReactorCore1x1 extends MultiTileEntityReactorCore {
 		if (isClientSide()) return 0;
 
 		if (aTool.equals(TOOL_pincers) && SIDES_TOP[aSide]) {
-			if (slotHas(0) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, slot(0), T, worldObj, xCoord+0.5, yCoord+1.5, zCoord+0.5)) {
+			if (slotHas(0) && ST.give(aPlayer, slot(0), T, worldObj, xCoord+0.5, yCoord+1.5, zCoord+0.5)) {
 				slotKill(0);
 				updateClientData();
 				return 10000;

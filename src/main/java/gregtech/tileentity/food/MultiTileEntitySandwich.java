@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -25,7 +25,6 @@ import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.block.multitileentity.MultiTileEntityItemInternal;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ArrayListNoNulls;
-import gregapi.data.CS.*;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.data.MD;
@@ -136,7 +135,7 @@ public class MultiTileEntitySandwich extends TileEntityBase03MultiTileEntities i
 		if (tStackSize > 0) {
 			ItemStack tContainer = ST.mul(tStackSize, ST.container(aStack, T));
 			ST.use(aPlayer, aStack, tStackSize);
-			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tContainer);
+			ST.give(aPlayer, tContainer);
 			return T;
 		}
 		return T;

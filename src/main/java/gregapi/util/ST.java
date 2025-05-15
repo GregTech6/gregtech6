@@ -22,12 +22,10 @@ package gregapi.util;
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregapi.block.ItemBlockBase;
 import gregapi.code.*;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.item.IItemGT;
 import gregapi.item.IItemGTContainerTool;
+import gregapi.item.IItemProjectile;
 import gregapi.item.IItemUpdatable;
 import gregapi.item.multiitem.MultiItemRandom;
 import gregapi.item.multiitem.food.IFoodStat;
@@ -35,6 +33,7 @@ import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.delegate.ITileEntityCanDelegate;
+import gregapi.wooddict.WoodDictionary;
 import gregtech.worldgen.TwilightTreasureReplacer;
 import ic2.api.item.IC2Items;
 import net.minecraft.block.*;
@@ -51,6 +50,8 @@ import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.potion.Potion;
+import net.minecraft.stats.Achievement;
+import net.minecraft.stats.AchievementList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ChunkCoordinates;
@@ -60,6 +61,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.IFluidContainerItem;
+import twilightforest.TFAchievementPage;
 
 import java.util.*;
 
@@ -290,7 +292,7 @@ public class ST {
 	}
 	public static boolean use(Entity aPlayer, boolean aRemove, boolean aTriggerEvent, ItemStack aStack, long aAmount) {
 		if (UT.Entities.hasInfiniteItems(aPlayer)) return T;
-		if (ST.invalid(aStack)) return F;
+		if (invalid(aStack)) return F;
 		if (aStack.stackSize < aAmount) return F;
 		aStack.stackSize -= aAmount;
 		if (!(aPlayer instanceof EntityPlayer)) return T;
@@ -303,7 +305,7 @@ public class ST {
 				}
 			}
 		}
-		ST.update(aPlayer);
+		update(aPlayer);
 		return T;
 	}
 	
@@ -496,7 +498,7 @@ public class ST {
 				// Actually Moving the Stack
 				rMoved += move_((IInventory)aFrom.mTileEntity, (IInventory)aTo.mTileEntity, aStackFrom, aStackTo, aSlotFrom, aSlotTo, tMovable);
 				aStackFrom = ((IInventory)aFrom.mTileEntity).getStackInSlot(aSlotFrom);
-				if (ST.size(aStackFrom) < 1) break;
+				if (size(aStackFrom) < 1) break;
 			}
 		}
 		return rMoved;
@@ -576,26 +578,26 @@ public class ST {
 		return 0;
 	}
 	
-	public static int move(IInventory aInventory, int aSlotFrom, int aSlotTo) {
+	public static int move(IInventory aInv, int aSlotFrom, int aSlotTo) {
 		if (aSlotFrom == aSlotTo) return 0;
-		ItemStack aStackFrom = aInventory.getStackInSlot(aSlotFrom), aStackTo = aInventory.getStackInSlot(aSlotTo);
-		return aStackFrom != null && (aStackTo == null || equal_(aStackFrom, aStackTo, F)) ? move_(aInventory, aStackFrom, aStackTo, aSlotFrom, aSlotTo, Math.min(aStackFrom.stackSize, Math.min(aInventory.getInventoryStackLimit(), aStackTo == null ? aStackFrom.getMaxStackSize() : aStackTo.getMaxStackSize() - aStackTo.stackSize))) : 0;
+		ItemStack aStackFrom = aInv.getStackInSlot(aSlotFrom), aStackTo = aInv.getStackInSlot(aSlotTo);
+		return aStackFrom != null && (aStackTo == null || equal_(aStackFrom, aStackTo, F)) ? move_(aInv, aStackFrom, aStackTo, aSlotFrom, aSlotTo, Math.min(aStackFrom.stackSize, Math.min(aInv.getInventoryStackLimit(), aStackTo == null ? aStackFrom.getMaxStackSize() : aStackTo.getMaxStackSize() - aStackTo.stackSize))) : 0;
 	}
-	public static int move(IInventory aInventory, int aSlotFrom, int aSlotTo, int aCount) {
-		return move(aInventory, aInventory.getStackInSlot(aSlotFrom), aInventory.getStackInSlot(aSlotTo), aSlotFrom, aSlotTo, aCount);
+	public static int move(IInventory aInv, int aSlotFrom, int aSlotTo, int aCount) {
+		return move(aInv, aInv.getStackInSlot(aSlotFrom), aInv.getStackInSlot(aSlotTo), aSlotFrom, aSlotTo, aCount);
 	}
-	public static int move(IInventory aInventory, ItemStack aStackFrom, ItemStack aStackTo, int aSlotFrom, int aSlotTo, int aCount) {
-		return aStackFrom != null && (aStackTo == null || equal_(aStackFrom, aStackTo, F)) ? move_(aInventory, aStackFrom, aStackTo, aSlotFrom, aSlotTo, aCount) : 0;
+	public static int move(IInventory aInv, ItemStack aStackFrom, ItemStack aStackTo, int aSlotFrom, int aSlotTo, int aCount) {
+		return aStackFrom != null && (aStackTo == null || equal_(aStackFrom, aStackTo, F)) ? move_(aInv, aStackFrom, aStackTo, aSlotFrom, aSlotTo, aCount) : 0;
 	}
-	public static int move_(IInventory aInventory, ItemStack aStackFrom, ItemStack aStackTo, int aSlotFrom, int aSlotTo, int aCount) {
+	public static int move_(IInventory aInv, ItemStack aStackFrom, ItemStack aStackTo, int aSlotFrom, int aSlotTo, int aCount) {
 		aCount = Math.min(aCount, aStackFrom.stackSize);
 		if (aCount < 0) return 0;
-		ItemStack tStack = aInventory.decrStackSize(aSlotFrom, aCount);
+		ItemStack tStack = aInv.decrStackSize(aSlotFrom, aCount);
 		if (tStack == null || tStack.stackSize <= 0) return 0;
 		aCount = Math.min(aCount, tStack.stackSize);
-		if (aStackTo == null) aInventory.setInventorySlotContents(aSlotTo, amount(aCount, aStackFrom)); else aStackTo.stackSize += aCount;
-		aInventory.markDirty();
-		WD.mark(aInventory);
+		if (aStackTo == null) aInv.setInventorySlotContents(aSlotTo, amount(aCount, aStackFrom)); else aStackTo.stackSize += aCount;
+		aInv.markDirty();
+		WD.mark(aInv);
 		return aCount;
 	}
 	public static int move(IInventory aFrom, IInventory aTo, int aSlotFrom, int aSlotTo) {
@@ -929,7 +931,7 @@ public class ST {
 		if (tItem == Items.coal) return 1600;
 		if (tItem == Items.blaze_rod) return 2400;
 		if (tItem == Items.lava_bucket) return 20000;
-		Block tBlock = ST.block_(tItem);
+		Block tBlock = block_(tItem);
 		if (tBlock == Blocks.sapling) return 100;
 		if (tBlock == Blocks.wooden_slab) return 150;
 		if (tBlock == Blocks.coal_block) return 16000;
@@ -1003,27 +1005,27 @@ public class ST {
 		return T;
 	}
 	
-	public static final Collection<ItemStack> REVERT_TO_BOOK_TO_FIX_STUPID = ST.arraylist();
-	public static void fixBookStacks() {for (ItemStack tStack : REVERT_TO_BOOK_TO_FIX_STUPID) ST.set(tStack, ST.make(Items.book, 1, 0), T, T);}
+	public static final Collection<ItemStack> REVERT_TO_BOOK_TO_FIX_STUPID = arraylist();
+	public static void fixBookStacks() {for (ItemStack tStack : REVERT_TO_BOOK_TO_FIX_STUPID) set(tStack, make(Items.book, 1, 0), T, T);}
 	
 	public static final List<String>
 	LOOT_TABLES         = new ArrayListNoNulls<>(F, "dungeonChest", "villageBlacksmith", "mineshaftCorridor", "strongholdLibrary", "strongholdCrossing", "strongholdCorridor", "pyramidDesertyChest", "pyramidJungleChest", "pyramidJungleDispenser", "bonusChest"),
 	LOOT_TABLES_VANILLA = new ArrayListNoNulls<>(F, "dungeonChest", "villageBlacksmith", "mineshaftCorridor", "strongholdLibrary", "strongholdCrossing", "strongholdCorridor", "pyramidDesertyChest", "pyramidJungleChest", "pyramidJungleDispenser", "bonusChest");
 	
 	public static ItemStack generateOneVanillaLoot() {
-		return ChestGenHooks.getOneItem(UT.Code.select("dungeonChest", ST.LOOT_TABLES_VANILLA), RNGSUS);
+		return ChestGenHooks.getOneItem(UT.Code.select("dungeonChest", LOOT_TABLES_VANILLA), RNGSUS);
 	}
 	
-	public static boolean generateLoot(Random aRandom, String aLoot, IInventory aInventory) {
+	public static boolean generateLoot(Random aRandom, String aLoot, IInventory aInv) {
 		try {
 			if (aLoot.startsWith("twilightforest:")) {
 				if (!TF_TREASURE) return F;
-				TwilightTreasureReplacer.generate(aInventory, aLoot);
+				TwilightTreasureReplacer.generate(aInv, aLoot);
 			} else {
-				WeightedRandomChestContent.generateChestContents(aRandom, ChestGenHooks.getItems(aLoot, aRandom), aInventory, ChestGenHooks.getCount(aLoot, aRandom));
+				WeightedRandomChestContent.generateChestContents(aRandom, ChestGenHooks.getItems(aLoot, aRandom), aInv, ChestGenHooks.getCount(aLoot, aRandom));
 			}
-			for (int i = 0, j = aInventory.getSizeInventory(); i < j; i++) {
-				ItemStack tStack = aInventory.getStackInSlot(i);
+			for (int i = 0, j = aInv.getSizeInventory(); i < j; i++) {
+				ItemStack tStack = aInv.getStackInSlot(i);
 				if (invalid(tStack)) continue;
 				if (IL.TC_Gold_Coin.exists()) {
 					if (item_(tStack) == Items.gold_nugget) {
@@ -1048,11 +1050,204 @@ public class ST {
 					}
 					nbt(set(tStack, IL.EtFu_Sus_Stew.get(tStack.stackSize)), UT.NBT.make("Effects", tList));
 				}
-				aInventory.setInventorySlotContents(i, update_(OM.get_(tStack)));
+				aInv.setInventorySlotContents(i, update_(OM.get_(tStack)));
 			}
 			return T;
 		} catch(Throwable e) {e.printStackTrace(ERR);}
 		return F;
+	}
+	
+	public static boolean add(Entity aPlayer, ItemStack aStack) {
+		return add(aPlayer, aStack, F);
+	}
+	public static boolean add(Entity aPlayer, ItemStack aStack, boolean aCurrentSlotFirst) {
+		return aPlayer instanceof EntityPlayer && add(aPlayer, ((EntityPlayer)aPlayer).inventory, aStack, aCurrentSlotFirst);
+	}
+	public static boolean add(Entity aPlayer, IInventory aInv, ItemStack aStack, boolean aCurrentSlotFirst) {
+		if (aInv != null && valid(aStack)) {
+			check(aPlayer, aStack);
+			
+			// wait no, i cant do this one because of the boolean return!
+			//
+			// To make sure no accidents cause NEI to make 111 infinite Stacks.
+			//if (aStack.stackSize > 64) {
+			//addStackToPlayerInventory(aPlayer, aInv, amount(64, aStack), F);
+			//aStack.stackSize -= 64;
+			//}
+			
+			for (int i = 0; i < 36; i++) if (!(aPlayer instanceof EntityPlayer) || i != ((EntityPlayer)aPlayer).inventory.currentItem) {
+				ItemStack tStack = aInv.getStackInSlot(i);
+				if (equal(tStack, aStack) && aStack.stackSize + tStack.stackSize <= tStack.getMaxStackSize()) {
+					tStack.stackSize += aStack.stackSize;
+					update(aPlayer);
+					return T;
+				}
+			}
+			if (aCurrentSlotFirst && aPlayer instanceof EntityPlayer) {
+				ItemStack tStack = aInv.getStackInSlot(((EntityPlayer)aPlayer).inventory.currentItem);
+				if (tStack == null || tStack.stackSize == 0) {
+					aInv.setInventorySlotContents(((EntityPlayer)aPlayer).inventory.currentItem, aStack);
+					update(aPlayer);
+					return T;
+				} else if (equal(tStack, aStack) && aStack.stackSize + tStack.stackSize <= tStack.getMaxStackSize()) {
+					tStack.stackSize += aStack.stackSize;
+					update(aPlayer);
+					return T;
+				}
+			}
+			for (int i = 0; i < 36; i++) if (!(aPlayer instanceof EntityPlayer) || i != ((EntityPlayer)aPlayer).inventory.currentItem) {
+				ItemStack tStack = aInv.getStackInSlot(i);
+				if (tStack == null || tStack.stackSize <= 0) {
+					aInv.setInventorySlotContents(i, aStack);
+					update(aPlayer);
+					return T;
+				}
+			}
+			if (!aCurrentSlotFirst && aPlayer instanceof EntityPlayer) {
+				ItemStack tStack = aInv.getStackInSlot(((EntityPlayer)aPlayer).inventory.currentItem);
+				if (tStack == null || tStack.stackSize == 0) {
+					aInv.setInventorySlotContents(((EntityPlayer)aPlayer).inventory.currentItem, aStack);
+					update(aPlayer);
+					return T;
+				} else if (equal(tStack, aStack) && aStack.stackSize + tStack.stackSize <= tStack.getMaxStackSize()) {
+					tStack.stackSize += aStack.stackSize;
+					update(aPlayer);
+					return T;
+				}
+			}
+		}
+		return F;
+	}
+	public static boolean give(Entity aPlayer, ItemStack aStack) {
+		return give(aPlayer, aStack, F, aPlayer.worldObj, aPlayer.posX, aPlayer.posY, aPlayer.posZ);
+	}
+	public static boolean give(Entity aPlayer, ItemStack aStack, boolean aCurrentSlotFirst) {
+		return give(aPlayer, aStack, aCurrentSlotFirst, aPlayer.worldObj, aPlayer.posX, aPlayer.posY, aPlayer.posZ);
+	}
+	public static boolean give(Entity aPlayer, ItemStack aStack, World aWorld, double aX, double aY, double aZ) {
+		return give(aPlayer, aStack, F, aWorld, aX, aY, aZ);
+	}
+	public static boolean give(Entity aPlayer, ItemStack aStack, boolean aCurrentSlotFirst, World aWorld, double aX, double aY, double aZ) {
+		if (valid(aStack) && !add(aPlayer, aStack, aCurrentSlotFirst)) drop(aWorld, aX, aY, aZ, aStack);
+		return T;
+	}
+	public static boolean give(Entity aPlayer, IInventory aInv, ItemStack aStack, boolean aCurrentSlotFirst, World aWorld, double aX, double aY, double aZ) {
+		if (valid(aStack) && !add(aPlayer, aInv, aStack, aCurrentSlotFirst)) drop(aWorld, aX, aY, aZ, aStack);
+		return T;
+	}
+	
+	public static boolean achieve(Entity aPlayer, Achievement aAchievement) {
+		if (aAchievement == null|| !(aPlayer instanceof EntityPlayer) || aPlayer.worldObj == null || aPlayer.worldObj.isRemote) return F;
+		achieve(aPlayer, aAchievement.parentAchievement);
+		((EntityPlayer)aPlayer).triggerAchievement(aAchievement);
+		return T;
+	}
+	
+	public static boolean check(Entity aPlayer, ItemStack aStack) {
+		if (!(aPlayer instanceof EntityPlayer) || aPlayer.worldObj == null || aPlayer.worldObj.isRemote) return F;
+		
+		if (aPlayer.worldObj.provider.dimensionId == DIM_NETHER) {
+			achieve(aPlayer, AchievementList.portal);
+		}
+		
+		if (invalid(aStack)) return F;
+		
+		OreDictItemData tData = OM.association_(aStack);
+		Item aItem = item(aStack);
+		Block aBlock = block(aItem);
+		String aRegName = regName(aItem);
+		
+		if (WoodDictionary.WOODS.containsKey(aStack, T) || WoodDictionary.BEAMS.containsKey(aStack, T) || WoodDictionary.PLANKS_ANY.containsKey(aStack, T) || OD.logWood.is_(aStack) || OD.logRubber.is_(aStack)) {
+			achieve(aPlayer, AchievementList.mineWood);
+		}
+		
+		if (aItem instanceof ItemHoe) {
+			achieve(aPlayer, AchievementList.buildHoe);
+		} else
+		if (aItem instanceof ItemSword) {
+			achieve(aPlayer, AchievementList.buildSword);
+		} else
+		if (aItem instanceof ItemPickaxe) {
+			achieve(aPlayer, aItem != Items.wooden_pickaxe ? AchievementList.buildBetterPickaxe : AchievementList.buildPickaxe);
+		}
+		
+		if (MD.MC.owns(aRegName)) {
+			if (aItem == Items.cooked_fished) {
+				achieve(aPlayer, AchievementList.cookFish);
+			} else
+			if (aItem == Items.bread) {
+				achieve(aPlayer, AchievementList.makeBread);
+			} else
+			if (aItem == Items.leather || aItem == Items.beef || aItem == Items.cooked_beef || aItem == Items.saddle) {
+				achieve(aPlayer, AchievementList.killCow);
+			} else
+			if (aBlock == Blocks.cake || aItem == Items.cake) {
+				achieve(aPlayer, AchievementList.bakeCake);
+			} else
+			if (aBlock == Blocks.furnace || aBlock == Blocks.lit_furnace) {
+				achieve(aPlayer, AchievementList.buildFurnace);
+			} else
+			if (aItem == Items.ghast_tear) {
+				achieve(aPlayer, AchievementList.portal);
+			} else
+			if (aItem == Items.brewing_stand || aBlock == Blocks.brewing_stand || aItem == Items.blaze_rod || aItem == Items.blaze_powder || aItem == Items.ender_eye) {
+				achieve(aPlayer, AchievementList.blazeRod);
+			} else
+			if (aBlock == Blocks.enchanting_table) {
+				achieve(aPlayer, AchievementList.enchantments);
+			} else
+			if (aBlock == Blocks.bookshelf) {
+				achieve(aPlayer, AchievementList.bookcase);
+			}
+		}
+		
+		if (MD.TF.owns(aRegName)) {
+			if (IL.TF_Trophy_Naga.equal(aStack, F, T)) {
+				achieve(aPlayer, TFAchievementPage.twilightProgressNaga);
+			} else if (IL.TF_Trophy_Lich.equal(aStack, F, T)) {
+				achieve(aPlayer, TFAchievementPage.twilightProgressLich);
+			} else if (IL.TF_Trophy_Hydra.equal(aStack, F, T)) {
+				achieve(aPlayer, TFAchievementPage.twilightProgressHydra);
+			} else if (IL.TF_Trophy_Urghast.equal(aStack, F, T)) {
+				achieve(aPlayer, TFAchievementPage.twilightProgressUrghast);
+			} else if (IL.TF_Trophy_Snowqueen.equal(aStack, F, T)) {
+				achieve(aPlayer, TFAchievementPage.twilightProgressGlacier);
+			} else if (IL.TF_Lamp_of_Cinders.equal(aStack, T, T)) {
+				achieve(aPlayer, TFAchievementPage.twilightProgressThorns);
+			} else if (IL.TF_Cube_of_Annihilation.equal(aStack, T, T)) {
+				achieve(aPlayer, TFAchievementPage.twilightProgressCastle);
+			}
+		}
+		
+		if (tData != null && !tData.mPrefix.containsAny(TD.Prefix.ORE_PROCESSING_BASED, TD.Prefix.ORE)) {
+			if (ANY.Diamond.mToThis.contains(tData.mMaterial.mMaterial) && tData.mPrefix.contains(TD.Prefix.GEM_BASED)) {
+				achieve(aPlayer, AchievementList.diamonds);
+			}
+			if (ANY.Iron.mToThis.contains(tData.mMaterial.mMaterial)) {
+				achieve(aPlayer, AchievementList.acquireIron);
+			}
+			if (MD.TF.mLoaded && tData.mMaterial.mMaterial.mOriginalMod == MD.TF && tData.mMaterial.mMaterial.contains(TD.Properties.MAZEBREAKER)) {
+				achieve(aPlayer, TFAchievementPage.twilightProgressHydra);
+			}
+		}
+		return T;
+	}
+	
+	public static void denull(Entity  aPlayer) {if (aPlayer instanceof EntityPlayer) denull(((EntityPlayer)aPlayer).inventory);}
+	public static void denull(IInventory aInv) {
+		if (aInv != null) for (int i = 0, j = aInv.getSizeInventory(); i < j; i++) {
+			ItemStack tStack = aInv.getStackInSlot(i);
+			if (tStack != null && (tStack.stackSize == 0 || tStack.getItem() == null)) aInv.setInventorySlotContents(i, null);
+		}
+	}
+	
+	public static ItemStack projectile(Entity  aPlayer, TagData aType) {if (aPlayer instanceof EntityPlayer) return projectile(((EntityPlayer)aPlayer).inventory, aType); return null;}
+	public static ItemStack projectile(IInventory aInv, TagData aType) {
+		if (aInv != null) for (int i = 0, j = aInv.getSizeInventory(); i < j; i++) {
+			ItemStack rStack = aInv.getStackInSlot(i);
+			if (ST.valid(rStack) && rStack.getItem() instanceof IItemProjectile && ((IItemProjectile)rStack.getItem()).hasProjectile(aType, rStack)) return ST.update(rStack);
+		}
+		return null;
 	}
 	
 	/** Loads an ItemStack properly. */
@@ -1088,42 +1283,42 @@ public class ST {
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(String aTagName, Block aBlock) {
 		NBTTagCompound aNBT = UT.NBT.make();
-		NBTTagCompound tNBT = save(ST.make(aBlock, 1, 0));
+		NBTTagCompound tNBT = save(make(aBlock, 1, 0));
 		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(String aTagName, Block aBlock, long aStackSize) {
 		NBTTagCompound aNBT = UT.NBT.make();
-		NBTTagCompound tNBT = save(ST.make(aBlock, aStackSize, 0));
+		NBTTagCompound tNBT = save(make(aBlock, aStackSize, 0));
 		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(String aTagName, Block aBlock, long aStackSize, long aMeta) {
 		NBTTagCompound aNBT = UT.NBT.make();
-		NBTTagCompound tNBT = save(ST.make(aBlock, aStackSize, aMeta));
+		NBTTagCompound tNBT = save(make(aBlock, aStackSize, aMeta));
 		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(String aTagName, Item aItem) {
 		NBTTagCompound aNBT = UT.NBT.make();
-		NBTTagCompound tNBT = save(ST.make(aItem, 1, 0));
+		NBTTagCompound tNBT = save(make(aItem, 1, 0));
 		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(String aTagName, Item aItem, long aStackSize) {
 		NBTTagCompound aNBT = UT.NBT.make();
-		NBTTagCompound tNBT = save(ST.make(aItem, aStackSize, 0));
+		NBTTagCompound tNBT = save(make(aItem, aStackSize, 0));
 		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(String aTagName, Item aItem, long aStackSize, long aMeta) {
 		NBTTagCompound aNBT = UT.NBT.make();
-		NBTTagCompound tNBT = save(ST.make(aItem, aStackSize, aMeta));
+		NBTTagCompound tNBT = save(make(aItem, aStackSize, aMeta));
 		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
@@ -1137,42 +1332,42 @@ public class ST {
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Block aBlock) {
 		if (aNBT == null) aNBT = UT.NBT.make();
-		NBTTagCompound tNBT = save(ST.make(aBlock, 1, 0));
+		NBTTagCompound tNBT = save(make(aBlock, 1, 0));
 		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Block aBlock, long aStackSize) {
 		if (aNBT == null) aNBT = UT.NBT.make();
-		NBTTagCompound tNBT = save(ST.make(aBlock, aStackSize, 0));
+		NBTTagCompound tNBT = save(make(aBlock, aStackSize, 0));
 		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Block aBlock, long aStackSize, long aMeta) {
 		if (aNBT == null) aNBT = UT.NBT.make();
-		NBTTagCompound tNBT = save(ST.make(aBlock, aStackSize, aMeta));
+		NBTTagCompound tNBT = save(make(aBlock, aStackSize, aMeta));
 		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Item aItem) {
 		if (aNBT == null) aNBT = UT.NBT.make();
-		NBTTagCompound tNBT = save(ST.make(aItem, 1, 0));
+		NBTTagCompound tNBT = save(make(aItem, 1, 0));
 		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Item aItem, long aStackSize) {
 		if (aNBT == null) aNBT = UT.NBT.make();
-		NBTTagCompound tNBT = save(ST.make(aItem, aStackSize, 0));
+		NBTTagCompound tNBT = save(make(aItem, aStackSize, 0));
 		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}
 	/** Saves an ItemStack properly. */
 	public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, Item aItem, long aStackSize, long aMeta) {
 		if (aNBT == null) aNBT = UT.NBT.make();
-		NBTTagCompound tNBT = save(ST.make(aItem, aStackSize, aMeta));
+		NBTTagCompound tNBT = save(make(aItem, aStackSize, aMeta));
 		if (tNBT == null) aNBT.removeTag(aTagName); else aNBT.setTag(aTagName, tNBT);
 		return aNBT;
 	}

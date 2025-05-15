@@ -175,7 +175,7 @@ public abstract class TileEntityBase04Covers extends TileEntityBase03MultiTileEn
 				ItemStack tStack = getCoverItem(tSide);
 				ICover tCover = mCovers.mBehaviours[tSide];
 				if (tStack != null && setCoverItem(tSide, null, aPlayer, F, T)) {
-					if (!(aPlayer instanceof EntityPlayer) || !UT.Inventories.addStackToPlayerInventory((EntityPlayer)aPlayer, tStack, F)) ST.place(worldObj, getOffsetX(aSide)+0.5, getOffsetY(aSide)+0.5, getOffsetZ(aSide)+0.5, tStack);
+					if (!ST.add(aPlayer, tStack, F)) ST.place(worldObj, getOffsetX(aSide)+0.5, getOffsetY(aSide)+0.5, getOffsetZ(aSide)+0.5, tStack);
 					if (tCover != null) tCover.onAfterCrowbar(this);
 					checkCoverValidity();
 					if (mCovers != null && mCovers.requiresSync()) {

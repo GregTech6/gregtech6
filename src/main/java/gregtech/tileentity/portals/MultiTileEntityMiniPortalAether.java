@@ -118,7 +118,7 @@ public class MultiTileEntityMiniPortalAether extends MultiTileEntityMiniPortal {
 				setPortalActive();
 				if (mTarget != null) UT.Entities.sendchat(aPlayer, "X: " + mTarget.xCoord + "   Y: " + mTarget.yCoord + "   Z: " + mTarget.zCoord);
 				if (!UT.Entities.hasInfiniteItems(aPlayer)) {
-					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.container(aStack, F));
+					ST.give(aPlayer, ST.container(aStack, F));
 					aStack.stackSize--;
 				}
 			}

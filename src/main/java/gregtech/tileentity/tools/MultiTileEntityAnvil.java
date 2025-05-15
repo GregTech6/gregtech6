@@ -117,7 +117,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			Recipe tRecipe = tRecipeMap.findRecipe(this, null, F, Long.MAX_VALUE, NI, ZL_FLUIDTANKGT, slotHas(0)?slot(0):ST.emptySlot(), slotHas(1)?slot(1):ST.emptySlot());
 			if (tRecipe != null && tRecipe.isRecipeInputEqual(T, F, ZL_FLUIDTANKGT, slotHas(0)?slot(0):ST.emptySlot(), slotHas(1)?slot(1):ST.emptySlot())) {
 				ItemStack[] tOutputItems = tRecipe.getOutputs();
-				for (int i = 0; i < tOutputItems.length; i++) if (ST.valid(tOutputItems[i]) && !UT.Inventories.addStackToPlayerInventory(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, aPlayerInventory, tOutputItems[i], F)) ST.place(worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5, tOutputItems[i]);
+				for (int i = 0; i < tOutputItems.length; i++) if (ST.valid(tOutputItems[i]) && !ST.add(aPlayer, aPlayerInventory, tOutputItems[i], F)) ST.place(worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5, tOutputItems[i]);
 				removeAllDroppableNullStacks();
 				if (aPlayer instanceof EntityPlayer) ((EntityPlayer)aPlayer).addExhaustion(tRecipe.getAbsoluteTotalPower() / 5000.0F);
 				// You lose more Durability if you are Fatiqued, but you lose less if you work with Haste.
@@ -224,12 +224,12 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			
 			if (SIDES_TOP[aSide]) {
 				if (tHasHammer) {
-					if (slotHas(0) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(0), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
+					if (slotHas(0) && ST.give(aPlayer, slot(0), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
 						slotKill(0);
 						updateInventory();
 						return T;
 					}
-					if (slotHas(1) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(1), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
+					if (slotHas(1) && ST.give(aPlayer, slot(1), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
 						slotKill(1);
 						updateInventory();
 						return T;
@@ -240,7 +240,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 					if (((ToolsGT.contains(TOOL_hammer, aStack) && !slotHas(0) && !slotHas(1)) || RM.Anvil.containsInput(aStack, this, NI) || RM.AnvilBendSmall.containsInput(aStack, this, NI) || RM.AnvilBendBig.containsInput(aStack, this, NI)) && ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, tSlot) > 0) playClick();
 					return T;
 				}
-				if (slotHas(tSlot) && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
+				if (slotHas(tSlot) && ST.give(aPlayer, slot(tSlot), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) {
 					slotKill(tSlot);
 					updateInventory();
 					return T;
@@ -248,7 +248,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 			}
 			if (slotHas(0)) {
 				if (!slotHas(1)) {
-					if (slot(0).stackSize % 2 != 0 && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.amount(1, slot(0)), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) slot(0).stackSize--;
+					if (slot(0).stackSize % 2 != 0 && ST.give(aPlayer, ST.amount(1, slot(0)), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) slot(0).stackSize--;
 					if (slot(0).stackSize > 1) {
 						slot(0).stackSize /= 2;
 						slot(1, ST.copy(slot(0)));
@@ -258,7 +258,7 @@ public class MultiTileEntityAnvil extends TileEntityBase09FacingSingle implement
 					return T;
 				}
 			} else if (slotHas(1)) {
-				if (slot(1).stackSize % 2 != 0 && UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.amount(1, slot(1)), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) slot(1).stackSize--;
+				if (slot(1).stackSize % 2 != 0 && ST.give(aPlayer, ST.amount(1, slot(1)), T, worldObj, xCoord+0.5, yCoord+1.2, zCoord+0.5)) slot(1).stackSize--;
 				if (slot(1).stackSize > 1) {
 					slot(1).stackSize /= 2;
 					slot(0, ST.copy(slot(1)));

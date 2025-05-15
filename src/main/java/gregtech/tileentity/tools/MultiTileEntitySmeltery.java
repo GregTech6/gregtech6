@@ -460,7 +460,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 									if (ST.valid(tStack)) {
 										tLightest.mAmount -= UT.Code.units(tAmount - tFluid.amount, tLightest.mMaterial.mLiquid.amount, tLightest.mMaterial.mLiquidUnit, T);
 										aStack.stackSize--;
-										UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+										ST.give(aPlayer, tStack, T);
 										return T;
 									}
 								}
@@ -474,13 +474,13 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 								if (FL.equal(tFluidData.mMaterial.mLiquid, tFluid)) {
 									if (addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(tFluidData.mMaterial, UT.Code.units(tFluid.amount, tFluidData.mMaterial.mLiquid.amount, tFluidData.mMaterial.mLiquidUnit, F))), UT.Code.bind(FL.temperature(tFluid), tFluidData.mMaterial.mMeltingPoint+25, tFluidData.mMaterial.mBoilingPoint-1))) {
 										aStack.stackSize--;
-										UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+										ST.give(aPlayer, tStack, T);
 										return T;
 									}
 								} else {
 									if (addMaterialStacks(new ArrayListNoNulls<>(F, OM.stack(tFluidData.mMaterial, UT.Code.units(tFluid.amount, tFluidData.mAmount, U, F))), UT.Code.bind(FL.temperature(tFluid), tFluidData.mMaterial.mMeltingPoint+25, tFluidData.mMaterial.mBoilingPoint-1))) {
 										aStack.stackSize--;
-										UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+										ST.give(aPlayer, tStack, T);
 										return T;
 									}
 								}
@@ -525,7 +525,7 @@ public class MultiTileEntitySmeltery extends TileEntityBase07Paintable implement
 					((EntityPlayer)aPlayer).addExhaustion(0.1F);
 					return 500;
 				}
-				if (UT.Inventories.addStackToPlayerInventory((EntityPlayer)aPlayer, tOutputStack)) {
+				if (ST.add(aPlayer, tOutputStack)) {
 					((EntityPlayer)aPlayer).addExhaustion(0.1F * tOutputStack.stackSize);
 					tLightest.mAmount -= OP.scrapGt.mAmount * tOutputStack.stackSize;
 					return 1000 * tOutputStack.stackSize;

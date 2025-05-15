@@ -20,7 +20,6 @@
 package gregtech.tileentity.tools;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
-import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -116,7 +115,7 @@ public class MultiTileEntityFluidNozzle extends TileEntityBase10Attachment imple
 					if (aFluid.amount > tNewFluid.amount && ((ITileEntityTapAccessible)tDelegator.mTileEntity).nozzleDrain(tDelegator.mSideOfTileEntity, aFluid.amount - tNewFluid.amount, T) != null) {
 						UT.Sounds.send(SFX.MC_FIZZ, 1.0F, 2.0F, this, F);
 						aStack.stackSize--;
-						UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+						ST.give(aPlayer, tStack, T);
 						return T;
 					}
 				}

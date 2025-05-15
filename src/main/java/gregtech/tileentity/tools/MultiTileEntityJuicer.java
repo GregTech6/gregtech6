@@ -140,7 +140,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 			if (tRecipe != null) {
 				if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
 				if (canOutput(tRecipe) && tRecipe.isRecipeInputEqual(T, F, ZL_FS, aStack)) {
-					for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+					for (ItemStack tStack : tRecipe.getOutputs()) ST.give(aPlayer, tStack, T);
 					FluidStack[] tOutputFluids = tRecipe.getFluidOutputs();
 					for (int i = 0; i < mTanks.length && i < tOutputFluids.length; i++) mTanks[i].fill(tOutputFluids[i], T);
 					aPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 10000.0F);
@@ -154,7 +154,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 			ItemStack tStack = null;
 			if (aStack != null) for (FluidTankGT tTank : mTanks) if ((tStack = FL.fill(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
 				aStack.stackSize--;
-				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+				ST.give(aPlayer, tStack, T);
 				return T;
 			}
 		} else {

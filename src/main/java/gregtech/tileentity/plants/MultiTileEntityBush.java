@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -169,7 +169,7 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 		if (isClientSide()) return T;
 		if (ST.valid(mBerry)) {
 			if (mStage < 3) return F;
-			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.amount(1+rng(2), mBerry), T, worldObj, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide));
+			ST.give(aPlayer, ST.amount(1+rng(2), mBerry), T, worldObj, getOffsetX(aSide), getOffsetY(aSide), getOffsetZ(aSide));
 			mStage = 0;
 			return T;
 		}

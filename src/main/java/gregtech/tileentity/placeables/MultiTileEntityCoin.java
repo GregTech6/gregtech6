@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -158,7 +158,7 @@ public class MultiTileEntityCoin extends TileEntityBase04MultiTileEntities imple
 			int tIndex = (int)(Math.min(0.99F, Math.max(0, aHitX))*4)*4+(int)(Math.min(0.99F, Math.max(0, aHitZ))*4);
 			if (tStack != null) {
 				if (aStack == null) {
-					if (mCoinStackSizes[tIndex] > 0 && (UT.Entities.hasInfiniteItems(aPlayer) || UT.Inventories.addStackToPlayerInventory(aPlayer, tStack, F))) {
+					if (mCoinStackSizes[tIndex] > 0 && (UT.Entities.hasInfiniteItems(aPlayer) || ST.add(aPlayer, tStack, F))) {
 						mCoinStackSizes[tIndex]--;
 						updateClientData();
 						playCollect();

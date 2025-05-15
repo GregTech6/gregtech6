@@ -183,7 +183,7 @@ public class MultiTileEntityChest extends TileEntityBase05Inventories implements
 			long rCount = 0;
 			for (int i = 0; i < invsize(); i++) if (slotHas(i)) {
 				// Check for Achievements so those won't get skipped.
-				if (aPlayer instanceof EntityPlayer) UT.Inventories.checkAchievements((EntityPlayer)aPlayer, slot(i));
+				ST.check(aPlayer, slot(i));
 				// Merge Stacks first when applicable.
 				for (int j = 0; j < 36; j++) {
 					if (ST.equal(slot(i), aPlayerInventory.getStackInSlot(j))) {

@@ -191,7 +191,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		if (!aEvent.world.isRemote && CHECKED_PLAYERS.add(aName)) {
 			if (mSupporterListSilver.contains(aEvent.entityPlayer.getUniqueID().toString()) || mSupporterListGold.contains(aEvent.entityPlayer.getUniqueID().toString()) || mSupporterListSilver.contains(aNameLowercase) || mSupporterListGold.contains(aNameLowercase)) {
 				if (!MultiTileEntityCertificate.ALREADY_RECEIVED.contains(aNameLowercase)) {
-					if (UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, MultiTileEntityCertificate.getCertificate(1, aName), F)) {
+					if (ST.give(aEvent.entityPlayer, MultiTileEntityCertificate.getCertificate(1, aName), F)) {
 						MultiTileEntityCertificate.ALREADY_RECEIVED.add(aNameLowercase);
 						UT.Entities.sendchat(aEvent.entityPlayer, CHAT_GREG + "Thank you, " + aName + ", for Supporting GregTech! Here, have a Certificate. ;)");
 					}
@@ -220,7 +220,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 								aEvent.entityPlayer.inventory.mainInventory[aEvent.entityPlayer.inventory.currentItem] = ST.make(Items.potionitem, 1, 0);
 							} else {
 								ST.use(aEvent.entityPlayer, aStack);
-								UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, ST.make(Items.potionitem, 1, 0), F);
+								ST.give(aEvent.entityPlayer, ST.make(Items.potionitem, 1, 0), F);
 							}
 						}
 						if (!WD.infiniteWater(aEvent.world, tTarget.blockX, tTarget.blockY, tTarget.blockZ)) aEvent.world.setBlockToAir(tTarget.blockX, tTarget.blockY, tTarget.blockZ);
@@ -231,21 +231,21 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 						ItemStack tStack = FL.Water.fill(aStack);
 						if (tStack == null) return;
 						ST.use(aEvent.entityPlayer, aStack);
-						UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, tStack, F);
+						ST.give(aEvent.entityPlayer, tStack, F);
 						return;
 					}
 					if (tBlock == BlocksGT.Ocean) {
 						ItemStack tStack = FL.Ocean.fill(aStack);
 						if (tStack == null) return;
 						ST.use(aEvent.entityPlayer, aStack);
-						UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, tStack, F);
+						ST.give(aEvent.entityPlayer, tStack, F);
 						return;
 					}
 					if (tBlock == BlocksGT.Swamp) {
 						ItemStack tStack = FL.Dirty_Water.fill(aStack);
 						if (tStack == null) return;
 						ST.use(aEvent.entityPlayer, aStack);
-						UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, tStack, F);
+						ST.give(aEvent.entityPlayer, tStack, F);
 						return;
 					}
 					return;
@@ -263,7 +263,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 				if (IL.ERE_Spray_Repellant.equal(aStack, T, T)) {
 					if (!aEvent.world.isRemote && aStack.getItem().onItemUse(aStack, aEvent.entityPlayer, aEvent.world, aEvent.x, aEvent.y, aEvent.z, aEvent.face, 0.5F, 0.5F, 0.5F)) {
 						aEvent.setCanceled(T);
-						UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, IL.Spray_Empty.get(1), aEvent.world, aEvent.x, aEvent.y, aEvent.z);
+						ST.give(aEvent.entityPlayer, IL.Spray_Empty.get(1), aEvent.world, aEvent.x, aEvent.y, aEvent.z);
 						return;
 					}
 				} else if (aStack.getItem() == Items.flint_and_steel) {

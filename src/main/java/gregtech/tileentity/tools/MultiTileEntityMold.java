@@ -297,7 +297,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 		ItemStack tOutputStack = slot(0);
 		if (tOutputStack != null) {
 			OreDictItemData tData = OM.anyassociation(tOutputStack);
-			if (tData != null) for (Achievement tAchievement : tData.mMaterial.mMaterial.mAchievementsForCreation) UT.Inventories.unlockAchievement(aPlayer, tAchievement);
+			if (tData != null) for (Achievement tAchievement : tData.mMaterial.mMaterial.mAchievementsForCreation) ST.achieve(aPlayer, tAchievement);
 			ItemStack aStack = aPlayer.getCurrentEquippedItem();
 			if (aStack == null) {
 				aPlayer.inventory.setInventorySlotContents(aPlayer.inventory.currentItem, tOutputStack);
@@ -312,7 +312,7 @@ public class MultiTileEntityMold extends TileEntityBase07Paintable implements IT
 				if (aCauseDamage) UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1, 5.0F);
 				return T;
 			}
-			if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(0), F)) {
+			if (ST.add(aPlayer, slot(0), F)) {
 				if (aCauseDamage) UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1, 5.0F);
 				slotKill(0);
 				return T;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -22,14 +22,12 @@ package gregtech.blocks.tree;
 import gregapi.block.IBlockToolable;
 import gregapi.block.ToolCompat;
 import gregapi.block.tree.BlockBaseLog;
-import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.data.OD;
 import gregapi.old.Textures;
 import gregapi.util.OM;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -93,7 +91,7 @@ public class BlockTreeLogCFireProof extends BlockBaseLog implements IBlockToolab
 			if (aWorld.isRemote) return 0;
 			byte aMeta = WD.meta(aWorld, aX, aY, aZ);
 			aWorld.setBlock(aX, aY, aZ, BlocksGT.BeamC, aMeta, 3);
-			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, OM.dust(MT.Bark), aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]);
+			ST.give(aPlayer, OM.dust(MT.Bark), aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]);
 			return aTool.equals(TOOL_axe) ? 500 : 1000;
 		}
 		return ToolCompat.onToolClick(this, aTool, aRemainingDurability, aQuality, aPlayer, aChatReturn, aPlayerInventory, aSneaking, aStack, aWorld, aSide, aX, aY, aZ, aHitX, aHitY, aHitZ);

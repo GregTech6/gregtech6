@@ -668,7 +668,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@SubscribeEvent(priority = EventPriority.LOWEST) 
 	public void onPlayerItemPickupEvent(cpw.mods.fml.common.gameevent.PlayerEvent.ItemPickupEvent aEvent) {
-		UT.Inventories.checkAchievements(aEvent.player, aEvent.pickedUp.getEntityItem());
+		ST.check(aEvent.player, aEvent.pickedUp.getEntityItem());
 	}
 	
 	private int BEAR_INVENTORY_COOL_DOWN = 5;
@@ -749,7 +749,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 							}
 							// You can't detect properly when you pick things up out of a Chest, so part of the Inventory scan it is!
 							if (IL.TF_Trophy_Urghast.equal(tStack, T, T)) {
-								UT.Inventories.checkAchievements(aEvent.player, tStack);
+								ST.check(aEvent.player, tStack);
 							}
 							// Radiation and Heat Damage.
 							if (!UT.Entities.isInvincible(aEvent.player)) {
@@ -803,12 +803,12 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 										}
 									}
 								} else if ("Bear989jr".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
-									UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, UT.NBT.addEnchantment(ST.make(Items.cookie, 1, 0, "Jr. Cookie"), Enchantment_WerewolfDamage.INSTANCE, 1), F);
+									ST.give(tPlayer, UT.NBT.addEnchantment(ST.make(Items.cookie, 1, 0, "Jr. Cookie"), Enchantment_WerewolfDamage.INSTANCE, 1), F);
 									UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "Have a Jr. Cookie. Please tell Fatass to clean his Inventory, or smack him with it."));
 								} else if ("CrazyJ1984".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									ItemStack tArrow = ST.update(OP.arrowGtWood.mat(MT.Craponite, 1), aEvent.player);
 									if (ST.valid(tArrow)) {
-										UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, tArrow, F);
+										ST.give(tPlayer, tArrow, F);
 										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "I'm not trying to tell you what to do, but please don't hurt Bear with this."));
 									} else {
 										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "I'm not trying to tell you what to do, but please don't hurt Bear."));
@@ -816,7 +816,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 								} else if ("TooShyShy78".equalsIgnoreCase(tPlayer.getCommandSenderName())) {
 									ItemStack tArrow = ST.update(OP.arrowGtWood.mat(MT.Craponite, 1), aEvent.player);
 									if (ST.valid(tArrow)) {
-										UT.Inventories.addStackToPlayerInventoryOrDrop(tPlayer, tArrow, F);
+										ST.give(tPlayer, tArrow, F);
 										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "People around Bear always seem to suffer a severe case of Craponite Arrow in Inventory, I don't know why."));
 									} else {
 										UT.Entities.chat(tPlayer, new ChatComponentText(CHAT_GREG + "Aaaaand Bears Inventory is full again isn't it..."));
@@ -953,9 +953,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		
 		if (aEvent.item.getItem() == Items.apple) {
 			if (IL.GrC_Applecore.exists()) {
-				if (aEvent.result == null) aEvent.result = IL.GrC_Applecore.get(1); else UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, IL.GrC_Applecore.get(1), F);
+				if (aEvent.result == null) aEvent.result = IL.GrC_Applecore.get(1); else ST.give(aEvent.entityPlayer, IL.GrC_Applecore.get(1), F);
 			} else if (IL.Food_Apple_Red_Core.exists()) {
-				if (aEvent.result == null) aEvent.result = IL.Food_Apple_Red_Core.get(1); else UT.Inventories.addStackToPlayerInventoryOrDrop(aEvent.entityPlayer, IL.Food_Apple_Red_Core.get(1), F);
+				if (aEvent.result == null) aEvent.result = IL.Food_Apple_Red_Core.get(1); else ST.give(aEvent.entityPlayer, IL.Food_Apple_Red_Core.get(1), F);
 			}
 		}
 	}
@@ -989,7 +989,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			}
 			// Just rightclick the Trophy to get the Achievement/Progress.
 			if (IL.TF_Trophy.equal(aBlock)) {
-				UT.Inventories.checkAchievements(aEvent.entityPlayer, ST.make(aBlock.getItemDropped(0, RNGSUS, 0), 1, aBlock.getDamageValue(aEvent.world, aEvent.x, aEvent.y, aEvent.z)));
+				ST.check(aEvent.entityPlayer, ST.make(aBlock.getItemDropped(0, RNGSUS, 0), 1, aBlock.getDamageValue(aEvent.world, aEvent.x, aEvent.y, aEvent.z)));
 				return;
 			}
 			// Some Clientside Only Stuff.
@@ -1287,7 +1287,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						ST.set(aDrop, tEvent.item.getEntityItem(), T, T);
 						if (MinecraftForge.EVENT_BUS.post(tEvent)) continue;
 						
-						if (tEvent.getResult() == Result.ALLOW || aDrop.stackSize <= 0 || UT.Inventories.addStackToPlayerInventory(aEvent.harvester, aDrop)) {
+						if (tEvent.getResult() == Result.ALLOW || aDrop.stackSize <= 0 || ST.add(aEvent.harvester, aDrop)) {
 							aDrops.remove();
 							if (aCollectSound) {
 								UT.Sounds.send(SFX.MC_COLLECT, 0.2F, ((RNGSUS.nextFloat()-RNGSUS.nextFloat())*0.7F+1.0F)*2.0F, aEvent.harvester);
@@ -1297,7 +1297,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					}
 				}
 			}
-			UT.Inventories.removeNullStacksFromInventory(aEvent.harvester.inventory);
+			ST.denull(aEvent.harvester);
 		}
 	}
 	
@@ -1439,7 +1439,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void onArrowNockEvent(ArrowNockEvent aEvent) {
-		if (!aEvent.isCanceled() && ST.valid(aEvent.result) && UT.Inventories.getProjectile(TD.Projectiles.ARROW, aEvent.entityPlayer.inventory) != null) {
+		if (!aEvent.isCanceled() && ST.valid(aEvent.result) && ST.projectile(aEvent.entityPlayer.inventory, TD.Projectiles.ARROW) != null) {
 			aEvent.entityPlayer.setItemInUse(aEvent.result, aEvent.result.getItem().getMaxItemUseDuration(aEvent.result));
 			aEvent.setCanceled(T);
 		}
@@ -1447,7 +1447,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onArrowLooseEvent(ArrowLooseEvent aEvent) {
-		ItemStack aArrow = UT.Inventories.getProjectile(TD.Projectiles.ARROW, aEvent.entityPlayer.inventory);
+		ItemStack aArrow = ST.projectile(aEvent.entityPlayer, TD.Projectiles.ARROW);
 		if (!aEvent.isCanceled() && ST.valid(aEvent.bow) && aArrow != null && aEvent.bow.getItem() instanceof ItemBow) {
 			float tSpeed = aEvent.charge / 20.0F;
 			tSpeed = (tSpeed * tSpeed + tSpeed * 2.0F) / 3.0F;
@@ -1474,7 +1474,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			tArrowEntity.canBePickedUp = 1;
 			
 			if (!UT.Entities.hasInfiniteItems(aEvent.entityPlayer)) aArrow.stackSize--;
-			if (aArrow.stackSize == 0) UT.Inventories.removeNullStacksFromInventory(aEvent.entityPlayer.inventory);
+			if (aArrow.stackSize == 0) ST.denull(aEvent.entityPlayer);
 			
 			if (!aEvent.entityPlayer.worldObj.isRemote) aEvent.entityPlayer.worldObj.spawnEntityInWorld(tArrowEntity);
 			

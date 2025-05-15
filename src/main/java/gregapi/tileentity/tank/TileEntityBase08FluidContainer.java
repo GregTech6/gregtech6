@@ -146,12 +146,12 @@ public abstract class TileEntityBase08FluidContainer extends TileEntityBase07Pai
 		FluidStack tFluid = FL.getFluid(ST.amount(1, aStack), T);
 		if (aStack != null && isFluidAllowed(tFluid) && mTank.fillAll(tFluid)) {
 			aStack.stackSize--;
-			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+			ST.give(aPlayer, tStack, T);
 			return T;
 		}
 		if (aStack != null) if ((tStack = FL.fill(mTank, ST.amount(1, aStack), T, T, T, T)) != null) {
 			aStack.stackSize--;
-			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+			ST.give(aPlayer, tStack, T);
 			return T;
 		}
 		

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -95,7 +95,7 @@ public abstract class MultiTileEntityPlaceable extends TileEntityBase03MultiTile
 			playCollect();
 			return T;
 		}
-		if (UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.amount(1, mStack), T, worldObj, xCoord+0.5, yCoord+0.5, zCoord+0.5)) {
+		if (ST.give(aPlayer, ST.amount(1, mStack), T, worldObj, xCoord+0.5, yCoord+0.5, zCoord+0.5)) {
 			MultiTileEntityPlaceable tSelected = this;
 			for (int i = 1; i < 255; i++) {
 				TileEntity tTileEntity = getTileEntityAtSideAndDistance(SIDE_UP, i);

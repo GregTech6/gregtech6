@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -140,7 +140,7 @@ public class FoodStat implements IFoodStat {
 			aStack.stackSize--;
 			ItemStack tStack = OM.get(ST.copy(mEmptyContainer));
 			if (tStack == null && mAutoDetectEmpty) tStack = ST.container(aStack, F);
-			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
+			ST.give(aPlayer, tStack, F);
 		}
 		if (aMakeSound) aPlayer.worldObj.playSoundAtEntity(aPlayer, "random.burp", 0.5F, RNGSUS.nextFloat() * 0.1F + 0.9F);
 		if (!aPlayer.worldObj.isRemote) {

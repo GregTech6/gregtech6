@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -55,7 +55,7 @@ public class Behavior_Shears extends AbstractBehaviorDefault {
 						tStack.stackSize += RNGSUS.nextInt(1+tFortune);
 						if (tStack.stackSize > 64) tStack.stackSize = 64;
 					}
-					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
+					ST.give(aPlayer, tStack, F);
 				}
 				return T;
 			}

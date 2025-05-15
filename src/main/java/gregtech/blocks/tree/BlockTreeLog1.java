@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -27,10 +27,9 @@ import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.old.Textures;
 import gregapi.util.OM;
-import gregapi.util.UT;
+import gregapi.util.ST;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -70,10 +69,10 @@ public class BlockTreeLog1 extends BlockBaseBeamFlammable implements IBlockToola
 		if (aTool.equals(TOOL_axe) || aTool.equals(TOOL_saw) || aTool.equals(TOOL_knife)) {
 			if (aWorld.isRemote) return 0;
 			switch (aWorld.getBlockMetadata(aX, aY, aZ) & PILLAR_DATA) {
-			case 0: UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, IL.Bark_Dry.get(1), aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]); break;
-			case 1: UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, IL.FR_Mulch.get(1, OM.dust(MT.WOODS.Rotten)), aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]); break;
-			case 2: UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, IL.FR_Mulch.get(1, OM.dust(MT.WOODS.Mossy )), aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]); break;
-			case 3: UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, OM.dust(MT.Ice), aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]); break;
+			case 0: ST.give(aPlayer, IL.Bark_Dry.get(1), aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]); break;
+			case 1: ST.give(aPlayer, IL.FR_Mulch.get(1, OM.dust(MT.WOODS.Rotten)), aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]); break;
+			case 2: ST.give(aPlayer, IL.FR_Mulch.get(1, OM.dust(MT.WOODS.Mossy )), aWorld, aX+OFFX[aSide], aY+OFFY[aSide], aZ+OFFZ[aSide]); break;
+			case 3: ST.give(aPlayer, OM.dust(MT.Ice), aWorld, aX + OFFX[aSide], aY + OFFY[aSide], aZ + OFFZ[aSide]); break;
 			}
 			aWorld.setBlockToAir(aX, aY, aZ);
 			return 1000;

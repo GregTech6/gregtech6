@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -108,7 +108,7 @@ public class MultiTileEntityBottleCrate extends TileEntityBase09FacingSingle imp
 	
 	private boolean swapBottles(EntityPlayer aPlayer, int aSlot) {
 		if (slotHas(aSlot)) {
-			if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(aSlot), T)) {
+			if (ST.add(aPlayer, slot(aSlot), T)) {
 				slotKill(aSlot);
 				updateInventory();
 				playCollect();

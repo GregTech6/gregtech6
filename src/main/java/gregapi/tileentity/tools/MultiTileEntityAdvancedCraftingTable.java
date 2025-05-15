@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -417,7 +417,7 @@ public class MultiTileEntityAdvancedCraftingTable extends TileEntityBase09Facing
 		
 		aHoldStack.onCrafting(worldObj, aPlayer, slot(31).stackSize);
 		
-		UT.Inventories.checkAchievements(aPlayer, aHoldStack);
+		ST.check(aPlayer, aHoldStack);
 		
 		refill();
 		

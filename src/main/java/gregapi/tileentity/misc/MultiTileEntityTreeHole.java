@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,8 @@
 
 package gregapi.tileentity.misc;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsWood;
-import gregapi.data.CS.BlocksGT;
+import gregapi.data.CS.*;
 import gregapi.data.FL;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
@@ -38,6 +34,10 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -82,12 +82,12 @@ public abstract class MultiTileEntityTreeHole extends TileEntityBase09FacingSing
 			ItemStack tResin = getResinItem(aSide), tStack = FL.fill(getResinFluid(aSide), ST.amount(1, aStack), T, T, T, T);
 			if ((tStack != null || tResin != null) && extractResin(aSide)) {
 				if (tResin != null) {
-					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tResin, T);
+					ST.give(aPlayer, tResin, T);
 				}
 				assert aStack != null;
 				if (tStack != null) {
 					aStack.stackSize--;
-					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+					ST.give(aPlayer, tStack, T);
 				}
 			}
 			return T;

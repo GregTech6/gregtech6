@@ -208,7 +208,7 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 				}
 			}
 			
-			for (int i = 6; i < 12; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), F)) {
+			for (int i = 6; i < 12; i++) if (ST.add(aPlayer, slot(i), F)) {
 				playCollect();
 				slotKill(i);
 				return T;
@@ -218,7 +218,7 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 			
 			if (aStack != null && tFluid != null && FL.fillAll_(this, SIDE_ANY, tFluid, T)) {
 				aStack.stackSize--;
-				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+				ST.give(aPlayer, tStack, T);
 				return T;
 			}
 			if (SIDES_TOP[aSide] && aHitX > PX_P[2] && aHitX < PX_N[2] && aHitZ > PX_P[2] && aHitZ < PX_N[2]) {
@@ -227,30 +227,30 @@ public class MultiTileEntityBathingPot extends TileEntityBase07Paintable impleme
 				}
 				if (aStack != null) for (FluidTankGT tTank : mTanksOutput) if ((tStack = FL.fill(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
 					aStack.stackSize--;
-					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+					ST.give(aPlayer, tStack, T);
 					return T;
 				}
 				if (aStack != null) for (FluidTankGT tTank : mTanksInput) if ((tStack = FL.fill(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
 					aStack.stackSize--;
-					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+					ST.give(aPlayer, tStack, T);
 					return T;
 				}
 			} else {
 				if (aStack != null) for (FluidTankGT tTank : mTanksOutput) if ((tStack = FL.fill(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
 					aStack.stackSize--;
-					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+					ST.give(aPlayer, tStack, T);
 					return T;
 				}
 				if (aStack != null) for (FluidTankGT tTank : mTanksInput) if ((tStack = FL.fill(tTank, ST.amount(1, aStack), T, T, T, T)) != null) {
 					aStack.stackSize--;
-					UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+					ST.give(aPlayer, tStack, T);
 					return T;
 				}
 				if (aStack != null) for (byte i = 0; i < 6; i++) {
 					if (ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, i) > 0) return T;
 				}
 			}
-			if (slot(6) == null && slot(7) == null && slot(8) == null && slot(9) == null && slot(10) == null && slot(11) == null) for (int i = 0; i < 6; i++) if (UT.Inventories.addStackToPlayerInventory(aPlayer, slot(i), T)) {
+			if (slot(6) == null && slot(7) == null && slot(8) == null && slot(9) == null && slot(10) == null && slot(11) == null) for (int i = 0; i < 6; i++) if (ST.add(aPlayer, slot(i), T)) {
 				playCollect();
 				slotKill(i);
 				return T;

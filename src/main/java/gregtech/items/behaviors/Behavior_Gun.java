@@ -339,7 +339,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 				reloadGun(aGun, aPlayer, F);
 				return aGun;
 			}
-			UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, aBullet);
+			ST.give(aPlayer, aBullet);
 			UT.Sounds.send(SFX.MC_CLICK, 16, aPlayer);
 			ST.save(aNBT, NBT_AMMO, NI);
 			return aGun;
@@ -355,7 +355,7 @@ public class Behavior_Gun extends AbstractBehaviorDefault {
 			OreDictItemData tData = OM.anydata(aBullet);
 			aBullet.stackSize--;
 			ST.save(aNBT, NBT_AMMO, aBullet.stackSize > 0 ? aBullet : NI);
-			for (OreDictMaterialStack tMat : tData.mByProducts) if (tMat.mAmount >= OP.scrapGt.mAmount && !tMat.mMaterial.containsAny(TD.Properties.EXPLOSIVE, TD.Properties.FLAMMABLE)) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, OP.scrapGt.mat(tMat.mMaterial, tMat.mAmount/OP.scrapGt.mAmount));
+			for (OreDictMaterialStack tMat : tData.mByProducts) if (tMat.mAmount >= OP.scrapGt.mAmount && !tMat.mMaterial.containsAny(TD.Properties.EXPLOSIVE, TD.Properties.FLAMMABLE)) ST.give(aPlayer, OP.scrapGt.mat(tMat.mMaterial, tMat.mAmount/OP.scrapGt.mAmount));
 		}
 		((MultiItemTool)aItem).doDamage(aGun, 100, aPlayer, F);
 		return aGun;

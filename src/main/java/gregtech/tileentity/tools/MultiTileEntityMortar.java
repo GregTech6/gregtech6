@@ -24,7 +24,6 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingB
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
 import gregapi.data.*;
-import gregapi.data.CS.*;
 import gregapi.data.LH.Chat;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictMaterial;
@@ -36,6 +35,7 @@ import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityQuickObstructionCheck;
 import gregapi.tileentity.base.TileEntityBase07Paintable;
+import gregapi.util.ST;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -87,7 +87,7 @@ public class MultiTileEntityMortar extends TileEntityBase07Paintable implements 
 			if (tRecipe != null) {
 				if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
 				if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, aStack)) {
-					for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+					for (ItemStack tStack : tRecipe.getOutputs()) ST.give(aPlayer, tStack, T);
 					aPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 250.0F);
 					UT.Sounds.send(SFX.MC_DIG_ROCK, this, F);
 					return T;

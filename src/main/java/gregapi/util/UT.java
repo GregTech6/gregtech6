@@ -30,7 +30,6 @@ import gregapi.data.TC.TC_AspectStack;
 import gregapi.enchants.Enchantment_Radioactivity;
 import gregapi.fluid.FluidGT;
 import gregapi.fluid.FluidTankGT;
-import gregapi.item.IItemProjectile;
 import gregapi.lang.LanguageHandler;
 import gregapi.network.packets.PacketSound;
 import gregapi.old.Textures;
@@ -44,7 +43,6 @@ import gregapi.random.IHasWorldAndCoords;
 import gregapi.recipes.Recipe.RecipeMap;
 import gregapi.render.IIconContainer;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
-import gregapi.wooddict.WoodDictionary;
 import ic2.api.recipe.IMachineRecipeManager;
 import ic2.api.recipe.IMachineRecipeManagerExt;
 import ic2.api.recipe.IRecipeInput;
@@ -61,10 +59,10 @@ import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTBase.NBTPrimitive;
 import net.minecraft.nbt.NBTTagCompound;
@@ -73,7 +71,6 @@ import net.minecraft.nbt.NBTTagString;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.Achievement;
-import net.minecraft.stats.AchievementList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
@@ -83,7 +80,6 @@ import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.*;
 import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
-import twilightforest.TFAchievementPage;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -485,38 +481,13 @@ public class UT {
 			return NI;
 		}
 		
+		@Deprecated public static FluidStack load (NBTTagCompound aNBT, String aTagName) {return FL.load(aNBT, aTagName);}
+		@Deprecated public static FluidStack load (NBTTagCompound aNBT) {return FL.load (aNBT);}
+		@Deprecated public static FluidStack load_(NBTTagCompound aNBT) {return FL.load_(aNBT);}
 		
-
-		/** Loads a FluidStack properly. */
-		@Deprecated public static FluidStack load (NBTTagCompound aNBT, String aTagName) {return aNBT == null ? null : load(aNBT.getCompoundTag(aTagName));}
-		/** Loads a FluidStack properly. */
-		@Deprecated public static FluidStack load (NBTTagCompound aNBT) {return aNBT == null || aNBT.hasNoTags() ? null : load_(aNBT);}
-		/** Loads a FluidStack properly. */
-		@Deprecated public static FluidStack load_(NBTTagCompound aNBT) {
-			if (aNBT == null) return null;
-			String aName = aNBT.getString("FluidName");
-			if (Code.stringInvalid(aName)) return null;
-			String tName = FluidsGT.FLUID_RENAMINGS.get(aName);
-			if (Code.stringValid(tName)) aName = tName;
-			Fluid aFluid = FluidRegistry.getFluid(aName);
-			if (aFluid == null) return FL.LubRoCant.is(aName) ? FL.Lubricant.make(aNBT.getInteger("Amount")) : null;
-			FluidStack rFluid = new FluidStack(aFluid, aNBT.getInteger("Amount"));
-			if (aNBT.hasKey("Tag")) rFluid.tag = aNBT.getCompoundTag("Tag");
-			return rFluid;
-		}
-		
-		/** Saves a FluidStack properly. */
-		@Deprecated public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, FluidStack aFluid) {
-			if (aNBT == null) aNBT = NBT.make();
-			NBTTagCompound tNBT = save(aFluid);
-			if (tNBT != null) aNBT.setTag(aTagName, tNBT);
-			return aNBT;
-		}
-		/** Saves a FluidStack properly. */
-		@Deprecated public static NBTTagCompound save (FluidStack aFluid) {return aFluid == null || aFluid.getFluid() == null ? null : save_(aFluid);}
-		/** Saves a FluidStack properly. */
-		@Deprecated public static NBTTagCompound save_(FluidStack aFluid) {return aFluid.writeToNBT(NBT.make());}
-		
+		@Deprecated public static NBTTagCompound save(NBTTagCompound aNBT, String aTagName, FluidStack aFluid) {return FL.save(aNBT, aTagName, aFluid);}
+		@Deprecated public static NBTTagCompound save (FluidStack aFluid) {return FL.save (aFluid);}
+		@Deprecated public static NBTTagCompound save_(FluidStack aFluid) {return FL.save_(aFluid);}
 		
 		@Deprecated @SafeVarargs public static Fluid createLiquid(OreDictMaterial aMaterial, Set<String>... aFluidList) {return createLiquid(aMaterial, aMaterial.mTextureSetsBlock.get(IconsGT.INDEX_BLOCK_MOLTEN), aFluidList);}
 		@Deprecated @SafeVarargs public static Fluid createLiquid(OreDictMaterial aMaterial, IIconContainer aTexture, Set<String>... aFluidList) {return create(aMaterial.mNameInternal.toLowerCase(), aTexture, aMaterial.mNameLocal, aMaterial, aMaterial.mRGBaLiquid, STATE_LIQUID, 1000, aMaterial.mMeltingPoint <= 0 ? 1000 : aMaterial.mMeltingPoint < 300 ? Math.min(300, aMaterial.mBoilingPoint - 1) : aMaterial.mMeltingPoint, null, null, 0, aFluidList);}
@@ -2689,7 +2660,7 @@ public class UT {
 		}
 	}
 	
-	public static class Inventories {
+	@Deprecated public static class Inventories {
 		@Deprecated public static boolean isConnectableNonInventoryPipe(Object aTileEntity, int aSide) {return F;}
 		@Deprecated public static byte moveStackIntoPipe(IInventory aTileEntity1, Object aTarget, int[] aGrabSlots, byte aGrabFrom, byte aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {return 0;}
 		@Deprecated public static byte moveStackFromSlotAToSlotB(IInventory aTileEntity, IInventory aTarget, int aGrabFrom, int aPutTo, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {return 0;}
@@ -2699,202 +2670,18 @@ public class UT {
 		@Deprecated public static byte moveOneItemStack(Object aTileEntity1, Object aTileEntity2, byte aGrabFrom, byte aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {return 0;}
 		@Deprecated public static byte moveOneItemStackIntoSlot(Object aTileEntity1, Object aTarget, byte aGrabFrom, int aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {return 0;}
 		@Deprecated public static byte moveFromSlotToSlot(IInventory aTileEntity1, IInventory aTileEntity2, int aGrabFrom, int aPutTo, List<ItemStack> aFilter, boolean aInvertFilter, int aMaxTargetStackSize, int aMinTargetStackSize, int aMaxMoveAtOnce, int aMinMoveAtOnce) {return 0;}
-		
-		public static void removeNullStacksFromInventory(IInventory aInventory) {
-			if (aInventory != null) for (int i = 0, j = aInventory.getSizeInventory(); i < j; i++) {
-				ItemStack tStack = aInventory.getStackInSlot(i);
-				if (tStack != null && (tStack.stackSize == 0 || tStack.getItem() == null)) aInventory.setInventorySlotContents(i, null);
-			}
-		}
-		
-		public static boolean unlockAchievement(EntityPlayer aPlayer, Achievement aAchievement) {
-			if (aAchievement == null || aPlayer == null) return F;
-			unlockAchievement(aPlayer, aAchievement.parentAchievement);
-			aPlayer.triggerAchievement(aAchievement);
-			return T;
-		}
-		
-		public static boolean checkAchievements(EntityPlayer aPlayer, ItemStack aStack) {
-			if (aPlayer == null || aPlayer.worldObj == null || aPlayer.worldObj.isRemote) return F;
-			
-			if (aPlayer.worldObj.provider.dimensionId == DIM_NETHER) {
-				unlockAchievement(aPlayer, AchievementList.portal);
-			}
-			
-			if (ST.invalid(aStack)) return F;
-			
-			OreDictItemData tData = OM.association_(aStack);
-			Item aItem = ST.item(aStack);
-			Block aBlock = ST.block(aItem);
-			String aRegName = ST.regName(aItem);
-			
-			if (WoodDictionary.WOODS.containsKey(aStack, T) || WoodDictionary.BEAMS.containsKey(aStack, T) || WoodDictionary.PLANKS_ANY.containsKey(aStack, T) || OD.logWood.is_(aStack) || OD.logRubber.is_(aStack)) {
-				unlockAchievement(aPlayer, AchievementList.mineWood);
-			}
-			
-			if (aItem instanceof ItemHoe) {
-				unlockAchievement(aPlayer, AchievementList.buildHoe);
-			} else
-			if (aItem instanceof ItemSword) {
-				unlockAchievement(aPlayer, AchievementList.buildSword);
-			} else
-			if (aItem instanceof ItemPickaxe) {
-				unlockAchievement(aPlayer, aItem != Items.wooden_pickaxe ? AchievementList.buildBetterPickaxe : AchievementList.buildPickaxe);
-			}
-			
-			if (MD.MC.owns(aRegName)) {
-				if (aItem == Items.cooked_fished) {
-					unlockAchievement(aPlayer, AchievementList.cookFish);
-				} else
-				if (aItem == Items.bread) {
-					unlockAchievement(aPlayer, AchievementList.makeBread);
-				} else
-				if (aItem == Items.leather || aItem == Items.beef || aItem == Items.cooked_beef || aItem == Items.saddle) {
-					unlockAchievement(aPlayer, AchievementList.killCow);
-				} else
-				if (aBlock == Blocks.cake || aItem == Items.cake) {
-					unlockAchievement(aPlayer, AchievementList.bakeCake);
-				} else
-				if (aBlock == Blocks.furnace || aBlock == Blocks.lit_furnace) {
-					unlockAchievement(aPlayer, AchievementList.buildFurnace);
-				} else
-				if (aItem == Items.ghast_tear) {
-					unlockAchievement(aPlayer, AchievementList.portal);
-				} else
-				if (aItem == Items.brewing_stand || aBlock == Blocks.brewing_stand || aItem == Items.blaze_rod || aItem == Items.blaze_powder || aItem == Items.ender_eye) {
-					unlockAchievement(aPlayer, AchievementList.blazeRod);
-				} else
-				if (aBlock == Blocks.enchanting_table) {
-					unlockAchievement(aPlayer, AchievementList.enchantments);
-				} else
-				if (aBlock == Blocks.bookshelf) {
-					unlockAchievement(aPlayer, AchievementList.bookcase);
-				}
-			}
-			
-			if (MD.TF.owns(aRegName)) {
-				if (IL.TF_Trophy_Naga.equal(aStack, F, T)) {
-					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressNaga);
-				} else if (IL.TF_Trophy_Lich.equal(aStack, F, T)) {
-					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressLich);
-				} else if (IL.TF_Trophy_Hydra.equal(aStack, F, T)) {
-					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressHydra);
-				} else if (IL.TF_Trophy_Urghast.equal(aStack, F, T)) {
-					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressUrghast);
-				} else if (IL.TF_Trophy_Snowqueen.equal(aStack, F, T)) {
-					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressGlacier);
-				} else if (IL.TF_Lamp_of_Cinders.equal(aStack, T, T)) {
-					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressThorns);
-				} else if (IL.TF_Cube_of_Annihilation.equal(aStack, T, T)) {
-					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressCastle);
-				}
-			}
-			
-			if (tData != null && !tData.mPrefix.containsAny(TD.Prefix.ORE_PROCESSING_BASED, TD.Prefix.ORE)) {
-				if (ANY.Diamond.mToThis.contains(tData.mMaterial.mMaterial) && tData.mPrefix.contains(TD.Prefix.GEM_BASED)) {
-					unlockAchievement(aPlayer, AchievementList.diamonds);
-				}
-				if (ANY.Iron.mToThis.contains(tData.mMaterial.mMaterial)) {
-					unlockAchievement(aPlayer, AchievementList.acquireIron);
-				}
-				if (MD.TF.mLoaded && tData.mMaterial.mMaterial.mOriginalMod == MD.TF && tData.mMaterial.mMaterial.contains(TD.Properties.MAZEBREAKER)) {
-					unlockAchievement(aPlayer, TFAchievementPage.twilightProgressHydra);
-				}
-			}
-			return T;
-		}
-		
-		public static boolean addStackToPlayerInventory(EntityPlayer aPlayer, ItemStack aStack) {
-			return addStackToPlayerInventory(aPlayer, aStack, F);
-		}
-		public static boolean addStackToPlayerInventory(EntityPlayer aPlayer, ItemStack aStack, boolean aCurrentSlotFirst) {
-			return aPlayer != null && addStackToPlayerInventory(aPlayer, aPlayer.inventory, aStack, aCurrentSlotFirst);
-		}
-		public static boolean addStackToPlayerInventory(EntityPlayer aPlayer, IInventory aInventory, ItemStack aStack, boolean aCurrentSlotFirst) {
-			if (aInventory != null && ST.valid(aStack)) {
-				UT.Inventories.checkAchievements(aPlayer, aStack);
-				
-				// wait no, i cant do this one because of the boolean return!
-				//
-				// To make sure no accidents cause NEI to make 111 infinite Stacks.
-				//if (aStack.stackSize > 64) {
-				//addStackToPlayerInventory(aPlayer, aInventory, ST.amount(64, aStack), F);
-				//aStack.stackSize -= 64;
-				//}
-				
-				for (int i = 0; i < 36; i++) if (aPlayer == null || i != aPlayer.inventory.currentItem) {
-					ItemStack tStack = aInventory.getStackInSlot(i);
-					if (ST.equal(tStack, aStack) && aStack.stackSize + tStack.stackSize <= tStack.getMaxStackSize()) {
-						tStack.stackSize += aStack.stackSize;
-						ST.update(aPlayer);
-						return T;
-					}
-				}
-				if (aCurrentSlotFirst && aPlayer != null) {
-					ItemStack tStack = aInventory.getStackInSlot(aPlayer.inventory.currentItem);
-					if (tStack == null || tStack.stackSize == 0) {
-						aInventory.setInventorySlotContents(aPlayer.inventory.currentItem, aStack);
-						ST.update(aPlayer);
-						return T;
-					} else if (ST.equal(tStack, aStack) && aStack.stackSize + tStack.stackSize <= tStack.getMaxStackSize()) {
-						tStack.stackSize += aStack.stackSize;
-						ST.update(aPlayer);
-						return T;
-					}
-				}
-				for (int i = 0; i < 36; i++) if (aPlayer == null || i != aPlayer.inventory.currentItem) {
-					ItemStack tStack = aInventory.getStackInSlot(i);
-					if (tStack == null || tStack.stackSize <= 0) {
-						aInventory.setInventorySlotContents(i, aStack);
-						ST.update(aPlayer);
-						return T;
-					}
-				}
-				if (!aCurrentSlotFirst && aPlayer != null) {
-					ItemStack tStack = aInventory.getStackInSlot(aPlayer.inventory.currentItem);
-					if (tStack == null || tStack.stackSize == 0) {
-						aInventory.setInventorySlotContents(aPlayer.inventory.currentItem, aStack);
-						ST.update(aPlayer);
-						return T;
-					} else if (ST.equal(tStack, aStack) && aStack.stackSize + tStack.stackSize <= tStack.getMaxStackSize()) {
-						tStack.stackSize += aStack.stackSize;
-						ST.update(aPlayer);
-						return T;
-					}
-				}
-			}
-			return F;
-		}
-		
-		public static boolean addStackToPlayerInventoryOrDrop(EntityPlayer aPlayer, ItemStack aStack) {
-			return addStackToPlayerInventoryOrDrop(aPlayer, aStack, F, aPlayer.worldObj, aPlayer.posX, aPlayer.posY, aPlayer.posZ);
-		}
-		
-		public static boolean addStackToPlayerInventoryOrDrop(EntityPlayer aPlayer, ItemStack aStack, boolean aCurrentSlotFirst) {
-			return addStackToPlayerInventoryOrDrop(aPlayer, aStack, aCurrentSlotFirst, aPlayer.worldObj, aPlayer.posX, aPlayer.posY, aPlayer.posZ);
-		}
-		
-		public static boolean addStackToPlayerInventoryOrDrop(EntityPlayer aPlayer, ItemStack aStack, World aWorld, double aX, double aY, double aZ) {
-			return addStackToPlayerInventoryOrDrop(aPlayer, aStack, F, aWorld, aX, aY, aZ);
-		}
-		
-		public static boolean addStackToPlayerInventoryOrDrop(EntityPlayer aPlayer, ItemStack aStack, boolean aCurrentSlotFirst, World aWorld, double aX, double aY, double aZ) {
-			if (ST.valid(aStack) && !addStackToPlayerInventory(aPlayer, aStack, aCurrentSlotFirst)) ST.drop(aWorld, aX, aY, aZ, aStack);
-			return T;
-		}
-		
-		public static boolean addStackToPlayerInventoryOrDrop(EntityPlayer aPlayer, IInventory aInventory, ItemStack aStack, boolean aCurrentSlotFirst, World aWorld, double aX, double aY, double aZ) {
-			if (ST.valid(aStack) && !addStackToPlayerInventory(aPlayer, aInventory, aStack, aCurrentSlotFirst)) ST.drop(aWorld, aX, aY, aZ, aStack);
-			return T;
-		}
-		
-		public static ItemStack getProjectile(TagData aProjectileType, IInventory aInventory) {
-			if (aInventory != null) for (int i = 0, j = aInventory.getSizeInventory(); i < j; i++) {
-				ItemStack rStack = aInventory.getStackInSlot(i);
-				if (ST.valid(rStack) && rStack.getItem() instanceof IItemProjectile && ((IItemProjectile)rStack.getItem()).hasProjectile(aProjectileType, rStack)) return ST.update(rStack);
-			}
-			return null;
-		}
+		@Deprecated public static void removeNullStacksFromInventory(IInventory aInventory) {ST.denull(aInventory);}
+		@Deprecated public static boolean unlockAchievement(EntityPlayer aPlayer, Achievement aAchievement) {return ST.achieve(aPlayer, aAchievement);}
+		@Deprecated public static boolean checkAchievements(EntityPlayer aPlayer, ItemStack aStack) {return ST.check(aPlayer, aStack);}
+		@Deprecated public static boolean addStackToPlayerInventory(EntityPlayer aPlayer, ItemStack aStack) {return ST.add(aPlayer, aStack);}
+		@Deprecated public static boolean addStackToPlayerInventory(EntityPlayer aPlayer, ItemStack aStack, boolean aCurrentSlotFirst) {return ST.add(aPlayer, aStack, aCurrentSlotFirst);}
+		@Deprecated public static boolean addStackToPlayerInventory(EntityPlayer aPlayer, IInventory aInventory, ItemStack aStack, boolean aCurrentSlotFirst) {return ST.add(aPlayer, aInventory, aStack, aCurrentSlotFirst);}
+		@Deprecated public static boolean addStackToPlayerInventoryOrDrop(EntityPlayer aPlayer, ItemStack aStack) {return ST.give(aPlayer, aStack);}
+		@Deprecated public static boolean addStackToPlayerInventoryOrDrop(EntityPlayer aPlayer, ItemStack aStack, boolean aCurrentSlotFirst) {return ST.give(aPlayer, aStack, aCurrentSlotFirst);}
+		@Deprecated public static boolean addStackToPlayerInventoryOrDrop(EntityPlayer aPlayer, ItemStack aStack, World aWorld, double aX, double aY, double aZ) {return ST.give(aPlayer, aStack, aWorld, aX, aY, aZ);}
+		@Deprecated public static boolean addStackToPlayerInventoryOrDrop(EntityPlayer aPlayer, ItemStack aStack, boolean aCurrentSlotFirst, World aWorld, double aX, double aY, double aZ) {return ST.give(aPlayer, aStack, aCurrentSlotFirst, aWorld, aX, aY, aZ);}
+		@Deprecated public static boolean addStackToPlayerInventoryOrDrop(EntityPlayer aPlayer, IInventory aInventory, ItemStack aStack, boolean aCurrentSlotFirst, World aWorld, double aX, double aY, double aZ) {return ST.give(aPlayer, aInventory, aStack, aCurrentSlotFirst, aWorld, aX, aY, aZ);}
+		@Deprecated public static ItemStack getProjectile(TagData aProjectileType, IInventory aInventory) {return ST.projectile(aInventory, aProjectileType);}
 	}
 	
 	public static class Sounds {
@@ -3335,7 +3122,7 @@ public class UT {
 			ItemStack aStack = aPlayer.inventory.getStackInSlot(aPlayer.inventory.currentItem);
 			if (ST.invalid(aStack)) return F;
 			if (aStack.stackSize != NEI_INFINITE && --aStack.stackSize <= 0) aPlayer.inventory.setInventorySlotContents(aPlayer.inventory.currentItem, NI);
-			Inventories.addStackToPlayerInventoryOrDrop(aPlayer, ST.container(aStack, T), F);
+			ST.give(aPlayer, ST.container(aStack, T), F);
 			return T;
 		}
 	}

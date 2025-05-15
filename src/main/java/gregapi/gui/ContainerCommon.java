@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -683,13 +683,13 @@ public class ContainerCommon extends Container {
 			mTileEntity.closeInventoryGUI();
 			InventoryPlayer tPlayerInventory = aPlayer.inventory;
 			for (ItemStack tStack : tPlayerInventory.mainInventory) {
-				UT.Inventories.checkAchievements(aPlayer, tStack);
+				ST.check(aPlayer, tStack);
 			}
 			for (ItemStack tStack : tPlayerInventory.armorInventory) {
-				UT.Inventories.checkAchievements(aPlayer, tStack);
+				ST.check(aPlayer, tStack);
 			}
 			if (tPlayerInventory.getItemStack() != null) {
-				UT.Inventories.checkAchievements(aPlayer, tPlayerInventory.getItemStack());
+				ST.check(aPlayer, tPlayerInventory.getItemStack());
 				aPlayer.dropPlayerItemWithRandomChoice(tPlayerInventory.getItemStack(), F);
 				tPlayerInventory.setItemStack(null);
 			}

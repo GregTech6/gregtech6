@@ -30,7 +30,6 @@ import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.old.Textures;
 import gregapi.render.IIconContainer;
 import gregapi.util.ST;
-import gregapi.util.UT;
 import gregtech.items.tools.early.GT_Tool_Axe;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -68,7 +67,7 @@ public class GT_Tool_Chainsaw_LV extends GT_Tool_Axe {
 	@Override
 	public DamageSource getDamageSource(EntityLivingBase aPlayer, Entity aEntity) {
 		if (MD.IC2.mLoaded && aPlayer instanceof EntityPlayer && aEntity instanceof EntityCreeper) try {
-		UT.Inventories.unlockAchievement(((EntityPlayer)aPlayer), AchievementList.acquireIron);
+		ST.achieve(aPlayer, AchievementList.acquireIron);
 		ic2.core.IC2.achievements.issueAchievement((EntityPlayer)aPlayer, "buildCable");
 		ic2.core.IC2.achievements.issueAchievement((EntityPlayer)aPlayer, "buildGenerator");
 		ic2.core.IC2.achievements.issueAchievement((EntityPlayer)aPlayer, "buildBatBox");

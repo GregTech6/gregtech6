@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -131,14 +131,14 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 				} else if (UT.Entities.hasInfiniteItems(aPlayer)) {
 					int tXP = UT.NBT.getEnchantmentXP(aStack);
 					if (tXP > 0) {
-						UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, UT.NBT.removeEnchantments(ST.amount(1, aStack)), F);
+						ST.give(aPlayer, UT.NBT.removeEnchantments(ST.amount(1, aStack)), F);
 						worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+1.25, zCoord+0.5, tXP));
 					} else {
 						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
 						if (tRecipe != null) {
 							mLastRecipe = tRecipe;
 							if (tRecipe.isRecipeInputEqual(F, T, ZL_FS, ST.array(aStack))) {
-								for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
+								for (ItemStack tStack : tRecipe.getOutputs()) ST.give(aPlayer, tStack, F);
 							}
 						}
 					}
@@ -148,7 +148,7 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 					if (tXP > 0) {
 						ItemStack tOutput = ST.amount(1, aStack);
 						ST.use(aPlayer, T, F, aStack, 1);
-						UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, UT.NBT.removeEnchantments(tOutput), F);
+						ST.give(aPlayer, UT.NBT.removeEnchantments(tOutput), F);
 						worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+1.25, zCoord+0.5, tXP));
 						aPlayer.addExhaustion(0.5F);
 					} else {
@@ -156,7 +156,7 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 						if (tRecipe != null) {
 							mLastRecipe = tRecipe;
 							if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, ST.array(aStack))) {
-								for (ItemStack tStack : tRecipe.getOutputs()) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, F);
+								for (ItemStack tStack : tRecipe.getOutputs()) ST.give(aPlayer, tStack, F);
 								aPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 10000.0F);
 								mStone--;
 							}

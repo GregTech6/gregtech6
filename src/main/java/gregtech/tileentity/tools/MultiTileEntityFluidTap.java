@@ -162,7 +162,7 @@ public class MultiTileEntityFluidTap extends TileEntityBase10Attachment implemen
 					if (aFluid.amount > tNewFluid.amount && ((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, aFluid.amount - tNewFluid.amount, T) != null) {
 						UT.Sounds.send(SFX.IC_SPRAY, 1.0F, 2.0F, this, F);
 						aStack.stackSize--;
-						UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, tStack, T);
+						ST.give(aPlayer, tStack, T);
 						return T;
 					}
 				}

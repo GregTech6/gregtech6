@@ -288,7 +288,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 					if (canInsertItem2(0, aPlayer.inventory.getCurrentItem(), aSide)) ST.move(aPlayer.inventory, this, aPlayer.inventory.currentItem, 0);
 				}
 			} else {
-				for (int i = 1; i < 13; i++) UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer, slotTake(i), F, worldObj, xCoord+0.5, yCoord+1, zCoord+0.5);
+				for (int i = 1; i < 13; i++) ST.give(aPlayer, slotTake(i), F, worldObj, xCoord+0.5, yCoord+1, zCoord+0.5);
 			}
 		} else {
 			if (SIDES_TOP[aSide]) {

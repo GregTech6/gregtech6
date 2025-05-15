@@ -128,7 +128,7 @@ public abstract class MultiTileEntityMassStorage extends TileEntityBase09FacingS
 			if ((mMode & B[3]) != 0) return 0;
 			long rCount = 0;
 			if (mPartialUnits > 0) {
-				UT.Inventories.addStackToPlayerInventoryOrDrop(aPlayer instanceof EntityPlayer ? (EntityPlayer)aPlayer : null, getPartialStack(), worldObj, xCoord + OFFX[mFacing], yCoord, zCoord + OFFZ[mFacing]);
+				ST.give(aPlayer, getPartialStack(), worldObj, xCoord + OFFX[mFacing], yCoord, zCoord + OFFZ[mFacing]);
 				mPartialUnits = 0;
 				rCount += 10;
 			}

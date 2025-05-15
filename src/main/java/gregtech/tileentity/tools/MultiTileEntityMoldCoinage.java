@@ -20,7 +20,6 @@
 package gregtech.tileentity.tools;
 
 import gregapi.block.multitileentity.IMultiTileEntity.*;
-import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.OP;
@@ -121,7 +120,7 @@ public class MultiTileEntityMoldCoinage extends TileEntityBase07Paintable implem
 					return T;
 				}
 			} else {
-				if (UT.Inventories.addStackToPlayerInventory(aPlayer, tOutputStack, F)) slotKill(0);
+				if (ST.add(aPlayer, tOutputStack, F)) slotKill(0);
 			}
 		}
 		return F;
