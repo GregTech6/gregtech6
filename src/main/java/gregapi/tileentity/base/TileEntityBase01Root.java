@@ -854,7 +854,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	
 	public static final ITexture SNOW_TEXTURE = BlockTextureCopied.get(Blocks.snow_layer); // very commonly used Texture.
 	public boolean removedByPlayer(World aWorld, EntityPlayer aPlayer, boolean aWillHarvest) {return setToAir();}
-	public boolean hasSnow() {for (byte tSide : ALL_SIDES_BUT_BOTTOM) if (getBlockAtSide(tSide) == Blocks.snow_layer) return T; return F;}
+	public boolean hasSnow() {for (int i : SCAN_NEG_1) for (int j : SCAN_NEG_1) if (getBlockOffset(i, 0, j) == Blocks.snow_layer) return T; return F;}
 	public boolean setToSnow() {return getOpacity(xCoord, yCoord-1, zCoord) && hasSnow() && worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.snow_layer, 0, 3);}
 	public boolean setToAir() {if (worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.air, 0, 3)) {if (this instanceof IMultiTileEntity.IMTE_CanPlaceSnowLayerOnRemoval) setToSnow(); return T;} return F;}
 	
