@@ -23,6 +23,7 @@ import appeng.api.movable.IMovableTile;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import gregapi.block.multitileentity.IMultiTileEntity;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetLightValue;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsProvidingStrongPower;
 import gregapi.code.ArrayListNoNulls;
@@ -34,8 +35,10 @@ import gregapi.gui.Slot_Base;
 import gregapi.network.packets.PacketBlockError;
 import gregapi.network.packets.PacketBlockEvent;
 import gregapi.random.ExplosionGT;
+import gregapi.render.BlockTextureCopied;
 import gregapi.render.IRenderedBlockObject;
 import gregapi.render.IRenderedBlockObject.ErrorRenderer;
+import gregapi.render.ITexture;
 import gregapi.render.RenderHelper;
 import gregapi.tileentity.ITileEntity;
 import gregapi.tileentity.ITileEntityAdjacentInventoryUpdatable;
@@ -846,7 +849,14 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	public int getFlammability   (byte aSide, boolean aDefault) {return aDefault ? 150 : 0;}
 	public void setOnFire() {WD.burn(worldObj, getCoords(), F, F);}
 	public boolean setToFire() {return worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.fire, 0, 3);}
-	public boolean setToAir () {return worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.air , 0, 3);}
+	
+	// Removal and Snow Layer Stuff
+	
+	public static final ITexture SNOW_TEXTURE = BlockTextureCopied.get(Blocks.snow_layer); // very commonly used Texture.
+	public boolean removedByPlayer(World aWorld, EntityPlayer aPlayer, boolean aWillHarvest) {return setToAir();}
+	public boolean hasSnow() {for (byte tSide : ALL_SIDES_BUT_BOTTOM) if (getBlockAtSide(tSide) == Blocks.snow_layer) return T; return F;}
+	public boolean setToSnow() {return getOpacity(xCoord, yCoord-1, zCoord) && hasSnow() && worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.snow_layer, 0, 3);}
+	public boolean setToAir() {if (worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.air, 0, 3)) {if (this instanceof IMultiTileEntity.IMTE_CanPlaceSnowLayerOnRemoval) setToSnow(); return T;} return F;}
 	
 	// Inventory Stuff
 	

@@ -28,7 +28,10 @@ import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
 import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
-import gregapi.render.*;
+import gregapi.render.BlockTextureDefault;
+import gregapi.render.BlockTextureMulti;
+import gregapi.render.IIconContainer;
+import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityQuickObstructionCheck;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.util.OM;
@@ -53,7 +56,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements IMTE_RemovedByPlayer, ITileEntityQuickObstructionCheck, IMTE_OnOxygenRemoved, IMTE_CanPlace, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
+public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements IMTE_CanPlaceSnowLayerOnRemoval, ITileEntityQuickObstructionCheck, IMTE_OnOxygenRemoved, IMTE_CanPlace, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
 	public ItemStack mBerry;
 	public byte oStage = 0, mStage = 0, mGrowth = 0, mSpeed = 0;
 	
@@ -100,10 +103,7 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 		super.onTick2(aTimer, aIsServerSide);
 		if (aIsServerSide) {
 			if (mBlockUpdated || SERVER_TIME % 128 == 64) {
-				if (!WD.oxygen(worldObj, xCoord, yCoord, zCoord)) {
-					setToAir();
-					return;
-				}
+				if (!WD.oxygen(worldObj, xCoord, yCoord, zCoord)) {setToAir(); return;}
 				
 				if (getBlockAtSide(SIDE_UP) == Blocks.snow_layer) worldObj.setBlockToAir(xCoord, yCoord+1, zCoord);
 				
@@ -180,12 +180,6 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	}
 	
 	@Override
-	public boolean removedByPlayer(World aWorld, EntityPlayer aPlayer, boolean aWillHarvest) {
-		for (byte tSide : ALL_SIDES_HORIZONTAL) if (getBlockAtSide(tSide) == Blocks.snow_layer) return worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.snow_layer, 0, 3);
-		return setToAir();
-	}
-	
-	@Override
 	public boolean canPlace(ItemStack aStack, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		TileEntity tTileEntity = aWorld.getTileEntity(aX-OFFX[aSide], aY-OFFY[aSide], aZ-OFFZ[aSide]);
 		if (tTileEntity instanceof MultiTileEntityBush && SIDES_INVALID[((MultiTileEntityBush)tTileEntity).mFacing] && (ST.invalid(mBerry) || ST.equal(((MultiTileEntityBush)tTileEntity).mBerry, mBerry, F))) {
@@ -215,8 +209,6 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	sOverlayBush        = new Textures.BlockIcons.CustomIcon("machines/plants/bush/overlay/bush"),
 	sOverlayBerry       = new Textures.BlockIcons.CustomIcon("machines/plants/bush/overlay/berries"),
 	sOverlayImmature    = new Textures.BlockIcons.CustomIcon("machines/plants/bush/overlay/berries_immature");
-	
-	public static final ITexture sSnowTexture = BlockTextureCopied.get(Blocks.snow_layer);
 	
 	private ITexture mTexture;
 	
@@ -253,8 +245,7 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 			mTexture = BlockTextureMulti.get(BlockTextureDefault.get(sTextureBush, 0xff00ff), BlockTextureDefault.get(sOverlayBush));
 		}
 		
-		for (byte tSide : ALL_SIDES_HORIZONTAL) if (getBlockAtSide(tSide) == Blocks.snow_layer) return 2;
-		return 1;
+		return hasSnow()?2:1;
 	}
 	
 	@Override
@@ -273,7 +264,7 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return aRenderPass == 0 ? aShouldSideBeRendered[aSide] || SIDES_VALID[mFacing] ? mTexture : null : aShouldSideBeRendered[aSide] ? sSnowTexture : null;
+		return aRenderPass == 0 ? aShouldSideBeRendered[aSide] || SIDES_VALID[mFacing] ? mTexture : null : aShouldSideBeRendered[aSide] ? SNOW_TEXTURE : null;
 	}
 	
 	@Override

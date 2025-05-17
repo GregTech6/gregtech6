@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -18,11 +18,6 @@
  */
 
 package gregapi.block.multitileentity;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
@@ -56,6 +51,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * @author Gregorius Techneticies
@@ -129,6 +129,7 @@ public interface IMultiTileEntity extends ITileEntitySpecificPlacementBehavior {
 	public static interface IMTE_IsBurning                          extends IMultiTileEntity {public boolean isBurning();}
 	public static interface IMTE_IsAir                              extends IMultiTileEntity {public boolean isAir();}
 	public static interface IMTE_RemovedByPlayer                    extends IMultiTileEntity {public boolean removedByPlayer(World aWorld, EntityPlayer aPlayer, boolean aWillHarvest);}
+	public static interface IMTE_CanPlaceSnowLayerOnRemoval         extends IMTE_RemovedByPlayer {}
 	public static interface IMTE_CanCreatureSpawn                   extends IMultiTileEntity {public boolean canCreatureSpawn(EnumCreatureType aType);}
 	public static interface IMTE_IsBed                              extends IMultiTileEntity {public boolean isBed(EntityLivingBase aPlayer);}
 	public static interface IMTE_GetBedSpawnPosition                extends IMultiTileEntity {public ChunkCoordinates getBedSpawnPosition(EntityPlayer aPlayer);}
