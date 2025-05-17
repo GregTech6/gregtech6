@@ -47,7 +47,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities implements ITileEntityQuickObstructionCheck, IMTE_CanEntityDestroy, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_OnNeighborBlockChange, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState, IMTE_GetFlammability, IMTE_GetFireSpreadSpeed {
+public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities implements IMTE_RemovedByPlayer, ITileEntityQuickObstructionCheck, IMTE_CanEntityDestroy, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_OnNeighborBlockChange, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState, IMTE_GetFlammability, IMTE_GetFireSpreadSpeed {
 	public static final ITexture sWoodTexture = BlockTextureCopied.get(Blocks.log, SIDE_FRONT, 0), sSnowTexture = BlockTextureCopied.get(Blocks.snow_layer);
 	public ITexture mTexture = sWoodTexture;
 	public float mMinX = PX_P[2], mMinZ = PX_P[7], mMaxX = PX_N[2], mMaxZ = PX_N[7];
@@ -79,6 +79,13 @@ public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities impl
 		if (isClientSide()) return T;
 		ST.give(aPlayer, getDefaultStick(1), T, worldObj, xCoord+0.5, yCoord+0.5, zCoord+0.5);
 		playCollect();
+		for (byte tSide : ALL_SIDES_HORIZONTAL) if (getBlockAtSide(tSide) == Blocks.snow_layer) return worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.snow_layer, 0, 3);
+		return setToAir();
+	}
+	
+	@Override
+	public boolean removedByPlayer(World aWorld, EntityPlayer aPlayer, boolean aWillHarvest) {
+		for (byte tSide : ALL_SIDES_HORIZONTAL) if (getBlockAtSide(tSide) == Blocks.snow_layer) return worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.snow_layer, 0, 3);
 		return setToAir();
 	}
 	

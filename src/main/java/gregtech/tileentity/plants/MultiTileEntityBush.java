@@ -19,10 +19,7 @@
 
 package gregtech.tileentity.plants;
 
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_CanPlace;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_OnOxygenRemoved;
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
+import gregapi.block.multitileentity.IMultiTileEntity.*;
 import gregapi.block.multitileentity.MultiTileEntityContainer;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -56,7 +53,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements ITileEntityQuickObstructionCheck, IMTE_OnOxygenRemoved, IMTE_CanPlace, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
+public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements IMTE_RemovedByPlayer, ITileEntityQuickObstructionCheck, IMTE_OnOxygenRemoved, IMTE_CanPlace, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
 	public ItemStack mBerry;
 	public byte oStage = 0, mStage = 0, mGrowth = 0, mSpeed = 0;
 	
@@ -180,6 +177,12 @@ public class MultiTileEntityBush extends TileEntityBase09FacingSingle implements
 			return T;
 		}
 		return F;
+	}
+	
+	@Override
+	public boolean removedByPlayer(World aWorld, EntityPlayer aPlayer, boolean aWillHarvest) {
+		for (byte tSide : ALL_SIDES_HORIZONTAL) if (getBlockAtSide(tSide) == Blocks.snow_layer) return worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.snow_layer, 0, 3);
+		return setToAir();
 	}
 	
 	@Override

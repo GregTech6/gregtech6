@@ -51,7 +51,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities implements IMTE_CanEntityDestroy, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_OnToolClick, IMTE_OnNeighborBlockChange, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, ITileEntityQuickObstructionCheck, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
+public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities implements IMTE_RemovedByPlayer, IMTE_CanEntityDestroy, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_OnToolClick, IMTE_OnNeighborBlockChange, IMTE_GetBlockHardness, IMTE_IsSideSolid, IMTE_GetLightOpacity, IMTE_GetExplosionResistance, ITileEntityQuickObstructionCheck, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool, IMTE_SetBlockBoundsBasedOnState {
 	public static final ITexture sStoneTexture = BlockTextureCopied.get(Blocks.stone), sSnowTexture = BlockTextureCopied.get(Blocks.snow_layer);
 	public ITexture mTexture = sStoneTexture;
 	public ItemStack mRock;
@@ -144,6 +144,13 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 		if (isClientSide()) return T;
 		ST.give(aPlayer, getRock(1), T, worldObj, xCoord+0.5, yCoord+0.5, zCoord+0.5);
 		playCollect();
+		for (byte tSide : ALL_SIDES_HORIZONTAL) if (getBlockAtSide(tSide) == Blocks.snow_layer) return worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.snow_layer, 0, 3);
+		return setToAir();
+	}
+	
+	@Override
+	public boolean removedByPlayer(World aWorld, EntityPlayer aPlayer, boolean aWillHarvest) {
+		for (byte tSide : ALL_SIDES_HORIZONTAL) if (getBlockAtSide(tSide) == Blocks.snow_layer) return worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.snow_layer, 0, 3);
 		return setToAir();
 	}
 	

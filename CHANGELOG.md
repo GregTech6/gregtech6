@@ -6,6 +6,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.04: (Not released yet)
+[CHANGED] Bushes, Sticks and Rocks now leave behind a Snow Layer when harvested next to Snow.
 [ADDED] Aspectonomicon, a Book that when rightclicked, will count as having scanned most Vanilla-ish Items and Blocks with a Thaumometer. Does not contain Aspects for Thaumcraft Items. It is crafted using the 9 different Magic Research Papers.
 
 
