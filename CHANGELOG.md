@@ -6,7 +6,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.04: (Not released yet)
-[FIXED] Some of the Bird Eggs of Exotic Birds were missed in my Compat. Also Big Eggs give more White/Yolk now, and if no Egg Shell Item exists, my Recipes will give you a piece of Bonemeal. Also fixed Harvestcraft Eggnog Recipe in my Mixing Bowl.
+[FIXED] Some of the Bird Eggs of the Exotic Birds Mod were missed in my Compat. Also Big Eggs give more White/Yolk now, and if no Egg Shell Item exists, my Recipes will give you a piece of Bonemeal. Also fixed Harvestcraft Eggnog Recipe in my Mixing Bowl.
 [CHANGED] Bushes, Sticks and Rocks now leave behind a Snow Layer when harvested next to Snow.
 [ADDED] Killing Creepers, Zombies, Skeletons, Wither Skeletons or Players with a Scythe/Sense will make them drop a Head. Yes that also makes it a lot less grindy to get a Skull for the Wither. I have no Idea if Player Head Drops work properly as I cant log in to check, so this needs to be done by Bear.
 [ADDED] Aspectonomicon, a Book that when rightclicked, will count as having scanned most Vanilla-ish Items and Blocks with a Thaumometer. Does not contain Aspects for Thaumcraft Items. It is crafted using the 9 different Magic Research Papers.

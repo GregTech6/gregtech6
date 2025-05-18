@@ -51,7 +51,7 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing HarvestCraft Recipes.");
 		final ItemStack tYogurt = ST.make(MD.HaC, "plainyogurtItem", 1);
 		
-		CR.delate(MD.HaC, "paneertikkamasalaItem", "mortarandpestleItem", "flourItem", "cornmealItem", "plainyogurtItem", "coconutcreamItem", "heavycreamItem", "mayoItem", "ketchupItem", "vinegarItem", "oliveoilItem", "saladdressingItem", "peanutbutterItem", "nutellaItem", "appleciderItem", "beefjerkyItem", "zombiejerkyItem", "peppermintItem", "doughItem", "marzipanItem", "chocolatemilkshakeItem", "strawberrymilkshakeItem", "bananamilkshakeItem", "gooseberrymilkshakeItem", "saltedsunflowerseedsItem", "cherryjuiceItem", "bananajuiceItem", "strawberryjuiceItem", "persimmonjuiceItem", "lemonaideItem", "applejuiceItem", "grapejuiceItem", "melonjuiceItem", "kiwijuiceItem", "raspberryjuiceItem", "blackberryjuiceItem", "blueberryjuiceItem", "cranberryjuiceItem", "gooseberryjuiceItem", "carrotjuiceItem", "grapefruitjuiceItem", "pearjuiceItem", "apricotjuiceItem", "plumjuiceItem", "peachjuiceItem", "limejuiceItem", "orangejuiceItem", "pomegranatejuiceItem", "mangojuiceItem", "figjuiceItem", "papayajuiceItem", "cactusfruitjuiceItem", "starfruitjuiceItem", "coconutmilkItem", "grapefruitsmoothieItem", "pearsmoothieItem", "apricotsmoothieItem", "plumsmoothieItem", "peachsmoothieItem", "limesmoothieItem", "orangesmoothieItem", "cranberrysmoothieItem", "cherrysmoothieItem", "bananasmoothieItem", "lemonsmoothieItem", "applesmoothieItem", "grapesmoothieItem", "melonsmoothieItem", "kiwismoothieItem", "raspberrysmoothieItem", "blackberrysmoothieItem", "blueberrysmoothieItem", "gooseberrysmoothieItem", "strawberrysmoothieItem", "pomegranatesmoothieItem", "persimmonsmoothieItem", "figsmoothieItem", "starfruitsmoothieItem", "mangosmoothieItem", "papayasmoothieItem", "coconutsmoothieItem", "chocolateyogurtItem", "vanillayogurtItem", "coconutyogurtItem", "papayayogurtItem", "figyogurtItem", "mangoyogurtItem", "starfruityogurtItem", "pomegranateyogurtItem", "grapefruityogurtItem", "persimmonyogurtItem", "pearyogurtItem", "apricotyogurtItem", "plumyogurtItem", "peachyogurtItem", "limeyogurtItem", "orangeyogurtItem", "cranberryyogurtItem", "pineappleyogurtItem", "cherryyogurtItem", "bananayogurtItem", "lemonyogurtItem", "appleyogurtItem", "grapeyogurtItem", "grapeyogurtItem", "melonyogurtItem", "kiwiyogurtItem", "raspberryyogurtItem", "blackberryyogurtItem", "blueberryyogurtItem", "gooseberryyogurtItem", "strawberryyogurtItem", "pumpkinyogurtItem", "icecreamItem", "strawberryicecreamItem", "cherryicecreamItem", "spumoniicecreamItem", "neapolitanicecreamItem", "vanillaicecreamItem", "chocolateicecreamItem", "pistachioicecreamItem", "mochaicecreamItem", "caramelicecreamItem", "mintchocolatechipicemcreamItem", "extremechiliItem", "batterItem", "eggnogItem", "caramelItem", "ricecakeItem", "garammasalaItem", "chocolatestrawberryItem", "chocolatecherryItem", "chocolatebaconItem", "maplecandiedbaconItem", "epicbaconItem", "chocolatedonutItem", "cinnamonsugardonutItem", "powdereddonutItem", "frosteddonutItem", "donutItem", "jellydonutItem");
+		CR.delate(MD.HaC, "boiledeggItem", "paneertikkamasalaItem", "mortarandpestleItem", "flourItem", "cornmealItem", "plainyogurtItem", "coconutcreamItem", "heavycreamItem", "mayoItem", "ketchupItem", "vinegarItem", "oliveoilItem", "saladdressingItem", "peanutbutterItem", "nutellaItem", "appleciderItem", "beefjerkyItem", "zombiejerkyItem", "peppermintItem", "doughItem", "marzipanItem", "chocolatemilkshakeItem", "strawberrymilkshakeItem", "bananamilkshakeItem", "gooseberrymilkshakeItem", "saltedsunflowerseedsItem", "cherryjuiceItem", "bananajuiceItem", "strawberryjuiceItem", "persimmonjuiceItem", "lemonaideItem", "applejuiceItem", "grapejuiceItem", "melonjuiceItem", "kiwijuiceItem", "raspberryjuiceItem", "blackberryjuiceItem", "blueberryjuiceItem", "cranberryjuiceItem", "gooseberryjuiceItem", "carrotjuiceItem", "grapefruitjuiceItem", "pearjuiceItem", "apricotjuiceItem", "plumjuiceItem", "peachjuiceItem", "limejuiceItem", "orangejuiceItem", "pomegranatejuiceItem", "mangojuiceItem", "figjuiceItem", "papayajuiceItem", "cactusfruitjuiceItem", "starfruitjuiceItem", "coconutmilkItem", "grapefruitsmoothieItem", "pearsmoothieItem", "apricotsmoothieItem", "plumsmoothieItem", "peachsmoothieItem", "limesmoothieItem", "orangesmoothieItem", "cranberrysmoothieItem", "cherrysmoothieItem", "bananasmoothieItem", "lemonsmoothieItem", "applesmoothieItem", "grapesmoothieItem", "melonsmoothieItem", "kiwismoothieItem", "raspberrysmoothieItem", "blackberrysmoothieItem", "blueberrysmoothieItem", "gooseberrysmoothieItem", "strawberrysmoothieItem", "pomegranatesmoothieItem", "persimmonsmoothieItem", "figsmoothieItem", "starfruitsmoothieItem", "mangosmoothieItem", "papayasmoothieItem", "coconutsmoothieItem", "chocolateyogurtItem", "vanillayogurtItem", "coconutyogurtItem", "papayayogurtItem", "figyogurtItem", "mangoyogurtItem", "starfruityogurtItem", "pomegranateyogurtItem", "grapefruityogurtItem", "persimmonyogurtItem", "pearyogurtItem", "apricotyogurtItem", "plumyogurtItem", "peachyogurtItem", "limeyogurtItem", "orangeyogurtItem", "cranberryyogurtItem", "pineappleyogurtItem", "cherryyogurtItem", "bananayogurtItem", "lemonyogurtItem", "appleyogurtItem", "grapeyogurtItem", "grapeyogurtItem", "melonyogurtItem", "kiwiyogurtItem", "raspberryyogurtItem", "blackberryyogurtItem", "blueberryyogurtItem", "gooseberryyogurtItem", "strawberryyogurtItem", "pumpkinyogurtItem", "icecreamItem", "strawberryicecreamItem", "cherryicecreamItem", "spumoniicecreamItem", "neapolitanicecreamItem", "vanillaicecreamItem", "chocolateicecreamItem", "pistachioicecreamItem", "mochaicecreamItem", "caramelicecreamItem", "mintchocolatechipicemcreamItem", "extremechiliItem", "batterItem", "eggnogItem", "caramelItem", "ricecakeItem", "garammasalaItem", "chocolatestrawberryItem", "chocolatecherryItem", "chocolatebaconItem", "maplecandiedbaconItem", "epicbaconItem", "chocolatedonutItem", "cinnamonsugardonutItem", "powdereddonutItem", "frosteddonutItem", "donutItem", "jellydonutItem");
 		CR.remove(ST.make(MD.HaC, "potItem", 1), ST.make(Items.water_bucket, 1, 0));
 		
 		for (int i = 0; i < 16; i++) {
@@ -59,6 +59,7 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		CR.shaped(ST.make(MD.HaC, "pamcandleDeco"+(i+1), 1, 0), CR.DEF_NCC, "S", "W", "D", 'W', OD.materialPressedwax, 'S', OD.itemString, 'D', DYE_OREDICTS[15-i]);
 		}
 		
+		ArrayList<ItemStack> tListFoodLemon = OreDictionary.getOres("cropLemon");
 		ArrayList<ItemStack> tListFoodRice = OreDictionary.getOres("foodRice"), tListCropRice = OreDictionary.getOres("cropRice");
 		ArrayList<ItemStack> tListFoodOats = OreDictionary.getOres("dustOat"), tListCropOats = OreDictionary.getOres("cropOats");
 		ArrayList<ItemStack> tListFoodBarley = OreDictionary.getOres("dustBarley"), tListCropBarley = OreDictionary.getOres("cropBarley");
@@ -70,6 +71,7 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 				ArrayList<Object> tInputs = ((ShapelessOreRecipe)tRecipe).getInput();
 				int tSize = tInputs.size();
 				if (tSize > 2) for (int i = 0; i < tSize; i++) {
+					if (tListFoodLemon == tInputs.get(i)) tInputs.set(i, IL.Food_Lemon_Sliced.get(1)); else
 					if (tListCropRice == tInputs.get(i)) tInputs.set(i, tListFoodRice); else
 					if (tListCropOats == tInputs.get(i)) tInputs.set(i, tListFoodOats); else
 					if (tListCropBarley == tInputs.get(i)) tInputs.set(i, tListFoodBarley); else
@@ -79,18 +81,18 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 			}
 		}
 		
-		FoodsGT.put(ST.make(MD.HaC, "fruitsaladItem"    , 1), 0, 0, 0, 20, 0);
-		FoodsGT.put(ST.make(MD.HaC, "citrussaladItem"   , 1), 0, 0, 0, 10, 0);
-		FoodsGT.put(ST.make(MD.HaC, "springsaladItem"   , 1), 0, 0, 0, 10, 0);
+		FoodsGT.put(ST.make(MD.HaC, "fruitsaladItem" , 1), 0, 0, 0, 20, 0);
+		FoodsGT.put(ST.make(MD.HaC, "citrussaladItem", 1), 0, 0, 0, 10, 0);
+		FoodsGT.put(ST.make(MD.HaC, "springsaladItem", 1), 0, 0, 0, 10, 0);
 		
-		RM.add_smelting(ST.make(MD.HaC, "turkeyrawItem"     , 1), ST.make(MD.HaC, "turkeycookedItem"    , 1), F, T, F);
-		RM.add_smelting(ST.make(MD.HaC, "rabbitrawItem"     , 1), ST.make(MD.HaC, "rabbitcookedItem"    , 1), F, T, F);
-		RM.add_smelting(ST.make(MD.HaC, "venisonrawItem"    , 1), ST.make(MD.HaC, "venisoncookedItem"   , 1), F, T, F);
+		RM.add_smelting(ST.make(MD.HaC, "turkeyrawItem" , 1), ST.make(MD.HaC, "turkeycookedItem" , 1), F, T, F);
+		RM.add_smelting(ST.make(MD.HaC, "rabbitrawItem" , 1), ST.make(MD.HaC, "rabbitcookedItem" , 1), F, T, F);
+		RM.add_smelting(ST.make(MD.HaC, "venisonrawItem", 1), ST.make(MD.HaC, "venisoncookedItem", 1), F, T, F);
 		
 		for (OreDictMaterial tMat : ANY.Iron.mToThis)
-		RM.Loom     .addRecipe2(T, 64,  128, ST.make(MD.HaC, "hardenedleatherItem", 6), (tMat==MT.Enori?OP.plateGem:OP.plate)   .mat(tMat           , 8), ST.make(Items.iron_horse_armor, 1, 0));
-		RM.Loom     .addRecipe2(T, 64,  128, ST.make(MD.HaC, "hardenedleatherItem", 6), OP.plate                                .mat(MT.Au          , 8), ST.make(Items.golden_horse_armor, 1, 0));
-		RM.Loom     .addRecipe2(T, 64,  128, ST.make(MD.HaC, "hardenedleatherItem", 6), OP.plateGem                             .mat(MT.Diamond     , 8), ST.make(Items.diamond_horse_armor, 1, 0));
+		RM.Loom     .addRecipe2(T, 64,  128, ST.make(MD.HaC, "hardenedleatherItem", 6), (tMat==MT.Enori?OP.plateGem:OP.plate).mat(tMat      , 8), ST.make(Items.iron_horse_armor   , 1, 0));
+		RM.Loom     .addRecipe2(T, 64,  128, ST.make(MD.HaC, "hardenedleatherItem", 6), OP.plate                             .mat(MT.Au     , 8), ST.make(Items.golden_horse_armor , 1, 0));
+		RM.Loom     .addRecipe2(T, 64,  128, ST.make(MD.HaC, "hardenedleatherItem", 6), OP.plateGem                          .mat(MT.Diamond, 8), ST.make(Items.diamond_horse_armor, 1, 0));
 		for (OreDictMaterial tMat : ANY.Steel.mToThis)
 		RM.Loom     .addRecipeX(T, 64,  128, ST.array(ST.make(MD.HaC, "hardenedleatherItem", 6), OP.ring.mat(tMat, 2), OP.stick.mat(tMat, 3)), ST.make(Items.saddle, 1, 0));
 		RM.Loom     .addRecipe2(T, 16,  128, ST.tag(4), ST.make(MD.HaC, "hardenedleatherItem", 5), ST.make(MD.HaC, "hardenedleatherhelmItem", 1));
