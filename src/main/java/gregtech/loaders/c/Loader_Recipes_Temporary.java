@@ -177,6 +177,15 @@ public class Loader_Recipes_Temporary implements Runnable {
 		}
 		
 		
+		if (MD.HOWL.mLoaded) {
+			RM.biomass(ST.make(MD.HOWL, "wolfsbane", 8, W));
+			
+			RM.Squeezer.addRecipe1(T, 16, 16, ST.make(MD.HOWL, "wolfsbane", 1, W), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(Items.dye, 2, DYE_INDEX_Purple));
+			RM.Juicer  .addRecipe1(T, 16, 16, ST.make(MD.HOWL, "wolfsbane", 1, W), NF, DYE_FLUIDS_FLOWER[DYE_INDEX_Purple], ST.make(Items.dye, 2, DYE_INDEX_Purple));
+			RM.ic2_extractor(ST.make(MD.HOWL, "wolfsbane", 1, W), ST.make(Items.dye, 3, DYE_INDEX_Purple));
+		}
+		
+		
 		if (MD.HEE.mLoaded) {
 			RM.biomass(ST.make(MD.HEE, "crossed_decoration", 8, W));
 			RM.biomass(ST.make(MD.HEE, "death_flower"      , 8, W));

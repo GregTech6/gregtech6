@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -209,6 +209,10 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Papaya       .make(100), NF, ST.make(MD.HaC, "papayayogurtItem"      , 1));
 		RM.Mixer    .addRecipe1(T, 16,   16, tYogurt, FL.Juice_Coconut      .make(100), NF, ST.make(MD.HaC, "coconutyogurtItem"     , 1));
 		
+		RM.Mixer    .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon), IL.Food_Egg_Yolk.get(1)), FL.Milk   .make( 250), NF, ST.make(MD.HaC, "eggnogItem", 1));
+		RM.Mixer    .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon), IL.Food_Egg_Yolk.get(1)), FL.MilkGrC.make( 250), NF, ST.make(MD.HaC, "eggnogItem", 1));
+		RM.Mixer    .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon), IL.Food_Egg_Yolk.get(1)), FL.MilkSoy.make( 250), NF, ST.make(MD.HaC, "eggnogItem", 1));
+		
 		new OreDictListenerEvent_Names() {@Override public void addAllListeners() {
 		addListener("cropCoconut", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			RM.add_smelting(aEvent.mStack, ST.make(MD.HaC, "toastedcoconutItem", 1), F, T, F);
@@ -299,13 +303,6 @@ public class Compat_Recipes_HarvestCraft extends CompatMods {
 		addListener("listAllfruit", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			if (ST.ingredable(aEvent.mStack))
 			RM.Mixer    .addRecipe2(T, 16,   16, ST.make(Items.string, 1, W), ST.amount(3, aEvent.mStack), ST.make(MD.HaC, "fruitbaitItem", 4));
-		}});
-		addListener("listAllegg", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
-			if (ST.ingredable(aEvent.mStack) && !OD.listAllmeatsubstitute.is_(aEvent.mStack)) {
-			RM.Mixer    .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon), aEvent.mStack), FL.Milk   .make( 250), NF, ST.make(MD.HaC, "eggnogItem", 1));
-			RM.Mixer    .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon), aEvent.mStack), FL.MilkGrC.make( 250), NF, ST.make(MD.HaC, "eggnogItem", 1));
-			RM.Mixer    .addRecipeX(T, 16,   16, ST.array(OM.dust(MT.Nutmeg), OM.dust(MT.Cinnamon), aEvent.mStack), FL.MilkSoy.make( 250), NF, ST.make(MD.HaC, "eggnogItem", 1));
-			}
 		}});
 		addListener("listAllsugar", new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {
 			OreDictItemData tData = OM.data(aEvent.mStack);

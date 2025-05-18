@@ -205,7 +205,7 @@ public enum OD {
 	, itemQuicksilver
 	, itemCompressedCarbon
 	, itemClay
-	, itemEgg
+	, itemEgg, itemEggBig
 	, itemFeather, chocobofeather
 	, itemLeather
 	, itemLeatherTreated

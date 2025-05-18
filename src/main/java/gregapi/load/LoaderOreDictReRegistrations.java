@@ -817,6 +817,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("dustSoylentGreen"                , "listAllegg");
 		OreDictManager.INSTANCE.addReRegistration("dustTofu"                        , "listAllegg");
 		OreDictManager.INSTANCE.addReRegistration(OD.itemEgg                        , "listAllegg");
+		OreDictManager.INSTANCE.addReRegistration(OD.itemEggBig                     , OD.itemEgg);
 		OreDictManager.INSTANCE.addReRegistration(OD.container250seedoil            , "listAllcookingoil");
 		OreDictManager.INSTANCE.addReRegistration(OD.container1000seedoil           , "listAllcookingoil");
 		OreDictManager.INSTANCE.addReRegistration("foodWhaleoil"                    , "listAllcookingoil");
