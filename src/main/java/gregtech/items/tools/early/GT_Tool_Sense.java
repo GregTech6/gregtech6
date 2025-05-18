@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -29,11 +29,17 @@ import gregapi.item.multiitem.MultiItemTool;
 import gregapi.item.multiitem.behaviors.Behavior_Tool;
 import gregapi.item.multiitem.tools.ToolStats;
 import gregapi.render.IIconContainer;
+import gregapi.util.ST;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLilyPad;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent;
 import twilightforest.block.BlockTFHugeLilyPad;
@@ -46,13 +52,16 @@ import static gregapi.data.CS.*;
 public class GT_Tool_Sense extends ToolStats {
 	private final ThreadLocal<Object> sIsHarvestingRightNow = new ThreadLocal<>();
 	
-	@Override public float getBaseDamage() {
-		return 3.5F;
+	@Override
+	public float getBaseDamage() {
+		return 3.0F;
 	}
-	@Override public float getMaxDurabilityMultiplier() {
+	@Override
+	public float getMaxDurabilityMultiplier() {
 		return 4.0F;
 	}
-	@Override public boolean isWeapon() {
+	@Override
+	public boolean isWeapon() {
 		return T;
 	}
 	
@@ -81,6 +90,21 @@ public class GT_Tool_Sense extends ToolStats {
 			harvestStick(aDrops, aStack, aPlayer, aBlock, aAvailableDurability, aX, aY, aZ, aMetaData, aFortune, aSilkTouch, aEvent);
 		}
 		return rConversions;
+	}
+	
+	@Override
+	public void afterDealingDamage(float aNormalDamage, float aMagicDamage, int aFireAspect, boolean aCriticalHit, Entity aEntity, ItemStack aStack, EntityPlayer aPlayer) {
+		if (aEntity instanceof EntityCreeper) {
+			ST.drop(aEntity, ST.make(Items.skull, 1, 4));
+		} else if (aEntity instanceof EntityPlayer) {
+			ST.drop(aEntity, ST.skull(aEntity));
+		} else if (aEntity.getClass() == EntityZombie.class) {
+			ST.drop(aEntity, ST.make(Items.skull, 1, 2));
+		} else if (aEntity.getClass() == EntitySkeleton.class) if (((EntitySkeleton)aEntity).getSkeletonType() == 1) {
+			ST.drop(aEntity, ST.make(Items.skull, 1, 1));
+		} else {
+			ST.drop(aEntity, ST.make(Items.skull, 1, 0));
+		}
 	}
 	
 	@Override

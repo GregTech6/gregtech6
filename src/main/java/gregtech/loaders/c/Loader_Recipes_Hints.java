@@ -56,6 +56,15 @@ public class Loader_Recipes_Hints implements Runnable {
 		), ST.array(IL.Bottle_Mercury.get(1), ST.make(OP.ingot.mat(MT.Hg, 1), "Pouring this into Molds only works with additional Cooling!"), ST.make(OP.nugget.mat(MT.Hg, 1), "Pouring this into Molds only works with additional Cooling!")), null, ZL_LONG, FL.array(MT.Hg.liquid(1, T)), FL.array(MT.Hg.liquid(1, T)), 0, 0, 0);
 		
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(
+		  ST.make(ToolsGT.sMetaTool, 1, ToolsGT.SENSE, "Kill corresponding Mobs with this")
+		, NI
+		, NI
+		, NI
+		, NI
+		, NI
+		), ST.array(ST.make(Items.skull, 1, 0), ST.make(Items.skull, 1, 1), ST.make(Items.skull, 1, 2), ST.make(Items.skull, 1, 3), ST.make(Items.skull, 1, 4)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
+		
+		RM.DidYouKnow.addFakeRecipe(F, ST.array(
 		  IL.Ceramic_Mold.getWithName(1, "Don't forget to shape the Mold to pour it")
 		, IL.Ceramic_Crucible.getWithName(1, "Wait until it all turns into Steel")
 		, ST.make(aRegistry.getItem(1302), "Point a running Engine into the Crucible to blow Air")
