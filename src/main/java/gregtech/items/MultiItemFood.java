@@ -47,7 +47,7 @@ public class MultiItemFood extends MultiItemRandomWithCompat implements IItemRot
 		super(aModID, aUnlocalized);
 		setCreativeTab(new CreativeTab(getUnlocalizedName(), "GregTech: Nature & Foods", this, (short)12000));
 	}
-
+	
 	@Override
 	public void addItems() {
 		IL.Grass       .set(addItem(12000, "Grass"       , "Make 9 of this into a Bale in order to dry it", Behavior_FeedGrass.INSTANCE, OD.itemGrass         , TICKS_PER_SMELT / 4, TC.stack(TC.MESSIS, 1), TC.stack(TC.HERBA, 1)));

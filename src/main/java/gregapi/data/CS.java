@@ -60,6 +60,7 @@ import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
@@ -1583,6 +1584,8 @@ public class CS {
 		/** Bush Color, Stage 1, Stage 2, Stage 3 */
 		public static void put(ItemStack aStack, int aBush, int aBloom, int aImmature, int aBerry) {if (!MAP.containsKey(aStack, F)) MAP.put(aStack, new int[] {aBush, aBloom, aImmature, aBerry});}
 		public static void override(ItemStack aStack, int... aColors) {MAP.put(aStack, aColors);}
+		// Add Cotton as a Default Bush.
+		static {put(ST.make(Items.string, 1, 0), 0x22cc22, 0x33cc33, 0x44cc44, 0xeeeeee);}
 	}
 	
 	public static class FoodsGT {
