@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregapi.block.fluid;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.IBlock;
 import gregapi.block.IBlockOnHeadInside;
 import gregapi.block.MaterialGas;
@@ -362,8 +360,8 @@ public class BlockBaseFluid extends BlockFluidFinite implements IBlock, IItemGT,
 	@Override public String getLocalizedName() {return LH.get(mFluid.getUnlocalizedName());}
 	@Override public void registerBlockIcons(IIconRegister aIconRegister) {/**/}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return SIDES_VERTICAL[aSide]?mFluid.getStillIcon():mFluid.getFlowingIcon();}
-	@Override @SideOnly(Side.CLIENT) public int getRenderColor(int aMeta) {return mFluid.getColor();}
-	@Override @SideOnly(Side.CLIENT) public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {return mFluid.getColor();}
+	@Override public int getRenderColor(int aMeta) {return mFluid.getColor();}
+	@Override public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {return mFluid.getColor();}
 	@Override public int getRenderType() {return RendererBlockFluid.RENDER_ID;}
 	@Override public int getRenderBlockPass() {return 1;}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_WATER;}

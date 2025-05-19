@@ -571,6 +571,7 @@ public class GT_API_Post extends Abstract_Mod {
 		FL.reg(FL.Water          .make(1000), IL.AETHER_Bucket_Water .get(1), IL.AETHER_Bucket_Empty.get(1));
 		FL.reg(FL.Milk           .make(1000), IL.AETHER_Bucket_Milk  .get(1), IL.AETHER_Bucket_Empty.get(1));
 		FL.reg(FL.Potion_Poison_2.make(1000), IL.AETHER_Bucket_Poison.get(1), IL.AETHER_Bucket_Empty.get(1));
+		FL.reg(FL.Poison         .make(1000), IL.AETHER_Bucket_Poison.get(1), IL.AETHER_Bucket_Empty.get(1));
 		
 		// Those "On-Demand" Materials of VoltzEngine are registered late...
 		if (MD.VOLTZ.mLoaded) {

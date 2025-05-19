@@ -931,6 +931,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("bottleSoyMilk"                   , OD.container250soymilk);
 		OreDictManager.INSTANCE.addReRegistration("bottleLatex"                     , OD.container250latex);
 		OreDictManager.INSTANCE.addReRegistration("bottleLubricant"                 , OD.container250lubricant);
+		OreDictManager.INSTANCE.addReRegistration("bottlePoison"                    , OD.container250poison);
 		OreDictManager.INSTANCE.addReRegistration("itemBucketFreshWater"            , OD.container1000water);
 		OreDictManager.INSTANCE.addReRegistration("itemBucketWater"                 , OD.container1000water);
 		OreDictManager.INSTANCE.addReRegistration("bucketWater"                     , OD.container1000water);
@@ -945,6 +946,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("bucketSeedoil"                   , OD.container1000seedoil);
 		OreDictManager.INSTANCE.addReRegistration("bucketCreosote"                  , OD.container1000creosote);
 		OreDictManager.INSTANCE.addReRegistration("bucketLubricant"                 , OD.container1000lubricant);
+		OreDictManager.INSTANCE.addReRegistration("bucketPoison"                    , OD.container1000poison);
 		OreDictManager.INSTANCE.addReRegistration("cellWater"                       , OD.container1000water);
 		OreDictManager.INSTANCE.addReRegistration("cellLava"                        , OD.container1000lava);
 		OreDictManager.INSTANCE.addReRegistration("cellHoney"                       , OD.container1000honey);
@@ -969,6 +971,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration(OD.container250tar                , OD.itemTar);
 		OreDictManager.INSTANCE.addReRegistration(OD.container1000tar               , OD.itemTar);
 		OreDictManager.INSTANCE.addReRegistration(OD.container250poison             , OD.itemPoison);
+		OreDictManager.INSTANCE.addReRegistration(OD.container500poison             , OD.itemPoison);
 		OreDictManager.INSTANCE.addReRegistration(OD.container1000poison            , OD.itemPoison);
 		OreDictManager.INSTANCE.addReRegistration(OD.container250lubricant          , OD.itemLubricant);
 		OreDictManager.INSTANCE.addReRegistration(OD.container1000lubricant         , OD.itemLubricant);

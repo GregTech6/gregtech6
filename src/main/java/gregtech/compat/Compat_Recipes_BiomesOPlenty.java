@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -69,6 +69,13 @@ public class Compat_Recipes_BiomesOPlenty extends CompatMods {
 		RM.mortarize(2, IL.BoP_Bone_Small.get(1), IL.Dye_Bonemeal.get(2));
 		RM.mortarize(4, IL.BoP_Bone_Medium.get(1), IL.Dye_Bonemeal.get(4));
 		RM.mortarize(8, IL.BoP_Bone_Large.get(1), IL.Dye_Bonemeal.get(8));
+		
+		CR.shapeless(ST.make(MD.BoP, "dart", 8, 1), CR.DEF_NCC, new Object[] {OD.container1000poison, ST.make(MD.BoP, "dart", 1, 0), ST.make(MD.BoP, "dart", 1, 0), ST.make(MD.BoP, "dart", 1, 0), ST.make(MD.BoP, "dart", 1, 0), ST.make(MD.BoP, "dart", 1, 0), ST.make(MD.BoP, "dart", 1, 0), ST.make(MD.BoP, "dart", 1, 0), ST.make(MD.BoP, "dart", 1, 0)});
+		CR.shapeless(ST.make(MD.BoP, "dart", 4, 1), CR.DEF_NCC, new Object[] {OD.container500poison , ST.make(MD.BoP, "dart", 1, 0), ST.make(MD.BoP, "dart", 1, 0), ST.make(MD.BoP, "dart", 1, 0), ST.make(MD.BoP, "dart", 1, 0)});
+		CR.shapeless(ST.make(MD.BoP, "dart", 2, 1), CR.DEF_NCC, new Object[] {OD.container250poison , ST.make(MD.BoP, "dart", 1, 0), ST.make(MD.BoP, "dart", 1, 0)});
+		CR.shapeless(ST.make(MD.BoP, "dart", 1, 1), CR.DEF_NCC, new Object[] {OD.itemPoison         , ST.make(MD.BoP, "dart", 1, 0)});
+		RM.Bath         .addRecipe1(T, 16,  16, ST.make(MD.BoP, "dart", 1, 0), FL.Poison         .make(50), NF, ST.make(MD.BoP, "dart", 1, 1));
+		RM.Bath         .addRecipe1(T, 16,  16, ST.make(MD.BoP, "dart", 1, 0), FL.Potion_Poison_2.make(50), NF, ST.make(MD.BoP, "dart", 1, 1));
 		
 		RM.smash(IL.BoP_Hard_Ice.get(1), OM.dust(MT.Ice, 2*U));
 		RM.Squeezer     .addRecipe1(T, 16, 128, IL.BoP_Hard_Ice.get(1), NF, FL.Ice.make(2000), NI);

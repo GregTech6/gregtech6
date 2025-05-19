@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregtech.blocks.fluids;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.code.ArrayListNoNulls;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
@@ -169,6 +167,6 @@ public class BlockOcean extends BlockWaterlike {
 	}
 	
 	@Override public IIcon getIcon(int aSide, int aMeta) {return Blocks.water.getIcon(aSide, aMeta);}
-	@Override @SideOnly(Side.CLIENT) public int getRenderColor(int aMeta) {return 0x00c0c0c0;}
-	@Override @SideOnly(Side.CLIENT) public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {return 0x00c0c0c0;}
+	@Override public int getRenderColor(int aMeta) {return 0x00c0c0c0;}
+	@Override public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {return 0x00c0c0c0;}
 }

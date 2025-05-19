@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregtech.blocks.fluids;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.data.FL;
 import gregapi.util.UT;
 import gregapi.util.WD;
@@ -104,7 +102,6 @@ public class BlockRiver extends BlockWaterlike {
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {
 		int rR = 0, rG = 0, rB = 0;
 		for (int tX = -1; tX <= 1; tX++) for (int tZ = -1; tZ <= 1; tZ++) {

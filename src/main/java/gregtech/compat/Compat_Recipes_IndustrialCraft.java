@@ -478,7 +478,8 @@ public class Compat_Recipes_IndustrialCraft extends CompatMods {
 		if (IL.HBM_Poison_Powder.exists())
 		RM.Canner           .addRecipe2(T, 16,   16, IL.HBM_Poison_Powder.get(1)                        , IL.Spray_Empty.get(1)                 , IL.IC2_Spray_WeedEx.get(1));
 		RM.Canner           .addRecipe2(T, 16,   16, IL.IC2_Grin_Powder.get(1)                          , IL.Spray_Empty.get(1)                 , IL.IC2_Spray_WeedEx.get(1));
-		RM.Canner           .addRecipe1(T, 16,   16, IL.Spray_Empty.get(1)                              , FL.Potion_Poison_2.make(250)      , NF, IL.IC2_Spray_WeedEx.get(1));
+		RM.Canner           .addRecipe1(T, 16,   16, IL.Spray_Empty.get(1)                              , FL.Potion_Poison_2.make(250)      , NF, IL.IC2_Spray_WeedEx.get(1)); if (FL.Poison.exists())
+		RM.Canner           .addRecipe1(T, 16,   16, IL.Spray_Empty.get(1)                              , FL.Poison.make(250)               , NF, IL.IC2_Spray_WeedEx.get(1));
 		
 		RM.Loom             .addRecipe2(T, 64,  128, ST.tag(0)                                          , OP.wireFine.mat(MT.Graphene, 32)      , IL.IC2_Carbon_Fiber.get(1));
 		RM.Loom             .addRecipe2(T, 64,  128, ST.tag(0)                                          , IL.IC2_Carbon_Fiber.get(2)            , IL.IC2_Carbon_Mesh.get(1));

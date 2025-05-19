@@ -92,6 +92,7 @@ public enum OD {
 	, container1000glue
 	, container250glue
 	, container1000poison
+	, container500poison
 	, container250poison
 	, container1000blood
 	, container250blood

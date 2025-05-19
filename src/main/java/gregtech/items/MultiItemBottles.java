@@ -354,6 +354,16 @@ public class MultiItemBottles extends MultiItemRandomWithCompat implements IItem
 		addItem(32132+i, "Bottled Flower Dye"   , "Color: " + DYE_NAMES[i               ], DYE_OREDICTS[i               ], TC.stack(TC.VITREUS, 1), TC.stack(TC.SENSUS, 1), DYE_FLUIDS_FLOWER[i]);
 		}
 		
+		IL.Bottle_Poison.set(
+		addItem(32760, "Bottle of Poison", "", "bottlePoison", OD.container250poison, FL.Poison.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.VENEMUM, 2), FoodStatFluid.INSTANCE)); Sandwiches.INGREDIENTS.put(last(), DYE_INDEX_Purple);
+		
+		CR.shapeless(last(4), CR.DEF, new Object[] {OD.container1000poison, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(last(3), CR.DEF, new Object[] {OD.container1000poison, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(last(2), CR.DEF, new Object[] {OD.container1000poison, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(last(1), CR.DEF, new Object[] {OD.container1000poison, OP.bottle.dat(MT.Empty)});
+		CR.shapeless(last(2), CR.DEF, new Object[] {OD.container500poison , OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
+		CR.shapeless(last(1), CR.DEF, new Object[] {OD.container500poison , OP.bottle.dat(MT.Empty)});
+		
 		IL.Bottle_Loot.set(
 		addItem(32761, "Clouded Bottle", "Loot: A random Bottle", TC.stack(TC.VITREUS, 1), TC.stack(TC.LUCRUM, 1), new Behavior_Drop_Loot("gt.bottles")));
 		

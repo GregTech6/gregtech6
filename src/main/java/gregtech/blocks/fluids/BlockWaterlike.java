@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,8 +19,6 @@
 
 package gregtech.blocks.fluids;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import gregapi.block.IBlock;
 import gregapi.block.IBlockOnHeadInside;
 import gregapi.code.ArrayListNoNulls;
@@ -200,8 +198,8 @@ public abstract class BlockWaterlike extends BlockFluidClassic implements IBlock
 	@Override public int getRenderBlockPass() {return 1;}
 	@Override public int getLightOpacity() {return LIGHT_OPACITY_WATER;}
 	@Override public IIcon getIcon(int aSide, int aMeta) {return Blocks.water.getIcon(aSide, aMeta);}
-	@Override @SideOnly(Side.CLIENT) public int getRenderColor(int aMeta) {return 0x00ffffff;}
-	@Override @SideOnly(Side.CLIENT) public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {return 0x00ffffff;}
+	@Override public int getRenderColor(int aMeta) {return 0x00ffffff;}
+	@Override public int colorMultiplier(IBlockAccess aWorld, int aX, int aY, int aZ) {return 0x00ffffff;}
 	
 	@Override public int getFireSpreadSpeed(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return 0;}
 	@Override public int getFlammability(IBlockAccess aWorld, int aX, int aY, int aZ, ForgeDirection aDirection) {return 0;}
