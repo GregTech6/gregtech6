@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -23,14 +23,19 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.IChatComponent;
 
+import static gregapi.data.CS.F;
+
 /**
  * @author Gregorius Techneticies
  */
 public class DamageSourceCombat extends EntityDamageSource {
 	private IChatComponent mDeathMessage;
+	public boolean mBeheadingDamage = F;
 	
-	public DamageSourceCombat(String aType, EntityLivingBase aPlayer, IChatComponent aDeathMessage) {
+	public DamageSourceCombat(String aType, EntityLivingBase aPlayer, IChatComponent aDeathMessage) {this(aType, aPlayer, aDeathMessage, F);}
+	public DamageSourceCombat(String aType, EntityLivingBase aPlayer, IChatComponent aDeathMessage, boolean aBeheadingDamage) {
 		super(aType, aPlayer);
+		mBeheadingDamage = aBeheadingDamage;
 		mDeathMessage = aDeathMessage;
 	}
 	

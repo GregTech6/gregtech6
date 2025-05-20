@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -26,6 +26,7 @@ import net.minecraft.entity.boss.EntityDragonPart;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.*;
 
+import static gregapi.data.CS.F;
 /**
  * @author Gregorius Techneticies
  */
@@ -49,8 +50,9 @@ public class DamageSources {
 		return new DamageSourceExploding();
 	}
 	
-	public static DamageSource getCombatDamage(String aType, EntityLivingBase aPlayer, IChatComponent aDeathMessage) {
-		return new DamageSourceCombat(aType, aPlayer, aDeathMessage);
+	public static DamageSource getCombatDamage(String aType, EntityLivingBase aPlayer, IChatComponent aDeathMessage) {return getCombatDamage(aType, aPlayer, aDeathMessage, F);}
+	public static DamageSource getCombatDamage(String aType, EntityLivingBase aPlayer, IChatComponent aDeathMessage, boolean aBeheading) {
+		return new DamageSourceCombat(aType, aPlayer, aDeathMessage, aBeheading);
 	}
 	
 	public static DamageSource getSpikeDamage() {
@@ -102,8 +104,11 @@ public class DamageSources {
 	}
 	
 	public static IChatComponent getDeathMessage(EntityLivingBase aPlayer, Entity aEntity, String aMessage) {
-		String aNamePlayer = aPlayer.getCommandSenderName(), aNameEntity = aEntity.getCommandSenderName();
-		if (UT.Code.stringInvalid(aNamePlayer) || UT.Code.stringInvalid(aEntity)) return new ChatComponentText("Death Message lacks names of involved Players");
+		return getDeathMessage(aPlayer, aEntity, UT.Code.stringValidate(aPlayer.getCommandSenderName(), "Someone"), UT.Code.stringValidate(aEntity.getCommandSenderName(), "Someone"), aMessage);
+	}
+	
+	public static IChatComponent getDeathMessage(EntityLivingBase aPlayer, Entity aEntity, String aNamePlayer, String aNameEntity, String aMessage) {
+		if (UT.Code.stringInvalid(aNamePlayer) || UT.Code.stringInvalid(aEntity)) return new ChatComponentText("Death Message lacks names of involved People");
 		aNamePlayer = aNamePlayer.trim(); aNameEntity = aNameEntity.trim();
 		if (aNamePlayer.equalsIgnoreCase("CrazyJ84") || aNamePlayer.equalsIgnoreCase("CrazyJ1984")) {
 			if (aNameEntity.equalsIgnoreCase("Bear989jr")) return new ChatComponentText("<"+ EnumChatFormatting.LIGHT_PURPLE+"Mrs. Crazy"+EnumChatFormatting.WHITE + "> Sorry "+EnumChatFormatting.RED+"Junior"+EnumChatFormatting.WHITE);
@@ -112,10 +117,7 @@ public class DamageSources {
 		if (aNamePlayer.equalsIgnoreCase("Bear989Sr") || aNamePlayer.equalsIgnoreCase("Bear989jr")) {
 			//
 		}
-		return getDeathMessage(aPlayer, aEntity, aNamePlayer, aNameEntity, aMessage);
-	}
-	
-	public static IChatComponent getDeathMessage(EntityLivingBase aPlayer, Entity aEntity, String aNamePlayer, String aNameEntity, String aMessage) {
+		
 		if (UT.Code.stringValid(aMessage)) {
 			return new ChatComponentText(aMessage.replace("[KILLER]", EnumChatFormatting.GREEN+aNamePlayer+EnumChatFormatting.WHITE).replace("[VICTIM]", EnumChatFormatting.RED+aNameEntity+EnumChatFormatting.WHITE));
 		} else if (aEntity instanceof EntityLivingBase) {

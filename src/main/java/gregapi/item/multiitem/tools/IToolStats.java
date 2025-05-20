@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -156,6 +156,11 @@ public interface IToolStats {
 	 * @return If this Tools Damage does setDamageBypassesArmor() for its DamageSource.
 	 */
 	public boolean canPenetrate();
+	
+	/**
+	 * @return If this Tool can make Mobs and Players drop Heads.
+	 */
+	public boolean canBehead();
 	
 	/**
 	 * aBlock.getHarvestTool(aMetaData) can return the following Values for example.

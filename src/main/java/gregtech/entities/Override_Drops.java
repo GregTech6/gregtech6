@@ -19,6 +19,7 @@
 
 package gregtech.entities;
 
+import gregapi.damage.DamageSourceCombat;
 import gregapi.data.*;
 import gregapi.util.OM;
 import gregapi.util.ST;
@@ -38,13 +39,12 @@ import java.util.List;
 import static gregapi.data.CS.*;
 
 public class Override_Drops {
-	public static void handleDrops(EntityLivingBase aDead, String aClass, List<EntityItem> aDrops, int aLooting, boolean aBurn, boolean aPlayerKill) {
+	public static void handleDrops(EntityLivingBase aDead, String aClass, List<EntityItem> aDrops, DamageSource aDamage, int aLooting, boolean aBurn, boolean aPlayerKill) {
 		if (UT.Code.stringInvalid(aClass) || "EntityTFLichMinion".equalsIgnoreCase(aClass) || "EntitySkeletonBoss".equalsIgnoreCase(aClass)) return;
 		final boolean aSpace = aClass.startsWith("entityevolved") || aClass.startsWith("entityalien");
 		boolean tReplaceIron = aClass.startsWith("entitygaia");
 		
 		int tRandomNumber = RNGSUS.nextInt(Math.max(36, 144-aLooting*3)), tIntestinesAmount = 0;
-		
 		
 		if (aDead instanceof EntityAnimal && aDead.isChild()) {
 			tReplaceIron = T;
@@ -734,6 +734,30 @@ public class Override_Drops {
 		}}
 		
 		if (MOBS_DROP_MEAT) while (tIntestinesAmount-->0) aDrops.add(ST.entity(aDead, IL.Food_Scrap_Meat.get(1)));
+		
+		// Beheading Damage replaces all the Drops with one Head, if Heads available for Mob.
+		if (aDamage instanceof DamageSourceCombat && ((DamageSourceCombat)aDamage).mBeheadingDamage) {
+			if (aDead instanceof EntityCreeper) {
+				aDrops.clear();
+				aDrops.add(ST.entity(aDead, ST.make(Items.skull, 1, 4)));
+			} else if (aDead instanceof EntityPlayer) {
+				// No Drop deletion for Players though.
+				aDrops.add(ST.entity(aDead, ST.skull(aDead)));
+			} else if (aDead.getClass() == EntityZombie.class) {
+				if (!((EntityZombie)aDead).isVillager()) {
+					aDrops.clear();
+					aDrops.add(ST.entity(aDead, ST.make(Items.skull, 1, 2)));
+				}
+			} else if (aDead.getClass() == EntitySkeleton.class) {
+				if (((EntitySkeleton)aDead).getSkeletonType() == 1) {
+					aDrops.clear();
+					aDrops.add(ST.entity(aDead, ST.make(Items.skull, 1, 1)));
+				} else {
+					aDrops.clear();
+					aDrops.add(ST.entity(aDead, ST.make(Items.skull, 1, 0)));
+				}
+			}
+		}
 		
 		if (MOBS_DROP_NAME && aDead instanceof EntityLiving && ((EntityLiving)aDead).isNoDespawnRequired() && ((EntityLiving)aDead).hasCustomNameTag()) {
 			aDrops.add(ST.entity(aDead, ST.make(Items.name_tag, 1, 0, ((EntityLiving)aDead).getCustomNameTag())));

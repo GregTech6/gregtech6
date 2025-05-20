@@ -1497,11 +1497,12 @@ public class UT {
 			return rArray;
 		}
 		
-		public static String stringValidate(Object aString) {
-			if (aString == null) return "";
+		public static String stringValidate(Object aString) {return stringValidate(aString, "");}
+		public static String stringValidate(Object aString, String aReplacement) {
+			if (aString == null) return aReplacement;
 			if (aString instanceof BiomeGenBase) return ((BiomeGenBase)aString).biomeName;
 			String rString = aString.toString();
-			return rString == null ? "" : rString;
+			return rString == null || rString.isEmpty() ? aReplacement : rString;
 		}
 		
 		public static boolean stringValid(Object aString) {

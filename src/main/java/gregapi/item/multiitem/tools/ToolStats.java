@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -77,6 +77,7 @@ public abstract class ToolStats implements IToolStats {
 	@Override public boolean canCollect()                                                   {return F;}
 	@Override public boolean canBlock()                                                     {return F;}
 	@Override public boolean canPenetrate()                                                 {return F;}
+	@Override public boolean canBehead()                                                    {return F;}
 	@Override public boolean isWrench()                                                     {return F;}
 	@Override public boolean isCrowbar()                                                    {return F;}
 	@Override public boolean isGrafter()                                                    {return F;}
@@ -96,14 +97,11 @@ public abstract class ToolStats implements IToolStats {
 	
 	@Override
 	public DamageSource getDamageSource(EntityLivingBase aPlayer, Entity aEntity) {
-		return DamageSources.getCombatDamage(aPlayer instanceof EntityPlayer ? "player" : "mob", aPlayer, aEntity instanceof EntityLivingBase ? getDeathMessage(aPlayer, (EntityLivingBase)aEntity) : null);
+		return DamageSources.getCombatDamage(aPlayer instanceof EntityPlayer ? "player" : "mob", aPlayer, aEntity instanceof EntityLivingBase ? getDeathMessage(aPlayer, (EntityLivingBase)aEntity, aPlayer == null ? "Someone" : UT.Code.stringValidate(aPlayer.getCommandSenderName(), "Someone"), UT.Code.stringValidate(aEntity.getCommandSenderName(), "Someone")) : null, canBehead());
 	}
 	
-	public IChatComponent getDeathMessage(EntityLivingBase aPlayer, EntityLivingBase aEntity) {return DamageSources.getDeathMessage(aPlayer, aEntity, getDeathMessage());}
 	public IChatComponent getDeathMessage(EntityLivingBase aPlayer, EntityLivingBase aEntity, String aNamePlayer, String aNameEntity) {return DamageSources.getDeathMessage(aPlayer, aEntity, aNamePlayer, aNameEntity, getDeathMessage());}
-	public String getDeathMessage() {
-		return "";
-	}
+	public String getDeathMessage() {return "Why is there no custom Death Message for this Tool?";}
 	
 	@Override
 	public int convertBlockDrops(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, long aAvailableDurability, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {

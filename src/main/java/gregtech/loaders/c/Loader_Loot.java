@@ -407,25 +407,11 @@ public class Loader_Loot implements Runnable {
 		addLoot("gt.bottles", 144, 1, 1, FL.Potion_Invisibility_1  .fill(IL.Bottle_Empty.get(1)));
 		
 		
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   2, 8,16, IL.Bottle_Purple_Drink.get(1));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 8,16, IL.Bottle_Slime_Green.get(1));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   2, 8,16, IL.Bottle_Lubricant.get(1));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   2, 1, 1, ST.book("Manual_Elements"));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 1, 1, ST.book("Manual_Alloys"));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 1, 1, ST.book("Manual_Smeltery"));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 1, 1, ST.book("Manual_Random"));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 1, 1, ST.book("Manual_Tools"));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 1, 1, ST.book("Manual_Hunting_Creeper"));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 1, 1, ST.book("Manual_Hunting_Skeleton"));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 1, 1, ST.book("Manual_Hunting_Zombie"));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 1, 1, ST.book("Manual_Hunting_Spider"));
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 1, 1, MT.Fe.mDictionaryBook);
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 1, 1, MT.WroughtIron.mDictionaryBook);
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 1, 1, MT.Steel.mDictionaryBook);
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 1, 1, MT.Cu.mDictionaryBook);
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 1, 1, MT.Sn.mDictionaryBook);
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   5, 1, 1, MT.Bronze.mDictionaryBook);
-		addLoot(ChestGenHooks.BONUS_CHEST             ,   1, 4, 8, IL.Bag_Loot_Sapling.get(1));
+		addLoot(ChestGenHooks.BONUS_CHEST             ,  10, 8,16, IL.Bottle_Purple_Drink.get(1));
+		addLoot(ChestGenHooks.BONUS_CHEST             ,  10, 8,16, IL.Bottle_Slime_Green.get(1));
+		addLoot(ChestGenHooks.BONUS_CHEST             ,  10, 8,16, IL.Bottle_Lubricant.get(1));
+		addLoot(ChestGenHooks.BONUS_CHEST             ,  10, 8,16, IL.Book_Loot_Guide.get(1));
+		addLoot(ChestGenHooks.BONUS_CHEST             ,  10, 8,16, IL.Bag_Loot_Sapling.get(1));
 		
 //      addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 1, ItemList.Spray_Ice.get(1));
 //      addLoot(ChestGenHooks.DUNGEON_CHEST           ,  20, 1, 1, ItemList.Spray_Pepper.get(1));

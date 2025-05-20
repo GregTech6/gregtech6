@@ -116,7 +116,7 @@ public class Behavior_Spray_Extinguisher extends AbstractBehaviorDefault {
 		for (Object tEntity : aWorld.getEntitiesWithinAABB(Entity.class, AxisAlignedBB.getBoundingBox(aX-2, aY-2, aZ-2, aX+3, aY+3, aZ+3))) {
 			if (rUses + 10 > aUses) return rUses;
 			if (tEntity.getClass() == EntityBlaze.class) {
-				((EntityBlaze)tEntity).attackEntityFrom(DamageSources.getCombatDamage("player", aPlayer, null), 10);
+				((EntityBlaze)tEntity).attackEntityFrom(DamageSources.getCombatDamage("player", aPlayer, null, F), 10);
 				rUses += 10;
 			} else {
 				if (((Entity)tEntity).isBurning()) {
