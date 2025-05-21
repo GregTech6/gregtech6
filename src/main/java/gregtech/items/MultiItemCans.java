@@ -100,6 +100,13 @@ public class MultiItemCans extends MultiItemRandomWithCompat implements IItemRot
 		IL.Food_Can_Chum_4     .set(addItem(   74, "Wide Food Can (Chum)"         , "", new FoodStat( 8, 0.4F, 20, C+37, 0.10F,  0,  0, 40,  0,  0, EnumAction.eat, NI, F, F, T, T, Potion.hunger.id, 1000, 4, 100, Potion.confusion.id, 300, 1, 80), TC.stack(TC.CORPUS, 2), TC.stack(TC.FABRICO, 1), TD.Creative.HIDDEN)); CR.remove(last()); Sandwiches.INGREDIENTS.put(last(), (byte)39);
 		IL.Food_Can_Chum_5     .set(addItem(   75, "Large Food Can (Chum)"        , "", new FoodStat(10, 0.5F, 25, C+37, 0.10F,  0,  0, 50,  0,  0, EnumAction.eat, NI, F, F, T, T, Potion.hunger.id, 1000, 4, 100, Potion.confusion.id, 300, 1, 80), TC.stack(TC.CORPUS, 3), TC.stack(TC.FABRICO, 1), TD.Creative.HIDDEN)); CR.remove(last()); Sandwiches.INGREDIENTS.put(last(), (byte)39);
 		IL.Food_Can_Chum_6     .set(addItem(   76, "Huge Food Can (Chum)"         , "", new FoodStat(12, 0.6F, 30, C+37, 0.10F,  0,  0, 60,  0,  0, EnumAction.eat, NI, F, F, T, T, Potion.hunger.id, 1000, 4, 100, Potion.confusion.id, 300, 1, 80), TC.stack(TC.CORPUS, 3), TC.stack(TC.FABRICO, 1), TD.Creative.HIDDEN)); CR.remove(last()); Sandwiches.INGREDIENTS.put(last(), (byte)39);
+		
+		IL.Food_Can_Cookies_1  .set(addItem(   81, "Tiny Food Can (Cookies)"      , "", new FoodStat( 2, 0.1F,  2, C+37, 0.10F,  0,  0,  0,  0,  0, EnumAction.eat, NI, F, F, F, T), TC.stack(TC.FAMES, 1), TC.stack(TC.FABRICO, 1))); CR.remove(last());
+		IL.Food_Can_Cookies_2  .set(addItem(   82, "Small Food Can (Cookies)"     , "", new FoodStat( 4, 0.2F,  4, C+37, 0.10F,  0,  0,  0,  0,  0, EnumAction.eat, NI, F, F, F, T), TC.stack(TC.FAMES, 1), TC.stack(TC.FABRICO, 1))); CR.remove(last());
+		IL.Food_Can_Cookies_3  .set(addItem(   83, "Tall Food Can (Cookies)"      , "", new FoodStat( 6, 0.3F,  6, C+37, 0.10F,  0,  0,  0,  0,  0, EnumAction.eat, NI, F, F, F, T), TC.stack(TC.FAMES, 2), TC.stack(TC.FABRICO, 1))); CR.remove(last());
+		IL.Food_Can_Cookies_4  .set(addItem(   84, "Wide Food Can (Cookies)"      , "", new FoodStat( 8, 0.4F,  8, C+37, 0.10F,  0,  0,  0,  0,  0, EnumAction.eat, NI, F, F, F, T), TC.stack(TC.FAMES, 2), TC.stack(TC.FABRICO, 1))); CR.remove(last());
+		IL.Food_Can_Cookies_5  .set(addItem(   85, "Large Food Can (Cookies)"     , "", new FoodStat(10, 0.5F, 10, C+37, 0.10F,  0,  0,  0,  0,  0, EnumAction.eat, NI, F, F, F, T), TC.stack(TC.FAMES, 3), TC.stack(TC.FABRICO, 1))); CR.remove(last());
+		IL.Food_Can_Cookies_6  .set(addItem(   86, "Huge Food Can (Cookies)"      , "", new FoodStat(12, 0.6F, 12, C+37, 0.10F,  0,  0,  0,  0,  0, EnumAction.eat, NI, F, F, F, T), TC.stack(TC.FAMES, 3), TC.stack(TC.FABRICO, 1))); CR.remove(last());
 	}
 	
 	@Override

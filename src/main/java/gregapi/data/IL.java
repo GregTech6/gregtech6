@@ -290,6 +290,7 @@ public enum IL implements IItemContainer {
 	Food_Can_Veggie_1, Food_Can_Veggie_2, Food_Can_Veggie_3, Food_Can_Veggie_4, Food_Can_Veggie_5, Food_Can_Veggie_6,
 	Food_Can_Fruit_1, Food_Can_Fruit_2, Food_Can_Fruit_3, Food_Can_Fruit_4, Food_Can_Fruit_5, Food_Can_Fruit_6,
 	Food_Can_Bread_1, Food_Can_Bread_2, Food_Can_Bread_3, Food_Can_Bread_4, Food_Can_Bread_5, Food_Can_Bread_6,
+	Food_Can_Cookies_1, Food_Can_Cookies_2, Food_Can_Cookies_3, Food_Can_Cookies_4, Food_Can_Cookies_5, Food_Can_Cookies_6,
 	Food_Can_Rotten_1, Food_Can_Rotten_2, Food_Can_Rotten_3, Food_Can_Rotten_4, Food_Can_Rotten_5, Food_Can_Rotten_6,
 	Food_Can_Chum_1, Food_Can_Chum_2, Food_Can_Chum_3, Food_Can_Chum_4, Food_Can_Chum_5, Food_Can_Chum_6,
 	Food_PotatoChips_Raw, Food_PotatoChips, Food_PotatoChips_Packaged, Food_ChiliChips, Food_ChiliChips_Packaged,
@@ -508,6 +509,7 @@ public enum IL implements IItemContainer {
 	, CANS_FRUIT = {Food_Can_Fruit_1, Food_Can_Fruit_2, Food_Can_Fruit_3, Food_Can_Fruit_4, Food_Can_Fruit_5, Food_Can_Fruit_6}
 	, CANS_VEGGIE = {Food_Can_Veggie_1, Food_Can_Veggie_2, Food_Can_Veggie_3, Food_Can_Veggie_4, Food_Can_Veggie_5, Food_Can_Veggie_6}
 	, CANS_BREAD = {Food_Can_Bread_1, Food_Can_Bread_2, Food_Can_Bread_3, Food_Can_Bread_4, Food_Can_Bread_5, Food_Can_Bread_6}
+	, CANS_COOKIES = {Food_Can_Cookies_1, Food_Can_Cookies_2, Food_Can_Cookies_3, Food_Can_Cookies_4, Food_Can_Cookies_5, Food_Can_Cookies_6}
 	, CANS_MEAT = {Food_Can_Meat_1, Food_Can_Meat_2, Food_Can_Meat_3, Food_Can_Meat_4, Food_Can_Meat_5, Food_Can_Meat_6}
 	, CANS_FISH = {Food_Can_Fish_1, Food_Can_Fish_2, Food_Can_Fish_3, Food_Can_Fish_4, Food_Can_Fish_5, Food_Can_Fish_6}
 	, KEYS = {Key_Brass, Key_Bronze, Key_Copper, Key_Gold, Key_Iron, Key_Lead, Key_Plastic, Key_Platinum, Key_Silver, Key_Tin}

@@ -597,7 +597,7 @@ public class MultiItemFood extends MultiItemRandomWithCompat implements IItemRot
 		
 		IL.Food_Cookie_Raw                     .set(addItem( 2000, "Cookie shaped Dough"                      , "For baking Cookies"                                          , new FoodStat( 1, 0.200F,   0, C+37,  0.10F,   0,   0,   0,   5,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		RM.add_smelting(IL.Food_Cookie_Raw.get(1), ST.make(Items.cookie, 1, 0), F, T, F); FoodsGT.put(ST.make(Items.cookie, 1, W), 0, 0, 0,10, 0);
-		RM.food_can(ST.make(Items.cookie, 6, W), 12, "Canned Cookies", IL.CANS_BREAD);
+		RM.food_can(ST.make(Items.cookie, 6, W), 12, "Cookie Tin", IL.CANS_COOKIES);
 		CR.shaped(IL.Food_Cookie_Raw.get(4), CR.DEF_NCC, "kX", 'X', "foodChocolateDough");
 		RM.Slicer.addRecipe2(T, 16, 16, IL.Food_Dough_Chocolate.get(1), IL.Shape_Slicer_Flat.get(0), IL.Food_Cookie_Raw.get(4));
 		
@@ -605,7 +605,7 @@ public class MultiItemFood extends MultiItemRandomWithCompat implements IItemRot
 		IL.Food_Cookie_Raisins_Raw             .set(addItem( 2002, "Cookie shaped Raisin Dough"               , "For baking Raisin Cookies"                                   , new FoodStat( 1, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  10,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Cookie_Raisins                 .set(addItem( 2003, "Raisin Cookie"                   , "You don't like it? I don't care! It's delicious!", "foodRaisincookies", new FoodStat( 2, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  15,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		RM.add_smelting(IL.Food_Cookie_Raisins_Raw.get(1), IL.Food_Cookie_Raisins.get(1), F, T, F);
-		RM.food_can(IL.Food_Cookie_Raisins.get(6), 12, "Canned Raisin Cookies", IL.CANS_BREAD);
+		RM.food_can(IL.Food_Cookie_Raisins.get(6), 12, "Raisin Cookie Tin", IL.CANS_COOKIES);
 		CR.shaped(IL.Food_Cookie_Raisins_Raw.get(4), CR.DEF_NCC, "kX", 'X', IL.Food_Dough_Sugar_Raisins);
 		RM.Slicer.addRecipe2(T, 16, 16, IL.Food_Dough_Sugar_Raisins.get(1), IL.Shape_Slicer_Flat.get(0), IL.Food_Cookie_Raisins_Raw.get(4));
 		
@@ -613,7 +613,7 @@ public class MultiItemFood extends MultiItemRandomWithCompat implements IItemRot
 		IL.Food_Cookie_Chocolate_Raisins_Raw   .set(addItem( 2004, "Cookie shaped Chocolate Raisin Dough"     , "Almost looks like a regular Chocolate Chip Cookie >:D"       , new FoodStat( 1, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  20,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		IL.Food_Cookie_Chocolate_Raisins       .set(addItem( 2005, "Cookie"                                   , ""                                       , "foodRaisincookies", new FoodStat( 2, 0.200F,   0, C+37,  0.10F,   0,   0,   0,  25,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		RM.add_smelting(IL.Food_Cookie_Chocolate_Raisins_Raw.get(1), IL.Food_Cookie_Chocolate_Raisins.get(1), F, T, F);
-		RM.food_can(IL.Food_Cookie_Chocolate_Raisins.get(6), 12, "Canned Chocolate Raisin Cookies", IL.CANS_BREAD);
+		RM.food_can(IL.Food_Cookie_Chocolate_Raisins.get(6), 12, "Chocolate Raisin Cookie Tin", IL.CANS_COOKIES);
 		CR.shaped(IL.Food_Cookie_Chocolate_Raisins_Raw.get(4), CR.DEF_NCC, "kX", 'X', IL.Food_Dough_Sugar_Chocolate_Raisins);
 		RM.Slicer.addRecipe2(T, 16, 16, IL.Food_Dough_Sugar_Chocolate_Raisins.get(1), IL.Shape_Slicer_Flat.get(0), IL.Food_Cookie_Chocolate_Raisins_Raw.get(4));
 		
@@ -621,7 +621,7 @@ public class MultiItemFood extends MultiItemRandomWithCompat implements IItemRot
 		IL.Food_Cookie_Abyssal_Raw             .set(addItem( 2006, "Cookie shaped Abyssal Dough"              , "For baking netherlicious Cookies"                            , new FoodStat( 1, 0.200F,   0, C+37,  0.10F,   0,   0,   0,   5,   0, EnumAction.eat, null                                 , F, T, F, T), TC.stack(TC.HERBA, 1), TC.stack(TC.FAMES, 1)));
 		if (IL.NeLi_Cookie.exists()) {
 		RM.add_smelting(IL.Food_Cookie_Abyssal_Raw.get(1), IL.NeLi_Cookie.get(1), F, T, F); FoodsGT.put(IL.NeLi_Cookie.get(1), 0, 0, 0,10, 0);
-		RM.food_can(IL.NeLi_Cookie.get(6), 12, "Canned Abyssal Cookies", IL.CANS_BREAD);
+		RM.food_can(IL.NeLi_Cookie.get(6), 12, "Abyssal Cookie Tin", IL.CANS_COOKIES);
 		} else {
 		RM.add_smelting(IL.Food_Cookie_Abyssal_Raw.get(1), ST.make(Items.cookie, 1, 0), F, T, F);
 		}
