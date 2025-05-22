@@ -59,8 +59,8 @@ public abstract class MultiTileEntityReactorCore extends TileEntityBase10FacingD
 	public long mEnergy = 0, oEnergy = 0;
 	public byte mMode = 0;
 	public boolean mRunning = F, mStopped = F;
-	public FluidTankGT[] mTanks = {new FluidTankGT(64000), new FluidTankGT(64000)};
-
+	public FluidTankGT[] mTanks = {new FluidTankGT(64000), new FluidTankGT(64000).setCapacity(FL.Steam.mName, 64000L*STEAM_PER_WATER)};
+	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
 		super.readFromNBT2(aNBT);

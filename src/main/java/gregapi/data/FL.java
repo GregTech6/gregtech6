@@ -570,18 +570,18 @@ public enum FL {
 	
 	public final String mName;
 	
-	private FL(String aName, Collection<String>... aFluidSets) {
+	FL(String aName, Collection<String>... aFluidSets) {
 		mName = aName;
 		for (Collection<String> aFluidSet : aFluidSets) {aFluidSet.add(mName);}
 	}
-	private FL(String aName, String aOldName, Collection<String>... aFluidSets) {
+	FL(String aName, String aOldName, Collection<String>... aFluidSets) {
 		mName = aName;
 		FluidsGT.HIDDEN.add(aOldName);
 		FluidsGT.NONSTANDARD.add(aOldName);
 		FluidsGT.FLUID_RENAMINGS.put(aOldName, mName);
 		for (Collection<String> aFluidSet : aFluidSets) {aFluidSet.add(mName); aFluidSet.add(aOldName);}
 	}
-	private FL(String aName, String aOldName1, String aOldName2, Collection<String>... aFluidSets) {
+	FL(String aName, String aOldName1, String aOldName2, Collection<String>... aFluidSets) {
 		mName = aName;
 		FluidsGT.HIDDEN.add(aOldName1);
 		FluidsGT.HIDDEN.add(aOldName2);

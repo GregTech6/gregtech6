@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -28,6 +28,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static gregapi.data.CS.F;
@@ -303,6 +304,12 @@ public class FluidTankGT implements IFluidTank {
 	public FluidTankGT setCapacity(RecipeMap aMap, long aCapacityMultiplier) {mAdjustableCapacity = aMap.mMinInputTankSizes; mAdjustableMultiplier = aCapacityMultiplier; return this;}
 	/** Sets Tank capacity Map, should it be needed. */
 	public FluidTankGT setCapacity(Map<String, Long> aMap, long aCapacityMultiplier) {mAdjustableCapacity = aMap; mAdjustableMultiplier = aCapacityMultiplier; return this;}
+	/** Adds a custom capacity to the Tank capacity Map. */
+	public FluidTankGT setCapacity(FluidStack aFluid) {return setCapacity(aFluid.getFluid(), aFluid.amount);}
+	/** Adds a custom capacity to the Tank capacity Map. */
+	public FluidTankGT setCapacity(Fluid aFluid, long aCapacity) {return setCapacity(aFluid.getName(), aCapacity);}
+	/** Adds a custom capacity to the Tank capacity Map. */
+	public FluidTankGT setCapacity(String aFluid, long aCapacity) {if (mAdjustableCapacity == null) mAdjustableCapacity = new HashMap<>(); mAdjustableCapacity.put(aFluid, aCapacity); return this;}
 	
 	public boolean isEmpty  () {return mFluid == null;}
 	public boolean isFull   () {return mAmount     >= capacity();}
