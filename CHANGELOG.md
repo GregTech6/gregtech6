@@ -1,11 +1,15 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.17.06: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.17.05: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.17.04: (Not released yet)
+6.17.04:
 [FIXED] An Issue with "transmuting" Battery Components that happened while i refactored Code.
 [FIXED] Some of the Bird Eggs of the Exotic Birds Mod were missed in my Compat. Also Big Eggs give more White/Yolk now, and if no Egg Shell Item exists, my Recipes will give you a piece of Bonemeal. Also fixed Harvestcraft Eggnog Recipe in my Mixing Bowl.
 [CHANGED] Bushes, Sticks and Rocks now leave behind a Snow Layer when harvested next to Snow.
