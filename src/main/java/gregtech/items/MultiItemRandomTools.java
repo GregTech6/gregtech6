@@ -26,7 +26,6 @@ import gregapi.data.*;
 import gregapi.item.CreativeTab;
 import gregapi.item.IItemRottable;
 import gregapi.item.IPrefixItem;
-import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.MultiItemRandomWithCompat;
 import gregapi.item.multiitem.behaviors.*;
 import gregapi.item.multiitem.energy.EnergyStat;
@@ -62,8 +61,6 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 	
 	@Override
 	public void addItems() {
-		IBehavior<MultiItem> tBehaviour;
-		
 		IL.Compound_Bronze       .set(addItem(  0, "Bronze Compound"        , "Put in Furnace to smelt it" , new OreDictItemData(MT.Bronze       , U9), TC.stack(TC.METALLUM, 1)));
 		IL.Compound_Brass        .set(addItem(  1, "Brass Compound"         , "Put in Furnace to smelt it" , new OreDictItemData(MT.Brass        , U9), TC.stack(TC.METALLUM, 1)));
 		IL.Compound_BismuthBronze.set(addItem(  2, "Bismuth Bronze Compound", "Put in Furnace to smelt it" , new OreDictItemData(MT.BismuthBronze, U9), TC.stack(TC.METALLUM, 1)));
@@ -245,8 +242,7 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		for (byte i = 0; i < 16; i++) {
 		IL.SPRAY_CAN_DYES[i]               .set(addItem( 1000+2*i, "Spray Paint ("+DYE_NAMES[i]+")", "Full", TC.stack(TC.SENSUS, 4)));
 		IL.SPRAY_CAN_DYES_USED[i]          .set(addItem(mLastID+1, "Spray Paint ("+DYE_NAMES[i]+")", "Used", TC.stack(TC.SENSUS, 3), TD.Creative.HIDDEN));
-		tBehaviour = new Behavior_Spray_Color(IL.Spray_Empty.get(1), IL.SPRAY_CAN_DYES_USED[i].get(1), IL.SPRAY_CAN_DYES[i].get(1), 512, i);
-		addItemBehavior(mLastID, tBehaviour); addItemBehavior(mLastID-1, tBehaviour);
+		addItemBehavior(new Behavior_Spray_Color(IL.Spray_Empty.get(1), IL.SPRAY_CAN_DYES_USED[i].get(1), IL.SPRAY_CAN_DYES[i].get(1), 512, i), mLastID, mLastID-1);
 		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), FL.mul(DYE_FLUIDS_CHEMICAL[i], 16), NF, IL.SPRAY_CAN_DYES[i].get(1));
 		ItemsGT.addNEIRedirects(IL.SPRAY_CAN_DYES_USED[i].get(1), IL.SPRAY_CAN_DYES[i].get(1));
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(IL.SPRAY_CAN_DYES[i].get(1), IL.SPRAY_CAN_DYES_USED[i].get(1), ST.make(Blocks.wool, 1, 0), ST.make(Blocks.glass_pane, 1, 0), ST.make(Blocks.glass, 1, 0), ST.make(Blocks.hardened_clay, 1, 0)), ST.array(NI, NI, ST.make(Blocks.wool, 1, 15-i), ST.make(Blocks.stained_glass_pane, 1, 15-i), ST.make(Blocks.stained_glass, 1, 15-i), ST.make(Blocks.stained_hardened_clay, 1, 15-i)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
@@ -254,8 +250,7 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		
 		IL.SPRAY_CAN_FOAM[i]               .set(addItem( 1100+2*i, "C-Foam Spray ("+DYE_NAMES[i]+")", "Full", TC.stack(TC.TERRA, 2), TC.stack(TC.FABRICO, 2)));
 		IL.SPRAY_CAN_FOAM_USED[i]          .set(addItem(mLastID+1, "C-Foam Spray ("+DYE_NAMES[i]+")", "Used", TC.stack(TC.TERRA, 1), TC.stack(TC.FABRICO, 1), TD.Creative.HIDDEN));
-		tBehaviour = new Behavior_Spray_Foam(IL.Spray_Empty.get(1), IL.SPRAY_CAN_FOAM_USED[i].get(1), IL.SPRAY_CAN_FOAM[i].get(1), 256, i, F);
-		addItemBehavior(mLastID, tBehaviour); addItemBehavior(mLastID-1, tBehaviour);
+		addItemBehavior(new Behavior_Spray_Foam(IL.Spray_Empty.get(1), IL.SPRAY_CAN_FOAM_USED[i].get(1), IL.SPRAY_CAN_FOAM[i].get(1), 256, i, F), mLastID, mLastID-1);
 		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), FL.mul(DYED_C_FOAMS[i], 256), NF, IL.SPRAY_CAN_FOAM[i].get(1));
 		ItemsGT.addNEIRedirects(IL.SPRAY_CAN_FOAM_USED[i].get(1), IL.SPRAY_CAN_FOAM[i].get(1), ST.make(BlocksGT.CFoamFresh, 1, i), ST.make(BlocksGT.CFoam, 1, i));
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(IL.SPRAY_CAN_FOAM[i].get(1), IL.SPRAY_CAN_FOAM_USED[i].get(1)), ST.array(ST.make(BlocksGT.CFoamFresh, 1, i), ST.make(BlocksGT.CFoam, 1, i)), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
@@ -263,8 +258,7 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		
 		IL.SPRAY_CAN_FOAM_OWNED[i]         .set(addItem( 1132+2*i, "Advanced C-Foam Spray ("+DYE_NAMES[i]+")", "Full (C-Foam only breakable by Owner once dry)", TC.stack(TC.TERRA, 2), TC.stack(TC.FABRICO, 2), TC.stack(TC.SPIRITUS, 2)));
 		IL.SPRAY_CAN_FOAM_OWNED_USED[i]    .set(addItem(mLastID+1, "Advanced C-Foam Spray ("+DYE_NAMES[i]+")", "Used (C-Foam only breakable by Owner once dry)", TC.stack(TC.TERRA, 1), TC.stack(TC.FABRICO, 1), TC.stack(TC.SPIRITUS, 1), TD.Creative.HIDDEN));
-		tBehaviour = new Behavior_Spray_Foam(IL.Spray_Empty.get(1), IL.SPRAY_CAN_FOAM_OWNED_USED[i].get(1), IL.SPRAY_CAN_FOAM_OWNED[i].get(1), 256, i, T);
-		addItemBehavior(mLastID, tBehaviour); addItemBehavior(mLastID-1, tBehaviour);
+		addItemBehavior(new Behavior_Spray_Foam(IL.Spray_Empty.get(1), IL.SPRAY_CAN_FOAM_OWNED_USED[i].get(1), IL.SPRAY_CAN_FOAM_OWNED[i].get(1), 256, i, T), mLastID, mLastID-1);
 		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), FL.mul(DYED_C_FOAMS_OWNED[i], 256), NF, IL.SPRAY_CAN_FOAM_OWNED[i].get(1));
 		ItemsGT.addNEIRedirects(IL.SPRAY_CAN_FOAM_OWNED_USED[i].get(1), IL.SPRAY_CAN_FOAM_OWNED[i].get(1));
 		RM.DidYouKnow.addFakeRecipe(F, ST.array(IL.SPRAY_CAN_FOAM_OWNED[i].get(1), IL.SPRAY_CAN_FOAM_OWNED_USED[i].get(1)), ST.array(ST.make(BlocksGT.CFoamFresh, 1, i, "Player-Owned C-Foam"), ST.make(BlocksGT.CFoam, 1, i, "Player-Owned C-Foam")), null, ZL_LONG, ZL_FS, ZL_FS, 0, 0, 0);
@@ -274,8 +268,7 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		
 		IL.Spray_Color_Remover             .set(addItem(1096, "Paint Removal Spray", "Full", TC.stack(TC.SENSUS, 2), TC.stack(TC.PERDITIO, 2)));
 		IL.Spray_Color_Remover_Used        .set(addItem(1097, "Paint Removal Spray", "Used", TC.stack(TC.SENSUS, 1), TC.stack(TC.PERDITIO, 1), TD.Creative.HIDDEN));
-		tBehaviour = new Behavior_Spray_Color_Remover(IL.Spray_Empty.get(1), IL.Spray_Color_Remover_Used.get(1), IL.Spray_Color_Remover.get(1), 256);
-		addItemBehavior(1096, tBehaviour); addItemBehavior(1097, tBehaviour);
+		addItemBehavior(new Behavior_Spray_Color_Remover(IL.Spray_Empty.get(1), IL.Spray_Color_Remover_Used.get(1), IL.Spray_Color_Remover.get(1), 256), mLastID, mLastID-1);
 		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), MT.Cl.fluid(16*U, T), NF, IL.Spray_Color_Remover.get(1));
 		ItemsGT.addNEIRedirects(IL.Spray_Color_Remover_Used.get(1), IL.Spray_Color_Remover.get(1));
 		
@@ -283,8 +276,7 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		
 		IL.Spray_Foam_Remover              .set(addItem(1196, "C-Foam Removal Spray", "Full", TC.stack(TC.TERRA, 2), TC.stack(TC.PERDITIO, 2)));
 		IL.Spray_Foam_Remover_Used         .set(addItem(1197, "C-Foam Removal Spray", "Used", TC.stack(TC.TERRA, 1), TC.stack(TC.PERDITIO, 1), TD.Creative.HIDDEN));
-		tBehaviour = new Behavior_Spray_Foam_Remover(IL.Spray_Empty.get(1), IL.Spray_Foam_Remover_Used.get(1), IL.Spray_Foam_Remover.get(1), 256);
-		addItemBehavior(1196, tBehaviour); addItemBehavior(1197, tBehaviour);
+		addItemBehavior(new Behavior_Spray_Foam_Remover(IL.Spray_Empty.get(1), IL.Spray_Foam_Remover_Used.get(1), IL.Spray_Foam_Remover.get(1), 256), mLastID, mLastID-1);
 		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), MT.H2SO4.fluid(16*U, T), NF, IL.Spray_Foam_Remover.get(1));
 		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), MT.HNO3 .fluid(16*U, T), NF, IL.Spray_Foam_Remover.get(1));
 		ItemsGT.addNEIRedirects(IL.Spray_Foam_Remover_Used.get(1), IL.Spray_Foam_Remover.get(1));
@@ -293,8 +285,7 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		
 		IL.Spray_Foam_Hardener             .set(addItem(1198, "Hardening Spray", "Full", TC.stack(TC.TERRA, 2), TC.stack(TC.TUTAMEN, 2)));
 		IL.Spray_Foam_Hardener_Used        .set(addItem(1199, "Hardening Spray", "Used", TC.stack(TC.TERRA, 1), TC.stack(TC.TUTAMEN, 1), TD.Creative.HIDDEN));
-		tBehaviour = new Behavior_Spray_Foam_Hardener(IL.Spray_Empty.get(1), IL.Spray_Foam_Hardener_Used.get(1), IL.Spray_Foam_Hardener.get(1), 256);
-		addItemBehavior(1198, tBehaviour); addItemBehavior(1199, tBehaviour);
+		addItemBehavior(new Behavior_Spray_Foam_Hardener(IL.Spray_Empty.get(1), IL.Spray_Foam_Hardener_Used.get(1), IL.Spray_Foam_Hardener.get(1), 256), mLastID, mLastID-1);
 		RM.Canner.addRecipe2(T, 16, 256, ST.make(Blocks.sand, 7, W), IL.Spray_Empty.get(1), IL.Spray_Foam_Hardener.get(1));
 		for (OreDictMaterial tMat : ANY.SiO2.mToThis) for (ItemStack tDust : ST.array(OP.dust.mat(tMat, 63), OP.blockDust.mat(tMat, 7))) if (ST.valid(tDust))
 		RM.Canner.addRecipe2(T, 16, 256, tDust, IL.Spray_Empty.get(1), IL.Spray_Foam_Hardener.get(1));
@@ -304,8 +295,7 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		
 		IL.Spray_Extinguisher              .set(addItem(1998, "Fire Extinguisher (CO2)", "Full", TC.stack(TC.PERDITIO, 2), TC.stack(TC.IGNIS, 2)));
 		IL.Spray_Extinguisher_Used         .set(addItem(1999, "Fire Extinguisher (CO2)", "Used", TC.stack(TC.PERDITIO, 1), TC.stack(TC.IGNIS, 1), TD.Creative.HIDDEN));
-		tBehaviour = new Behavior_Spray_Extinguisher(IL.Spray_Empty.get(1), IL.Spray_Extinguisher_Used.get(1), IL.Spray_Extinguisher.get(1), 256);
-		addItemBehavior(1998, tBehaviour); addItemBehavior(1999, tBehaviour);
+		addItemBehavior(new Behavior_Spray_Extinguisher(IL.Spray_Empty.get(1), IL.Spray_Extinguisher_Used.get(1), IL.Spray_Extinguisher.get(1), 256), mLastID, mLastID-1);
 		RM.Canner.addRecipe1(T, 16, 256, IL.Spray_Empty.get(1), MT.CO2.fluid(16*U, T), NF, IL.Spray_Extinguisher.get(1));
 		ItemsGT.addNEIRedirects(IL.Spray_Extinguisher_Used.get(1), IL.Spray_Extinguisher.get(1));
 		
@@ -365,8 +355,7 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		CR.shaped(IL.Tool_Matches.get(4), CR.DEF, " S ", "SPS", " S ", 'P', OP.dust.dat(ANY.Phosphorus), 'S', OP.bolt.dat(ANY.Wood));
 		IL.Tool_MatchBox_Used              .set(addItem(5002, "Match Box"                        , "This is not a Car"                           , TC.stack(TC.IGNIS, 2), TC.stack(TC.POTENTIA, 1), OD.craftingFirestarter, TD.Creative.HIDDEN));
 		IL.Tool_MatchBox_Full              .set(addItem(5003, "Match Box (Full)"                 , "This is not a Car"                           , TC.stack(TC.IGNIS, 1), TC.stack(TC.POTENTIA, 2), OD.craftingFirestarter));
-		tBehaviour = new Behavior_Lighter(null, IL.Tool_MatchBox_Used.get(1), IL.Tool_MatchBox_Full.get(1), 64, 9000);
-		addItemBehavior(5002, tBehaviour); addItemBehavior(5003, tBehaviour);
+		addItemBehavior(new Behavior_Lighter(null, IL.Tool_MatchBox_Used.get(1), IL.Tool_MatchBox_Full.get(1), 64, 9000), mLastID, mLastID-1);;
 		ItemsGT.addNEIRedirects(IL.Tool_Matches.get(1), IL.Tool_MatchBox_Used.get(1), IL.Tool_MatchBox_Full.get(1));
 		RM.Boxinator.addRecipe2(T, 16, 64, IL.Tool_Matches.get(64), OP.plateDouble.mat(MT.Paper, 1), IL.Tool_MatchBox_Full.get(1));
 		RM.Unboxinator.addRecipe1(T, 16, 32, IL.Tool_MatchBox_Full.get(1), IL.Tool_Matches.get(64), OP.scrapGt.mat(MT.Paper, 16));
@@ -376,8 +365,7 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		IL.Tool_Lighter_Invar_Empty        .set(addItem(5004, "Lighter (Empty)"                  , "Requires Canning Machine to be filled"       , new OreDictItemData(MT.Invar, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 1), TC.stack(TC.VACUOS, 1)));
 		IL.Tool_Lighter_Invar_Used         .set(addItem(5005, "Lighter"                          , ""                                            , new OreDictItemData(MT.Invar, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 2), TC.stack(TC.POTENTIA, 1), OD.craftingFirestarter, TD.Creative.HIDDEN));
 		IL.Tool_Lighter_Invar_Full         .set(addItem(5006, "Lighter (Full)"                   , ""                                            , new OreDictItemData(MT.Invar, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 1), TC.stack(TC.POTENTIA, 2), OD.craftingFirestarter));
-		tBehaviour = new Behavior_Lighter(IL.Tool_Lighter_Invar_Empty.get(1), IL.Tool_Lighter_Invar_Used.get(1), IL.Tool_Lighter_Invar_Full.get(1), 100, 10000);
-		addItemBehavior(5005, tBehaviour); addItemBehavior(5006, tBehaviour);
+		addItemBehavior(new Behavior_Lighter(IL.Tool_Lighter_Invar_Empty.get(1), IL.Tool_Lighter_Invar_Used.get(1), IL.Tool_Lighter_Invar_Full.get(1), 100, 10000), mLastID, mLastID-1);;
 		RM.Canner.addRecipe1(T, 16, 16, IL.Tool_Lighter_Invar_Empty.get(1), FL.Butane.make(100), NF, IL.Tool_Lighter_Invar_Full.get(1));
 		ItemsGT.addNEIRedirects(IL.Tool_Lighter_Invar_Empty.get(1), IL.Tool_Lighter_Invar_Used.get(1), IL.Tool_Lighter_Invar_Full.get(1));
 		
@@ -386,8 +374,7 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		IL.Tool_Lighter_Platinum_Empty     .set(addItem(5007, "Shiny Lighter (Empty)"            , "Requires Canning Machine to be filled"       , new OreDictItemData(MT.Pt, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 1), TC.stack(TC.NEBRISUM, 1), TC.stack(TC.VACUOS, 1)));
 		IL.Tool_Lighter_Platinum_Used      .set(addItem(5008, "Shiny Lighter"                    , "A known Master of Pranks is engraved on it"  , new OreDictItemData(MT.Pt, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 2), TC.stack(TC.NEBRISUM, 1), TC.stack(TC.POTENTIA, 1), OD.craftingFirestarter, TD.Creative.HIDDEN));
 		IL.Tool_Lighter_Platinum_Full      .set(addItem(5009, "Shiny Lighter (Full)"             , "A known Master of Pranks is engraved on it"  , new OreDictItemData(MT.Pt, OP.plateCurved.mAmount * 2), TC.stack(TC.IGNIS, 1), TC.stack(TC.NEBRISUM, 1), TC.stack(TC.POTENTIA, 2), OD.craftingFirestarter));
-		tBehaviour = new Behavior_Lighter(IL.Tool_Lighter_Platinum_Empty.get(1), IL.Tool_Lighter_Platinum_Used.get(1), IL.Tool_Lighter_Platinum_Full.get(1), 1000, 10000);
-		addItemBehavior(5008, tBehaviour); addItemBehavior(5009, tBehaviour);
+		addItemBehavior(new Behavior_Lighter(IL.Tool_Lighter_Platinum_Empty.get(1), IL.Tool_Lighter_Platinum_Used.get(1), IL.Tool_Lighter_Platinum_Full.get(1), 1000, 10000), mLastID, mLastID-1);;
 		RM.Canner.addRecipe1(T, 16, 64, IL.Tool_Lighter_Platinum_Empty.get(1), FL.Butane.make(1000), NF, IL.Tool_Lighter_Platinum_Full.get(1));
 		ItemsGT.addNEIRedirects(IL.Tool_Lighter_Platinum_Empty.get(1), IL.Tool_Lighter_Platinum_Used.get(1), IL.Tool_Lighter_Platinum_Full.get(1));
 		
@@ -397,8 +384,7 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		IL.Tool_Lighter_Plastic_Used       .set(addItem(5011, "Plastic Lighter"                  , ""                                            , new OreDictItemData(ANY.Plastic, OP.plateCurved.mAmount * 2, ANY.Fe, OP.screw.mAmount), TC.stack(TC.IGNIS, 2), TC.stack(TC.POTENTIA, 1), OD.craftingFirestarter, TD.Creative.HIDDEN));
 		IL.Tool_Lighter_Plastic_Full       .set(addItem(5012, "Plastic Lighter (Full)"           , ""                                            , new OreDictItemData(ANY.Plastic, OP.plateCurved.mAmount * 2, ANY.Fe, OP.screw.mAmount), TC.stack(TC.IGNIS, 1), TC.stack(TC.POTENTIA, 2), OD.craftingFirestarter));
 		IL.Tool_Lighter_Plastic_Broken     .set(addItem(5013, "Plastic Lighter (Broken)"         , ""                                            , new OreDictItemData(ANY.Plastic, OP.plateCurved.mAmount * 2, ANY.Fe, OP.screw.mAmount), TC.stack(TC.IGNIS, 1), TC.stack(TC.PERDITIO, 1), TD.Creative.HIDDEN));
-		tBehaviour = new Behavior_Lighter(IL.Tool_Lighter_Plastic_Broken.get(1), IL.Tool_Lighter_Plastic_Used.get(1), IL.Tool_Lighter_Plastic_Full.get(1), 100, 9000);
-		addItemBehavior(5011, tBehaviour); addItemBehavior(5012, tBehaviour);
+		addItemBehavior(new Behavior_Lighter(IL.Tool_Lighter_Plastic_Broken.get(1), IL.Tool_Lighter_Plastic_Used.get(1), IL.Tool_Lighter_Plastic_Full.get(1), 100, 9000), mLastID-2, mLastID-1);;
 		CR.shaped(IL.Tool_Lighter_Plastic_Empty.get(1), CR.DEF_NCC, "IF", "dP", "xP", 'F', OD.itemFlint, 'P', OP.plateCurved.dat(ANY.Plastic), 'I', OP.screw.dat(ANY.Iron));
 		RM.Canner.addRecipe1(T, 16, 16, IL.Tool_Lighter_Plastic_Empty.get(1), FL.Butane.make(100), NF, IL.Tool_Lighter_Plastic_Full.get(1));
 		ItemsGT.addNEIRedirects(IL.Tool_Lighter_Plastic_Empty.get(1), IL.Tool_Lighter_Plastic_Used.get(1), IL.Tool_Lighter_Plastic_Full.get(1), IL.Tool_Lighter_Plastic_Broken.get(1));
@@ -570,34 +556,28 @@ public class MultiItemRandomTools extends MultiItemRandomWithCompat implements I
 		IL.Tape_Used                       .set(addItem(12001, "Tape", "Used Roll", TC.stack(TC.PANNUS, 1), TC.stack(TC.LIMUS, 1)));
 		CR.shaped   (IL.Tape.get(1), CR.DEF, "PPP", " G ", 'P', OD.paperEmpty, 'G', OD.itemGlue);
 		CR.shapeless(IL.Tape.get(1), CR.DEF, new Object[] {IL.Tape_Used, IL.Tape_Used, IL.Tape_Used, IL.Tape_Used});
-		tBehaviour = new Behavior_Duct_Tape(null, IL.Tape_Used.get(1), IL.Tape.get(1), 0, 10000);
+		addItemBehavior(new Behavior_Duct_Tape(null, IL.Tape_Used.get(1), IL.Tape.get(1), 0, 10000), mLastID, mLastID-1);
 		ItemsGT.addNEIRedirects(IL.Tape.get(1), IL.Tape_Used.get(1));
 		BooksGT.BOOK_REGISTER.put(IL.Tape           , (byte)57);
 		BooksGT.BOOK_REGISTER.put(IL.Tape_Used      , (byte)57);
-		addItemBehavior(12000, tBehaviour);
-		addItemBehavior(12001, tBehaviour);
 		
 		IL.Duct_Tape                       .set(addItem(12002, "Duct Tape", "Full Roll", TC.stack(TC.FABRICO, 1), TC.stack(TC.LIMUS, 1), OD.craftingDuctTape));
 		IL.Duct_Tape_Used                  .set(addItem(12003, "Duct Tape", "Used Roll", TC.stack(TC.FABRICO, 1), TC.stack(TC.LIMUS, 1)));
 		CR.shaped   (IL.Duct_Tape.get(1), CR.DEF, "PPP", " G ", 'P', OP.foil.dat(ANY.Plastic), 'G', OD.itemGlue);
 		CR.shapeless(IL.Duct_Tape.get(1), CR.DEF, new Object[] {IL.Duct_Tape_Used, IL.Duct_Tape_Used, IL.Duct_Tape_Used, IL.Duct_Tape_Used});
-		tBehaviour = new Behavior_Duct_Tape(null, IL.Duct_Tape_Used.get(1), IL.Duct_Tape.get(1), 1, 100000);
+		addItemBehavior(new Behavior_Duct_Tape(null, IL.Duct_Tape_Used.get(1), IL.Duct_Tape.get(1), 1, 100000), mLastID, mLastID-1);
 		ItemsGT.addNEIRedirects(IL.Duct_Tape.get(1), IL.Duct_Tape_Used.get(1));
 		BooksGT.BOOK_REGISTER.put(IL.Duct_Tape      , (byte)58);
 		BooksGT.BOOK_REGISTER.put(IL.Duct_Tape_Used , (byte)58);
-		addItemBehavior(12002, tBehaviour);
-		addItemBehavior(12003, tBehaviour);
 		
 		IL.Brain_Tape                      .set(addItem(12008, "BrainTech Aerospace Advanced Reinforced Duct Tape FAL-84", "Full Roll", TC.stack(TC.TUTAMEN, 1), TC.stack(TC.LIMUS, 1), OD.craftingDuctTape));
 		IL.Brain_Tape_Used                 .set(addItem(12009, "BrainTech Aerospace Advanced Reinforced Duct Tape FAL-84", "Used Roll", TC.stack(TC.TUTAMEN, 1), TC.stack(TC.LIMUS, 1), OD.craftingDuctTape));
 		CR.shaped   (IL.Brain_Tape.get(1), CR.DEF, "PPP", " G ", 'P', OP.foil.dat(ANY.W), 'G', OD.itemGlue);
 		CR.shapeless(IL.Brain_Tape.get(1), CR.DEF, new Object[] {IL.Brain_Tape_Used, IL.Brain_Tape_Used, IL.Brain_Tape_Used, IL.Brain_Tape_Used});
-		tBehaviour = new Behavior_Duct_Tape(null, IL.Brain_Tape_Used.get(1), IL.Brain_Tape.get(1), 2, 10000000);
+		addItemBehavior(new Behavior_Duct_Tape(null, IL.Brain_Tape_Used.get(1), IL.Brain_Tape.get(1), 2, 10000000), mLastID, mLastID-1);
 		ItemsGT.addNEIRedirects(IL.Brain_Tape.get(1), IL.Brain_Tape_Used.get(1));
 		BooksGT.BOOK_REGISTER.put(IL.Brain_Tape     , (byte)59);
 		BooksGT.BOOK_REGISTER.put(IL.Brain_Tape_Used, (byte)59);
-		addItemBehavior(12008, tBehaviour);
-		addItemBehavior(12009, tBehaviour);
 		
 		
 		IL.Bag_Loot_Sapling                .set(addItem(13000, "Bagged Sapling", "Loot: A Sapling"  , OP.treeSapling, TC.stack(TC.LUCRUM, 1), TC.stack(TC.ARBOR   , 2), new Behavior_Drop_Loot("gt.saplings")));

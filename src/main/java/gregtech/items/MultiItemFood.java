@@ -198,24 +198,24 @@ public class MultiItemFood extends MultiItemRandomWithCompat implements IItemRot
 		RM.Bath       .addRecipe1(T,  0, 16, OM.dust(MT.Kaolinite    ),        tWater    , NF, IL.Clay_Ball_White.get(1));
 		}
 		
-		IL.Tusk         .set(addItem(12400, "Tusk"         , ""                 , OD.itemTusk              , TC.stack(TC.BESTIA, 2), TC.stack(TC.FAMES, 2)));
-		IL.Tusk_Hoglin  .set(addItem(12401, "Hoglin Tusk"  , "not golden"       , OD.itemTusk              , TC.stack(TC.BESTIA, 2), TC.stack(TC.FAMES, 2)));
-		IL.Tusk_Boar    .set(addItem(12402, "Boar Tusk"    , ""                 , OD.itemTusk              , TC.stack(TC.BESTIA, 2), TC.stack(TC.FAMES, 2)));
-		IL.Tusk_Elephant.set(addItem(12403, "Elephant Tusk", "Ivory"            , OD.itemTusk, OD.itemIvory, TC.stack(TC.BESTIA, 3), TC.stack(TC.FAMES, 3), TC.stack(TC.LUCRUM, 3)));
+		IL.Tusk         .set(addItem(12400, "Tusk"         , ""                 , OD.itemTusk              , TC.stack(TC.BESTIA, 2), TC.stack(TC.FAMES, 2))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", last());
+		IL.Tusk_Hoglin  .set(addItem(12401, "Hoglin Tusk"  , "not golden"       , OD.itemTusk              , TC.stack(TC.BESTIA, 2), TC.stack(TC.FAMES, 2))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", last());
+		IL.Tusk_Boar    .set(addItem(12402, "Boar Tusk"    , ""                 , OD.itemTusk              , TC.stack(TC.BESTIA, 2), TC.stack(TC.FAMES, 2))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", last());
+		IL.Tusk_Elephant.set(addItem(12403, "Elephant Tusk", "Ivory"            , OD.itemTusk, OD.itemIvory, TC.stack(TC.BESTIA, 3), TC.stack(TC.FAMES, 3), TC.stack(TC.LUCRUM, 3))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", last());
 		
-		IL.Hoof         .set(addItem(12500, "Hoof"         , ""                 , OD.itemHoof              , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2)));
-		IL.Hoof_Cow     .set(addItem(12501, "Cow Hoof"     , ""                 , OD.itemHoof              , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2)));
-		IL.Hoof_Horse   .set(addItem(12502, "Horse Hoof"   , "not race-worthy"  , OD.itemHoof              , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2)));
-		IL.Hoof_Mule    .set(addItem(12503, "Mule Hoof"    , ""                 , OD.itemHoof              , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2)));
-		IL.Hoof_Donkey  .set(addItem(12504, "Donkey Hoof"  , ""                 , OD.itemHoof              , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2)));
-		IL.Hoof_Deer    .set(addItem(12505, "Deer Hoof"    , ""                 , OD.itemHoof              , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2)));
+		IL.Hoof         .set(addItem(12500, "Hoof"         , ""                 , OD.itemHoof              , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", last());
+		IL.Hoof_Cow     .set(addItem(12501, "Cow Hoof"     , ""                 , OD.itemHoof              , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", last());
+		IL.Hoof_Horse   .set(addItem(12502, "Horse Hoof"   , "not race-worthy"  , OD.itemHoof              , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", last());
+		IL.Hoof_Mule    .set(addItem(12503, "Mule Hoof"    , ""                 , OD.itemHoof              , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", last());
+		IL.Hoof_Donkey  .set(addItem(12504, "Donkey Hoof"  , ""                 , OD.itemHoof              , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", last());
+		IL.Hoof_Deer    .set(addItem(12505, "Deer Hoof"    , ""                 , OD.itemHoof              , TC.stack(TC.BESTIA, 2), TC.stack(TC.ITER, 2))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", last());
 		
-		IL.Horn         .set(addItem(12600, "Horn"         , ""                 , OD.itemHorn              , TC.stack(TC.BESTIA, 2), TC.stack(TC.TELUM, 2)));
-		IL.Horn_Cow     .set(addItem(12601, "Cow Horn"     , ""                 , OD.itemHorn              , TC.stack(TC.BESTIA, 2), TC.stack(TC.TELUM, 2)));
-		IL.Horn_Sheep   .set(addItem(12602, "Sheep Horn"   , "from horned Sheep", OD.itemHorn              , TC.stack(TC.BESTIA, 2), TC.stack(TC.TELUM, 2)));
+		IL.Horn         .set(addItem(12600, "Horn"         , ""                 , OD.itemHorn              , TC.stack(TC.BESTIA, 2), TC.stack(TC.TELUM, 2))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", last());
+		IL.Horn_Cow     .set(addItem(12601, "Cow Horn"     , ""                 , OD.itemHorn              , TC.stack(TC.BESTIA, 2), TC.stack(TC.TELUM, 2))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", last());
+		IL.Horn_Sheep   .set(addItem(12602, "Sheep Horn"   , "from horned Sheep", OD.itemHorn              , TC.stack(TC.BESTIA, 2), TC.stack(TC.TELUM, 2))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", last());
 		
-		IL.Antler       .set(addItem(12700, "Antler"       , ""                 , OD.itemAntler            , TC.stack(TC.BESTIA, 2), TC.stack(TC.INSTRUMENTUM, 2)));
-		IL.Antler_Deer  .set(addItem(12701, "Deer Antler"  , "oh dear..."       , OD.itemAntler            , TC.stack(TC.BESTIA, 2), TC.stack(TC.INSTRUMENTUM, 2)));
+		IL.Antler       .set(addItem(12700, "Antler"       , ""                 , OD.itemAntler            , TC.stack(TC.BESTIA, 2), TC.stack(TC.INSTRUMENTUM, 2))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", last());
+		IL.Antler_Deer  .set(addItem(12701, "Deer Antler"  , "oh dear..."       , OD.itemAntler            , TC.stack(TC.BESTIA, 2), TC.stack(TC.INSTRUMENTUM, 2))); if (COMPAT_FR != null) COMPAT_FR.addToBackpacks("hunter", last());
 		
 		
 		

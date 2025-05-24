@@ -79,18 +79,22 @@ public abstract class MultiItem extends ItemBase implements IItemEnergy {
 	 * 
 	 * Note: the boolean Behaviours sometimes won't be executed if another boolean Behaviour returned true before.
 	 * 
-	 * @param aMetaValue the Meta Value of the Item you want to add it to. [0 - 32766]
+	 * @param aMeta the Meta Value of the Item you want to add it to. [0 - 32766]
 	 * @param aBehavior the Click Behavior you want to add.
 	 * @return the Item itself for convenience in constructing.
 	 */
-	public MultiItem addItemBehavior(int aMetaValue, IBehavior<MultiItem> aBehavior) {
-		if (aMetaValue < 0 || aMetaValue >= 32767 || aBehavior == null) return this;
-		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)aMetaValue);
+	public MultiItem addItemBehavior(int aMeta, IBehavior<MultiItem> aBehavior) {
+		if (aMeta < 0 || aMeta >= 32767 || aBehavior == null) return this;
+		ArrayList<IBehavior<MultiItem>> tList = mItemBehaviors.get((short)aMeta);
 		if (tList == null) {
 			tList = new ArrayListNoNulls<>();
-			mItemBehaviors.put((short)aMetaValue, tList);
+			mItemBehaviors.put((short)aMeta, tList);
 		}
 		tList.add(aBehavior);
+		return this;
+	}
+	public MultiItem addItemBehavior(IBehavior<MultiItem> aBehavior, int... aMetas) {
+		for (int aMeta : aMetas) addItemBehavior(aMeta, aBehavior);
 		return this;
 	}
 	
