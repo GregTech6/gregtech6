@@ -1307,7 +1307,23 @@ public class LoaderItemData implements Runnable {
 		OM.reg(OP.stone, MT.SoulSand                            , ST.make(MD.NeLi, "SoulSandstone"      , 1, W));
 		
 		
-		OM.data(MD.LycM_Demon, "demoncrystal"               , 1,   W, MT.Glowstone          , U*4);
+		OM.data(MD.LycM_Demon   , "demoncrystal"            , 1,   W, MT.Glowstone          , U*4);
+		OM.data(MD.LycM_Arctic  , "blizzardcharge"          , 1,   W, MT.Blizz              , U*4);
+		OM.data(MD.LycM_Arctic  , "frostwebcharge"          , 1,   W, MT.Blizz              , U*4);
+		OM.data(MD.LycM_Arctic  , "frostboltcharge"         , 1,   W, MT.Blizz              , U*4);
+		OM.data(MD.LycM_Arctic  , "tundracharge"            , 1,   W, MT.Blizz              , U*4);
+		OM.data(MD.LycM_Inferno , "embercharge"             , 1,   W, MT.Blaze              , U*4);
+		OM.data(MD.LycM_Inferno , "magmacharge"             , 1,   W, MT.Blaze              , U*4);
+		OM.data(MD.LycM_Inferno , "scorchfirecharge"        , 1,   W, MT.Blaze              , U*4);
+		OM.data(MD.LycM_Demon   , "doomfirecharge"          , 1,   W, MT.Blaze              , U*4);
+		OM.data(MD.LycM_Demon   , "hellfirecharge"          , 1,   W, MT.Blaze              , U*4);
+		OM.data(MD.LycM_Demon   , "devilstarcharge"         , 1,   W, MT.Blaze              , U*4);
+		OM.data(MD.LycM_Demon   , "demoniclightningcharge"  , 1,   W, MT.Blitz              , U*4);
+		OM.data(MD.LycM_Shadow  , "spectralboltcharge"      , 1,   W, MT.Blitz              , U*4);
+		OM.data(MD.LycM_Mountain, "arcanelaserstormcharge"  , 1,   W, MT.Blitz              , U*4);
+		OM.data(MD.LycM_Mountain, "boulderblastcharge"      , 1,   W, MT.Basalz             , U*4);
+		OM.data(MD.LycM_Desert  , "mudshotcharge"           , 1,   W, MT.Basalz             , U*4);
+		
 		
 		OM.data(MD.ElC, "electricraft_item_wire"            , 1,   0, MT.HSLA               , 3*U16);
 		OM.data(MD.ElC, "electricraft_item_wire"            , 1,   1, MT.Sn                 , 3*U16);
