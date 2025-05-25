@@ -283,7 +283,7 @@ public enum IL implements IItemContainer {
 	Pill_Iodine,
 	Pill_Antidote,
 	Pill_Cure_All,
-	Food_Can_Empty,
+	Food_Can_Empty, Food_Can_Air, Food_Can_Air_Nether, Food_Can_Air_End,
 	Food_Can_Undefined_1, Food_Can_Undefined_2, Food_Can_Undefined_3, Food_Can_Undefined_4, Food_Can_Undefined_5, Food_Can_Undefined_6,
 	Food_Can_Meat_1, Food_Can_Meat_2, Food_Can_Meat_3, Food_Can_Meat_4, Food_Can_Meat_5, Food_Can_Meat_6,
 	Food_Can_Fish_1, Food_Can_Fish_2, Food_Can_Fish_3, Food_Can_Fish_4, Food_Can_Fish_5, Food_Can_Fish_6,

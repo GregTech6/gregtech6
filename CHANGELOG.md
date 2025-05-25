@@ -6,7 +6,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.05: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[ADDED] Canned Air. As in putting 16000L of Naturally Sparkling, Salt-Free Air into a Food Can. It can be used to replenish Air Underwater and will overfill your Air Bar. Also has Enviromine Heat Stats depending on which type of Air you can.
 
 
 6.17.04:

@@ -43,7 +43,8 @@ public class FoodStat implements IFoodStat {
 	private final EnumAction mAction;
 	private final ItemStack mEmptyContainer;
 	private final boolean mAlwaysEdible, mInvisibleParticles, mIsRotten;
-	private boolean mExplosive = F, mMilk = F, mExtinguish = F, mUseAPC = T, mAutoDetectEmpty = F;
+	public boolean mExplosive = F, mMilk = F, mExtinguish = F, mUseAPC = T, mAutoDetectEmpty = F;
+	public int mRebreathe = 0;
 	
 	/**
 	 * @param aFoodLevel Amount of Food in Half Bacon [0 - 20]
@@ -98,6 +99,12 @@ public class FoodStat implements IFoodStat {
 		return this;
 	}
 	
+	/** 300 is a full Air Bar, it can be overfilled but only while underwater, as it will be set to 300 while not submerged. */
+	public FoodStat setRebreathe(int aRebreathe) {
+		mRebreathe = aRebreathe;
+		return this;
+	}
+	
 	public FoodStat setMilk() {
 		mMilk = T;
 		return this;
@@ -145,6 +152,7 @@ public class FoodStat implements IFoodStat {
 		if (aMakeSound) aPlayer.worldObj.playSoundAtEntity(aPlayer, "random.burp", 0.5F, RNGSUS.nextFloat() * 0.1F + 0.9F);
 		if (!aPlayer.worldObj.isRemote) {
 			if (mExtinguish) aPlayer.extinguish();
+			if (mRebreathe > 0) aPlayer.setAir(aPlayer.getAir()+mRebreathe);
 			if (mMilk) aPlayer.curePotionEffects(ST.make(Items.milk_bucket, 1, 0));
 			for (int i = 3; i < mPotionEffects.length; i+=4) if (RNGSUS.nextInt(100) < mPotionEffects[i]) {
 				UT.Entities.applyPotion(aPlayer, mPotionEffects[i-3], mPotionEffects[i-2], mPotionEffects[i-1], mInvisibleParticles);

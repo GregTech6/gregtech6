@@ -19,9 +19,7 @@
 
 package gregtech.items;
 
-import gregapi.data.IL;
-import gregapi.data.TC;
-import gregapi.data.TD;
+import gregapi.data.*;
 import gregapi.item.CreativeTab;
 import gregapi.item.IItemRottable;
 import gregapi.item.multiitem.MultiItemRandomWithCompat;
@@ -107,6 +105,19 @@ public class MultiItemCans extends MultiItemRandomWithCompat implements IItemRot
 		IL.Food_Can_Cookies_4  .set(addItem(   84, "Wide Food Can (Cookies)"      , "", new FoodStat( 8, 0.4F,  8, C+37, 0.10F,  0,  0,  0,  0,  0, EnumAction.eat, NI, F, F, F, T), TC.stack(TC.FAMES, 2), TC.stack(TC.FABRICO, 1))); CR.remove(last());
 		IL.Food_Can_Cookies_5  .set(addItem(   85, "Large Food Can (Cookies)"     , "", new FoodStat(10, 0.5F, 10, C+37, 0.10F,  0,  0,  0,  0,  0, EnumAction.eat, NI, F, F, F, T), TC.stack(TC.FAMES, 3), TC.stack(TC.FABRICO, 1))); CR.remove(last());
 		IL.Food_Can_Cookies_6  .set(addItem(   86, "Huge Food Can (Cookies)"      , "", new FoodStat(12, 0.6F, 12, C+37, 0.10F,  0,  0,  0,  0,  0, EnumAction.eat, NI, F, F, F, T), TC.stack(TC.FAMES, 3), TC.stack(TC.FABRICO, 1))); CR.remove(last());
+		
+		IL.Food_Can_Air_End    .set(addItem(32764, "Canned Space Air", "Naturally Sparkling, Salt-Free Air"      , new FoodStat( 0, 0.0F,  0, C+30, 0.20F,  0,  0,  0,  0,  0, EnumAction.drink, NI, T, F, F, T).setRebreathe(1000), TC.stack(TC.AER, 4), TC.stack(TC.ALIENIS, 1), TC.stack(TC.FABRICO, 1))); CR.remove(last());
+		IL.Food_Can_Air_Nether .set(addItem(32765, "Canned Hot Air"  , "Naturally Sparkling, Salt-Free Air"      , new FoodStat( 0, 0.0F,  0, C+40, 0.50F,  0,  0,  0,  0,  0, EnumAction.drink, NI, T, F, F, T).setRebreathe(1000), TC.stack(TC.AER, 4), TC.stack(TC.IGNIS  , 1), TC.stack(TC.FABRICO, 1))); CR.remove(last());
+		IL.Food_Can_Air        .set(addItem(32766, "Canned Air"      , "Use Underwater for a Breath of Fresh Air", new FoodStat( 0, 0.0F,  0, C+36, 0.20F,  0,  0,  0,  0,  0, EnumAction.drink, NI, T, F, F, T).setRebreathe(1000), TC.stack(TC.AER, 4), TC.stack(TC.VOLATUS, 1), TC.stack(TC.FABRICO, 1))); CR.remove(last());
+		
+		for (String tAir : FluidsGT.AIR) if (!FL.Air_End.is(tAir) && !FL.Air_Nether.is(tAir))
+		RM.Canner.addRecipe1(F, 16, 64, IL.Food_Can_Empty.get(1), FL     .make(tAir, 16000), NF, IL.Food_Can_Air       .get(1));
+		RM.Canner.addRecipe1(F, 16, 64, IL.Food_Can_Empty.get(1), FL.Air_Nether.make(16000), NF, IL.Food_Can_Air_Nether.get(1));
+		RM.Canner.addRecipe1(F, 16, 64, IL.Food_Can_Empty.get(1), FL.Air_End   .make(16000), NF, IL.Food_Can_Air_End   .get(1));
+		
+		RM.Canner.addRecipe1(F, 16, 16, IL.Food_Can_Air       .get(1), NF, FL.Air       .make(16000), IL.Food_Can_Empty.get(1));
+		RM.Canner.addRecipe1(F, 16, 16, IL.Food_Can_Air_Nether.get(1), NF, FL.Air_Nether.make(16000), IL.Food_Can_Empty.get(1));
+		RM.Canner.addRecipe1(F, 16, 16, IL.Food_Can_Air_End   .get(1), NF, FL.Air_End   .make(16000), IL.Food_Can_Empty.get(1));
 	}
 	
 	@Override
@@ -117,7 +128,7 @@ public class MultiItemCans extends MultiItemRandomWithCompat implements IItemRot
 	@Override
 	public ItemStack getRotten(ItemStack aStack) {
 		short tMeta = ST.meta_(aStack);
-		return tMeta < 20 ? aStack : ST.make(this, aStack.stackSize, 10+(tMeta%10), aStack.getTagCompound());
+		return tMeta < 20 || tMeta >= 32000 ? aStack : ST.make(this, aStack.stackSize, 10+(tMeta%10), aStack.getTagCompound());
 	}
 	
 	@Override public ItemStack getRotten(ItemStack aStack, World aWorld, int aX, int aY, int aZ) {return getRotten(aStack);}
