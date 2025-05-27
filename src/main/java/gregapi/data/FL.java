@@ -223,7 +223,7 @@ public enum FL {
 	, Juice_Starfruit           ("starfruitjuice"                                           , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
 	, Juice_Papaya              ("papayajuice"                                              , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
 	, Juice_Fig                 ("figjuice"                                                 , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
-	, Juice_Coconut             ("coconutmilk"                                              , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
+	, Juice_Coconut             ("coconutmilk"                                              , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE, COOKING_OIL)
 	, Juice_Date                ("datejuice"                                                , SIMPLE, LIQUID, FOOD, JUICE, FRUIT_JUICE)
 	
 	, Juice_Carrot              ("binnie.juicecarrot"       , "carrotjuice"                 , SIMPLE, LIQUID, FOOD, JUICE)

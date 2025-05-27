@@ -726,6 +726,10 @@ public class Loader_Recipes_Food implements Runnable {
 		
 		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(FL.Mash_Wheat.make(50), FL.Mash_Hops.make(50)), FL.Mash_WheatHops.make(100), ZL_IS);
 		
+		RM.Mixer            .addRecipe2(T, 16,  144, dust     .mat(MT.NaCl, 1), IL.Food_Butter.get(9), NF, NF, IL.Food_Butter_Salted.get(9));
+		RM.Mixer            .addRecipe2(T, 16,   32, dustSmall.mat(MT.NaCl, 1), IL.Food_Butter.get(2), NF, NF, IL.Food_Butter_Salted.get(2));
+		RM.Mixer            .addRecipe2(T, 16,   16, dustTiny .mat(MT.NaCl, 1), IL.Food_Butter.get(1), NF, NF, IL.Food_Butter_Salted.get(1));
+		
 		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.Sugar               ), OM.dust(MT.Cocoa    ), OM.dust(MT.Chocolate,  U*2));
 		RM.Mixer            .addRecipe2(T, 16,   16, gemChipped.mat(MT.Sugar    ,  4), OM.dust(MT.Cocoa    ), OM.dust(MT.Chocolate,  U*2));
 		RM.Mixer            .addRecipe2(T, 16,   16, OM.dust(MT.Sugar           , U4), OM.dust(MT.Cocoa, U4), OM.dust(MT.Chocolate,   U2));
@@ -739,9 +743,6 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(FL.make("potion.darkcoffee", 125), FL.MilkGrC.make(125)), FL.make("potion.coffee", 250), ZL_IS);
 		RM.Mixer            .addRecipe0(T, 16,   16, FL.array(FL.make("potion.darkcoffee", 125), FL.MilkSoy.make(125)), FL.make("potion.coffee", 250), ZL_IS);
 		
-		for (ItemStack tStack : ST.array(dust.mat(MT.NaCl, 1), dustSmall.mat(MT.NaCl, 4), dustTiny.mat(MT.NaCl,  9))) {
-		RM.Mixer            .addRecipe2(T, 16,   16, tStack, IL.Food_Butter.get(1), NF, NF, IL.Food_Butter_Salted.get(1));
-		}
 		for (ItemStack tStack : ST.array(dust.mat(MT.Milk, 1), dustSmall.mat(MT.Milk, 4), dustTiny.mat(MT.Milk,  9))) {
 		RM.Mixer            .addRecipe1(T, 16,   48, tStack, FL.make("potion.darkcoffee"         , 750), FL.make("potion.coffee"              , 750), ZL_IS);
 		}

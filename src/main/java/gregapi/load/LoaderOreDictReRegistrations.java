@@ -828,6 +828,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addReRegistration("foodOliveoil"                    , "listAllcookingoil");
 		OreDictManager.INSTANCE.addReRegistration("foodSunfloweroil"                , "listAllcookingoil");
 		OreDictManager.INSTANCE.addReRegistration("foodNutoil"                      , "listAllcookingoil");
+		OreDictManager.INSTANCE.addReRegistration("foodCoconutmilk"                 , "listAllcookingoil");
 		OreDictManager.INSTANCE.addReRegistration("foodPeanutbutter"                , "listAllnutbutter");
 		OreDictManager.INSTANCE.addReRegistration("foodAlmondbutter"                , "listAllnutbutter");
 		OreDictManager.INSTANCE.addReRegistration("foodCashewbutter"                , "listAllnutbutter");
