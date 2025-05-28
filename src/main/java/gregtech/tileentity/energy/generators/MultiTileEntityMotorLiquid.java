@@ -144,7 +144,7 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 				}
 			}
 		} else {
-			if (mActivity.mState != 0 && CLIENT_TIME % 20 == Math.abs(xCoord ^ yCoord ^ zCoord) % 20) UT.Sounds.play(SFX.MC_MINECART, 1, 0.3F, getCoords());
+			if (mActivity.mState != 0 && WD.random(this, 20, CLIENT_TIME)) UT.Sounds.play(SFX.MC_MINECART, 1, 0.5F, getCoords());
 		}
 	}
 	

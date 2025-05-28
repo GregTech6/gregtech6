@@ -30,6 +30,7 @@ import gregapi.tileentity.behavior.TE_Behavior_Energy_Stats;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.machines.ITileEntityRunningActively;
 import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -111,7 +112,7 @@ public abstract class TileEntityBase11MultiBlockConverter extends TileEntityBase
 				if (mTimer % 600 == 5 && !mActivity.mActive && mExplosionPrevention > 0) mExplosionPrevention--;
 			}
 		} else {
-			if (mActivity.mState != 0 && (mEnergyIN.mType == TD.Energy.RU || mEnergyOUT.mType == TD.Energy.RU) && CLIENT_TIME % 20 == Math.abs(xCoord ^ yCoord ^ zCoord) % 20) UT.Sounds.play(SFX.MC_MINECART, 1, 1.0F, getCoords());
+			if (mActivity.mState != 0 && (mEnergyIN.mType == TD.Energy.RU || mEnergyOUT.mType == TD.Energy.RU) && WD.random(this, 20, CLIENT_TIME)) UT.Sounds.play(SFX.MC_MINECART, 1, 1.0F, getCoords());
 		}
 	}
 	

@@ -569,6 +569,10 @@ public class WD {
 		return rRandom.nextInt(aBound);
 	}
 	
+	public static Random random(TileEntity aTileEntity) {return new Random(aTileEntity.xCoord ^ aTileEntity.yCoord ^ aTileEntity.zCoord);}
+	public static int random(TileEntity aTileEntity, int aBound) {return random(aTileEntity).nextInt(aBound);}
+	public static boolean random(TileEntity aTileEntity, int aBound, long aTime) {return random(aTileEntity, aBound) == aTime % aBound;}
+	
 	public static boolean border(int aFromX, int aFromZ, int aToX, int aToZ) {return aFromX >> 4 != aToX >> 4 || aFromZ >> 4 != aToZ >> 4;}
 	
 	public static boolean even(TileEntity aTileEntity) {return even(aTileEntity.xCoord, aTileEntity.yCoord, aTileEntity.zCoord);}

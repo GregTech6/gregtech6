@@ -40,6 +40,7 @@ import gregapi.tileentity.machines.ITileEntitySwitchableOnOff;
 import gregapi.util.OM;
 import gregapi.util.ST;
 import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
@@ -219,7 +220,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			mInputtedSides = 0;
 			mUsedGear = F;
 		} else {
-			if ((mRotationData & B[6]) != 0 && CLIENT_TIME % 20 == Math.abs(xCoord ^ yCoord ^ zCoord) % 20) UT.Sounds.play(SFX.MC_MINECART, 1, 0.1F, getCoords());
+			if ((mRotationData & B[6]) != 0 && WD.random(this, 20, CLIENT_TIME)) UT.Sounds.play(SFX.MC_MINECART, 1, 0.1F, getCoords());
 		}
 	}
 	

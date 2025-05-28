@@ -54,7 +54,7 @@ public class MultiTileEntityStick extends TileEntityBase03MultiTileEntities impl
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
-		Random tRandom = new Random(xCoord^yCoord^zCoord);
+		Random tRandom = WD.random(this);
 		if (tRandom.nextInt(1000000) < 500000) {
 			mMinX = PX_P[tRandom.nextInt(15)];
 			mMinZ = PX_P[tRandom.nextInt( 3)];

@@ -59,7 +59,7 @@ public class MultiTileEntityRock extends TileEntityBase03MultiTileEntities imple
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
-		Random tRandom = new Random(xCoord^yCoord^zCoord);
+		Random tRandom = WD.random(this);
 		mMinX = PX_P[4 + tRandom.nextInt(4)];
 		mMinZ = PX_P[4 + tRandom.nextInt(4)];
 		mMaxX = PX_N[4 + tRandom.nextInt(4)];

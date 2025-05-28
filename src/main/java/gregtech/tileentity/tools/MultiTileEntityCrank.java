@@ -31,6 +31,7 @@ import gregapi.render.ITexture;
 import gregapi.tileentity.base.TileEntityBase11AttachmentSmall;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.util.UT;
+import gregapi.util.WD;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -79,7 +80,7 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 				if (!mActive) updateClientData();
 			}
 		} else {
-			if (mActive && CLIENT_TIME % 20 == Math.abs(xCoord ^ yCoord ^ zCoord) % 20) UT.Sounds.play(SFX.MC_MINECART, 1, 0.1F, getCoords());
+			if (mActive && WD.random(this, 20, CLIENT_TIME)) UT.Sounds.play(SFX.MC_MINECART, 1, 0.1F, getCoords());
 		}
 	}
 	
