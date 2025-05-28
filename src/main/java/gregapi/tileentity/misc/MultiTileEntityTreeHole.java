@@ -20,10 +20,7 @@
 package gregapi.tileentity.misc;
 
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IsWood;
-import gregapi.data.CS.*;
 import gregapi.data.FL;
-import gregapi.network.INetworkHandler;
-import gregapi.network.IPacket;
 import gregapi.tileentity.ITileEntityTreeHole;
 import gregapi.tileentity.base.TileEntityBase09FacingSingle;
 import gregapi.util.ST;
@@ -95,18 +92,6 @@ public abstract class MultiTileEntityTreeHole extends TileEntityBase09FacingSing
 		return T;
 	}
 	
-	@Override
-	public IPacket getClientDataPacket(boolean aSendAll) {
-		return getClientDataPacketByte(aSendAll, (byte)((mFacing&7) | (mHasResin?8:0)));
-	}
-	
-	@Override
-	public boolean receiveDataByte(byte aData, INetworkHandler aNetworkHandler) {
-		mHasResin = ((aData&8)!=0);
-		mFacing = (byte)(aData&7);
-		return T;
-	}
-	
 	@Override public boolean unpaint() {return F;}
 	@Override public boolean isPainted() {return F;}
 	@Override public boolean paint(int aRGB) {return F;}
@@ -116,6 +101,8 @@ public abstract class MultiTileEntityTreeHole extends TileEntityBase09FacingSing
 	@Override public boolean recolorItem(ItemStack aStack, int aRGB) {return F;}
 	@Override public boolean decolorItem(ItemStack aStack) {return F;}
 	@Override public String getFacingTool() {return null;}
+	@Override public byte getDirectionData() {return (byte)((mFacing&7) | (mHasResin?8:0));}
+	@Override public void setDirectionData(byte aData) {mHasResin = ((aData&8)!=0); mFacing = (byte)(aData & 7);}
 	@Override public boolean isWood() {return T;}
 	@Override public boolean hasResin(byte aSide) {return aSide == mFacing && mHasResin;}
 	@Override public boolean extractResin(byte aSide) {if (!hasResin(aSide)) return F; mHasResin = F; updateClientData(); return T;}

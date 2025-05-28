@@ -19,7 +19,6 @@
 
 package gregtech.tileentity.tools;
 
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.data.FL;
 import gregapi.data.IL;
 import gregapi.data.LH;
@@ -34,7 +33,7 @@ import gregapi.render.IIconContainer;
 import gregapi.render.ITexture;
 import gregapi.tileentity.ITileEntityTapAccessible;
 import gregapi.tileentity.ITileEntityTapFillable;
-import gregapi.tileentity.base.TileEntityBase10Attachment;
+import gregapi.tileentity.base.TileEntityBase11AttachmentSmall;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -58,7 +57,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityFluidTap extends TileEntityBase10Attachment implements IMTE_IgnorePlayerCollisionWhenPlacing {
+public class MultiTileEntityFluidTap extends TileEntityBase11AttachmentSmall {
 	public boolean mAcidProof = F;
 	
 	@Override
@@ -239,7 +238,6 @@ public class MultiTileEntityFluidTap extends TileEntityBase10Attachment implemen
 	}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
-	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.tap";}
 }

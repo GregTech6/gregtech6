@@ -19,7 +19,6 @@
 
 package gregtech.tileentity.tools;
 
-import gregapi.block.multitileentity.IMultiTileEntity.IMTE_IgnorePlayerCollisionWhenPlacing;
 import gregapi.data.FL;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -28,7 +27,7 @@ import gregapi.data.TD;
 import gregapi.oredict.OreDictMaterialStack;
 import gregapi.render.BlockTextureDefault;
 import gregapi.render.ITexture;
-import gregapi.tileentity.base.TileEntityBase10Attachment;
+import gregapi.tileentity.base.TileEntityBase11AttachmentSmall;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.machines.ITileEntityCrucible;
 import gregapi.tileentity.machines.ITileEntityMold;
@@ -52,7 +51,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements ITileEntityMold, IMTE_IgnorePlayerCollisionWhenPlacing {
+public class MultiTileEntityFaucet extends TileEntityBase11AttachmentSmall implements ITileEntityMold {
 	public static double HEAT_RESISTANCE_BONUS = 1.25;
 	
 	protected boolean mAcidProof = F, mAutoPull = F;
@@ -226,7 +225,6 @@ public class MultiTileEntityFaucet extends TileEntityBase10Attachment implements
 	}
 	
 	@Override public boolean canDrop(int aInventorySlot) {return T;}
-	@Override public boolean ignorePlayerCollisionWhenPlacing() {return T;}
 	
 	@Override public String getTileEntityName() {return "gt.multitileentity.smeltery.drain";}
 }

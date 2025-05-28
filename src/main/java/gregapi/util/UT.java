@@ -2968,7 +2968,6 @@ public class UT {
 			return isWearingFullGasHazmat(aEntity);
 		}
 		
-		
 		public static boolean applyTemperatureDamage(Entity aEntity, long aTemperature) {
 			return applyTemperatureDamage(aEntity, aTemperature, 1);
 		}
@@ -3083,6 +3082,18 @@ public class UT {
 		
 		public static long getDurabilityUse(Entity aEntity, long aOriginalDurabilityUsed) {
 			return UT.Code.divup(aOriginalDurabilityUsed * (getPotionLevel(aEntity, Potion.digSlowdown)+2), getPotionLevel(aEntity, Potion.digSpeed)+2);
+		}
+		
+		public static Collection<EntityPlayer> getPlayersWithLastTarget(IHasWorldAndCoords aTarget) {return getPlayersWithLastTarget(aTarget.getWorld(), aTarget.getCoords());}
+		public static Collection<EntityPlayer> getPlayersWithLastTarget(World aWorld, int aX, int aY, int aZ) {return getPlayersWithLastTarget(aWorld, new ChunkCoordinates(aX, aY, aZ));}
+		public static Collection<EntityPlayer> getPlayersWithLastTarget(World aWorld, ChunkCoordinates aCoords) {
+			ArrayListNoNulls<EntityPlayer> rList = new ArrayListNoNulls<>();
+			for (Entry<EntityPlayer, ChunkCoordinates> tEntry : PLAYER_LAST_CLICKED.entrySet()) {
+				if (!tEntry.getKey().isDead && aWorld == tEntry.getKey().worldObj && aCoords.equals(tEntry.getValue()) && tEntry.getKey().getDistanceSq(aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5) <= 64) {
+					rList.add(tEntry.getKey());
+				}
+			}
+			return rList;
 		}
 		
 		public static boolean canEdit(Object aPlayer, int aX, int aY, int aZ) {

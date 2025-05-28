@@ -43,10 +43,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChunkCoordinates;
 
 import java.util.List;
-import java.util.Map.Entry;
 
 import static gregapi.data.CS.*;
 
@@ -237,30 +235,28 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 			
 			if (aTimer % 5 == 0 && (mState & B[2]) != 0) {
 				mState &= ~B[2];
-				for (Entry<EntityPlayer, ChunkCoordinates> tEntry : PLAYER_LAST_CLICKED.entrySet()) {
-					if (getCoords().equals(tEntry.getValue()) && tEntry.getKey().getDistanceSq(xCoord+0.5, yCoord+0.5, zCoord+0.5) <= 64) {
-						mState |= B[2];
-						
-						boolean temp = T;
-						for (int i = 1; i < 13; i++) if (slotHas(i)) {temp = F; break;}
-						ItemStack aStack = slot(0);
-						
-						if (temp && (++mClickCount >= 8 || UT.Entities.hasInfiniteItems(tEntry.getKey()))) {
-							mClickCount = 0;
-							Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
-							if (tRecipe == null) {
-								for (int i = 1; i < 13; i++) if (addStackToSlot(i, aStack)) {slotKill(0); break;}
-							} else {
-								if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
-								if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, ST.array(aStack))) {
-									if (aStack.stackSize <= 0) slotKill(0);
-									ItemStack[] tOutputs = tRecipe.getOutputs();
-									for (int i = 0, j = Math.min(tOutputs.length, 12); i < j; i++) addStackToSlot(i+1, tOutputs[i]);
-									tEntry.getKey().addExhaustion(tRecipe.getAbsoluteTotalPower() / 5000.0F);
-									tEntry.getKey().swingItem();
-									updateInventory();
-									updateAdjacentInventories();
-								}
+				for (EntityPlayer tPlayer : UT.Entities.getPlayersWithLastTarget(this)) {
+					mState |= B[2];
+					
+					boolean temp = T;
+					for (int i = 1; i < 13; i++) if (slotHas(i)) {temp = F; break;}
+					ItemStack aStack = slot(0);
+					
+					if (temp && (++mClickCount >= 8 || UT.Entities.hasInfiniteItems(tPlayer))) {
+						mClickCount = 0;
+						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
+						if (tRecipe == null) {
+							for (int i = 1; i < 13; i++) if (addStackToSlot(i, aStack)) {slotKill(0); break;}
+						} else {
+							if (tRecipe.mCanBeBuffered) mLastRecipe = tRecipe;
+							if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, ST.array(aStack))) {
+								if (aStack.stackSize <= 0) slotKill(0);
+								ItemStack[] tOutputs = tRecipe.getOutputs();
+								for (int i = 0, j = Math.min(tOutputs.length, 12); i < j; i++) addStackToSlot(i+1, tOutputs[i]);
+								tPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 5000.0F);
+								tPlayer.swingItem();
+								updateInventory();
+								updateAdjacentInventories();
 							}
 						}
 					}
