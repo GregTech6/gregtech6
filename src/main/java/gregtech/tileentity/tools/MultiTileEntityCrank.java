@@ -114,7 +114,7 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return mFacing == aSide ? mTextureFront : mTextureSides;
+		return mFacing == OPOS[aSide] ? mTextureFront : mTextureSides;
 	}
 	
 	@Override
