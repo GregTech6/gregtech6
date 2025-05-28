@@ -73,7 +73,7 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 				for (EntityPlayer tPlayer : UT.Entities.getPlayersWithLastTarget(this)) {
 					mActive = T;
 					ITileEntityEnergy.Util.emitEnergyToSide(TD.Energy.RU, mFacing, -16, 1, this);
-					tPlayer.addExhaustion(0.1F);
+					if (!UT.Entities.isInvincible(tPlayer)) tPlayer.addExhaustion(0.1F);
 					tPlayer.swingItem();
 				}
 				if (!mActive) updateClientData();

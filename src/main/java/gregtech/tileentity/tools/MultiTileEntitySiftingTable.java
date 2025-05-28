@@ -253,7 +253,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 								if (aStack.stackSize <= 0) slotKill(0);
 								ItemStack[] tOutputs = tRecipe.getOutputs();
 								for (int i = 0, j = Math.min(tOutputs.length, 12); i < j; i++) addStackToSlot(i+1, tOutputs[i]);
-								tPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 5000.0F);
+								if (!UT.Entities.isInvincible(tPlayer)) tPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 5000.0F);
 								tPlayer.swingItem();
 								updateInventory();
 								updateAdjacentInventories();
