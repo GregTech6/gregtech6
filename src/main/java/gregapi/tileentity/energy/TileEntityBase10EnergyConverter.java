@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -106,6 +106,8 @@ public abstract class TileEntityBase10EnergyConverter extends TileEntityBase09Fa
 		if (aIsServerSide) {
 			doConversion(aTimer);
 			if (mTimer % 600 == 5) if (mActivity.mActive) doDefaultStructuralChecks(); else if (mExplosionPrevention > 0) mExplosionPrevention--;
+		} else {
+			if (mActivity.mState != 0 && (mEnergyIN.mType == TD.Energy.RU || mEnergyOUT.mType == TD.Energy.RU) && CLIENT_TIME % 20 == Math.abs(xCoord ^ yCoord ^ zCoord) % 20) UT.Sounds.play(SFX.MC_MINECART, 1, 0.2F, getCoords());
 		}
 	}
 	

@@ -2221,6 +2221,8 @@ public class CS {
 		, MC_DIG_SAND           = "dig.sand"
 		, MC_DIG_WOOD           = "dig.wood"
 		, MC_DIG_SNOW           = "dig.snow"
+		, MC_MINECART           = "minecart.base"
+		, MC_MINECART_INSIDE    = "minecart.inside"
 		, MC_FIREWORK_LAUNCH    = "fireworks.launch"
 		, MC_FIREWORK_BLAST     = "fireworks.blast"
 		, MC_FIREWORK_BLAST_FAR = "fireworks.blast_far"

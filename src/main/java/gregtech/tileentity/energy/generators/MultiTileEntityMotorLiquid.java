@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,7 @@
 
 package gregtech.tileentity.energy.generators;
 
-import static gregapi.data.CS.*;
-
-import java.util.Collection;
-import java.util.List;
-
 import gregapi.code.TagData;
-import gregapi.data.CS.GarbageGT;
 import gregapi.data.FL;
 import gregapi.data.FM;
 import gregapi.data.LH;
@@ -56,6 +50,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
+
+import java.util.Collection;
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -144,6 +143,8 @@ public class MultiTileEntityMotorLiquid extends TileEntityBase09FacingSingle imp
 					mTanks[1].setEmpty();
 				}
 			}
+		} else {
+			if (mActivity.mState != 0 && CLIENT_TIME % 20 == Math.abs(xCoord ^ yCoord ^ zCoord) % 20) UT.Sounds.play(SFX.MC_MINECART, 1, 0.3F, getCoords());
 		}
 	}
 	

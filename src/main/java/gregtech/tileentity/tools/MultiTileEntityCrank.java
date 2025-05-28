@@ -78,6 +78,8 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 				}
 				if (!mActive) updateClientData();
 			}
+		} else {
+			if (mActive && CLIENT_TIME % 20 == Math.abs(xCoord ^ yCoord ^ zCoord) % 20) UT.Sounds.play(SFX.MC_MINECART, 1, 0.1F, getCoords());
 		}
 	}
 	

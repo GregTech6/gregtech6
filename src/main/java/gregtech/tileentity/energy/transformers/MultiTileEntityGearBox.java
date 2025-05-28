@@ -218,6 +218,8 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			oInputtedSides = mInputtedSides;
 			mInputtedSides = 0;
 			mUsedGear = F;
+		} else {
+			if ((mRotationData & B[6]) != 0 && CLIENT_TIME % 20 == Math.abs(xCoord ^ yCoord ^ zCoord) % 20) UT.Sounds.play(SFX.MC_MINECART, 1, 0.1F, getCoords());
 		}
 	}
 	

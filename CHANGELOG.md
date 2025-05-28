@@ -7,7 +7,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.17.05: (Not released yet)
 [ADDED] Canned Air. As in putting 16000L of Naturally Sparkling, Salt-Free Air into a Food Can. It can be used to replenish Air Underwater and will overfill your Air Bar. Also has Enviromine Heat Stats depending on which type of Air you drink.
-[ADDED] Hand Crank to deliver 16 RU/t to a MAchine at the cost of your Hunger Bar.
+[ADDED] Hand Crank to deliver 16 RU/t to a MAchine at the cost of your Hunger Bar. Also things that emit Rotational Units now make a Minecart noise. This includes Gearboxes, but does not include Basic Machines and Axles.
 
 
 6.17.04:
