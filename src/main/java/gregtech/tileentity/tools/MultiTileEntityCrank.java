@@ -19,6 +19,7 @@
 
 package gregtech.tileentity.tools;
 
+import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
 import gregapi.data.LH;
 import gregapi.data.LH.Chat;
@@ -33,6 +34,7 @@ import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -69,16 +71,26 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 	@Override
 	public void onTick2(long aTimer, boolean aIsServerSide) {
 		if (aIsServerSide) {
-			if (mActive) {
-				mActive = F;
-				for (EntityPlayer tPlayer : UT.Entities.getPlayersWithLastTarget(this)) {
-					mActive = T;
-					ITileEntityEnergy.Util.emitEnergyToSide(TD.Energy.RU, mFacing, -UT.Code.divup(8L*UT.Entities.pot2Strength(tPlayer), UT.Entities.pot1Weakness(tPlayer)), UT.Entities.pot1Haste(tPlayer), this);
-					UT.Entities.exhaust(tPlayer, 0.025);
-					tPlayer.swingItem();
-				}
-				if (!mActive) updateClientData();
+			boolean oActive = mActive;
+			mActive = F;
+			for (EntityPlayer tPlayer : UT.Entities.getPlayersWithLastTarget(this)) {
+				mActive = T;
+				ITileEntityEnergy.Util.emitEnergyToSide(TD.Energy.RU, mFacing, -UT.Code.divup(8L*UT.Entities.pot2Strength(tPlayer), UT.Entities.pot1Weakness(tPlayer)), UT.Entities.pot1Haste(tPlayer), this);
+				UT.Entities.exhaust(tPlayer, 0.025);
+				tPlayer.swingItem();
 			}
+			// Don't check for Villagers while Players operate the Crank.
+			if (!mActive) {
+				List<EntityVillager> tList = new ArrayListNoNulls<>();
+				worldObj.getChunkFromBlockCoords(xCoord, zCoord).getEntitiesOfTypeWithinAAAB(EntityVillager.class, box(), tList, null);
+				for (EntityVillager tVillager : tList) if (UT.Code.roundDown(tVillager.posY+tVillager.getEyeHeight()) == yCoord && UT.Code.roundDown(tVillager.posX) == xCoord && UT.Code.roundDown(tVillager.posZ) == zCoord) {
+					mActive = T;
+					ITileEntityEnergy.Util.emitEnergyToSide(TD.Energy.RU, mFacing, -UT.Code.divup(8L*UT.Entities.pot2Strength(tVillager), UT.Entities.pot1Weakness(tVillager)), UT.Entities.pot1Haste(tVillager), this);
+					// Multiple Players can use one Crank but multiple Villagers cannot (Collision Lag prevention)
+					break;
+				}
+			}
+			if (mActive != oActive) updateClientData();
 		} else {
 			if (mActive && WD.random(this, 20, CLIENT_TIME)) UT.Sounds.play(SFX.MC_MINECART, 1, 0.1F, getCoords());
 		}
@@ -97,8 +109,8 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		mTextureFront = BlockTextureMulti.get(BlockTextureDefault.get(mActive?sTextureFrontSpin:sTextureFront, mRGBa), BlockTextureDefault.get(mActive?sOverlayFrontSpin:sOverlayFront));
-		mTextureBacks = BlockTextureDefault.get(mActive?Textures.BlockIcons.AXLE_CLOCKWISE       :Textures.BlockIcons.AXLE, mRGBa);
-		mTextureSides = BlockTextureDefault.get(mActive?Textures.BlockIcons.AXLE_COUNTERCLOCKWISE:Textures.BlockIcons.AXLE, mRGBa);
+		mTextureBacks = BlockTextureDefault.get(mActive?Textures.BlockIcons.AXLE_COUNTERCLOCKWISE:Textures.BlockIcons.AXLE, mRGBa);
+		mTextureSides = BlockTextureDefault.get(mActive?Textures.BlockIcons.AXLE_CLOCKWISE       :Textures.BlockIcons.AXLE, mRGBa);
 		return 2;
 	}
 	

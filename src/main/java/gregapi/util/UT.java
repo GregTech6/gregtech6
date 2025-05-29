@@ -3072,7 +3072,7 @@ public class UT {
 			return T;
 		}
 		
-		public static byte pot (Entity aEntity, Potion aPotion) {
+		public static byte pot (Object aEntity, Potion aPotion) {
 			if (aPotion != null && aEntity instanceof EntityLivingBase) {
 				PotionEffect tEffect = ((EntityLivingBase)aEntity).getActivePotionEffect(aPotion);
 				// Limit the output value to six bit, which should be more than enough for Potions, and prevent Byte Math Issues.
@@ -3080,53 +3080,53 @@ public class UT {
 			}
 			return -1;
 		}
-		public static byte pot0(Entity aEntity, Potion aPotion) {return (byte)(pot(aEntity, aPotion)+1);}
-		public static byte pot1(Entity aEntity, Potion aPotion) {return (byte)(pot(aEntity, aPotion)+2);}
-		public static byte pot2(Entity aEntity, Potion aPotion) {return (byte)(pot(aEntity, aPotion)+3);}
+		public static byte pot0(Object aEntity, Potion aPotion) {return (byte)(pot(aEntity, aPotion)+1);}
+		public static byte pot1(Object aEntity, Potion aPotion) {return (byte)(pot(aEntity, aPotion)+2);}
+		public static byte pot2(Object aEntity, Potion aPotion) {return (byte)(pot(aEntity, aPotion)+3);}
 		
 		// Used where the Vanilla return Value is important.
-		public static byte potStrength         (Entity aEntity) {return pot (aEntity, Potion.damageBoost );}
-		public static byte potWeakness         (Entity aEntity) {return pot (aEntity, Potion.weakness    );}
-		public static byte potHaste            (Entity aEntity) {return pot (aEntity, Potion.digSpeed    );}
-		public static byte potFatique          (Entity aEntity) {return pot (aEntity, Potion.digSlowdown );}
-		public static byte potSpeed            (Entity aEntity) {return pot (aEntity, Potion.moveSpeed   );}
-		public static byte potSlowness         (Entity aEntity) {return pot (aEntity, Potion.moveSlowdown);}
+		public static byte potStrength         (Object aEntity) {return pot (aEntity, Potion.damageBoost );}
+		public static byte potWeakness         (Object aEntity) {return pot (aEntity, Potion.weakness    );}
+		public static byte potHaste            (Object aEntity) {return pot (aEntity, Potion.digSpeed    );}
+		public static byte potFatique          (Object aEntity) {return pot (aEntity, Potion.digSlowdown );}
+		public static byte potSpeed            (Object aEntity) {return pot (aEntity, Potion.moveSpeed   );}
+		public static byte potSlowness         (Object aEntity) {return pot (aEntity, Potion.moveSlowdown);}
 		
 		// Used where 0 should mean no Potion.
-		public static byte pot0Strength        (Entity aEntity) {return pot0(aEntity, Potion.damageBoost );}
-		public static byte pot0Weakness        (Entity aEntity) {return pot0(aEntity, Potion.weakness    );}
-		public static byte pot0Haste           (Entity aEntity) {return pot0(aEntity, Potion.digSpeed    );}
-		public static byte pot0Fatique         (Entity aEntity) {return pot0(aEntity, Potion.digSlowdown );}
-		public static byte pot0Speed           (Entity aEntity) {return pot0(aEntity, Potion.moveSpeed   );}
-		public static byte pot0Slowness        (Entity aEntity) {return pot0(aEntity, Potion.moveSlowdown);}
+		public static byte pot0Strength        (Object aEntity) {return pot0(aEntity, Potion.damageBoost );}
+		public static byte pot0Weakness        (Object aEntity) {return pot0(aEntity, Potion.weakness    );}
+		public static byte pot0Haste           (Object aEntity) {return pot0(aEntity, Potion.digSpeed    );}
+		public static byte pot0Fatique         (Object aEntity) {return pot0(aEntity, Potion.digSlowdown );}
+		public static byte pot0Speed           (Object aEntity) {return pot0(aEntity, Potion.moveSpeed   );}
+		public static byte pot0Slowness        (Object aEntity) {return pot0(aEntity, Potion.moveSlowdown);}
 		
 		// Used for places where 2x, 3x and 4x multipliers need to be factored in. So the Base Value without Potion is 1.
-		public static byte pot1Strength        (Entity aEntity) {return pot1(aEntity, Potion.damageBoost );}
-		public static byte pot1Weakness        (Entity aEntity) {return pot1(aEntity, Potion.weakness    );}
-		public static byte pot1Haste           (Entity aEntity) {return pot1(aEntity, Potion.digSpeed    );}
-		public static byte pot1Fatique         (Entity aEntity) {return pot1(aEntity, Potion.digSlowdown );}
-		public static byte pot1Speed           (Entity aEntity) {return pot1(aEntity, Potion.moveSpeed   );}
-		public static byte pot1Slowness        (Entity aEntity) {return pot1(aEntity, Potion.moveSlowdown);}
+		public static byte pot1Strength        (Object aEntity) {return pot1(aEntity, Potion.damageBoost );}
+		public static byte pot1Weakness        (Object aEntity) {return pot1(aEntity, Potion.weakness    );}
+		public static byte pot1Haste           (Object aEntity) {return pot1(aEntity, Potion.digSpeed    );}
+		public static byte pot1Fatique         (Object aEntity) {return pot1(aEntity, Potion.digSlowdown );}
+		public static byte pot1Speed           (Object aEntity) {return pot1(aEntity, Potion.moveSpeed   );}
+		public static byte pot1Slowness        (Object aEntity) {return pot1(aEntity, Potion.moveSlowdown);}
 		
 		// Used for places where 1.5x, 2x and 2.5x multipliers need to be factored in more. So the Base Value without Potion is 2.
-		public static byte pot2Strength        (Entity aEntity) {return pot2(aEntity, Potion.damageBoost );}
-		public static byte pot2Weakness        (Entity aEntity) {return pot2(aEntity, Potion.weakness    );}
-		public static byte pot2Haste           (Entity aEntity) {return pot2(aEntity, Potion.digSpeed    );}
-		public static byte pot2Fatique         (Entity aEntity) {return pot2(aEntity, Potion.digSlowdown );}
-		public static byte pot2Speed           (Entity aEntity) {return pot2(aEntity, Potion.moveSpeed   );}
-		public static byte pot2Slowness        (Entity aEntity) {return pot2(aEntity, Potion.moveSlowdown);}
+		public static byte pot2Strength        (Object aEntity) {return pot2(aEntity, Potion.damageBoost );}
+		public static byte pot2Weakness        (Object aEntity) {return pot2(aEntity, Potion.weakness    );}
+		public static byte pot2Haste           (Object aEntity) {return pot2(aEntity, Potion.digSpeed    );}
+		public static byte pot2Fatique         (Object aEntity) {return pot2(aEntity, Potion.digSlowdown );}
+		public static byte pot2Speed           (Object aEntity) {return pot2(aEntity, Potion.moveSpeed   );}
+		public static byte pot2Slowness        (Object aEntity) {return pot2(aEntity, Potion.moveSlowdown);}
 		
 		// Will return 0 if neither, otherwise will return the good one as positive and the bad one as negative.
-		public static byte potStrengthWeakness (Entity aEntity) {return UT.Code.bindByte(pot0(aEntity, Potion.damageBoost ) - pot0(aEntity, Potion.weakness    ));}
-		public static byte potHasteFatique     (Entity aEntity) {return UT.Code.bindByte(pot0(aEntity, Potion.digSpeed    ) - pot0(aEntity, Potion.digSlowdown ));}
-		public static byte potSpeedSlowness    (Entity aEntity) {return UT.Code.bindByte(pot0(aEntity, Potion.moveSpeed   ) - pot0(aEntity, Potion.moveSlowdown));}
+		public static byte potStrengthWeakness (Object aEntity) {return UT.Code.bindByte(pot0(aEntity, Potion.damageBoost ) - pot0(aEntity, Potion.weakness    ));}
+		public static byte potHasteFatique     (Object aEntity) {return UT.Code.bindByte(pot0(aEntity, Potion.digSpeed    ) - pot0(aEntity, Potion.digSlowdown ));}
+		public static byte potSpeedSlowness    (Object aEntity) {return UT.Code.bindByte(pot0(aEntity, Potion.moveSpeed   ) - pot0(aEntity, Potion.moveSlowdown));}
 		
-		public static long getDurabilityUse(Entity aEntity, long aOriginalDurabilityUsed) {
+		public static long getDurabilityUse(Object aEntity, long aOriginalDurabilityUsed) {
 			return UT.Code.divup(aOriginalDurabilityUsed * pot1Fatique(aEntity), pot1Haste(aEntity));
 		}
 		
-		public static boolean exhaust(Entity aPlayer) {return exhaust(aPlayer, 0.1);}
-		public static boolean exhaust(Entity aPlayer, double aExhaustion) {
+		public static boolean exhaust(Object aPlayer) {return exhaust(aPlayer, 0.1);}
+		public static boolean exhaust(Object aPlayer, double aExhaustion) {
 			if (aPlayer instanceof EntityPlayer) {
 				if (isInvincible(aPlayer)) return T;
 				((EntityPlayer)aPlayer).addExhaustion((float)aExhaustion * pot1Fatique(aPlayer));
@@ -3140,8 +3140,10 @@ public class UT {
 		public static Collection<EntityPlayer> getPlayersWithLastTarget(World aWorld, ChunkCoordinates aCoords) {
 			ArrayListNoNulls<EntityPlayer> rList = new ArrayListNoNulls<>();
 			for (Entry<EntityPlayer, ChunkCoordinates> tEntry : PLAYER_LAST_CLICKED.entrySet()) {
-				if (!tEntry.getKey().isDead && aWorld == tEntry.getKey().worldObj && aCoords.equals(tEntry.getValue()) && tEntry.getKey().getDistanceSq(aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5) <= 64) {
-					rList.add(tEntry.getKey());
+				if (!tEntry.getKey().isDead && aWorld == tEntry.getKey().worldObj && aCoords.equals(tEntry.getValue())) {
+					if (isCreative(tEntry.getKey()) || tEntry.getKey().getDistanceSq(aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5) <= 64) {
+						rList.add(tEntry.getKey());
+					}
 				}
 			}
 			return rList;
