@@ -143,7 +143,7 @@ public class MultiTileEntityJuicer extends TileEntityBase07Paintable implements 
 					for (ItemStack tStack : tRecipe.getOutputs()) ST.give(aPlayer, tStack, T);
 					FluidStack[] tOutputFluids = tRecipe.getFluidOutputs();
 					for (int i = 0; i < mTanks.length && i < tOutputFluids.length; i++) mTanks[i].fill(tOutputFluids[i], T);
-					aPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 10000.0F);
+					UT.Entities.exhaust(aPlayer, tRecipe.getAbsoluteTotalPower() / 10000.0F);
 					UT.Sounds.send(SFX.MC_SLIME_BIG, this, F);
 					updateInventory();
 					updateAdjacentInventories();

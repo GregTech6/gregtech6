@@ -241,7 +241,7 @@ public abstract class ToolStats implements IToolStats {
 		Enchantments.applyBullshitB(aPlayer, aEntity, aStack);
 		if (aEntity instanceof EntityLivingBase) aPlayer.addStat(StatList.damageDealtStat, Math.round((aNormalDamage+aMagicDamage) * 10));
 		aEntity.hurtResistantTime = Math.max(1, getHurtResistanceTime(aEntity.hurtResistantTime, aEntity));
-		aPlayer.addExhaustion(getExhaustionPerAttack(aEntity));
+		UT.Entities.exhaust(aPlayer, getExhaustionPerAttack(aEntity));
 	}
 	
 	@Override

@@ -73,8 +73,8 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 				mActive = F;
 				for (EntityPlayer tPlayer : UT.Entities.getPlayersWithLastTarget(this)) {
 					mActive = T;
-					ITileEntityEnergy.Util.emitEnergyToSide(TD.Energy.RU, mFacing, -16, 1, this);
-					if (!UT.Entities.isInvincible(tPlayer)) tPlayer.addExhaustion(0.1F);
+					ITileEntityEnergy.Util.emitEnergyToSide(TD.Energy.RU, mFacing, -UT.Code.divup(8L*UT.Entities.pot2Strength(tPlayer), UT.Entities.pot1Weakness(tPlayer)), UT.Entities.pot1Haste(tPlayer), this);
+					UT.Entities.exhaust(tPlayer, 0.025);
 					tPlayer.swingItem();
 				}
 				if (!mActive) updateClientData();
@@ -97,7 +97,8 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 	@Override
 	public int getRenderPasses2(Block aBlock, boolean[] aShouldSideBeRendered) {
 		mTextureFront = BlockTextureMulti.get(BlockTextureDefault.get(mActive?sTextureFrontSpin:sTextureFront, mRGBa), BlockTextureDefault.get(mActive?sOverlayFrontSpin:sOverlayFront));
-		mTextureSides = BlockTextureMulti.get(BlockTextureDefault.get(mActive?sTextureSidesSpin:sTextureSides, mRGBa), BlockTextureDefault.get(mActive?sOverlaySidesSpin:sOverlayFront));
+		mTextureBacks = BlockTextureDefault.get(mActive?Textures.BlockIcons.AXLE_CLOCKWISE       :Textures.BlockIcons.AXLE, mRGBa);
+		mTextureSides = BlockTextureDefault.get(mActive?Textures.BlockIcons.AXLE_COUNTERCLOCKWISE:Textures.BlockIcons.AXLE, mRGBa);
 		return 2;
 	}
 	
@@ -105,19 +106,15 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 	
 	public static IIconContainer
 	sTextureFront     = new Textures.BlockIcons.CustomIcon("machines/tools/crank/colored/front"),
-	sTextureSides     = new Textures.BlockIcons.CustomIcon("machines/tools/crank/colored/sides"),
 	sTextureFrontSpin = new Textures.BlockIcons.CustomIcon("machines/tools/crank/colored/frontspin"),
-	sTextureSidesSpin = new Textures.BlockIcons.CustomIcon("machines/tools/crank/colored/sidesspin"),
 	sOverlayFront     = new Textures.BlockIcons.CustomIcon("machines/tools/crank/overlay/front"),
-	sOverlaySides     = new Textures.BlockIcons.CustomIcon("machines/tools/crank/overlay/sides"),
-	sOverlayFrontSpin = new Textures.BlockIcons.CustomIcon("machines/tools/crank/overlay/frontspin"),
-	sOverlaySidesSpin = new Textures.BlockIcons.CustomIcon("machines/tools/crank/overlay/sidesspin");
+	sOverlayFrontSpin = new Textures.BlockIcons.CustomIcon("machines/tools/crank/overlay/frontspin");
 	
-	private ITexture mTextureFront, mTextureSides;
+	private ITexture mTextureFront, mTextureBacks, mTextureSides;
 	
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
-		return mFacing == OPOS[aSide] ? mTextureFront : mTextureSides;
+		return mFacing == aSide ? mTextureBacks : mFacing == OPOS[aSide] ? mTextureFront : mTextureSides;
 	}
 	
 	@Override

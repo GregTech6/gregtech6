@@ -220,7 +220,7 @@ public class MultiTileEntityMixingBowl extends TileEntityBase07Paintable impleme
 						FluidStack[] tOutputFluids = tRecipe.getFluidOutputs();
 						for (int i = 0; i < mRecipes.mOutputItemsCount && i < tOutputItems.length; i++) addStackToSlot(i+6, tOutputItems[i]);
 						for (int i = 0; i < mTanksOutput.length && i < tOutputFluids.length; i++) mTanksOutput[i].fill(tOutputFluids[i], T);
-						aPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 250.0F);
+						UT.Entities.exhaust(aPlayer, tRecipe.getAbsoluteTotalPower() / 250.0F);
 						removeAllDroppableNullStacks();
 						return T;
 					}

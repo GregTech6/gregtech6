@@ -150,14 +150,14 @@ public class MultiTileEntityGrindStone extends TileEntityBase09FacingSingle impl
 						ST.use(aPlayer, T, F, aStack, 1);
 						ST.give(aPlayer, UT.NBT.removeEnchantments(tOutput), F);
 						worldObj.spawnEntityInWorld(new EntityXPOrb(worldObj, xCoord+0.5, yCoord+1.25, zCoord+0.5, tXP));
-						aPlayer.addExhaustion(0.5F);
+						UT.Entities.exhaust(aPlayer, 0.5F);
 					} else {
 						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
 						if (tRecipe != null) {
 							mLastRecipe = tRecipe;
 							if (tRecipe.isRecipeInputEqual(T, F, ZL_FS, ST.array(aStack))) {
 								for (ItemStack tStack : tRecipe.getOutputs()) ST.give(aPlayer, tStack, F);
-								aPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 10000.0F);
+								UT.Entities.exhaust(aPlayer, tRecipe.getAbsoluteTotalPower() / 10000.0F);
 								mStone--;
 							}
 						}

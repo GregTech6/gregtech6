@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -568,7 +568,7 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	@Override
 	public void harvestBlock(World aWorld, EntityPlayer aPlayer, int aX, int aY, int aZ, int aMeta) {
 		aPlayer.addStat(StatList.mineBlockStatArray[getIdFromBlock(this)], 1);
-		aPlayer.addExhaustion(0.025F);
+		UT.Entities.exhaust(aPlayer, 0.025F);
 		boolean aSilkTouch = EnchantmentHelper.getSilkTouchModifier(aPlayer);
 		int aFortune = EnchantmentHelper.getFortuneModifier(aPlayer);
 		ArrayList<ItemStack> tList = mDrops.getDrops(this, aWorld, aX, aY, aZ, aFortune, aSilkTouch);

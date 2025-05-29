@@ -849,7 +849,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						}
 						if (tHungerEffect) tCount+=256;
 					}
-					if (tHungerEffect) aEvent.player.addExhaustion(Math.max(1.0F, tCount/666F));
+					if (tHungerEffect) UT.Entities.exhaust(aEvent.player, Math.max(1.0F, tCount/666F));
 				}
 			}
 		}

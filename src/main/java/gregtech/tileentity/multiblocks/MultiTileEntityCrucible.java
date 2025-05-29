@@ -476,21 +476,21 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 						ItemStack tOutputStack = OP.scrapGt.mat(tLightest.mMaterial, 1);
 						if (tOutputStack == null || tLightest.mAmount < OP.scrapGt.mAmount) {
 							tLightest.mAmount = 0;
-							aPlayer.addExhaustion(0.1F);
+							UT.Entities.exhaust(aPlayer);
 							UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1, 5.0F);
 							return T;
 						}
 						if (aStack == null) {
 							aPlayer.inventory.setInventorySlotContents(aPlayer.inventory.currentItem, tOutputStack);
 							tLightest.mAmount-=OP.scrapGt.mAmount;
-							aPlayer.addExhaustion(0.1F);
+							UT.Entities.exhaust(aPlayer);
 							UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1, 5.0F);
 							return T;
 						}
 						if (ST.equal(aStack, tOutputStack) && aStack.stackSize < aStack.getMaxStackSize()) {
 							aStack.stackSize++;
 							tLightest.mAmount-=OP.scrapGt.mAmount;
-							aPlayer.addExhaustion(0.1F);
+							UT.Entities.exhaust(aPlayer);
 							UT.Entities.applyTemperatureDamage(aPlayer, mTemperature, 1, 5.0F);
 							return T;
 						}
@@ -565,17 +565,17 @@ public class MultiTileEntityCrucible extends TileEntityBase10MultiBlockBase impl
 			if (tLightest != null && mTemperature < tLightest.mMaterial.mMeltingPoint) {
 				if (tLightest.mAmount < OP.scrapGt.mAmount) {
 					tLightest.mAmount = 0;
-					((EntityPlayer)aPlayer).addExhaustion(0.1F);
+					UT.Entities.exhaust(aPlayer);
 					return 500;
 				}
 				ItemStack tOutputStack = OP.scrapGt.mat(tLightest.mMaterial, UT.Code.bindStack(tLightest.mAmount / OP.scrapGt.mAmount));
 				if (tOutputStack == null) {
 					tLightest.mAmount = 0;
-					((EntityPlayer)aPlayer).addExhaustion(0.1F);
+					UT.Entities.exhaust(aPlayer);
 					return 500;
 				}
 				if (ST.add(aPlayer, tOutputStack)) {
-					((EntityPlayer)aPlayer).addExhaustion(0.1F * tOutputStack.stackSize);
+					UT.Entities.exhaust(aPlayer, 0.1F * tOutputStack.stackSize);
 					tLightest.mAmount -= OP.scrapGt.mAmount * tOutputStack.stackSize;
 					return 1000 * tOutputStack.stackSize;
 				}

@@ -242,7 +242,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 					for (int i = 1; i < 13; i++) if (slotHas(i)) {temp = F; break;}
 					ItemStack aStack = slot(0);
 					
-					if (temp && (++mClickCount >= 8 || UT.Entities.hasInfiniteItems(tPlayer))) {
+					if (temp && ((mClickCount = UT.Code.bind7(mClickCount + UT.Entities.pot1Haste(tPlayer))) >= 4*UT.Entities.pot2Fatique(tPlayer) || UT.Entities.hasInfiniteItems(tPlayer))) {
 						mClickCount = 0;
 						Recipe tRecipe = mRecipes.findRecipe(this, mLastRecipe, F, V[1], null, ZL_FS, aStack);
 						if (tRecipe == null) {
@@ -253,7 +253,7 @@ public class MultiTileEntitySiftingTable extends TileEntityBase07Paintable imple
 								if (aStack.stackSize <= 0) slotKill(0);
 								ItemStack[] tOutputs = tRecipe.getOutputs();
 								for (int i = 0, j = Math.min(tOutputs.length, 12); i < j; i++) addStackToSlot(i+1, tOutputs[i]);
-								if (!UT.Entities.isInvincible(tPlayer)) tPlayer.addExhaustion(tRecipe.getAbsoluteTotalPower() / 5000.0F);
+								UT.Entities.exhaust(tPlayer, tRecipe.getAbsoluteTotalPower() / 1000.0);
 								tPlayer.swingItem();
 								updateInventory();
 								updateAdjacentInventories();
