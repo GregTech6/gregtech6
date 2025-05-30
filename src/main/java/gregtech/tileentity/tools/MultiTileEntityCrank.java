@@ -50,7 +50,6 @@ import static gregapi.data.CS.*;
  */
 public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implements ITileEntityEnergy {
 	public boolean mActive = F;
-	public int mRemainingTime = 0;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -76,8 +75,7 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 			mActive = F;
 			for (EntityPlayer tPlayer : UT.Entities.getPlayersWithLastTarget(this)) {
 				mActive = T;
-				ITileEntityEnergy.Util.emitEnergyToSide(TD.Energy.RU, mFacing, -UT.Code.divup(8L*UT.Entities.pot2Strength(tPlayer), UT.Entities.pot1Weakness(tPlayer)), UT.Entities.pot1Haste(tPlayer), this);
-				UT.Entities.exhaust(tPlayer, 0.025);
+				if (ITileEntityEnergy.Util.emitEnergyToSide(TD.Energy.RU, mFacing, -UT.Code.divup(8L*UT.Entities.pot2Strength(tPlayer), UT.Entities.pot1Weakness(tPlayer)), UT.Entities.pot1Haste(tPlayer), this) > 0) UT.Entities.exhaust(tPlayer, 0.025);
 				tPlayer.swingItem();
 			}
 			// Don't check for Villagers while Players operate the Crank.
@@ -90,11 +88,6 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 					// Multiple Players can use one Crank but multiple Villagers cannot (Collision Lag prevention)
 					break;
 				}
-			}
-			// Keep the Animation and Redstone going for at least 1.5 seconds.
-			if (mRemainingTime > 0) {
-				mRemainingTime--;
-				mActive = T;
 			}
 			// Update Client State and Redstone State.
 			if (mActive != oActive) {
@@ -110,10 +103,9 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide()) {
 			mActive = T;
-			mRemainingTime = 32;
 			updateClientData();
 			causeBlockUpdate();
-			UT.Sounds.send(SFX.MC_MINECART, this, F);
+			UT.Sounds.send(SFX.MC_MINECART, 0.5F, this, F);
 		}
 		// TODO Might do something if attached to a Pipe to open/close it or something.
 		return T;
