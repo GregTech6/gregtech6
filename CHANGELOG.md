@@ -7,8 +7,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.17.05: (Not released yet)
 [ADDED] Canned Air. As in putting 16000L of Naturally Sparkling, Salt-Free Air into a Food Can. It can be used to replenish Air Underwater and will overfill your Air Bar. Also has Enviromine Heat Stats depending on which type of Air you drink.
-[ADDED] Hand Crank to deliver 16 RU/t to a Machine at the cost of your Hunger Bar (may be influenced by Potion/Beacon Effects). This might let you make Steel in a Crucible without Machines, if you set it up right. Also Villagers can operate Cranks at Head Height.
 [ADDED] Brass Set of Kinetic Axles and Gearboxes. Also things that handle Rotational Units now make a Minecart noise. This includes Gearboxes, but does not include Basic Machines and Axles (would make too much noise).
+[ADDED]
+Hand Crank to deliver 16 RU/t to a Machine at the cost of your Hunger Bar (may be influenced by Potion/Beacon Effects).
+This might let you make Steel in a Crucible without Machines, if you set it up right.
+They will emit strong Redstone into the Block they are attached to, so they work as Redstone component too. They will always at least spin for 1.5 seconds or longer.
+Also Villagers can operate Cranks at Head Height.
 
 
 6.17.04:

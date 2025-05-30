@@ -49,7 +49,8 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implements ITileEntityEnergy {
-	protected boolean mActive = F;
+	public boolean mActive = F;
+	public int mRemainingTime = 0;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -90,7 +91,16 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 					break;
 				}
 			}
-			if (mActive != oActive) updateClientData();
+			// Keep the Animation and Redstone going for at least 1.5 seconds.
+			if (mRemainingTime > 0) {
+				mRemainingTime--;
+				mActive = T;
+			}
+			// Update Client State and Redstone State.
+			if (mActive != oActive) {
+				updateClientData();
+				causeBlockUpdate();
+			}
 		} else {
 			if (mActive && WD.random(this, 20, CLIENT_TIME)) UT.Sounds.play(SFX.MC_MINECART, 1, 0.1F, getCoords());
 		}
@@ -100,10 +110,22 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide()) {
 			mActive = T;
+			mRemainingTime = 30;
 			updateClientData();
+			causeBlockUpdate();
 		}
 		// TODO Might do something if attached to a Pipe to open/close it or something.
 		return T;
+	}
+	
+	@Override
+	public byte isProvidingWeakPower2(byte aSide) {
+		return (byte)(aSide == mFacing && mActive ? 15 : 0);
+	}
+	
+	@Override
+	public byte isProvidingStrongPower2(byte aSide) {
+		return (byte)(aSide == mFacing && mActive ? 15 : 0);
 	}
 	
 	@Override
