@@ -7,12 +7,12 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.17.05: (Not released yet)
 [ADDED] Canned Air. As in putting 16000L of Naturally Sparkling, Salt-Free Air into a Food Can. It can be used to replenish Air Underwater and will overfill your Air Bar. Also has Enviromine Heat Stats depending on which type of Air you drink.
-[ADDED] Hand Crank to deliver 16 RU/t to a Machine at the cost of your Hunger Bar (may be influenced by Potion/Beacon Effects). This might let you make Steel in a Crucible without Machines, if you set it up right.
+[ADDED] Hand Crank to deliver 16 RU/t to a Machine at the cost of your Hunger Bar (may be influenced by Potion/Beacon Effects). This might let you make Steel in a Crucible without Machines, if you set it up right. Also Villagers can operate Cranks at Head Height.
 [ADDED] Brass Set of Kinetic Axles and Gearboxes. Also things that handle Rotational Units now make a Minecart noise. This includes Gearboxes, but does not include Basic Machines and Axles (would make too much noise).
 
 
 6.17.04:
-[FIXED] An Issue with "transmuting" Battery Components that happened while i refactored Code.
+[FIXED] An Issue with "transmuting" Battery Components that happened while I refactored Code.
 [FIXED] Some of the Bird Eggs of the Exotic Birds Mod were missed in my Compat. Also Big Eggs give more White/Yolk now, and if no Egg Shell Item exists, my Recipes will give you a piece of Bonemeal. Also fixed Harvestcraft Eggnog Recipe in my Mixing Bowl.
 [CHANGED] Bushes, Sticks and Rocks now leave behind a Snow Layer when harvested next to Snow.
 [CHANGED] Reactor Cores can now store 160 times more output Steam specifically, fixing an Issue in high capacity Naquadria Steam Reactors.
