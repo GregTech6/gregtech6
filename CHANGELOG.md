@@ -11,7 +11,8 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [ADDED]
 Hand Crank to deliver 16 RU/t to a Machine at the cost of your Hunger Bar (may be influenced by Potion/Beacon Effects).
 This might let you make Steel in a Crucible without Machines, if you set it up right.
-They will emit strong Redstone into the Block they are attached to, so they work as Redstone component too. They will always at least spin for 1.5 seconds or longer.
+Can emit strong Redstone into the Block they are attached to, so they work as Redstone component too (replacing the Buttons in Vault Rooms of GT6 Dungeons).
+They always at least spin for 32 ticks (1.5+ seconds) or longer when clicked, even if you click off of them right away.
 Also Villagers can operate Cranks at Head Height.
 
 

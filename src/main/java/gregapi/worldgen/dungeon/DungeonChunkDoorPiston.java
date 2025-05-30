@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,9 +19,10 @@
 
 package gregapi.worldgen.dungeon;
 
-import static gregapi.data.CS.*;
-
+import gregapi.util.UT;
 import net.minecraft.init.Blocks;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -87,10 +88,8 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 			aData.colored(13, 2,  7);
 			aData.colored(13, 2,  8);
 			
-			aData.set    (12, 2,  7, Blocks.stone_button, 3, 2);
-			aData.set    (12, 2,  8, Blocks.stone_button, 4, 2);
-			aData.set    (14, 2,  7, Blocks.stone_button, 3, 2);
-			aData.set    (14, 2,  8, Blocks.stone_button, 4, 2);
+			aData.set    (11, 2,  9, SIDE_UNKNOWN, 32111, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T));
+			aData.set    (15, 2,  6, SIDE_UNKNOWN, 32111, UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T));
 			aData.set    (13, 1,  5, Blocks.sticky_piston, 3, 2);
 			aData.set    (13, 1, 10, Blocks.sticky_piston, 2, 2);
 			aData.set    (13, 2,  5, Blocks.sticky_piston, 3, 2);
@@ -167,10 +166,8 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 			aData.colored( 2, 2,  7);
 			aData.colored( 2, 2,  8);
 			
-			aData.set    ( 1, 2,  7, Blocks.stone_button, 3, 2);
-			aData.set    ( 1, 2,  8, Blocks.stone_button, 4, 2);
-			aData.set    ( 3, 2,  7, Blocks.stone_button, 3, 2);
-			aData.set    ( 3, 2,  8, Blocks.stone_button, 4, 2);
+			aData.set    ( 0, 2,  9, SIDE_UNKNOWN, 32111, UT.NBT.make(NBT_FACING, SIDE_X_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T));
+			aData.set    ( 4, 2,  6, SIDE_UNKNOWN, 32111, UT.NBT.make(NBT_FACING, SIDE_X_NEG, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T));
 			aData.set    ( 2, 1,  5, Blocks.sticky_piston, 3, 2);
 			aData.set    ( 2, 1, 10, Blocks.sticky_piston, 2, 2);
 			aData.set    ( 2, 2,  5, Blocks.sticky_piston, 3, 2);
@@ -247,10 +244,8 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 			aData.colored( 7, 2, 13);
 			aData.colored( 8, 2, 13);
 			
-			aData.set    ( 7, 2, 12, Blocks.stone_button, 1, 2);
-			aData.set    ( 8, 2, 12, Blocks.stone_button, 2, 2);
-			aData.set    ( 7, 2, 14, Blocks.stone_button, 1, 2);
-			aData.set    ( 8, 2, 14, Blocks.stone_button, 2, 2);
+			aData.set    ( 6, 2, 11, SIDE_UNKNOWN, 32111, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T));
+			aData.set    ( 9, 2, 15, SIDE_UNKNOWN, 32111, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T));
 			aData.set    ( 5, 1, 13, Blocks.sticky_piston, 5, 2);
 			aData.set    (10, 1, 13, Blocks.sticky_piston, 4, 2);
 			aData.set    ( 5, 2, 13, Blocks.sticky_piston, 5, 2);
@@ -327,10 +322,8 @@ public class DungeonChunkDoorPiston implements IDungeonChunk {
 			aData.colored( 7, 2,  2);
 			aData.colored( 8, 2,  2);
 			
-			aData.set    ( 7, 2,  1, Blocks.stone_button, 1, 2);
-			aData.set    ( 8, 2,  1, Blocks.stone_button, 2, 2);
-			aData.set    ( 7, 2,  3, Blocks.stone_button, 1, 2);
-			aData.set    ( 8, 2,  3, Blocks.stone_button, 2, 2);
+			aData.set    ( 6, 2,  0, SIDE_UNKNOWN, 32111, UT.NBT.make(NBT_FACING, SIDE_Z_POS, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T));
+			aData.set    ( 9, 2,  4, SIDE_UNKNOWN, 32111, UT.NBT.make(NBT_FACING, SIDE_Z_NEG, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T));
 			aData.set    ( 5, 1,  2, Blocks.sticky_piston, 5, 2);
 			aData.set    (10, 1,  2, Blocks.sticky_piston, 4, 2);
 			aData.set    ( 5, 2,  2, Blocks.sticky_piston, 5, 2);

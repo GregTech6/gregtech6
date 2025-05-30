@@ -110,9 +110,10 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 	public boolean onBlockActivated3(EntityPlayer aPlayer, byte aSide, float aHitX, float aHitY, float aHitZ) {
 		if (isServerSide()) {
 			mActive = T;
-			mRemainingTime = 30;
+			mRemainingTime = 32;
 			updateClientData();
 			causeBlockUpdate();
+			UT.Sounds.send(SFX.MC_MINECART, this, F);
 		}
 		// TODO Might do something if attached to a Pipe to open/close it or something.
 		return T;
@@ -120,12 +121,12 @@ public class MultiTileEntityCrank extends TileEntityBase11AttachmentSmall implem
 	
 	@Override
 	public byte isProvidingWeakPower2(byte aSide) {
-		return (byte)(aSide == mFacing && mActive ? 15 : 0);
+		return (byte)(aSide == OPOS[mFacing] && mActive ? 15 : 0);
 	}
 	
 	@Override
 	public byte isProvidingStrongPower2(byte aSide) {
-		return (byte)(aSide == mFacing && mActive ? 15 : 0);
+		return (byte)(aSide == OPOS[mFacing] && mActive ? 15 : 0);
 	}
 	
 	@Override
