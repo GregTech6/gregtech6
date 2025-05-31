@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -151,12 +151,15 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 			int tViscosity = aFluid.getViscosity(tFluid);
 			if (tViscosity != 0) aList.add(LH.Chat.BLUE + "Viscosity: " + tViscosity);
 			
-			if (FL.powerconducting(aFluid)) {
-				aList.add(LH.Chat.DGREEN + "This is a Power Conducting Fluid");
-				aList.add(LH.Chat.ORANGE + "Cannot be stored in any normal GT6 Storage Tanks!");
+			if (FluidsGT.COOKING_OIL.contains(aName)) {
+				aList.add(LH.Chat.DGREEN + "Usable as Cooking Oil in an Oven to duplicate Meat and Fish");
 			}
 			if (FL.simple(aFluid)) {
 				aList.add(LH.Chat.DGREEN + "This is a simple Fluid that is easy to handle");
+			}
+			if (FL.powerconducting(aFluid)) {
+				aList.add(LH.Chat.DGREEN + "This is a Power Conducting Fluid");
+				aList.add(LH.Chat.ORANGE + "Cannot be stored in any normal GT6 Storage Tanks!");
 			}
 			if (FL.acid(aFluid)) {
 				aList.add(LH.Chat.ORANGE + "Acidic! Handle with Care!");
