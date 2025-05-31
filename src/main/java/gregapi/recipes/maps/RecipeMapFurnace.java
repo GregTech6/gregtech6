@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -32,6 +32,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Collection;
@@ -52,26 +53,32 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 		if (aRecipe != null && aRecipe.isRecipeInputEqual(F, T, aFluids, aInputs)) return aRecipe;
 		ItemStack tOutput = RM.get_smelting(aInputs[0]);
 		if (tOutput == null) return null;
+		
+		FluidStack tCookingOil = (aFluids != null && aFluids.length > 0 && aFluids[0] != null && FluidsGT.COOKING_OIL.contains(aFluids[0].getFluid().getName()) ? aFluids[0] : NF), rXP = NF;
+		if (FL.valid(tCookingOil) && tCookingOil.amount >= 100 && !OD.listAllmeatsubstitute.is(aInputs[0]) && !OD.listAllmeatsubstitute.is(tOutput) && (OD.listAllmeatraw.is(aInputs[0]) || OD.listAllmeatcooked.is(tOutput))) {
+			tOutput.stackSize++;
+			tCookingOil = FL.amount(tCookingOil, 100);
+		} else tCookingOil = NF;
+		
 		if (FL.XP.exists()) {
 			OreDictItemData tData = OM.anydata_(aInputs[0]);
 			// Don't allow any Dusts to give XP
 			if (!OM.prefixcontainsany(tData, TD.Prefix.DUST_BASED, TD.Prefix.INGOT_BASED, TD.Prefix.GEM_BASED)) {
-				FluidStack tFluid = null;
 				if (tOutput.getItem() == Items.brick || tOutput.getItem() == Items.netherbrick || tOutput.getItem() == Items.clay_ball || tOutput.getItem() == Items.dye) {
 					// Bricks and Dyes are 0.05 XP
-					tFluid = FL.XP.make(tOutput.stackSize);
+					rXP = FL.XP.make(tOutput.stackSize);
 				} else if (tOutput.getItem() == Items.coal) {
 					// Coal/Charcoal is giving 0.10 XP
-					tFluid = FL.XP.make(tOutput.stackSize * 2);
+					rXP = FL.XP.make(tOutput.stackSize * 2L);
 				} else if (IL.EtFu_Chorus_Popped.equal(tOutput)) {
 					// Chorus Fruit is 0.20 XP
-					tFluid = FL.XP.make(tOutput.stackSize * 4);
+					rXP = FL.XP.make(tOutput.stackSize * 4L);
 				} else if (IL.ERE_Pot_Cooked.equal(tOutput)) {
 					// The Titan Stew a whole Orb of XP
-					tFluid = FL.XP.make(tOutput.stackSize * 20);
+					rXP = FL.XP.make(tOutput.stackSize * 20L);
 				} else if (OD.blockGlass.is(tOutput) || OD.paneGlass.is(tOutput)) {
 					// Glass is 0.05 XP, yes I know it can be made from Stone, but this is enough effort to warrant at least some XP.
-					tFluid = FL.XP.make(tOutput.stackSize);
+					rXP = FL.XP.make(tOutput.stackSize);
 				} else {
 					Block tBlock = ST.block(tOutput);
 					if (tBlock == Blocks.cobblestone || tBlock == Blocks.stone || tBlock == Blocks.stonebrick || tBlock instanceof BlockStones) {
@@ -79,13 +86,13 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 						// GT6 Stone is also not allowed due to easily recycleable Recipes.
 					} else if (tBlock == Blocks.hardened_clay || tBlock == Blocks.stained_hardened_clay) {
 						// Hardened Clay is 0.10 XP
-						tFluid = FL.XP.make(tOutput.stackSize * 2);
+						rXP = FL.XP.make(tOutput.stackSize * 2L);
 					} else if (tBlock == Blocks.brick_block || tBlock == Blocks.nether_brick) {
 						// Brick Blocks are 0.15 XP, yes only three instead of four Bricks worth of XP
-						tFluid = FL.XP.make(tOutput.stackSize * 3);
+						rXP = FL.XP.make(tOutput.stackSize * 3L);
 					} else if (ST.food(tOutput) > 0) {
 						// Food always gives 0.05 XP, not more, not less.
-						tFluid = FL.XP.make(tOutput.stackSize);
+						rXP = FL.XP.make(tOutput.stackSize);
 					} else {
 						// Now for OreDictItemData of the Input Item
 						if (tData != null && tData.validData()) {
@@ -93,21 +100,21 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 								tData = OM.anydata_(tOutput);
 								if (tData != null && tData.validData()) {
 									// Give XP based on Tool Quality of the Output.
-									long tXP = tOutput.stackSize * (3+tData.mMaterial.mMaterial.mToolQuality);
+									long tXP = tOutput.stackSize * (3L+tData.mMaterial.mMaterial.mToolQuality);
 									// Valuable Tag is for Gold and certain Gems and happens to double the XP you can get from this.
 									if (tData.mMaterial.mMaterial.contains(TD.Properties.VALUABLE)) tXP *= 2;
 									// Magical Tag also doubles the XP you can get from this.
 									if (tData.mMaterial.mMaterial.contains(TD.Properties.MAGICAL )) tXP *= 2;
 									if (tData.mPrefix.mAmount > 0) {
 										// Give at least 0.05 XP for this, or more if the Recipes is valuable enough.
-										tFluid = FL.XP.make(UT.Code.divup(tData.mPrefix.mAmount * tXP, U));
+										rXP = FL.XP.make(UT.Code.divup(tData.mPrefix.mAmount * tXP, U));
 									} else {
 										// This is probably an Ore Block since those have a Value of -1, or something else that doesn't have a Unit Amount.
-										tFluid = FL.XP.make(tXP);
+										rXP = FL.XP.make(tXP);
 									}
 								} else {
 									// I don't know what this is, guess I will default to 5.
-									tFluid = FL.XP.make(tOutput.stackSize * 5);
+									rXP = FL.XP.make(tOutput.stackSize * 5L);
 								}
 							} else {
 								// No XP from this case! This is likely either a Recycling Recipe or a Dust to Ingot Recipe!
@@ -118,38 +125,36 @@ public class RecipeMapFurnace extends RecipeMapNonGTRecipes {
 								tData = OM.anydata_(tOutput);
 								if (tData != null && tData.validData()) {
 									// Give XP based on Tool Quality of the Output.
-									long tXP = tOutput.stackSize * (3+tData.mMaterial.mMaterial.mToolQuality);
+									long tXP = tOutput.stackSize * (3L+tData.mMaterial.mMaterial.mToolQuality);
 									// Valuable Tag is for Gold and certain Gems and happens to double the XP you can get from this.
 									if (tData.mMaterial.mMaterial.contains(TD.Properties.VALUABLE)) tXP *= 2;
 									// Magical Tag also doubles the XP you can get from this.
 									if (tData.mMaterial.mMaterial.contains(TD.Properties.MAGICAL )) tXP *= 2;
 									if (tData.mPrefix.mAmount > 0) {
 										// Give at least 0.05 XP for this, or more if the Recipes is valuable enough.
-										tFluid = FL.XP.make(UT.Code.divup(tData.mPrefix.mAmount * tXP, U));
+										rXP = FL.XP.make(UT.Code.divup(tData.mPrefix.mAmount * tXP, U));
 									} else {
 										// This is probably something that doesn't have a Unit Amount.
-										tFluid = FL.XP.make(tXP);
+										rXP = FL.XP.make(tXP);
 									}
 								} else {
 									// I don't know what this is, guess I will default to 5.
-									tFluid = FL.XP.make(tOutput.stackSize * 5);
+									rXP = FL.XP.make(tOutput.stackSize * 5L);
 								}
 							} else {
 								// Guess we need to default to the normal Furnace way of determining XP
-								tFluid = FL.XP.make(UT.Code.bind(1, tOutput.stackSize * 20, UT.Code.roundUp(tOutput.stackSize * 20 * FurnaceRecipes.smelting().func_151398_b(tOutput))));
+								rXP = FL.XP.make(UT.Code.bind(1, tOutput.stackSize * 20L, UT.Code.roundUp(tOutput.stackSize * 20 * FurnaceRecipes.smelting().func_151398_b(tOutput))));
 							}
 						}
 					}
 				}
-				// return the Fluid Variant of the Recipe
-				if (tFluid != null && tFluid.amount > 0) {
-					return new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(tOutput), null, null, ZL_FS, new FluidStack[] {tFluid}, 16, 16, 0);
-				}
 			}
 		}
-		// return the Normal Recipe
-		return new Recipe(F, F, T, ST.array(ST.amount(1, aInputs[0])), ST.array(tOutput), null, null, ZL_FS, ZL_FS, 16, 16, 0);
+		// return the Recipe
+		return new Recipe(F, F, F, ST.array(ST.amount(1, aInputs[0])), ST.array(tOutput), null, null, tCookingOil != null && tCookingOil.amount > 0 ? FL.array(tCookingOil) : ZL_FS, rXP != null && rXP.amount > 0 ? FL.array(rXP) : ZL_FS, 16, 16, 0);
 	}
 	
 	@Override public boolean containsInput(ItemStack aStack, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return ST.valid(RM.get_smelting(aStack));}
+	@Override public boolean containsInput(FluidStack aFluid, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return FluidsGT.COOKING_OIL.contains(aFluid.getFluid().getName());}
+	@Override public boolean containsInput(Fluid aFluid, IHasWorldAndCoords aTileEntity, ItemStack aSpecialSlot) {return FluidsGT.COOKING_OIL.contains(aFluid.getName());}
 }

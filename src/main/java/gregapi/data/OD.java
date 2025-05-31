@@ -249,6 +249,8 @@ public enum OD {
 	, blockShadowTorch
 	, blockFoxfireTorch
 	, listAllmeatsubstitute
+	, listAllmeatcooked
+	, listAllmeatraw
 	;
 	
 	public final List<ItemStack> mItems;
