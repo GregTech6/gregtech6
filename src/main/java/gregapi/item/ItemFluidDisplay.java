@@ -152,7 +152,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 			if (tViscosity != 0) aList.add(LH.Chat.BLUE + "Viscosity: " + tViscosity);
 			
 			if (FluidsGT.COOKING_OIL.contains(aName)) {
-				aList.add(LH.Chat.DGREEN + "Usable as Cooking Oil in an Oven to duplicate Meat and Fish");
+				aList.add(LH.Chat.DGREEN + "Usable as Cooking Oil in a GT Oven to duplicate Meat and Fish");
 			}
 			if (FL.simple(aFluid)) {
 				aList.add(LH.Chat.DGREEN + "This is a simple Fluid that is easy to handle");
