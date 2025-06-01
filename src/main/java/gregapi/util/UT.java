@@ -3135,13 +3135,16 @@ public class UT {
 			return F;
 		}
 		
-		public static Collection<EntityPlayer> getPlayersWithLastTarget(IHasWorldAndCoords aTarget) {return getPlayersWithLastTarget(aTarget.getWorld(), aTarget.getCoords());}
-		public static Collection<EntityPlayer> getPlayersWithLastTarget(World aWorld, int aX, int aY, int aZ) {return getPlayersWithLastTarget(aWorld, new ChunkCoordinates(aX, aY, aZ));}
-		public static Collection<EntityPlayer> getPlayersWithLastTarget(World aWorld, ChunkCoordinates aCoords) {
+		public static Collection<EntityPlayer> getPlayersWithLastTarget(IHasWorldAndCoords aTarget) {return getPlayersWithLastTarget(5, aTarget);}
+		public static Collection<EntityPlayer> getPlayersWithLastTarget(World aWorld, int aX, int aY, int aZ) {return getPlayersWithLastTarget(5, aWorld, aX, aY, aZ);}
+		public static Collection<EntityPlayer> getPlayersWithLastTarget(World aWorld, ChunkCoordinates aCoords) {return getPlayersWithLastTarget(5, aWorld, aCoords);}
+		public static Collection<EntityPlayer> getPlayersWithLastTarget(long aRange, IHasWorldAndCoords aTarget) {return getPlayersWithLastTarget(aRange, aTarget.getWorld(), aTarget.getCoords());}
+		public static Collection<EntityPlayer> getPlayersWithLastTarget(long aRange, World aWorld, int aX, int aY, int aZ) {return getPlayersWithLastTarget(aRange, aWorld, new ChunkCoordinates(aX, aY, aZ));}
+		public static Collection<EntityPlayer> getPlayersWithLastTarget(long aRange, World aWorld, ChunkCoordinates aCoords) {
 			ArrayListNoNulls<EntityPlayer> rList = new ArrayListNoNulls<>();
 			for (Entry<EntityPlayer, ChunkCoordinates> tEntry : PLAYER_LAST_CLICKED.entrySet()) {
 				if (!tEntry.getKey().isDead && aWorld == tEntry.getKey().worldObj && aCoords.equals(tEntry.getValue())) {
-					if (isCreative(tEntry.getKey()) || tEntry.getKey().getDistanceSq(aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5) <= 64) {
+					if (isCreative(tEntry.getKey()) || tEntry.getKey().getDistanceSq(aCoords.posX+0.5, aCoords.posY+0.5, aCoords.posZ+0.5) <= aRange * aRange) {
 						rList.add(tEntry.getKey());
 					}
 				}
