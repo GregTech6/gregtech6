@@ -3135,9 +3135,9 @@ public class UT {
 			return F;
 		}
 		
-		public static Collection<EntityPlayer> getPlayersWithLastTarget(IHasWorldAndCoords aTarget) {return getPlayersWithLastTarget(5, aTarget);}
-		public static Collection<EntityPlayer> getPlayersWithLastTarget(World aWorld, int aX, int aY, int aZ) {return getPlayersWithLastTarget(5, aWorld, aX, aY, aZ);}
-		public static Collection<EntityPlayer> getPlayersWithLastTarget(World aWorld, ChunkCoordinates aCoords) {return getPlayersWithLastTarget(5, aWorld, aCoords);}
+		public static Collection<EntityPlayer> getPlayersWithLastTarget(IHasWorldAndCoords aTarget) {return getPlayersWithLastTarget(6, aTarget);}
+		public static Collection<EntityPlayer> getPlayersWithLastTarget(World aWorld, int aX, int aY, int aZ) {return getPlayersWithLastTarget(6, aWorld, aX, aY, aZ);}
+		public static Collection<EntityPlayer> getPlayersWithLastTarget(World aWorld, ChunkCoordinates aCoords) {return getPlayersWithLastTarget(6, aWorld, aCoords);}
 		public static Collection<EntityPlayer> getPlayersWithLastTarget(long aRange, IHasWorldAndCoords aTarget) {return getPlayersWithLastTarget(aRange, aTarget.getWorld(), aTarget.getCoords());}
 		public static Collection<EntityPlayer> getPlayersWithLastTarget(long aRange, World aWorld, int aX, int aY, int aZ) {return getPlayersWithLastTarget(aRange, aWorld, new ChunkCoordinates(aX, aY, aZ));}
 		public static Collection<EntityPlayer> getPlayersWithLastTarget(long aRange, World aWorld, ChunkCoordinates aCoords) {
