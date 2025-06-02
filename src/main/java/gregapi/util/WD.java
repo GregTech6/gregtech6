@@ -544,7 +544,7 @@ public class WD {
 		return T;
 	}
 	
-	public static Random random(World aWorld, long aChunkX, long aChunkZ) {return random(aChunkX >> 4, aChunkZ >> 4, aWorld.getSeed() ^ aWorld.provider.dimensionId);}
+	public static Random random(World aWorld, long aChunkX, long aChunkZ) {return random(aWorld.getSeed() ^ aWorld.provider.dimensionId, aChunkX >> 4, aChunkZ >> 4);}
 	public static Random random(long aSeed, long aChunkX, long aChunkZ) {
 		// Seed is XOR-ed with the Dimension ID to prevent multiple Dimensions from being identical in Ore Generation.
 		// Yes that actually happened with Aromas Mining World, and resulted in a prospecting exploit.
