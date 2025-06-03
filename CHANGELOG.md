@@ -1,11 +1,15 @@
 This is the most recent Changelog. It also contains some of the changes inside the >>>UPCOMING<<< Versions (most of the time). This is for 1.7.10 btw.
 
 
+6.17.07: (Not released yet)
+Nothing (I tend to only add finished Stuff to the Changelog).
+
+
 6.17.06: (Not released yet)
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.17.05: (Not released yet)
+6.17.05:
 [FIXED] A rather critical stupidity in the way my Worldgen Random works... I mixed up the Seed and the coordinate parameters...
 [ADDED] Using any of the Cooking Oils in a GT6 Oven will duplicate Meat and Fish Output at the cost of 50L of Cooking Oil.
 [ADDED] Canned Air. As in putting 16000L of Naturally Sparkling, Salt-Free Air into a Food Can. It can be used to replenish Air Underwater and will overfill your Air Bar. Also has Enviromine Heat Stats depending on which type of Air you drink.
