@@ -46,7 +46,9 @@ public class Override_Drops {
 		
 		int tRandomNumber = RNGSUS.nextInt(Math.max(36, 144-aLooting*3)), tIntestinesAmount = 0;
 		
-		if (aDead instanceof EntityAnimal && aDead.isChild()) {
+		if (aDead instanceof EntityPlayer) {
+			// Do Nothing
+		} else if (aDead instanceof EntityAnimal && aDead.isChild()) {
 			tReplaceIron = T;
 		} else if ("ZombieFarmer".equalsIgnoreCase(aClass)) {
 			tReplaceIron = T;
@@ -667,7 +669,7 @@ public class Override_Drops {
 		
 		while (aDrops.remove(null));
 		
-		for (EntityItem tEntity : aDrops) if (tEntity != null) {ItemStack tStack = tEntity.getEntityItem(); if (ST.valid(tStack)) {
+		if (!(aDead instanceof EntityPlayer)) for (EntityItem tEntity : aDrops) if (tEntity != null) {ItemStack tStack = tEntity.getEntityItem(); if (ST.valid(tStack)) {
 			// Replace some of the Arrows with Headless Arrows.
 			if (MOBS_DROP_JUNK && ST.item_(tStack) == Items.arrow && RNGSUS.nextInt(aLooting * 2 + 4) < 3) {
 				ST.set(tStack, OP.arrowGtWood.mat(MT.Empty, 1), F, F);

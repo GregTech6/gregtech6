@@ -413,7 +413,7 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 	
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onEntityLivingDropsEventEvent(LivingDropsEvent aEvent) {
-		if (aEvent.entity.worldObj.isRemote || aEvent.entity instanceof EntityPlayer || aEvent.entityLiving == null) return;
+		if (aEvent.entity.worldObj.isRemote || aEvent.entityLiving == null) return;
 		Override_Drops.handleDrops(aEvent.entityLiving, UT.Reflection.getLowercaseClass(aEvent.entityLiving), aEvent.drops, aEvent.source, aEvent.lootingLevel, aEvent.entityLiving.isBurning(), aEvent.recentlyHit);
 	}
 	
