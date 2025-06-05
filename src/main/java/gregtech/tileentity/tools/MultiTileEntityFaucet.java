@@ -31,6 +31,7 @@ import gregapi.tileentity.base.TileEntityBase11AttachmentSmall;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
 import gregapi.tileentity.machines.ITileEntityCrucible;
 import gregapi.tileentity.machines.ITileEntityMold;
+import gregapi.tileentity.tank.TileEntityBase08Barrel;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
@@ -103,7 +104,7 @@ public class MultiTileEntityFaucet extends TileEntityBase11AttachmentSmall imple
 	public long getMoldRequiredMaterialUnits() {
 		DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(SIDE_BOTTOM);
 		if (tDelegator.mTileEntity instanceof ITileEntityMold) return ((ITileEntityMold)tDelegator.mTileEntity).getMoldRequiredMaterialUnits();
-		if (tDelegator.mTileEntity instanceof MultiTileEntityBathingPot || tDelegator.mTileEntity instanceof MultiTileEntityMixingBowl) return U;
+		if (tDelegator.mTileEntity instanceof MultiTileEntityBathingPot || tDelegator.mTileEntity instanceof MultiTileEntityMixingBowl || tDelegator.mTileEntity instanceof TileEntityBase08Barrel ) return U;
 		return 0;
 	}
 	
@@ -119,7 +120,7 @@ public class MultiTileEntityFaucet extends TileEntityBase11AttachmentSmall imple
 			tDelegator = WD.te(tDelegator.mWorld, tDelegator.mX, tDelegator.mY-1, tDelegator.mZ, SIDE_TOP, F);
 		}
 		if (tDelegator.mTileEntity instanceof ITileEntityMold) return ((ITileEntityMold)tDelegator.mTileEntity).fillMold(aMaterial, aTemperature, tDelegator.mSideOfTileEntity);
-		if (tDelegator.mTileEntity instanceof MultiTileEntityBathingPot || tDelegator.mTileEntity instanceof MultiTileEntityMixingBowl) {
+		if (tDelegator.mTileEntity instanceof MultiTileEntityBathingPot || tDelegator.mTileEntity instanceof MultiTileEntityMixingBowl || tDelegator.mTileEntity instanceof TileEntityBase08Barrel) {
 			if (aMaterial.mAmount < U) {
 				FluidStack tFluid = aMaterial.mMaterial.liquid(aMaterial.mAmount, F);
 				if (FL.zero(tFluid)) return 0;
