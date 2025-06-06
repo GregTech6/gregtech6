@@ -1157,8 +1157,23 @@ public class LoaderItemList implements Runnable {
 		IL.BTL_Rubber                           .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,26), new OreDictItemData(MT.Rubber, U));
 		IL.BTL_Compost                          .set(ST.make(MD.BTL, "unknownGeneric"                       , 1, 5), null, OD.itemCompost);
 		IL.BTL_Skin                             .set(ST.make(MD.BTL, "unknownGeneric"                       , 1, 7), null, OD.itemSkin);
-		IL.BTL_Tar                              .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,29), null, OD.itemTar, DYE_OREDICTS_MIXABLE[DYE_INDEX_Black]);
 		IL.BTL_Dry_Bark                         .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,16), null, OD.itemBarkDry);
+		IL.BTL_Tar                              .set(ST.make(MD.BTL, "unknownGeneric"                       , 1,29), null, OD.itemTar, DYE_OREDICTS_MIXABLE[DYE_INDEX_Black]);
+		IL.BTL_Tar_Block                        .set(ST.make(MD.BTL, "solidTar"                             , 1, 0), null, OD.itemTar, DYE_OREDICTS_MIXABLE[DYE_INDEX_Black]);
+		IL.BTL_Bucket_Empty                     .set(ST.make(MD.BTL, "weedwoodBucket"                       , 1, 0), new OreDictItemData(MT.Weedwood, 3*U));
+		IL.BTL_Bucket_Tar                       .set(ST.make(MD.BTL, "weedwoodBucketTar"                    , 1, 0), new OreDictItemData(MT.Weedwood, 3*U), OD.container1000tar);
+		IL.BTL_Bucket_Swamp                     .set(ST.make(MD.BTL, "weedwoodBucketWater"                  , 1, 0), new OreDictItemData(MT.Weedwood, 3*U));
+		IL.BTL_Bucket_Stagnant                  .set(ST.make(MD.BTL, "weedwoodBucketStagnantWater"          , 1, 0), new OreDictItemData(MT.Weedwood, 3*U));
+		IL.BTL_Bucket_Latex                     .set(ST.make(MD.BTL, "bucketOfRubber"                       , 1, 0), new OreDictItemData(MT.Weedwood, 3*U), OD.container1000latex);
+		IL.BTL_Bucket_Infusion                  .set(ST.make(MD.BTL, "weedwoodBucketInfusion"               , 1, 0), new OreDictItemData(MT.Weedwood, 3*U));
+		
+		if (IL.BTL_Bucket_Tar     .exists()) IL.BTL_Bucket_Tar     .item().setContainerItem(IL.BTL_Bucket_Empty.getItem());
+		if (IL.BTL_Bucket_Swamp   .exists()) IL.BTL_Bucket_Swamp   .item().setContainerItem(IL.BTL_Bucket_Empty.getItem());
+		if (IL.BTL_Bucket_Stagnant.exists()) IL.BTL_Bucket_Stagnant.item().setContainerItem(IL.BTL_Bucket_Empty.getItem());
+		if (IL.BTL_Bucket_Latex   .exists()) IL.BTL_Bucket_Latex   .item().setContainerItem(IL.BTL_Bucket_Empty.getItem());
+		if (IL.BTL_Bucket_Infusion.exists()) IL.BTL_Bucket_Infusion.item().setContainerItem(IL.BTL_Bucket_Empty.getItem());
+		
+		
 		
 		
 		if (!MD.AETHEL.mLoaded) {

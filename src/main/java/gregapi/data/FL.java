@@ -435,7 +435,7 @@ public enum FL {
 	, CFoam                     ("ic2constructionfoam"                                      , LIQUID) // 100 per Unit
 	, Sewage                    ("sewage"                                                   , SIMPLE, LIQUID)
 	, Sludge                    ("sludge"                                                   , SIMPLE, LIQUID)
-	, Tar                       ("tar"                                                      , SIMPLE, LIQUID)
+	, Tar                       ("tar"                      , "tarfluid"                    , SIMPLE, LIQUID)
 	, Glass                     ("glass"                    , "molten.glass"                , SIMPLE, LIQUID)
 	, Sluice                    ("sluicejuice"                                              , SIMPLE, LIQUID)
 	
