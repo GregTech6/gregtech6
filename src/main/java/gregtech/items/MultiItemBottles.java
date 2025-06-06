@@ -368,7 +368,7 @@ public class MultiItemBottles extends MultiItemRandomWithCompat implements IItem
 		addItem(32761, "Clouded Bottle", "Loot: A random Bottle", TC.stack(TC.VITREUS, 1), TC.stack(TC.LUCRUM, 1), new Behavior_Drop_Loot("gt.bottles")));
 		
 		IL.Bottle_Tar.set(
-		addItem(32762, "Tar Bottle", "Can be used as Glue too", "bottleTar", DYE_OREDICTS[DYE_INDEX_Black ], FL.Tar.make(250), TC.stack(TC.VITREUS, 1), TC.stack(TC.LIMUS, 1), TC.stack(TC.IGNIS, 1), FoodStatFluid.INSTANCE));
+		addItem(32762, "Tar Bottle", "Can be used as Glue too", "bottleTar", DYE_OREDICTS[DYE_INDEX_Black ], FL.Tar.make(250), FL.make("tarfluid", 250), TC.stack(TC.VITREUS, 1), TC.stack(TC.LIMUS, 1), TC.stack(TC.IGNIS, 1), FoodStatFluid.INSTANCE));
 		
 		CR.shapeless(last(4), CR.DEF, new Object[] {OD.container1000tar, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});
 		CR.shapeless(last(3), CR.DEF, new Object[] {OD.container1000tar, OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty), OP.bottle.dat(MT.Empty)});

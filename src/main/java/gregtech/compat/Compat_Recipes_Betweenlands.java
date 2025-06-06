@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -67,6 +67,7 @@ public class Compat_Recipes_Betweenlands extends CompatMods {
 		CR.shapeless(ST.make(MD.BTL, "Thatch Slab"   , 3, 0), CR.DEF_NCC, new Object[] {ST.make(MD.BTL, "thatchSlope", 1, 0), ST.make(MD.BTL, "thatchSlope", 1, 0)});
 		// Peat from Peat Blocks
 		CR.shapeless(OP.ingot.mat(MT.Peat, 4), CR.DEF_NCC, new Object[] {IL.BTL_Peat});
+		CR.shapeless(IL.BTL_Bucket_Tar.get(1), CR.DEF_NCC, new Object[] {IL.BTL_Bucket_Empty, OD.container250tar, OD.container250tar, OD.container250tar, OD.container250tar});
 		
 		
 		RM.compactsmash (IL.BTL_Mud_Brick .get(4), 4, IL.BTL_Mud_Bricks.get(1));
