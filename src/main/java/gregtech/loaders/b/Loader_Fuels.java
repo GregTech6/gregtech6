@@ -189,13 +189,13 @@ public class Loader_Fuels implements Runnable {
 		
 		FM.Hot          .addRecipe0(T, - 16,  6, FL.Blaze.make(1)                            , NF, ZL_IS);
 		FM.Hot          .addRecipe0(T, - 16, EU_PER_LAVA/16, FL.Lava.make(1)                 , FL.Lava_Pahoehoe.make(1), ZL_IS);
-		for (FluidStack tFuel : FL.Lava_Volcanic.exists())
+		if (FL.Lava_Volcanic.exists())
 		FM.Hot          .addRecipe0(T, - 16, EU_PER_LAVA, FL.Lava_Volcanic.make(1)           , FL.Lava_Pahoehoe.make(1), ZL_IS);
-		for (FluidStack tFuel : FL.Hot_Water.exists())
+		if (FL.Hot_Water.exists())
 		FM.Hot          .addRecipe0(T, -  2,  1, FL.Hot_Water.make(1)                        , FL.Water.make(1), ZL_IS);
-		for (FluidStack tFuel : FL.Water_Hot.exists())
+		if (FL.Water_Hot.exists())
 		FM.Hot          .addRecipe0(T, -  2,  1, FL.Water_Hot.make(1)                        , FL.Water.make(1), ZL_IS);
-		for (FluidStack tFuel : FL.Water_Boiling.exists())
+		if (FL.Water_Boiling.exists())
 		FM.Hot          .addRecipe0(T, -  2,  1, FL.Water_Boiling.make(1)                    , FL.Water.make(1), ZL_IS);
 		FM.Hot          .addRecipe0(T, - 16,  4, FL.Water_Geothermal.make(1)                 , FL.MnWtr.make(1), ZL_IS);
 		

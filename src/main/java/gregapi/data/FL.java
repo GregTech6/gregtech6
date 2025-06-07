@@ -566,7 +566,7 @@ public enum FL {
 	;
 	
 	public final String mName;
-	public String[] mAllNames;
+	public String[] mAllNames = ZL_STRING;
 	
 	FL(String aName, Collection<String>... aFluidSets) {
 		mName = aName;
@@ -577,7 +577,6 @@ public enum FL {
 		mName = aName;
 		mAllNames = new String[] {aName, aOldName};
 		FluidsGT.HIDDEN.add(aOldName);
-		FluidsGT.NONSTANDARD.add(aOldName);
 		FluidsGT.FLUID_RENAMINGS.put(aOldName, mName);
 		for (Collection<String> aFluidSet : aFluidSets) {aFluidSet.add(mName); aFluidSet.add(aOldName);}
 	}
@@ -586,8 +585,6 @@ public enum FL {
 		mAllNames = new String[] {aName, aOldName1, aOldName2};
 		FluidsGT.HIDDEN.add(aOldName1);
 		FluidsGT.HIDDEN.add(aOldName2);
-		FluidsGT.NONSTANDARD.add(aOldName1);
-		FluidsGT.NONSTANDARD.add(aOldName2);
 		FluidsGT.FLUID_RENAMINGS.put(aOldName1, mName);
 		FluidsGT.FLUID_RENAMINGS.put(aOldName2, mName);
 		for (Collection<String> aFluidSet : aFluidSets) {aFluidSet.add(mName); aFluidSet.add(aOldName1); aFluidSet.add(aOldName2);}

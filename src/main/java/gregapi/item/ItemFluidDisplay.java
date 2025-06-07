@@ -92,7 +92,7 @@ public class ItemFluidDisplay extends Item implements IFluidContainerItem, IItem
 			String aName = aFluid.getName();
 			
 			if (SHOW_INTERNAL_NAMES || aF3_H) aList.add("Registry: " + aName);
-			if (FluidsGT.FLUID_RENAMINGS.containsKey(aName) || FluidsGT.NONSTANDARD.contains(aName)) aList.add(LH.Chat.BLINKING_RED + "NON-STANDARD FLUID!");
+			if (FL.exists(FluidsGT.FLUID_RENAMINGS.get(aName)) || FluidsGT.NONSTANDARD.contains(aName)) aList.add(LH.Chat.BLINKING_RED + "NON-STANDARD FLUID!");
 			
 			long tAmount = 0, tTemperature = DEF_ENV_TEMP;
 			FluidStack tFluid = NF;
