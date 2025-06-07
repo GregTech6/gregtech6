@@ -71,6 +71,10 @@ public class Loader_Fuels implements Runnable {
 		
 		FM.Burn         .addRecipe0(T, -  4,  1, FL.Glue.make(1)                             , FL.CarbonDioxide.make(1), ZL_IS);
 		
+		if (FL.Tar.exists()) {
+		FM.Burn         .addRecipe0(T, -  32,  4, FL.Tar.make(1)                             , FL.CarbonDioxide.make(1), ZL_IS);
+		}
+		
 		if (FL.JetFuel.exists()) {
 		FM.Burn         .addRecipe0(T, -128,  9, FL.JetFuel.make(1)                          , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Engine       .addRecipe0(T, -128, 12, FL.JetFuel.make(1)                          , FL.CarbonDioxide.make(1), ZL_IS);
