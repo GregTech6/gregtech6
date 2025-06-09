@@ -261,7 +261,7 @@ public enum IL implements IItemContainer {
 	Compound_Bronze, Compound_Brass, Compound_BismuthBronze, Compound_ArsenicCopper, Compound_ArsenicBronze,
 	Pellet_Wood,
 	Bag_Sap_Resin,
-	Rope, Rope_Silk, Rope_Grass, Rope_Vine, Rope_Plastic,
+	Rope, Rope_Silk, Rope_Grass, Rope_Vine, Rope_Plastic, Rope_Steel,
 	Slimeball_Borax,
 	Tusk, Tusk_Boar, Tusk_Hoglin, Tusk_Elephant,
 	Hoof, Hoof_Horse, Hoof_Mule, Hoof_Donkey, Hoof_Cow, Hoof_Deer,

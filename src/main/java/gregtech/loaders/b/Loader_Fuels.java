@@ -52,14 +52,15 @@ public class Loader_Fuels implements Runnable {
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Creosote.make(1)                     , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.Biomass.make(1)                          , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.BiomassIC2.make(1)                       , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, - 16,  8, FL.Oil_Whale.make(1)                        , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, - 16,  4, FL.Oil_Fish.make(1)                         , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Burn         .addRecipe0(T, - 16,  4, FL.Oil_Olive.make(1)                        , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  4, FL.Juice_Coconut.make(1)                    , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  4, FL.Oil_Nut.make(1)                          , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  4, FL.Oil_Olive.make(1)                        , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Lin.make(1)                          , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Hemp.make(1)                         , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Sunflower.make(1)                    , FL.CarbonDioxide.make(1), ZL_IS);
 		FM.Burn         .addRecipe0(T, - 16,  2, FL.Oil_Seed.make(1)                         , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  4, FL.Oil_Fish.make(1)                         , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 16,  8, FL.Oil_Whale.make(1)                        , FL.CarbonDioxide.make(1), ZL_IS);
 		for (FluidStack tFuel : FL.Oil_Canola.list(1))
 		FM.Burn         .addRecipe0(T, - 16,  2, tFuel                                       , FL.CarbonDioxide.make(1), ZL_IS);
 		for (FluidStack tFuel : FL.Oil_Plant.list(1))
