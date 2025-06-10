@@ -66,7 +66,7 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 	public short mBoilerWalls = 18002;
 	public byte mBarometer = 0, oBarometer = 0;
 	public short mEfficiency = 10000, mCoolDownResetTimer = 128;
-	public long mEnergy = 0, mCapacity = 20480000, mOutput = 204800;
+	public long mEnergy = 0, mCapacity = 20480000, mOutput = 2048;
 	public TagData mEnergyTypeAccepted = TD.Energy.HU;
 	public FluidTankGT[] mTanks = new FluidTankGT[] {new FluidTankGT(128000), new FluidTankGT(2048000)};
 	
@@ -76,9 +76,10 @@ public class MultiTileEntityLargeBoiler extends TileEntityBase10MultiBlockBase i
 		mEnergy = aNBT.getLong(NBT_ENERGY);
 		if (aNBT.hasKey(NBT_DESIGN)) mBoilerWalls = aNBT.getShort(NBT_DESIGN);
 		if (aNBT.hasKey(NBT_VISUAL)) mBarometer = aNBT.getByte(NBT_VISUAL);
+		if (aNBT.hasKey(NBT_OUTPUT_SU)) mOutput = aNBT.getLong(NBT_OUTPUT_SU);
+		mTanks[1].setCapacity(mCapacity = mOutput * 10000);
 		if (aNBT.hasKey(NBT_CAPACITY)) mCapacity = aNBT.getLong(NBT_CAPACITY);
 		if (aNBT.hasKey(NBT_CAPACITY_SU)) mTanks[1].setCapacity(aNBT.getLong(NBT_CAPACITY_SU));
-		if (aNBT.hasKey(NBT_OUTPUT_SU)) mOutput = aNBT.getLong(NBT_OUTPUT_SU);
 		if (aNBT.hasKey(NBT_EFFICIENCY)) mEfficiency = (short)UT.Code.bind_(0, 10000, aNBT.getShort(NBT_EFFICIENCY));
 		if (aNBT.hasKey(NBT_ENERGY_ACCEPTED)) mEnergyTypeAccepted = TagData.createTagData(aNBT.getString(NBT_ENERGY_ACCEPTED));
 		for (int i = 0; i < mTanks.length; i++) mTanks[i].readFromNBT(aNBT, NBT_TANK+"."+i);
