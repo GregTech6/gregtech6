@@ -7,6 +7,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.17.06: (Not released yet)
 [ADDED] Steel Rope, which is just another type of Rope.
+[ADDED] Ultimet Boilers corresponding to the TaHFC Burning Boxes.
 
 
 6.17.05:
