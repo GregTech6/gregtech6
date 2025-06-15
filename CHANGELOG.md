@@ -6,6 +6,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.06: (Not released yet)
+[CHANGED] GT6 Mossy Cobble (Not Vanilla Mossy Cobble) will make you (and Mobs) slide off if you are not sneaking.
 [ADDED] Steel Rope, which is just another type of Rope.
 [ADDED] Ultimet Boilers corresponding to the TaHFC Burning Boxes.
 

@@ -647,28 +647,36 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	public void onWalkOver(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {
 		// Mossy Cobblestone is slightly slippery, unless you sneak on it.
 		if (!aEntity.isInWater() && !aEntity.isSneaking() && WD.meta(aWorld, aX, aY, aZ) == MCOBL) {
-			if (aEntity.motionX == 0) {
+			if (Math.abs(aEntity.motionX) < 0.5) {
 				int tAdd = (aEntity.posX >= aX + 0.5 ? +1 : -1);
 				if (       !WD.opq(aWorld, aX+tAdd  , aY, aZ, F, F) && !WD.hasCollide(aWorld, aX+tAdd  , aY+1, aZ)) {
-					aEntity.motionX = +tAdd*0.25;
+					aEntity.motionX = +tAdd*0.5;
+					aEntity.motionY = -0.5;
 				} else if (!WD.opq(aWorld, aX-tAdd  , aY, aZ, F, F) && !WD.hasCollide(aWorld, aX-tAdd  , aY+1, aZ)) {
-					aEntity.motionX = -tAdd*0.25;
+					aEntity.motionX = -tAdd*0.5;
+					aEntity.motionY = -0.5;
 				} else if (!WD.opq(aWorld, aX+tAdd*2, aY, aZ, F, F) && !WD.hasCollide(aWorld, aX+tAdd*2, aY+1, aZ)) {
-					aEntity.motionX = +tAdd*0.25;
+					aEntity.motionX = +tAdd*0.5;
+					aEntity.motionY = -0.5;
 				} else if (!WD.opq(aWorld, aX-tAdd*2, aY, aZ, F, F) && !WD.hasCollide(aWorld, aX-tAdd*2, aY+1, aZ)) {
-					aEntity.motionX = -tAdd*0.25;
+					aEntity.motionX = -tAdd*0.5;
+					aEntity.motionY = -0.5;
 				}
 			}
-			if (aEntity.motionZ == 0) {
+			if (Math.abs(aEntity.motionZ) < 0.5) {
 				int tAdd = (aEntity.posZ >= aZ + 0.5 ? +1 : -1);
 				if (       !WD.opq(aWorld, aX, aY, aZ+tAdd  , F, F) && !WD.hasCollide(aWorld, aX, aY+1, aZ+tAdd  )) {
-					aEntity.motionZ = +tAdd * 0.25;
+					aEntity.motionZ = +tAdd*0.5;
+					aEntity.motionY = -0.5;
 				} else if (!WD.opq(aWorld, aX, aY, aZ-tAdd  , F, F) && !WD.hasCollide(aWorld, aX, aY+1, aZ-tAdd  )) {
-					aEntity.motionZ = -tAdd * 0.25;
+					aEntity.motionZ = -tAdd*0.5;
+					aEntity.motionY = -0.5;
 				} else if (!WD.opq(aWorld, aX, aY, aZ+tAdd*2, F, F) && !WD.hasCollide(aWorld, aX, aY+1, aZ+tAdd*2)) {
-					aEntity.motionZ = +tAdd * 0.25;
+					aEntity.motionZ = +tAdd*0.5;
+					aEntity.motionY = -0.5;
 				} else if (!WD.opq(aWorld, aX, aY, aZ-tAdd*2, F, F) && !WD.hasCollide(aWorld, aX, aY+1, aZ-tAdd*2)) {
-					aEntity.motionZ = -tAdd * 0.25;
+					aEntity.motionZ = -tAdd*0.5;
+					aEntity.motionY = -0.5;
 				}
 			}
 		}

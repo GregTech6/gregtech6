@@ -148,7 +148,7 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		// Platforms for Mobs to spawn on.
 		final int[] tPlatforms = { 3, 4, 5, 6, 9,10,11,12};
 		for (int tY = 12; tY < 42; tY++) if (tY % 3 == 0) {
-			for (int i : tPlatforms) for (int j : tPlatforms) aData.mossycobble(aX+ i, tY, aZ+ j);
+			for (int i = 3; i <= 12; i++) if (i != 7 && i != 8) for (int j = 1; j <= 14; j++) aData.mossycobble(aX+ i, tY, aZ+ j);
 			/* No longer needed to make this work thanks to Mossy Cobble pushing Entities off.
 			for (int i : tPlatforms) {
 				aData.set(aX+ i, tY, aZ+ 2, Blocks.trapdoor, 12); aData.set(aX+ i, tY, aZ+ 8, Blocks.trapdoor, 12);
