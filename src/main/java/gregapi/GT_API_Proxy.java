@@ -699,7 +699,43 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					break;
 				}
 			}
+			
 			if (aEvent.side.isServer()) {
+				/** This cannot work the way I hoped it would, would despawn way too few mobs...
+				if (SERVER_TIME % 100 == 0) {
+					DEB.println("==========");
+					DEB.println("TEST START");
+					DEB.println("==========");
+					Iterator<EntityLiving>
+					tIterator = mMobsToFastDespawn.iterator();
+					while (tIterator.hasNext()) {
+						EntityLiving tEntity = tIterator.next();
+						if (tEntity.isDead) {
+							DEB.println(tEntity.getClass() + "     " + tEntity.getAge() + "     " + tEntity.ticksExisted + "     DEAD");
+							tIterator.remove();
+						} else if (tEntity.isNoDespawnRequired()) {
+							DEB.println(tEntity.getClass() + "     " + tEntity.getAge() + "     " + tEntity.ticksExisted + "     PERSISTENT");
+							tIterator.remove();
+						} else if (tEntity.ticksExisted != tEntity.getAge()) {
+							DEB.println(tEntity.getClass() + "     " + tEntity.getAge() + "     " + tEntity.ticksExisted + "     GOT CLOSE TO PLAYER");
+							tIterator.remove();
+						} else {
+							DEB.println(tEntity.getClass() + "     " + tEntity.getAge() + "     " + tEntity.ticksExisted);
+						}
+					}
+					DEB.println("====01====");
+					DEB.println("List Changed: " + mMobsToFastDespawn.removeAll(aEvent.player.worldObj.getEntitiesWithinAABBExcludingEntity(aEvent.player, AxisAlignedBB.getBoundingBox(aEvent.player.posX-32, aEvent.player.posY-32, aEvent.player.posZ-32, aEvent.player.posX+32, aEvent.player.posY+32, aEvent.player.posZ+32))));
+					DEB.println("====02====");
+					tIterator = mMobsToFastDespawn.iterator();
+					while (tIterator.hasNext()) {
+						EntityLiving tEntity = tIterator.next();
+						DEB.println(tEntity.getClass() + "     " + tEntity.getAge() + "     " + tEntity.ticksExisted);
+					}
+					DEB.println("==========");
+					DEB.println("TEST END");
+					DEB.println("==========");
+				}
+				*/
 				if (SURVIVAL_INTO_ADVENTURE_MODE && aEvent.player.ticksExisted%200==0 && aEvent.player.capabilities.allowEdit && !UT.Entities.isCreative(aEvent.player)) {
 					aEvent.player.setGameType(WorldSettings.GameType.ADVENTURE);
 					aEvent.player.capabilities.allowEdit = F;
@@ -726,6 +762,8 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						}
 					}
 				}
+				
+				
 				final boolean tHungerEffect = (HUNGER_BY_INVENTORY_WEIGHT && aEvent.player.ticksExisted % 2400 == 1200), tBetweenlands = WD.dimBTL(aEvent.player.worldObj.provider);//, tCrazyJ1984 = "CrazyJ1984".equalsIgnoreCase(aEvent.player.getCommandSenderName());
 				if (aEvent.player.ticksExisted % 120 == 0) {
 					ItemStack tStack;
@@ -1430,7 +1468,11 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		}
 		if (GENERATE_STREETS && (UT.Code.inside(-48, 48, aX) || UT.Code.inside(-48, 48, aZ))) {aEvent.setResult(Result.DENY); return;}
 		if (SPAWN_ZONE_MOB_PROTECTION && UT.Code.inside(-144, 144, aX-aWorld.getWorldInfo().getSpawnX()) && UT.Code.inside(-144, 144, aZ-aWorld.getWorldInfo().getSpawnZ()) && WD.opq(aWorld, aX, 0, aZ, F, F)) {aEvent.setResult(Result.DENY); return;}
+		
+		//if (aEvent.entity instanceof EntityMob && !(aEvent.entity instanceof IBossDisplayData) && ((EntityMob)aEvent.entity).getCanSpawnHere()) mMobsToFastDespawn.add((EntityLiving)aEvent.entityLiving);
 	}
+	
+	//public static List<EntityLiving> mMobsToFastDespawn = new ArrayListNoNulls<>();
 	
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onEntityConstructingEvent(EntityConstructing aEvent) {
