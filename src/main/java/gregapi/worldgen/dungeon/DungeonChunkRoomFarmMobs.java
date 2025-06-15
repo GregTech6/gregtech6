@@ -148,13 +148,14 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		// Platforms for Mobs to spawn on.
 		final int[] tPlatforms = { 3, 4, 5, 6, 9,10,11,12};
 		for (int tY = 12; tY < 42; tY++) if (tY % 3 == 0) {
-			for (int i : tPlatforms) for (int j : tPlatforms) aData.cobbles(aX+ i, tY, aZ+ j);
+			for (int i : tPlatforms) for (int j : tPlatforms) aData.mossycobble(aX+ i, tY, aZ+ j);
+			/* No longer needed to make this work thanks to Mossy Cobble pushing Entities off.
 			for (int i : tPlatforms) {
 				aData.set(aX+ i, tY, aZ+ 2, Blocks.trapdoor, 12); aData.set(aX+ i, tY, aZ+ 8, Blocks.trapdoor, 12);
 				aData.set(aX+ i, tY, aZ+13, Blocks.trapdoor, 13); aData.set(aX+ i, tY, aZ+ 7, Blocks.trapdoor, 13);
 				aData.set(aX+ 2, tY, aZ+ i, Blocks.trapdoor, 14); aData.set(aX+ 8, tY, aZ+ i, Blocks.trapdoor, 14);
 				aData.set(aX+13, tY, aZ+ i, Blocks.trapdoor, 15); aData.set(aX+ 7, tY, aZ+ i, Blocks.trapdoor, 15);
-			}
+			}*/
 		}
 		
 		// Blue or Red Steel Omni-Spikes, so all possible Mobs are taken care of!
