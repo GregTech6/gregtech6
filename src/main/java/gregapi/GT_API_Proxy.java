@@ -539,6 +539,36 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		
 		if (aEvent.entityLiving.onGround) {
 			tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ);
+			if (!WD.hasCollide(aEvent.entityLiving.worldObj, tX, tY, tZ, tBlock)) {
+				int tAddX = (aEvent.entityLiving.posX >= tX + 0.5 ? +1 : -1), tAddZ = (aEvent.entityLiving.posZ >= tZ + 0.5 ? +1 : -1);
+				tBlock = aEvent.entityLiving.worldObj.getBlock(tX+tAddX, tY, tZ);
+				if (WD.hasCollide(aEvent.entityLiving.worldObj, tX+tAddX, tY, tZ, tBlock)) {
+					tX += tAddX;
+				} else {
+					tBlock = aEvent.entityLiving.worldObj.getBlock(tX, tY, tZ+tAddZ);
+					if (WD.hasCollide(aEvent.entityLiving.worldObj, tX, tY, tZ+tAddZ, tBlock)) {
+						tZ += tAddZ;
+					} else {
+						tBlock = aEvent.entityLiving.worldObj.getBlock(tX+tAddX, tY, tZ+tAddZ);
+						if (WD.hasCollide(aEvent.entityLiving.worldObj, tX+tAddX, tY, tZ+tAddZ, tBlock)) {
+							tX += tAddX;
+							tZ += tAddZ;
+						} else {
+							tBlock = NB;
+						}
+					}
+				}
+			}
+			
+			for (int i : (aEvent.entityLiving.posX >= tX + 0.5 ? SCAN_POS_1 : SCAN_NEG_1)) for (int j : (aEvent.entityLiving.posZ >= tZ + 0.5 ? SCAN_POS_1 : SCAN_NEG_1)) {
+				tBlock = aEvent.entityLiving.worldObj.getBlock(tX+i, tY, tZ+j);
+				if (WD.hasCollide(aEvent.entityLiving.worldObj, tX+i, tY, tZ+j, tBlock)) {
+					tX += i; tZ += j;
+					break;
+				}
+			}
+			
+			
 			// walk over special Blocks.
 			if (tBlock instanceof IBlockOnWalkOver) ((IBlockOnWalkOver)tBlock).onWalkOver(aEvent.entityLiving, aEvent.entityLiving.worldObj, tX, tY, tZ);
 			// Only Serverside for this Stuff.
