@@ -78,6 +78,7 @@ public class LoaderOreDictReRegistrations implements Runnable {
 		OreDictManager.INSTANCE.addAutoBlackListing(OD.paneGlass);
 		OreDictManager.INSTANCE.addAutoBlackListing(OD.glass);
 		
+		OreDictManager.INSTANCE.addAutoBlackListingForMod(MD.EC3.mID);
 		OreDictManager.INSTANCE.addAutoBlackListingForMod(MD.TFC.mID);
 		OreDictManager.INSTANCE.addAutoBlackListingForMod(MD.TFCP.mID);
 		

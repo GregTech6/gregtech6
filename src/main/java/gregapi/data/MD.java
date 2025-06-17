@@ -289,5 +289,7 @@ public class MD {
 	, GC_EXTRAPLANETS   = new ModData(ModIDs.GC_EXTRAPLANETS    , "Extra Planets")
 	, VULPES            = new ModData(ModIDs.VULPES             , "Lib Vulpes")
 	, MD8               = new ModData(ModIDs.MD8                , "Micdoodle8 Core")
+	
+	, EC3               = new ModData("essentialcraft"          , "EssentialCraft")
 	;
 }
