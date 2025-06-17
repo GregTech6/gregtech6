@@ -290,6 +290,9 @@ public class ST {
 	public static boolean use(Entity aPlayer, boolean aRemove, ItemStack aStack, long aAmount) {
 		return use(aPlayer, aRemove, T, aStack, aAmount);
 	}
+	public static boolean use(Entity aPlayer, boolean aRemove, boolean aTriggerEvent, ItemStack aStack) {
+		return use(aPlayer, aRemove, aTriggerEvent, aStack, 1);
+	}
 	public static boolean use(Entity aPlayer, boolean aRemove, boolean aTriggerEvent, ItemStack aStack, long aAmount) {
 		if (UT.Entities.hasInfiniteItems(aPlayer)) return T;
 		if (invalid(aStack)) return F;
