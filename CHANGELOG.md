@@ -9,7 +9,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] GT6 Mossy Cobble (Not Vanilla Mossy Cobble) will make you (and Mobs) slide off if you are not sneaking. This Block spawns Mobs AND makes them slide off if there is space, which is Ideal for Mob Farms.
 [ADDED] Steel Rope, which is just another type of Rope.
 [ADDED] Ultimet Boilers corresponding to the TaHFC Burning Boxes.
-[ADDED] Yellow and Brown Grass now indicate Lava, Gas and Oil Springs.
+[ADDED] Yellow and Brown Grass now indicate Lava, Gas and Oil Springs. Greener Grass indicates Water Springs.
 
 
 6.17.05:

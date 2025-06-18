@@ -84,15 +84,15 @@ public class WorldgenFluidSpring extends WorldgenObject {
 		case  1: case  2: case  3:
 			int tMinHeight = Math.min(aWorld.getHeight()-2, WD.waterLevel(aWorld)-1)
 			,   tMaxHeight = Math.min(aWorld.getHeight()-1, tMinHeight * 2 + 16);
-			for (int i = 0; i < 8; i++) {
+			for (int i = 0; i < 6; i++) {
 				int tX = aMinX+4+aRandom.nextInt(8), tZ = aMinZ+4+aRandom.nextInt(8);
 				for (int tY = tMaxHeight; tY > tMinHeight; tY--) {
 					Block tContact = aWorld.getBlock(tX, tY, tZ);
 					if (tContact.getMaterial().isLiquid() || tContact == Blocks.farmland) break;
 					if (!tContact.isOpaqueCube() || tContact.isWood(aWorld, tX, tY, tZ) || tContact.isLeaves(aWorld, tX, tY, tZ)) continue;
 					if (!BlocksGT.plantableGrass.contains(tContact)) break;
-					for (int a = -2; a <= 2; a++) for (int b = -2; b <= 2; b++) for (int c = -1; c <= 1; c++) if (c < 0 || a*a+b*b <= 5) if (BlocksGT.plantableGrass.contains(aWorld.getBlock(tX+a, tY+c, tZ+b))) {
-						WD.set(aWorld, tX+a, tY+c, tZ+b, BlocksGT.Grass, mIndicatorType == 3 ? 0 : 3+mIndicatorType, 0);
+					for (int a = -1; a <= 1; a++) for (int b = -1; b <= 1; b++) if (aRandom.nextBoolean()) if (BlocksGT.plantableGrass.contains(aWorld.getBlock(tX+a, tY, tZ+b))) {
+						WD.set(aWorld, tX+a, tY, tZ+b, BlocksGT.Grass, mIndicatorType == 3 ? 0 : 3+mIndicatorType, 0);
 					}
 					break;
 				}
