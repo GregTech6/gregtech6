@@ -19,7 +19,6 @@
 
 package gregtech.items.behaviors;
 
-import gregapi.data.CS.*;
 import gregapi.data.IL;
 import gregapi.data.LH;
 import gregapi.item.multiitem.MultiItem;
@@ -157,6 +156,8 @@ public class Behavior_Spray_Color extends AbstractBehaviorDefault {
 				case DYE_INDEX_Lime     : return aWorld.setBlock(aX, aY, aZ, BlocksGT.Grass, 1, 3);
 				case DYE_INDEX_Black    : return aWorld.setBlock(aX, aY, aZ, BlocksGT.Grass, 2, 3);
 				case DYE_INDEX_LightGray: return aWorld.setBlock(aX, aY, aZ, BlocksGT.Grass, 3, 3);
+				case DYE_INDEX_Yellow   : return aWorld.setBlock(aX, aY, aZ, BlocksGT.Grass, 4, 3);
+				case DYE_INDEX_Brown    : return aWorld.setBlock(aX, aY, aZ, BlocksGT.Grass, 5, 3);
 				default: return F;
 				}
 			}

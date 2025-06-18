@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -20,7 +20,6 @@
 package gregtech.blocks;
 
 import gregapi.block.BlockBaseMeta;
-import gregapi.data.CS.*;
 import gregapi.data.LH;
 import gregapi.data.RM;
 import gregapi.old.Textures;
@@ -46,7 +45,7 @@ import static gregapi.data.CS.*;
 
 public class BlockGrass extends BlockBaseMeta {
 	public BlockGrass(String aUnlocalised) {
-		super(null, aUnlocalised, Material.grass, soundTypeGrass, 4, Textures.BlockIcons.GRASSES_TOP);
+		super(null, aUnlocalised, Material.grass, soundTypeGrass, 6, Textures.BlockIcons.GRASSES_TOP);
 		LH.add(getUnlocalizedName()+ ".0", "Grass");
 		LH.add(getUnlocalizedName()+ ".1", "Grass");
 		LH.add(getUnlocalizedName()+ ".2", "Grass");
@@ -77,6 +76,8 @@ public class BlockGrass extends BlockBaseMeta {
 		CR.shapeless(ST.make(this, 8, 1), new Object[] {Blocks.grass, Blocks.grass, Blocks.grass, DYE_OREDICTS[DYE_INDEX_Lime     ], Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass});
 		CR.shapeless(ST.make(this, 8, 2), new Object[] {Blocks.grass, Blocks.grass, Blocks.grass, DYE_OREDICTS[DYE_INDEX_Black    ], Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass});
 		CR.shapeless(ST.make(this, 8, 3), new Object[] {Blocks.grass, Blocks.grass, Blocks.grass, DYE_OREDICTS[DYE_INDEX_LightGray], Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass});
+		CR.shapeless(ST.make(this, 8, 4), new Object[] {Blocks.grass, Blocks.grass, Blocks.grass, DYE_OREDICTS[DYE_INDEX_Yellow   ], Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass});
+		CR.shapeless(ST.make(this, 8, 5), new Object[] {Blocks.grass, Blocks.grass, Blocks.grass, DYE_OREDICTS[DYE_INDEX_Brown    ], Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass});
 		
 		if (COMPAT_FR  != null) COMPAT_FR.addToBackpacks("digger", ST.make(this, 1, W));
 	}

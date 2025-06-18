@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,6 @@
 
 package gregtech.worldgen;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
-import gregapi.data.CS.BlocksGT;
 import gregapi.data.IL;
 import gregapi.util.ST;
 import gregapi.util.UT;
@@ -40,21 +33,28 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import static gregapi.data.CS.*;
+
 /**
  * @author Gregorius Techneticies
  */
 public class WorldgenFluidSpring extends WorldgenObject {
-	public final int mMeta, mProbability;
+	public final int mMeta, mProbability, mIndicatorType;
 	public final FluidStack mSpringFluid;
 	public final Block mBlock;
 	
-	@SafeVarargs
-	public WorldgenFluidSpring(String aName, boolean aDefault, Block aBlock, int aMeta, int aProbability, FluidStack aSpringFluid, List<WorldgenObject>... aLists) {
+	@SafeVarargs public WorldgenFluidSpring(String aName, boolean aDefault, Block aBlock, int aMeta, int aProbability, FluidStack aSpringFluid, List<WorldgenObject>... aLists) {this(aName, aDefault, aBlock, aMeta, aProbability, 0, aSpringFluid, aLists);}
+	@SafeVarargs public WorldgenFluidSpring(String aName, boolean aDefault, Block aBlock, int aMeta, int aProbability, int aIndicatorType, FluidStack aSpringFluid, List<WorldgenObject>... aLists) {
 		super(aName, aDefault, aLists);
-		mSpringFluid = aSpringFluid;
-		mBlock       = ST.valid(aBlock)?aBlock:Blocks.water;
-		mMeta        = UT.Code.bind4(aMeta);
-		mProbability = getConfigFile().get(mCategory, "Probability", aProbability);
+		mSpringFluid   = aSpringFluid;
+		mBlock         = ST.valid(aBlock)?aBlock:Blocks.water;
+		mMeta          = UT.Code.bind4(aMeta);
+		mIndicatorType = aIndicatorType;
+		mProbability   = getConfigFile().get(mCategory, "Probability", aProbability);
 	}
 	
 	@Override
@@ -77,6 +77,27 @@ public class WorldgenFluidSpring extends WorldgenObject {
 			if (mSpringFluid != null && i > 2 && aRandom.nextInt(16) == 0 && WD.bedrock(aWorld, tX, 0, tZ)) {
 				MultiTileEntityFluidSpring.setBlock(aWorld, tX, 0, tZ, mSpringFluid);
 			}
+		}
+		
+		switch (mIndicatorType) {
+		// Yellow or Brown Grass.
+		case  1: case  2:
+			int tMinHeight = Math.min(aWorld.getHeight()-2, WD.waterLevel(aWorld)-1)
+			,   tMaxHeight = Math.min(aWorld.getHeight()-1, tMinHeight * 2 + 16);
+			for (int i = 0; i < 8; i++) {
+				int tX = aMinX+4+aRandom.nextInt(8), tZ = aMinZ+4+aRandom.nextInt(8);
+				for (int tY = tMaxHeight; tY > tMinHeight; tY--) {
+					Block tContact = aWorld.getBlock(tX, tY, tZ);
+					if (tContact.getMaterial().isLiquid() || tContact == Blocks.farmland) break;
+					if (!tContact.isOpaqueCube() || tContact.isWood(aWorld, tX, tY, tZ) || tContact.isLeaves(aWorld, tX, tY, tZ)) continue;
+					if (!BlocksGT.plantableGrass.contains(tContact)) break;
+					WD.set(aWorld, tX, tY, tZ, BlocksGT.Grass, 3+mIndicatorType, 0);
+					break;
+				}
+			}
+			break;
+		default:
+			break;
 		}
 		
 		return T;
