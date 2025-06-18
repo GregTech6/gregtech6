@@ -81,7 +81,7 @@ public class WorldgenFluidSpring extends WorldgenObject {
 		
 		switch (mIndicatorType) {
 		// Yellow or Brown Grass.
-		case  1: case  2:
+		case  1: case  2: case  3:
 			int tMinHeight = Math.min(aWorld.getHeight()-2, WD.waterLevel(aWorld)-1)
 			,   tMaxHeight = Math.min(aWorld.getHeight()-1, tMinHeight * 2 + 16);
 			for (int i = 0; i < 8; i++) {
@@ -91,7 +91,9 @@ public class WorldgenFluidSpring extends WorldgenObject {
 					if (tContact.getMaterial().isLiquid() || tContact == Blocks.farmland) break;
 					if (!tContact.isOpaqueCube() || tContact.isWood(aWorld, tX, tY, tZ) || tContact.isLeaves(aWorld, tX, tY, tZ)) continue;
 					if (!BlocksGT.plantableGrass.contains(tContact)) break;
-					WD.set(aWorld, tX, tY, tZ, BlocksGT.Grass, 3+mIndicatorType, 0);
+					for (int a = -2; a <= 2; a++) for (int b = -2; b <= 2; b++) for (int c = -1; c <= 1; c++) if (c < 0 || a*a+b*b <= 5) if (BlocksGT.plantableGrass.contains(aWorld.getBlock(tX+a, tY+c, tZ+b))) {
+						WD.set(aWorld, tX+a, tY+c, tZ+b, BlocksGT.Grass, mIndicatorType == 3 ? 0 : 3+mIndicatorType, 0);
+					}
 					break;
 				}
 			}
