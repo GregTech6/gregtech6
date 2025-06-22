@@ -61,7 +61,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.MovingObjectPosition;
@@ -352,13 +351,6 @@ public abstract class GT_Proxy extends Abstract_Proxy {
 		if (aEvent.entity == null) return;
 		
 		if (aEvent.entity instanceof EntityLiving) {
-			// Set Drop Rate of Wooden and Stone Tools to zero.
-			try {for (int i = 0; i <= 4; i++) {
-				Item tItem = ST.item(((EntityLiving)aEvent.entity).getEquipmentInSlot(i));
-				if (tItem == Items.wooden_sword || tItem == Items.wooden_pickaxe || tItem == Items.wooden_shovel || tItem == Items.wooden_axe || tItem == Items.wooden_hoe || tItem == Items.stone_sword || tItem == Items.stone_pickaxe || tItem == Items.stone_shovel || tItem == Items.stone_axe || tItem == Items.stone_hoe)
-				((EntityLiving)aEvent.entity).setEquipmentDropChance(i, 0);
-			}} catch(Throwable e) {/** I bet this can end up with out-of-bounds Errors so better try/catch it */}
-			
 			// AI Tasks for Entities
 			EntityAITasks tTasks = ((EntityLiving)aEvent.entity).tasks;
 			if (tTasks != null) {

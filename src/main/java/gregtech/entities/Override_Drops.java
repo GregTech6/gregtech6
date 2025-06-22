@@ -670,11 +670,15 @@ public class Override_Drops {
 		
 		while (aDrops.remove(null));
 		
-		if (aDead instanceof EntityLiving) try {for (int i = 0; i <= 4; i++) {
-			Item tItem = ST.item(aDead.getEquipmentInSlot(i));
-			if (tItem == Items.wooden_sword || tItem == Items.wooden_pickaxe || tItem == Items.wooden_shovel || tItem == Items.wooden_axe || tItem == Items.wooden_hoe || tItem == Items.stone_sword || tItem == Items.stone_pickaxe || tItem == Items.stone_shovel || tItem == Items.stone_axe || tItem == Items.stone_hoe)
-			((EntityLiving)aDead).setEquipmentDropChance(i, 0);
-		}} catch(Throwable e) {/** I bet this can end up with out-of-bounds Errors so better try/catch it */}
+		if (!aPlayerKill) for (Object tEntity : aDead.worldObj.getEntitiesWithinAABBExcludingEntity(aDead, aDead.boundingBox)) if (tEntity instanceof EntityItem) {ItemStack tStack = ((EntityItem)tEntity).getEntityItem(); if (ST.valid(tStack)) {
+			// Replace stupid Wooden and Stone Tools that clutter up Mob Farms for no reason, but only if nonplayerkill.
+			Item tItem = ST.item_(tStack);
+			if (tItem == Items.wooden_sword || tItem == Items.wooden_pickaxe || tItem == Items.wooden_shovel || tItem == Items.wooden_axe || tItem == Items.wooden_hoe) {
+				ST.set(tStack, IL.Stick.get(1));
+			} else if (tItem == Items.stone_sword || tItem == Items.stone_pickaxe || tItem == Items.stone_shovel || tItem == Items.stone_axe || tItem == Items.stone_hoe) {
+				ST.set(tStack, IL.Stick.get(2));
+			}
+		}}
 		
 		if (!(aDead instanceof EntityPlayer)) for (EntityItem tEntity : aDrops) if (tEntity != null) {ItemStack tStack = tEntity.getEntityItem(); if (ST.valid(tStack)) {
 			// Replace stupid Wooden and Stone Tools that clutter up Mob Farms for no reason, but only if nonplayerkill.
