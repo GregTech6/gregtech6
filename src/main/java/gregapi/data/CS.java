@@ -867,10 +867,10 @@ public class CS {
 	/** Date based Shenanigans */
 	@SuppressWarnings("deprecation")
 	public static boolean
-	APRIL_FOOLS      = (new Date().getMonth() ==  3 && new Date().getDate() <=  2),
-	WOODMANS_BDAY    = (new Date().getMonth() ==  5 && new Date().getDate() >= 21),
-	XMAS_IN_JULY     = (new Date().getMonth() ==  6 && new Date().getDate() >= 23),
-	XMAS_IN_DECEMBER = (new Date().getMonth() == 11 && new Date().getDate() >=  6);
+	APRIL_FOOLS      = (new Date().getMonth()+1 ==  4 && new Date().getDate() <=  2),//  1st of April   , first two days of the month
+	WOODMANS_BDAY    = (new Date().getMonth()+1 ==  6 && new Date().getDate() >= 20),// 21st of June    , one day early then til end of month
+	XMAS_IN_JULY     = (new Date().getMonth()+1 ==  7 && new Date().getDate() >= 23),// 24th of July    , one day early then til end of month
+	XMAS_IN_DECEMBER = (new Date().getMonth()+1 == 12 && new Date().getDate() >=  5);//  6th of December, one day early then til end of month
 	/** This means that Client or Server specific Base Files are definitely existing and loaded! Not if the World is actually client side or server side! */
 	public static boolean CODE_UNCHECKED = T, CODE_CLIENT = F, CODE_SERVER = F;
 	
