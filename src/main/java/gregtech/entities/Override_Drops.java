@@ -670,90 +670,92 @@ public class Override_Drops {
 		
 		while (aDrops.remove(null));
 		
-		if (!aPlayerKill) for (Object tEntity : aDead.worldObj.getEntitiesWithinAABBExcludingEntity(aDead, aDead.boundingBox)) if (tEntity instanceof EntityItem) {ItemStack tStack = ((EntityItem)tEntity).getEntityItem(); if (ST.valid(tStack)) {
-			// Replace stupid Wooden and Stone Tools that clutter up Mob Farms for no reason, but only if nonplayerkill.
-			Item tItem = ST.item_(tStack);
-			if (tItem == Items.wooden_sword || tItem == Items.wooden_pickaxe || tItem == Items.wooden_shovel || tItem == Items.wooden_axe || tItem == Items.wooden_hoe) {
-				ST.set(tStack, IL.Stick.get(1));
-			} else if (tItem == Items.stone_sword || tItem == Items.stone_pickaxe || tItem == Items.stone_shovel || tItem == Items.stone_axe || tItem == Items.stone_hoe) {
-				ST.set(tStack, IL.Stick.get(2));
-			}
-		}}
-		
-		if (!(aDead instanceof EntityPlayer)) for (EntityItem tEntity : aDrops) if (tEntity != null) {ItemStack tStack = tEntity.getEntityItem(); if (ST.valid(tStack)) {
-			// Replace stupid Wooden and Stone Tools that clutter up Mob Farms for no reason, but only if nonplayerkill.
-			if (!aPlayerKill) {
+		if (!(aDead instanceof EntityPlayer)) {
+			/*if (!aPlayerKill)*/ for (Object tEntity : aDead.worldObj.getEntitiesWithinAABBExcludingEntity(aDead, aDead.boundingBox.expand(2,2,2))) if (tEntity instanceof EntityItem) {ItemStack tStack = ((EntityItem)tEntity).getEntityItem(); if (ST.valid(tStack)) {
+				// Replace stupid Wooden and Stone Tools that clutter up Mob Farms for no reason, but only if nonplayerkill.
 				Item tItem = ST.item_(tStack);
 				if (tItem == Items.wooden_sword || tItem == Items.wooden_pickaxe || tItem == Items.wooden_shovel || tItem == Items.wooden_axe || tItem == Items.wooden_hoe) {
 					ST.set(tStack, IL.Stick.get(1));
 				} else if (tItem == Items.stone_sword || tItem == Items.stone_pickaxe || tItem == Items.stone_shovel || tItem == Items.stone_axe || tItem == Items.stone_hoe) {
 					ST.set(tStack, IL.Stick.get(2));
 				}
-			}
-			// Replace some of the Arrows with Headless Arrows.
-			if (MOBS_DROP_JUNK && ST.item_(tStack) == Items.arrow && RNGSUS.nextInt(aLooting * 2 + 4) < 3) {
-				ST.set(tStack, OP.arrowGtWood.mat(MT.Empty, 1), F, F);
-			}
-			// Replace Iron and Steel with Lead.
-			if (MOBS_DROP_LEAD && tReplaceIron) {
-				if (OM.is("plateAnyIronOrSteel", tStack)) {
-					ST.set(tStack, OP.plate.mat(MT.Pb, 1), F, F);
-				} else
-				if (OM.is("ingotAnyIronOrSteel", tStack)) {
-					ST.set(tStack, OP.ingot.mat(MT.Pb, 1), F, F);
-				} else
-				if (OM.is("chunkGtAnyIronOrSteel", tStack)) {
-					ST.set(tStack, OP.chunkGt.mat(MT.Pb, 1), F, F);
-				} else
-				if (OM.is("nuggetAnyIronOrSteel", tStack)) {
-					ST.set(tStack, OP.nugget.mat(MT.Pb, 1), F, F);
-				}
-			}
-			// Give Meat more variety! :D
-			if (MOBS_DROP_MEAT && !OD.listAllmeatsubstitute.is(tStack)) {
-				if (RNGSUS.nextInt(3) == 0 && (OM.is("listAllmeatraw", tStack) || OM.is("listAllmeatcooked", tStack))) tIntestinesAmount++;
-				if (ST.item_(tStack) == Items.fish) {
-					if (aBurn) ST.set(tStack, RM.get_smelting(tStack), F, F); break;
-				}
-				if (ST.item_(tStack) == Items.porkchop) {
-					switch(tRandomNumber%3) {
-					case 0: ST.set(tStack, (aBurn?IL.Food_Ham_Cooked:IL.Food_Ham_Raw).get(1), F, F); break;
-					case 1: ST.set(tStack, (aBurn?IL.Food_Bacon_Cooked:IL.Food_Bacon_Raw).get(UT.Code.bindStack(tStack.stackSize * (3+RNGSUS.nextInt(3)))), T, F); break;
-					}
-				} else
-				if (ST.item_(tStack) == Items.cooked_porkchop) {
-					switch(tRandomNumber%3) {
-					case 0: ST.set(tStack, IL.Food_Ham_Cooked.get(1), F, F); break;
-					case 1: ST.set(tStack, IL.Food_Bacon_Cooked.get(UT.Code.bindStack(tStack.stackSize * (3L+RNGSUS.nextInt(3)))), T, F); break;
-					}
-				} else
-				if (OM.is("listAllbeefraw", tStack)) {
-					switch(tRandomNumber%3) {
-					case 0: ST.set(tStack, (aBurn?IL.Food_Rib_Cooked:IL.Food_Rib_Raw).get(1), F, F); break;
-					case 1: ST.set(tStack, (aBurn?IL.Food_RibEyeSteak_Cooked:IL.Food_RibEyeSteak_Raw).get(1), F, F); break;
-					}
-				} else
-				if (OM.is("listAllbeefcooked", tStack)) {
-					switch(tRandomNumber%3) {
-					case 0: ST.set(tStack, IL.Food_Rib_Cooked.get(1), F, F); break;
-					case 1: ST.set(tStack, IL.Food_RibEyeSteak_Cooked.get(1), F, F); break;
-					}
-				} else
-				if (OM.is("listAllhorseraw", tStack) || OM.is("listAllvenisonraw", tStack)) {
-					switch(tRandomNumber%2) {
-					case 0: ST.set(tStack, (aBurn?IL.Food_Rib_Cooked:IL.Food_Rib_Raw).get(1), F, F); break;
-					}
-				} else
-				if (OM.is("listAllhorsecooked", tStack) || OM.is("listAllvenisoncooked", tStack)) {
-					switch(tRandomNumber%2) {
-					case 0: ST.set(tStack, IL.Food_Rib_Cooked.get(1), F, F); break;
-					}
-				}
-			}
+			}}
 			
-			tEntity.setEntityItemStack(tStack);
-			tRandomNumber++;
-		}}
+			for (EntityItem tEntity : aDrops) if (tEntity != null) {ItemStack tStack = tEntity.getEntityItem(); if (ST.valid(tStack)) {
+				// Replace stupid Wooden and Stone Tools that clutter up Mob Farms for no reason, but only if nonplayerkill.
+				if (!aPlayerKill) {
+					Item tItem = ST.item_(tStack);
+					if (tItem == Items.wooden_sword || tItem == Items.wooden_pickaxe || tItem == Items.wooden_shovel || tItem == Items.wooden_axe || tItem == Items.wooden_hoe) {
+						ST.set(tStack, IL.Stick.get(1));
+					} else if (tItem == Items.stone_sword || tItem == Items.stone_pickaxe || tItem == Items.stone_shovel || tItem == Items.stone_axe || tItem == Items.stone_hoe) {
+						ST.set(tStack, IL.Stick.get(2));
+					}
+				}
+				// Replace some of the Arrows with Headless Arrows.
+				if (MOBS_DROP_JUNK && ST.item_(tStack) == Items.arrow && RNGSUS.nextInt(aLooting * 2 + 4) < 3) {
+					ST.set(tStack, OP.arrowGtWood.mat(MT.Empty, 1), F, F);
+				}
+				// Replace Iron and Steel with Lead.
+				if (MOBS_DROP_LEAD && tReplaceIron) {
+					if (OM.is("plateAnyIronOrSteel", tStack)) {
+						ST.set(tStack, OP.plate.mat(MT.Pb, 1), F, F);
+					} else
+					if (OM.is("ingotAnyIronOrSteel", tStack)) {
+						ST.set(tStack, OP.ingot.mat(MT.Pb, 1), F, F);
+					} else
+					if (OM.is("chunkGtAnyIronOrSteel", tStack)) {
+						ST.set(tStack, OP.chunkGt.mat(MT.Pb, 1), F, F);
+					} else
+					if (OM.is("nuggetAnyIronOrSteel", tStack)) {
+						ST.set(tStack, OP.nugget.mat(MT.Pb, 1), F, F);
+					}
+				}
+				// Give Meat more variety! :D
+				if (MOBS_DROP_MEAT && !OD.listAllmeatsubstitute.is(tStack)) {
+					if (RNGSUS.nextInt(3) == 0 && (OM.is("listAllmeatraw", tStack) || OM.is("listAllmeatcooked", tStack))) tIntestinesAmount++;
+					if (ST.item_(tStack) == Items.fish) {
+						if (aBurn) ST.set(tStack, RM.get_smelting(tStack), F, F); break;
+					}
+					if (ST.item_(tStack) == Items.porkchop) {
+						switch(tRandomNumber%3) {
+						case 0: ST.set(tStack, (aBurn?IL.Food_Ham_Cooked:IL.Food_Ham_Raw).get(1), F, F); break;
+						case 1: ST.set(tStack, (aBurn?IL.Food_Bacon_Cooked:IL.Food_Bacon_Raw).get(UT.Code.bindStack(tStack.stackSize * (3+RNGSUS.nextInt(3)))), T, F); break;
+						}
+					} else
+					if (ST.item_(tStack) == Items.cooked_porkchop) {
+						switch(tRandomNumber%3) {
+						case 0: ST.set(tStack, IL.Food_Ham_Cooked.get(1), F, F); break;
+						case 1: ST.set(tStack, IL.Food_Bacon_Cooked.get(UT.Code.bindStack(tStack.stackSize * (3L+RNGSUS.nextInt(3)))), T, F); break;
+						}
+					} else
+					if (OM.is("listAllbeefraw", tStack)) {
+						switch(tRandomNumber%3) {
+						case 0: ST.set(tStack, (aBurn?IL.Food_Rib_Cooked:IL.Food_Rib_Raw).get(1), F, F); break;
+						case 1: ST.set(tStack, (aBurn?IL.Food_RibEyeSteak_Cooked:IL.Food_RibEyeSteak_Raw).get(1), F, F); break;
+						}
+					} else
+					if (OM.is("listAllbeefcooked", tStack)) {
+						switch(tRandomNumber%3) {
+						case 0: ST.set(tStack, IL.Food_Rib_Cooked.get(1), F, F); break;
+						case 1: ST.set(tStack, IL.Food_RibEyeSteak_Cooked.get(1), F, F); break;
+						}
+					} else
+					if (OM.is("listAllhorseraw", tStack) || OM.is("listAllvenisonraw", tStack)) {
+						switch(tRandomNumber%2) {
+						case 0: ST.set(tStack, (aBurn?IL.Food_Rib_Cooked:IL.Food_Rib_Raw).get(1), F, F); break;
+						}
+					} else
+					if (OM.is("listAllhorsecooked", tStack) || OM.is("listAllvenisoncooked", tStack)) {
+						switch(tRandomNumber%2) {
+						case 0: ST.set(tStack, IL.Food_Rib_Cooked.get(1), F, F); break;
+						}
+					}
+				}
+				
+				tEntity.setEntityItemStack(tStack);
+				tRandomNumber++;
+			}}
+		}
 		
 		if (MOBS_DROP_MEAT) while (tIntestinesAmount-->0) aDrops.add(ST.entity(aDead, IL.Food_Scrap_Meat.get(1)));
 		
