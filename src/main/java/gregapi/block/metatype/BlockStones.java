@@ -647,36 +647,59 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 	public void onWalkOver(EntityLivingBase aEntity, World aWorld, int aX, int aY, int aZ) {
 		// Mossy Cobblestone is slightly slippery, unless you sneak on it.
 		if (!aEntity.isInWater() && !aEntity.isSneaking() && WD.meta(aWorld, aX, aY, aZ) == MCOBL) {
-			if (Math.abs(aEntity.motionX) < 0.15) {
-				int tAdd = (aEntity.posX >= aX + 0.5 ? +1 : -1);
-				if (       !WD.opq(aWorld, aX+tAdd  , aY, aZ, F, F) && !WD.hasCollide(aWorld, aX+tAdd  , aY+1, aZ)) {
-					aEntity.motionX = +tAdd*0.15;
-					aEntity.motionY = -0.5;
-				} else if (!WD.opq(aWorld, aX-tAdd  , aY, aZ, F, F) && !WD.hasCollide(aWorld, aX-tAdd  , aY+1, aZ)) {
-					aEntity.motionX = -tAdd*0.15;
-					aEntity.motionY = -0.5;
-				} else if (!WD.opq(aWorld, aX+tAdd*2, aY, aZ, F, F) && !WD.hasCollide(aWorld, aX+tAdd*2, aY+1, aZ)) {
-					aEntity.motionX = +tAdd*0.15;
-					aEntity.motionY = -0.5;
-				} else if (!WD.opq(aWorld, aX-tAdd*2, aY, aZ, F, F) && !WD.hasCollide(aWorld, aX-tAdd*2, aY+1, aZ)) {
-					aEntity.motionX = -tAdd*0.15;
-					aEntity.motionY = -0.5;
+			int tAddX = (aEntity.posX >= aX + 0.5 ? +1 : -1);
+			int tAddZ = (aEntity.posZ >= aZ + 0.5 ? +1 : -1);
+			double tSpeed = 0.15;
+			if (Math.abs(aEntity.motionX) < tSpeed) {
+				if (       !WD.opq(aWorld, aX+tAddX  , aY, aZ, F, F) && !WD.hasCollide(aWorld, aX+tAddX  , aY+1, aZ)) {
+					aEntity.motionX = +tAddX*tSpeed;
+				} else if (!WD.opq(aWorld, aX-tAddX  , aY, aZ, F, F) && !WD.hasCollide(aWorld, aX-tAddX  , aY+1, aZ)) {
+					aEntity.motionX = -tAddX*tSpeed;
+				} else if (!WD.opq(aWorld, aX+tAddX*2, aY, aZ, F, F) && !WD.hasCollide(aWorld, aX+tAddX*2, aY+1, aZ)) {
+					aEntity.motionX = +tAddX*tSpeed;
+				} else if (!WD.opq(aWorld, aX-tAddX*2, aY, aZ, F, F) && !WD.hasCollide(aWorld, aX-tAddX*2, aY+1, aZ)) {
+					aEntity.motionX = -tAddX*tSpeed;
 				}
 			}
-			if (Math.abs(aEntity.motionZ) < 0.15) {
-				int tAdd = (aEntity.posZ >= aZ + 0.5 ? +1 : -1);
-				if (       !WD.opq(aWorld, aX, aY, aZ+tAdd  , F, F) && !WD.hasCollide(aWorld, aX, aY+1, aZ+tAdd  )) {
-					aEntity.motionZ = +tAdd*0.15;
-					aEntity.motionY = -0.5;
-				} else if (!WD.opq(aWorld, aX, aY, aZ-tAdd  , F, F) && !WD.hasCollide(aWorld, aX, aY+1, aZ-tAdd  )) {
-					aEntity.motionZ = -tAdd*0.15;
-					aEntity.motionY = -0.5;
-				} else if (!WD.opq(aWorld, aX, aY, aZ+tAdd*2, F, F) && !WD.hasCollide(aWorld, aX, aY+1, aZ+tAdd*2)) {
-					aEntity.motionZ = +tAdd*0.15;
-					aEntity.motionY = -0.5;
-				} else if (!WD.opq(aWorld, aX, aY, aZ-tAdd*2, F, F) && !WD.hasCollide(aWorld, aX, aY+1, aZ-tAdd*2)) {
-					aEntity.motionZ = -tAdd*0.15;
-					aEntity.motionY = -0.5;
+			if (Math.abs(aEntity.motionZ) < tSpeed) {
+				if (       !WD.opq(aWorld, aX, aY, aZ+tAddZ  , F, F) && !WD.hasCollide(aWorld, aX, aY+1, aZ+tAddZ  )) {
+					aEntity.motionZ = +tAddZ*tSpeed;
+				} else if (!WD.opq(aWorld, aX, aY, aZ-tAddZ  , F, F) && !WD.hasCollide(aWorld, aX, aY+1, aZ-tAddZ  )) {
+					aEntity.motionZ = -tAddZ*tSpeed;
+				} else if (!WD.opq(aWorld, aX, aY, aZ+tAddZ*2, F, F) && !WD.hasCollide(aWorld, aX, aY+1, aZ+tAddZ*2)) {
+					aEntity.motionZ = +tAddZ*tSpeed;
+				} else if (!WD.opq(aWorld, aX, aY, aZ-tAddZ*2, F, F) && !WD.hasCollide(aWorld, aX, aY+1, aZ-tAddZ*2)) {
+					aEntity.motionZ = -tAddZ*tSpeed;
+				}
+			}
+			if (Math.abs(aEntity.motionX) < tSpeed && Math.abs(aEntity.motionZ) < tSpeed) {
+				if (       !WD.opq(aWorld, aX+tAddX  , aY, aZ+tAddZ  , F, F) && !WD.hasCollide(aWorld, aX+tAddX  , aY+1, aZ+tAddZ  )) {
+					aEntity.motionX = +tAddX*tSpeed;
+					aEntity.motionZ = +tAddZ*tSpeed;
+				} else if (!WD.opq(aWorld, aX-tAddX  , aY, aZ-tAddZ  , F, F) && !WD.hasCollide(aWorld, aX-tAddX  , aY+1, aZ-tAddZ  )) {
+					aEntity.motionX = -tAddX*tSpeed;
+					aEntity.motionZ = -tAddZ*tSpeed;
+				} else if (!WD.opq(aWorld, aX+tAddX*2, aY, aZ+tAddZ*2, F, F) && !WD.hasCollide(aWorld, aX+tAddX*2, aY+1, aZ+tAddZ*2)) {
+					aEntity.motionX = +tAddX*tSpeed;
+					aEntity.motionZ = +tAddZ*tSpeed;
+				} else if (!WD.opq(aWorld, aX-tAddX*2, aY, aZ-tAddZ*2, F, F) && !WD.hasCollide(aWorld, aX-tAddX*2, aY+1, aZ-tAddZ*2)) {
+					aEntity.motionX = -tAddX*tSpeed;
+					aEntity.motionZ = -tAddZ*tSpeed;
+				}
+			}
+			if (Math.abs(aEntity.motionX) < tSpeed && Math.abs(aEntity.motionZ) < tSpeed) {
+				if (       !WD.opq(aWorld, aX-tAddX  , aY, aZ+tAddZ  , F, F) && !WD.hasCollide(aWorld, aX-tAddX  , aY+1, aZ+tAddZ  )) {
+					aEntity.motionX = -tAddX*tSpeed;
+					aEntity.motionZ = +tAddZ*tSpeed;
+				} else if (!WD.opq(aWorld, aX+tAddX  , aY, aZ-tAddZ  , F, F) && !WD.hasCollide(aWorld, aX+tAddX  , aY+1, aZ-tAddZ  )) {
+					aEntity.motionX = +tAddX*tSpeed;
+					aEntity.motionZ = -tAddZ*tSpeed;
+				} else if (!WD.opq(aWorld, aX-tAddX*2, aY, aZ+tAddZ*2, F, F) && !WD.hasCollide(aWorld, aX-tAddX*2, aY+1, aZ+tAddZ*2)) {
+					aEntity.motionX = -tAddX*tSpeed;
+					aEntity.motionZ = +tAddZ*tSpeed;
+				} else if (!WD.opq(aWorld, aX+tAddX*2, aY, aZ-tAddZ*2, F, F) && !WD.hasCollide(aWorld, aX+tAddX*2, aY+1, aZ-tAddZ*2)) {
+					aEntity.motionX = +tAddX*tSpeed;
+					aEntity.motionZ = -tAddZ*tSpeed;
 				}
 			}
 		}
@@ -686,6 +709,7 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		LH.add("gt.tooltip.stone.mushroom.yes", "Mushrooms can spread to this rough Stone");
 		LH.add("gt.tooltip.stone.mushroom.no", "Mushrooms cant spread to smooth Stones!");
 		LH.add("gt.tooltip.stone.moss.bonemeal", "Use Bonemeal or similar to spread the Moss");
+		LH.add("gt.tooltip.stone.moss.slippery", "Slippery when near an Abyss (Ideal for Mob Farms)");
 	}
 	
 	@Override
@@ -698,6 +722,9 @@ public class BlockStones extends BlockMetaType implements IOreDictListenerEvent,
 		}
 		if (MOSSY[aMeta]) {
 			aList.add(LH.Chat.DGREEN + LH.get("gt.tooltip.stone.moss.bonemeal"));
+		}
+		if (aMeta == MCOBL) {
+			aList.add(LH.Chat.ORANGE + LH.get("gt.tooltip.stone.moss.slippery"));
 		}
 	}
 	
