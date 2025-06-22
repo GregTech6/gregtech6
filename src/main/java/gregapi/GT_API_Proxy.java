@@ -1369,7 +1369,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				if (ST.meta_(aStack) == W || aItem == Items.gold_nugget) ST.meta(aStack, 0);
 				if (ST.meta_(aStack) == 0 && aItem == IL.TF_Mushgloom.item()) ST.meta(aStack, 9);
 				// Check if this is likely a badly implemented Mob Drop from Mo'Creatures.
-				if (null != aEvent.entity.worldObj.findNearestEntityWithinAABB(EntityCreature.class, aEvent.entity.boundingBox.expand(5,11,5), aEvent.entity)) {
+				if (null != aEvent.entity.worldObj.findNearestEntityWithinAABB(EntityCreature.class, aEvent.entity.boundingBox.expand(0.5,1.0,0.5), aEvent.entity)) {
 					// Replace stupid Wooden and Stone Tools that clutter up Mob Farms for no reason, but only if nonplayerkill.
 					if (aItem == Items.wooden_sword || aItem == Items.wooden_pickaxe || aItem == Items.wooden_shovel || aItem == Items.wooden_axe || aItem == Items.wooden_hoe) {
 						ST.set(aStack, IL.Stick.get(1));
