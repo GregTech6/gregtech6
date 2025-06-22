@@ -146,16 +146,9 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		}
 		
 		// Platforms for Mobs to spawn on.
-		final int[] tPlatforms = { 3, 4, 5, 6, 9,10,11,12};
+		final boolean[] tPlatforms = {F,T,T,F,F,F,T,T,T,T,F,F,F,T,T,F};
 		for (int tY = 12; tY < 42; tY++) if (tY % 3 == 0) {
-			for (int i = 3; i <= 12; i++) if (i != 7 && i != 8) for (int j = 1; j <= 14; j++) aData.mossycobble(aX+ i, tY, aZ+ j);
-			/* No longer needed to make this work thanks to Mossy Cobble pushing Entities off.
-			for (int i : tPlatforms) {
-				aData.set(aX+ i, tY, aZ+ 2, Blocks.trapdoor, 12); aData.set(aX+ i, tY, aZ+ 8, Blocks.trapdoor, 12);
-				aData.set(aX+ i, tY, aZ+13, Blocks.trapdoor, 13); aData.set(aX+ i, tY, aZ+ 7, Blocks.trapdoor, 13);
-				aData.set(aX+ 2, tY, aZ+ i, Blocks.trapdoor, 14); aData.set(aX+ 8, tY, aZ+ i, Blocks.trapdoor, 14);
-				aData.set(aX+13, tY, aZ+ i, Blocks.trapdoor, 15); aData.set(aX+ 7, tY, aZ+ i, Blocks.trapdoor, 15);
-			}*/
+			for (int i = 1; i <= 14; i++) for (int j = 1; j <= 14; j++) if (tPlatforms[i] || tPlatforms[j]) aData.mossycobble(aX+ i, tY, aZ+ j);
 		}
 		
 		// Blue or Red Steel Omni-Spikes, so all possible Mobs are taken care of!
@@ -186,22 +179,22 @@ public class DungeonChunkRoomFarmMobs extends DungeonChunkRoomEmpty {
 		aData.set     (aX+ 8,  7, tZ   , SIDE_Z_POS, 25377, UT.NBT.make(NBT_CONNECTION, SBIT_N | SBIT_S, NBT_COLOR, DYES_INT[aData.mColor], NBT_PAINTED, T), T, T);
 		
 		// Water Placement in center Area.
-		aData.smooth(aX+ 1,  9, aZ+ 1); aData.smooth(aX+ 2,  9, aZ+ 1); aData.smooth(aX+ 3,  9, aZ+ 1); aData.smooth(aX+ 4,  9, aZ+ 1);
-		aData.smooth(aX+ 1,  9, aZ+ 2); aData.smooth(aX+ 2,  9, aZ+ 2); aData.smooth(aX+ 3,  9, aZ+ 2);
-		aData.smooth(aX+ 1,  9, aZ+ 3); aData.smooth(aX+ 2,  9, aZ+ 3);
-		aData.smooth(aX+ 1,  9, aZ+ 4);
-		aData.smooth(aX+14,  9, aZ+ 1); aData.smooth(aX+13,  9, aZ+ 1); aData.smooth(aX+12,  9, aZ+ 1); aData.smooth(aX+11,  9, aZ+ 1);
-		aData.smooth(aX+14,  9, aZ+ 2); aData.smooth(aX+13,  9, aZ+ 2); aData.smooth(aX+12,  9, aZ+ 2);
-		aData.smooth(aX+14,  9, aZ+ 3); aData.smooth(aX+13,  9, aZ+ 3);
-		aData.smooth(aX+14,  9, aZ+ 4);
-		aData.smooth(aX+ 1,  9, aZ+14); aData.smooth(aX+ 2,  9, aZ+14); aData.smooth(aX+ 3,  9, aZ+14); aData.smooth(aX+ 4,  9, aZ+14);
-		aData.smooth(aX+ 1,  9, aZ+13); aData.smooth(aX+ 2,  9, aZ+13); aData.smooth(aX+ 3,  9, aZ+13);
-		aData.smooth(aX+ 1,  9, aZ+12); aData.smooth(aX+ 2,  9, aZ+12);
-		aData.smooth(aX+ 1,  9, aZ+11);
-		aData.smooth(aX+14,  9, aZ+14); aData.smooth(aX+13,  9, aZ+14); aData.smooth(aX+12,  9, aZ+14); aData.smooth(aX+11,  9, aZ+14);
-		aData.smooth(aX+14,  9, aZ+13); aData.smooth(aX+13,  9, aZ+13); aData.smooth(aX+12,  9, aZ+13);
-		aData.smooth(aX+14,  9, aZ+12); aData.smooth(aX+13,  9, aZ+12);
-		aData.smooth(aX+14,  9, aZ+11);
+		aData.mossycobble(aX+ 1,  9, aZ+ 1); aData.mossycobble(aX+ 2,  9, aZ+ 1); aData.mossycobble(aX+ 3,  9, aZ+ 1); aData.mossycobble(aX+ 4,  9, aZ+ 1);
+		aData.mossycobble(aX+ 1,  9, aZ+ 2); aData.mossycobble(aX+ 2,  9, aZ+ 2); aData.mossycobble(aX+ 3,  9, aZ+ 2);
+		aData.mossycobble(aX+ 1,  9, aZ+ 3); aData.mossycobble(aX+ 2,  9, aZ+ 3);
+		aData.mossycobble(aX+ 1,  9, aZ+ 4);
+		aData.mossycobble(aX+14,  9, aZ+ 1); aData.mossycobble(aX+13,  9, aZ+ 1); aData.mossycobble(aX+12,  9, aZ+ 1); aData.mossycobble(aX+11,  9, aZ+ 1);
+		aData.mossycobble(aX+14,  9, aZ+ 2); aData.mossycobble(aX+13,  9, aZ+ 2); aData.mossycobble(aX+12,  9, aZ+ 2);
+		aData.mossycobble(aX+14,  9, aZ+ 3); aData.mossycobble(aX+13,  9, aZ+ 3);
+		aData.mossycobble(aX+14,  9, aZ+ 4);
+		aData.mossycobble(aX+ 1,  9, aZ+14); aData.mossycobble(aX+ 2,  9, aZ+14); aData.mossycobble(aX+ 3,  9, aZ+14); aData.mossycobble(aX+ 4,  9, aZ+14);
+		aData.mossycobble(aX+ 1,  9, aZ+13); aData.mossycobble(aX+ 2,  9, aZ+13); aData.mossycobble(aX+ 3,  9, aZ+13);
+		aData.mossycobble(aX+ 1,  9, aZ+12); aData.mossycobble(aX+ 2,  9, aZ+12);
+		aData.mossycobble(aX+ 1,  9, aZ+11);
+		aData.mossycobble(aX+14,  9, aZ+14); aData.mossycobble(aX+13,  9, aZ+14); aData.mossycobble(aX+12,  9, aZ+14); aData.mossycobble(aX+11,  9, aZ+14);
+		aData.mossycobble(aX+14,  9, aZ+13); aData.mossycobble(aX+13,  9, aZ+13); aData.mossycobble(aX+12,  9, aZ+13);
+		aData.mossycobble(aX+14,  9, aZ+12); aData.mossycobble(aX+13,  9, aZ+12);
+		aData.mossycobble(aX+14,  9, aZ+11);
 		aData.set(aX+ 1, 10, aZ+ 1, Blocks.flowing_water, 0, 3);
 		aData.set(aX+ 1, 10, aZ+14, Blocks.flowing_water, 0, 3);
 		aData.set(aX+14, 10, aZ+ 1, Blocks.flowing_water, 0, 3);
