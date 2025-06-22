@@ -868,7 +868,7 @@ public class CS {
 	@SuppressWarnings("deprecation")
 	public static boolean
 	APRIL_FOOLS      = (new Date().getMonth() ==  3 && new Date().getDate() <=  2),
-	WOODMANS_BDAY    = (new Date().getMonth() ==  5 && new Date().getDate() >= 20),
+	WOODMANS_BDAY    = (new Date().getMonth() ==  5 && new Date().getDate() >= 21),
 	XMAS_IN_JULY     = (new Date().getMonth() ==  6 && new Date().getDate() >= 23),
 	XMAS_IN_DECEMBER = (new Date().getMonth() == 11 && new Date().getDate() >=  6);
 	/** This means that Client or Server specific Base Files are definitely existing and loaded! Not if the World is actually client side or server side! */
