@@ -671,7 +671,7 @@ public class Override_Drops {
 		while (aDrops.remove(null));
 		
 		if (!(aDead instanceof EntityPlayer)) {
-			/*if (!aPlayerKill)*/ for (Object tEntity : aDead.worldObj.getEntitiesWithinAABBExcludingEntity(aDead, aDead.boundingBox.expand(2,2,2))) if (tEntity instanceof EntityItem) {ItemStack tStack = ((EntityItem)tEntity).getEntityItem(); if (ST.valid(tStack)) {
+			/*if (!aPlayerKill)*/ for (Object tEntity : aDead.worldObj.getEntitiesWithinAABBExcludingEntity(aDead, aDead.boundingBox.expand(4,4,4))) if (tEntity instanceof EntityItem) {ItemStack tStack = ((EntityItem)tEntity).getEntityItem(); if (ST.valid(tStack)) {
 				// Replace stupid Wooden and Stone Tools that clutter up Mob Farms for no reason, but only if nonplayerkill.
 				Item tItem = ST.item_(tStack);
 				if (tItem == Items.wooden_sword || tItem == Items.wooden_pickaxe || tItem == Items.wooden_shovel || tItem == Items.wooden_axe || tItem == Items.wooden_hoe) {
