@@ -1365,8 +1365,18 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		if (aEvent.entity instanceof EntityItem && !aEvent.entity.worldObj.isRemote) {
 			ItemStack aStack = ST.update(OM.get(((EntityItem)aEvent.entity).getEntityItem()), aEvent.entity);
 			if (ST.valid(aStack) && aStack.stackSize > 0) {
-				if (ST.meta_(aStack) == W || ST.item_(aStack) == Items.gold_nugget) ST.meta(aStack, 0);
-				if (ST.meta_(aStack) == 0 && ST.item_(aStack) == IL.TF_Mushgloom.item()) ST.meta(aStack, 9);
+				Item aItem = ST.item_(aStack);
+				if (ST.meta_(aStack) == W || aItem == Items.gold_nugget) ST.meta(aStack, 0);
+				if (ST.meta_(aStack) == 0 && aItem == IL.TF_Mushgloom.item()) ST.meta(aStack, 9);
+				// Check if this is likely a badly implemented Mob Drop from Mo'Creatures.
+				if (null != aEvent.entity.worldObj.findNearestEntityWithinAABB(EntityCreature.class, aEvent.entity.boundingBox.expand(5,11,5), aEvent.entity)) {
+					// Replace stupid Wooden and Stone Tools that clutter up Mob Farms for no reason, but only if nonplayerkill.
+					if (aItem == Items.wooden_sword || aItem == Items.wooden_pickaxe || aItem == Items.wooden_shovel || aItem == Items.wooden_axe || aItem == Items.wooden_hoe) {
+						ST.set(aStack, IL.Stick.get(1));
+					} else if (aItem == Items.stone_sword || aItem == Items.stone_pickaxe || aItem == Items.stone_shovel || aItem == Items.stone_axe || aItem == Items.stone_hoe) {
+						ST.set(aStack, IL.Stick.get(2));
+					}
+				}
 				// Life Span Stuff
 				if (((EntityItem)aEvent.entity).lifespan > 1200) {
 					if (ST.item_(aStack) == Items.egg || ST.item_(aStack) == Items.feather || ST.item_(aStack) == Items.apple) {

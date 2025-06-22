@@ -670,17 +670,8 @@ public class Override_Drops {
 		
 		while (aDrops.remove(null));
 		
+		// All of this Drop replacement does NOT work with Mo'Creatures Mobs at all...
 		if (!(aDead instanceof EntityPlayer)) {
-			/*if (!aPlayerKill)*/ for (Object tEntity : aDead.worldObj.getEntitiesWithinAABBExcludingEntity(aDead, aDead.boundingBox.expand(4,4,4))) if (tEntity instanceof EntityItem) {ItemStack tStack = ((EntityItem)tEntity).getEntityItem(); if (ST.valid(tStack)) {
-				// Replace stupid Wooden and Stone Tools that clutter up Mob Farms for no reason, but only if nonplayerkill.
-				Item tItem = ST.item_(tStack);
-				if (tItem == Items.wooden_sword || tItem == Items.wooden_pickaxe || tItem == Items.wooden_shovel || tItem == Items.wooden_axe || tItem == Items.wooden_hoe) {
-					ST.set(tStack, IL.Stick.get(1));
-				} else if (tItem == Items.stone_sword || tItem == Items.stone_pickaxe || tItem == Items.stone_shovel || tItem == Items.stone_axe || tItem == Items.stone_hoe) {
-					ST.set(tStack, IL.Stick.get(2));
-				}
-			}}
-			
 			for (EntityItem tEntity : aDrops) if (tEntity != null) {ItemStack tStack = tEntity.getEntityItem(); if (ST.valid(tStack)) {
 				// Replace stupid Wooden and Stone Tools that clutter up Mob Farms for no reason, but only if nonplayerkill.
 				if (!aPlayerKill) {
