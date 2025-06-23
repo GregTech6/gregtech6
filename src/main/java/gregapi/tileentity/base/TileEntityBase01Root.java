@@ -257,6 +257,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	@Override
 	public boolean getSky(int aX, int aY, int aZ) {
 		if (worldObj == null) return T;
+		if (worldObj.provider.hasNoSky) return F;
 		if (mIgnoreUnloadedChunks && crossedChunkBorder(aX, aZ) && !worldObj.blockExists(aX, aY, aZ)) return T;
 		return worldObj.canBlockSeeTheSky(aX, aY, aZ);
 	}
@@ -264,6 +265,7 @@ public abstract class TileEntityBase01Root extends TileEntity implements ITileEn
 	@Override
 	public boolean getRain(int aX, int aY, int aZ) {
 		if (worldObj == null) return T;
+		if (worldObj.provider.hasNoSky) return F;
 		if (mIgnoreUnloadedChunks && crossedChunkBorder(aX, aZ) && !worldObj.blockExists(aX, aY, aZ)) return T;
 		return worldObj.getPrecipitationHeight(aX, aZ) <= aY;
 	}
