@@ -1006,6 +1006,8 @@ public class ST {
 		Items.written_book      .setMaxStackSize(64);
 		Items.writable_book     .setMaxStackSize(64);
 		Items.enchanted_book    .setMaxStackSize(64);
+		Items.snowball          .setMaxStackSize(64);
+		Items.egg               .setMaxStackSize(64);
 		return T;
 	}
 	

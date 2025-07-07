@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -210,6 +210,7 @@ public final class OreDictPrefix implements IOreDictListenerEvent, ITagDataConta
 		if (contains(PREFIX_UNUSED)) return this;
 		if (this != OP.block && this != OP.stone && this != OP.scrapGt) addListener(new IOreDictListenerEvent() {@Override public void onOreRegistration(OreDictRegistrationContainer aEvent) {if (!aEvent.mStack.getItem().isDamageable() && aEvent.mStack.getMaxStackSize() > 1 && !ST.isGT_(aEvent.mStack)) aEvent.mStack.getItem().setMaxStackSize(aEvent.mPrefix.mDefaultStackSize);}});
 		
+		Items.ender_pearl       .setMaxStackSize(OP.gem.mDefaultStackSize);
 		Items.record_11         .setMaxStackSize(OP.record.mDefaultStackSize);
 		Items.record_13         .setMaxStackSize(OP.record.mDefaultStackSize);
 		Items.record_blocks     .setMaxStackSize(OP.record.mDefaultStackSize);
