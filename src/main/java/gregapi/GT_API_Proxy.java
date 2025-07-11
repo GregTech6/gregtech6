@@ -226,12 +226,13 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	//@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldUnload(WorldEvent.Unload aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory(), F);}
 	//@SubscribeEvent(priority = EventPriority.LOWEST) public void onWorldSave  (WorldEvent.Save   aEvent) {checkSaveLocation(DimensionManager.getCurrentSaveRootDirectory(), F);}
 	
-	public  static final List<ITileEntityServerTickPre  > SERVER_TICK_PRE                = new ArrayListNoNulls<>(), SERVER_TICK_PR2  = new ArrayListNoNulls<>();
-	public  static final List<ITileEntityServerTickPost > SERVER_TICK_POST               = new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
-	public  static       List<IHasWorldAndCoords>         DELAYED_BLOCK_UPDATES          = new ArrayListNoNulls<>();
-	private static       List<IHasWorldAndCoords>         DELAYED_BLOCK_UPDATES_2        = new ArrayListNoNulls<>();
-	public  static       List<ITileEntityScheduledUpdate> SCHEDULED_TILEENTITY_UPDATES   = new ArrayListNoNulls<>();
-	private static       List<ITileEntityScheduledUpdate> SCHEDULED_TILEENTITY_UPDATES_2 = new ArrayListNoNulls<>();
+	public  static final List<ITileEntityServerTickPre    > SERVER_TICK_PRE                = new ArrayListNoNulls<>(), SERVER_TICK_PR2  = new ArrayListNoNulls<>();
+	public  static final List<ITileEntityServerTickPost   > SERVER_TICK_POST               = new ArrayListNoNulls<>(), SERVER_TICK_PO2T = new ArrayListNoNulls<>();
+	public  static final List<ITileEntityMobSpawnInhibitor> MOB_SPAWN_INHIBITORS           = new ArrayListNoNulls<>();
+	public  static       List<IHasWorldAndCoords>           DELAYED_BLOCK_UPDATES          = new ArrayListNoNulls<>();
+	private static       List<IHasWorldAndCoords>           DELAYED_BLOCK_UPDATES_2        = new ArrayListNoNulls<>();
+	public  static       List<ITileEntityScheduledUpdate>   SCHEDULED_TILEENTITY_UPDATES   = new ArrayListNoNulls<>();
+	private static       List<ITileEntityScheduledUpdate>   SCHEDULED_TILEENTITY_UPDATES_2 = new ArrayListNoNulls<>();
 	
 	@SubscribeEvent(priority = EventPriority.LOWEST) 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -1499,8 +1500,22 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		}
 		if (GENERATE_STREETS && (UT.Code.inside(-48, 48, aX) || UT.Code.inside(-48, 48, aZ))) {aEvent.setResult(Result.DENY); return;}
 		if (SPAWN_ZONE_MOB_PROTECTION && UT.Code.inside(-144, 144, aX-aWorld.getWorldInfo().getSpawnX()) && UT.Code.inside(-144, 144, aZ-aWorld.getWorldInfo().getSpawnZ()) && WD.opq(aWorld, aX, 0, aZ, F, F)) {aEvent.setResult(Result.DENY); return;}
-		
 		//if (aEvent.entity instanceof EntityMob && !(aEvent.entity instanceof IBossDisplayData) && ((EntityMob)aEvent.entity).getCanSpawnHere()) mMobsToFastDespawn.add((EntityLiving)aEvent.entityLiving);
+		for (int i = 0; i < MOB_SPAWN_INHIBITORS.size(); i++) {
+			ITileEntityMobSpawnInhibitor tTileEntity = MOB_SPAWN_INHIBITORS.get(i);
+			if (tTileEntity.isDead()) {
+				MOB_SPAWN_INHIBITORS.remove(i--);
+				tTileEntity.onUnregisterInhibitor();
+			} else {
+				try {
+					if (tTileEntity.inhibitMobSpawn(aEvent, aWorld, aX, aY, aZ)) {aEvent.setResult(Result.DENY); return;}
+				} catch(Throwable e) {
+					MOB_SPAWN_INHIBITORS.remove(i--);
+					tTileEntity.setError("Mob Spawn Inhibitor - " + e);
+					e.printStackTrace(ERR);
+				}
+			}
+		}
 	}
 	
 	//public static List<EntityLiving> mMobsToFastDespawn = new ArrayListNoNulls<>();
