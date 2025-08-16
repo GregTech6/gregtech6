@@ -592,7 +592,7 @@ public class LoaderItemList implements Runnable {
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BR, "YelloriteOre"                     , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BoP, "gemOre"                          , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.BoP, "rocks"                           , null));
-		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.stone_gneiss"               , null));
+		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.stone_gneiss"               , null));// Do not add HBM Alexandrite Ore to this List!
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.basalt_smooth"              , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.ore_aluminium"              , null));
 		StoneLayer.REPLACEABLE_BLOCKS.add(ST.block(MD.HBM, "tile.ore_asbestos"               , null));

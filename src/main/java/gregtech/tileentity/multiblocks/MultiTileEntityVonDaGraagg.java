@@ -48,7 +48,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityVonDaGraag extends TileEntityBase10MultiBlockBase implements ITileEntityEnergy, ITileEntityMobSpawnInhibitor, IMultiBlockEnergy {
+public class MultiTileEntityVonDaGraagg extends TileEntityBase10MultiBlockBase implements ITileEntityEnergy, ITileEntityMobSpawnInhibitor, IMultiBlockEnergy {
 	public long mEnergy = 0, mCurrentRange = 256;
 	public TagData mEnergyTypeAccepted = TD.Energy.EU;
 	
@@ -149,5 +149,5 @@ public class MultiTileEntityVonDaGraag extends TileEntityBase10MultiBlockBase im
 	@Override public Collection<TagData> getEnergyTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	@Override public Collection<TagData> getEnergyCapacitorTypes(byte aSide) {return mEnergyTypeAccepted.AS_LIST;}
 	
-	@Override public String getTileEntityName() {return "gt.multitileentity.multiblock.von.da.graag";}
+	@Override public String getTileEntityName() {return "gt.multitileentity.multiblock.von.da.graagg";}
 }

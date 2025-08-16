@@ -399,7 +399,7 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.OREMATS.Cobaltite       , U8 , 32, 64)
 		, new StoneLayerOres(MT.Craponite               , U64, 24, 48, BIOMES_JUNGLE)
 		, new StoneLayerOres(MT.Amethyst                , U64, 24, 48, BIOMES_TAIGA)
-		, new StoneLayerOres(MT.Alexandrite             , U64, 24, 48, BIOMES_JUNGLE)
+		, MD.HBM.mLoaded ? null : new StoneLayerOres(MT.Alexandrite             , U64, 24, 48, BIOMES_JUNGLE)
 		));
 		
 		
