@@ -6,7 +6,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.06: (Not released yet)
-[FIXED] GT6 Alexandrite Ore Veins will no longer generate when HBM NTM is installed (balance concerns), it also generally wont be on the "Small Gem Ores List" anymore.
+[FIXED] GT6 Alexandrite Ore Veins will no longer generate when HBM NTM is installed (balance concerns), it also generally wont be on the "Small Gem Ores List" anymore. You can still use the Matter Replicator to make Alexandrite though, if you find a sample first.
 [CHANGED] GT6 Mossy Cobble (Not Vanilla Mossy Cobble) will make you (and Mobs) slide off if you are not sneaking. This Block spawns Mobs AND makes them slide off if there is space, which is Ideal for Mob Farms.
 [CHANGED] Mobs can no longer drop Wooden or Stone Tools of Vanilla Minecraft and instead will drop Sticks in those cases. This should very much declutter some Mob Farms.
 [ADDED] Steel Rope, which is just another type of Rope.
