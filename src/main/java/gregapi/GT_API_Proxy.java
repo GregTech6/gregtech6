@@ -1340,18 +1340,25 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 					boolean aCollectSound = T;
 					aDrops = aEvent.drops.iterator();
 					while (aDrops.hasNext()) {
-						ItemStack aDrop = ST.update(aDrops.next(), aEvent.world, aEvent.x, aEvent.y, aEvent.z);
-						
-						EntityItem tEntity = ST.entity(aEvent.harvester, aDrop);
-						EntityItemPickupEvent tEvent = new EntityItemPickupEvent(aEvent.harvester, tEntity);
-						ST.set(aDrop, tEvent.item.getEntityItem(), T, T);
-						if (MinecraftForge.EVENT_BUS.post(tEvent)) continue;
-						
-						if (tEvent.getResult() == Result.ALLOW || aDrop.stackSize <= 0 || ST.add(aEvent.harvester, aDrop)) {
-							aDrops.remove();
-							if (aCollectSound) {
-								UT.Sounds.send(SFX.MC_COLLECT, 0.2F, ((RNGSUS.nextFloat()-RNGSUS.nextFloat())*0.7F+1.0F)*2.0F, aEvent.harvester);
-								aCollectSound = F;
+						ItemStack aDrop = aDrops.next();
+						if (ST.valid(aDrop)) {
+							aDrop = ST.update(aDrop, aEvent.world, aEvent.x, aEvent.y, aEvent.z);
+							EntityItem tEntity = ST.entity(aEvent.harvester, aDrop);
+							if (tEntity != null) {
+								tEntity.isDead = F;
+								EntityItemPickupEvent tEvent = new EntityItemPickupEvent(aEvent.harvester, tEntity);
+								ST.set(aDrop, tEvent.item.getEntityItem(), T, T);
+								if (MinecraftForge.EVENT_BUS.post(tEvent)) continue;
+								if (tEvent.getResult() == Result.ALLOW || tEntity.isDead || ST.invalid(aDrop) || aDrop.stackSize <= 0) {
+									aDrops.remove();
+								} else if (ST.add(aEvent.harvester, aDrop)) {
+									aDrops.remove();
+									if (aCollectSound) {
+										UT.Sounds.send(SFX.MC_COLLECT, 0.2F, ((RNGSUS.nextFloat()-RNGSUS.nextFloat())*0.7F+1.0F)*2.0F, aEvent.harvester);
+										aCollectSound = F;
+									}
+								}
+								tEntity.isDead = T;
 							}
 						}
 					}
