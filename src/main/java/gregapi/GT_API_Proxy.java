@@ -1348,8 +1348,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 								tEntity.isDead = F;
 								EntityItemPickupEvent tEvent = new EntityItemPickupEvent(aEvent.harvester, tEntity);
 								ST.set(aDrop, tEvent.item.getEntityItem(), T, T);
-								if (MinecraftForge.EVENT_BUS.post(tEvent)) continue;
-								if (tEvent.getResult() == Result.ALLOW || tEntity.isDead || ST.invalid(aDrop) || aDrop.stackSize <= 0) {
+								// I have to ignore this event being cancellable because that causes Item Dupes.
+								MinecraftForge.EVENT_BUS.post(tEvent);
+								if (tEvent.getResult() == Result.ALLOW || tEntity.isDead || aDrop.stackSize <= 0 || ST.invalid(aDrop)) {
 									aDrops.remove();
 								} else if (ST.add(aEvent.harvester, aDrop)) {
 									aDrops.remove();
