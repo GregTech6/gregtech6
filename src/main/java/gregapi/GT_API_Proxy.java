@@ -1285,11 +1285,16 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 						EntityItem tEntity = ST.entity(aEvent.harvester, aDrop);
 						EntityItemPickupEvent tEvent = new EntityItemPickupEvent(aEvent.harvester, tEntity);
 						ST.set(aDrop, tEvent.item.getEntityItem(), T, T);
-						if (MinecraftForge.EVENT_BUS.post(tEvent)) {
-							if(tEvent.item.isDead || ST.invalid(tEvent.item.getEntityItem()))aDrops.remove();
+						boolean aEventCancelled = MinecraftForge.EVENT_BUS.post(tEvent);
+
+						//If some other mod picked the item up, we remove drop and continue.
+						if(tEvent.item.isDead || ST.invalid(tEvent.item.getEntityItem())){
+							aDrops.remove();
 							continue;
 						}
-						
+						if(aEventCancelled)continue;
+
+						//Otherwise, we pick the item up and add to player's inv
 						if (tEvent.getResult() == Result.ALLOW || aDrop.stackSize <= 0 || ST.add(aEvent.harvester, aDrop)) {
 							aDrops.remove();
 							if (aCollectSound) {
