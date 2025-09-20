@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.tileentity.notick;
 
-import static gregapi.data.CS.*;
-
-import java.util.UUID;
-
 import gregapi.GT_API_Proxy;
 import gregapi.network.INetworkHandler;
 import gregapi.network.IPacket;
@@ -31,6 +27,10 @@ import gregapi.tileentity.ITileEntitySynchronising;
 import gregapi.tileentity.base.TileEntityBase01Root;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
+
+import java.util.UUID;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -91,7 +91,9 @@ public abstract class TileEntityBase02Sync extends TileEntityBase01Root implemen
 	/** Called to send all Data to the close Clients */
 	public void updateClientData() {sendClientData(T, null);}
 	
-	@Override public final net.minecraft.network.Packet getDescriptionPacket() {return null;}
+	@Override public void onCoordinateChange() {super.onCoordinateChange(); updateClientData();}
+	
+	@Override public final net.minecraft.network.Packet getDescriptionPacket() {updateClientData(); return null;}
 	
 	@Override
 	public final void sendUpdateToPlayer(EntityPlayerMP aPlayer) {

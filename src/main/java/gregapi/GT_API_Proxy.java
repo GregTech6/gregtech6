@@ -191,7 +191,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		
 		if (tSave && mSaveLocation != null) {
 			// Only print this if it is not the minutely Autosave.
-			if (aSaveLocation == null) OUT.println("Saving  World! " + mSaveLocation);// else DEB.println("Autosave!      " + mSaveLocation);
+			if (aSaveLocation == null) OUT.println("Saving  World! " + mSaveLocation.getName());// else DEB.println("Autosave!      " + mSaveLocation.getName());
 			// Make the Folder to drop the Save Files into.
 			new File(mSaveLocation, "gregtech").mkdirs();
 			// Call the Save Function in all the things that need it.
@@ -200,7 +200,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		}
 		mSaveLocation = aSaveLocation;
 		if (tLoad && mSaveLocation != null) {
-			OUT.println("Loading World! " + mSaveLocation);
+			OUT.println("Loading World! " + mSaveLocation.getName());
 			// Make the Folder to uhh wait why is that needed? Probably helps preventing Issues though, so why not.
 			new File(mSaveLocation, "gregtech").mkdirs();
 			// Call the Load Function in all the things that need it.

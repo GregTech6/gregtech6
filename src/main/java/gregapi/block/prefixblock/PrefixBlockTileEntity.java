@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -35,7 +35,6 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.Packet;
 import net.minecraft.world.IBlockAccess;
 
 import static gregapi.data.CS.*;
@@ -51,6 +50,15 @@ public class PrefixBlockTileEntity extends TileEntityBase01Root implements IRend
 	public PrefixBlockTileEntity() {super(F);}
 	
 	@Override public String getTileEntityName() {return "gt.MetaBlockTileEntity";}
+	
+	@Override
+	public net.minecraft.network.Packet getDescriptionPacket() {
+		if (!(mBlocked = WD.visOcc(worldObj, xCoord, yCoord, zCoord, F, T))) {
+			NW_API.sendToAllPlayersInRange(new PacketSyncDataShort(getCoords(), mMetaData), worldObj, getCoords());
+			if (mItemNBT != null && mItemNBT.hasKey("display")) NW_API.sendToAllPlayersInRange(new PacketSyncDataName(getCoords(), mItemNBT.getCompoundTag("display").getString("Name")), worldObj, getCoords());
+		}
+		return null;
+	}
 	
 	@Override
 	public void onScheduledUpdate() {
@@ -93,7 +101,6 @@ public class PrefixBlockTileEntity extends TileEntityBase01Root implements IRend
 	@Override public void readFromNBT(NBTTagCompound aNBT) {super.readFromNBT(aNBT); mMetaData = aNBT.getShort("m"); if (aNBT.hasKey("gt.nbt.drop")) mItemNBT = aNBT.getCompoundTag("gt.nbt.drop");}
 	@Override public void writeToNBT(NBTTagCompound aNBT) {super.writeToNBT(aNBT); aNBT.setShort("m", mMetaData); if (mItemNBT != null && !mItemNBT.hasNoTags()) aNBT.setTag("gt.nbt.drop", mItemNBT);}
 	@Override public void processPacket(INetworkHandler aNetworkHandler) {/**/}
-	@Override public Packet getDescriptionPacket() {return null;}
 	@Override public Object getGUIClient(int aGUIID, EntityPlayer aPlayer) {return null;}
 	@Override public Object getGUIServer(int aGUIID, EntityPlayer aPlayer) {return null;}
 }
