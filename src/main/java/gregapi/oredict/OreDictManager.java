@@ -301,6 +301,7 @@ public final class OreDictManager {
 	
 	@SubscribeEvent
 	public void onOreRegistration1(OreRegisterEvent aEvent) {
+		if (aEvent.getClass() != OreRegisterEvent.class) return;
 		String aModID = MD.UNKNOWN.mID;
 		ModData aMod = MD.UNKNOWN;
 		ModContainer tContainer = Loader.instance().activeModContainer();
