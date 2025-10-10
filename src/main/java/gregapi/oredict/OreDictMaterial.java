@@ -454,7 +454,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	
 	/** Sets the Molecule Configuration or Components of this Material. Calculates the Average of the MainStats and sets them. */
 	public OreDictMaterial setMoleculeConfiguration(IOreDictConfigurationComponent aComponents) {
-		if (contains(TD.Atomic.ELEMENT)) throw new IllegalArgumentException("Detected problematic tampering with Elements of the Periodic Table");
+		if (contains(TD.Atomic.ELEMENT)) new IllegalArgumentException("Detected problematic tampering with Elements of the Periodic Table").printStackTrace(ERR);
 		
 		mComponents = aComponents;
 		double tDivider = 0, tProtons = 0, tElectrons = 0, tNeutrons = 0, tMass = 0, tGramPerCubicCentimeter = 0, tMeltingPoint = 0, tBoilingPoint = 0, tPlasmaPoint = 0;
@@ -883,8 +883,8 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	/** Sets the energetic Stats of this Material. Everything is measured in Kelvin. */
 	public OreDictMaterial heat(long aMeltingPoint) {
 		if (contains(TD.Atomic.ELEMENT)) {
-			if (mMeltingPoint != 1000 && aMeltingPoint != mMeltingPoint) throw new IllegalArgumentException("Detected problematic tampering with Elements of the Periodic Table");
-		//  if (mBoilingPoint != 3000 && aBoilingPoint != mBoilingPoint) throw new IllegalArgumentException("Detected problematic tampering with Elements of the Periodic Table");
+			if (mMeltingPoint != 1000 && aMeltingPoint != mMeltingPoint) new IllegalArgumentException("Detected problematic tampering with Elements of the Periodic Table").printStackTrace(ERR);
+		//  if (mBoilingPoint != 3000 && aBoilingPoint != mBoilingPoint) new IllegalArgumentException("Detected problematic tampering with Elements of the Periodic Table").printStackTrace(ERR);
 		}
 		mMeltingPoint = aMeltingPoint;
 		mBoilingPoint = mMeltingPoint * 2;
@@ -896,8 +896,8 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	/** Sets the energetic Stats of this Material. Everything is measured in Kelvin. */
 	public OreDictMaterial heat(long aMeltingPoint, long aBoilingPoint) {
 		if (contains(TD.Atomic.ELEMENT)) {
-			if (mMeltingPoint != 1000 && aMeltingPoint != mMeltingPoint) throw new IllegalArgumentException("Detected problematic tampering with Elements of the Periodic Table");
-			if (mBoilingPoint != 3000 && aBoilingPoint != mBoilingPoint) throw new IllegalArgumentException("Detected problematic tampering with Elements of the Periodic Table");
+			if (mMeltingPoint != 1000 && aMeltingPoint != mMeltingPoint) new IllegalArgumentException("Detected problematic tampering with Elements of the Periodic Table").printStackTrace(ERR);
+			if (mBoilingPoint != 3000 && aBoilingPoint != mBoilingPoint) new IllegalArgumentException("Detected problematic tampering with Elements of the Periodic Table").printStackTrace(ERR);
 		}
 		if (aMeltingPoint > aBoilingPoint) throw new IllegalArgumentException("The Melting Point cannot be above the Boiling Point.");
 		mMeltingPoint = aMeltingPoint;
@@ -910,8 +910,8 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	/** Sets the energetic Stats of this Material. Everything is measured in Kelvin. */
 	public OreDictMaterial heat(long aMeltingPoint, long aBoilingPoint, long aPlasmaPoint) {
 		if (contains(TD.Atomic.ELEMENT)) {
-			if (mMeltingPoint != 1000 && aMeltingPoint != mMeltingPoint) throw new IllegalArgumentException("Detected problematic tampering with Elements of the Periodic Table");
-			if (mBoilingPoint != 3000 && aBoilingPoint != mBoilingPoint) throw new IllegalArgumentException("Detected problematic tampering with Elements of the Periodic Table");
+			if (mMeltingPoint != 1000 && aMeltingPoint != mMeltingPoint) new IllegalArgumentException("Detected problematic tampering with Elements of the Periodic Table").printStackTrace(ERR);
+			if (mBoilingPoint != 3000 && aBoilingPoint != mBoilingPoint) new IllegalArgumentException("Detected problematic tampering with Elements of the Periodic Table").printStackTrace(ERR);
 		}
 		if (aMeltingPoint > aBoilingPoint) throw new IllegalArgumentException("The Melting Point cannot be above the Boiling Point.");
 		if (aBoilingPoint > aPlasmaPoint) throw new IllegalArgumentException("The Boiling Point cannot be above the Plasmafication Point.");
