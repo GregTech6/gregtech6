@@ -1487,8 +1487,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 		
 		if (SPAWN_NO_BATS && aMobClass == EntityBat.class && aWorld.getBlock(aX, aY-2, aZ) != Blocks.stone && aWorld.getBlock(aX, aY+2, aZ) != Blocks.stone) {aEvent.setResult(Result.DENY); return;}
 		
-		if (!WD.dimOverworldLike(aWorld)) return;
-		if (SPAWN_HOSTILES_ONLY_IN_DARKNESS) try {
+		if (SPAWN_HOSTILES_ONLY_IN_DARKNESS && WD.dimOverworldLike(aWorld)) try {
 			Chunk tChunk = aWorld.getChunkFromBlockCoords(aX, aZ);
 			if (tChunk != null && tChunk.getBlockStorageArray() != null && tChunk.getBlockStorageArray()[aY >> 4] != null && tChunk.getBlockStorageArray()[aY >> 4].getExtBlocklightValue(aX & 15, aY & 15, aZ & 15) > 0) {
 				// Vanilla Mobs only, just in case.
@@ -1500,28 +1499,29 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 			}
 		} catch(Throwable e) {e.printStackTrace(ERR);}
 		
-		if (aWorld.provider.dimensionId != 0 || aY + 16 < WD.waterLevel(aWorld)) return;
-		if (GENERATE_BIOMES) {
-			if (UT.Code.inside(-96,  95, aX) && UT.Code.inside(-96,  95, aZ)) {aEvent.setResult(Result.DENY); return;}
-		} else if (GENERATE_NEXUS) {
-			if (UT.Code.inside(  0,  48, aX) && UT.Code.inside(-64, -16, aZ)) {aEvent.setResult(Result.DENY); return;}
+		if (aWorld.provider.dimensionId == 0 && aY >= WD.waterLevel(aWorld) - 16) {
+			if (GENERATE_BIOMES) {
+				if (UT.Code.inside(-96,  95, aX) && UT.Code.inside(-96,  95, aZ)) {aEvent.setResult(Result.DENY); return;}
+			} else if (GENERATE_NEXUS) {
+				if (UT.Code.inside(  0,  48, aX) && UT.Code.inside(-64, -16, aZ)) {aEvent.setResult(Result.DENY); return;}
+			}
+			if (GENERATE_STREETS && (UT.Code.inside(-48, 48, aX) || UT.Code.inside(-48, 48, aZ))) {aEvent.setResult(Result.DENY); return;}
+			if (SPAWN_ZONE_MOB_PROTECTION && UT.Code.inside(-144, 144, aX-aWorld.getWorldInfo().getSpawnX()) && UT.Code.inside(-144, 144, aZ-aWorld.getWorldInfo().getSpawnZ()) && WD.opq(aWorld, aX, 0, aZ, F, F)) {aEvent.setResult(Result.DENY); return;}
 		}
-		if (GENERATE_STREETS && (UT.Code.inside(-48, 48, aX) || UT.Code.inside(-48, 48, aZ))) {aEvent.setResult(Result.DENY); return;}
-		if (SPAWN_ZONE_MOB_PROTECTION && UT.Code.inside(-144, 144, aX-aWorld.getWorldInfo().getSpawnX()) && UT.Code.inside(-144, 144, aZ-aWorld.getWorldInfo().getSpawnZ()) && WD.opq(aWorld, aX, 0, aZ, F, F)) {aEvent.setResult(Result.DENY); return;}
+		
 		//if (aEvent.entity instanceof EntityMob && !(aEvent.entity instanceof IBossDisplayData) && ((EntityMob)aEvent.entity).getCanSpawnHere()) mMobsToFastDespawn.add((EntityLiving)aEvent.entityLiving);
+		
 		for (int i = 0; i < MOB_SPAWN_INHIBITORS.size(); i++) {
 			ITileEntityMobSpawnInhibitor tTileEntity = MOB_SPAWN_INHIBITORS.get(i);
 			if (tTileEntity.isDead()) {
 				MOB_SPAWN_INHIBITORS.remove(i--);
 				tTileEntity.onUnregisterInhibitor();
-			} else {
-				try {
-					if (tTileEntity.inhibitMobSpawn(aEvent, aWorld, aX, aY, aZ)) {aEvent.setResult(Result.DENY); return;}
-				} catch(Throwable e) {
-					MOB_SPAWN_INHIBITORS.remove(i--);
-					tTileEntity.setError("Mob Spawn Inhibitor - " + e);
-					e.printStackTrace(ERR);
-				}
+			} else try {
+				if (tTileEntity.inhibitMobSpawn(aEvent, aWorld, aX, aY, aZ)) {aEvent.setResult(Result.DENY); return;}
+			} catch(Throwable e) {
+				MOB_SPAWN_INHIBITORS.remove(i--);
+				tTileEntity.setError("Spawn Inhibitor - " + e);
+				e.printStackTrace(ERR);
 			}
 		}
 	}
