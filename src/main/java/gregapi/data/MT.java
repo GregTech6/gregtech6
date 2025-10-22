@@ -2078,6 +2078,7 @@ public class MT {
 			
 			
 			Cu                      .put(MD.EtFu, COMMON_ORE);
+			STONES.Deepslate        .put(MD.EtFu);
 			STONES.Granite          .put(MD.EtFu);
 			STONES.Diorite          .put(MD.EtFu);
 			STONES.Andesite         .put(MD.EtFu);
