@@ -142,7 +142,7 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public static OreDictMaterial createMaterial(int aID, String aNameOreDict, String aLocalName) {
 		aID = (aID < 0 || aID >= MATERIAL_ARRAY.length || aID == W ? -1 : aID);
 		// Replace all Spaces and Minuses, and capitalise the String.
-		aNameOreDict = UT.Code.capitalise(aNameOreDict.replaceAll(" ", "").replaceAll("-", "").replaceAll("'", "").replaceAll("/", ""));
+		aNameOreDict = sanitize(aNameOreDict);
 		// That would cause really bad shit to happen.
 		if (aNameOreDict.isEmpty())
 		throw new IllegalArgumentException("This OreDict Name is not usable, due to being an empty String, after stripping all the minuses and spaces.");
@@ -199,6 +199,10 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	public static OreDictMaterial get(OreDictMaterial aMaterial) {
 		while (aMaterial != aMaterial.mTargetRegistration) aMaterial = aMaterial.mTargetRegistration;
 		return aMaterial;
+	}
+	
+	public static String sanitize(String aString) {
+		return UT.Code.capitalise(aString.replaceAll(" ", "").replaceAll("-", "").replaceAll("'", "").replaceAll("/", ""));
 	}
 	
 	/** The Index of this Material inside the Array. Negative for "Not in the Array" and therefore also for "Not Unificatable", 0 is the NULL Material so a > 0 check could be useful for you. */
@@ -346,7 +350,14 @@ public final class OreDictMaterial implements ITagDataContainer<OreDictMaterial>
 	
 	/** Adds Identical Names which are getting re-registered to this Material. returns this Material, not the newly created ones. */
 	public OreDictMaterial addIdenticalNames(String... aNames) {
-		for (String aName : aNames) addReRegistrations(createMaterial(-1, aName, aName).setRegistration(this));
+		for (String aName : aNames) {
+			aName = sanitize(aName);
+			if (mNameInternal.equals(aName)) {
+				ERR.println("The Material '" + mNameInternal + "' has almost registered an identical Name as an alternative Name by accident, almost leading to Issues with the Recipe System.");
+			} else {
+				addReRegistrations(createMaterial(-1, aName, aName).setRegistration(this));
+			}
+		}
 		return this;
 	}
 	
