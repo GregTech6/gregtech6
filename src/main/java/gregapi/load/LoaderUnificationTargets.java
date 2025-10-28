@@ -249,6 +249,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Ce                     , MD.HBM, "item.powder_cerium"              , 0);
 		OreDictManager.INSTANCE.setTarget(OP.nugget         , MT.Ce                     , MD.HBM, "item.fragment_cerium"            , 0);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Br                     , MD.HBM, "item.powder_bromine"             , 0);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.WaxParaffin            , MD.HBM, "item.oil_tar"                    , 5);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Adamantine             , MD.MET, "adamantine.ingot", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Alduorite              , MD.MET, "alduorite.ingot", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Amordrine              , MD.MET, "amordrine.ingot", 0);
