@@ -21,7 +21,7 @@ package gregtech.worldgen;
 
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.code.ItemStackContainer;
-import gregapi.data.IL;
+import gregapi.data.MD;
 import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
@@ -29,6 +29,7 @@ import gregapi.worldgen.WorldgenObject;
 import gregapi.worldgen.WorldgenOnSurface;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -62,7 +63,10 @@ public class WorldgenBushes extends WorldgenOnSurface {
 		MultiTileEntityRegistry tRegistry = MultiTileEntityRegistry.getRegistry("gt.multitileentity");
 		if (tRegistry == null) return F;
 		
-		ItemStack tBerry = UT.Code.select(new NoiseGenerator(aWorld).get(aX/2, 300, aZ/2, BushesGT.MAP.size()), new ItemStackContainer(IL.Food_Candleberry.get(1)), BushesGT.MAP.keySet().toArray(ZL_ISC)).toStack();
+		ItemStack tBerry = UT.Code.select(new NoiseGenerator(aWorld).get(aX/2, 300, aZ/2, BushesGT.MAP.size()), new ItemStackContainer(Items.string, 1, 0), BushesGT.MAP.keySet().toArray(ZL_ISC)).toStack();
+		
+		// Change Minecraft String to Harvestcraft Cotton, because it's in the static initializer as a default.
+		if (MD.HaC.mLoaded && ST.item(tBerry) == Items.string) tBerry = ST.make(MD.HaC, "cottonItem", 1, 0, tBerry);
 		
 		if (placeBushCore(aWorld, aX, aY, aZ, tRegistry, tBerry, 3)) {
 			if (aRandom.nextBoolean() && placeBushCore(aWorld, aX-1, aY, aZ  , tRegistry, tBerry, 3)) placeBushSides(aWorld, aX-1, aY, aZ  , tRegistry, tBerry, 3);

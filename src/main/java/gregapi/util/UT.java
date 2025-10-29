@@ -1372,6 +1372,10 @@ public class UT {
 			return null;
 		}
 		
+		public static <E> E getWithDefault(E aObject, E aDefault) {
+			return aObject != null ? aObject : aDefault;
+		}
+		
 		private static final DateFormat sDateFormat = DateFormat.getInstance();
 		public static String dateAndTime() {
 			return sDateFormat.format(new Date());
