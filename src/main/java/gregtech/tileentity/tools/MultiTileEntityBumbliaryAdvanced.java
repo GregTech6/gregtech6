@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -344,7 +344,10 @@ public class MultiTileEntityBumbliaryAdvanced extends TileEntityBase07Paintable 
 	@Override public boolean allowCovers(byte aSide) {return SIDES_BOTTOM_HORIZONTAL[aSide];}
 	@Override public boolean canDrop(int aSlot) {return T;}
 	@Override public boolean breakDrop(int aSlot) {if (mLife > 0 && slot(aSlot).getItem() instanceof IItemBumbleBee) slot(aSlot, ((IItemBumbleBee)slot(aSlot).getItem()).bumbleKill(slot(aSlot))); return T;}
-	
+	@Override public boolean isFireProof       (byte aSide) {return T;}
+	@Override public boolean isRainProof       (byte aSide) {return T;}
+	@Override public boolean isWaterProof      (byte aSide) {return T;}
+	@Override public boolean isThunderProof    (byte aSide) {return T;}
 	@Override public boolean getStateRunningActively()      {return mLife > 0;}
 	@Override public boolean getStateRunningPassively()     {return mLife > 0 || mBreedingCountDown < 1200;}
 	@Override public boolean getStateRunningPossible()      {return mLife > 0 || mBreedingCountDown < 1200;}
