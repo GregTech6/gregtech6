@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,15 +19,8 @@
 
 package gregtech.worldgen;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
 import gregapi.block.metatype.BlockStones;
 import gregapi.block.multitileentity.MultiTileEntityRegistry;
-import gregapi.data.CS.ItemsGT;
 import gregapi.data.IL;
 import gregapi.item.bumble.IItemBumbleBee;
 import gregapi.util.ST;
@@ -42,6 +35,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
+
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -69,7 +68,7 @@ public class WorldgenHives extends WorldgenObject {
 				if (WD.liquid(aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide])) return rResult;
 				if (WD.opq   (aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 			}
-			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, DYE_INT_Brown       , aRandom.nextBoolean()?500:0, aRandom)) || rResult;
+			return (tCount == 5 && placeHive(tRegistry, aDimType, aWorld, tX, tY, tZ, DYE_INT_Brown       , aRandom.nextBoolean()?500:0, aRandom)) || rResult;
 		case DIM_BETWEENLANDS:
 			tY = 16+aRandom.nextInt(96);
 			if (!IL.BTL_Betweenstone.equal(WD.block(aWorld, tX, tY, tZ))) return rResult;
@@ -77,7 +76,7 @@ public class WorldgenHives extends WorldgenObject {
 				if (WD.liquid(aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide])) return rResult;
 				if (WD.opq   (aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 			}
-			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, DYE_INT_Green       , aRandom.nextBoolean()?500:0, aRandom)) || rResult;
+			return (tCount == 5 && placeHive(tRegistry, aDimType, aWorld, tX, tY, tZ, DYE_INT_Green       , aRandom.nextBoolean()?500:0, aRandom)) || rResult;
 		case DIM_ATUM:
 			tY = 16+aRandom.nextInt(64);
 			if (!IL.ATUM_Limestone.equal(WD.block(aWorld, tX, tY, tZ))) return rResult;
@@ -85,7 +84,7 @@ public class WorldgenHives extends WorldgenObject {
 				if (WD.liquid(aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide])) return rResult;
 				if (WD.opq   (aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 			}
-			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, DYE_INT_Yellow      ,   900, aRandom)) || rResult;
+			return (tCount == 5 && placeHive(tRegistry, aDimType, aWorld, tX, tY, tZ, DYE_INT_Yellow      ,   900, aRandom)) || rResult;
 		case DIM_ENVM: case DIM_CW2_Caveland:
 			tY = 16+aRandom.nextInt(96);
 			if (WD.block(aWorld, tX, tY, tZ) != Blocks.netherrack) return rResult;
@@ -93,7 +92,7 @@ public class WorldgenHives extends WorldgenObject {
 				if (WD.liquid(aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide])) return rResult;
 				if (WD.opq   (aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 			}
-			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, DYE_INT_LightGray   ,   500, aRandom)) || rResult;
+			return (tCount == 5 && placeHive(tRegistry, aDimType, aWorld, tX, tY, tZ, DYE_INT_LightGray   ,   500, aRandom)) || rResult;
 		case DIM_AETHER:
 			tY = 16+aRandom.nextInt(96);
 			if (WD.block(aWorld, tX, tY, tZ).getMaterial() == Material.ground) return rResult;
@@ -101,7 +100,7 @@ public class WorldgenHives extends WorldgenObject {
 				if (WD.liquid(aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide])) return rResult;
 				if (WD.opq   (aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 			}
-			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, DYE_INT_Cyan        ,     0, aRandom)) || rResult;
+			return (tCount == 5 && placeHive(tRegistry, aDimType, aWorld, tX, tY, tZ, DYE_INT_Cyan        ,     0, aRandom)) || rResult;
 		case DIM_NETHER:
 			tY = 16+aRandom.nextInt(WD.bedrock(aWorld, tX, 255, tZ) ? 224 : 96);
 			if (WD.block(aWorld, tX, tY, tZ) != Blocks.netherrack) return rResult;
@@ -109,7 +108,7 @@ public class WorldgenHives extends WorldgenObject {
 				if (WD.liquid(aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide])) return rResult;
 				if (WD.opq   (aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 			}
-			return (tCount == 5 && placeHive(tRegistry, aWorld, tX, tY, tZ, 0xaa0000            ,   300, aRandom)) || rResult;
+			return (tCount == 5 && placeHive(tRegistry, aDimType, aWorld, tX, tY, tZ, 0xaa0000            ,   300, aRandom)) || rResult;
 		case DIM_END:
 			if (aRandom.nextInt(3) > 0) return F;
 			for (tY = 16; tY < 128; tY++) if (WD.block(aWorld, tX, tY, tZ) == Blocks.end_stone) {
@@ -118,7 +117,7 @@ public class WorldgenHives extends WorldgenObject {
 					if (WD.opq   (aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 				}
 				if (tCount == 5) {
-					rResult = placeHive(tRegistry, aWorld, tX, tY, tZ, 0x00aaaa, 400, aRandom) || rResult;
+					rResult = placeHive(tRegistry, aDimType, aWorld, tX, tY, tZ, 0x00aaaa, 400, aRandom) || rResult;
 					break;
 				}
 				tCount = 0;
@@ -133,7 +132,7 @@ public class WorldgenHives extends WorldgenObject {
 						if (WD.opq   (aWorld, tX+OFFX[tSide], tY+OFFY[tSide], tZ+OFFZ[tSide], F, T)) tCount++;
 					}
 					if (tCount == 5) {
-						rResult = placeHive(tRegistry, aWorld, tX, tY, tZ, DYE_INT_LightGray,   500, aRandom);
+						rResult = placeHive(tRegistry, aDimType, aWorld, tX, tY, tZ, DYE_INT_LightGray,   500, aRandom);
 						break;
 					}
 					tCount = 0;
@@ -154,37 +153,37 @@ public class WorldgenHives extends WorldgenObject {
 				//  for (String tName : aBiomeNames) if (BIOMES_SPACE.contains(tName))
 				//  return placeHive(tRegistry, aWorld, tX, tY-1, tZ, 0x44bbbb          ,   400, aRandom) || rResult;
 					if (tBlock == Blocks.water || tBlock == Blocks.flowing_water || tBlock instanceof BlockWaterlike)
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_LightBlue ,   100, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, DYE_INT_LightBlue ,   100, aRandom) || rResult;
 					for (String tName : aBiomeNames) if (BIOMES_MAGICAL.contains(tName) && (aDimType != DIM_ALFHEIM || aRandom.nextBoolean()))
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Purple    ,   200, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, DYE_INT_Purple    ,   200, aRandom) || rResult;
 					for (String tName : aBiomeNames) if (BIOMES_VOLCANIC.contains(tName))
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Black     ,   300, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, DYE_INT_Black     ,   300, aRandom) || rResult;
 					for (String tName : aBiomeNames) if (BIOMES_END.contains(tName))
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, 0x00aaaa          ,   400, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, 0x00aaaa          ,   400, aRandom) || rResult;
 					for (String tName : aBiomeNames) if (BIOMES_NETHER.contains(tName))
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, 0xaa0000          ,   300, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, 0xaa0000          ,   300, aRandom) || rResult;
 					for (String tName : aBiomeNames) if (BIOMES_SHROOM.contains(tName))
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Pink      ,   800, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, DYE_INT_Pink      ,   800, aRandom) || rResult;
 					for (String tName : aBiomeNames) if (BIOMES_OCEAN_BEACH.contains(tName) || BIOMES_LAKE.contains(tName))
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_LightBlue ,   100, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, DYE_INT_LightBlue ,   100, aRandom) || rResult;
 					for (String tName : aBiomeNames) if (BIOMES_JUNGLE.contains(tName))
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Green     ,   600, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, DYE_INT_Green     ,   600, aRandom) || rResult;
 					for (String tName : aBiomeNames) if (BIOMES_FROZEN.contains(tName))
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_White     ,   700, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, DYE_INT_White     ,   700, aRandom) || rResult;
 					if (tContact == Blocks.mycelium)
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Pink      ,   800, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, DYE_INT_Pink      ,   800, aRandom) || rResult;
 					if (tContact == Blocks.sand && aWorld.getBlockMetadata(tX, tY, tZ) == 1)
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Red       ,   900, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, DYE_INT_Red       ,   900, aRandom) || rResult;
 					if (tContact == Blocks.sandstone || tContact.getMaterial() == Material.sand)
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Yellow    ,   900, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, DYE_INT_Yellow    ,   900, aRandom) || rResult;
 					if (tContact == Blocks.gravel || tContact.getMaterial() == Material.rock)
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_LightGray ,   500, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, DYE_INT_LightGray ,   500, aRandom) || rResult;
 					if (tContact == Blocks.grass || tContact.getMaterial() == Material.grass)
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, 0xffdd99          ,     0, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, 0xffdd99          ,     0, aRandom) || rResult;
 					if (tContact == Blocks.dirt || tContact.getMaterial() == Material.ground)
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Brown     ,     0, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, DYE_INT_Brown     ,     0, aRandom) || rResult;
 					// Lets make the magical Bumbles the Default if all else fails, so technically they are obtainable, even though I literally just made sure they can't spawn under the big Mushrooms. XD
-					return placeHive(tRegistry, aWorld, tX, tY-1, tZ, DYE_INT_Purple    ,   200, aRandom) || rResult;
+					return placeHive(tRegistry, aDimType, aWorld, tX, tY-1, tZ, DYE_INT_Purple    ,   200, aRandom) || rResult;
 				}
 				return rResult;
 			}
@@ -193,8 +192,14 @@ public class WorldgenHives extends WorldgenObject {
 		return rResult;
 	}
 	
-	public boolean placeHive(MultiTileEntityRegistry aRegistry, World aWorld, int aX, int aY, int aZ, int aColor, int aSpeciesID, Random aRandom) {
-		NBTTagCompound aBumbleTag = IItemBumbleBee.Util.getBumbleGenes(WD.envTemp(aWorld, aX, aY, aZ), aWorld.getBiomeGenForCoords(aX, aZ), !aWorld.provider.hasNoSky && aWorld.getPrecipitationHeight(aX, aZ) <= aY + 5, aRandom);
+	public boolean placeHive(MultiTileEntityRegistry aRegistry, int aDimType, World aWorld, int aX, int aY, int aZ, int aColor, int aSpeciesID, Random aRandom) {
+		NBTTagCompound aBumbleTag;
+		if (aDimType == DIM_OVERWORLD) {
+			aBumbleTag = IItemBumbleBee.Util.getBumbleGenes(WD.envTemp(aWorld, aX, aY, aZ), aWorld.getBiomeGenForCoords(aX, aZ), !aWorld.provider.hasNoSky && aWorld.getPrecipitationHeight(aX, aZ) <= aY + 5, aRandom);
+		} else {
+			// Just pick whichever is the current time of day, because most dimensions don't have passage of daytime.
+			aBumbleTag = IItemBumbleBee.Util.getBumbleGenes(WD.envTemp(aWorld, aX, aY, aZ), aWorld.getBiomeGenForCoords(aX, aZ), !aWorld.provider.hasNoSky && aWorld.getPrecipitationHeight(aX, aZ) <= aY + 5, aWorld.isDaytime(), !aWorld.isDaytime(), aRandom);
+		}
 		return aRegistry.mBlock.placeBlock(aWorld, aX, aY, aZ, SIDE_UNKNOWN, (short)32755, UT.NBT.make(NBT_COLOR, aColor, NBT_INV_LIST, UT.NBT.makeInv(((IItemBumbleBee)ItemsGT.BUMBLEBEES).bumbleProductStack(NI, (short)aSpeciesID, UT.Code.units(IItemBumbleBee.Util.getWorkForce(aBumbleTag), 10000, 10, T), 0), IItemBumbleBee.Util.setBumbleTag(ST.make(ItemsGT.BUMBLEBEES, 1, aSpeciesID+1), aBumbleTag), IItemBumbleBee.Util.setBumbleTag(ST.make(ItemsGT.BUMBLEBEES, IItemBumbleBee.Util.getOffspring(aBumbleTag), aSpeciesID), aBumbleTag)), NBT_PAINTED, T), F, T);
 	}
 }

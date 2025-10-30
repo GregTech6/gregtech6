@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -128,7 +128,8 @@ public interface IItemBumbleBee {
 		}
 		
 		public static NBTTagCompound getBumbleGenes(Random aRandom) {return getBumbleGenes(WD.envTemp(BiomeGenBase.plains), BiomeGenBase.plains, T, aRandom);}
-		public static NBTTagCompound getBumbleGenes(long aTemperature, BiomeGenBase aBiome, boolean aHasSky, Random aRandom) {
+		public static NBTTagCompound getBumbleGenes(long aTemperature, BiomeGenBase aBiome, boolean aHasSky, Random aRandom) {return getBumbleGenes(aTemperature, aBiome, aHasSky, !(BIOMES_DESERT.contains(aBiome.biomeName) || BIOMES_MESA.contains(aBiome.biomeName)), BIOMES_DESERT.contains(aBiome.biomeName) || BIOMES_MESA.contains(aBiome.biomeName), aRandom);}
+		public static NBTTagCompound getBumbleGenes(long aTemperature, BiomeGenBase aBiome, boolean aHasSky, boolean aDay, boolean aNight, Random aRandom) {
 			NBTTagCompound rBumbleTag = UT.NBT.make();
 			setHumidityMin(rBumbleTag, aBiome.rainfall - 0.10F - aRandom.nextInt(41)/100.0F);
 			setHumidityMax(rBumbleTag, aBiome.rainfall + 0.10F + aRandom.nextInt(41)/100.0F);
@@ -138,14 +139,15 @@ public interface IItemBumbleBee {
 			setWorkForce     (rBumbleTag,    1+aRandom.nextInt( 10000));
 			setAggressiveness(rBumbleTag,  100+aRandom.nextInt(  9901));
 			setLifeSpan      (rBumbleTag, 1200+aRandom.nextInt(142801));
+			// Making sure no errors can happen by turning the false,false case into a true,true case.
+			setDayActive     (rBumbleTag, aDay   || !aNight);
+			setNightActive   (rBumbleTag, aNight || !aDay  );
 			if (aHasSky) {
 				setOutsideActive(rBumbleTag, T);
 				if (aRandom.nextInt(10000) < aBiome.rainfall * 10000) setRainproof(rBumbleTag, T);
 				if (aRandom.nextInt(20000) < aBiome.rainfall * 10000) setStormproof(rBumbleTag, T);
-				if (BIOMES_DESERT.contains(aBiome.biomeName) || BIOMES_MESA.contains(aBiome.biomeName)) setNightActive(rBumbleTag, T); else setDayActive(rBumbleTag, T);
 			} else {
 				setInsideActive(rBumbleTag, T);
-				if (aRandom.nextBoolean()) setNightActive(rBumbleTag, T); else setDayActive(rBumbleTag, T);
 			}
 			return rBumbleTag;
 		}
