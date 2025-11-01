@@ -97,7 +97,7 @@ public class Loader_Worldgen implements Runnable {
 		, new StoneLayerOres(MT.Coal                                    , F, U16,  0, 32, ST.block(MD.EtFu, "deepslate_coal_ore"), BIOMES_PLAINS, BIOMES_SHROOM)
 		, MD.Salt     .mLoaded ? new StoneLayerOres(MT.NaCl             , F, U32, 20, 32, ST.block(MD.Salt, "saltDeepslateOre")) : null
 		,!MT.Nikolite .mHidden ? new StoneLayerOres(MT.Nikolite         , F, U32,  0, 20, ST.block(MD.EtFu, "deepslate_projred_ore"), 3, ST.block(MD.EtFu, "deepslate_bluepower_ore"), 0) : null
-		, MD.DE       .mLoaded ? new StoneLayerOres(MT.Draconium        , F, U64,  0,  7, ST.block(MD.EtFu, "deepslate_draconium_ore"), 0) : null
+		, MD.DE       .mLoaded ? new StoneLayerOres(MT.Draconium        , F, U144,  0,  7, ST.block(MD.EtFu, "deepslate_draconium_ore"), 0, BIOMES_MAGICAL) : null
 		, MD.HEX      .mLoaded ? new StoneLayerOres(MT.HexoriumBlack    , F, U32,  0, 16) : null
 		, MD.HEX      .mLoaded ? new StoneLayerOres(MT.HexoriumWhite    , F, U32,  0, 16) : null
 		, MD.MET      .mLoaded ? new StoneLayerOres(MT.DeepIron         , F, U16,  0, 16) : null
