@@ -11,6 +11,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] GT6 Mossy Cobble (Not Vanilla Mossy Cobble) will make you (and Mobs) slide off if you are not sneaking. This Block spawns Mobs AND makes them slide off if there is space, which is Ideal for Mob Farms.
 [CHANGED] Mobs can no longer drop Wooden or Stone Tools of Vanilla Minecraft and instead will drop Sticks in those cases. This should very much declutter some Mob Farms.
 [CHANGED] Oil Shale in Coke Oven now gives you 10x the Oil, making it actually worthwhile to use at all.
+[CHANGED] The 3 Types of Golden Juices now make roughly ten times less Biomass than before, they now either produce 65x (64x plus base value), 9x (8x plus base value) or 2x (1x plus base value) the output of Juice based Biomass.
 [ADDED] Steel Rope, which is just another type of Rope.
 [ADDED] Ultimet Boilers corresponding to the TaHFC Burning Boxes.
 [ADDED] Yellow and Brown Grass now indicate Lava, Gas and Oil Springs. Greener Grass indicates Water Springs.

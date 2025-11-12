@@ -685,22 +685,22 @@ public class RM {
 		int tSize = aBiomass.stackSize;
 		if (tSize <= 0) return F;
 		aBiomass = ST.amount(1, aBiomass);
-		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 2) / tSize, aBiomass, FL.Rotten_Drink.make(              1080 / tSize), FL.BiomassIC2.make(3240    / tSize, FL.Biomass), ZL_IS);
-		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 2) / tSize, aBiomass, FL.Soup_Mushroom.make(             1080 / tSize), FL.BiomassIC2.make(3240    / tSize, FL.Biomass), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 2) / tSize, aBiomass, FL.Rotten_Drink.make(              1080 / tSize), FL.BiomassIC2.make(3240   / tSize, FL.Biomass), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 2) / tSize, aBiomass, FL.Soup_Mushroom.make(             1080 / tSize), FL.BiomassIC2.make(3240   / tSize, FL.Biomass), ZL_IS);
 		for (String tFluid : FluidsGT.WATER) if (FL.exists(tFluid))
-		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 4) / tSize, aBiomass, FL.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(1080    / tSize, FL.Biomass), ZL_IS);
-		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 4) / tSize, aBiomass, FL.MnWtr.make(              1080 / tSize), FL.BiomassIC2.make(1080    / tSize, FL.Biomass), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 4) / tSize, aBiomass, FL.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(1080   / tSize, FL.Biomass), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 4) / tSize, aBiomass, FL.MnWtr.make(                     1080 / tSize), FL.BiomassIC2.make(1080   / tSize, FL.Biomass), ZL_IS);
 		for (String tFluid : FluidsGT.MILK ) if (FL.exists(tFluid))
-		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, FL.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(2160    / tSize, FL.Biomass), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, FL.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(2160   / tSize, FL.Biomass), ZL_IS);
 		for (String tFluid : FluidsGT.JUICE) if (FL.exists(tFluid) && !"potion.idunsapplejuice".equals(tFluid) && !"potion.goldenapplejuice".equals(tFluid) && !"goldencarrotjuice".equals(tFluid))
-		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, FL.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(3240    / tSize, FL.Biomass), ZL_IS);
-		RM.Fermenter.addRecipe1(F, 16,  aSpeed      / tSize, aBiomass, FL.make("potion.idunsapplejuice" , 1080 / tSize), FL.BiomassIC2.make(2099520 / tSize, FL.Biomass), ZL_IS);
-		RM.Fermenter.addRecipe1(F, 16,  aSpeed      / tSize, aBiomass, FL.make("potion.goldenapplejuice", 1080 / tSize), FL.BiomassIC2.make(233280  / tSize, FL.Biomass), ZL_IS);
-		RM.Fermenter.addRecipe1(F, 16,  aSpeed      / tSize, aBiomass, FL.make("goldencarrotjuice"      , 1080 / tSize), FL.BiomassIC2.make(25920   / tSize, FL.Biomass), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, FL.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(3240   / tSize, FL.Biomass), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16,  aSpeed      / tSize, aBiomass, FL.make("potion.idunsapplejuice" , 1080 / tSize), FL.BiomassIC2.make(210600 / tSize, FL.Biomass), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16,  aSpeed      / tSize, aBiomass, FL.make("potion.goldenapplejuice", 1080 / tSize), FL.BiomassIC2.make(29160  / tSize, FL.Biomass), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16,  aSpeed      / tSize, aBiomass, FL.make("goldencarrotjuice"      , 1080 / tSize), FL.BiomassIC2.make(6480   / tSize, FL.Biomass), ZL_IS);
 		for (String tFluid : FluidsGT.HONEY) if (FL.exists(tFluid))
-		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, FL.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(3240    / tSize, FL.Biomass), ZL_IS);
-		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 2) / tSize, aBiomass, FL.Honeydew.make(                  1080 / tSize), FL.BiomassIC2.make(3240    / tSize, FL.Biomass), ZL_IS);
-		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 2) / tSize, aBiomass, FL.RoyalJelly.make(                1080 / tSize), FL.BiomassIC2.make(32400   / tSize, FL.Biomass), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 3) / tSize, aBiomass, FL.make(tFluid                   , 1080 / tSize), FL.BiomassIC2.make(3240   / tSize, FL.Biomass), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 2) / tSize, aBiomass, FL.Honeydew.make(                  1080 / tSize), FL.BiomassIC2.make(3240   / tSize, FL.Biomass), ZL_IS);
+		RM.Fermenter.addRecipe1(F, 16, (aSpeed * 2) / tSize, aBiomass, FL.RoyalJelly.make(                1080 / tSize), FL.BiomassIC2.make(12560  / tSize, FL.Biomass), ZL_IS);
 		return T;
 	}
 	

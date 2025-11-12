@@ -611,8 +611,8 @@ public class Loader_Recipes_Food implements Runnable {
 		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.Juice_Apple                              .make(50), FL.Cider_Apple                           .make(25), ZL_IS);
 		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.Juice_AppleGrC                           .make(50), FL.Cider_Apple                           .make(25), ZL_IS);
 		RM.Fermenter    .addRecipe1(T, 16,  128, ST.tag(0), FL.Cider_Apple                              .make(50), FL.Vinegar_Apple                         .make(10), ZL_IS);
-		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.make_("potion.goldenapplejuice"       , 50), FL.make("potion.goldencider"          , 25), ZL_IS);
-		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.make_("potion.idunsapplejuice"        , 50), FL.make("potion.notchesbrew"          , 25), ZL_IS);
+		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.make_("potion.goldenapplejuice"              , 50), FL.make("potion.goldencider"                 , 25), ZL_IS);
+		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.make_("potion.idunsapplejuice"               , 50), FL.make("potion.notchesbrew"                 , 25), ZL_IS);
 		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.Mash_Rice                                .make(50), FL.Sake                                  .make(25), ZL_IS);
 		RM.Fermenter    .addRecipe1(T, 16,   64, ST.tag(0), FL.Mash_Wheat                               .make(50), FL.Whiskey_Scotch                        .make(25), ZL_IS);
 		RM.Fermenter    .addRecipe1(T, 16,  128, ST.tag(0), FL.Whiskey_Scotch                           .make(50), FL.Whiskey_GlenMcKenner                  .make(10), ZL_IS);

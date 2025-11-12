@@ -833,8 +833,8 @@ public class Loader_Recipes_Vanilla implements Runnable {
 		RM.Squeezer     .addRecipe1(T, 16,   16, 10000, ST.make(Items.poisonous_potato  , 1, W), NF, FL.Potion_Poison_1.make(250), NI);
 		RM.Squeezer     .addRecipe1(T, 16,   16, 10000, ST.make(Items.spider_eye        , 1, W), NF, FL.Potion_Poison_1.make(250), OM.dust(MT.MeatRaw, U2));
 		RM.Squeezer     .addRecipe1(T, 16,   32, 10000, ST.make(Items.fish              , 1, 3), NF, FL.Potion_Poison_2.make(250), OM.dust(MT.FishRaw, U));
-		RM.Squeezer     .addRecipe1(T, 16,  128, 10000, ST.make(Items.golden_apple      , 1, 0), NF, FL.make("potion.goldenapplejuice", 250), OM.dust(MT.Au, U*2));
 		RM.Squeezer     .addRecipe1(T, 16,  128, 10000, ST.make(Items.golden_apple      , 1, 1), NF, FL.make("potion.idunsapplejuice", 250), OM.dust(MT.Au, U*18));
+		RM.Squeezer     .addRecipe1(T, 16,  128, 10000, ST.make(Items.golden_apple      , 1, 0), NF, FL.make("potion.goldenapplejuice", 250), OM.dust(MT.Au, U*2));
 		RM.Squeezer     .addRecipe1(T, 16,  128, 10000, ST.make(Items.golden_carrot     , 1, 0), NF, FL.make("goldencarrotjuice", 250), OM.dust(MT.Au, 2*U9));
 		RM.Squeezer     .addRecipe1(T, 16,   16, 10000, IL.Dye_SquidInk                 .get(1), NF, FL.make("squidink", 2*L), NI);
 		
