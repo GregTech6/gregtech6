@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,24 +19,12 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-import static gregapi.util.CR.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.config.ConfigCategories;
-import gregapi.data.ANY;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.CS.ItemsGT;
-import gregapi.data.FL;
-import gregapi.data.IL;
-import gregapi.data.MD;
-import gregapi.data.MT;
-import gregapi.data.OD;
-import gregapi.data.OP;
-import gregapi.data.RM;
+import gregapi.data.*;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.util.CR;
 import gregapi.util.OM;
@@ -45,6 +33,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import static gregapi.data.CS.*;
+import static gregapi.util.CR.*;
 
 public class Compat_Recipes_BuildCraft extends CompatMods {
 	public Compat_Recipes_BuildCraft(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
@@ -88,12 +79,14 @@ public class Compat_Recipes_BuildCraft extends CompatMods {
 		}
 		
 		if (MD.BC_TRANSPORT.mLoaded) {
+			ItemsGT.VOIDING_ITEMS.add(MD.BC_TRANSPORT, "item.buildcraftPipe.pipeitemsvoid", 0);
 			if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "buildcraft-void-pipe-items", T)) {
-				ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(ST.make(MD.BC_TRANSPORT, "item.buildcraftPipe.pipeitemsvoid", 1, 0));
+				ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(MD.BC_TRANSPORT, "item.buildcraftPipe.pipeitemsvoid", 0);
 				CR.delate(MD.BC_TRANSPORT, "item.buildcraftPipe.pipeitemsvoid", 0);
 			}
+			ItemsGT.VOIDING_ITEMS.add(MD.BC_TRANSPORT, "item.buildcraftPipe.pipefluidsvoid", 0);
 			if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "buildcraft-void-pipe-fluids", T)) {
-				ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(ST.make(MD.BC_TRANSPORT, "item.buildcraftPipe.pipefluidsvoid", 1, 0));
+				ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(MD.BC_TRANSPORT, "item.buildcraftPipe.pipefluidsvoid", 0);
 				CR.delate(MD.BC_TRANSPORT, "item.buildcraftPipe.pipefluidsvoid", 0);
 			}
 			

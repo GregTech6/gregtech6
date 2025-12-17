@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 Gregorius Techneticies
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,15 +19,11 @@
 
 package gregtech.compat;
 
-import static gregapi.data.CS.*;
-
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import gregapi.api.Abstract_Mod;
 import gregapi.code.ModData;
 import gregapi.compat.CompatMods;
 import gregapi.config.ConfigCategories;
-import gregapi.data.CS.ConfigsGT;
-import gregapi.data.CS.ItemsGT;
 import gregapi.data.MD;
 import gregapi.data.RM;
 import gregapi.oredict.event.IOreDictListenerEvent;
@@ -36,20 +32,25 @@ import gregapi.util.CR;
 import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 
+import static gregapi.data.CS.*;
+
 public class Compat_Recipes_ExtraUtilities extends CompatMods {
 	public Compat_Recipes_ExtraUtilities(ModData aMod, Abstract_Mod aGTMod) {super(aMod, aGTMod);}
 	
 	@Override public void onPostLoad(FMLPostInitializationEvent aInitEvent) {OUT.println("GT_Mod: Doing Extra Utilities Recipes.");
+		ItemsGT.VOIDING_ITEMS.add(MD.ExU, "trashcan", 0);
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "extra-utilities-trash-can-items", T)) {
-			ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(ST.make(MD.ExU, "trashcan", 1, 0));
+			ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(MD.ExU, "trashcan", 0);
 			CR.delate(MD.ExU, "trashcan", 0);
 		}
+		ItemsGT.VOIDING_ITEMS.add(MD.ExU, "trashcan", 1);
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "extra-utilities-trash-can-fluids", T)) {
-			ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(ST.make(MD.ExU, "trashcan", 1, 1));
+			ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(MD.ExU, "trashcan", 1);
 			CR.delate(MD.ExU, "trashcan", 1);
 		}
+		ItemsGT.VOIDING_ITEMS.add(MD.ExU, "trashcan", 2);
 		if (ConfigsGT.RECIPES.get(ConfigCategories.Recipes.disabledrecipes, "extra-utilities-trash-can-energy", F)) {
-			ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(ST.make(MD.ExU, "trashcan", 1, 2));
+			ItemsGT.RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD.add(MD.ExU, "trashcan", 2);
 			CR.delate(MD.ExU, "trashcan", 2);
 		}
 		

@@ -156,6 +156,11 @@ public class MultiTileEntityFluidTap extends TileEntityBase11AttachmentSmall {
 						// Nothing left to check for empty Hands
 						return T;
 					}
+					if (ItemsGT.VOIDING_ITEMS.contains(aStack)) {
+						UT.Sounds.send(SFX.IC_SPRAY, 1.0F, 2.0F, this, F);
+						GarbageGT.trash(((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, Integer.MAX_VALUE, T));
+						return T;
+					}
 					FluidStack tNewFluid = aFluid.copy();
 					ItemStack tStack = FL.fill(tNewFluid, ST.amount(1, aStack), T, T, T, T);
 					if (aFluid.amount > tNewFluid.amount && ((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, aFluid.amount - tNewFluid.amount, T) != null) {

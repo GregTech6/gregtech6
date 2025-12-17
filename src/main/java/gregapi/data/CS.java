@@ -1612,6 +1612,7 @@ public class CS {
 		public static final ItemStackSet<ItemStackContainer> CONTAINER_DURABILITY = ST.hashset();
 		public static final ItemStackSet<ItemStackContainer> SPECIAL_CASE_TOOLS = ST.hashset();
 		public static final ItemStackSet<ItemStackContainer> SHOW_RESISTANCE = ST.hashset();
+		public static final ItemStackSet<ItemStackContainer> VOIDING_ITEMS = ST.hashset();
 		public static final ItemStackSet<ItemStackContainer> RECIPE_REMOVED_USE_TRASH_BIN_INSTEAD = ST.hashset();
 		public static final ItemStackSet<ItemStackContainer> NEI_DONT_SHOW_FLUIDS = ST.hashset();
 		
