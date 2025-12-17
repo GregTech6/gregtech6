@@ -14,7 +14,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] The 3 Types of Golden Juices now make roughly ten times less Biomass than before, they now either produce 65x (64x plus base value), 9x (8x plus base value) or 2x (1x plus base value) the output of Juice based Biomass.
 [CHANGED] Can now rightclick a Tap or Nozzle with an Ender Garbage Bin or similar other Mod Voiding Items, to drain one attached Fluid Tank entirely.
 [CHANGED] Bedrock Drill can now accept the "Running Possible Detector" to check if there is 100L of Lubricant inside (and if the Structure is Okay).
-[CHANGED] Crucibles are now 1000 times harder to break when over 500 Kelvin unless empty.
+[CHANGED] Crucibles are now 1000 times harder to break when not empty.
 [ADDED] Steel Rope, which is just another type of Rope.
 [ADDED] Ultimet Boilers corresponding to the TaHFC Burning Boxes.
 [ADDED] Yellow and Brown Grass now indicate Lava, Gas and Oil Springs. Greener Grass indicates Water Springs.
