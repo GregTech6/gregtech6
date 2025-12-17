@@ -78,9 +78,14 @@ public class MultiTileEntityFluidTap extends TileEntityBase11AttachmentSmall {
 		if (isServerSide()) {
 			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(mFacing);
 			if (tDelegator.mTileEntity instanceof ITileEntityTapAccessible) {
+				ItemStack aStack = aPlayer.getCurrentEquippedItem();
+				if (ItemsGT.VOIDING_ITEMS.contains(aStack)) {
+					UT.Sounds.send(SFX.IC_SPRAY, 1.0F, 2.0F, this, F);
+					GarbageGT.trash(((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, Integer.MAX_VALUE, T));
+					return T;
+				}
 				FluidStack aFluid = ((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, Integer.MAX_VALUE, F);
 				if (!FL.gas(aFluid, T) && aFluid.amount > 0 && (mAcidProof || !FL.acid(aFluid))) {
-					ItemStack aStack = aPlayer.getCurrentEquippedItem();
 					if (aStack == null) {
 						DelegatorTileEntity<TileEntity> tDelegator2 = getAdjacentTileEntity(SIDE_BOTTOM);
 						if (tDelegator2.mTileEntity == null) {
@@ -154,11 +159,6 @@ public class MultiTileEntityFluidTap extends TileEntityBase11AttachmentSmall {
 							return T;
 						}
 						// Nothing left to check for empty Hands
-						return T;
-					}
-					if (ItemsGT.VOIDING_ITEMS.contains(aStack)) {
-						UT.Sounds.send(SFX.IC_SPRAY, 1.0F, 2.0F, this, F);
-						GarbageGT.trash(((ITileEntityTapAccessible)tDelegator.mTileEntity).tapDrain(tDelegator.mSideOfTileEntity, Integer.MAX_VALUE, T));
 						return T;
 					}
 					FluidStack tNewFluid = aFluid.copy();
