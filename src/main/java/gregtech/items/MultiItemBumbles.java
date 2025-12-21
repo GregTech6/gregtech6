@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -648,7 +648,7 @@ public class MultiItemBumbles extends MultiItemRandomWithCompat implements IItem
 	public IIcon PRINCESS, QUEEN, SCANNED, DEAD;
 	
 	@Override public IIcon getIconIndex(ItemStack aStack) {return getIconFromDamage(ST.meta(aStack));}
-	@Override public IIcon getIconFromDamage(int aMetaData) {aMetaData /= 10; aMetaData *= 10; return UT.Code.exists(aMetaData, mIconList) ? mIconList[aMetaData][0] : Textures.ItemIcons.RENDERING_ERROR.getIcon(0);}
+	@Override public IIcon getIconFromDamage(int aMetaData) {aMetaData /= 10; aMetaData *= 10; return UT.Code.exists(aMetaData, mIconList) && mIconList[aMetaData][0] != null ? mIconList[aMetaData][0] : Textures.ItemIcons.RENDERING_ERROR.getIcon(0);}
 	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass, EntityPlayer aPlayer, ItemStack aUsedStack, int aUseRemaining) {return getIcon(aStack, aRenderPass);}
 	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass) {return getIconFromDamageForRenderPass(ST.meta_(aStack), aRenderPass);}
 	
