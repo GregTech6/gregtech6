@@ -86,6 +86,7 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
+		aList.add(Chat.GREEN    + LH.get(LH.RANGE) + ":" + Chat._WHITE + "7x7x7");
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_ACCESS_SCOOP));
 		aList.add(Chat.DGRAY    + LH.get(LH.TOOL_TO_MEASURE_THERMOMETER));
 	}
@@ -303,7 +304,7 @@ public class MultiTileEntityBumbliary extends TileEntityBase07Paintable implemen
 		}
 		if (aTool.equals(TOOL_scoop)) {
 			if (SIDES_TOP[aSide]) {
-				mBreedingCountDown = 6000;
+				if (!UT.Entities.isCreative(aPlayer)) mBreedingCountDown = 6000;
 				if (aPlayer instanceof EntityLivingBase) attackEntity((EntityLivingBase)aPlayer);
 				if (aPlayer instanceof EntityPlayer) openGUI((EntityPlayer)aPlayer, 1);
 				return 10000;
