@@ -68,7 +68,7 @@ public class MultiTileEntityVonDaGraagg extends TileEntityBase10MultiBlockBase i
 		if (worldObj.blockExists(tX-2, tY, tZ-2) && worldObj.blockExists(tX+2, tY, tZ-2) && worldObj.blockExists(tX-2, tY, tZ+2) && worldObj.blockExists(tX+2, tY, tZ+2)) {
 			boolean tSuccess = T;
 			
-			for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) {
+			for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) if (Math.abs(i * j) < 4) {
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, +0, j, 18028, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN, aCoordinates, aPlayer, aInventory)) tSuccess = F;
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, +1, j, 18028, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN, aCoordinates, aPlayer, aInventory)) tSuccess = F;
 			}
@@ -93,7 +93,7 @@ public class MultiTileEntityVonDaGraagg extends TileEntityBase10MultiBlockBase i
 	}
 	
 	static {
-		LH.add("gt.tooltip.multiblock.von.da.graagg.1", "5x5x2 Base of 49 Dense Galvanized Steel Wall with Main at bottom Center");
+		LH.add("gt.tooltip.multiblock.von.da.graagg.1", "cornerless 5x5x2 Base of 41 Dense Galvanized Steel Wall with Main at bottom Center");
 		LH.add("gt.tooltip.multiblock.von.da.graagg.2", "A 5m long Pole of Large Copper Coil with +1 Dense Steel Wall ontop");
 		LH.add("gt.tooltip.multiblock.von.da.graagg.3", "Wrap a cornerless 3x3x3 of 16 Dense Steel Wall around the Top");
 		LH.add("gt.tooltip.multiblock.von.da.graagg.4", "Prevents Mob Spawns except on Mossy Cobblestone, Range depends on Input.");
