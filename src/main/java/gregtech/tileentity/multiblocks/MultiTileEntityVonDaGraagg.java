@@ -80,9 +80,12 @@ public class MultiTileEntityVonDaGraagg extends TileEntityBase10MultiBlockBase i
 			
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, 0, +7, 0, 18029, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING       , aCoordinates, aPlayer, aInventory)) tSuccess = F;
 			for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) if (i != 0 || j != 0) {
-			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, +5, j, 18029, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING       , aCoordinates, aPlayer, aInventory)) tSuccess = F;
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, +6, j, 18029, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING       , aCoordinates, aPlayer, aInventory)) tSuccess = F;
+			if (i * j == 0) {
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, +5, j, 18029, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING       , aCoordinates, aPlayer, aInventory)) tSuccess = F;
 			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, +7, j, 18029, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING       , aCoordinates, aPlayer, aInventory)) tSuccess = F;
+			}
+			
 			}
 			return tSuccess;
 		}
@@ -92,7 +95,7 @@ public class MultiTileEntityVonDaGraagg extends TileEntityBase10MultiBlockBase i
 	static {
 		LH.add("gt.tooltip.multiblock.von.da.graagg.1", "5x5x2 Base of 49 Dense Galvanized Steel Wall with Main at bottom Center");
 		LH.add("gt.tooltip.multiblock.von.da.graagg.2", "A 5m long Pole of Large Copper Coil with +1 Dense Steel Wall ontop");
-		LH.add("gt.tooltip.multiblock.von.da.graagg.3", "Wrap a 3x3x3 of 24 Dense Steel Wall around the Top");
+		LH.add("gt.tooltip.multiblock.von.da.graagg.3", "Wrap a cornerless 3x3x3 of 16 Dense Steel Wall around the Top");
 		LH.add("gt.tooltip.multiblock.von.da.graagg.4", "Prevents Mob Spawns except on Mossy Cobblestone, Range depends on Input.");
 	}
 	
