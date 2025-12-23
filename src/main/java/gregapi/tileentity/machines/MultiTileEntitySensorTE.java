@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2025 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,10 +19,6 @@
 
 package gregapi.tileentity.machines;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-
 import gregapi.GT_API_Proxy;
 import gregapi.computer.ITileEntityComputerizable;
 import gregapi.data.BI;
@@ -31,6 +27,7 @@ import gregapi.data.LH.Chat;
 import gregapi.render.IIconContainer;
 import gregapi.tileentity.ITileEntityServerTickPost;
 import gregapi.tileentity.delegate.DelegatorTileEntity;
+import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.util.UT;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -38,6 +35,10 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+
+import java.util.List;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -126,6 +127,12 @@ public abstract class MultiTileEntitySensorTE extends MultiTileEntitySensor impl
 			mDisplayedNumber = mSetNumber = UT.Code.bind16(mSetNumber);
 			
 			DelegatorTileEntity<TileEntity> tDelegator = getAdjacentTileEntity(mSecondFacing);
+			if (tDelegator.mTileEntity instanceof MultiTileEntityMultiBlockPart) {
+				if (((MultiTileEntityMultiBlockPart)tDelegator.mTileEntity).mTarget != null) {
+					tDelegator = new DelegatorTileEntity<>((TileEntity)((MultiTileEntityMultiBlockPart)tDelegator.mTileEntity).mTarget, tDelegator.mSideOfTileEntity);
+				}
+			}
+			
 			mValues[mIndex] = UT.Code.bindInt(getCurrentValue(tDelegator));
 			mCurrentValue = (mValues.length == 1 ? mValues[0] : UT.Code.averageInts(mValues));
 			mCurrentMax = UT.Code.bindInt(getCurrentMax(tDelegator));

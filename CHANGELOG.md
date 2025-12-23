@@ -5,7 +5,7 @@ This is the most recent Changelog. It also contains some of the changes inside t
 Nothing (I tend to only add finished Stuff to the Changelog).
 
 
-6.17.06: (Not released yet)
+6.17.06: (to be released somewhen today if everything still works)
 [FIXED] Crucibles did not accept excessive amounts of Air while nearly full. We talking >1000KU worth of Air in ONE go, while only one Ingot worth of space is in the Crucible.
 [FIXED] GT6 Alexandrite Ore Veins will no longer generate when HBM NTM is installed (balance concerns), it also generally wont be on the "Small Gem Ores List" anymore. You can still use the Matter Replicator to make Alexandrite though, if you find a sample first.
 [CHANGED] GT6 Mossy Cobble (Not Vanilla Mossy Cobble) will make you (and Mobs) slide off if you are not sneaking. This Block spawns Mobs AND makes them slide off if there is space, which is Ideal for Mob Farms.
@@ -15,9 +15,16 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Can now rightclick a Tap or Nozzle with an Ender Garbage Bin or similar other Mod Voiding Items, to drain one attached Fluid Tank entirely.
 [CHANGED] Bedrock Drill can now accept the "Running Possible Detector" to check if there is 100L of Lubricant inside (and if the Structure is Okay).
 [CHANGED] Crucibles are now 1000 times harder to break when not empty.
+[CHANGED] Sensors are now able to cleanly read GT6 Multiblock Stats without needing to be adjacent to the Controller. (before this there was plenty of hacks that made it work somewhat)
 [ADDED] Steel Rope, which is just another type of Rope.
 [ADDED] Ultimet Boilers corresponding to the TaHFC Burning Boxes.
 [ADDED] Yellow and Brown Grass now indicate Lava, Gas and Oil Springs. Greener Grass indicates Water Springs.
+[ADDED]
+Von Da Graagg Generator
+A Multiblock that turns Energy into "Mobs wont spawn except on Mossy Cobblestone", in a Range of up to 256m. It consumes 16EU/m/t to do so.
+Its Design is like what english people tend to call a Tesla Coil, see https://en.wikipedia.org/wiki/Van_de_Graaff_generator for its inspiration.
+The exception of Mossy Cobblestone (from both Vanilla and GregTech) was made so people can use this for highly efficient Mob Farms.
+As always, if you have trouble understanding the Tooltip, just use the GT Builder Wand to build it.
 
 
 6.17.05:

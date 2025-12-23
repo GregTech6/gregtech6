@@ -26,8 +26,12 @@ import gregapi.data.LH;
 import gregapi.data.LH.Chat;
 import gregapi.data.TD;
 import gregapi.tileentity.ITileEntityMobSpawnInhibitor;
+import gregapi.tileentity.data.ITileEntityGibbl;
+import gregapi.tileentity.data.ITileEntityProgress;
 import gregapi.tileentity.energy.ITileEntityEnergy;
 import gregapi.tileentity.multiblocks.IMultiBlockEnergy;
+import gregapi.tileentity.multiblocks.ITileEntityMultiBlockController;
+import gregapi.tileentity.multiblocks.MultiTileEntityMultiBlockPart;
 import gregapi.tileentity.multiblocks.TileEntityBase10MultiBlockBase;
 import gregapi.util.UT;
 import net.minecraft.block.Block;
@@ -48,7 +52,7 @@ import static gregapi.data.CS.*;
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityVonDaGraagg extends TileEntityBase10MultiBlockBase implements ITileEntityEnergy, ITileEntityMobSpawnInhibitor, IMultiBlockEnergy {
+public class MultiTileEntityVonDaGraagg extends TileEntityBase10MultiBlockBase implements ITileEntityEnergy, ITileEntityMobSpawnInhibitor, IMultiBlockEnergy, ITileEntityProgress, ITileEntityGibbl {
 	public long mEnergy = 0, mCurrentRange = 256;
 	public TagData mEnergyTypeAccepted = TD.Energy.EU;
 	
@@ -60,36 +64,53 @@ public class MultiTileEntityVonDaGraagg extends TileEntityBase10MultiBlockBase i
 	
 	@Override
 	public boolean checkStructure2(ChunkCoordinates aCoordinates, Entity aPlayer, IInventory aInventory) {
-		int tX = getOffsetXN(mFacing, 2), tY = yCoord-1, tZ = getOffsetZN(mFacing, 2);
+		int tX = xCoord, tY = yCoord, tZ = zCoord;
 		if (worldObj.blockExists(tX-2, tY, tZ-2) && worldObj.blockExists(tX+2, tY, tZ-2) && worldObj.blockExists(tX-2, tY, tZ+2) && worldObj.blockExists(tX+2, tY, tZ+2)) {
 			boolean tSuccess = T;
 			
+			for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) {
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, +0, j, 18028, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN, aCoordinates, aPlayer, aInventory)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, +1, j, 18028, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.ONLY_ENERGY_IN, aCoordinates, aPlayer, aInventory)) tSuccess = F;
+			}
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, 0, +2, 0, 18040, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING       , aCoordinates, aPlayer, aInventory)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, 0, +3, 0, 18040, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING       , aCoordinates, aPlayer, aInventory)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, 0, +4, 0, 18040, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING       , aCoordinates, aPlayer, aInventory)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, 0, +5, 0, 18040, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING       , aCoordinates, aPlayer, aInventory)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, 0, +6, 0, 18040, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING       , aCoordinates, aPlayer, aInventory)) tSuccess = F;
+			
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, 0, +7, 0, 18029, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING       , aCoordinates, aPlayer, aInventory)) tSuccess = F;
+			for (int i = -1; i <= 1; i++) for (int j = -1; j <= 1; j++) if (i != 0 || j != 0) {
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, +5, j, 18029, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING       , aCoordinates, aPlayer, aInventory)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, +6, j, 18029, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING       , aCoordinates, aPlayer, aInventory)) tSuccess = F;
+			if (!ITileEntityMultiBlockController.Util.checkAndSetTargetOffset(this, i, +7, j, 18029, getMultiTileEntityRegistryID(), 0, MultiTileEntityMultiBlockPart.NOTHING       , aCoordinates, aPlayer, aInventory)) tSuccess = F;
+			}
 			return tSuccess;
 		}
 		return mStructureOkay;
 	}
 	
 	static {
-		LH.add("gt.tooltip.multiblock.largeboiler.1", "TODO");
-		LH.add("gt.tooltip.multiblock.largeboiler.2", "TODO");
-		LH.add("gt.tooltip.multiblock.largeboiler.3", "TODO");
-		LH.add("gt.tooltip.multiblock.largeboiler.4", "TODO");
+		LH.add("gt.tooltip.multiblock.von.da.graagg.1", "5x5x2 Base of 49 Dense Galvanized Steel Wall with Main at bottom Center");
+		LH.add("gt.tooltip.multiblock.von.da.graagg.2", "A 5m long Pole of Large Copper Coil with +1 Dense Steel Wall ontop");
+		LH.add("gt.tooltip.multiblock.von.da.graagg.3", "Wrap a 3x3x3 of 24 Dense Steel Wall around the Top");
+		LH.add("gt.tooltip.multiblock.von.da.graagg.4", "Prevents Mob Spawns except on Mossy Cobblestone, Range depends on Input.");
 	}
 	
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.CYAN     + LH.get(LH.STRUCTURE) + ":");
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.von.da.graag.1"));
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.von.da.graag.2"));
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.von.da.graag.3"));
-		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.von.da.graag.4"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.von.da.graagg.1"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.von.da.graagg.2"));
+		aList.add(Chat.WHITE    + LH.get("gt.tooltip.multiblock.von.da.graagg.3"));
+		aList.add(Chat.CYAN     + LH.get("gt.tooltip.multiblock.von.da.graagg.4"));
+		LH.addEnergyToolTips(this, aList, mEnergyTypeAccepted, null, LH.get(LH.FACE_BOTTOM), "");
 		super.addToolTips(aList, aStack, aF3_H);
 	}
 	
 	@Override
 	public boolean isInsideStructure(int aX, int aY, int aZ) {
 		// TODO actual dimensions of Structure
-		int tX = getOffsetXN(mFacing, 2), tY = yCoord-1, tZ = getOffsetZN(mFacing, 2);
+		int tX = xCoord, tY = yCoord, tZ = zCoord;
 		return aX >= tX - 2 && aY >= tY && aZ >= tZ - 2 && aX <= tX + 2 && aY <= tY + 8 && aZ <= tZ + 2;
 	}
 	
@@ -123,18 +144,23 @@ public class MultiTileEntityVonDaGraagg extends TileEntityBase10MultiBlockBase i
 				GT_API_Proxy.MOB_SPAWN_INHIBITORS.add(this);
 				mHasToAddToList = F;
 			}
-			mCurrentRange = UT.Code.bind8(mStructureOkay ? mEnergy / 16 : 0);
-			mEnergy = 0;
+			mCurrentRange = UT.Code.bind8(mStructureOkay ? Math.min(mEnergy, 4096) / 16 : 0);
+			mEnergy -= 4096; if (mEnergy < 0) mEnergy = 0;
 		}
 	}
 	
 	@Override
 	public void onMagnifyingGlass2(List<String> aChatReturn) {
-		aChatReturn.add("Square Radius: " + mCurrentRange + "m");
+		aChatReturn.add("Square Radius: " + mCurrentRange + "m of 256m");
 	}
 	
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
+	
+	@Override public long getGibblValue   (byte aSide) {return mCurrentRange;}
+	@Override public long getGibblMax     (byte aSide) {return 256;}
+	@Override public long getProgressValue(byte aSide) {return mCurrentRange;}
+	@Override public long getProgressMax  (byte aSide) {return 256;}
 	
 	@Override public boolean isEnergyType(TagData aEnergyType, byte aSide, boolean aEmitting) {return !aEmitting && aEnergyType == mEnergyTypeAccepted;}
 	@Override public boolean isEnergyAcceptingFrom(TagData aEnergyType, byte aSide, boolean aTheoretical) {return isEnergyType(aEnergyType, aSide, F);}
