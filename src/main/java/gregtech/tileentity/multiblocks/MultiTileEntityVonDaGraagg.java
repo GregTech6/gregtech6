@@ -157,8 +157,8 @@ public class MultiTileEntityVonDaGraagg extends TileEntityBase10MultiBlockBase i
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
 	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
 	
-	@Override public long getGibblValue   (byte aSide) {return mCurrentRange;}
-	@Override public long getGibblMax     (byte aSide) {return 256;}
+	@Override public long getGibblValue   (byte aSide) {return 1000*mCurrentRange;}
+	@Override public long getGibblMax     (byte aSide) {return 1000*256;}
 	@Override public long getProgressValue(byte aSide) {return mCurrentRange;}
 	@Override public long getProgressMax  (byte aSide) {return 256;}
 	
