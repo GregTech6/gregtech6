@@ -86,6 +86,7 @@ public class Loader_Recipes_Alloys implements Runnable {
 		mix("molten.brass"          ,  7, "molten.aluminium"      ,  1, "molten.cobalt"         ,  1                              , "molten.cobaltbrass"      ,  9);
 		mix("molten.brass"          ,  4, "molten.bismuth"        ,  1                                                            , "molten.bismuthbronze"    ,  5);
 		mix("molten.bronze"         ,  4, "molten.arsenic"        ,  1                                                            , "molten.arsenicbronze"    ,  5);
+		mix("molten.arseniccopper"  ,  4, "molten.tin"            ,  1                                                            , "molten.arsenicbronze"    ,  5);
 		mix("molten.cobalt"         ,  5, "molten.chromium"       ,  2, "molten.nickel"         ,  1, "molten.molybdenum"     ,  1, "molten.ultimet"          ,  9);
 		mix("molten.cobalt"         , 20, "molten.chromium"       ,  7, "molten.nichrome"       ,  5, "molten.molybdenum"     ,  4, "molten.ultimet"          , 36);
 		mix("molten.osmiumelemental",  1, "molten.iridium"        ,  1                                                            , "molten.osmiridium"       ,  2);

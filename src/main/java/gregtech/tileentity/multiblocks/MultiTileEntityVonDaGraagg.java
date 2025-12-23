@@ -112,7 +112,6 @@ public class MultiTileEntityVonDaGraagg extends TileEntityBase10MultiBlockBase i
 	
 	@Override
 	public boolean isInsideStructure(int aX, int aY, int aZ) {
-		// TODO actual dimensions of Structure
 		int tX = xCoord, tY = yCoord, tZ = zCoord;
 		return aX >= tX - 2 && aY >= tY && aZ >= tZ - 2 && aX <= tX + 2 && aY <= tY + 8 && aZ <= tZ + 2;
 	}
@@ -158,7 +157,7 @@ public class MultiTileEntityVonDaGraagg extends TileEntityBase10MultiBlockBase i
 	}
 	
 	@Override public byte getDefaultSide() {return SIDE_FRONT;}
-	@Override public boolean[] getValidSides() {return SIDES_HORIZONTAL;}
+	@Override public boolean[] getValidSides() {return SIDES_BOTTOM;}
 	
 	@Override public long getGibblValue   (byte aSide) {return 1000*mCurrentRange;}
 	@Override public long getGibblMax     (byte aSide) {return 1000*256;}

@@ -90,6 +90,7 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 	@Override
 	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
 		aList.add(Chat.ORANGE + LH.get(LH.NO_GUI_CLICK_TO_INTERACT));
+		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_TAKE_PINCERS));
 		aList.add(Chat.DGRAY + LH.get(LH.TOOL_TO_DETAIL_MAGNIFYINGGLASS));
 		super.addToolTips(aList, aStack, aF3_H);
 	}
@@ -176,10 +177,24 @@ public class MultiTileEntityBookShelf extends TileEntityBase09FacingSingle imple
 			float[] tCoords = UT.Code.getFacingCoordsClicked(aSide, aHitX, aHitY, aHitZ);
 			if (tCoords[0] >= PX_P[1] && tCoords[0] <= PX_N[1] && tCoords[1] >= PX_P[1] && tCoords[1] <= PX_N[1]) {
 				int tIndex = -1;
-				if (aSide == mFacing            ) tIndex = (tCoords[1] < PX_P[8]? 6:13)-(int)UT.Code.bind_(0, 6, (long)(8*(tCoords[0]-PX_P[1])));
+				if (aSide == mFacing       ) tIndex = (tCoords[1] < PX_P[8]? 6:13)-(int)UT.Code.bind_(0, 6, (long)(8*(tCoords[0]-PX_P[1])));
 				if (aSide == OPOS[mFacing] ) tIndex = (tCoords[1] < PX_P[8]?20:27)-(int)UT.Code.bind_(0, 6, (long)(8*(tCoords[0]-PX_P[1])));
 				if (tIndex >= 0 && slotHas(tIndex)) {
 					NW_API.sendToPlayer(new PacketItemStackChat(slot(tIndex)), (EntityPlayerMP)aPlayer);
+					return 1;
+				}
+			}
+		}
+		if (aTool.equals(TOOL_pincers)) {
+			float[] tCoords = UT.Code.getFacingCoordsClicked(aSide, aHitX, aHitY, aHitZ);
+			if (tCoords[0] >= PX_P[1] && tCoords[0] <= PX_N[1] && tCoords[1] >= PX_P[1] && tCoords[1] <= PX_N[1]) {
+				int tIndex = -1;
+				if (aSide == mFacing       ) tIndex = (tCoords[1] < PX_P[8]? 6:13)-(int)UT.Code.bind_(0, 6, (long)(8*(tCoords[0]-PX_P[1])));
+				if (aSide == OPOS[mFacing] ) tIndex = (tCoords[1] < PX_P[8]?20:27)-(int)UT.Code.bind_(0, 6, (long)(8*(tCoords[0]-PX_P[1])));
+				if (tIndex >= 0 && slotHas(tIndex) && ST.add(aPlayer, slot(tIndex), T)) {
+					slotKill(tIndex);
+					updateInventory();
+					playCollect();
 					return 1;
 				}
 			}
