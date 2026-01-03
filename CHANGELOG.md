@@ -6,7 +6,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 
 6.17.07: (Not released yet)
-Nothing (I tend to only add finished Stuff to the Changelog).
+[CHANGED] Crucibles are now 100 times harder to break when not empty.
 
 
 6.17.06:
@@ -18,7 +18,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] The 3 Types of Golden Juices now make roughly ten times less Biomass than before, they now either produce 65x (64x plus base value), 9x (8x plus base value) or 2x (1x plus base value) the output of Juice based Biomass.
 [CHANGED] Can now rightclick a Tap or Nozzle with an Ender Garbage Bin or similar other Mod Voiding Items, to drain one attached Fluid Tank entirely.
 [CHANGED] Bedrock Drill can now accept the "Running Possible Detector" to check if there is 100L of Lubricant inside (and if the Structure is Okay).
-[CHANGED] Crucibles are now 1000 times harder to break when not empty.
+[CHANGED] Crucibles are now 1000* times harder to break when not empty. (changed to 100 times in next Release)
 [CHANGED] Sensors are now able to cleanly read GT6 Multiblock Stats without needing to be adjacent to the Controller. (before this there was plenty of hacks that made it work somewhat)
 [ADDED] Steel Rope, which is just another type of Rope.
 [ADDED] Ultimet Boilers corresponding to the TaHFC Burning Boxes.
