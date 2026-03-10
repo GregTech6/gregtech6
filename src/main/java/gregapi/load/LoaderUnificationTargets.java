@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 GregTech-6 Team
+ * Copyright (c) 2026 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -1332,6 +1332,7 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.Sn                     , ST.make(MD.IC2, "tinOre"        , 1, 0));
 		OreDictManager.INSTANCE.setTarget(OP.oreVanillastone, MT.OREMATS.Uraninite      , ST.make(MD.IC2, "uraniumOre"    , 1, 0));
 		if (MD.IC2C.mLoaded) {
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.U_238                  , MD.IC2, "item.itemIngotUran", 0);
 		OreDictManager.INSTANCE.setTarget(OP.plateDense     , MT.Cu                     , MD.IC2, "item.itemPartDCP", 0);
 		} else {
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.EnergiumRed            , ST.mkic("energiumDust", 1));
