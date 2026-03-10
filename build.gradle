@@ -17,14 +17,14 @@ buildscript {
 			name = "sonatype"
 			url = "https://oss.sonatype.org/content/repositories/snapshots/"
 		}
-		maven {
-			name = "falsepattern"
-			url = "https://mvn.falsepattern.com/jitpack/"
-		}
+		//maven {
+		//	name = "falsepattern"
+		//	url = "https://mvn.falsepattern.com/jitpack/"
+		//}
 	}
 	dependencies {
-		classpath 'com.github.GTNewHorizons:ForgeGradle:1.2.11'
-		//classpath 'net.minecraftforge.gradle:ForgeGradle:1.2.11'
+		//classpath 'com.github.GTNewHorizons:ForgeGradle:1.2.11'
+		classpath 'net.minecraftforge.gradle:ForgeGradle:1.2.11.dirty'
 		//classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
 		//classpath 'net.onedaybeard.artemis:artemis-odb-gradle-plugin:2.2.0'
 		//classpath 'net.onedaybeard.artemis:artemis-fluid-gradle-plugin:2.2.0'
