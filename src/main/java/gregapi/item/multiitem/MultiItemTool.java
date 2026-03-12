@@ -39,6 +39,7 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregapi.util.WD;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -647,8 +648,8 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	@Override
 	public int getRenderPasses(int aMetaData) {
 		IToolStats tStats = getToolStatsInternal(aMetaData);
-		if (tStats != null) return tStats.getRenderPasses()+2;
-		return 2;
+		if (tStats != null) return tStats.getRenderPasses()+1;
+		return 1;
 	}
 	
 	@Override
@@ -658,11 +659,11 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		return 16777215;
 	}
 	
-	@Override public IIcon getIconIndex(ItemStack aStack) {return getIcon(aStack, 0);}
-	@Override public IIcon getIconFromDamageForRenderPass(int aMetaData, int aRenderPass) {return getIconFromDamage(aMetaData);}
-	@Override public IIcon getIconFromDamage(int aMetaData) {return getIconIndex(ST.make(this, 1, aMetaData));}
-	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass) {return getIcon(aStack, aRenderPass, null, null, 0);}
-	@Override public IIcon getIcon(ItemStack aStack, int aRenderPass, EntityPlayer aPlayer, ItemStack aUsedStack, int aUseRemaining) {
+	@Override @SideOnly(Side.CLIENT) public IIcon getIconIndex(ItemStack aStack) {return getIcon(aStack, 0);}
+	@Override @SideOnly(Side.CLIENT) public IIcon getIconFromDamageForRenderPass(int aMetaData, int aRenderPass) {return getIconFromDamage(aMetaData);}
+	@Override @SideOnly(Side.CLIENT) public IIcon getIconFromDamage(int aMetaData) {return getIconIndex(ST.make(this, 1, aMetaData));}
+	@Override @SideOnly(Side.CLIENT) public IIcon getIcon(ItemStack aStack, int aRenderPass) {return getIcon(aStack, aRenderPass, null, null, 0);}
+	@Override @SideOnly(Side.CLIENT) public IIcon getIcon(ItemStack aStack, int aRenderPass, EntityPlayer aPlayer, ItemStack aUsedStack, int aUseRemaining) {
 		IToolStats tStats = getToolStatsInternal(aStack);
 		if (tStats == null) return Textures.ItemIcons.VOID.getIcon(0);
 		if (aRenderPass < tStats.getRenderPasses()) {
@@ -672,13 +673,7 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 		if (aPlayer == null) {
 			aRenderPass -= tStats.getRenderPasses();
 			if (aRenderPass == 0) {
-				long tDamage = MultiItemTool.getToolDamage(aStack), tMaxDamage = MultiItemTool.getToolMaxDamage(aStack);
-				if (tMaxDamage <= 0) return Textures.ItemIcons.VOID.getIcon(0);
-				if (tDamage <= 0) return Textures.ItemIcons.DURABILITY_BAR[8].getIcon(0);
-				if (tDamage >= tMaxDamage) return Textures.ItemIcons.DURABILITY_BAR[0].getIcon(0);
-				return Textures.ItemIcons.DURABILITY_BAR[(int)Math.max(0, Math.min(7, ((tMaxDamage-tDamage)*8L) / tMaxDamage))].getIcon(0);
-			}
-			if (aRenderPass == 1) {
+				if (!shouldRenderEnergyBarInGuiOnly()) return Textures.ItemIcons.VOID.getIcon(0);
 				IItemEnergy tElectric = getEnergyStats(aStack);
 				if (tElectric != null) {
 					long tStored = tElectric.getEnergyStored(TD.Energy.EU, aStack), tCapacity = tElectric.getEnergyCapacity(TD.Energy.EU, aStack);
@@ -689,6 +684,20 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 			}
 		}
 		return Textures.ItemIcons.VOID.getIcon(0);
+	}
+
+	@SideOnly(Side.CLIENT)
+	private static boolean shouldRenderEnergyBarInGuiOnly() {
+		StackTraceElement[] tTrace = Thread.currentThread().getStackTrace();
+		for (StackTraceElement tElement : tTrace) {
+			String tClass = tElement.getClassName();
+			if (tClass.endsWith("RenderEntityItem")) return false;
+		}
+		for (StackTraceElement tElement : tTrace) {
+			String tClass = tElement.getClassName();
+			if (tClass.endsWith("GuiIngame") || tClass.endsWith("GuiContainer")) return true;
+		}
+		return false;
 	}
 	
 	public IToolStats getToolStats(ItemStack aStack) {isItemStackUsable(aStack); return getToolStatsInternal(aStack);}
@@ -705,5 +714,11 @@ public class MultiItemTool extends MultiItem implements IItemGTHandTool, IItemGT
 	@Override public int getItemEnchantability() {return 0;}
 	@Override public boolean isBookEnchantable(ItemStack aStack, ItemStack aBook) {return F;}
 	@Override public boolean getIsRepairable(ItemStack aStack, ItemStack aMaterial) {return F;}
+	@Override public boolean showDurabilityBar(ItemStack aStack) {return getToolDamage(aStack) > 0;}
+	@Override public double getDurabilityForDisplay(ItemStack aStack) {
+		long tMaxDamage = getToolMaxDamage(aStack);
+		if (tMaxDamage <= 0) return 0;
+		return Math.min(1.0D, Math.max(0.0D, ((double)getToolDamage(aStack)) / tMaxDamage));
+	}
 	@Override public Long[] getFluidContainerStats(ItemStack aStack) {return null;}
 }

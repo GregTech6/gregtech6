@@ -89,6 +89,7 @@ public class RenderHelper {
 				if (aEffect && aStack.hasEffect(i)) mRenderItem.renderEffect(aTextureManager, aX, aY);
 			}
 		}
+		mRenderItem.renderItemOverlayIntoGUI(aFontRenderer, aTextureManager, aStack, aX, aY, null);
 		glDisable(GL_BLEND);
 		glDisable(GL_ALPHA_TEST);
 		glEnable(GL_LIGHTING);
