@@ -23,7 +23,12 @@ import static gregapi.data.CS.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.TagData;
@@ -59,6 +64,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -70,26 +77,44 @@ public class MultiTileEntityAutoToolMiner extends TileEntityBase09FacingSingle i
 	private static final int[] SLOTS_ALL = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 	private static final int[] SLOTS_OUTPUT = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 	private static final int SCAN_BUDGET_PER_TICK = 512;
+	private static final int OUTPUT_MOVE_INTERVAL = 10;
+	private static final int MAX_RANGE = 32;
+	private static final int CANDIDATE_QUEUE_SIZE = 64;
+	private static final int CANDIDATE_QUEUE_REFILL = 8;
+	private static final int SECTION_SCAN_SIZE = 4096;
 
 	private static final String NBT_RANGE_INTERNAL = "gt.miner.range";
 	private static final String NBT_CHANCE_INTERNAL = "gt.miner.chance";
 	private static final String NBT_SPEED_INTERNAL = "gt.miner.speedmult";
+	private static final String NBT_TARGET_ACTIVE = "gt.miner.target.active";
+	private static final String NBT_SCAN_CHUNK_X = "gt.miner.scan.chunkx";
+	private static final String NBT_SCAN_CHUNK_Z = "gt.miner.scan.chunkz";
+	private static final String NBT_SCAN_SECTION = "gt.miner.scan.section";
+	private static final String NBT_SCAN_INDEX = "gt.miner.scan.index";
+	private static final String NBT_SCAN_STARTED = "gt.miner.scan.started";
+	private static final String NBT_CANDIDATES = "gt.miner.candidates";
 	private static final int ENERGY_MODE_TICKS = 40;
 	private static final int ENERGY_MODE_BOOST_BPS = 1800;
 	private static final int ENERGY_BUFFER_BONUS_MAX = 2000;
 	private static final int HU_PROGRESS_MULTIPLIER = 2;
 	private static final int KU_PROGRESS_MULTIPLIER = 4;
+	private static final Map<Long, Boolean> ORE_BLOCK_CACHE = new HashMap<>();
+	/** 每个世界中当前被某台矿机独占的目标坐标集合，防止多台矿机争抢同一矿石 */
+	private static final Map<World, Set<Long>> CLAIMED_TARGETS = new WeakHashMap<>();
 
 	public boolean mStopped = F;
 	public long mEnergy = 0, mInput = 32;
 	public long mProgress = 0, mProgressMax = 0;
 	public int mRange = 4, mBaseChance = 5000;
 	public int mSpeedMultiplier = 16;
+	public boolean mHasTarget = F;
 	public int mTargetX = 0, mTargetY = 0, mTargetZ = 0;
-	public int mScanDX = 0, mScanDZ = 0, mScanY = 0;
+	public int mScanChunkX = 0, mScanChunkZ = 0, mScanSection = 0, mScanIndex = 0;
 	public boolean mScanStarted = F;
 	public TagData mEnergyTypeAccepted = TD.Energy.EU;
 	public int mEUInputTicks = 0, mHUInputTicks = 0, mKUInputTicks = 0;
+	public final int[] mCandidateX = new int[CANDIDATE_QUEUE_SIZE], mCandidateY = new int[CANDIDATE_QUEUE_SIZE], mCandidateZ = new int[CANDIDATE_QUEUE_SIZE];
+	public int mCandidateCount = 0;
 	public long oEnergy = -1, oProgress = -1, oProgressMax = -1;
 
 	@Override
@@ -101,14 +126,22 @@ public class MultiTileEntityAutoToolMiner extends TileEntityBase09FacingSingle i
 		if (aNBT.hasKey(NBT_INPUT)) mInput = aNBT.getLong(NBT_INPUT);
 		if (aNBT.hasKey(NBT_STOPPED)) mStopped = aNBT.getBoolean(NBT_STOPPED);
 		if (aNBT.hasKey(NBT_ENERGY_ACCEPTED)) mEnergyTypeAccepted = TagData.createTagData(aNBT.getString(NBT_ENERGY_ACCEPTED));
-		if (aNBT.hasKey(NBT_RANGE_INTERNAL)) mRange = (int)UT.Code.bind(1, 16, aNBT.getInteger(NBT_RANGE_INTERNAL));
+		if (aNBT.hasKey(NBT_RANGE_INTERNAL)) mRange = (int)UT.Code.bind(1, MAX_RANGE, aNBT.getInteger(NBT_RANGE_INTERNAL));
 		if (aNBT.hasKey(NBT_CHANCE_INTERNAL)) mBaseChance = (int)UT.Code.bind(0, 10000, aNBT.getInteger(NBT_CHANCE_INTERNAL));
 		if (aNBT.hasKey(NBT_SPEED_INTERNAL)) mSpeedMultiplier = (int)UT.Code.bind(1, 64, aNBT.getInteger(NBT_SPEED_INTERNAL));
+		mHasTarget = aNBT.getBoolean(NBT_TARGET_ACTIVE);
 		if (aNBT.hasKey(NBT_TARGET_X) && aNBT.hasKey(NBT_TARGET_Y) && aNBT.hasKey(NBT_TARGET_Z)) {
 			mTargetX = aNBT.getInteger(NBT_TARGET_X);
 			mTargetY = aNBT.getInteger(NBT_TARGET_Y);
 			mTargetZ = aNBT.getInteger(NBT_TARGET_Z);
+			if (!aNBT.hasKey(NBT_TARGET_ACTIVE)) mHasTarget = T;
 		}
+		if (aNBT.hasKey(NBT_SCAN_CHUNK_X)) mScanChunkX = aNBT.getInteger(NBT_SCAN_CHUNK_X);
+		if (aNBT.hasKey(NBT_SCAN_CHUNK_Z)) mScanChunkZ = aNBT.getInteger(NBT_SCAN_CHUNK_Z);
+		if (aNBT.hasKey(NBT_SCAN_SECTION)) mScanSection = aNBT.getInteger(NBT_SCAN_SECTION);
+		if (aNBT.hasKey(NBT_SCAN_INDEX)) mScanIndex = aNBT.getInteger(NBT_SCAN_INDEX);
+		mScanStarted = aNBT.getBoolean(NBT_SCAN_STARTED);
+		deserializeCandidates(aNBT.getIntArray(NBT_CANDIDATES));
 	}
 
 	@Override
@@ -118,9 +151,16 @@ public class MultiTileEntityAutoToolMiner extends TileEntityBase09FacingSingle i
 		UT.NBT.setNumber(aNBT, NBT_ENERGY, mEnergy);
 		UT.NBT.setNumber(aNBT, NBT_PROGRESS, mProgress);
 		UT.NBT.setNumber(aNBT, NBT_PROGRESS + ".max", mProgressMax);
+		UT.NBT.setBoolean(aNBT, NBT_TARGET_ACTIVE, mHasTarget);
 		aNBT.setInteger(NBT_TARGET_X, mTargetX);
 		aNBT.setInteger(NBT_TARGET_Y, mTargetY);
 		aNBT.setInteger(NBT_TARGET_Z, mTargetZ);
+		aNBT.setInteger(NBT_SCAN_CHUNK_X, mScanChunkX);
+		aNBT.setInteger(NBT_SCAN_CHUNK_Z, mScanChunkZ);
+		aNBT.setInteger(NBT_SCAN_SECTION, mScanSection);
+		aNBT.setInteger(NBT_SCAN_INDEX, mScanIndex);
+		UT.NBT.setBoolean(aNBT, NBT_SCAN_STARTED, mScanStarted);
+		aNBT.setIntArray(NBT_CANDIDATES, serializeCandidates());
 	}
 
 	@Override
@@ -146,7 +186,7 @@ public class MultiTileEntityAutoToolMiner extends TileEntityBase09FacingSingle i
 		if (mHUInputTicks > 0) mHUInputTicks--;
 		if (mKUInputTicks > 0) mKUInputTicks--;
 
-		if (slotHas(SLOT_OUTPUT_START) || slotHas(SLOT_OUTPUT_START + 1) || slotHas(SLOT_OUTPUT_START + 2) || slotHas(SLOT_OUTPUT_START + 3) || slotHas(SLOT_OUTPUT_START + 4) || slotHas(SLOT_OUTPUT_START + 5) || slotHas(SLOT_OUTPUT_START + 6) || slotHas(SLOT_OUTPUT_START + 7) || slotHas(SLOT_OUTPUT_END)) {
+		if (aTimer % OUTPUT_MOVE_INTERVAL == 0 && hasOutputItems()) {
 			ST.move(delegator(SIDE_TOP), getAdjacentInventory(SIDE_TOP));
 		}
 
@@ -161,16 +201,23 @@ public class MultiTileEntityAutoToolMiner extends TileEntityBase09FacingSingle i
 		}
 		MultiItemTool tTool = getMiningTool(tToolStack);
 		if (tTool == null) {
+			loseTarget();
 			mProgress = 0;
 			mProgressMax = 0;
 			return;
 		}
 
+		if (mCandidateCount < CANDIDATE_QUEUE_REFILL) scanForCandidates(tTool, tToolStack, SCAN_BUDGET_PER_TICK);
+
 		if (!hasValidTarget(tTool, tToolStack)) {
-			if (!findNextTarget(tTool, tToolStack)) {
+			loseTarget();
+			if (!acquireNextTarget(tTool, tToolStack)) {
+				scanForCandidates(tTool, tToolStack, SCAN_BUDGET_PER_TICK);
+				if (!acquireNextTarget(tTool, tToolStack)) {
 				mProgress = 0;
 				mProgressMax = 0;
 				return;
+				}
 			}
 			mProgress = 0;
 			mProgressMax = 0;
@@ -191,6 +238,11 @@ public class MultiTileEntityAutoToolMiner extends TileEntityBase09FacingSingle i
 		tryMineTarget(tTool, tToolStack);
 		mProgress = 0;
 		mProgressMax = 0;
+	}
+
+	private boolean hasOutputItems() {
+		for (int i = SLOT_OUTPUT_START; i <= SLOT_OUTPUT_END; i++) if (slotHas(i)) return T;
+		return F;
 	}
 
 	private MultiItemTool getMiningTool(ItemStack aStack) {
@@ -227,69 +279,213 @@ public class MultiTileEntityAutoToolMiner extends TileEntityBase09FacingSingle i
 	}
 
 	private boolean hasValidTarget(MultiItemTool aTool, ItemStack aToolStack) {
-		if (!worldObj.blockExists(mTargetX, mTargetY, mTargetZ)) return F;
-		Block tBlock = worldObj.getBlock(mTargetX, mTargetY, mTargetZ);
-		int tMeta = worldObj.getBlockMetadata(mTargetX, mTargetY, mTargetZ);
-		if (!isOreBlock(tBlock)) return F;
-		return aTool.getDigSpeed(aToolStack, tBlock, tMeta) > 0;
+		return mHasTarget && isValidMiningTarget(mTargetX, mTargetY, mTargetZ, aTool, aToolStack);
 	}
 
-	private boolean findNextTarget(MultiItemTool aTool, ItemStack aToolStack) {
+	private boolean isValidMiningTarget(int aX, int aY, int aZ, MultiItemTool aTool, ItemStack aToolStack) {
+		if (!worldObj.blockExists(aX, aY, aZ)) return F;
+		Block tBlock = worldObj.getBlock(aX, aY, aZ);
+		int tMeta = worldObj.getBlockMetadata(aX, aY, aZ);
+		return isMineableTarget(tBlock, tMeta, aTool, aToolStack);
+	}
+
+	private boolean isMineableTarget(Block aBlock, int aMeta, MultiItemTool aTool, ItemStack aToolStack) {
+		if (!isOreBlock(aBlock, aMeta)) return F;
+		return aTool.getDigSpeed(aToolStack, aBlock, aMeta) > 0;
+	}
+
+	private boolean acquireNextTarget(MultiItemTool aTool, ItemStack aToolStack) {
+		Set<Long> tClaimed = getClaimedSet(worldObj);
+		int tBestIndex = -1;
+		long tBestDistance = Long.MAX_VALUE;
+		for (int i = mCandidateCount - 1; i >= 0; i--) {
+			if (!isValidMiningTarget(mCandidateX[i], mCandidateY[i], mCandidateZ[i], aTool, aToolStack)) {
+				removeCandidate(i);
+				continue;
+			}
+			// 跳过已被其他矿机认领的目标（保留在队列中，以备认领被释放）
+			if (tClaimed.contains(encodePos(mCandidateX[i], mCandidateY[i], mCandidateZ[i]))) continue;
+			long tDX = mCandidateX[i] - xCoord;
+			long tDY = mCandidateY[i] - yCoord;
+			long tDZ = mCandidateZ[i] - zCoord;
+			long tDistance = tDX * tDX + tDY * tDY + tDZ * tDZ;
+			if (tDistance < tBestDistance) {
+				tBestDistance = tDistance;
+				tBestIndex = i;
+			}
+		}
+		if (tBestIndex < 0) return F;
+		mTargetX = mCandidateX[tBestIndex];
+		mTargetY = mCandidateY[tBestIndex];
+		mTargetZ = mCandidateZ[tBestIndex];
+		mHasTarget = T;
+		claimTarget();
+		removeCandidate(tBestIndex);
+		return T;
+	}
+
+	private void scanForCandidates(MultiItemTool aTool, ItemStack aToolStack, int aBudget) {
+		int tBudget = aBudget;
 		int tMaxY = Math.max(1, worldObj.getActualHeight());
+		int tSectionCount = Math.max(1, (tMaxY + 15) >> 4);
+		int tMinChunkX = (xCoord - mRange) >> 4;
+		int tMinChunkZ = (zCoord - mRange) >> 4;
+		int tMaxChunkX = (xCoord + mRange) >> 4;
+		int tMaxChunkZ = (zCoord + mRange) >> 4;
+
 		if (!mScanStarted) resetScanCursor();
 
-		for (int tChecked = 0; tChecked < SCAN_BUDGET_PER_TICK; tChecked++) {
-			if (mScanDX > mRange) {
+		while (tBudget > 0 && mCandidateCount < CANDIDATE_QUEUE_SIZE) {
+			if (mScanChunkX > tMaxChunkX) {
 				resetScanCursor();
-				return F;
+				break;
 			}
 
-			int tX = xCoord + mScanDX;
-			int tY = mScanY;
-			int tZ = zCoord + mScanDZ;
-
-			if (worldObj.blockExists(tX, tY, tZ)) {
-				Block tBlock = worldObj.getBlock(tX, tY, tZ);
-				if (isOreBlock(tBlock)) {
-					int tMeta = worldObj.getBlockMetadata(tX, tY, tZ);
-					if (aTool.getDigSpeed(aToolStack, tBlock, tMeta) > 0) {
-						mTargetX = tX;
-						mTargetY = tY;
-						mTargetZ = tZ;
-						advanceScanCursor(tMaxY);
-						return T;
-					}
-				}
+			int tChunkWorldX = mScanChunkX << 4;
+			int tChunkWorldZ = mScanChunkZ << 4;
+			if (!worldObj.blockExists(tChunkWorldX, 0, tChunkWorldZ)) {
+				advanceScanCursor(tMinChunkZ, tMaxChunkZ);
+				continue;
 			}
 
-			advanceScanCursor(tMaxY);
+			Chunk tChunk = worldObj.getChunkFromChunkCoords(mScanChunkX, mScanChunkZ);
+			ExtendedBlockStorage[] tStorages = tChunk.getBlockStorageArray();
+			if (mScanSection >= tSectionCount) {
+				advanceScanCursor(tMinChunkZ, tMaxChunkZ);
+				continue;
+			}
+
+			ExtendedBlockStorage tStorage = tStorages[mScanSection];
+			if (tStorage == null) {
+				mScanSection++;
+				mScanIndex = 0;
+				continue;
+			}
+
+			while (tBudget > 0 && mCandidateCount < CANDIDATE_QUEUE_SIZE && mScanIndex < SECTION_SCAN_SIZE) {
+				int tLocalX = mScanIndex & 15;
+				int tLocalZ = (mScanIndex >> 4) & 15;
+				int tLocalY = (mScanIndex >> 8) & 15;
+				int tWorldY = (mScanSection << 4) + tLocalY;
+				int tWorldX = tChunkWorldX + tLocalX;
+				int tWorldZ = tChunkWorldZ + tLocalZ;
+				mScanIndex++;
+				tBudget--;
+
+				if (tWorldY >= tMaxY || !isWithinRange(tWorldX, tWorldZ)) continue;
+
+				Block tBlock = tChunk.getBlock(tLocalX, tWorldY, tLocalZ);
+				int tMeta = tChunk.getBlockMetadata(tLocalX, tWorldY, tLocalZ);
+				if (isMineableTarget(tBlock, tMeta, aTool, aToolStack)) enqueueCandidate(tWorldX, tWorldY, tWorldZ);
+			}
+
+			if (mScanIndex >= SECTION_SCAN_SIZE) {
+				mScanIndex = 0;
+				mScanSection++;
+			}
+			if (mScanSection >= tSectionCount) advanceScanCursor(tMinChunkZ, tMaxChunkZ);
 		}
-		return F;
 	}
 
 	private void resetScanCursor() {
-		mScanDX = -mRange;
-		mScanDZ = -mRange;
-		mScanY = 0;
+		mScanChunkX = (xCoord - mRange) >> 4;
+		mScanChunkZ = (zCoord - mRange) >> 4;
+		mScanSection = 0;
+		mScanIndex = 0;
 		mScanStarted = T;
 	}
 
-	private void advanceScanCursor(int aMaxY) {
-		mScanY++;
-		if (mScanY < aMaxY) return;
-		mScanY = 0;
-		mScanDZ++;
-		if (mScanDZ <= mRange) return;
-		mScanDZ = -mRange;
-		mScanDX++;
+	private void advanceScanCursor(int aMinChunkZ, int aMaxChunkZ) {
+		mScanSection = 0;
+		mScanIndex = 0;
+		mScanChunkZ++;
+		if (mScanChunkZ <= aMaxChunkZ) return;
+		mScanChunkZ = aMinChunkZ;
+		mScanChunkX++;
 	}
 
-	private boolean isOreBlock(Block aBlock) {
+	private boolean isWithinRange(int aX, int aZ) {
+		return Math.abs(aX - xCoord) <= mRange && Math.abs(aZ - zCoord) <= mRange;
+	}
+
+	// ---- 多矿机目标认领 ----
+
+	/** 将 (x,y,z) 压缩成一个 long（x,z ±30M，y 0-255 均可无碰撞放入 61 位）*/
+	private static long encodePos(int aX, int aY, int aZ) {
+		return ((long)(aX + 30000000) << 35) | ((long)aY << 26) | (long)(aZ + 30000000);
+	}
+
+	private static Set<Long> getClaimedSet(World aWorld) {
+		Set<Long> tSet = CLAIMED_TARGETS.get(aWorld);
+		if (tSet == null) { tSet = new HashSet<>(); CLAIMED_TARGETS.put(aWorld, tSet); }
+		return tSet;
+	}
+
+	/** 将当前目标坐标注册为本机占用 */
+	private void claimTarget() {
+		if (worldObj != null) getClaimedSet(worldObj).add(encodePos(mTargetX, mTargetY, mTargetZ));
+	}
+
+	/** 释放当前目标的占用登记（不修改 mHasTarget，由 loseTarget 调用）*/
+	private void releaseTarget() {
+		if (worldObj != null) getClaimedSet(worldObj).remove(encodePos(mTargetX, mTargetY, mTargetZ));
+	}
+
+	/** 统一入口：取消目标，同时释放注册表中的认领记录 */
+	private void loseTarget() {
+		if (mHasTarget) { releaseTarget(); mHasTarget = F; }
+	}
+
+	private boolean isOreBlock(Block aBlock, int aMeta) {
 		if (aBlock == NB || WD.bedrock(aBlock)) return F;
-		String tClassName = aBlock.getClass().getName();
-		if (tClassName != null && tClassName.toLowerCase().contains("ore")) return T;
-		String tRegName = ST.regName(aBlock);
-		return tRegName != null && tRegName.toLowerCase().contains("ore");
+		long tKey = (((long)Block.getIdFromBlock(aBlock)) << 16) | (aMeta & 65535L);
+		Boolean tCached = ORE_BLOCK_CACHE.get(tKey);
+		if (tCached != null) return tCached.booleanValue();
+		boolean tResult = WD.ore(aBlock, (short)aMeta);
+		ORE_BLOCK_CACHE.put(tKey, Boolean.valueOf(tResult));
+		return tResult;
+	}
+
+	private boolean enqueueCandidate(int aX, int aY, int aZ) {
+		if (mHasTarget && mTargetX == aX && mTargetY == aY && mTargetZ == aZ) return F;
+		for (int i = 0; i < mCandidateCount; i++) if (mCandidateX[i] == aX && mCandidateY[i] == aY && mCandidateZ[i] == aZ) return F;
+		if (mCandidateCount >= CANDIDATE_QUEUE_SIZE) return F;
+		mCandidateX[mCandidateCount] = aX;
+		mCandidateY[mCandidateCount] = aY;
+		mCandidateZ[mCandidateCount] = aZ;
+		mCandidateCount++;
+		return T;
+	}
+
+	private void removeCandidate(int aIndex) {
+		int tLast = mCandidateCount - 1;
+		if (aIndex < 0 || aIndex > tLast) return;
+		if (aIndex < tLast) {
+			mCandidateX[aIndex] = mCandidateX[tLast];
+			mCandidateY[aIndex] = mCandidateY[tLast];
+			mCandidateZ[aIndex] = mCandidateZ[tLast];
+		}
+		mCandidateCount = tLast;
+	}
+
+	private int[] serializeCandidates() {
+		int[] tData = new int[mCandidateCount * 3];
+		for (int i = 0, j = 0; i < mCandidateCount; i++) {
+			tData[j++] = mCandidateX[i];
+			tData[j++] = mCandidateY[i];
+			tData[j++] = mCandidateZ[i];
+		}
+		return tData;
+	}
+
+	private void deserializeCandidates(int[] aData) {
+		mCandidateCount = 0;
+		for (int i = 0; i + 2 < aData.length && mCandidateCount < CANDIDATE_QUEUE_SIZE; i += 3) {
+			mCandidateX[mCandidateCount] = aData[i];
+			mCandidateY[mCandidateCount] = aData[i + 1];
+			mCandidateZ[mCandidateCount] = aData[i + 2];
+			mCandidateCount++;
+		}
 	}
 
 	private long calcMiningTicks(MultiItemTool aTool, ItemStack aToolStack, Block aBlock, int aMeta) {
@@ -302,19 +498,29 @@ public class MultiTileEntityAutoToolMiner extends TileEntityBase09FacingSingle i
 	}
 
 	private void tryMineTarget(MultiItemTool aTool, ItemStack aToolStack) {
-		if (!worldObj.blockExists(mTargetX, mTargetY, mTargetZ)) return;
+		if (!worldObj.blockExists(mTargetX, mTargetY, mTargetZ)) {
+			loseTarget();
+			return;
+		}
 		Block tBlock = worldObj.getBlock(mTargetX, mTargetY, mTargetZ);
-		if (!isOreBlock(tBlock)) return;
 		int tMeta = worldObj.getBlockMetadata(mTargetX, mTargetY, mTargetZ);
-
-		List<ItemStack> tDrops = new ArrayList<>(tBlock.getDrops(worldObj, mTargetX, mTargetY, mTargetZ, tMeta, 0));
-		if (tDrops.isEmpty()) return;
-		if (!canFitAll(tDrops)) return;
+		if (!isOreBlock(tBlock, tMeta)) {
+			loseTarget();
+			return;
+		}
 
 		int tChance = getEffectiveChance();
 		if (rng(10000) >= tChance) return;
 
+		List<ItemStack> tDrops = new ArrayList<>(tBlock.getDrops(worldObj, mTargetX, mTargetY, mTargetZ, tMeta, 0));
+		if (tDrops.isEmpty()) {
+			loseTarget();
+			return;
+		}
+		if (!canFitAll(tDrops)) return;
+
 		worldObj.func_147480_a(mTargetX, mTargetY, mTargetZ, F);
+		loseTarget();
 		for (ItemStack tDrop : tDrops) addToOutput(tDrop);
 
 		long tDamage = getToolDamageCost(aTool, aToolStack, tBlock);
@@ -561,6 +767,12 @@ public class MultiTileEntityAutoToolMiner extends TileEntityBase09FacingSingle i
 	@Override
 	public Object getGUIServer2(int aGUIID, EntityPlayer aPlayer) {
 		return new MultiTileEntityGUICommonAutoToolMiner(aPlayer.inventory, this, aGUIID);
+	}
+
+	@Override
+	public void invalidate() {
+		loseTarget();
+		super.invalidate();
 	}
 
 	@Override public boolean setStateOnOff(boolean aOnOff) {mStopped = !aOnOff; return !mStopped;}
