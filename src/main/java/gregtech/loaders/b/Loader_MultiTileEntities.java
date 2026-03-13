@@ -47,6 +47,7 @@ import gregapi.util.ST;
 import gregapi.util.UT;
 import gregtech.tileentity.autotools.MultiTileEntityAutoToolHammer;
 import gregtech.tileentity.autotools.MultiTileEntityAutoToolIgniter;
+import gregtech.tileentity.autotools.MultiTileEntityAutoToolMiner;
 import gregtech.tileentity.batteries.eu.*;
 import gregtech.tileentity.batteries.lu.*;
 import gregtech.tileentity.batteries.qu.MultiTileEntityZPM;
@@ -1117,6 +1118,12 @@ public class Loader_MultiTileEntities implements Runnable {
 		aMat = MT.DATA.Electric_T[3];   aRegistry.add("Automatic Igniter ("                       +VN[3]+")", "Automatic Tools"                     , 15013, 15002, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   4.0F, NBT_RESISTANCE,   4.0F, NBT_INPUT,  512, NBT_QUALITY, 3, NBT_ENERGY_ACCEPTED, TD.Energy.EU), "BwB", "CMC", 'M', OP.casingMachine.dat(aMat), 'B', OP.bolt.dat(ANY.Steel), 'C', MT.DATA.CABLES_01[3]);
 		aMat = MT.DATA.Electric_T[4];   aRegistry.add("Automatic Igniter ("                       +VN[4]+")", "Automatic Tools"                     , 15014, 15002, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   4.0F, NBT_RESISTANCE,   4.0F, NBT_INPUT, 2048, NBT_QUALITY, 4, NBT_ENERGY_ACCEPTED, TD.Energy.EU), "BwB", "CMC", 'M', OP.casingMachine.dat(aMat), 'B', OP.bolt.dat(ANY.Steel), 'C', MT.DATA.CABLES_01[4]);
 		aMat = MT.DATA.Electric_T[5];   aRegistry.add("Automatic Igniter ("                       +VN[5]+")", "Automatic Tools"                     , 15015, 15002, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS,   4.0F, NBT_RESISTANCE,   4.0F, NBT_INPUT, 8192, NBT_QUALITY, 5, NBT_ENERGY_ACCEPTED, TD.Energy.EU), "BwB", "CMC", 'M', OP.casingMachine.dat(aMat), 'B', OP.bolt.dat(ANY.Steel), 'C', MT.DATA.CABLES_01[5]);
+
+		aClass = MultiTileEntityAutoToolMiner.class;
+		aMat = MT.Bronze;               aRegistry.add("Automatic Ore Miner ("             +aMat.getLocal()+")", "Automatic Tools"                     , 15020, 15023, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 7.0F, NBT_RESISTANCE, 7.0F, NBT_INPUT,   32, NBT_ENERGY_ACCEPTED, TD.Energy.EU, "gt.miner.range", 4, "gt.miner.chance", 3500, "gt.miner.speedmult", 16), "RRR", "RMR", "RRR", 'R', OP.stickLong.dat(aMat), 'M', OP.casingMachine.dat(aMat));
+		aMat = MT.Steel;                aRegistry.add("Automatic Ore Miner ("             +aMat.getLocal()+")", "Automatic Tools"                     , 15021, 15023, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 6.0F, NBT_RESISTANCE, 6.0F, NBT_INPUT,  128, NBT_ENERGY_ACCEPTED, TD.Energy.EU, "gt.miner.range", 5, "gt.miner.chance", 4500, "gt.miner.speedmult", 12), "RRR", "RMR", "RRR", 'R', OP.stickLong.dat(aMat), 'M', OP.casingMachine.dat(aMat));
+		aMat = MT.Invar;                aRegistry.add("Automatic Ore Miner ("             +aMat.getLocal()+")", "Automatic Tools"                     , 15022, 15023, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 4.0F, NBT_RESISTANCE, 4.0F, NBT_INPUT,  512, NBT_ENERGY_ACCEPTED, TD.Energy.EU, "gt.miner.range", 6, "gt.miner.chance", 6500, "gt.miner.speedmult", 12), "RRR", "RMR", "RRR", 'R', OP.stickLong.dat(aMat), 'M', OP.casingMachine.dat(aMat));
+		aMat = MT.Ti;                   aRegistry.add("Automatic Ore Miner ("             +aMat.getLocal()+")", "Automatic Tools"                     , 15023, 15023, aClass, aMat.mToolQuality, 16, aMachine     , UT.NBT.make(NBT_MATERIAL, aMat, NBT_HARDNESS, 9.0F, NBT_RESISTANCE, 9.0F, NBT_INPUT, 2048, NBT_ENERGY_ACCEPTED, TD.Energy.EU, "gt.miner.range", 7, "gt.miner.chance", 7500, "gt.miner.speedmult",  8), "RRR", "RMR", "RRR", 'R', OP.stickLong.dat(aMat), 'M', OP.casingMachine.dat(aMat));
 		
 		
 		
