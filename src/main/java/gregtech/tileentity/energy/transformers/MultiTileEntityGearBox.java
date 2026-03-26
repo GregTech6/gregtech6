@@ -56,10 +56,14 @@ import static gregapi.data.CS.*;
  * @author Gregorius Techneticies
  */
 public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements ITileEntityEnergy, ITileEntityRunningActively, ITileEntitySwitchableOnOff, IMTE_GetOreDictItemData, IMTE_AddToolTips {
+	private static final String NBT_GEAR_ROTATION = "gtGearRotation";
+	private static final String NBT_GEAR_LAST_INPUT = "gtGearLastInput";
 	public boolean mJammed = F, mUsedGear = F, mGearsWork = F;
 	public long mMaxThroughPut = 64, mCurrentSpeed = 0, mCurrentPower = 0, mTransferredLast = 0;
 	public short mAxleGear = 0;
 	public byte mInputtedSides = 0, oInputtedSides = 0, mOrder = 0, mRotationData = 0, oRotationData = 0, mIgnorePower = 0;
+	private byte mSavedInputSides = 0;
+	private boolean mNeedsRotationValidation = F;
 	
 	@Override
 	public void readFromNBT2(NBTTagCompound aNBT) {
@@ -67,7 +71,13 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		if (aNBT.hasKey(NBT_STOPPED)) mJammed = aNBT.getBoolean(NBT_STOPPED);
 		if (aNBT.hasKey(NBT_CONNECTION)) mAxleGear = UT.Code.unsignB(aNBT.getByte(NBT_CONNECTION));
 		if (aNBT.hasKey(NBT_INPUT)) mMaxThroughPut = aNBT.getLong(NBT_INPUT);
+		if (aNBT.hasKey(NBT_GEAR_ROTATION)) mRotationData = aNBT.getByte(NBT_GEAR_ROTATION);
+		if (aNBT.hasKey(NBT_GEAR_LAST_INPUT)) mSavedInputSides = (byte)UT.Code.unsignB(aNBT.getByte(NBT_GEAR_LAST_INPUT));
+		mSavedInputSides &= (byte)(mAxleGear & 63);
+		oInputtedSides = 0;
+		mNeedsRotationValidation = (mRotationData & 63) != 0;
 		mGearsWork = checkGears();
+		if (!mGearsWork) clearRotationData();
 	}
 	
 	@Override
@@ -75,6 +85,8 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		super.writeToNBT2(aNBT);
 		UT.NBT.setBoolean(aNBT, NBT_STOPPED, mJammed);
 		aNBT.setByte(NBT_CONNECTION, (byte)mAxleGear);
+		aNBT.setByte(NBT_GEAR_ROTATION, mRotationData);
+		aNBT.setByte(NBT_GEAR_LAST_INPUT, mSavedInputSides);
 	}
 	
 	@Override
@@ -108,6 +120,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			byte tSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
 			if (FACE_CONNECTED[tSide][mAxleGear & 63]) {
 				mAxleGear &= ~B[tSide];
+				clearRotationData();
 				ItemStack tGear = OP.gearGt.mat(mMaterial, 1);
 				if (!ST.add(aPlayer, tGear)) ST.place(getWorld(), getOffset(tSide, 1), tGear);
 				mJammed = F;
@@ -118,6 +131,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			}
 			if (UT.Entities.hasInfiniteItems(aPlayer)) {
 				mAxleGear |= B[tSide];
+				clearRotationData();
 				mJammed = F;
 				mGearsWork = checkGears();
 				updateClientData();
@@ -129,6 +143,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				if (tData != null && tData.mPrefix == OP.gearGt && tData.mMaterial != null && (tData.mMaterial.mMaterial == mMaterial || mMaterial.mToThis.contains(tData.mMaterial.mMaterial))) {
 					if (aPlayer == null) aPlayerInventory.decrStackSize(i, 1); else ST.use(aPlayer, T, aPlayerInventory.getStackInSlot(i));
 					mAxleGear |= B[tSide];
+					clearRotationData();
 					mJammed = F;
 					mGearsWork = checkGears();
 					updateClientData();
@@ -142,9 +157,11 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		if (aTool.equals(TOOL_monkeywrench)) {
 			if (SIDES_INVALID[aSide]) return 0;
 			byte tSide = UT.Code.getSideWrenching(aSide, aHitX, aHitY, aHitZ);
+			short tOldAxle = mAxleGear;
 			if (SIDES_AXIS_X[tSide]) if (((mAxleGear >>> 6) & 3) != 1) mAxleGear = (byte)((mAxleGear & 63) | (1 << 6)); else mAxleGear &= 63;
 			if (SIDES_AXIS_Y[tSide]) if (((mAxleGear >>> 6) & 3) != 2) mAxleGear = (byte)((mAxleGear & 63) | (2 << 6)); else mAxleGear &= 63;
 			if (SIDES_AXIS_Z[tSide]) if (((mAxleGear >>> 6) & 3) != 3) mAxleGear = (byte)((mAxleGear & 63) | (3 << 6)); else mAxleGear &= 63;
+			if (tOldAxle != mAxleGear) clearRotationData();
 			mJammed = F;
 			mGearsWork = checkGears();
 			updateClientData();
@@ -217,6 +234,10 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			mTransferredLast -= Math.abs(mCurrentPower * mCurrentSpeed);
 			if (!mUsedGear) mRotationData &= ~B[6];
 			oInputtedSides = mInputtedSides;
+			if (mInputtedSides != 0) {
+				mSavedInputSides |= mInputtedSides;
+				mSavedInputSides &= (byte)(mAxleGear & 63);
+			}
 			mInputtedSides = 0;
 			mUsedGear = F;
 		} else {
@@ -324,6 +345,13 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 		mAxleGear = UT.Code.unsignB(aData[4]);
 		return super.receiveDataByteArray(aData, aNetworkHandler);
 	}
+
+	private void clearRotationData() {
+		mRotationData = 0;
+		oRotationData = 0;
+		mNeedsRotationValidation = F;
+		mSavedInputSides = 0;
+	}
 	
 	public ITexture mTextureGearA, mTextureAxleGearA, mTextureGearB, mTextureAxleGearB, mTexture, mTextureAxle;
 	
@@ -364,6 +392,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 				ST.drop(getWorld(), getCoords(), OP.gearGt.mat(mMaterial, tCount-1));
 			}
 			mAxleGear = 0;
+			clearRotationData();
 			updateClientData();
 			mGearsWork = checkGears();
 			return aPower;
@@ -383,7 +412,7 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			if (tRotationData != mRotationData) {
 				// Gears are jamming!
 				UT.Sounds.send(SFX.MC_BREAK, this, F);
-				mRotationData = 0;
+				clearRotationData();
 				mJammed = T;
 				return aPower;
 			}
@@ -395,18 +424,32 @@ public class MultiTileEntityGearBox extends TileEntityBase07Paintable implements
 			return aPower;
 		}
 		// There was no Input during this Tick yet.
-		if ((mRotationData = getRotations(aSide, aSpeed < 0)) != 0) {
-			mUsedGear = T;
-			// Still had leftover Power from last time. Start ignoring Input in order to not waste Power.
-			if (mCurrentPower > 0) mIgnorePower++; else mIgnorePower = 0;
-			// If ignoring further Inputs, keep the old values.
-			if (mIgnorePower != 0) return 0;
-			// Set Maximum Speed and current Power.
-			mCurrentSpeed = tSpeed;
-			mCurrentPower = aPower;
-			return aPower;
+		boolean tReusedRotation = F;
+		byte tRotationData = 0;
+		if (mNeedsRotationValidation && (mRotationData & 63) != 0) {
+			byte tReferenceInputs = mSavedInputSides;
+			if (tReferenceInputs == 0) tReferenceInputs = oInputtedSides;
+			tReusedRotation = tReferenceInputs == 0 || FACE_CONNECTED[aSide][tReferenceInputs];
+			if (tReusedRotation) {
+				mNeedsRotationValidation = F;
+				tRotationData = mRotationData;
+			}
 		}
-		return 0;
+		if (!tReusedRotation) {
+			tRotationData = getRotations(aSide, aSpeed < 0);
+			if (tRotationData == 0) return 0;
+			mRotationData = tRotationData;
+			mNeedsRotationValidation = F;
+		}
+		mUsedGear = T;
+		// Still had leftover Power from last time. Start ignoring Input in order to not waste Power.
+		if (mCurrentPower > 0) mIgnorePower++; else mIgnorePower = 0;
+		// If ignoring further Inputs, keep the old values.
+		if (mIgnorePower != 0) return 0;
+		// Set Maximum Speed and current Power.
+		mCurrentSpeed = tSpeed;
+		mCurrentPower = aPower;
+		return aPower;
 	}
 	
 	@Override public boolean isEnergyType               (TagData aEnergyType, byte aSide, boolean aEmitting) {return TD.Energy.RU == aEnergyType;}
