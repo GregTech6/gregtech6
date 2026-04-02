@@ -560,5 +560,11 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Drying       .addRecipe1(T, 16, 2000, OP.dust.mat(MT.OREMATS.Perlite   ,  1), NF, FL.DistW.make( 1000), OP.dust.mat(MT.Obsidian, 1));
 		for (OreDictMaterial tMat : ANY.Clay.mToThis)
 		RM.Drying       .addRecipe1(T, 16, 1000, OP.dust.mat(tMat                 ,  1), NF, FL.DistW.make(  500), OP.dust.mat(MT.Ceramic , 1));
+
+		if (FL.BioDiesel.exists() && FL.BioEthanol.exists()) {
+			for (String tOil : FluidsGT.COOKING_OIL) if (FL.exists(tOil)) {
+				RM.Mixer.addRecipe0(T, 16, 16, FL.array(FL.make(tOil, 8), FL.BioEthanol.make(8)), FL.BioDiesel.make(16), ZL_IS);
+			}
+		}
 	}
 }
