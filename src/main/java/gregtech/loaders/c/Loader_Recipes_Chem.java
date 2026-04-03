@@ -375,6 +375,12 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.CatalyticCracking.addRecipe1(F, 16,  64, OP.dust.mat(MT.Pt, 0), FL.array(FL.Hydrogen.make(100), FL.Petrol    .make(100)), FL.array(FL.Ethylene.make(30), FL.Propylene.make(20)), ZL_IS);
 		RM.CatalyticCracking.addRecipe1(F, 16,  64, OP.dust.mat(MT.Pt, 0), FL.array(FL.Hydrogen.make(100), FL.Fuel      .make(100)), FL.array(FL.Ethylene.make(40), FL.Propylene.make(10)), ZL_IS);
 		
+		if (FL.BioDiesel.exists() || FL.BioFuel.exists()) for (String tOil : FluidsGT.COOKING_OIL) if (FL.exists(tOil)) {
+			if (FL.Reikanol.exists())
+			RM.Mixer.addRecipe0(T, 16, 16, FL.array(FL.Reikanol  .make(8), FL.make(tOil, 8)), FL.BioDiesel.make(16, FL.BioFuel, 10), ZL_IS);
+			RM.Mixer.addRecipe0(T, 16, 16, FL.array(FL.BioEthanol.make(8), FL.make(tOil, 8)), FL.BioDiesel.make(16, FL.BioFuel, 10), ZL_IS);
+		}
+		
 		// TODO Fluidized Bed Reactor
 		RM.Mixer            .addRecipe1(T, 16,  16, OP.dust.mat(MT.MgCl2, 0), FL.array(MT.TiCl4.liquid(U1000, T), FL.Ethylene .make(100)), ZL_FS, OP.dust.mat(MT.Plastic, 1));
 		RM.Mixer            .addRecipe1(T, 16,  16, OP.dust.mat(MT.MgCl2, 0), FL.array(MT.TiCl4.liquid(U1000, T), FL.Propylene.make(100)), ZL_FS, OP.dust.mat(MT.Plastic, 1));
@@ -560,11 +566,5 @@ public class Loader_Recipes_Chem implements Runnable {
 		RM.Drying       .addRecipe1(T, 16, 2000, OP.dust.mat(MT.OREMATS.Perlite   ,  1), NF, FL.DistW.make( 1000), OP.dust.mat(MT.Obsidian, 1));
 		for (OreDictMaterial tMat : ANY.Clay.mToThis)
 		RM.Drying       .addRecipe1(T, 16, 1000, OP.dust.mat(tMat                 ,  1), NF, FL.DistW.make(  500), OP.dust.mat(MT.Ceramic , 1));
-
-		if (FL.BioDiesel.exists() && FL.BioEthanol.exists()) {
-			for (String tOil : FluidsGT.COOKING_OIL) if (FL.exists(tOil)) {
-				RM.Mixer.addRecipe0(T, 16, 16, FL.array(FL.make(tOil, 8), FL.BioEthanol.make(8)), FL.BioDiesel.make(16), ZL_IS);
-			}
-		}
 	}
 }

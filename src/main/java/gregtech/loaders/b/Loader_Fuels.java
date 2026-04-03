@@ -127,8 +127,8 @@ public class Loader_Fuels implements Runnable {
 		FM.Engine       .addRecipe0(T, - 16, 12, tFuel                                       , FL.CarbonDioxide.make(1), ZL_IS);
 		}
 		for (FluidStack tFuel : FL.BioDiesel.list(1)) {
-		FM.Burn         .addRecipe0(T, - 16, 18, tFuel                                       , FL.CarbonDioxide.make(1), ZL_IS);
-		FM.Engine       .addRecipe0(T, - 16, 24, tFuel                                       , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Burn         .addRecipe0(T, - 64,  6, tFuel                                       , FL.CarbonDioxide.make(1), ZL_IS);
+		FM.Engine       .addRecipe0(T, - 64,  8, tFuel                                       , FL.CarbonDioxide.make(1), ZL_IS);
 		}
 		for (FluidStack tFuel : FL.BioFuel.list(1)) {
 		FM.Burn         .addRecipe0(T, - 64,  9, tFuel                                       , FL.CarbonDioxide.make(1), ZL_IS);
