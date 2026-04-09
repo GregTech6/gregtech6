@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 GregTech-6 Team
+ * Copyright (c) 2026 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -918,7 +918,7 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 	@SubscribeEvent(priority = EventPriority.LOWEST) 
 	public void onChunkWatchEvent(ChunkWatchEvent.Watch aEvent) {
 		Chunk tChunk = aEvent.player.worldObj.getChunkFromChunkCoords(aEvent.chunk.chunkXPos, aEvent.chunk.chunkZPos);
-		if (tChunk != null && tChunk.isTerrainPopulated) {
+		if (tChunk != null && tChunk.isTerrainPopulated && tChunk.chunkTileEntityMap != null && tChunk.chunkTileEntityMap.size() > 0) {
 			byte tIterations = 8;
 			HashSetNoNulls<Object> tSet = new HashSetNoNulls<>();
 			while (tIterations-->0) try {
@@ -926,6 +926,9 @@ public abstract class GT_API_Proxy extends Abstract_Proxy implements IGuiHandler
 				tIterations = 0;
 			} catch(ConcurrentModificationException e) {
 				if (tIterations <= 0) ERR.println("Failed to Iterate 8 times. Giving up on sending Data to Client!");
+			} catch(Throwable e) {
+				// FastUtils throws a NullPointer instead of a CME...
+				if (tIterations <= 0) e.printStackTrace(ERR);
 			}
 		}
 	}
