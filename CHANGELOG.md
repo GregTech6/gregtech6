@@ -7,6 +7,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 
 6.17.07: (Not released yet)
 [FIXED] Some World Loading Issue that HodgePodge introduced with FastUtils. If you use Libraries like this to replace stuff, make sure they actually work the same on the outside...
+[FIXED] Supporter Certificates were causing Lag because a File just grew in size over time. Lets hope people dont get spammed with duplicate Certificates after this fix.
 [CHANGED] Crucibles are now 100 times harder to break when not empty.
 [CHANGED] Rubber-Tree-Resin-Holes will now always spawn, if there is no other loaded Rubber-Tree-Resin-Holes within 256 Blocks.
 [CHANGED] Slightly more than doubled Bio Diesel Fuel Value and added Mixer Recipe to obtain it.

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 GregTech-6 Team
+ * Copyright (c) 2026 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -52,26 +52,31 @@ import static gregapi.data.CS.*;
  */
 public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle implements IMTE_OnRegistration, IMTE_OnDespawn, IMTE_GetLifeSpan, IMTE_IgnorePlayerCollisionWhenPlacing, IMTE_OnServerLoad, IMTE_OnServerSave, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
 	public static final ArrayListNoNulls<String> ALREADY_RECEIVED = new ArrayListNoNulls<>();
+	public static int ALREADY_RECEIVED_SIZE = 0;
 	
 	@Override
 	public void onServerSave(File aSaveLocation) {
+		if (ALREADY_RECEIVED.size() == ALREADY_RECEIVED_SIZE) return;
 		File aTargetFile = new File(new File(aSaveLocation, "gregtech"), "certificates.support.dat");
 		if (!aTargetFile.exists()) {try {aTargetFile.createNewFile();} catch (Throwable e) {e.printStackTrace(ERR);}}
 		NBTTagCompound aNBT = UT.NBT.make();
 		for (int i = 0; i < ALREADY_RECEIVED.size(); i++) aNBT.setString(""+i, ALREADY_RECEIVED.get(i));
 		try {CompressedStreamTools.write(aNBT, aTargetFile);} catch (Throwable e) {e.printStackTrace(ERR);}
+		ALREADY_RECEIVED_SIZE = ALREADY_RECEIVED.size();
 	}
 	
 	@Override
 	public void onServerLoad(File aSaveLocation) {
 		ALREADY_RECEIVED.clear();
+		ALREADY_RECEIVED_SIZE = 0;
 		File aTargetFile = new File(new File(aSaveLocation, "gregtech"), "certificates.support.dat");
 		if (aTargetFile.exists()) {
 			NBTTagCompound aNBT = null;
 			try {aNBT = CompressedStreamTools.read(aTargetFile);} catch (Throwable e) {e.printStackTrace(ERR);}
 			if (aNBT != null) for (int i = 0; i < Integer.MAX_VALUE; i++) {
 				if (!aNBT.hasKey(""+i)) break;
-				ALREADY_RECEIVED.add(aNBT.getString(""+i));
+				String tString = aNBT.getString(""+i);
+				if (!ALREADY_RECEIVED.contains(tString)) ALREADY_RECEIVED.add(tString);
 			}
 		}
 	}
@@ -98,8 +103,8 @@ public class MultiTileEntityCertificate extends TileEntityBase09FacingSingle imp
 		super.readFromNBT2(aNBT);
 		String tName = getCustomName();
 		if (UT.Code.stringValid(tName)) {
-			ALREADY_RECEIVED.add(tName);
-			ALREADY_RECEIVED.add(tName.toLowerCase());
+			if (!ALREADY_RECEIVED.contains(tName              )) ALREADY_RECEIVED.add(tName              );
+			if (!ALREADY_RECEIVED.contains(tName.toLowerCase())) ALREADY_RECEIVED.add(tName.toLowerCase());
 			mGold   = GT6_Main.gt_proxy.mSupporterListGold  .contains(tName.toLowerCase());
 			mSilver = GT6_Main.gt_proxy.mSupporterListSilver.contains(tName.toLowerCase());
 		}
