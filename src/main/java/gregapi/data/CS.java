@@ -2342,4 +2342,11 @@ public class CS {
 
 	, RES_PATH_IC2              = MD.IC2.mID.toLowerCase() + ":"
 	;
+
+	public static final HashSet<String> SHOULD_FLIP_NEG_Y_TEXTURES = new HashSet<>();
+
+	static {
+		SHOULD_FLIP_NEG_Y_TEXTURES.add("machines");
+		SHOULD_FLIP_NEG_Y_TEXTURES.add("overlays");
+	}
 }
