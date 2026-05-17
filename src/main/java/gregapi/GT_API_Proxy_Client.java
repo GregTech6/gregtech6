@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 GregTech-6 Team
+ * Copyright (c) 2026 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -507,7 +507,7 @@ public class GT_API_Proxy_Client extends GT_API_Proxy {
 			// Remove all Nulls and fix eventual Formatting mistakes.
 			for (int i = 1, j = aEvent.toolTip.size(); i < j; i++) {
 				String tTooltip = aEvent.toolTip.get(i);
-				if (tTooltip == null || LH.Chat.BASICALLY_EMPTY_STRINGS.contains(tTooltip)) {aEvent.toolTip.remove(i--); j--;} else aEvent.toolTip.set(i, tTooltip + LH.Chat.RESET_TOOLTIP);
+				if (tTooltip == null || LH.Chat.BASICALLY_EMPTY_STRINGS.contains(tTooltip)) if (MD.TiC.owns(aRegName)) aEvent.toolTip.set(i, LH.Chat.RESET_TOOLTIP); else {aEvent.toolTip.remove(i--); j--;} else aEvent.toolTip.set(i, tTooltip + LH.Chat.RESET_TOOLTIP);
 			}
 		} catch(Throwable e) {
 			e.printStackTrace(ERR);
