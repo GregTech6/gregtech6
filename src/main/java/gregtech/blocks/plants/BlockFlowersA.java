@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 GregTech-6 Team
+ * Copyright (c) 2026 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -37,7 +37,7 @@ import static gregapi.data.CS.*;
 
 public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 	public BlockFlowersA(String aUnlocalised) {
-		super(null, aUnlocalised, 9, Textures.BlockIcons.FLOWERS_A);
+		super(null, aUnlocalised,10, Textures.BlockIcons.FLOWERS_A);
 		LH.add(getUnlocalizedName()+ ".0", "Altered Andesite Buckwheat"); // Gold, Silver
 		LH.add(getUnlocalizedName()+ ".1", "Crosby Buckwheat"); // Gold, Silver, Sulfur
 		LH.add(getUnlocalizedName()+ ".2", "Alpine Catchfly"); // Copper
@@ -47,6 +47,7 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 		LH.add(getUnlocalizedName()+ ".6", "Narcissus Sheldonia"); // Cooperite
 		LH.add(getUnlocalizedName()+ ".7", "Orechid"); // Any Random Ore that doesn't have a specific Flower
 		LH.add(getUnlocalizedName()+ ".8", "Hexalily"); // Hexorium
+		LH.add(getUnlocalizedName()+ ".9", "Vindicator Flower"); // Rare Earth
 		
 		GT.mBeforePostInit.add(this);
 		BlocksGT.FLOWERS.add(this);
@@ -60,22 +61,22 @@ public class BlockFlowersA extends BlockBaseFlower implements Runnable {
 	@Override
 	public void addInformation(ItemStack aStack, byte aMeta, EntityPlayer aPlayer, List<String> aList, boolean aF3_H) {
 		switch(aMeta) {
-		case  0: aList.add("Indicates presence of a Gold Deposit nearby"     ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
-		case  1: aList.add("Indicates presence of a Silver Deposit nearby"   ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
-		case  2: aList.add("Indicates presence of a Copper Deposit nearby"   ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
-		case  3: aList.add("Indicates presence of a Zinc Deposit nearby"     ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
-		case  4: aList.add("Indicates presence of a Nickel Deposit nearby"   ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
-		case  5: aList.add("Indicates presence of an Uranium Deposit nearby" ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
-		case  6: aList.add("Indicates presence of a Platinum Deposit nearby" ); break;
-		case  7: aList.add("Indicates presence of an Ore Deposit nearby"     ); break;
-		case  8: aList.add("Indicates presence of a Hexorium Deposit nearby" ); break;
-		case  9: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
-		case 10: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
-		case 11: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
-		case 12: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
-		case 13: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
-		case 14: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
-		case 15: aList.add("Indicates presence of some Ore Deposit nearby"   ); break;
+		case  0: aList.add("Indicates presence of a Gold Deposit nearby"       ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  1: aList.add("Indicates presence of a Silver Deposit nearby"     ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  2: aList.add("Indicates presence of a Copper Deposit nearby"     ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  3: aList.add("Indicates presence of a Zinc Deposit nearby"       ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  4: aList.add("Indicates presence of a Nickel Deposit nearby"     ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  5: aList.add("Indicates presence of an Uranium Deposit nearby"   ); aList.add(LH.Chat.DGRAY + "* exists in Real Life"); break;
+		case  6: aList.add("Indicates presence of a Platinum Deposit nearby"   ); break;
+		case  7: aList.add("Indicates presence of an Ore Deposit nearby"       ); break;
+		case  8: aList.add("Indicates presence of a Hexorium Deposit nearby"   ); break;
+		case  9: aList.add("Vindicates presence of a Rare Earth Deposit nearby"); break;
+		case 10: aList.add("Indicates presence of some Ore Deposit nearby"     ); break;
+		case 11: aList.add("Indicates presence of some Ore Deposit nearby"     ); break;
+		case 12: aList.add("Indicates presence of some Ore Deposit nearby"     ); break;
+		case 13: aList.add("Indicates presence of some Ore Deposit nearby"     ); break;
+		case 14: aList.add("Indicates presence of some Ore Deposit nearby"     ); break;
+		case 15: aList.add("Indicates presence of some Ore Deposit nearby"     ); break;
 		}
 	}
 	

@@ -12,6 +12,7 @@ Nothing (I tend to only add finished Stuff to the Changelog).
 [CHANGED] Crucibles are now 100 times harder to break when not empty.
 [CHANGED] Rubber-Tree-Resin-Holes will now always spawn, if there is no other loaded Rubber-Tree-Resin-Holes within 256 Blocks.
 [CHANGED] Slightly more than doubled Bio Diesel Fuel Value and added Mixer Recipe to obtain it.
+[ADDED] Vindicator Flower to indicate Rare Earth deposits. Please note that previously those were indicated by Orechids, so there isnt much to them aside from the pun.
 
 
 6.17.06:
