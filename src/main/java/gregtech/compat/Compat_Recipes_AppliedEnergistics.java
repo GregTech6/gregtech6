@@ -79,9 +79,9 @@ public class Compat_Recipes_AppliedEnergistics extends CompatMods {
 		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST.make(MD.AE, "item.ItemMultiMaterial", 1, 17), OM.dust(MT.Redstone), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 20)), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 24));
 		RM.Press        .addRecipeX(T, 16,   64, ST.array(ST.make(MD.AE, "item.ItemMultiMaterial", 1, 18), OM.dust(MT.Redstone), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 20)), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 22));
 		
-		RM.Autoclave    .addRecipe2(T,  0, 1500, ST.nbt(ST.make(MD.AE, "item.ItemCrystalSeed", 1,    0), null), ST.tag(2), FL.Steam.make(48000), FL.DistW.make(225), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 10));
-		RM.Autoclave    .addRecipe2(T,  0, 1500, ST.nbt(ST.make(MD.AE, "item.ItemCrystalSeed", 1,  600), null), ST.tag(2), FL.Steam.make(48000), FL.DistW.make(225), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 11));
-		RM.Autoclave    .addRecipe2(T,  0, 1500, ST.nbt(ST.make(MD.AE, "item.ItemCrystalSeed", 1, 1200), null), ST.tag(2), FL.Steam.make(48000), FL.DistW.make(225), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 12));
+		RM.Autoclave    .addRecipe2(T,  0, 1500, ST.nbt(ST.make(MD.AE, "item.ItemCrystalSeed", 1,    0), null), ST.tag(2), FL.Steam.make(48000), FL.DistW.make(225), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 10)).setNoNBTChecks();
+		RM.Autoclave    .addRecipe2(T,  0, 1500, ST.nbt(ST.make(MD.AE, "item.ItemCrystalSeed", 1,  600), null), ST.tag(2), FL.Steam.make(48000), FL.DistW.make(225), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 11)).setNoNBTChecks();
+		RM.Autoclave    .addRecipe2(T,  0, 1500, ST.nbt(ST.make(MD.AE, "item.ItemCrystalSeed", 1, 1200), null), ST.tag(2), FL.Steam.make(48000), FL.DistW.make(225), ST.make(MD.AE, "item.ItemMultiMaterial", 1, 12)).setNoNBTChecks();
 		
 		RM.Compressor   .addRecipe1(T, 16,   16, OP.gem.mat(MT.CertusQuartz                 , 4), ST.make(MD.AE, "tile.BlockQuartz", 1, 0));
 		RM.Compressor   .addRecipe1(T, 16,   16, ST.make(MD.AE, "item.ItemMultiMaterial", 8, 10), ST.make(MD.AE, "tile.BlockQuartz", 1, 0));

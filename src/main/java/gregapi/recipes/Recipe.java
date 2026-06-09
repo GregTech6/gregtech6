@@ -679,6 +679,9 @@ public class Recipe {
 	public boolean mCanBeBuffered = T;
 	/** If this Recipe needs the Output Slots to be completely empty. Needed in case you have randomised Outputs */
 	public boolean mNeedsEmptyOutput = F;
+	/** If this Recipe is not supposed to check for Input NBT Values. Thanks Applied Energistics Crystal Seeds for somehow messing something up somewhere where i cant find it... */
+	public boolean mNoNBTChecks = F;
+	
 	
 	public int getOutputChance(long aIndex) {if (aIndex < 0 || aIndex >= mChances.length) return getMaxChance(aIndex); return (int)mChances[(int)aIndex];}
 	public int getMaxChance(long aIndex) {if (aIndex < 0 || aIndex >= mMaxChances.length) return 10000; return (int)mMaxChances[(int)aIndex];}
@@ -705,6 +708,11 @@ public class Recipe {
 	
 	public Recipe setNeedEmptyOut() {
 		mNeedsEmptyOutput = T;
+		return this;
+	}
+	
+	public Recipe setNoNBTChecks() {
+		mNoNBTChecks = T;
 		return this;
 	}
 	
@@ -769,7 +777,7 @@ public class Recipe {
 			for (int i = 0; i < aInputs.length; i++) if (!tChecked[i]) {
 				ItemStack aInput = aInputs[i];
 				if (ST.valid(aInput)) {
-					if ((aDontCheckStackSizes || aInput.stackSize >= tInput.stackSize) && OreDictManager.INSTANCE.equal_(F, aInput, tInput, !tInput.hasTagCompound())) {
+					if ((aDontCheckStackSizes || aInput.stackSize >= tInput.stackSize) && OreDictManager.INSTANCE.equal_(F, aInput, tInput, mNoNBTChecks || !tInput.hasTagCompound())) {
 						if (aDecreaseStacksizeBySuccess) aInput.stackSize -= tInput.stackSize;
 						tChecked[i] = T;
 						temp = F;
@@ -865,6 +873,7 @@ public class Recipe {
 		mSpecialValue = aRecipe.mSpecialValue;
 		mNeedsEmptyOutput = aRecipe.mNeedsEmptyOutput;
 		mCanBeBuffered = aRecipe.mCanBeBuffered;
+		mNoNBTChecks = aRecipe.mNoNBTChecks;
 		mFakeRecipe = aRecipe.mFakeRecipe;
 		mEnabled = aRecipe.mEnabled;
 		mHidden = aRecipe.mHidden;
@@ -931,8 +940,10 @@ public class Recipe {
 			}
 		}
 		
+		mNoNBTChecks = T;
 		for (int i = 0; i < aInputs .length; i++) if (aInputs [i] != NI) {
 			if (aInputs [i].stackSize > 64) aInputs [i].stackSize = 64;
+			if (aInputs [i].hasTagCompound()) mNoNBTChecks = F;
 		}
 		for (int i = 0; i < aOutputs.length; i++) if (aOutputs[i] != NI) {
 			aOutputs[i] = ST.update(aOutputs[i]);
