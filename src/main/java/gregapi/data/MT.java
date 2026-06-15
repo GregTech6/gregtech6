@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 GregTech-6 Team
+ * Copyright (c) 2026 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -3352,6 +3352,7 @@ public class MT {
 			EnergeticAlloy          .addAlloyingRecipe(new OreDictConfigurationComponent( 1, OM.stack(InductiveAlloy                , 2*U), OM.stack(tMat               , 1*U)));
 			Lumium                  .addAlloyingRecipe(new OreDictConfigurationComponent( 4, OM.stack(Sn                            , 3*U), OM.stack(Ag                 , 1*U), OM.stack(tMat, 4*U)));
 			}
+			ElectrumFlux            .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(InductiveAlloy                , 2*U), OM.stack(Ag                 , 1*U), OM.stack(Redstone, 3*U)));
 			Ultimet                 .addAlloyingRecipe(new OreDictConfigurationComponent(36, OM.stack(Co                            ,20*U), OM.stack(Nichrome           , 5*U), OM.stack(Cr, 7*U), OM.stack(Mo, 4*U)));
 			StainlessSteel          .addAlloyingRecipe(new OreDictConfigurationComponent(36, OM.stack(WroughtIron                   ,24*U), OM.stack(Nichrome           , 5*U), OM.stack(Cr, 3*U), OM.stack(Mn, 4*U)));
 			TungstenSteel           .addAlloyingRecipe(new OreDictConfigurationComponent( 2, OM.stack(MeteoricSteel                 , 1*U), OM.stack(W                  , 1*U)));
