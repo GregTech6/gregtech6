@@ -494,6 +494,7 @@ public class GT_API extends Abstract_Mod {
 		HUNGER_BY_INVENTORY_WEIGHT              = ConfigsGT.GREGTECH.get("general", "AFK_Hunger"                       ,  MD.GT.mLoaded);
 		TOOL_BREAK_FATIQUE                      = ConfigsGT.GREGTECH.get("general", "ToolBreakFatique"                 , T);
 		INVENTORY_UNIFICATION                   = ConfigsGT.GREGTECH.get("general", "InventoryUnification"             , T);
+		RAILCRAFT_PLATES                        = ConfigsGT.GREGTECH.get("general", "UnifyPlatesToRailcraft"           , T);
 		XP_ORB_COMBINING                        = ConfigsGT.GREGTECH.get("general", "XP_Orb_Combining"                 , T);
 		CONFIG_HARDNESS_MULTIPLIER_SAND         = ConfigsGT.GREGTECH.get("general", "HardnessMultiplier_Sand"          , 1);
 		CONFIG_HARDNESS_MULTIPLIER_ROCK         = ConfigsGT.GREGTECH.get("general", "HardnessMultiplier_Rock"          , 1);

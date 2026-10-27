@@ -27,6 +27,8 @@ import gregapi.util.ST;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 
+import static gregapi.data.CS.RAILCRAFT_PLATES;
+
 /**
  * @author Gregorius Techneticies
  */
@@ -726,11 +728,13 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.oreBasalt      , MT.Emerald                , MD.RC, "ore", 3);
 		OreDictManager.INSTANCE.setTarget(OP.oreBasalt      , MT.Lapis                  , MD.RC, "ore", 4);
 		OreDictManager.INSTANCE.setTarget(OP.oreNetherrack  , MT.Firestone              , MD.RC, "ore", 5);
+		if (RAILCRAFT_PLATES) {
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Fe                     , MD.RC, "part.plate", 0);
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Steel                  , MD.RC, "part.plate", 1);
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.TinAlloy               , MD.RC, "part.plate", 2);
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Cu                     , MD.RC, "part.plate", 3);
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Pb                     , MD.RC, "part.plate", 4);
+		}
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Al                     , MD.MaCu, "crafting", 7);
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Au                     , MD.MaCu, "crafting",13);
 		OreDictManager.INSTANCE.setTarget(OP.plate          , MT.Ti                     , MD.MaCu, "crafting",17);
@@ -849,15 +853,15 @@ public class LoaderUnificationTargets implements Runnable {
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Netherrack             , MD.FZ, "nether_powder"  , 1);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.DarkIron               , MD.FZ, "dark_iron_ingot", 0);
 		OreDictManager.INSTANCE.setTarget(OP.gemFlawed      , MT.Diamond                , MD.FZ, "diamond_shard"  , 0);
-		OreDictManager.INSTANCE.setTarget(OP.gemChipped     , MT.EnderPearl             , MD.RT, "ingredient", 2);
-		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.SpectreIron            , MD.RT, "ingredient", 4);
-		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Ectoplasm              , MD.RT, "ingredient", 3);
 		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Ectoplasm              , MD.HEE, "endoplasm", 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.Endium                 , MD.HEE, "endium_ingot", 0);
 		OreDictManager.INSTANCE.setTarget(OP.blockIngot     , MT.Endium                 , MD.HEE, "endium_block", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreEndstone    , MT.Endium                 , MD.HEE, "endium_ore", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreEndstone    , MT.OREMATS.Sphalerite     , MD.HEE, "sphalerite", 0);
 		OreDictManager.INSTANCE.setTarget(OP.oreEndstone    , MT.OREMATS.Sphalerite     , MD.HEE, "sphalerite", 1);
+		OreDictManager.INSTANCE.setTarget(OP.gemChipped     , MT.EnderPearl             , MD.RT, "ingredient", 2);
+		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.SpectreIron            , MD.RT, "ingredient", 4);
+		OreDictManager.INSTANCE.setTarget(OP.dust           , MT.Ectoplasm              , MD.RT, "ingredient", 3);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.EnderiumBase           , MD.EIO, "itemPowderIngot"         , 6);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.ElectricalSteel        , MD.EIO, "itemAlloy"               , 0);
 		OreDictManager.INSTANCE.setTarget(OP.ingot          , MT.EnergeticAlloy         , MD.EIO, "itemAlloy"               , 1);
