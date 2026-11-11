@@ -21,9 +21,8 @@ public class ReactorCoolant {
 	public double mMaxMultiplier;
 	public double mFactorMultiplier;
 	public double mHeatDivisor;
-	public int mCriticalThreshold;
 
-	public ReactorCoolant(FluidStack aCoolant, FluidStack aHeatant, long aHUPerLiter, boolean aModerates, double aEmissionMultiplier, double aSelfMultiplier, double aMaxMultiplier, double aFactorMultiplier, double aHeatDivisor, int aCriticalThreshold) {
+	public ReactorCoolant(FluidStack aCoolant, FluidStack aHeatant, long aHUPerLiter, boolean aModerates, double aEmissionMultiplier, double aSelfMultiplier, double aMaxMultiplier, double aFactorMultiplier, double aHeatDivisor) {
 		mCoolant = aCoolant;
 		mHeatant = aHeatant;
 		mHUPerLiter = aHUPerLiter;
@@ -33,14 +32,13 @@ public class ReactorCoolant {
 		mMaxMultiplier = aMaxMultiplier;
 		mFactorMultiplier = aFactorMultiplier;
 		mHeatDivisor = aHeatDivisor;
-		mCriticalThreshold = aCriticalThreshold;
 
 		COOLANTS.add(this);
 		COOLANTS_BY_FLUID.put(aCoolant.getFluid(), this);
 	}
 
 	public ReactorCoolant(FluidStack aCoolant, FluidStack aHeatant, long aHUPerLiter, boolean aModerates) {
-		this(aCoolant, aHeatant, aHUPerLiter, aModerates, 1, 1, 1, 1, 1, 4);
+		this(aCoolant, aHeatant, aHUPerLiter, aModerates, 1, 1, 1, 1, 1);
 	}
 
 	public static ReactorCoolant getCoolant(FluidStack aFluid) {
@@ -68,6 +66,16 @@ public class ReactorCoolant {
 		return (int) Math.ceil((double)base * this.mMaxMultiplier);
 	}
 
+	public int getCriticalThreshold() {
+		double threshold = 4.0; // Assuming standard reactor setup with reflectors/fuel rods touching it on each side
+		if (this.mFactorMultiplier < 0) {
+			threshold -= this.mFactorMultiplier;
+		} else {
+			threshold *= this.mFactorMultiplier;
+		}
+		return (int)Math.round(threshold);
+	}
+
 	/**
 	 * Modify the neutron factor based on this coolant's factor multiplier.
 	 * @param base the base emission factor of the fuel rod.
@@ -76,9 +84,9 @@ public class ReactorCoolant {
 	 */
 	public double getFactor(int base) {
 		if (this.mFactorMultiplier < 0) {
-			return (1 / ((double)base + this.mFactorMultiplier));
+			return (1.0 / ((double)base + this.mFactorMultiplier));
 		}
-		return (1 / (double)base) * this.mFactorMultiplier;
+		return (1.0 / (double)base) * this.mFactorMultiplier;
 	}
 
 	/**

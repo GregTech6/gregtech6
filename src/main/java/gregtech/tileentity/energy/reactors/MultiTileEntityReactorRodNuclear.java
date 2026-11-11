@@ -93,8 +93,11 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		if (coolant.mHeatDivisor != 1) {
 			aList.add(LH.Chat.GREEN + ReactorCoolant.fractionToString(1.0 / coolant.mHeatDivisor) + " the Heat per Neutron");
 		}
-		if (mNeutronDiv <= coolant.mCriticalThreshold) {
+		int criticalThreshold = coolant.getCriticalThreshold();
+		if (mNeutronDiv == criticalThreshold) { // The neutron count goes up linearly; warn the user
 			aList.add(LH.Chat.RED + "This Fuel is" + LH.Chat.BLINKING_RED + " Critical");
+		} else if (mNeutronDiv < criticalThreshold) { // The neutron count goes up exponentially
+			aList.add(LH.Chat.RED + "This Fuel is" + LH.Chat.BLINKING_RED + " Supercritical");
 		}
 	}
 	
@@ -129,11 +132,15 @@ public class MultiTileEntityReactorRodNuclear extends MultiTileEntityReactorRodB
 		UT.NBT.set(aStack, writeItemNBT(aStack.hasTagCompound() ? aStack.getTagCompound() : UT.NBT.make()));
 
 		if (mDurability <= 0) {
-			ST.meta(aStack, mDepleted);
-			ST.nbt(aStack, null);
-			aReactor.updateClientData();
+			depleteRod(aReactor, aStack);
 		}
 		return T;
+	}
+
+	public void depleteRod(MultiTileEntityReactorCore aReactor, ItemStack aStack) {
+		ST.meta(aStack, mDepleted);
+		ST.nbt(aStack, null);
+		aReactor.updateClientData();
 	}
 	
 	@Override
