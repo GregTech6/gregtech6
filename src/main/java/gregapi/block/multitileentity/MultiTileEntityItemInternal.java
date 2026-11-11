@@ -453,6 +453,14 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 	}
 
 	@Override
+	public boolean isTransparent(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		// Called for every step of every neutron beam, so ask the canonical tile entity instead of building a new one.
+		MultiTileEntityClassContainer tClassContainer = mBlock.mMultiTileEntityRegistry.getClassContainer(aStack);
+		if (tClassContainer != null && tClassContainer.mCanonicalTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tClassContainer.mCanonicalTileEntity).isTransparent(aReactor, aSlot, aStack);
+		return F;
+	}
+
+	@Override
 	public boolean isModerated(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
 		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).isModerated(aReactor, aSlot, aStack);
@@ -473,15 +481,15 @@ public class MultiTileEntityItemInternal extends ItemBlock implements squeek.app
 		return 0;
 	}
 	@Override
-	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+	public boolean performReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
-		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodNeutronReaction(aReactor, aSlot, aStack);
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).performReactorRodNeutronReaction(aReactor, aSlot, aStack);
 		return F;
 	}
 	@Override
-	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
+	public int emitToAndReflectFrom(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
 		MultiTileEntityContainer tTileEntityContainer = mBlock.mMultiTileEntityRegistry.getNewTileEntityContainer(aStack);
-		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).getReactorRodNeutronReflection(aReactor, aSlot, aStack, aNeutrons, aModerated);
+		if (tTileEntityContainer != null && tTileEntityContainer.mTileEntity instanceof IItemReactorRod) return ((IItemReactorRod)tTileEntityContainer.mTileEntity).emitToAndReflectFrom(aReactor, aSlot, aStack, aNeutrons, aModerated);
 		return 0;
 	}
 	@Override

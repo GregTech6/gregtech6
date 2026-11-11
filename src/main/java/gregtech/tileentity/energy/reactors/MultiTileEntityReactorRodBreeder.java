@@ -67,21 +67,17 @@ public class MultiTileEntityReactorRodBreeder extends MultiTileEntityReactorRodB
 		aList.add(LH.Chat.CYAN + "The " + LH.Chat.YELLOW + "Loss" + LH.Chat.CYAN + " value gets subtracted from Neutrons entering this Rod");
 		aList.add(LH.Chat.CYAN + "This applies to each side where Neutrons enter, not to the total of all sides");
 		aList.add(LH.Chat.CYAN + "Remaining Neutrons on this Rod get added to the breeding process");
-		if (mProductName.equals("")) mProductName = ST.meta(aStack.copy(), mProduct).getDisplayName();
+		if (mProductName.isEmpty()) mProductName = ST.meta(aStack.copy(), mProduct).getDisplayName();
 		aList.add(LH.Chat.GREEN + "Turns into: " + LH.Chat.WHITE + mProductName);
 		aList.add(LH.Chat.CYAN + "Needed: " + LH.Chat.WHITE + mDurability + LH.Chat.PURPLE + " Neutrons");
 		aList.add(LH.Chat.YELLOW + "Loss: " + LH.Chat.WHITE + mNeutronLoss + LH.Chat.PURPLE + " Neutrons");
 	}
-	
+
 	@Override
-	public int getReactorRodNeutronEmission(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-		return 0;
-	}
-	
-	@Override
-	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-		aReactor.mEnergy += aReactor.oNeutronCounts[aSlot] / 2;
-		mDurability -= aReactor.oNeutronCounts[aSlot];
+	public boolean performReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		int neutrons = aReactor.getNeutronCount(aSlot);
+		aReactor.addHeat(neutrons / 2);
+		mDurability -= neutrons;
 		if (mDurability <= 0) {
 			ST.meta(aStack, mProduct);
 			ST.nbt(aStack, null);
@@ -93,8 +89,8 @@ public class MultiTileEntityReactorRodBreeder extends MultiTileEntityReactorRodB
 	}
 	
 	@Override
-	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
-		if (!aModerated && aNeutrons > mNeutronLoss) aReactor.mNeutronCounts[aSlot] += aNeutrons - mNeutronLoss;
+	public int emitToAndReflectFrom(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
+		if (!aModerated && aNeutrons > mNeutronLoss) aReactor.addNeutrons(aSlot, aNeutrons - mNeutronLoss);
 		return 0;
 	}
 	

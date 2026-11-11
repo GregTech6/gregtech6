@@ -284,6 +284,7 @@ public class GT6_Main extends Abstract_Mod {
 		if (MD.IC2C.mLoaded) for (int i = 0; i <= 6; i++) FMLInterModComms.sendMessage(MD.IC2C.mID, "generatorDrop", ST.save(UT.NBT.makeInt("Key", i), "Value", IL.IC2_Machine.get(1)));
 		
 		ArrayListNoNulls<Runnable> tList = new ArrayListNoNulls<>(F,
+			new Loader_Coolants(),
 			new Loader_MultiTileEntities(),
 			new Loader_Books(),
 			new Loader_OreProcessing(),

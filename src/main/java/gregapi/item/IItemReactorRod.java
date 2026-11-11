@@ -29,16 +29,27 @@ import net.minecraft.item.ItemStack;
 public interface IItemReactorRod {
 	/** @return if a Reactor would accept this Item as a Part of it. */
 	public boolean  isReactorRod(ItemStack aStack);
+	/** @return if neutrons travel straight through this rod to the next rod in line, instead of interacting with it. */
+	public boolean  isTransparent(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack);
 	/** @return is a Reactor Rod is moderated and thus isn't usable for breeding */
 	public boolean  isModerated (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack);
 	/** Updates the moderation status of the reactor rod */
 	public void     updateModeration (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack);
-	/** @return the amount of Neutrons emitted by the Rod to each of the 4 surrounding Rods. Only called once every 20 ticks. */
+	/**
+	 * Update the amount of Neutrons in this slot according to the Self stat if it's a fuel rod.
+	 * @return the amount of Neutrons emitted by the Rod to each of the 4 surrounding Rods. Only called once every 20 ticks.
+	 * */
 	public int      getReactorRodNeutronEmission  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack);
-	/** @return if the Reactor would be considered "Active" after calculating the Ticking of the Rod itself. */
-	public boolean  getReactorRodNeutronReaction  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack);
-	/** @return the Amount of reflected Neutrons after this Rod has been hit with aNeutrons. */
-	public int      getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated);
+	/**
+	 * Perform the reaction on the rod with its neutrons, e.g. converting them to heat.
+	 * @return if the Reactor would be considered "Active" after calculating the Ticking of the Rod itself.
+	 * */
+	public boolean performReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack);
+	/**
+	 * Emit [aNeutrons] neutrons onto this rod.
+	 * @return the Amount of reflected Neutrons after this Rod has been hit with aNeutrons.
+	 * */
+	public int emitToAndReflectFrom(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated);
 	/** @return the Neutron Maximum for the lowest durability loss of this Rod */
 	public int      getReactorRodNeutronMaximum   (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack);
 	/** @return the Texture used for rendering the Rod in a Reactor. Note: only Item ID and Metadata are available in aStack, not NBT! */
