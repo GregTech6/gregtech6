@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 GregTech-6 Team
+ * Copyright (c) 2026 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -350,23 +350,21 @@ public class PrefixBlock extends Block implements Runnable, ITileEntityProvider,
 	
 	@Override
 	public void onNeighborChange(IBlockAccess aWorld, int aX, int aY, int aZ, int aTileX, int aTileY, int aTileZ) {
-		if (!LOCK) {
+		if (!LOCK) try {
 			LOCK = T;
 			TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
-			if (aTileEntity instanceof ITileEntity) ((ITileEntity)aTileEntity).onAdjacentBlockChange(aTileX, aTileY, aTileZ);
-			LOCK = F;
-		}
+			if (aTileEntity instanceof ITileEntity) ((ITileEntity) aTileEntity).onAdjacentBlockChange(aTileX, aTileY, aTileZ);
+		} finally {LOCK = F;}
 	}
 	
 	@Override
 	public void onNeighborBlockChange(World aWorld, int aX, int aY, int aZ, Block aBlock) {
 		TileEntity aTileEntity = null;
-		if (!LOCK) {
+		if (!LOCK) try {
 			LOCK = T;
 			aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
 			if (aTileEntity instanceof ITileEntity) ((ITileEntity)aTileEntity).onAdjacentBlockChange(aX, aY, aZ);
-			LOCK = F;
-		}
+		} finally {LOCK = F;}
 		scheduleUpdateIfNeeded(aWorld, aX, aY, aZ, aTileEntity);
 	}
 	
