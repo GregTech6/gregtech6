@@ -69,10 +69,13 @@ public class WorldgenRiver extends WorldgenObject {
 					
 					BlockRiver.PLACEMENT_ALLOWED = T;
 					if (!aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.River, 0, 0)) {
-						ERR.println("Error setting River Water at : " + (aMinX+tX) + " " + tY + " " + (aMinZ+tZ) + "\nFormer block is: " + aWorld.getBlock(aMinX+tX, tY, aMinZ+tZ).delegate.name());
-						aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, Blocks.water, 0, 0);
-						aChunk.lastSaveTime = Long.MAX_VALUE;
-						return F;
+						Block tFormer = aWorld.getBlock(aMinX+tX, tY, aMinZ+tZ);
+						if (tFormer != BlocksGT.River) {
+							ERR.println("Error setting River Water at : " + (aMinX+tX) + " " + tY + " " + (aMinZ+tZ) + "\nFormer block is: " + tFormer.delegate.name());
+							aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, Blocks.water, 0, 0);
+							aChunk.lastSaveTime = Long.MAX_VALUE;
+							return F;
+						}
 					}
 					BlockRiver.PLACEMENT_ALLOWED = F;
 				} else {
