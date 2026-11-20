@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2026 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,13 +19,6 @@
 
 package gregtech.worldgen;
 
-import static gregapi.data.CS.*;
-
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
-import gregapi.data.CS.BlocksGT;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import gregtech.blocks.fluids.BlockSwamp;
@@ -36,6 +29,12 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
+
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -62,6 +61,7 @@ public class WorldgenSwamp extends WorldgenObject {
 				final ExtendedBlockStorage tStorage = tStorages[tY >> 4];
 				if (tStorage == null) continue;
 				final Block tBlock = tStorage.getBlockByExtId(tX, tY & 15, tZ);
+				if (tBlock == BlocksGT.Swamp) {temp = T; continue;}
 				if (tBlock.isOpaqueCube()) break;
 				if (tBlock != Blocks.water && tBlock != Blocks.flowing_water && !(tBlock instanceof BlockWaterlike && BIOMES_SWAMP.contains(aBiomes[tX][tZ].biomeName))) continue;
 				
