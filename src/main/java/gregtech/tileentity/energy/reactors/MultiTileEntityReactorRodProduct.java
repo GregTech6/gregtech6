@@ -46,19 +46,19 @@ public class MultiTileEntityReactorRodProduct extends MultiTileEntityReactorRodB
 		aList.add(LH.Chat.DGRAY + "Used in Nuclear Reactor Core");
 		aList.add(LH.Chat.CYAN + "Emits half the Heat per Neutron on this Rod");
 		aList.add(LH.Chat.CYAN + "Can be centrifuged to get valuable materials");
-		if (mBreedingName.equals(""))  mBreedingName = ST.meta(aStack.copy(), mBreeding).getDisplayName();
+		if (mBreedingName.isEmpty())  mBreedingName = ST.meta(aStack.copy(), mBreeding).getDisplayName();
 		aList.add(LH.Chat.GREEN + "Breed from " + mBreedingName);
 	}
 
 	@Override
-	public boolean getReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
-		aReactor.mEnergy += aReactor.oNeutronCounts[aSlot] / 2;
+	public boolean performReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {
+		aReactor.addHeat(aReactor.getNeutronCount(aSlot) / 2);
 		return T;
 	}
 
 	@Override
-	public int getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
-		aReactor.mNeutronCounts[aSlot] += aNeutrons;
+	public int emitToAndReflectFrom(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {
+		aReactor.addNeutrons(aSlot, aNeutrons);
 		return 0;
 	}
 	

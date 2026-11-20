@@ -43,10 +43,12 @@ public class MultiTileEntityGeigerCounter extends MultiTileEntitySensorTE {
 	
 	@Override
 	public long getCurrentValue(DelegatorTileEntity<TileEntity> aDelegator) {
+		long result = 0;
 		if (aDelegator.mTileEntity instanceof MultiTileEntityReactorCore) {
-			return UT.Code.sum(((MultiTileEntityReactorCore)aDelegator.mTileEntity).oNeutronCounts);
+			MultiTileEntityReactorCore reactor = (MultiTileEntityReactorCore)aDelegator.mTileEntity;
+			for (int i = 0; i < reactor.numSlots(); i++) result += reactor.getNeutronCount(i);
 		}
-		return 0;
+		return result;
 	}
 	
 	@Override

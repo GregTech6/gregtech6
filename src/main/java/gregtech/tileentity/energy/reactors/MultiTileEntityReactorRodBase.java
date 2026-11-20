@@ -23,7 +23,6 @@ import gregapi.block.multitileentity.IMultiTileEntity.IMTE_AddToolTips;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetCollisionBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_GetSelectedBoundingBoxFromPool;
 import gregapi.block.multitileentity.IMultiTileEntity.IMTE_SetBlockBoundsBasedOnState;
-import gregapi.data.LH;
 import gregapi.data.MT;
 import gregapi.item.IItemReactorRod;
 import gregapi.old.Textures;
@@ -37,29 +36,21 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 
-import java.util.List;
-
 import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
  */
-public class MultiTileEntityReactorRodBase extends TileEntityBase07Paintable implements IItemReactorRod, ITileEntityQuickObstructionCheck, IMTE_AddToolTips, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
-	@Override
-	public void addToolTips(List<String> aList, ItemStack aStack, boolean aF3_H) {
-		aList.add(LH.Chat.DGRAY + "Used in Nuclear Reactor Core");
-		aList.add(LH.Chat.CYAN + "Empty Reactor Rod, transparent to Neutrons.");
-	}
-
+public abstract class MultiTileEntityReactorRodBase extends TileEntityBase07Paintable implements IItemReactorRod, ITileEntityQuickObstructionCheck, IMTE_AddToolTips, IMTE_SetBlockBoundsBasedOnState, IMTE_GetCollisionBoundingBoxFromPool, IMTE_GetSelectedBoundingBoxFromPool {
 	@Override
 	public ITexture getTexture2(Block aBlock, int aRenderPass, byte aSide, boolean[] aShouldSideBeRendered) {
 		return SIDES_HORIZONTAL[aSide] ? getReactorRodTextureSides(null, 0, null, T) : getReactorRodTextureTop(null, 0, null, T);
 	}
 
-	public static IIconContainer sColoreds[] = new IIconContainer[] {
+	public static IIconContainer[] sColoreds = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_rods/colored/top"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_rods/colored/sides")
-	}, sOverlays[] = new IIconContainer[] {
+	}, sOverlays = new IIconContainer[] {
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_rods/overlay/top"),
 		new Textures.BlockIcons.CustomIcon("machines/generators/reactor_rods/overlay/sides")
 	};
@@ -82,17 +73,16 @@ public class MultiTileEntityReactorRodBase extends TileEntityBase07Paintable imp
 	@Override public boolean isObstructingBlockAt   (byte aSide) {return F;}
 
 	@Override public boolean  isReactorRod(ItemStack aStack) {return T;}
+	@Override public boolean  isTransparent(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return F;}
 	@Override public boolean  isModerated(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return false;}
 	@Override public void     updateModeration(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {/**/}
 	@Override public int      getReactorRodNeutronEmission  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return 0;}
-	@Override public boolean  getReactorRodNeutronReaction  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return F;}
-	@Override public int      getReactorRodNeutronReflection(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {return 0;}
+	@Override public boolean  performReactorRodNeutronReaction(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return F;}
+	@Override public int      emitToAndReflectFrom(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, int aNeutrons, boolean aModerated) {return 0;}
 	@Override public int      getReactorRodNeutronMaximum   (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack) {return 0;}
 
 	@Override public ITexture getReactorRodTextureSides(MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, boolean aActive) {return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[1], mRGBa, F), BlockTextureDefault.get(sOverlays[1], aActive ? UNCOLOURED : MT.Pb.fRGBaSolid));}
 	@Override public ITexture getReactorRodTextureTop  (MultiTileEntityReactorCore aReactor, int aSlot, ItemStack aStack, boolean aActive) {return BlockTextureMulti.get(BlockTextureDefault.get(sColoreds[0], mRGBa, F), BlockTextureDefault.get(sOverlays[0], aActive ? UNCOLOURED : MT.Pb.fRGBaSolid));}
 
 	@Override public boolean canDrop(int aSlot) {return F;}
-
-	@Override public String getTileEntityName() {return "gt.multitileentity.generator.reactor.rods.empty";}
 }
