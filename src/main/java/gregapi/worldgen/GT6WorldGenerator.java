@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 GregTech-6 Team
+ * Copyright (c) 2026 GregTech-6 Team
  *
  * This file is part of GregTech.
  *
@@ -19,12 +19,6 @@
 
 package gregapi.worldgen;
 
-import static gregapi.data.CS.*;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-
 import gregapi.code.ArrayListNoNulls;
 import gregapi.code.BiomeNameSet;
 import gregapi.util.WD;
@@ -33,6 +27,12 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
+import static gregapi.data.CS.*;
 
 /**
  * @author Gregorius Techneticies
@@ -176,10 +176,6 @@ public class GT6WorldGenerator {
 	
 	public static void generate(WorldGenContainer aWorldgen) {
 		LIST.add(aWorldgen);
-		if (!LOCK) {
-			LOCK = T;
-			while (!LIST.isEmpty()) LIST.remove(LIST.size()-1).run();
-			LOCK = F;
-		}
+		if (!LOCK) try {LOCK = T; while (!LIST.isEmpty()) LIST.remove(LIST.size()-1).run();} finally {LOCK = F;}
 	}
 }

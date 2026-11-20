@@ -72,6 +72,7 @@ public class WorldgenSwamp extends WorldgenObject {
 					if (!aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.Swamp, 0, 0)) {
 						aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, Blocks.water, 0, 0);
 						aChunk.lastSaveTime = Long.MAX_VALUE;
+						BlockSwamp.PLACEMENT_ALLOWED = F;
 						return F;
 					}
 					BlockSwamp.PLACEMENT_ALLOWED = F;

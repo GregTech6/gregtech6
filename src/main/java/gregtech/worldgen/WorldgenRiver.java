@@ -19,7 +19,6 @@
 
 package gregtech.worldgen;
 
-import gregapi.data.CS.*;
 import gregapi.util.WD;
 import gregapi.worldgen.WorldgenObject;
 import gregtech.blocks.fluids.BlockRiver;
@@ -72,6 +71,7 @@ public class WorldgenRiver extends WorldgenObject {
 					if (!aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, BlocksGT.River, 0, 0)) {
 						aWorld.setBlock(aMinX+tX, tY, aMinZ+tZ, Blocks.water, 0, 0);
 						aChunk.lastSaveTime = Long.MAX_VALUE;
+						BlockRiver.PLACEMENT_ALLOWED = F;
 						return F;
 					}
 					BlockRiver.PLACEMENT_ALLOWED = F;
