@@ -20,6 +20,7 @@
 package gregapi.render;
 
 import static gregapi.data.CS.*;
+import static gregapi.util.UT.shouldFlipNegYTextures;
 
 import org.lwjgl.opengl.GL11;
 
@@ -248,11 +249,11 @@ public interface ITexture {
 			if (aBlock.getRenderBlockPass() > 0) {
 				double tOldValue = aRenderer.renderMinY;
 				aRenderer.renderMinY -= (aRenderer.renderFromInside?-1:+1)*OFFSET_Y_NEG;
-				renderFixedNegativeYFacing(aIcon, aRenderer, aBlock, aX, aY, aZ);
+				renderFixedNegativeYFacing(aIcon, aRenderer, aBlock, aX, aY, aZ, aChangedBlockBounds);
 				aRenderer.renderMinY = tOldValue;
 				OFFSET_Y_NEG += OFFSET_ADD;
 			} else {
-				renderFixedNegativeYFacing(aIcon, aRenderer, aBlock, aX, aY, aZ);
+				renderFixedNegativeYFacing(aIcon, aRenderer, aBlock, aX, aY, aZ, aChangedBlockBounds);
 			}
 			return T;
 		}
@@ -285,13 +286,15 @@ public interface ITexture {
 			return T;
 		}
 		
-		public static void renderFixedNegativeYFacing(IIcon aIcon, RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ) {
+		public static void renderFixedNegativeYFacing(IIcon aIcon, RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, boolean aChangedBlockBounds) {
 			if (aRenderer.hasOverrideBlockTexture()) aIcon = aRenderer.overrideBlockTexture;
 		//  double tMaxX1 = aIcon.getInterpolatedU(aRenderer.renderMaxX * 16.0);
 		//  double tMinX1 = aIcon.getInterpolatedU(aRenderer.renderMinX * 16.0);
 		//  double tMaxZ1 = aIcon.getInterpolatedV(aRenderer.renderMinZ * 16.0);
 		//  double tMinZ1 = aIcon.getInterpolatedV(aRenderer.renderMaxZ * 16.0);
-			
+
+			boolean shouldFlipTexture = shouldFlipNegYTextures(aIcon.getIconName(), aChangedBlockBounds);
+
 			double tMaxX1 = aIcon.getInterpolatedU(aRenderer.renderMaxX * 16.0);
 			double tMinX1 = aIcon.getInterpolatedU(aRenderer.renderMinX * 16.0);
 			double tMaxZ1 = aIcon.getInterpolatedV(aRenderer.renderMaxZ * 16.0);
@@ -358,21 +361,21 @@ public interface ITexture {
 			if (aRenderer.enableAO) {
 				Tessellator.instance.setColorOpaque_F(aRenderer.colorRedTopLeft, aRenderer.colorGreenTopLeft, aRenderer.colorBlueTopLeft);
 				Tessellator.instance.setBrightness(aRenderer.brightnessTopLeft);
-				Tessellator.instance.addVertexWithUV(tMinX3, tMinY3, tMaxZ3, tMinX2, tMinZ2);
+				Tessellator.instance.addVertexWithUV(tMinX3, tMinY3, tMaxZ3, tMinX2, shouldFlipTexture ? tMinZ2 : tMaxZ2);
 				Tessellator.instance.setColorOpaque_F(aRenderer.colorRedBottomLeft, aRenderer.colorGreenBottomLeft, aRenderer.colorBlueBottomLeft);
 				Tessellator.instance.setBrightness(aRenderer.brightnessBottomLeft);
-				Tessellator.instance.addVertexWithUV(tMinX3, tMinY3, tMinZ3, tMinX1, tMaxZ1);
+				Tessellator.instance.addVertexWithUV(tMinX3, tMinY3, tMinZ3, tMinX1, shouldFlipTexture ? tMaxZ1 : tMinZ1);
 				Tessellator.instance.setColorOpaque_F(aRenderer.colorRedBottomRight, aRenderer.colorGreenBottomRight, aRenderer.colorBlueBottomRight);
 				Tessellator.instance.setBrightness(aRenderer.brightnessBottomRight);
-				Tessellator.instance.addVertexWithUV(tMaxX3, tMinY3, tMinZ3, tMaxX2, tMaxZ2);
+				Tessellator.instance.addVertexWithUV(tMaxX3, tMinY3, tMinZ3, tMaxX2, shouldFlipTexture ? tMaxZ2 : tMinZ2);
 				Tessellator.instance.setColorOpaque_F(aRenderer.colorRedTopRight, aRenderer.colorGreenTopRight, aRenderer.colorBlueTopRight);
 				Tessellator.instance.setBrightness(aRenderer.brightnessTopRight);
-				Tessellator.instance.addVertexWithUV(tMaxX3, tMinY3, tMaxZ3, tMaxX1, tMinZ1);
+				Tessellator.instance.addVertexWithUV(tMaxX3, tMinY3, tMaxZ3, tMaxX1, shouldFlipTexture ? tMinZ1 : tMaxZ1);
 			} else {
-				Tessellator.instance.addVertexWithUV(tMinX3, tMinY3, tMaxZ3, tMinX2, tMinZ2);
-				Tessellator.instance.addVertexWithUV(tMinX3, tMinY3, tMinZ3, tMinX1, tMaxZ1);
-				Tessellator.instance.addVertexWithUV(tMaxX3, tMinY3, tMinZ3, tMaxX2, tMaxZ2);
-				Tessellator.instance.addVertexWithUV(tMaxX3, tMinY3, tMaxZ3, tMaxX1, tMinZ1);
+				Tessellator.instance.addVertexWithUV(tMinX3, tMinY3, tMaxZ3, tMinX2, shouldFlipTexture ? tMinZ2 : tMaxZ2);
+				Tessellator.instance.addVertexWithUV(tMinX3, tMinY3, tMinZ3, tMinX1, shouldFlipTexture ? tMaxZ1 : tMinZ1);
+				Tessellator.instance.addVertexWithUV(tMaxX3, tMinY3, tMinZ3, tMaxX2, shouldFlipTexture ? tMaxZ2 : tMinZ2);
+				Tessellator.instance.addVertexWithUV(tMaxX3, tMinY3, tMaxZ3, tMaxX1, shouldFlipTexture ? tMinZ1 : tMaxZ1);
 			}
 		}
 		

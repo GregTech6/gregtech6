@@ -3473,4 +3473,14 @@ public class UT {
 			return F;
 		}
 	}
+
+	public static boolean shouldFlipNegYTextures(String textureName, boolean aChangedBlockBounds){
+		int start = textureName.indexOf(":");
+		int stop = textureName.indexOf("/");
+		if (start != -1 && stop != -1) {
+			String textureGroup = textureName.substring(start + 1, stop);
+			return aChangedBlockBounds && (SHOULD_FLIP_NEG_Y_TEXTURES.contains(textureGroup)); // dirty hack, but works fine
+		}
+		return false;
+	}
 }
